@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.next/
+out/
+
+# Secrets and local config — .env.example files ARE committed
+.env
+.env.local
+.env.*.local
+
+# Generated Prisma client
+backend/prisma/generated/
+
+# Logs and OS noise
+*.log
+npm-debug.log*
+.DS_Store
+
+# Editor
+.vscode/
+.idea/

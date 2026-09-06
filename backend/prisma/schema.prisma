@@ -1,0 +1,340 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model coach_team_stints {
+  id         Int       @id @default(autoincrement())
+  coach_id   Int
+  team_id    Int
+  role       String?   @default("HEAD_COACH") @db.VarChar(20)
+  start_date DateTime? @db.Date
+  end_date   DateTime? @db.Date
+  coaches    coaches   @relation(fields: [coach_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams      teams     @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model coaches {
+  id                Int                 @id @default(autoincrement())
+  full_name         String              @db.VarChar(150)
+  dob               DateTime?           @db.Date
+  nationality_id    Int?
+  photo_url         String?             @db.VarChar(255)
+  coach_team_stints coach_team_stints[]
+  countries         countries?          @relation(fields: [nationality_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  matches           matches[]
+}
+
+model competition_edition_teams {
+  id                     Int                  @id @default(autoincrement())
+  competition_edition_id Int
+  team_id                Int
+  group_id               Int?
+  competition_editions   competition_editions @relation(fields: [competition_edition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  competition_groups     competition_groups?  @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams                  teams                @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([competition_edition_id, team_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model competition_editions {
+  id                        Int                         @id @default(autoincrement())
+  competition_id            Int
+  season_id                 Int
+  host_country_id           Int?
+  format                    String?                     @db.VarChar(30)
+  num_teams                 Int?                        @db.SmallInt
+  competition_edition_teams competition_edition_teams[]
+  competitions              competitions                @relation(fields: [competition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  countries                 countries?                  @relation(fields: [host_country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  seasons                   seasons                     @relation(fields: [season_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  competition_groups        competition_groups[]
+  matches                   matches[]
+
+  @@unique([competition_id, season_id])
+}
+
+model competition_groups {
+  id                        Int                         @id @default(autoincrement())
+  competition_edition_id    Int
+  name                      String                      @db.VarChar(10)
+  competition_edition_teams competition_edition_teams[]
+  competition_editions      competition_editions        @relation(fields: [competition_edition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  matches                   matches[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model competitions {
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @db.VarChar(150)
+  slug                 String                 @unique @db.VarChar(160)
+  type                 String                 @db.VarChar(30)
+  country_id           Int?
+  confederation_id     Int?                   @db.SmallInt
+  tier                 Int?                   @db.SmallInt
+  logo_url             String?                @db.VarChar(255)
+  competition_editions competition_editions[]
+  confederations       confederations?        @relation(fields: [confederation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  countries            countries?             @relation(fields: [country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model confederations {
+  id           Int            @id @default(autoincrement()) @db.SmallInt
+  code         String         @unique @db.VarChar(10)
+  name         String         @db.VarChar(100)
+  competitions competitions[]
+  countries    countries[]
+}
+
+model countries {
+  id                   Int                    @id @default(autoincrement())
+  iso_code             String?                @unique @db.Char(3)
+  name                 String                 @db.VarChar(100)
+  full_name            String?                @db.VarChar(150)
+  confederation_id     Int?                   @db.SmallInt
+  flag_url             String?                @db.VarChar(255)
+  coaches              coaches[]
+  competition_editions competition_editions[]
+  competitions         competitions[]
+  confederations       confederations?        @relation(fields: [confederation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  players              players[]
+  stadiums             stadiums[]
+  teams                teams[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model data_sources {
+  id                                                                     Int                   @id @default(autoincrement())
+  name                                                                   String                @unique @db.VarChar(50)
+  type                                                                   String?               @db.VarChar(20)
+  base_url                                                               String?               @db.VarChar(255)
+  entity_source_map                                                      entity_source_map[]
+  reconciliation_runs_reconciliation_runs_data_source_a_idTodata_sources reconciliation_runs[] @relation("reconciliation_runs_data_source_a_idTodata_sources")
+  reconciliation_runs_reconciliation_runs_data_source_b_idTodata_sources reconciliation_runs[] @relation("reconciliation_runs_data_source_b_idTodata_sources")
+}
+
+model entity_source_map {
+  id             Int          @id @default(autoincrement())
+  entity_type    String       @db.VarChar(30)
+  entity_id      Int
+  data_source_id Int
+  external_id    String?      @db.VarChar(100)
+  external_url   String?      @db.VarChar(255)
+  confidence     Decimal?     @default(1.0) @db.Decimal(3, 2)
+  last_synced_at DateTime?    @default(now()) @db.Timestamptz(6)
+  data_sources   data_sources @relation(fields: [data_source_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([entity_type, data_source_id, external_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model match_events {
+  id                                              Int      @id @default(autoincrement())
+  match_id                                        Int
+  team_id                                         Int?
+  player_id                                       Int?
+  related_player_id                               Int?
+  minute                                          Int?     @db.SmallInt
+  added_time                                      Int?     @db.SmallInt
+  type                                            String   @db.VarChar(20)
+  detail                                          Json?
+  matches                                         matches  @relation(fields: [match_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  players_match_events_player_idToplayers         players? @relation("match_events_player_idToplayers", fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  players_match_events_related_player_idToplayers players? @relation("match_events_related_player_idToplayers", fields: [related_player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams                                           teams?   @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model match_lineups {
+  id           Int     @id @default(autoincrement())
+  match_id     Int
+  team_id      Int
+  player_id    Int
+  role         String  @db.VarChar(10)
+  position     String? @db.VarChar(3)
+  shirt_number Int?    @db.SmallInt
+  minute_on    Int?    @db.SmallInt
+  minute_off   Int?    @db.SmallInt
+  matches      matches @relation(fields: [match_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  players      players @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams        teams   @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([match_id, player_id])
+}
+
+model match_player_ratings {
+  match_id  Int
+  player_id Int
+  rating    Decimal? @db.Decimal(3, 1)
+  is_motm   Boolean? @default(false)
+  matches   matches  @relation(fields: [match_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  players   players  @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([match_id, player_id])
+}
+
+model match_team_stats {
+  match_id        Int
+  team_id         Int
+  possession_pct  Decimal? @db.Decimal(4, 1)
+  shots           Int?     @db.SmallInt
+  shots_on_target Int?     @db.SmallInt
+  corners         Int?     @db.SmallInt
+  fouls           Int?     @db.SmallInt
+  offsides        Int?     @db.SmallInt
+  matches         matches  @relation(fields: [match_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams           teams    @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([match_id, team_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model matches {
+  id                                Int                    @id @default(autoincrement())
+  competition_edition_id            Int
+  group_id                          Int?
+  round                             String?                @db.VarChar(30)
+  home_team_id                      Int
+  away_team_id                      Int
+  stadium_id                        Int?
+  kickoff_at                        DateTime?              @db.Timestamptz(6)
+  status                            String                 @default("SCHEDULED") @db.VarChar(15)
+  home_score                        Int?                   @db.SmallInt
+  away_score                        Int?                   @db.SmallInt
+  home_score_et                     Int?                   @db.SmallInt
+  away_score_et                     Int?                   @db.SmallInt
+  home_score_pens                   Int?                   @db.SmallInt
+  away_score_pens                   Int?                   @db.SmallInt
+  attendance                        Int?
+  referee_id                        Int?
+  match_events                      match_events[]
+  match_lineups                     match_lineups[]
+  match_player_ratings              match_player_ratings[]
+  match_team_stats                  match_team_stats[]
+  teams_matches_away_team_idToteams teams                  @relation("matches_away_team_idToteams", fields: [away_team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  competition_editions              competition_editions   @relation(fields: [competition_edition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  competition_groups                competition_groups?    @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams_matches_home_team_idToteams teams                  @relation("matches_home_team_idToteams", fields: [home_team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  coaches                           coaches?               @relation(fields: [referee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  stadiums                          stadiums?              @relation(fields: [stadium_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model player_team_stints {
+  id            Int       @id @default(autoincrement())
+  player_id     Int
+  team_id       Int
+  start_date    DateTime? @db.Date
+  end_date      DateTime? @db.Date
+  shirt_number  Int?      @db.SmallInt
+  transfer_fee  Decimal?  @db.Decimal(12, 2)
+  transfer_type String?   @db.VarChar(20)
+  players       players   @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams         teams     @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model players {
+  id                                                   Int                    @id @default(autoincrement())
+  full_name                                            String                 @db.VarChar(150)
+  first_name                                           String?                @db.VarChar(60)
+  last_name                                            String?                @db.VarChar(60)
+  dob                                                  DateTime?              @db.Date
+  nationality_id                                       Int?
+  position                                             String?                @db.VarChar(3)
+  height_cm                                            Int?                   @db.SmallInt
+  preferred_foot                                       String?                @db.VarChar(10)
+  photo_url                                            String?                @db.VarChar(255)
+  match_events_match_events_player_idToplayers         match_events[]         @relation("match_events_player_idToplayers")
+  match_events_match_events_related_player_idToplayers match_events[]         @relation("match_events_related_player_idToplayers")
+  match_lineups                                        match_lineups[]
+  match_player_ratings                                 match_player_ratings[]
+  player_team_stints                                   player_team_stints[]
+  countries                                            countries?             @relation(fields: [nationality_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model reconciliation_diffs {
+  id                    Int                 @id @default(autoincrement())
+  reconciliation_run_id Int
+  entity_id_a           Int?
+  entity_id_b           Int?
+  field_name            String              @db.VarChar(50)
+  value_a               String?
+  value_b               String?
+  resolution            String?             @default("PENDING") @db.VarChar(15)
+  resolved_value        String?
+  resolved_at           DateTime?           @db.Timestamptz(6)
+  reconciliation_runs   reconciliation_runs @relation(fields: [reconciliation_run_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model reconciliation_runs {
+  id                                                              Int                    @id @default(autoincrement())
+  entity_type                                                     String                 @db.VarChar(30)
+  data_source_a_id                                                Int
+  data_source_b_id                                                Int
+  run_at                                                          DateTime?              @default(now()) @db.Timestamptz(6)
+  notes                                                           String?
+  reconciliation_diffs                                            reconciliation_diffs[]
+  data_sources_reconciliation_runs_data_source_a_idTodata_sources data_sources           @relation("reconciliation_runs_data_source_a_idTodata_sources", fields: [data_source_a_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  data_sources_reconciliation_runs_data_source_b_idTodata_sources data_sources           @relation("reconciliation_runs_data_source_b_idTodata_sources", fields: [data_source_b_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model seasons {
+  id                   Int                    @id @default(autoincrement())
+  label                String                 @unique @db.VarChar(20)
+  start_date           DateTime?              @db.Date
+  end_date             DateTime?              @db.Date
+  competition_editions competition_editions[]
+}
+
+model stadiums {
+  id         Int        @id @default(autoincrement())
+  name       String     @db.VarChar(150)
+  city       String?    @db.VarChar(100)
+  country_id Int?
+  capacity   Int?
+  latitude   Decimal?   @db.Decimal(9, 6)
+  longitude  Decimal?   @db.Decimal(9, 6)
+  matches    matches[]
+  countries  countries? @relation(fields: [country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  teams      teams[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model teams {
+  id                                  Int                         @id @default(autoincrement())
+  name                                String                      @db.VarChar(100)
+  short_name                          String?                     @db.VarChar(10)
+  type                                String                      @db.VarChar(10)
+  country_id                          Int
+  stadium_id                          Int?
+  founded_year                        Int?                        @db.SmallInt
+  logo_url                            String?                     @db.VarChar(255)
+  coach_team_stints                   coach_team_stints[]
+  competition_edition_teams           competition_edition_teams[]
+  match_events                        match_events[]
+  match_lineups                       match_lineups[]
+  match_team_stats                    match_team_stats[]
+  matches_matches_away_team_idToteams matches[]                   @relation("matches_away_team_idToteams")
+  matches_matches_home_team_idToteams matches[]                   @relation("matches_home_team_idToteams")
+  player_team_stints                  player_team_stints[]
+  countries                           countries                   @relation(fields: [country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  stadiums                            stadiums?                   @relation(fields: [stadium_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([name, country_id])
+}
+
+model admins {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique @db.VarChar(255)
+  password_hash String    @db.VarChar(255)
+  display_name  String    @db.VarChar(100)
+  is_active     Boolean   @default(true)
+  created_at    DateTime  @default(now()) @db.Timestamptz(6)
+  last_login_at DateTime? @db.Timestamptz(6)
+}
