@@ -124,3 +124,53 @@ run 14.
 
 Goalscorers are again unresolved — 60 goals across this season have no scorer,
 and no accessible source publishes them.
+
+
+---
+
+## 2019/20 — `wikipedia_tpl_2019_20.json`, `rsssf_tpl_2019_20_matches.json`
+
+A third distinct defect: not mis-encoding, but a **truncated dataset**.
+
+**The season was completed**, not curtailed. It paused for COVID, resumed in
+June 2020 and finished on 26 July; all 20 clubs played 38. Our legacy data stops
+dead at 15 March 2020, so nothing after the restart was ever captured.
+
+RSSSF's 380 results reproduce the Wikipedia final table exactly for all 20
+clubs, which is what made it authoritative enough to adjudicate conflicts
+against our own values.
+
+### Applied
+
+| Action | Count |
+|---|---|
+| matches created (absent entirely, mostly rounds 31-38) | 31 |
+| scores filled | 93 |
+| home/away reversed, then filled | 2 |
+| wrong scores corrected | 3 |
+| empty phantom SCHEDULED rows deleted | 3 |
+| corrupt row voided (not deleted) | 1 |
+
+Result: 380 completed matches, no missing scores, 767 goals, and a table
+matching Wikipedia exactly across all 20 clubs with identical positions.
+Recorded as reconciliation run 17.
+
+### Match 1252 — voided, needs a decision
+
+A third `Biashara United v Ruvu Shooting` fixture when both legs already exist
+(1226 and 1121), scored 2-1 where the real fixtures were 0-0 both times, and
+crediting two goals to Tarick Seif for Biashara on 2020-02-01 — a month after he
+transferred to Yanga. RSSSF has no such match.
+
+It is set to CANCELLED with no score so it cannot affect any table, but **not
+deleted**, because it carries three event rows that may be salvageable. Flagged
+BLOCKER for a human to decide.
+
+### Parsing note
+
+Round 21 contains a match **decided by award, not played**: `Ruvu Shooting 0-3
+Tanzania Prisons`, Ruvu having failed to provide an ambulance. RSSSF writes it as
+`awd` with the result inside a bracket that wraps across two lines, gluing
+`ambulance]` onto the next fixture's away team. Both had to be handled explicitly.
+The vault has no way to record that a result was awarded rather than played; it
+now looks like an ordinary 3-0.
