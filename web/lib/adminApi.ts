@@ -131,7 +131,7 @@ export type AdminCompetition = {
   seasonCount: number;
   publishedCount: number;
   matchCount: number;
-  seasons: string[];
+  editions: { editionId: number; season: string; isPublished: boolean; matchCount: number }[];
 };
 
 export type AdminEditionRow = {

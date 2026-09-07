@@ -74,10 +74,16 @@ adminCompetitionsRouter.get('/competitions', async (req, res) => {
         (n, e) => n + (byEdition.get(e.id) ?? 0),
         0,
       ),
-      seasons: c.competition_editions
-        .map((e) => e.seasons.label)
-        .sort()
-        .reverse(),
+      // Full edition rows, not just labels — the matches screen needs the ids to
+      // populate its season dropdown without a second request per competition.
+      editions: c.competition_editions
+        .map((e) => ({
+          editionId: e.id,
+          season: e.seasons.label,
+          isPublished: e.is_published,
+          matchCount: byEdition.get(e.id) ?? 0,
+        }))
+        .sort((a, b) => b.season.localeCompare(a.season)),
     })),
   });
 });

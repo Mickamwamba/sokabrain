@@ -70,7 +70,7 @@ Left sidebar navigation; the working area sits beside it.
 | `/admin` | overview: what's live, what needs attention, open flags |
 | `/admin/competitions` | all competitions, searchable, with "add competition" |
 | `/admin/competitions/[id]` | one competition — pick a season, see its stats and every match |
-| `/admin/matches` | match worklist, filterable to "completed with no score" |
+| `/admin/matches` | matches for one competition + season, chosen by dropdown; optional "needs a score" filter |
 | `/admin/matches/[id]` | edit score & status, add/delete events, raise flags |
 | `/admin/flags` | open and resolved flags, with resolution notes |
 
