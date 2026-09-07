@@ -1,128 +1,152 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { adminFetch, AdminApiError, type AdminEdition } from '@/lib/adminApi';
-import { ActionForm, SeverityTag } from '@/components/admin-ui';
-import { createFlagAction, publishEditionAction } from './actions';
+import { adminFetch, AdminApiError, type AdminEdition, type Flag } from '@/lib/adminApi';
+import { Card, CardHead, StatTile } from '@/components/ui';
+import { SeverityTag } from '@/components/admin-ui';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AdminCompetitionsPage() {
+export default async function AdminOverviewPage() {
   let editions: AdminEdition[];
+  let flags: Flag[];
   try {
-    editions = (await adminFetch<{ editions: AdminEdition[] }>('/api/admin/editions')).editions;
+    [editions, flags] = await Promise.all([
+      adminFetch<{ editions: AdminEdition[] }>('/api/admin/editions').then((r) => r.editions),
+      adminFetch<{ flags: Flag[] }>('/api/admin/flags?status=OPEN&limit=5').then((r) => r.flags),
+    ]);
   } catch (err) {
     if (err instanceof AdminApiError && err.status === 401) redirect('/admin/login');
-    if (err instanceof AdminApiError) {
-      return <p className="text-sm text-red-600">{err.message}</p>;
-    }
+    if (err instanceof AdminApiError) return <p className="text-sm text-loss">{err.message}</p>;
     throw err;
   }
 
-  const published = editions.filter((e) => e.isPublished).length;
+  const live = editions.filter((e) => e.isPublished);
+  const withIssues = editions
+    .filter((e) => e.matchCount > 0 && e.issues.length > 0)
+    .sort((a, b) => {
+      // Published seasons first: a problem the public can already see matters most.
+      if (a.isPublished !== b.isPublished) return a.isPublished ? -1 : 1;
+      const sum = (e: AdminEdition) => e.issues.reduce((n, i) => n + i.count, 0);
+      return sum(b) - sum(a);
+    });
+
+  const totalIssues = editions.reduce(
+    (n, e) => n + e.issues.reduce((m, i) => m + i.count, 0),
+    0,
+  );
 
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight">Competitions</h1>
+        <h1 className="display text-2xl font-extrabold tracking-tight">Overview</h1>
         <p className="mt-1 text-sm text-muted">
-          {published} of {editions.length} editions are visible on the public site. An
-          edition stays hidden until you publish it, and cannot be published while it
-          carries an open <SeverityTag severity="BLOCKER" /> flag.
+          What the public can see, and what still needs fixing.
         </p>
       </div>
 
-      <div className="space-y-2">
-        {editions.map((e) => (
-          <div
-            key={e.editionId}
-            className="rounded-lg border border-border p-4"
-          >
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div className="min-w-0">
-                <p className="flex items-center gap-2 font-medium">
-                  {e.competition}
-                  <span className="text-sm font-normal text-muted">{e.season}</span>
-                  {e.isPublished ? (
-                    <span className="rounded border border-accent/50 px-1.5 py-0.5 text-[10px] font-medium uppercase text-accent">
-                      Live
-                    </span>
-                  ) : (
-                    <span className="rounded border border-border px-1.5 py-0.5 text-[10px] font-medium uppercase text-muted">
-                      Hidden
-                    </span>
-                  )}
-                </p>
-                <p className="mt-1 text-xs text-muted">
-                  {e.country ?? 'International'} · {e.matchCount} matches
-                  {e.openFlags > 0 ? (
-                    <>
-                      {' · '}
-                      <Link
-                        href={`/admin/flags?editionId=${e.editionId}`}
-                        className="underline underline-offset-2 hover:text-foreground"
-                      >
-                        {e.openFlags} open flag{e.openFlags === 1 ? '' : 's'}
-                      </Link>
-                      {e.flags.BLOCKER > 0 ? (
-                        <span className="ml-1 text-red-600">
-                          ({e.flags.BLOCKER} blocking)
-                        </span>
-                      ) : null}
-                    </>
-                  ) : null}
-                </p>
-              </div>
+      <div className="grid gap-3 sm:grid-cols-4">
+        <StatTile figure={live.length} label="Live seasons" sub={`of ${editions.length}`} />
+        <StatTile
+          figure={live.reduce((n, e) => n + e.matchCount, 0)}
+          label="Public matches"
+        />
+        <StatTile figure={totalIssues} label="Detected issues" sub="across all seasons" />
+        <StatTile figure={flags.length} label="Open flags" />
+      </div>
 
-              <div className="flex shrink-0 items-center gap-2">
+      <Card>
+        <CardHead
+          title="Live on the public site"
+          action={{ href: '/admin/competitions', label: 'Manage' }}
+        />
+        {live.length === 0 ? (
+          <p className="px-5 py-8 text-center text-sm text-muted">
+            Nothing is published. Fans see an empty site until you release a season.
+          </p>
+        ) : (
+          <ul>
+            {live.map((e) => (
+              <li
+                key={e.editionId}
+                className="flex items-center gap-3 border-b border-line px-5 py-3 text-sm last:border-0"
+              >
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-semibold">
+                    {e.competition} <span className="font-normal text-muted">{e.season}</span>
+                  </span>
+                  <span className="block text-xs text-muted">
+                    {e.matchCount} matches
+                    {e.issues.length > 0
+                      ? ` · ${e.issues.reduce((n, i) => n + i.count, 0)} detected issues`
+                      : ' · no detected issues'}
+                  </span>
+                </span>
                 <Link
-                  href={`/admin/matches?editionId=${e.editionId}`}
-                  className="rounded border border-border px-3 py-1.5 text-xs hover:border-accent"
+                  href={`/admin/matches?editionId=${e.editionId}&needsAttention=true`}
+                  className="shrink-0 rounded-lg border border-line px-3 py-1.5 text-xs font-semibold hover:border-ink"
                 >
-                  Matches
+                  Fix data
                 </Link>
-                <ActionForm
-                  action={publishEditionAction}
-                  submitLabel={e.isPublished ? 'Hide' : 'Publish'}
-                  submitClassName={
-                    e.canPublish || e.isPublished
-                      ? 'rounded border border-border px-3 py-1.5 text-xs hover:border-accent disabled:opacity-50'
-                      : 'rounded border border-border px-3 py-1.5 text-xs opacity-40 cursor-not-allowed'
-                  }
-                >
-                  <input type="hidden" name="editionId" value={e.editionId} />
-                  <input type="hidden" name="publish" value={String(!e.isPublished)} />
-                </ActionForm>
-              </div>
-            </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Card>
 
-            {e.issues.length > 0 ? (
-              <div className="mt-3 border-t border-border pt-3">
-                <p className="text-xs text-muted">Detected in the data:</p>
-                <ul className="mt-1.5 space-y-1.5">
-                  {e.issues.map((i) => (
-                    <li key={i.key} className="flex flex-wrap items-center gap-2 text-xs">
-                      <SeverityTag severity={i.severity} />
-                      <span className="text-muted">
-                        <strong className="text-foreground">{i.count}</strong> {i.label}
+      <div className="grid gap-5 lg:grid-cols-2">
+        <Card>
+          <CardHead title="Needs attention" hint="Seasons with detected data problems" />
+          {withIssues.length === 0 ? (
+            <p className="px-5 py-8 text-center text-sm text-muted">Nothing detected.</p>
+          ) : (
+            <ul>
+              {withIssues.slice(0, 6).map((e) => (
+                <li key={e.editionId} className="border-b border-line px-5 py-3 last:border-0">
+                  <Link
+                    href={`/admin/matches?editionId=${e.editionId}&needsAttention=true`}
+                    className="block text-sm font-semibold hover:text-brand"
+                  >
+                    {e.competition} {e.season}
+                    {e.isPublished ? (
+                      <span className="ml-2 rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase text-white">
+                        live
                       </span>
-                      {/* One click turns a detected issue into a tracked flag. */}
-                      <ActionForm action={createFlagAction} submitLabel="Flag this" className="inline">
-                        <input type="hidden" name="entityType" value="competition_edition" />
-                        <input type="hidden" name="entityId" value={e.editionId} />
-                        <input type="hidden" name="severity" value={i.severity} />
-                        <input
-                          type="hidden"
-                          name="reason"
-                          value={`${i.count} ${i.label}`}
-                        />
-                      </ActionForm>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        ))}
+                    ) : null}
+                  </Link>
+                  <p className="mt-1 text-xs text-muted">
+                    {e.issues.map((i) => `${i.count} ${i.key.replaceAll('_', ' ')}`).join(' · ')}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+
+        <Card>
+          <CardHead title="Open flags" action={{ href: '/admin/flags', label: 'All flags' }} />
+          {flags.length === 0 ? (
+            <p className="px-5 py-8 text-center text-sm text-muted">
+              Nothing flagged.
+            </p>
+          ) : (
+            <ul>
+              {flags.map((f) => (
+                <li
+                  key={f.id}
+                  className="flex items-start gap-2.5 border-b border-line px-5 py-3 text-sm last:border-0"
+                >
+                  <SeverityTag severity={f.severity} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block">{f.reason}</span>
+                    <span className="mt-0.5 block text-xs text-muted">
+                      {f.entityType.replaceAll('_', ' ')} #{f.entityId}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
       </div>
     </div>
   );

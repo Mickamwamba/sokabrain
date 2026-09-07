@@ -126,6 +126,17 @@ explicitly out of scope — see "Non-goals" below).
   unless a player has at least as many recorded appearances as goals — lineups
   cover ~600 of 1,639 players, so the raw ratio measured missing data, not form
   (it read "4.6 goals per game" for the top scorer before the fix).
+- **Public scope is now Tanzania Premier League only** — its three seasons
+  (2017/18, 2018/19, 2019/20) are published and everything else is hidden. The
+  current work is fixing TPL data season by season, **starting with 2017/18**
+  (edition 1: 240 matches, 42 with no score, 42 with no event log, 42 goals
+  with no scorer).
+- **Admin restructured around competitions.** Left sidebar nav; a searchable
+  competitions list with "add competition"; and a competition page where you
+  pick a season and get its completeness stats, detected issues, publish
+  toggle and full match list. New endpoints: `GET/POST /api/admin/competitions`,
+  `GET /api/admin/competitions/:id`, `GET /api/admin/editions/:id/summary`,
+  `GET /api/admin/reference`.
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, and a handful
   of duplicate lineup rows. Full detail is in the schema doc's audit

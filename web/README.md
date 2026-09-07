@@ -62,13 +62,23 @@ render a "can't reach the API" message rather than a stack trace.
 
 Sign in with an account made by `npm run admin:create` in `backend/`.
 
+Left sidebar navigation; the working area sits beside it.
+
 | Route | Does |
 |---|---|
-| `/admin/login` | sign in |
-| `/admin` | competitions: publish / hide, detected issues, one-click flagging |
+| `/admin/login` | sign in (renders without the sidebar) |
+| `/admin` | overview: what's live, what needs attention, open flags |
+| `/admin/competitions` | all competitions, searchable, with "add competition" |
+| `/admin/competitions/[id]` | one competition — pick a season, see its stats and every match |
 | `/admin/matches` | match worklist, filterable to "completed with no score" |
 | `/admin/matches/[id]` | edit score & status, add/delete events, raise flags |
 | `/admin/flags` | open and resolved flags, with resolution notes |
+
+The competition page is the main working surface: pick a season and you get its
+completeness numbers (matches, teams, goals, how many lack a score, how many
+have an event log, goals with no scorer), the detected issues as one-click
+flags, the publish toggle, and the full match list with problem rows
+highlighted.
 
 ### How it works
 

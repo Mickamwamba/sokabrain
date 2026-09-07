@@ -186,3 +186,26 @@ export async function deleteEventAction(
   revalidatePath(`/admin/matches/${matchId}`);
   return state.error ? state : { ok: 'Event deleted.' };
 }
+
+export async function createCompetitionAction(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const name = String(formData.get('name') ?? '').trim();
+  const type = String(formData.get('type') ?? '');
+  const countryRaw = String(formData.get('countryId') ?? '').trim();
+  const tierRaw = String(formData.get('tier') ?? '').trim();
+  if (!name) return { error: 'A competition needs a name.' };
+  if (!type) return { error: 'Pick a competition type.' };
+
+  const body: Record<string, unknown> = { name, type };
+  // Continental and international competitions have no country of their own.
+  if (countryRaw) body.countryId = Number(countryRaw);
+  if (tierRaw) body.tier = Number(tierRaw);
+
+  const state = await mutate(() =>
+    adminFetch('/api/admin/competitions', { method: 'POST', body }),
+  );
+  revalidatePath('/admin/competitions');
+  return state.error ? state : { ok: `Created “${name}”.` };
+}

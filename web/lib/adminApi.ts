@@ -120,3 +120,61 @@ export type Flag = {
   resolvedBy: string | null;
   resolutionNote: string | null;
 };
+
+export type AdminCompetition = {
+  id: number;
+  name: string;
+  type: string;
+  tier: number | null;
+  country: string | null;
+  countryId: number | null;
+  seasonCount: number;
+  publishedCount: number;
+  matchCount: number;
+  seasons: string[];
+};
+
+export type AdminEditionRow = {
+  editionId: number;
+  season: string;
+  seasonId: number;
+  matchCount: number;
+  isPublished: boolean;
+  publishedAt: string | null;
+  openFlags: number;
+  blockers: number;
+  canPublish: boolean;
+  issues: { key: string; count: number; label: string; severity: string }[];
+};
+
+export type EditionSummary = {
+  edition: {
+    editionId: number;
+    competitionId: number;
+    competition: string;
+    competitionType: string;
+    season: string;
+    isPublished: boolean;
+    publishedAt: string | null;
+  };
+  counts: {
+    total: number;
+    fullTime: number;
+    scheduled: number;
+    missingScore: number;
+    withEvents: number;
+    goals: number;
+    teams: number;
+  };
+  events: { goalEvents: number; unattributed: number; cards: number };
+  flags: { INFO: number; WARNING: number; BLOCKER: number };
+  openFlags: number;
+  canPublish: boolean;
+  issues: { key: string; count: number; label: string; severity: string }[];
+};
+
+export type AdminReference = {
+  countries: { id: number; name: string }[];
+  seasons: { id: number; label: string }[];
+  competitionTypes: string[];
+};

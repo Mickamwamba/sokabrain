@@ -7,6 +7,7 @@ import { signAdminToken } from '../auth/jwt.js';
 import { requireAdmin } from '../auth/middleware.js';
 import { recordManualProvenance } from '../services/provenance.js';
 import { editorialRouter } from './adminEditorial.js';
+import { adminCompetitionsRouter } from './adminCompetitions.js';
 
 export const adminRouter = Router();
 
@@ -99,6 +100,7 @@ adminRouter.use(requireAdmin);
 
 // Editorial routes (publishing, flags) share the same auth boundary.
 adminRouter.use('/', editorialRouter);
+adminRouter.use('/', adminCompetitionsRouter);
 
 /**
  * Admin match list. Unlike the public one this ignores publication state —
@@ -110,7 +112,9 @@ adminRouter.get('/matches', async (req, res) => {
       editionId: z.coerce.number().int().positive().optional(),
       status: z.enum(MATCH_STATUSES).optional(),
       needsAttention: z.enum(['true', 'false']).optional(),
-      limit: z.coerce.number().int().min(1).max(200).default(50),
+      // A full league season must fit in one request — the season view lists
+      // every match, and silently truncating would hide the ones needing work.
+      limit: z.coerce.number().int().min(1).max(500).default(50),
       offset: z.coerce.number().int().min(0).default(0),
     })
     .safeParse(req.query);
