@@ -13,9 +13,14 @@ const editionParams = z.object({ editionId: z.coerce.number().int().positive() }
  * Editions index. Not one of the three headline endpoints, but standings and
  * top scorers are both keyed by edition id, so without a way to list editions
  * the API is not navigable.
+ *
+ * Only PUBLISHED editions are ever returned. Publication is an editorial
+ * decision made in the admin dashboard — an edition stays invisible until
+ * someone has reviewed its data quality and released it.
  */
 vaultRouter.get('/editions', async (_req, res) => {
   const editions = await prisma.competition_editions.findMany({
+    where: { is_published: true },
     include: {
       competitions: {
         select: {
@@ -55,8 +60,10 @@ vaultRouter.get('/editions/:editionId/standings', async (req, res) => {
   }
   const { editionId } = params.data;
 
-  const edition = await prisma.competition_editions.findUnique({
-    where: { id: editionId },
+  const edition = await prisma.competition_editions.findFirst({
+    // Unpublished editions are 404 to the public, not 403 — their existence is
+    // not something the public API should confirm.
+    where: { id: editionId, is_published: true },
     include: {
       competitions: { select: { name: true, type: true } },
       seasons: { select: { label: true } },
@@ -97,8 +104,8 @@ vaultRouter.get('/editions/:editionId/top-scorers', async (req, res) => {
   }
   const { editionId } = params.data;
 
-  const exists = await prisma.competition_editions.findUnique({
-    where: { id: editionId },
+  const exists = await prisma.competition_editions.findFirst({
+    where: { id: editionId, is_published: true },
     select: { id: true },
   });
   if (!exists) return res.status(404).json({ error: `No edition with id ${editionId}` });

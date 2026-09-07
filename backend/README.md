@@ -147,6 +147,26 @@ ever proposes exact post-normalisation name matches; ambiguous ones are listed
 for a human rather than guessed, because a wrong team mapping corrupts scores on
 every subsequent sync.
 
+## Editorial API (admin dashboard)
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/admin/editions` | every edition with flags, issues and publish state |
+| POST | `/api/admin/editions/:id/publish` | 409 if open BLOCKER flags exist |
+| POST | `/api/admin/editions/:id/unpublish` | |
+| GET | `/api/admin/matches` | `needsAttention=true` filters to completed-with-no-score |
+| GET | `/api/admin/matches/:id` | match with full event log and open flags |
+| GET/POST | `/api/admin/flags` | `?status=`, `?editionId=` scopes to an edition and its contents |
+| POST | `/api/admin/flags/:id/resolve` | optional resolution note |
+
+The public `/api/vault/*` routes now return **only published editions**; an
+unpublished one is a 404, not a 403. `is_published` defaults to false, so
+migrating new data never exposes it before review.
+
+`npm test` covers the gating rules — a blocker refusing publication, a blocker on
+a match blocking its edition, warnings staying advisory.
+
 ## Not done yet
 
-Priority 6 (Socket.io). `src/sockets/` is an empty placeholder.
+Priority 6 (Socket.io). `src/sockets/` is an empty placeholder. No team or
+player editor screens (the endpoints exist, the UI doesn't).

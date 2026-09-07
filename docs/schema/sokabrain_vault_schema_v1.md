@@ -357,3 +357,46 @@ deliberately and separately. This matters because the legacy event log is
 partial — roughly a quarter of goal events have no scorer, and 61 of the 380
 matches in the 2018/19 Premier League edition have no score at all — so deriving
 one from the other would quietly corrupt known-correct data.
+
+
+---
+
+## Addendum: editorial layer (admin dashboard)
+
+Two columns' worth of new behaviour, added so that partial data can be worked on
+without being shown to the public.
+
+### `competition_editions.is_published`
+
+Defaults to **FALSE**. The public read API returns only published editions, and
+an unpublished edition is a 404 rather than a 403 — the public API should not
+confirm that a hidden edition exists. Publication records `published_at` and
+`published_by`, so "who released this" is answerable.
+
+This inverts the previous default: before, everything in the vault was public
+the moment it was migrated. Given that 61 of the 380 matches in the 2018/19
+Premier League have no score, that was showing a table that reads as broken.
+
+### `data_flags`
+
+A flag records that something needs attention, on an edition, match, event, team
+or player. Severity is INFO, WARNING or BLOCKER.
+
+**A BLOCKER flag prevents its edition from being published.** That is the rule
+that makes flagging worth the effort — an edition cannot go live over a problem
+someone has explicitly marked as blocking. A flag on a *match* blocks that
+match's edition, so the review unit is the edition and everything inside it.
+WARNING and INFO are advisory and never block.
+
+Flags carry `created_by`/`resolved_by` against `admins`, which is the first
+per-person attribution in the schema. It is not a general audit log — it records
+who raised and cleared a flag, not who edited a score. That gap still stands.
+
+### Suggested issues
+
+`suggestedIssues()` derives a worklist from the data itself rather than requiring
+someone to find problems by hand: completed matches with no score (BLOCKER),
+completed matches with no event log (WARNING), goals with no scorer (WARNING).
+These are surfaced in the dashboard as one-click flags, so an editor starts from
+a real list instead of a blank page. Nothing is written until they choose to
+raise one.

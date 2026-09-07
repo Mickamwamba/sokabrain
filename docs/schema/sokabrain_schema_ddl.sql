@@ -258,3 +258,41 @@ CREATE TABLE admins (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     last_login_at   TIMESTAMPTZ
 );
+
+-- ---------------------------------------------------------------------------
+-- Editorial layer (added for the admin dashboard).
+--
+-- Two related concerns:
+--   * `competition_editions.is_published` gates what the public API returns.
+--     Defaults to FALSE: an edition is invisible until someone has looked at it
+--     and said it is clean enough to show.
+--   * `data_flags` records what still needs attention, on any entity. A flag at
+--     severity BLOCKER prevents its edition from being published, which is what
+--     ties the two together — you cannot publish over a known problem.
+-- ---------------------------------------------------------------------------
+ALTER TABLE competition_editions
+    ADD COLUMN is_published  BOOLEAN NOT NULL DEFAULT FALSE,
+    ADD COLUMN published_at  TIMESTAMPTZ,
+    ADD COLUMN published_by  INT REFERENCES admins(id);
+
+CREATE TABLE data_flags (
+    id              SERIAL PRIMARY KEY,
+    entity_type     VARCHAR(30) NOT NULL
+                        CHECK (entity_type IN ('competition_edition','match','match_event','team','player')),
+    entity_id       INT NOT NULL,
+    -- BLOCKER stops publication; WARNING and INFO are advisory.
+    severity        VARCHAR(10) NOT NULL DEFAULT 'WARNING'
+                        CHECK (severity IN ('INFO','WARNING','BLOCKER')),
+    reason          TEXT NOT NULL,
+    status          VARCHAR(10) NOT NULL DEFAULT 'OPEN'
+                        CHECK (status IN ('OPEN','RESOLVED')),
+    created_by      INT REFERENCES admins(id),
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+    resolved_by     INT REFERENCES admins(id),
+    resolved_at     TIMESTAMPTZ,
+    resolution_note TEXT
+);
+
+-- The dashboard's hot path: open flags for a given entity.
+CREATE INDEX data_flags_open_idx ON data_flags (entity_type, entity_id) WHERE status = 'OPEN';
+CREATE INDEX data_flags_status_idx ON data_flags (status, severity);

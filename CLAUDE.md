@@ -93,6 +93,21 @@ explicitly out of scope — see "Non-goals" below).
   wired in — **run it against real fixtures before building event ingestion**.
 
   Next up is priority 6 (Socket.io push).
+- **Admin dashboard is done** (unplanned work, requested after priority 5). Web
+  routes under `/admin`: sign in, competitions with publish toggles, match
+  editor with event management, and a flags queue. Session is a JWT in an
+  httpOnly cookie; all admin calls are server-side, so the token never reaches
+  page JavaScript.
+
+  **This changed a public default: `competition_editions.is_published` defaults
+  to FALSE, so the public API and web app now show only published editions.**
+  Right now only edition 6 (TPL 2018/19) is published — everything else is
+  hidden until someone reviews it in the dashboard.
+
+  A BLOCKER flag prevents its edition from being published; a flag on a match
+  blocks that match's edition. WARNING/INFO are advisory. The dashboard derives
+  a worklist from the data (missing scores, absent event logs, unattributed
+  goals) so editors start from real problems rather than a blank page.
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, and a handful
   of duplicate lineup rows. Full detail is in the schema doc's audit

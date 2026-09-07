@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["partialIndexes"]
 }
 
 datasource db {
@@ -48,9 +49,13 @@ model competition_editions {
   host_country_id           Int?
   format                    String?                     @db.VarChar(30)
   num_teams                 Int?                        @db.SmallInt
+  is_published              Boolean                     @default(false)
+  published_at              DateTime?                   @db.Timestamptz(6)
+  published_by              Int?
   competition_edition_teams competition_edition_teams[]
   competitions              competitions                @relation(fields: [competition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   countries                 countries?                  @relation(fields: [host_country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  admins                    admins?                     @relation(fields: [published_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
   seasons                   seasons                     @relation(fields: [season_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   competition_groups        competition_groups[]
   matches                   matches[]
@@ -330,11 +335,34 @@ model teams {
 }
 
 model admins {
-  id            Int       @id @default(autoincrement())
-  email         String    @unique @db.VarChar(255)
-  password_hash String    @db.VarChar(255)
-  display_name  String    @db.VarChar(100)
-  is_active     Boolean   @default(true)
-  created_at    DateTime  @default(now()) @db.Timestamptz(6)
-  last_login_at DateTime? @db.Timestamptz(6)
+  id                                        Int                    @id @default(autoincrement())
+  email                                     String                 @unique @db.VarChar(255)
+  password_hash                             String                 @db.VarChar(255)
+  display_name                              String                 @db.VarChar(100)
+  is_active                                 Boolean                @default(true)
+  created_at                                DateTime               @default(now()) @db.Timestamptz(6)
+  last_login_at                             DateTime?              @db.Timestamptz(6)
+  competition_editions                      competition_editions[]
+  data_flags_data_flags_created_byToadmins  data_flags[]           @relation("data_flags_created_byToadmins")
+  data_flags_data_flags_resolved_byToadmins data_flags[]           @relation("data_flags_resolved_byToadmins")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model data_flags {
+  id                                    Int       @id @default(autoincrement())
+  entity_type                           String    @db.VarChar(30)
+  entity_id                             Int
+  severity                              String    @default("WARNING") @db.VarChar(10)
+  reason                                String
+  status                                String    @default("OPEN") @db.VarChar(10)
+  created_by                            Int?
+  created_at                            DateTime  @default(now()) @db.Timestamptz(6)
+  resolved_by                           Int?
+  resolved_at                           DateTime? @db.Timestamptz(6)
+  resolution_note                       String?
+  admins_data_flags_created_byToadmins  admins?   @relation("data_flags_created_byToadmins", fields: [created_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  admins_data_flags_resolved_byToadmins admins?   @relation("data_flags_resolved_byToadmins", fields: [resolved_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([entity_type, entity_id], map: "data_flags_open_idx", where: raw("((status)::text = 'OPEN'::text)"))
+  @@index([status, severity], map: "data_flags_status_idx")
 }

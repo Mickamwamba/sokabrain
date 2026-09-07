@@ -42,7 +42,32 @@ render a "can't reach the API" message rather than a stack trace.
 - **API types in `lib/api.ts` are hand-written** to mirror the backend's
   responses. If a route's payload changes, change it there too.
 
+## Admin dashboard (`/admin`)
+
+Sign in with an account made by `npm run admin:create` in `backend/`.
+
+| Route | Does |
+|---|---|
+| `/admin/login` | sign in |
+| `/admin` | competitions: publish / hide, detected issues, one-click flagging |
+| `/admin/matches` | match worklist, filterable to "completed with no score" |
+| `/admin/matches/[id]` | edit score & status, add/delete events, raise flags |
+| `/admin/flags` | open and resolved flags, with resolution notes |
+
+### How it works
+
+- **Session is a JWT in an httpOnly cookie**, so page JavaScript cannot read it
+  and an XSS bug can't exfiltrate it. Every admin API call is made server-side.
+- **Mutations are server actions**, not client fetches. Each screen redirects to
+  login on a 401 rather than rendering a broken page.
+- **Publishing is the public gate.** An edition is invisible to the public site
+  until published, and can't be published while it carries an open BLOCKER flag.
+- **A blank score box means "unknown", not 0.** The editor sends null, so an
+  unrecorded match never becomes a goalless draw.
+- **Adding an event does not move the score** — the UI says so. The two are
+  edited deliberately and separately (see the backend README).
+
 ## Not done yet
 
-Live scores (priority 5) and Socket.io push (priority 6). There is no admin UI —
-the write endpoints from priority 3 are API-only so far.
+Socket.io push (priority 6). The dashboard has no team/player editor yet —
+those endpoints exist in the API but have no screen.

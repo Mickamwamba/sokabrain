@@ -6,6 +6,7 @@ import { hashPassword, verifyPassword } from '../auth/password.js';
 import { signAdminToken } from '../auth/jwt.js';
 import { requireAdmin } from '../auth/middleware.js';
 import { recordManualProvenance } from '../services/provenance.js';
+import { editorialRouter } from './adminEditorial.js';
 
 export const adminRouter = Router();
 
@@ -95,6 +96,159 @@ adminRouter.post('/me/password', requireAdmin, async (req, res) => {
 // in the vault (design principle 1).
 
 adminRouter.use(requireAdmin);
+
+// Editorial routes (publishing, flags) share the same auth boundary.
+adminRouter.use('/', editorialRouter);
+
+/**
+ * Admin match list. Unlike the public one this ignores publication state —
+ * the whole point of the dashboard is working on editions that aren't live yet.
+ */
+adminRouter.get('/matches', async (req, res) => {
+  const q = z
+    .object({
+      editionId: z.coerce.number().int().positive().optional(),
+      status: z.enum(MATCH_STATUSES).optional(),
+      needsAttention: z.enum(['true', 'false']).optional(),
+      limit: z.coerce.number().int().min(1).max(200).default(50),
+      offset: z.coerce.number().int().min(0).default(0),
+    })
+    .safeParse(req.query);
+  if (!q.success) return res.status(400).json({ error: 'Invalid query' });
+  const { editionId, status, needsAttention, limit, offset } = q.data;
+
+  const where = {
+    ...(editionId !== undefined && { competition_edition_id: editionId }),
+    ...(status !== undefined && { status }),
+    // "Needs attention" = finished but with no score recorded, which is the
+    // single biggest gap in the migrated data.
+    ...(needsAttention === 'true' && {
+      status: 'FULL_TIME',
+      OR: [{ home_score: null }, { away_score: null }],
+    }),
+  };
+
+  const [total, rows] = await Promise.all([
+    prisma.matches.count({ where }),
+    prisma.matches.findMany({
+      where,
+      orderBy: [{ kickoff_at: 'desc' }, { id: 'desc' }],
+      take: limit,
+      skip: offset,
+      include: {
+        teams_matches_home_team_idToteams: { select: { id: true, name: true } },
+        teams_matches_away_team_idToteams: { select: { id: true, name: true } },
+        _count: { select: { match_events: true } },
+      },
+    }),
+  ]);
+
+  const flags = await prisma.data_flags.findMany({
+    where: { status: 'OPEN', entity_type: 'match', entity_id: { in: rows.map((r) => r.id) } },
+    select: { entity_id: true, severity: true },
+  });
+  const flagsByMatch = new Map<number, string[]>();
+  for (const f of flags) {
+    const list = flagsByMatch.get(f.entity_id) ?? [];
+    list.push(f.severity);
+    flagsByMatch.set(f.entity_id, list);
+  }
+
+  res.json({
+    total,
+    limit,
+    offset,
+    matches: rows.map((m) => ({
+      id: m.id,
+      kickoffAt: m.kickoff_at,
+      status: m.status,
+      round: m.round,
+      homeTeam: m.teams_matches_home_team_idToteams,
+      awayTeam: m.teams_matches_away_team_idToteams,
+      homeScore: m.home_score,
+      awayScore: m.away_score,
+      eventCount: m._count.match_events,
+      openFlags: flagsByMatch.get(m.id) ?? [],
+    })),
+  });
+});
+
+/** One match with its full event log, for the editing screen. */
+adminRouter.get('/matches/:id', async (req, res) => {
+  const params = idParam.safeParse(req.params);
+  if (!params.success) return res.status(400).json({ error: 'id must be a positive integer' });
+
+  const match = await prisma.matches.findUnique({
+    where: { id: params.data.id },
+    include: {
+      teams_matches_home_team_idToteams: { select: { id: true, name: true } },
+      teams_matches_away_team_idToteams: { select: { id: true, name: true } },
+      competition_editions: {
+        select: {
+          id: true,
+          is_published: true,
+          competitions: { select: { name: true } },
+          seasons: { select: { label: true } },
+        },
+      },
+      match_events: {
+        orderBy: [{ minute: 'asc' }, { id: 'asc' }],
+        include: {
+          players_match_events_player_idToplayers: { select: { id: true, full_name: true } },
+          teams: { select: { id: true, name: true } },
+        },
+      },
+    },
+  });
+  if (!match) return res.status(404).json({ error: `No match with id ${params.data.id}` });
+
+  const flags = await prisma.data_flags.findMany({
+    where: {
+      status: 'OPEN',
+      OR: [
+        { entity_type: 'match', entity_id: match.id },
+        { entity_type: 'match_event', entity_id: { in: match.match_events.map((e) => e.id) } },
+      ],
+    },
+  });
+
+  res.json({
+    match: {
+      id: match.id,
+      kickoffAt: match.kickoff_at,
+      status: match.status,
+      round: match.round,
+      attendance: match.attendance,
+      homeTeam: match.teams_matches_home_team_idToteams,
+      awayTeam: match.teams_matches_away_team_idToteams,
+      homeScore: match.home_score,
+      awayScore: match.away_score,
+      edition: {
+        id: match.competition_editions.id,
+        name: match.competition_editions.competitions.name,
+        season: match.competition_editions.seasons.label,
+        isPublished: match.competition_editions.is_published,
+      },
+      events: match.match_events.map((e) => ({
+        id: e.id,
+        minute: e.minute,
+        addedTime: e.added_time,
+        type: e.type,
+        teamId: e.team_id,
+        teamName: e.teams?.name ?? null,
+        playerId: e.player_id,
+        playerName: e.players_match_events_player_idToplayers?.full_name ?? null,
+      })),
+      openFlags: flags.map((f) => ({
+        id: f.id,
+        entityType: f.entity_type,
+        entityId: f.entity_id,
+        severity: f.severity,
+        reason: f.reason,
+      })),
+    },
+  });
+});
 
 const teamBody = z.object({
   name: z.string().min(1).max(150),

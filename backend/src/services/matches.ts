@@ -21,6 +21,8 @@ export async function listMatches(filters: MatchListFilters) {
   const { editionId, teamId, status, from, to, limit, offset } = filters;
 
   const where = {
+    // Public match list never leaks matches from unpublished editions.
+    competition_editions: { is_published: true },
     ...(editionId !== undefined && { competition_edition_id: editionId }),
     ...(status !== undefined && { status }),
     ...(teamId !== undefined && {

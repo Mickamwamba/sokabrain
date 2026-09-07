@@ -27,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div className="flex gap-4 text-sm text-muted">
               <Link href="/" className="hover:text-foreground">Competitions</Link>
               <Link href="/matches" className="hover:text-foreground">Matches</Link>
+              <Link href="/admin" className="hover:text-foreground">Admin</Link>
             </div>
           </nav>
         </header>
