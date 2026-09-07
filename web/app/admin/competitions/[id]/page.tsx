@@ -8,7 +8,7 @@ import {
   type EditionSummary,
 } from '@/lib/adminApi';
 import { Card, CardHead, StatTile } from '@/components/ui';
-import { ActionForm, SeverityTag } from '@/components/admin-ui';
+import { ActionForm, IncompleteDot, SeverityTag } from '@/components/admin-ui';
 import { createFlagAction, publishEditionAction } from '../../actions';
 
 export const dynamic = 'force-dynamic';
@@ -213,7 +213,8 @@ export default async function AdminCompetitionPage(
                               : `${m.homeScore}–${m.awayScore}`}
                           </span>
                           <span className="min-w-0 flex-1 truncate">{m.awayTeam.name}</span>
-                          <span className="hidden w-24 shrink-0 justify-end gap-1 text-[10px] text-muted sm:flex">
+                          <span className="hidden w-28 shrink-0 items-center justify-end gap-2 text-[10px] text-muted sm:flex">
+                            <IncompleteDot count={m.unattributedGoals} />
                             {m.eventCount === 0 ? <span>no events</span> : <span>{m.eventCount} ev</span>}
                           </span>
                         </Link>

@@ -80,6 +80,7 @@ export type AdminMatchRow = {
   homeScore: number | null;
   awayScore: number | null;
   eventCount: number;
+  unattributedGoals: number;
   openFlags: string[];
 };
 
@@ -106,6 +107,8 @@ export type AdminMatchDetail = {
   }[];
   openFlags: { id: number; entityType: string; entityId: number; severity: string; reason: string }[];
 };
+
+export type SquadPlayer = { id: number; name: string; position: string | null; teamIds: number[] };
 
 export type Flag = {
   id: number;

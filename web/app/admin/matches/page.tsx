@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { adminFetch, AdminApiError, type AdminCompetition, type AdminMatchRow } from '@/lib/adminApi';
 import { Card, CardHead } from '@/components/ui';
-import { SeverityTag } from '@/components/admin-ui';
+import { IncompleteDot, SeverityTag } from '@/components/admin-ui';
 import { MatchFilters } from '@/components/match-filters';
 
 export const dynamic = 'force-dynamic';
@@ -144,10 +144,11 @@ export default async function AdminMatchesPage(props: PageProps<'/admin/matches'
                         : `${m.homeScore}–${m.awayScore}`}
                     </span>
                     <span className="min-w-0 flex-1 truncate font-medium">{m.awayTeam.name}</span>
-                    <span className="flex w-28 shrink-0 items-center justify-end gap-1.5">
+                    <span className="flex w-32 shrink-0 items-center justify-end gap-2">
                       {m.openFlags.map((s, i) => (
                         <SeverityTag key={i} severity={s} />
                       ))}
+                      <IncompleteDot count={m.unattributedGoals} />
                       <span className="text-[10px] text-muted">
                         {m.eventCount === 0 ? 'no ev' : `${m.eventCount} ev`}
                       </span>

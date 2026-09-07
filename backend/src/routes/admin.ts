@@ -147,6 +147,19 @@ adminRouter.get('/matches', async (req, res) => {
     }),
   ]);
 
+  // Goals with no scorer named — the marker the match list shows so an editor
+  // can see incomplete records without opening each match.
+  const unattributed = await prisma.match_events.groupBy({
+    by: ['match_id'],
+    where: {
+      match_id: { in: rows.map((r) => r.id) },
+      type: { in: ['GOAL', 'PENALTY_GOAL'] },
+      player_id: null,
+    },
+    _count: { _all: true },
+  });
+  const unattributedByMatch = new Map(unattributed.map((u) => [u.match_id, u._count._all]));
+
   const flags = await prisma.data_flags.findMany({
     where: { status: 'OPEN', entity_type: 'match', entity_id: { in: rows.map((r) => r.id) } },
     select: { entity_id: true, severity: true },
@@ -172,6 +185,7 @@ adminRouter.get('/matches', async (req, res) => {
       homeScore: m.home_score,
       awayScore: m.away_score,
       eventCount: m._count.match_events,
+      unattributedGoals: unattributedByMatch.get(m.id) ?? 0,
       openFlags: flagsByMatch.get(m.id) ?? [],
     })),
   });
@@ -470,6 +484,16 @@ adminRouter.post('/matches/:id/events', async (req, res) => {
     });
   }
 
+  if (parsed.data.player_id != null) {
+    const player = await prisma.players.findUnique({
+      where: { id: parsed.data.player_id },
+      select: { id: true },
+    });
+    if (!player) {
+      return res.status(400).json({ error: `No player with id ${parsed.data.player_id}` });
+    }
+  }
+
   const event = await prisma.$transaction(async (tx) => {
     const { detail, ...rest } = definedOnly(parsed.data);
     const data: Prisma.match_eventsUncheckedCreateInput = {
@@ -489,6 +513,112 @@ adminRouter.post('/matches/:id/events', async (req, res) => {
     event,
     // Made explicit so a caller is never surprised that the table did not move.
     note: 'Stored match score is unchanged. Update it via PATCH /api/admin/matches/:id.',
+  });
+});
+
+const eventPatchBody = z.object({
+  player_id: z.number().int().positive().nullish(),
+  minute: z.number().int().min(0).max(130).nullish(),
+  type: z.enum(EVENT_TYPES).optional(),
+  team_id: z.number().int().positive().optional(),
+});
+
+/**
+ * Update one event. The common case is naming a scorer on a goal that was
+ * migrated without one — 42 such goals exist in the 2017/18 season alone.
+ */
+adminRouter.patch('/matches/:id/events/:eventId', async (req, res) => {
+  const params = z
+    .object({
+      id: z.coerce.number().int().positive(),
+      eventId: z.coerce.number().int().positive(),
+    })
+    .safeParse(req.params);
+  if (!params.success) return res.status(400).json({ error: 'ids must be positive integers' });
+  const parsed = eventPatchBody.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({ error: 'Invalid request body', details: z.treeifyError(parsed.error) });
+  }
+
+  const event = await prisma.match_events.findUnique({
+    where: { id: params.data.eventId },
+    select: { id: true, match_id: true },
+  });
+  if (!event || event.match_id !== params.data.id) {
+    return res.status(404).json({ error: 'No such event on that match' });
+  }
+
+  // Validate the player exists before writing, so an unknown id is a clean 400
+  // rather than a foreign-key violation surfacing as a 500.
+  if (parsed.data.player_id != null) {
+    const player = await prisma.players.findUnique({
+      where: { id: parsed.data.player_id },
+      select: { id: true },
+    });
+    if (!player) {
+      return res.status(400).json({ error: `No player with id ${parsed.data.player_id}` });
+    }
+  }
+
+  if (parsed.data.team_id !== undefined) {
+    const match = await prisma.matches.findUniqueOrThrow({
+      where: { id: event.match_id },
+      select: { home_team_id: true, away_team_id: true },
+    });
+    if (![match.home_team_id, match.away_team_id].includes(parsed.data.team_id)) {
+      return res.status(400).json({ error: 'team_id did not play in this match' });
+    }
+  }
+
+  const updated = await prisma.$transaction(async (tx) => {
+    const data: Prisma.match_eventsUncheckedUpdateInput = definedOnly(parsed.data);
+    const row = await tx.match_events.update({ where: { id: event.id }, data });
+    await recordManualProvenance(tx, 'match_event', row.id);
+    return row;
+  });
+  res.json({ event: updated });
+});
+
+/**
+ * Players eligible to be named on this match: anyone with a stint at either
+ * club, plus anyone already recorded in the match. Keeps the scorer picker to
+ * plausible names instead of all 1,639 players.
+ */
+adminRouter.get('/matches/:id/squad', async (req, res) => {
+  const params = idParam.safeParse(req.params);
+  if (!params.success) return res.status(400).json({ error: 'id must be a positive integer' });
+
+  const match = await prisma.matches.findUnique({
+    where: { id: params.data.id },
+    select: { id: true, home_team_id: true, away_team_id: true },
+  });
+  if (!match) return res.status(404).json({ error: `No match with id ${params.data.id}` });
+
+  const teamIds = [match.home_team_id, match.away_team_id];
+  const players = await prisma.players.findMany({
+    where: {
+      OR: [
+        { player_team_stints: { some: { team_id: { in: teamIds } } } },
+        { match_lineups: { some: { match_id: match.id } } },
+        { match_events_match_events_player_idToplayers: { some: { match_id: match.id } } },
+      ],
+    },
+    select: {
+      id: true,
+      full_name: true,
+      position: true,
+      player_team_stints: { select: { team_id: true }, where: { team_id: { in: teamIds } } },
+    },
+    orderBy: { full_name: 'asc' },
+  });
+
+  res.json({
+    squad: players.map((p) => ({
+      id: p.id,
+      name: p.full_name,
+      position: p.position,
+      teamIds: [...new Set(p.player_team_stints.map((s) => s.team_id))],
+    })),
   });
 });
 

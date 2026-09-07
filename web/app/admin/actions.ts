@@ -209,3 +209,42 @@ export async function createCompetitionAction(
   revalidatePath('/admin/competitions');
   return state.error ? state : { ok: `Created “${name}”.` };
 }
+
+export async function setScorerAction(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const matchId = Number(formData.get('matchId'));
+  const eventId = Number(formData.get('eventId'));
+  const raw = String(formData.get('playerId') ?? '').trim();
+  if (!raw) return { error: 'Pick a player.' };
+
+  const state = await mutate(() =>
+    adminFetch(`/api/admin/matches/${matchId}/events/${eventId}`, {
+      method: 'PATCH',
+      body: { player_id: Number(raw) },
+    }),
+  );
+  revalidatePath(`/admin/matches/${matchId}`);
+  revalidatePath('/admin/matches');
+  return state.error ? state : { ok: 'Scorer recorded.' };
+}
+
+export async function setEventMinuteAction(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const matchId = Number(formData.get('matchId'));
+  const eventId = Number(formData.get('eventId'));
+  const raw = String(formData.get('minute') ?? '').trim();
+  if (!raw) return { error: 'Enter a minute.' };
+
+  const state = await mutate(() =>
+    adminFetch(`/api/admin/matches/${matchId}/events/${eventId}`, {
+      method: 'PATCH',
+      body: { minute: Number(raw) },
+    }),
+  );
+  revalidatePath(`/admin/matches/${matchId}`);
+  return state.error ? state : { ok: 'Minute recorded.' };
+}

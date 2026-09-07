@@ -71,8 +71,12 @@ Left sidebar navigation; the working area sits beside it.
 | `/admin/competitions` | all competitions, searchable, with "add competition" |
 | `/admin/competitions/[id]` | one competition — pick a season, see its stats and every match |
 | `/admin/matches` | matches for one competition + season, chosen by dropdown; optional "needs a score" filter |
-| `/admin/matches/[id]` | edit score & status, add/delete events, raise flags |
+| `/admin/matches/[id]` | two-sided match sheet: home events left, away right; name missing scorers inline; edit score & status; raise flags |
 | `/admin/flags` | open and resolved flags, with resolution notes |
+
+Matches with goals whose scorer was never recorded carry a red dot and a count
+in every list. The dot has a screen-reader label with the exact count, so the
+signal is not colour-only.
 
 The competition page is the main working surface: pick a season and you get its
 completeness numbers (matches, teams, goals, how many lack a score, how many

@@ -66,3 +66,21 @@ export function SeverityTag({ severity }: { severity: string }) {
     </span>
   );
 }
+
+/**
+ * Marks a record as incomplete — currently, a goal whose scorer was never
+ * recorded. Deliberately a filled dot rather than a colour on the text: it
+ * survives being scanned quickly down a long list, and carries a title so it
+ * is not colour-only.
+ */
+export function IncompleteDot({ count, what = 'goal' }: { count: number; what?: string }) {
+  if (count <= 0) return null;
+  const label = `${count} ${what}${count === 1 ? '' : 's'} with no scorer recorded`;
+  return (
+    <span className="inline-flex items-center gap-1" title={label}>
+      <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-loss" />
+      <span className="sr-only">{label}</span>
+      <span aria-hidden className="text-[10px] font-semibold text-loss">{count}</span>
+    </span>
+  );
+}
