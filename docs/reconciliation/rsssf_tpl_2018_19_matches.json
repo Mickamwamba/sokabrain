@@ -1,0 +1,3042 @@
+[
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Ruvu Shooting",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Coastal Union",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Kagera Sugar",
+  "away": "Mwadui",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Singida United",
+  "away": "Biashara United",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Alliance",
+  "away": "Mbao",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-22",
+  "home": "Simba",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 1,
+  "date": "2018-08-23",
+  "home": "JKT Tanzania",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 1,
+  "date": "2018-08-23",
+  "home": "Stand United",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 1,
+  "date": "2018-08-23",
+  "home": "Young Africans",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 1,
+  "date": "2018-08-23",
+  "home": "Azam",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-08-25",
+  "home": "Coastal Union",
+  "away": "Biashara United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-08-25",
+  "home": "Singida United",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-08-26",
+  "home": "Mtibwa Sugar",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-08-26",
+  "home": "Stand United",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 2,
+  "date": "2018-08-26",
+  "home": "JKT Tanzania",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 2,
+  "date": "2018-08-26",
+  "home": "Ruvu Shooting",
+  "away": "KMC",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 2,
+  "date": "2018-08-27",
+  "home": "Alliance",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 2,
+  "date": "2018-08-27",
+  "home": "Simba",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-08-27",
+  "home": "Azam",
+  "away": "Ndanda",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 2,
+  "date": "2018-11-25",
+  "home": "Kagera Sugar",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 3,
+  "date": "2018-08-31",
+  "home": "Singida United",
+  "away": "Mbao",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 3,
+  "date": "2018-09-01",
+  "home": "Mtibwa Sugar",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 3,
+  "date": "2018-09-01",
+  "home": "Stand United",
+  "away": "Biashara United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 3,
+  "date": "2018-09-01",
+  "home": "Coastal Union",
+  "away": "KMC",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 3,
+  "date": "2018-09-01",
+  "home": "Kagera Sugar",
+  "away": "African Lyon",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 3,
+  "date": "2018-09-01",
+  "home": "Tanzania Prisons",
+  "away": "Alliance",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 3,
+  "date": "2018-09-02",
+  "home": "JKT Tanzania",
+  "away": "Ndanda",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 3,
+  "date": "2018-11-22",
+  "home": "Mwadui",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 3,
+  "date": "2018-11-22",
+  "home": "Azam",
+  "away": "Ruvu Shooting",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 3,
+  "date": "2018-11-23",
+  "home": "Simba",
+  "away": "Lipuli",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-14",
+  "home": "Mwadui",
+  "away": "Azam",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 4,
+  "date": "2018-09-14",
+  "home": "African Lyon",
+  "away": "Coastal Union",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "Lipuli",
+  "away": "Mtibwa Sugar",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "Ndanda",
+  "away": "Simba",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "Tanzania Prisons",
+  "away": "Ruvu Shooting",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "Mbao",
+  "away": "JKT Tanzania",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "KMC",
+  "away": "Singida United",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 4,
+  "date": "2018-09-15",
+  "home": "Biashara United",
+  "away": "Kagera Sugar",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-16",
+  "home": "Mbeya City",
+  "away": "Alliance",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 4,
+  "date": "2018-09-16",
+  "home": "Young Africans",
+  "away": "Stand United",
+  "hs": 4,
+  "as": 3
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Lipuli",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Mwadui",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Mbeya City",
+  "away": "Ruvu Shooting",
+  "hs": 4,
+  "as": 2
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Ndanda",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Biashara United",
+  "away": "Azam",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 5,
+  "date": "2018-09-19",
+  "home": "Young Africans",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 5,
+  "date": "2018-09-20",
+  "home": "Tanzania Prisons",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 5,
+  "date": "2018-09-20",
+  "home": "Mbao",
+  "away": "Simba",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 5,
+  "date": "2018-09-20",
+  "home": "African Lyon",
+  "away": "Singida United",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 5,
+  "date": "2018-09-21",
+  "home": "KMC",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 6,
+  "date": "2018-09-22",
+  "home": "Biashara United",
+  "away": "JKT Tanzania",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 6,
+  "date": "2018-09-22",
+  "home": "Ruvu Shooting",
+  "away": "Coastal Union",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 6,
+  "date": "2018-09-23",
+  "home": "Mbeya City",
+  "away": "Kagera Sugar",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 6,
+  "date": "2018-09-23",
+  "home": "Mwadui",
+  "away": "Simba",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 6,
+  "date": "2018-09-23",
+  "home": "Alliance",
+  "away": "Azam",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 6,
+  "date": "2018-09-23",
+  "home": "Young Africans",
+  "away": "Singida United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 6,
+  "date": "2018-09-24",
+  "home": "Mbao",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 6,
+  "date": "2018-09-24",
+  "home": "Ndanda",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 6,
+  "date": "2018-09-24",
+  "home": "African Lyon",
+  "away": "Mtibwa Sugar",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 6,
+  "date": "2018-09-25",
+  "home": "KMC",
+  "away": "Lipuli",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-26",
+  "home": "Singida United",
+  "away": "Mbeya City",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-27",
+  "home": "Mtibwa Sugar",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-27",
+  "home": "Ruvu Shooting",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-27",
+  "home": "Stand United",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-28",
+  "home": "Kagera Sugar",
+  "away": "Ndanda",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 7,
+  "date": "2018-09-28",
+  "home": "Coastal Union",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 7,
+  "date": "2018-09-28",
+  "home": "Azam",
+  "away": "Lipuli",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2018-09-29",
+  "home": "Alliance",
+  "away": "KMC",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 7,
+  "date": "2018-11-29",
+  "home": "Young Africans",
+  "away": "JKT Tanzania",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 7,
+  "date": "2019-05-25",
+  "home": "Simba",
+  "away": "Biashara United",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 8,
+  "date": "2018-09-30",
+  "home": "Simba",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "Stand United",
+  "away": "Mbeya City",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "Singida United",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "Coastal Union",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "Ruvu Shooting",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "Mtibwa Sugar",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 8,
+  "date": "2018-10-01",
+  "home": "JKT Tanzania",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-02",
+  "home": "Alliance",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-02",
+  "home": "Kagera Sugar",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 8,
+  "date": "2018-10-02",
+  "home": "Azam",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 9,
+  "date": "2018-10-05",
+  "home": "Lipuli",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 9,
+  "date": "2018-10-06",
+  "home": "Kagera Sugar",
+  "away": "Ruvu Shooting",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 9,
+  "date": "2018-10-06",
+  "home": "Mtibwa Sugar",
+  "away": "KMC",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 9,
+  "date": "2018-10-06",
+  "home": "Singida United",
+  "away": "Ndanda",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 9,
+  "date": "2018-10-06",
+  "home": "Tanzania Prisons",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 9,
+  "date": "2018-10-06",
+  "home": "Simba",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 9,
+  "date": "2018-10-07",
+  "home": "Biashara United",
+  "away": "Mwadui",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 9,
+  "date": "2018-10-07",
+  "home": "JKT Tanzania",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 9,
+  "date": "2018-10-07",
+  "home": "Young Africans",
+  "away": "Mbao",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 9,
+  "date": "2018-10-08",
+  "home": "Azam",
+  "away": "Coastal Union",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-19",
+  "home": "Mwadui",
+  "away": "Ruvu Shooting",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-19",
+  "home": "Ndanda",
+  "away": "Mbeya City",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-19",
+  "home": "Azam",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 10,
+  "date": "2018-10-20",
+  "home": "Coastal Union",
+  "away": "JKT Tanzania",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-20",
+  "home": "Tanzania Prisons",
+  "away": "Singida United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-20",
+  "home": "Young Africans",
+  "away": "Alliance",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-20",
+  "home": "Biashara United",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-21",
+  "home": "Lipuli",
+  "away": "Kagera Sugar",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 10,
+  "date": "2018-10-21",
+  "home": "Mbao",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 10,
+  "date": "2018-10-21",
+  "home": "Simba",
+  "away": "Stand United",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "JKT Tanzania",
+  "away": "Azam",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "Tanzania Prisons",
+  "away": "African Lyon",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "Coastal Union",
+  "away": "Kagera Sugar",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "Ruvu Shooting",
+  "away": "Singida United",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "Mbao",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 11,
+  "date": "2018-10-24",
+  "home": "Simba",
+  "away": "Alliance",
+  "hs": 5,
+  "as": 1
+ },
+ {
+  "round": 11,
+  "date": "2018-10-25",
+  "home": "Mbeya City",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 11,
+  "date": "2018-10-25",
+  "home": "Stand United",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 11,
+  "date": "2018-10-25",
+  "home": "Ndanda",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 11,
+  "date": "2018-10-25",
+  "home": "KMC",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 12,
+  "date": "2018-10-28",
+  "home": "Alliance",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 12,
+  "date": "2018-10-28",
+  "home": "Singida United",
+  "away": "Azam",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 12,
+  "date": "2018-10-28",
+  "home": "JKT Tanzania",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 12,
+  "date": "2018-10-28",
+  "home": "Mtibwa Sugar",
+  "away": "Kagera Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 12,
+  "date": "2018-10-28",
+  "home": "Ruvu Shooting",
+  "away": "Simba",
+  "hs": 0,
+  "as": 5
+ },
+ {
+  "round": 12,
+  "date": "2018-10-29",
+  "home": "Stand United",
+  "away": "Mwadui",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 12,
+  "date": "2018-10-29",
+  "home": "African Lyon",
+  "away": "Biashara United",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 12,
+  "date": "2018-10-30",
+  "home": "Mbao",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 12,
+  "date": "2018-10-30",
+  "home": "Young Africans",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 12,
+  "date": "2018-10-31",
+  "home": "KMC",
+  "away": "Ndanda",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-02",
+  "home": "Stand United",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 13,
+  "date": "2018-11-02",
+  "home": "African Lyon",
+  "away": "Lipuli",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-03",
+  "home": "JKT Tanzania",
+  "away": "Simba",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 13,
+  "date": "2018-11-03",
+  "home": "Alliance",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-03",
+  "home": "Mtibwa Sugar",
+  "away": "Ruvu Shooting",
+  "hs": 4,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-03",
+  "home": "Biashara United",
+  "away": "Mbao",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-04",
+  "home": "Kagera Sugar",
+  "away": "Azam",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 13,
+  "date": "2018-11-04",
+  "home": "Mwadui",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 13,
+  "date": "2018-11-04",
+  "home": "Young Africans",
+  "away": "Ndanda",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 13,
+  "date": "2018-11-05",
+  "home": "KMC",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Coastal Union",
+  "away": "Ndanda",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Mwadui",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Alliance",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Biashara United",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Kagera Sugar",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 14,
+  "date": "2018-11-07",
+  "home": "Ruvu Shooting",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 14,
+  "date": "2018-11-08",
+  "home": "Mbeya City",
+  "away": "JKT Tanzania",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-12-07",
+  "home": "Azam",
+  "away": "Mbao",
+  "hs": 4,
+  "as": 0
+ },
+ {
+  "round": 14,
+  "date": "2018-12-19",
+  "home": "Simba",
+  "away": "KMC",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 14,
+  "date": "2018-12-20",
+  "home": "African Lyon",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2018-12-02",
+  "home": "Mbeya City",
+  "away": "African Lyon",
+  "hs": 4,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2018-12-02",
+  "home": "Kagera Sugar",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 15,
+  "date": "2018-12-02",
+  "home": "Ndanda",
+  "away": "Mbao",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 15,
+  "date": "2018-12-02",
+  "home": "JKT Tanzania",
+  "away": "Ruvu Shooting",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2018-12-03",
+  "home": "Lipuli",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2018-12-03",
+  "home": "Mwadui",
+  "away": "KMC",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2018-12-03",
+  "home": "Tanzania Prisons",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 15,
+  "date": "2018-12-04",
+  "home": "Azam",
+  "away": "Stand United",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 15,
+  "date": "2019-03-12",
+  "home": "Mtibwa Sugar",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 15,
+  "date": "2019-04-17",
+  "home": "Coastal Union",
+  "away": "Simba",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 16,
+  "date": "2018-12-07",
+  "home": "Singida United",
+  "away": "Stand United",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 16,
+  "date": "2018-12-08",
+  "home": "Mwadui",
+  "away": "Alliance",
+  "hs": 4,
+  "as": 0
+ },
+ {
+  "round": 16,
+  "date": "2018-12-08",
+  "home": "Ndanda",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 16,
+  "date": "2018-12-09",
+  "home": "Coastal Union",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 16,
+  "date": "2018-12-09",
+  "home": "Young Africans",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 16,
+  "date": "2018-12-10",
+  "home": "Lipuli",
+  "away": "Ruvu Shooting",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 16,
+  "date": "2018-12-10",
+  "home": "KMC",
+  "away": "Azam",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 16,
+  "date": "2018-12-11",
+  "home": "Mbao",
+  "away": "African Lyon",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 16,
+  "date": "2019-01-25",
+  "home": "JKT Tanzania",
+  "away": "Mtibwa Sugar",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 16,
+  "date": "2019-04-20",
+  "home": "Kagera Sugar",
+  "away": "Simba",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 17,
+  "date": "2018-12-14",
+  "home": "JKT Tanzania",
+  "away": "Singida United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 17,
+  "date": "2018-12-14",
+  "home": "Stand United",
+  "away": "Kagera Sugar",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 17,
+  "date": "2018-12-15",
+  "home": "KMC",
+  "away": "Tanzania Prisons",
+  "hs": 5,
+  "as": 1
+ },
+ {
+  "round": 17,
+  "date": "2018-12-15",
+  "home": "Mbeya City",
+  "away": "Lipuli",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 17,
+  "date": "2018-12-16",
+  "home": "Alliance",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 17,
+  "date": "2018-12-16",
+  "home": "Ndanda",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 17,
+  "date": "2018-12-16",
+  "home": "Young Africans",
+  "away": "Ruvu Shooting",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 17,
+  "date": "2018-12-17",
+  "home": "Mbao",
+  "away": "Mwadui",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 17,
+  "date": "2019-02-22",
+  "home": "Azam",
+  "away": "Simba",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 17,
+  "date": "2019-02-26",
+  "home": "Mtibwa Sugar",
+  "away": "Coastal Union",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 18,
+  "date": "2018-12-28",
+  "home": "KMC",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 18,
+  "date": "2018-12-28",
+  "home": "Tanzania Prisons",
+  "away": "Coastal Union",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-28",
+  "home": "Kagera Sugar",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-28",
+  "home": "Stand United",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "Lipuli",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "African Lyon",
+  "away": "Mwadui",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "Mtibwa Sugar",
+  "away": "Azam",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "Mbeya City",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "Ruvu Shooting",
+  "away": "Biashara United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 18,
+  "date": "2018-12-29",
+  "home": "Simba",
+  "away": "Singida United",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-01",
+  "home": "KMC",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Alliance",
+  "away": "Ruvu Shooting",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Biashara United",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Lipuli",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Singida United",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Stand United",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-02",
+  "home": "Kagera Sugar",
+  "away": "Mbao",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-01-03",
+  "home": "Mwadui",
+  "away": "Ndanda",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 19,
+  "date": "2019-04-29",
+  "home": "Azam",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 19,
+  "date": "2019-05-16",
+  "home": "Simba",
+  "away": "Mtibwa Sugar",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-05",
+  "home": "Mbao",
+  "away": "Alliance",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-05",
+  "home": "Lipuli",
+  "away": "Coastal Union",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 20,
+  "date": "2019-01-06",
+  "home": "Biashara United",
+  "away": "Singida United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-06",
+  "home": "African Lyon",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-06",
+  "home": "Mwadui",
+  "away": "Kagera Sugar",
+  "hs": 4,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-07",
+  "home": "KMC",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-01-07",
+  "home": "Ndanda",
+  "away": "Ruvu Shooting",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 20,
+  "date": "2019-04-14",
+  "home": "Mbeya City",
+  "away": "Azam",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 20,
+  "date": "2019-04-17",
+  "home": "Mtibwa Sugar",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 20,
+  "date": "2019-05-05",
+  "home": "Tanzania Prisons",
+  "away": "Simba",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 21,
+  "date": "2019-01-08",
+  "home": "Tanzania Prisons",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 21,
+  "date": "2019-01-10",
+  "home": "African Lyon",
+  "away": "Alliance",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 21,
+  "date": "2019-01-11",
+  "home": "KMC",
+  "away": "Ruvu Shooting",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 21,
+  "date": "2019-01-11",
+  "home": "Mwadui",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 21,
+  "date": "2019-01-12",
+  "home": "Lipuli",
+  "away": "JKT Tanzania",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 21,
+  "date": "2019-01-13",
+  "home": "Biashara United",
+  "away": "Coastal Union",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 21,
+  "date": "2019-01-13",
+  "home": "Mbao",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 21,
+  "date": "2019-04-11",
+  "home": "Young Africans",
+  "away": "Kagera Sugar",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 21,
+  "date": "2019-04-18",
+  "home": "Ndanda",
+  "away": "Azam",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 21,
+  "date": "2019-05-03",
+  "home": "Mbeya City",
+  "away": "Simba",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 22,
+  "date": "2019-01-14",
+  "home": "Mbeya City",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 22,
+  "date": "2019-01-15",
+  "home": "Alliance",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 22,
+  "date": "2019-01-15",
+  "home": "Young Africans",
+  "away": "Mwadui",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 22,
+  "date": "2019-01-16",
+  "home": "Ruvu Shooting",
+  "away": "Azam",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 22,
+  "date": "2019-01-16",
+  "home": "Ndanda",
+  "away": "JKT Tanzania",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 22,
+  "date": "2019-01-16",
+  "home": "African Lyon",
+  "away": "Kagera Sugar",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 22,
+  "date": "2019-01-16",
+  "home": "Mbao",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 22,
+  "date": "2019-01-16",
+  "home": "Biashara United",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 22,
+  "date": "2019-01-17",
+  "home": "KMC",
+  "away": "Coastal Union",
+  "hs": 5,
+  "as": 2
+ },
+ {
+  "round": 22,
+  "date": "2019-02-26",
+  "home": "Lipuli",
+  "away": "Simba",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 23,
+  "date": "2019-01-19",
+  "home": "Stand United",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-01-19",
+  "home": "Mtibwa Sugar",
+  "away": "Lipuli",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 23,
+  "date": "2019-01-19",
+  "home": "Azam",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-01-20",
+  "home": "Alliance",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 23,
+  "date": "2019-01-20",
+  "home": "Kagera Sugar",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 23,
+  "date": "2019-01-20",
+  "home": "JKT Tanzania",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-01-20",
+  "home": "Ruvu Shooting",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-01-20",
+  "home": "Coastal Union",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-04-10",
+  "home": "Singida United",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 23,
+  "date": "2019-05-19",
+  "home": "Simba",
+  "away": "Ndanda",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-01-25",
+  "home": "Azam",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 24,
+  "date": "2019-01-31",
+  "home": "Mtibwa Sugar",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-01-31",
+  "home": "Singida United",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-02-01",
+  "home": "Kagera Sugar",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 24,
+  "date": "2019-02-01",
+  "home": "Stand United",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-02-01",
+  "home": "JKT Tanzania",
+  "away": "Mwadui",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-02-01",
+  "home": "Ruvu Shooting",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-02-02",
+  "home": "Alliance",
+  "away": "Lipuli",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 24,
+  "date": "2019-02-03",
+  "home": "Coastal Union",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 24,
+  "date": "2019-03-31",
+  "home": "Simba",
+  "away": "Mbao",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "JKT Tanzania",
+  "away": "Biashara United",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Lipuli",
+  "away": "KMC",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Stand United",
+  "away": "Ndanda",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Kagera Sugar",
+  "away": "Mbeya City",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Singida United",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Tanzania Prisons",
+  "away": "Mbao",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 25,
+  "date": "2019-02-06",
+  "home": "Azam",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 25,
+  "date": "2019-02-07",
+  "home": "Coastal Union",
+  "away": "Ruvu Shooting",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 25,
+  "date": "2019-02-07",
+  "home": "Simba",
+  "away": "Mwadui",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 25,
+  "date": "2019-02-08",
+  "home": "Mtibwa Sugar",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 26,
+  "date": "2019-02-10",
+  "home": "JKT Tanzania",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 26,
+  "date": "2019-02-10",
+  "home": "KMC",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "Mwadui",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "African Lyon",
+  "away": "Ruvu Shooting",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "Mbao",
+  "away": "Coastal Union",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "Tanzania Prisons",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "Ndanda",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 26,
+  "date": "2019-02-11",
+  "home": "Lipuli",
+  "away": "Azam",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 26,
+  "date": "2019-02-27",
+  "home": "Mbeya City",
+  "away": "Singida United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 26,
+  "date": "2019-04-27",
+  "home": "Biashara United",
+  "away": "Simba",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 27,
+  "date": "2019-02-14",
+  "home": "Tanzania Prisons",
+  "away": "Azam",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 27,
+  "date": "2019-02-14",
+  "home": "Mwadui",
+  "away": "Coastal Union",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 27,
+  "date": "2019-02-14",
+  "home": "Biashara United",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 27,
+  "date": "2019-02-15",
+  "home": "Mbeya City",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 27,
+  "date": "2019-02-15",
+  "home": "Ndanda",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 27,
+  "date": "2019-02-15",
+  "home": "Mbao",
+  "away": "Ruvu Shooting",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 27,
+  "date": "2019-02-15",
+  "home": "KMC",
+  "away": "Kagera Sugar",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 27,
+  "date": "2019-02-16",
+  "home": "Young Africans",
+  "away": "Simba",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 27,
+  "date": "2019-02-17",
+  "home": "Lipuli",
+  "away": "Singida United",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 27,
+  "date": "2019-03-05",
+  "home": "African Lyon",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 28,
+  "date": "2019-02-19",
+  "home": "African Lyon",
+  "away": "Simba",
+  "hs": 0,
+  "as": 3
+ },
+ {
+  "round": 28,
+  "date": "2019-02-19",
+  "home": "Mwadui",
+  "away": "Biashara United",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 28,
+  "date": "2019-02-19",
+  "home": "Ruvu Shooting",
+  "away": "Kagera Sugar",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 28,
+  "date": "2019-02-19",
+  "home": "Coastal Union",
+  "away": "Azam",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 28,
+  "date": "2019-02-20",
+  "home": "Mbao",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 28,
+  "date": "2019-02-20",
+  "home": "Ndanda",
+  "away": "Singida United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 28,
+  "date": "2019-02-20",
+  "home": "Stand United",
+  "away": "Lipuli",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 28,
+  "date": "2019-02-20",
+  "home": "Mbeya City",
+  "away": "Tanzania Prisons",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 28,
+  "date": "2019-02-20",
+  "home": "KMC",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 28,
+  "date": "2019-02-21",
+  "home": "Alliance",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 29,
+  "date": "2019-03-01",
+  "home": "African Lyon",
+  "away": "Azam",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 29,
+  "date": "2019-03-02",
+  "home": "Ruvu Shooting",
+  "away": "Mwadui",
+  "hs": 6,
+  "as": 2
+ },
+ {
+  "round": 29,
+  "date": "2019-03-02",
+  "home": "JKT Tanzania",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 29,
+  "date": "2019-03-02",
+  "home": "Alliance",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 29,
+  "date": "2019-03-02",
+  "home": "KMC",
+  "away": "Biashara United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 29,
+  "date": "2019-03-03",
+  "home": "Singida United",
+  "away": "Tanzania Prisons",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 29,
+  "date": "2019-03-03",
+  "home": "Mbeya City",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 29,
+  "date": "2019-03-03",
+  "home": "Kagera Sugar",
+  "away": "Lipuli",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 29,
+  "date": "2019-03-03",
+  "home": "Stand United",
+  "away": "Simba",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 29,
+  "date": "2019-03-03",
+  "home": "Mtibwa Sugar",
+  "away": "Mbao",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 30,
+  "date": "2019-03-07",
+  "home": "Singida United",
+  "away": "Ruvu Shooting",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 30,
+  "date": "2019-03-08",
+  "home": "Azam",
+  "away": "JKT Tanzania",
+  "hs": 6,
+  "as": 1
+ },
+ {
+  "round": 30,
+  "date": "2019-03-09",
+  "home": "Mtibwa Sugar",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 30,
+  "date": "2019-03-09",
+  "home": "Kagera Sugar",
+  "away": "Coastal Union",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 30,
+  "date": "2019-03-09",
+  "home": "Lipuli",
+  "away": "Mbao",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 30,
+  "date": "2019-03-09",
+  "home": "African Lyon",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 30,
+  "date": "2019-03-10",
+  "home": "Mwadui",
+  "away": "Mbeya City",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 30,
+  "date": "2019-03-10",
+  "home": "Young Africans",
+  "away": "KMC",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 30,
+  "date": "2019-03-11",
+  "home": "Biashara United",
+  "away": "Ndanda",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 30,
+  "date": "2019-04-23",
+  "home": "Alliance",
+  "away": "Simba",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 31,
+  "date": "2019-03-15",
+  "home": "Mwadui",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 31,
+  "date": "2019-03-15",
+  "home": "Tanzania Prisons",
+  "away": "JKT Tanzania",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-15",
+  "home": "Azam",
+  "away": "Singida United",
+  "hs": 4,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-16",
+  "home": "Coastal Union",
+  "away": "Alliance",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-16",
+  "home": "Kagera Sugar",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 31,
+  "date": "2019-03-16",
+  "home": "Biashara United",
+  "away": "African Lyon",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-16",
+  "home": "Mbeya City",
+  "away": "Mbao",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-16",
+  "home": "Lipuli",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-17",
+  "home": "Ndanda",
+  "away": "KMC",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 31,
+  "date": "2019-03-19",
+  "home": "Simba",
+  "away": "Ruvu Shooting",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-02",
+  "home": "Azam",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-02",
+  "home": "Mbeya City",
+  "away": "KMC",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Lipuli",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Mbao",
+  "away": "Biashara United",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Tanzania Prisons",
+  "away": "Mwadui",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Singida United",
+  "away": "Alliance",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Coastal Union",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 32,
+  "date": "2019-04-03",
+  "home": "Ruvu Shooting",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 32,
+  "date": "2019-04-04",
+  "home": "Ndanda",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 32,
+  "date": "2019-04-30",
+  "home": "Simba",
+  "away": "JKT Tanzania",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-06",
+  "home": "Lipuli",
+  "away": "Mwadui",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 33,
+  "date": "2019-04-06",
+  "home": "Mtibwa Sugar",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-06",
+  "home": "JKT Tanzania",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-06",
+  "home": "Singida United",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 33,
+  "date": "2019-04-06",
+  "home": "Tanzania Prisons",
+  "away": "Biashara United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-07",
+  "home": "Ndanda",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-07",
+  "home": "Stand United",
+  "away": "Ruvu Shooting",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-07",
+  "home": "Mbao",
+  "away": "Azam",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-08",
+  "home": "Young Africans",
+  "away": "African Lyon",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 33,
+  "date": "2019-04-25",
+  "home": "KMC",
+  "away": "Simba",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 34,
+  "date": "2019-04-30",
+  "home": "Biashara United",
+  "away": "Lipuli",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 34,
+  "date": "2019-05-02",
+  "home": "Young Africans",
+  "away": "Tanzania Prisons",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 34,
+  "date": "2019-05-03",
+  "home": "Singida United",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 34,
+  "date": "2019-05-03",
+  "home": "Alliance",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 34,
+  "date": "2019-05-03",
+  "home": "Ruvu Shooting",
+  "away": "JKT Tanzania",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 34,
+  "date": "2019-05-04",
+  "home": "Mbao",
+  "away": "Ndanda",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 34,
+  "date": "2019-05-06",
+  "home": "KMC",
+  "away": "Mwadui",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 34,
+  "date": "2019-05-06",
+  "home": "Stand United",
+  "away": "Azam",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 34,
+  "date": "2019-05-08",
+  "home": "Simba",
+  "away": "Coastal Union",
+  "hs": 8,
+  "as": 1
+ },
+ {
+  "round": 34,
+  "date": "2019-05-18",
+  "home": "African Lyon",
+  "away": "Mbeya City",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 35,
+  "date": "2019-05-08",
+  "home": "Tanzania Prisons",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 35,
+  "date": "2019-05-08",
+  "home": "Mtibwa Sugar",
+  "away": "JKT Tanzania",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 35,
+  "date": "2019-05-09",
+  "home": "African Lyon",
+  "away": "Mbao",
+  "hs": 2,
+  "as": 3
+ },
+ {
+  "round": 35,
+  "date": "2019-05-09",
+  "home": "Stand United",
+  "away": "Singida United",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 35,
+  "date": "2019-05-09",
+  "home": "Alliance",
+  "away": "Mwadui",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 35,
+  "date": "2019-05-09",
+  "home": "Ruvu Shooting",
+  "away": "Lipuli",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 35,
+  "date": "2019-05-09",
+  "home": "Azam",
+  "away": "KMC",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 35,
+  "date": "2019-05-10",
+  "home": "Biashara United",
+  "away": "Young Africans",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 35,
+  "date": "2019-05-10",
+  "home": "Simba",
+  "away": "Kagera Sugar",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 35,
+  "date": "2019-05-15",
+  "home": "Mbeya City",
+  "away": "Coastal Union",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 36,
+  "date": "2019-05-12",
+  "home": "Lipuli",
+  "away": "Mbeya City",
+  "hs": 0,
+  "as": 3
+ },
+ {
+  "round": 36,
+  "date": "2019-05-12",
+  "home": "Singida United",
+  "away": "JKT Tanzania",
+  "hs": 2,
+  "as": 2
+ },
+ {
+  "round": 36,
+  "date": "2019-05-12",
+  "home": "African Lyon",
+  "away": "Ndanda",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 36,
+  "date": "2019-05-12",
+  "home": "Coastal Union",
+  "away": "Mtibwa Sugar",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 36,
+  "date": "2019-05-13",
+  "home": "Simba",
+  "away": "Azam",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 36,
+  "date": "2019-05-13",
+  "home": "Tanzania Prisons",
+  "away": "KMC",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 36,
+  "date": "2019-05-14",
+  "home": "Ruvu Shooting",
+  "away": "Young Africans",
+  "hs": 0,
+  "as": 1
+ },
+ {
+  "round": 36,
+  "date": "2019-05-14",
+  "home": "Mwadui",
+  "away": "Mbao",
+  "hs": 3,
+  "as": 3
+ },
+ {
+  "round": 36,
+  "date": "2019-05-15",
+  "home": "Biashara United",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 2
+ },
+ {
+  "round": 36,
+  "date": "2019-05-16",
+  "home": "Kagera Sugar",
+  "away": "Stand United",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 37,
+  "date": "2019-05-20",
+  "home": "Biashara United",
+  "away": "Ruvu Shooting",
+  "hs": 2,
+  "as": 1
+ },
+ {
+  "round": 37,
+  "date": "2019-05-21",
+  "home": "Mbao",
+  "away": "KMC",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 37,
+  "date": "2019-05-21",
+  "home": "Singida United",
+  "away": "Simba",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 37,
+  "date": "2019-05-22",
+  "home": "Ndanda",
+  "away": "Lipuli",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 37,
+  "date": "2019-05-22",
+  "home": "Young Africans",
+  "away": "Mbeya City",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 37,
+  "date": "2019-05-22",
+  "home": "Mwadui",
+  "away": "African Lyon",
+  "hs": 3,
+  "as": 0
+ },
+ {
+  "round": 37,
+  "date": "2019-05-22",
+  "home": "Azam",
+  "away": "Mtibwa Sugar",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 37,
+  "date": "2019-05-23",
+  "home": "Coastal Union",
+  "away": "Tanzania Prisons",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 37,
+  "date": "2019-05-23",
+  "home": "Alliance",
+  "away": "Stand United",
+  "hs": 3,
+  "as": 2
+ },
+ {
+  "round": 37,
+  "date": "2019-05-25",
+  "home": "JKT Tanzania",
+  "away": "Kagera Sugar",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Mtibwa Sugar",
+  "away": "Simba",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Young Africans",
+  "away": "Azam",
+  "hs": 0,
+  "as": 2
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Coastal Union",
+  "away": "Singida United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Ndanda",
+  "away": "Mwadui",
+  "hs": 1,
+  "as": 3
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "JKT Tanzania",
+  "away": "Stand United",
+  "hs": 2,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Ruvu Shooting",
+  "away": "Alliance",
+  "hs": 1,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Mbeya City",
+  "away": "Biashara United",
+  "hs": 0,
+  "as": 0
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Mbao",
+  "away": "Kagera Sugar",
+  "hs": 1,
+  "as": 1
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "Tanzania Prisons",
+  "away": "Lipuli",
+  "hs": 3,
+  "as": 1
+ },
+ {
+  "round": 38,
+  "date": "2019-05-28",
+  "home": "African Lyon",
+  "away": "KMC",
+  "hs": 0,
+  "as": 2
+ }
+]

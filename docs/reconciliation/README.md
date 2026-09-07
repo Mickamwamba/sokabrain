@@ -76,3 +76,51 @@ capable of running JavaScript, or contemporary match reports.
 signature — every NULL-score match has zero goal events. That is suggestive, not
 proof. **Verify each season against its own source before applying the same
 fix**; the arithmetic that made 2017/18 conclusive has to be redone per season.
+
+
+---
+
+## 2018/19 — `wikipedia_tpl_2018_19.json`, `rsssf_tpl_2018_19_matches.json`
+
+Same method as 2017/18, and it found a **different defect**. Blanket-applying the
+2017/18 fix here would have been wrong, which is why the arithmetic is redone
+per season.
+
+### Why RSSSF could be trusted for this season
+
+Its 380 parsed results reproduce **RSSSF's own published final table** exactly,
+and that table is in turn identical to Wikipedia's. Two independent tables and
+the match list all agree, so the match list is sound.
+
+### The join key matters
+
+Joining our matches to the reference on `(home, away)` produced four apparent
+score conflicts. All four were artefacts: six of our fixtures have **home and
+away reversed**, so an orientation-based join silently compared our record
+against the *other leg*. Re-joining on `(date, unordered team pair)` — because
+orientation was itself in doubt — gave the true picture:
+
+| | Count |
+|---|---|
+| already correct | 314 |
+| missing a score | 61 (60 of them 0-0) |
+| home and away reversed | 6 |
+| genuine score conflicts | **0** |
+
+### The reversed fixtures
+
+For each, the *result* was right but the venue was wrong — e.g. we held
+`Mtibwa Sugar 1-2 Yanga` where the fixture was `Yanga 2-1 Mtibwa Sugar`. Because
+per-team wins, draws, goals for and goals against are unchanged by orientation,
+**a league table cannot detect this defect** — only a match-level comparison can.
+It corrupts home/away records, and it left six fixtures duplicated while their
+six reverse fixtures were missing entirely.
+
+### Result
+
+Applying 61 fills and 6 swaps reproduces the Wikipedia table exactly: all 20
+clubs, all seven columns, identical final positions. Recorded as reconciliation
+run 14.
+
+Goalscorers are again unresolved — 60 goals across this season have no scorer,
+and no accessible source publishes them.
