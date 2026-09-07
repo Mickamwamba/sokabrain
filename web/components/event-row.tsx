@@ -1,8 +1,9 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useState } from 'react';
 import type { ActionState } from '@/app/admin/actions';
 import type { SquadPlayer } from '@/lib/adminApi';
+import { ConfirmForm } from './confirm-form';
 
 type Action = (prev: ActionState, formData: FormData) => Promise<ActionState>;
 
@@ -18,27 +19,22 @@ export type MatchEvent = {
 const GOAL_TYPES = new Set(['GOAL', 'PENALTY_GOAL', 'OWN_GOAL']);
 
 const ICON: Record<string, string> = {
-  GOAL: '⚽',
-  PENALTY_GOAL: '⚽',
-  OWN_GOAL: '⚽',
-  YELLOW_CARD: '🟨',
-  SECOND_YELLOW: '🟨',
-  RED_CARD: '🟥',
-  SUBSTITUTION: '↔',
-  PENALTY_MISS: '✗',
-  VAR_REVIEW: '⌾',
+  GOAL: '⚽', PENALTY_GOAL: '⚽', OWN_GOAL: '⚽',
+  YELLOW_CARD: '🟨', SECOND_YELLOW: '🟨', RED_CARD: '🟥',
+  SUBSTITUTION: '↔', PENALTY_MISS: '✗', VAR_REVIEW: '⌾',
 };
 
-/**
- * One event, rendered on its own team's side of the match sheet.
- *
- * A goal with no scorer shows an inline picker rather than sending the editor
- * elsewhere — naming missing scorers is the single most common repair, so it
- * has to be one click and one choice.
- */
+/** "the 23' goal" / "the goal (minute unknown)" — used in confirmation copy. */
+function describe(e: MatchEvent) {
+  const kind = e.type.replaceAll('_', ' ').toLowerCase();
+  const when = e.minute !== null ? `the ${e.minute}' ${kind}` : `the ${kind} (minute unknown)`;
+  return e.playerName ? `${when} by ${e.playerName}` : when;
+}
+
 export function EventRow({
   event,
   matchId,
+  teamName,
   squad,
   align,
   setScorer,
@@ -46,17 +42,19 @@ export function EventRow({
 }: {
   event: MatchEvent;
   matchId: number;
+  teamName: string;
   squad: SquadPlayer[];
   align: 'left' | 'right';
   setScorer: Action;
   deleteEvent: Action;
 }) {
-  const [scorerState, scorerAction, scorerPending] = useActionState(setScorer, {});
-  const [, deleteAction, deletePending] = useActionState(deleteEvent, {});
-
   const isGoal = GOAL_TYPES.has(event.type);
   const missingScorer = isGoal && event.playerId === null;
   const right = align === 'right';
+
+  // Held in state so the confirmation can name the player being credited.
+  const [pick, setPick] = useState('');
+  const picked = squad.find((p) => String(p.id) === pick);
 
   // Prefer players attached to this event's team, but keep the rest available —
   // stint data is incomplete and would otherwise hide the right name.
@@ -64,53 +62,73 @@ export function EventRow({
   const others = squad.filter((p) => !own.includes(p));
 
   return (
-    <li
-      className={`border-b border-line px-4 py-2.5 last:border-0 ${missingScorer ? 'bg-loss/5' : ''}`}
-    >
+    <li className={`border-b border-line px-4 py-2.5 last:border-0 ${missingScorer ? 'bg-loss/5' : ''}`}>
       <div className={`flex items-center gap-2 ${right ? 'flex-row-reverse text-right' : ''}`}>
-        <span aria-hidden className="w-5 shrink-0 text-center text-sm">
-          {ICON[event.type] ?? '•'}
-        </span>
+        <span aria-hidden className="w-5 shrink-0 text-center text-sm">{ICON[event.type] ?? '•'}</span>
         <span className="w-9 shrink-0 text-xs nums text-muted">
           {event.minute !== null ? `${event.minute}'` : '—'}
         </span>
         <span className="min-w-0 flex-1">
           <span className="block truncate text-sm font-medium">
-            {event.playerName ?? (
-              <span className="text-loss">Scorer not recorded</span>
-            )}
+            {event.playerName ?? <span className="text-loss">Scorer not recorded</span>}
           </span>
           <span className="block text-[10px] uppercase tracking-wide text-muted">
             {event.type.replaceAll('_', ' ')}
           </span>
         </span>
-        <form action={deleteAction} className="shrink-0">
+
+        <ConfirmForm
+          action={deleteEvent}
+          className="shrink-0"
+          title="Delete this event?"
+          danger
+          confirmLabel="Delete event"
+          triggerLabel="✕"
+          triggerClassName="rounded px-1.5 py-0.5 text-xs text-muted hover:text-loss disabled:opacity-50"
+          message={
+            <>
+              Removing {describe(event)} for <strong className="text-ink">{teamName}</strong>.
+              This cannot be undone, and the match score will not change.
+            </>
+          }
+        >
           <input type="hidden" name="matchId" value={matchId} />
           <input type="hidden" name="eventId" value={event.id} />
-          <button
-            type="submit"
-            disabled={deletePending}
-            title="Delete event"
-            className="rounded px-1.5 py-0.5 text-xs text-muted hover:text-loss disabled:opacity-50"
-          >
-            ✕
-          </button>
-        </form>
+        </ConfirmForm>
       </div>
 
       {missingScorer ? (
-        <form action={scorerAction} className={`mt-2 flex gap-1.5 ${right ? 'flex-row-reverse' : ''}`}>
+        <ConfirmForm
+          action={setScorer}
+          className={`mt-2 flex items-center gap-1.5 ${right ? 'flex-row-reverse' : ''}`}
+          title="Record this scorer?"
+          confirmLabel="Save scorer"
+          triggerLabel="Save"
+          triggerClassName="shrink-0 rounded bg-ink px-2.5 py-1 text-xs font-semibold text-white hover:bg-ink-soft disabled:opacity-50"
+          disabled={pick === ''}
+          message={
+            picked ? (
+              <>
+                Crediting {describe(event)} to{' '}
+                <strong className="text-ink">{picked.name}</strong> for{' '}
+                <strong className="text-ink">{teamName}</strong>.
+              </>
+            ) : (
+              'Pick a player first.'
+            )
+          }
+        >
           <input type="hidden" name="matchId" value={matchId} />
           <input type="hidden" name="eventId" value={event.id} />
           <select
             name="playerId"
-            defaultValue=""
-            disabled={scorerPending}
+            value={pick}
+            onChange={(e) => setPick(e.target.value)}
             className="min-w-0 flex-1 rounded border border-line bg-paper px-2 py-1 text-xs"
           >
             <option value="">Who scored?</option>
             {own.length > 0 ? (
-              <optgroup label="This club">
+              <optgroup label={teamName}>
                 {own.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.name}{p.position ? ` (${p.position})` : ''}
@@ -126,17 +144,7 @@ export function EventRow({
               ))}
             </optgroup>
           </select>
-          <button
-            type="submit"
-            disabled={scorerPending}
-            className="shrink-0 rounded bg-ink px-2.5 py-1 text-xs font-semibold text-white disabled:opacity-50"
-          >
-            {scorerPending ? 'Saving…' : 'Save'}
-          </button>
-        </form>
-      ) : null}
-      {scorerState.error ? (
-        <p className="mt-1 text-xs text-loss">{scorerState.error}</p>
+        </ConfirmForm>
       ) : null}
     </li>
   );

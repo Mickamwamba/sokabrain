@@ -9,6 +9,7 @@ import {
 import { Card, CardHead, Crest } from '@/components/ui';
 import { ActionForm, SeverityTag } from '@/components/admin-ui';
 import { EventRow } from '@/components/event-row';
+import { AddEventForm } from '@/components/add-event-form';
 import {
   addEventAction,
   createFlagAction,
@@ -21,10 +22,6 @@ import {
 export const dynamic = 'force-dynamic';
 
 const STATUSES = ['SCHEDULED', 'LIVE', 'FULL_TIME', 'POSTPONED', 'ABANDONED', 'CANCELLED'];
-const EVENT_TYPES = [
-  'GOAL', 'OWN_GOAL', 'PENALTY_GOAL', 'PENALTY_MISS', 'YELLOW_CARD',
-  'SECOND_YELLOW', 'RED_CARD', 'SUBSTITUTION', 'VAR_REVIEW',
-];
 const field = 'rounded-lg border border-line bg-paper px-2.5 py-1.5 text-sm';
 
 export default async function AdminMatchPage(props: PageProps<'/admin/matches/[id]'>) {
@@ -134,6 +131,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
                   key={e.id}
                   event={e}
                   matchId={match.id}
+                  teamName={match.homeTeam.name}
                   squad={squad}
                   align="left"
                   setScorer={setScorerAction}
@@ -155,6 +153,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
                   key={e.id}
                   event={e}
                   matchId={match.id}
+                  teamName={match.awayTeam.name}
                   squad={squad}
                   align="right"
                   setScorer={setScorerAction}
@@ -175,6 +174,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
                 key={e.id}
                 event={e}
                 matchId={match.id}
+                teamName={e.teamName ?? 'Unknown team'}
                 squad={squad}
                 align="left"
                 setScorer={setScorerAction}
@@ -219,41 +219,13 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
 
         <Card className="p-4">
           <h2 className="display mb-3 text-sm font-bold uppercase tracking-wide">Add event</h2>
-          <ActionForm action={addEventAction} submitLabel="Add event">
-            <input type="hidden" name="matchId" value={match.id} />
-            <div className="mb-3 flex flex-wrap items-end gap-2">
-              <label className="block">
-                <span className="text-[11px] text-muted">Minute</span>
-                <input name="minute" type="number" min="0" max="130" className={`mt-1 block w-16 ${field}`} />
-              </label>
-              <label className="block">
-                <span className="text-[11px] text-muted">Type</span>
-                <select name="type" defaultValue="GOAL" className={`mt-1 block ${field}`}>
-                  {EVENT_TYPES.map((t) => <option key={t} value={t}>{t.replaceAll('_', ' ')}</option>)}
-                </select>
-              </label>
-              <label className="block">
-                <span className="text-[11px] text-muted">Team</span>
-                <select name="teamId" defaultValue={match.homeTeam.id} className={`mt-1 block ${field}`}>
-                  <option value={match.homeTeam.id}>{match.homeTeam.name}</option>
-                  <option value={match.awayTeam.id}>{match.awayTeam.name}</option>
-                </select>
-              </label>
-              <label className="block min-w-40 flex-1">
-                <span className="text-[11px] text-muted">Player</span>
-                <select name="playerId" defaultValue="" className={`mt-1 block w-full ${field}`}>
-                  <option value="">Unknown</option>
-                  {squad.map((p) => (
-                    <option key={p.id} value={p.id}>{p.name}</option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            <p className="mb-2 text-xs text-muted">
-              For an own goal pick the scoring player’s own team — the vault credits it to
-              their opponent. Adding an event never changes the score.
-            </p>
-          </ActionForm>
+          <AddEventForm
+            matchId={match.id}
+            homeTeam={match.homeTeam}
+            awayTeam={match.awayTeam}
+            squad={squad}
+            action={addEventAction}
+          />
         </Card>
       </div>
 

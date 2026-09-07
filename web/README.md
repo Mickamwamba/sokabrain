@@ -74,6 +74,12 @@ Left sidebar navigation; the working area sits beside it.
 | `/admin/matches/[id]` | two-sided match sheet: home events left, away right; name missing scorers inline; edit score & status; raise flags |
 | `/admin/flags` | open and resolved flags, with resolution notes |
 
+Adding, editing and deleting an event each go through a confirmation dialog
+that names what will change — "Removing the 23' goal by John Bocco for Simba
+SC" rather than a generic "Are you sure?". For an own goal the dialog also
+states which side the goal will count for. The submit button lives inside the
+dialog, so Enter in the form cannot bypass it.
+
 Matches with goals whose scorer was never recorded carry a red dot and a count
 in every list. The dot has a screen-reader label with the exact count, so the
 signal is not colour-only.
