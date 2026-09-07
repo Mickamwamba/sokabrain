@@ -1,0 +1,25 @@
+{
+  "source": "https://en.wikipedia.org/wiki/2017%E2%80%9318_Tanzanian_Premier_League",
+  "season": "2017/2018", "teams": 16, "matches": 240, "goals": 470,
+  "start": "2017-08-26", "end": "2018-05-28",
+  "champion": "Simba", "relegated": ["Majimaji", "Njombe Mji"],
+  "topScorer": {"name": "Emmanuel Okwi", "goals": 20},
+  "table": [
+    {"pos":1,"team":"Simba","pld":30,"w":20,"d":9,"l":1,"gf":62,"ga":15,"pts":69},
+    {"pos":2,"team":"Azam","pld":30,"w":16,"d":10,"l":4,"gf":35,"ga":16,"pts":58},
+    {"pos":3,"team":"Young Africans","pld":30,"w":14,"d":10,"l":6,"gf":44,"ga":23,"pts":52},
+    {"pos":4,"team":"Tanzania Prisons","pld":30,"w":12,"d":12,"l":6,"gf":27,"ga":22,"pts":48},
+    {"pos":5,"team":"Singida United","pld":30,"w":11,"d":11,"l":8,"gf":30,"ga":28,"pts":44},
+    {"pos":6,"team":"Mtibwa Sugar","pld":30,"w":10,"d":11,"l":9,"gf":23,"ga":21,"pts":41},
+    {"pos":7,"team":"Lipuli","pld":30,"w":9,"d":11,"l":10,"gf":23,"ga":24,"pts":38},
+    {"pos":8,"team":"Ruvu Shooting","pld":30,"w":9,"d":11,"l":10,"gf":31,"ga":37,"pts":38},
+    {"pos":9,"team":"Kagera Sugar","pld":30,"w":8,"d":13,"l":9,"gf":23,"ga":27,"pts":37},
+    {"pos":10,"team":"Mwadui","pld":30,"w":8,"d":12,"l":10,"gf":32,"ga":38,"pts":36},
+    {"pos":11,"team":"Stand United","pld":30,"w":8,"d":8,"l":14,"gf":22,"ga":36,"pts":32},
+    {"pos":12,"team":"Mbeya City","pld":30,"w":5,"d":16,"l":9,"gf":23,"ga":31,"pts":31},
+    {"pos":13,"team":"Mbao","pld":30,"w":7,"d":10,"l":13,"gf":26,"ga":36,"pts":31},
+    {"pos":14,"team":"Ndanda","pld":30,"w":6,"d":11,"l":13,"gf":23,"ga":31,"pts":29},
+    {"pos":15,"team":"Majimaji","pld":30,"w":4,"d":13,"l":13,"gf":29,"ga":42,"pts":25},
+    {"pos":16,"team":"Njombe Mji","pld":30,"w":4,"d":10,"l":16,"gf":17,"ga":43,"pts":22}
+  ]
+}

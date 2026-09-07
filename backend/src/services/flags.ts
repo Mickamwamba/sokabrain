@@ -112,11 +112,15 @@ export async function suggestedIssues(editionId: number) {
         OR: [{ home_score: null }, { away_score: null }],
       },
     }),
+    // A genuine 0-0 draw has no events, so counting every event-less match as a
+    // problem produces phantom work. Only matches where goals were scored but
+    // no event log survives are worth an editor's time.
     prisma.matches.count({
       where: {
         competition_edition_id: editionId,
         status: 'FULL_TIME',
         match_events: { none: {} },
+        NOT: { home_score: 0, away_score: 0 },
       },
     }),
     prisma.match_events.count({
@@ -138,7 +142,7 @@ export async function suggestedIssues(editionId: number) {
     {
       key: 'no_events',
       count: noEvents,
-      label: 'completed matches with no event log at all',
+      label: 'matches with goals but no event log',
       severity: 'WARNING' as Severity,
     },
     {
