@@ -11,6 +11,7 @@ const ITEMS = [
   { href: '/admin', label: 'Overview', exact: true },
   { href: '/admin/competitions', label: 'Competitions' },
   { href: '/admin/matches', label: 'Matches' },
+  { href: '/admin/issues', label: 'Issues' },
   { href: '/admin/flags', label: 'Flags' },
 ];
 

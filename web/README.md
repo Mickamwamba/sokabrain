@@ -72,7 +72,20 @@ Left sidebar navigation; the working area sits beside it.
 | `/admin/competitions/[id]` | one competition — pick a season, see its stats and every match |
 | `/admin/matches` | matches for one competition + season, chosen by dropdown; optional "needs a score" filter |
 | `/admin/matches/[id]` | two-sided match sheet: home events left, away right; name missing scorers inline; edit score & status; raise flags |
+| `/admin/issues` | **every match needing attention**, by competition + season + issue type |
 | `/admin/flags` | open and resolved flags, with resolution notes |
+
+### Two kinds of problem
+
+`/admin/issues` shows both, and the difference matters:
+
+* **Detected issues** are computed from the data on every read — a missing
+  score, a goal with no scorer, goals absent from the event log, events that
+  contradict the score. They vanish the moment the data is fixed, so nobody has
+  to remember to close them.
+* **Flags** are what a person knows and the data cannot reveal — a date
+  contradicted by an external source, a score disputed by a match report. They
+  persist until someone resolves them, with a note.
 
 Adding, editing and deleting an event each go through a confirmation dialog
 that names what will change — "Removing the 23' goal by John Bocco for Simba

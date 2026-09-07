@@ -181,3 +181,35 @@ export type AdminReference = {
   seasons: { id: number; label: string }[];
   competitionTypes: string[];
 };
+
+export type MatchIssue = { kind: string; severity: string; detail: string };
+
+export type MatchWithIssues = {
+  matchId: number;
+  kickoffAt: string | null;
+  status: string;
+  round: string | null;
+  homeTeam: string;
+  awayTeam: string;
+  homeScore: number | null;
+  awayScore: number | null;
+  issues: MatchIssue[];
+  openFlags: { id: number; severity: string; reason: string }[];
+};
+
+export type IssuesResponse = {
+  edition: {
+    editionId: number;
+    competitionId: number;
+    competition: string;
+    season: string;
+    isPublished: boolean;
+  };
+  totals: {
+    matchesWithIssues: number;
+    blockers: number;
+    openFlags: number;
+    byKind: Record<string, number>;
+  };
+  matches: MatchWithIssues[];
+};

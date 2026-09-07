@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { prisma } from '../db.js';
+import { detectMatchIssues } from '../services/matchIssues.js';
 import {
   FLAG_ENTITIES,
   SEVERITIES,
@@ -247,3 +248,48 @@ async function entityExists(entityType: string, id: number): Promise<boolean> {
       return false;
   }
 }
+
+
+/**
+ * Every match in an edition with a detectable problem or an open flag — the
+ * single worklist an editor works down.
+ *
+ * Detected issues are computed on read, so fixing the data clears them without
+ * anyone having to close anything. Flags persist until resolved by hand.
+ */
+editorialRouter.get('/editions/:id/match-issues', async (req, res) => {
+  const params = idParam.safeParse(req.params);
+  if (!params.success) return res.status(400).json({ error: 'id must be a positive integer' });
+
+  const edition = await prisma.competition_editions.findUnique({
+    where: { id: params.data.id },
+    include: {
+      competitions: { select: { id: true, name: true } },
+      seasons: { select: { label: true } },
+    },
+  });
+  if (!edition) return res.status(404).json({ error: `No edition with id ${params.data.id}` });
+
+  const matches = await detectMatchIssues(params.data.id);
+  const counts: Record<string, number> = {};
+  for (const m of matches) {
+    for (const i of m.issues) counts[i.kind] = (counts[i.kind] ?? 0) + 1;
+  }
+
+  res.json({
+    edition: {
+      editionId: edition.id,
+      competitionId: edition.competitions.id,
+      competition: edition.competitions.name,
+      season: edition.seasons.label,
+      isPublished: edition.is_published,
+    },
+    totals: {
+      matchesWithIssues: matches.length,
+      blockers: matches.filter((m) => m.issues.some((i) => i.severity === 'BLOCKER')).length,
+      openFlags: matches.reduce((n, m) => n + m.openFlags.length, 0),
+      byKind: counts,
+    },
+    matches,
+  });
+});

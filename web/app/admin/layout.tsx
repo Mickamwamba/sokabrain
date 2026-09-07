@@ -47,7 +47,7 @@ export default async function AdminLayout({ children }: LayoutProps<'/admin'>) {
       <div className="min-w-0 flex-1">
         {/* Sidebar collapses on small screens; these keep it navigable there. */}
         <div className="mb-4 flex gap-1.5 overflow-x-auto md:hidden">
-          {['/admin', '/admin/competitions', '/admin/matches', '/admin/flags'].map((h) => (
+          {['/admin', '/admin/competitions', '/admin/matches', '/admin/issues', '/admin/flags'].map((h) => (
             <Link
               key={h}
               href={h}
