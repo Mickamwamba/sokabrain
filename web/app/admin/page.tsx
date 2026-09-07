@@ -13,7 +13,7 @@ export default async function AdminCompetitionsPage() {
   } catch (err) {
     if (err instanceof AdminApiError && err.status === 401) redirect('/admin/login');
     if (err instanceof AdminApiError) {
-      return <p className="text-sm text-red-600 dark:text-red-400">{err.message}</p>;
+      return <p className="text-sm text-red-600">{err.message}</p>;
     }
     throw err;
   }
@@ -64,7 +64,7 @@ export default async function AdminCompetitionsPage() {
                         {e.openFlags} open flag{e.openFlags === 1 ? '' : 's'}
                       </Link>
                       {e.flags.BLOCKER > 0 ? (
-                        <span className="ml-1 text-red-600 dark:text-red-400">
+                        <span className="ml-1 text-red-600">
                           ({e.flags.BLOCKER} blocking)
                         </span>
                       ) : null}

@@ -108,6 +108,24 @@ explicitly out of scope — see "Non-goals" below).
   blocks that match's edition. WARNING/INFO are advisory. The dashboard derives
   a worklist from the data (missing scores, absent event logs, unattributed
   goals) so editors start from real problems rather than a blank page.
+- **Public site redesigned as a fan-facing stats platform.** New IA modelled on
+  a stats hub: dashboard (`/`), Players, Clubs, Head to head, Competitions,
+  Matches. Backend gained `/api/vault/stats/*` (overview, clubs, players,
+  head-to-head) plus `/api/vault/teams`, all scoped to published editions.
+
+  **Light theme only — no dark mode, by request.** One fixed palette in
+  `globals.css`, Archivo for display + Inter for body. No `dark:` variants
+  remain anywhere, admin included.
+
+  Eleven editions are now published (was one) so the cross-season views have
+  real depth: 1,179 matches, 2,909 goals, 115 clubs, 3 seasons. Publication is
+  still per-edition in the dashboard.
+
+  Stats deliberately absent because the vault has no data for them: attendance,
+  stadium capacity, possession, xG, shots. Goals-per-appearance is suppressed
+  unless a player has at least as many recorded appearances as goals — lineups
+  cover ~600 of 1,639 players, so the raw ratio measured missing data, not form
+  (it read "4.6 goals per game" for the top scorer before the fix).
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, and a handful
   of duplicate lineup rows. Full detail is in the schema doc's audit

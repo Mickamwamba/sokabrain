@@ -4,6 +4,14 @@ import { prisma } from '../db.js';
 import { getStandings } from '../services/standings.js';
 import { getTopScorers } from '../services/topScorers.js';
 import { listMatches } from '../services/matches.js';
+import {
+  clubStats,
+  headToHead,
+  overview,
+  playerStats,
+  publishedTeams,
+  type PlayerSort,
+} from '../services/stats.js';
 
 export const vaultRouter = Router();
 
@@ -135,4 +143,65 @@ vaultRouter.get('/matches', async (req, res) => {
     });
   }
   res.json(await listMatches(query.data));
+});
+
+
+/* ------------------------------------------------------------------ stats -- */
+// Fan-facing aggregates. All scoped to published editions by the service layer.
+
+vaultRouter.get('/stats/overview', async (_req, res) => {
+  res.json(await overview());
+});
+
+vaultRouter.get('/teams', async (_req, res) => {
+  res.json({ teams: await publishedTeams() });
+});
+
+const clubQuery = z.object({ editionId: z.coerce.number().int().positive().optional() });
+
+vaultRouter.get('/stats/clubs', async (req, res) => {
+  const q = clubQuery.safeParse(req.query);
+  if (!q.success) return res.status(400).json({ error: 'editionId must be a positive integer' });
+  res.json({ clubs: await clubStats(q.data.editionId) });
+});
+
+const playerQuery = z.object({
+  editionId: z.coerce.number().int().positive().optional(),
+  teamId: z.coerce.number().int().positive().optional(),
+  position: z.enum(['GK', 'DF', 'MF', 'FW']).optional(),
+  sort: z.enum(['goals', 'appearances', 'yellowCards', 'redCards']).default('goals'),
+  limit: z.coerce.number().int().min(1).max(100).default(25),
+});
+
+vaultRouter.get('/stats/players', async (req, res) => {
+  const q = playerQuery.safeParse(req.query);
+  if (!q.success) {
+    return res.status(400).json({ error: 'Invalid query', details: z.treeifyError(q.error) });
+  }
+  const { editionId, teamId, position, sort, limit } = q.data;
+  res.json({
+    players: await playerStats({
+      ...(editionId !== undefined && { editionId }),
+      ...(teamId !== undefined && { teamId }),
+      ...(position !== undefined && { position }),
+      sort: sort as PlayerSort,
+      limit,
+    }),
+  });
+});
+
+const h2hQuery = z.object({
+  teamA: z.coerce.number().int().positive(),
+  teamB: z.coerce.number().int().positive(),
+});
+
+vaultRouter.get('/stats/head-to-head', async (req, res) => {
+  const q = h2hQuery.safeParse(req.query);
+  if (!q.success) return res.status(400).json({ error: 'teamA and teamB are required team ids' });
+  if (q.data.teamA === q.data.teamB) {
+    return res.status(400).json({ error: 'Pick two different clubs' });
+  }
+  const result = await headToHead(q.data.teamA, q.data.teamB);
+  if (!result) return res.status(404).json({ error: 'One or both clubs not found' });
+  res.json(result);
 });

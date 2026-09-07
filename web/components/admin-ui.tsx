@@ -46,7 +46,7 @@ export function ActionForm({
         {pending ? 'Working…' : submitLabel}
       </button>
       {state.error ? (
-        <p className="mt-1 text-xs text-red-600 dark:text-red-400">{state.error}</p>
+        <p className="mt-1 text-xs text-red-600">{state.error}</p>
       ) : null}
       {state.ok ? <p className="mt-1 text-xs text-accent">{state.ok}</p> : null}
     </form>
@@ -56,9 +56,9 @@ export function ActionForm({
 export function SeverityTag({ severity }: { severity: string }) {
   const tone =
     severity === 'BLOCKER'
-      ? 'border-red-500/50 text-red-600 dark:text-red-400'
+      ? 'border-red-500/50 text-red-600'
       : severity === 'WARNING'
-        ? 'border-amber-500/50 text-amber-600 dark:text-amber-400'
+        ? 'border-amber-500/50 text-amber-600'
         : 'border-border text-muted';
   return (
     <span className={`rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase ${tone}`}>

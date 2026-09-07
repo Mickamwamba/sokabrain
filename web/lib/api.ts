@@ -107,6 +107,75 @@ export type MatchesResponse = {
   matches: Match[];
 };
 
+export type Overview = {
+  matches: number;
+  goals: number;
+  clubs: number;
+  players: number;
+  seasons: number;
+  competitions: number;
+};
+
+export type ClubStat = {
+  teamId: number;
+  teamName: string;
+  shortName: string | null;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+  points: number;
+  cleanSheets: number;
+  winRate: number;
+  goalsPerGame: number;
+};
+
+export type PlayerStat = {
+  playerId: number;
+  playerName: string;
+  position: string | null;
+  teamId: number | null;
+  teamName: string | null;
+  goals: number;
+  penalties: number;
+  appearances: number;
+  yellowCards: number;
+  redCards: number;
+  goalsPerApp: number | null;
+};
+
+export type TeamRefLite = {
+  id: number;
+  name: string;
+  shortName: string | null;
+  country: string | null;
+};
+
+export type HeadToHead = {
+  teamA: { id: number; name: string };
+  teamB: { id: number; name: string };
+  meetings: number;
+  aWins: number;
+  bWins: number;
+  draws: number;
+  aGoals: number;
+  bGoals: number;
+  matches: {
+    id: number;
+    kickoffAt: string | null;
+    competition: string;
+    season: string;
+    homeTeamId: number;
+    homeTeam: string;
+    awayTeam: string;
+    homeScore: number | null;
+    awayScore: number | null;
+  }[];
+};
+
 /** Thrown so pages can distinguish "backend is down" from "no such edition". */
 export class ApiError extends Error {
   constructor(
@@ -141,6 +210,21 @@ export const api = {
   standings: (id: number) => get<StandingsResponse>(`/api/vault/editions/${id}/standings`),
   topScorers: (id: number, limit = 20) =>
     get<TopScorersResponse>(`/api/vault/editions/${id}/top-scorers?limit=${limit}`),
+  overview: () => get<Overview>('/api/vault/stats/overview'),
+  teams: () => get<{ teams: TeamRefLite[] }>('/api/vault/teams'),
+  clubs: (editionId?: string | number) =>
+    get<{ clubs: ClubStat[] }>(
+      `/api/vault/stats/clubs${editionId ? `?editionId=${editionId}` : ''}`,
+    ),
+  players: (params: Record<string, string | number | undefined>) => {
+    const qs = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (v !== undefined && v !== '') qs.set(k, String(v));
+    }
+    return get<{ players: PlayerStat[] }>(`/api/vault/stats/players?${qs}`);
+  },
+  headToHead: (a: number | string, b: number | string) =>
+    get<HeadToHead>(`/api/vault/stats/head-to-head?teamA=${a}&teamB=${b}`),
   matches: (params: Record<string, string | number | undefined>) => {
     const qs = new URLSearchParams();
     for (const [k, v] of Object.entries(params)) {

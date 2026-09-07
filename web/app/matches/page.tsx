@@ -1,34 +1,51 @@
 import Link from "next/link";
 import { api, ApiError, type Match } from "@/lib/api";
-import { Badge, Empty, TeamCrest } from "@/components/ui";
+import { Card, ChipRow, Crest, Empty, PageTitle } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 25;
+const STATUSES = [
+  { value: undefined, label: "Any" },
+  { value: "FULL_TIME", label: "Finished" },
+  { value: "SCHEDULED", label: "Scheduled" },
+  { value: "POSTPONED", label: "Postponed" },
+];
 
-const STATUSES = ["FULL_TIME", "SCHEDULED", "POSTPONED", "ABANDONED", "CANCELLED"] as const;
-
-function formatKickoff(iso: string | null) {
-  if (!iso) return "Date unknown";
-  return new Date(iso).toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+/** Group matches by calendar day, the way a fan reads a fixture list. */
+function byDay(matches: Match[]) {
+  const days = new Map<string, Match[]>();
+  for (const m of matches) {
+    const key = m.kickoffAt
+      ? new Date(m.kickoffAt).toLocaleDateString("en-GB", {
+          weekday: "short",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      : "Date unknown";
+    const list = days.get(key);
+    if (list) list.push(m);
+    else days.set(key, [m]);
+  }
+  return [...days.entries()];
 }
 
-/** Score, or a dash when the match has no recorded result. */
 function Score({ match }: { match: Match }) {
   const { home, away, homePenalties, awayPenalties } = match.score;
   if (home === null || away === null) {
-    return <span className="font-mono text-sm text-muted">–</span>;
+    return (
+      <span className="rounded bg-wash px-2.5 py-1 text-xs font-medium text-muted">
+        {match.status === "FULL_TIME" ? "No score" : match.status.replace("_", " ").toLowerCase()}
+      </span>
+    );
   }
   return (
-    <span className="whitespace-nowrap font-mono text-sm font-semibold tabular-nums">
-      {home}–{away}
+    <span className="stat-figure whitespace-nowrap rounded bg-ink px-2.5 py-1 text-sm text-white">
+      {home}‑{away}
       {homePenalties !== null && awayPenalties !== null ? (
-        <span className="ml-1 text-xs font-normal text-muted">
-          ({homePenalties}–{awayPenalties} pens)
+        <span className="ml-1 text-[10px] font-normal text-white/70">
+          ({homePenalties}‑{awayPenalties}p)
         </span>
       ) : null}
     </span>
@@ -36,10 +53,8 @@ function Score({ match }: { match: Match }) {
 }
 
 export default async function MatchesPage(props: PageProps<"/matches">) {
-  // Next 16: searchParams is a Promise and must be awaited.
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
-
   const editionId = one(sp.editionId);
   const status = one(sp.status);
   const offset = Math.max(0, Number(one(sp.offset) ?? 0) || 0);
@@ -56,111 +71,85 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
     throw err;
   }
 
-  const buildHref = (patch: Record<string, string | number | undefined>) => {
-    const qs = new URLSearchParams();
-    const merged = { editionId, status, offset, ...patch };
-    for (const [k, v] of Object.entries(merged)) {
-      if (v !== undefined && v !== "" && !(k === "offset" && Number(v) === 0)) {
-        qs.set(k, String(v));
-      }
+  const href = (patch: Record<string, string | number | undefined>) => {
+    const q = new URLSearchParams();
+    for (const [k, v] of Object.entries({ editionId, status, offset, ...patch })) {
+      if (v !== undefined && v !== "" && !(k === "offset" && Number(v) === 0)) q.set(k, String(v));
     }
-    const s = qs.toString();
+    const s = q.toString();
     return s ? `/matches?${s}` : "/matches";
   };
 
-  const activeEdition = editions.find((e) => String(e.editionId) === editionId);
+  const active = editions.find((e) => String(e.editionId) === editionId);
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Matches</h1>
-        <p className="mt-1 text-sm text-muted">
-          {data.total.toLocaleString()} matches
-          {activeEdition ? ` in ${activeEdition.competition} ${activeEdition.season}` : ""}
-          {status ? ` · ${status.replaceAll("_", " ").toLowerCase()}` : ""}
-        </p>
-      </div>
+    <div>
+      <PageTitle
+        title="Matches"
+        sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""}`}
+      />
 
-      {/* Filters are plain links, so the page stays a server component and every
-          filtered view is a shareable URL. */}
-      <div className="space-y-2 text-xs">
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 text-muted">Competition</span>
-          <Link
-            href={buildHref({ editionId: undefined, offset: 0 })}
-            className={`rounded border px-2 py-1 ${!editionId ? "border-accent text-accent" : "border-border text-muted hover:text-foreground"}`}
-          >
-            All
-          </Link>
-          {editions
-            .filter((e) => e.matchCount >= 19)
-            .map((e) => (
-              <Link
-                key={e.editionId}
-                href={buildHref({ editionId: e.editionId, offset: 0 })}
-                className={`rounded border px-2 py-1 ${
-                  String(e.editionId) === editionId
-                    ? "border-accent text-accent"
-                    : "border-border text-muted hover:text-foreground"
-                }`}
-              >
-                {e.competition} {e.season.slice(0, 4)}
-              </Link>
-            ))}
-        </div>
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 text-muted">Status</span>
-          <Link
-            href={buildHref({ status: undefined, offset: 0 })}
-            className={`rounded border px-2 py-1 ${!status ? "border-accent text-accent" : "border-border text-muted hover:text-foreground"}`}
-          >
-            Any
-          </Link>
-          {STATUSES.map((s) => (
-            <Link
-              key={s}
-              href={buildHref({ status: s, offset: 0 })}
-              className={`rounded border px-2 py-1 ${
-                s === status ? "border-accent text-accent" : "border-border text-muted hover:text-foreground"
-              }`}
-            >
-              {s.replaceAll("_", " ").toLowerCase()}
-            </Link>
-          ))}
-        </div>
+      <div className="mb-5 space-y-2.5">
+        <ChipRow
+          label="Competition"
+          options={[
+            { value: undefined, label: "All" },
+            ...editions
+              .filter((e) => e.matchCount >= 19)
+              .slice(0, 7)
+              .map((e) => ({ value: String(e.editionId), label: `${e.competition} ${e.season.slice(0, 4)}` })),
+          ]}
+          activeValue={editionId}
+          hrefFor={(v) => href({ editionId: v, offset: 0 })}
+        />
+        <ChipRow
+          label="Status"
+          options={STATUSES}
+          activeValue={status}
+          hrefFor={(v) => href({ status: v, offset: 0 })}
+        />
       </div>
 
       {data.matches.length === 0 ? (
         <Empty>No matches match these filters.</Empty>
       ) : (
-        <ul className="divide-y divide-border rounded-lg border border-border">
-          {data.matches.map((m) => (
-            <li key={m.id} className="flex items-center gap-3 px-4 py-3 text-sm">
-              <span className="w-24 shrink-0 text-xs text-muted">
-                {formatKickoff(m.kickoffAt)}
-              </span>
-              <span className="flex min-w-0 flex-1 items-center justify-end gap-2">
-                <span className="truncate">{m.homeTeam.name}</span>
-                <TeamCrest name={m.homeTeam.name} size={18} />
-              </span>
-              <span className="w-20 shrink-0 text-center">
-                <Score match={m} />
-              </span>
-              <span className="flex min-w-0 flex-1 items-center gap-2">
-                <TeamCrest name={m.awayTeam.name} size={18} />
-                <span className="truncate">{m.awayTeam.name}</span>
-              </span>
-              <span className="hidden w-28 shrink-0 justify-end sm:flex">
-                {m.status !== "FULL_TIME" ? (
-                  <Badge>{m.status.replaceAll("_", " ")}</Badge>
-                ) : null}
-              </span>
-            </li>
+        <div className="space-y-5">
+          {byDay(data.matches).map(([day, list]) => (
+            <div key={day}>
+              <h2 className="display mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+                {day}
+              </h2>
+              <Card className="overflow-hidden">
+                <ul>
+                  {list.map((m) => (
+                    <li
+                      key={m.id}
+                      className="flex items-center gap-3 border-b border-line px-4 py-3 text-sm last:border-0"
+                    >
+                      <span className="flex min-w-0 flex-1 items-center justify-end gap-2">
+                        <span className="truncate font-medium">{m.homeTeam.name}</span>
+                        <Crest name={m.homeTeam.name} size={24} />
+                      </span>
+                      <span className="w-24 shrink-0 text-center">
+                        <Score match={m} />
+                      </span>
+                      <span className="flex min-w-0 flex-1 items-center gap-2">
+                        <Crest name={m.awayTeam.name} size={24} />
+                        <span className="truncate font-medium">{m.awayTeam.name}</span>
+                      </span>
+                      <span className="hidden w-40 shrink-0 truncate text-right text-xs text-muted lg:block">
+                        {m.competition.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
 
-      <div className="flex items-center justify-between text-sm">
+      <div className="mt-6 flex items-center justify-between text-sm">
         <span className="text-xs text-muted">
           {data.total === 0
             ? "0"
@@ -168,18 +157,12 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
         </span>
         <span className="flex gap-2">
           {offset > 0 ? (
-            <Link
-              href={buildHref({ offset: Math.max(0, offset - PAGE_SIZE) })}
-              className="rounded border border-border px-3 py-1.5 text-xs hover:border-accent"
-            >
+            <Link href={href({ offset: Math.max(0, offset - PAGE_SIZE) })} className="rounded-full border border-line bg-paper px-4 py-1.5 text-xs font-semibold hover:border-ink">
               Previous
             </Link>
           ) : null}
           {offset + PAGE_SIZE < data.total ? (
-            <Link
-              href={buildHref({ offset: offset + PAGE_SIZE })}
-              className="rounded border border-border px-3 py-1.5 text-xs hover:border-accent"
-            >
+            <Link href={href({ offset: offset + PAGE_SIZE })} className="rounded-full border border-line bg-paper px-4 py-1.5 text-xs font-semibold hover:border-ink">
               Next
             </Link>
           ) : null}

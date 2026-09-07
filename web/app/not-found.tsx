@@ -2,13 +2,16 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="rounded-md border border-dashed border-border px-4 py-12 text-center">
-      <p className="font-medium">Not in the vault.</p>
-      <p className="mt-1 text-sm text-muted">
-        That competition edition doesn’t exist.
+    <div className="rounded-xl border border-line bg-paper px-6 py-16 text-center">
+      <p className="display text-xl font-extrabold">Not in the vault</p>
+      <p className="mt-1.5 text-sm text-muted">
+        That page doesn’t exist, or the competition hasn’t been published yet.
       </p>
-      <Link href="/" className="mt-4 inline-block text-sm text-accent underline underline-offset-2">
-        Browse competitions
+      <Link
+        href="/"
+        className="mt-5 inline-block rounded-full bg-ink px-5 py-2 text-sm font-semibold text-white"
+      >
+        Back to stats
       </Link>
     </div>
   );

@@ -25,7 +25,7 @@ export default async function AdminFlagsPage(props: PageProps<'/admin/flags'>) {
   } catch (err) {
     if (err instanceof AdminApiError && err.status === 401) redirect('/admin/login');
     if (err instanceof AdminApiError) {
-      return <p className="text-sm text-red-600 dark:text-red-400">{err.message}</p>;
+      return <p className="text-sm text-red-600">{err.message}</p>;
     }
     throw err;
   }

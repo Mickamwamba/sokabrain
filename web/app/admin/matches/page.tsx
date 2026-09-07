@@ -28,7 +28,7 @@ export default async function AdminMatchesPage(props: PageProps<'/admin/matches'
   } catch (err) {
     if (err instanceof AdminApiError && err.status === 401) redirect('/admin/login');
     if (err instanceof AdminApiError) {
-      return <p className="text-sm text-red-600 dark:text-red-400">{err.message}</p>;
+      return <p className="text-sm text-red-600">{err.message}</p>;
     }
     throw err;
   }
@@ -119,7 +119,7 @@ export default async function AdminMatchesPage(props: PageProps<'/admin/matches'
                   </span>
                   <span className="min-w-0 flex-1 truncate text-right">{m.homeTeam.name}</span>
                   <span
-                    className={`w-14 shrink-0 text-center font-mono text-sm ${noScore ? 'text-red-600 dark:text-red-400' : ''}`}
+                    className={`w-14 shrink-0 text-center font-mono text-sm ${noScore ? 'text-red-600' : ''}`}
                   >
                     {noScore ? '– –' : `${m.homeScore}–${m.awayScore}`}
                   </span>

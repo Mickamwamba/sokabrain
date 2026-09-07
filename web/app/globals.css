@@ -1,37 +1,57 @@
 @import "tailwindcss";
 
+/*
+ * One light theme, stated plainly. No dark mode — the palette is fixed so a
+ * stat card looks the same for every fan on every device.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #14181f;
-  --muted: #5b6472;
-  --border: #e4e7ec;
-  --surface: #f7f8fa;
-  --accent: #0b7a4b;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d1014;
-    --foreground: #e8eaed;
-    --muted: #98a1af;
-    --border: #242a33;
-    --surface: #151a21;
-    --accent: #3ddc91;
-  }
+  --ink:        #0b1b2b;   /* headers, primary text */
+  --ink-soft:   #16324a;   /* raised surfaces on ink */
+  --paper:      #ffffff;
+  --wash:       #f2f5f8;   /* page background */
+  --line:       #dfe6ee;
+  --muted:      #5d7080;
+  --brand:      #00875a;   /* primary accent */
+  --brand-dark: #006b48;
+  --gold:       #f0a202;   /* leader / highlight */
+  --loss:       #c0392b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-wash: var(--wash);
+  --color-line: var(--line);
   --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-gold: var(--gold);
+  --color-loss: var(--loss);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-archivo);
 }
 
+html { color-scheme: light; }
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--wash);
+  color: var(--ink);
+}
+
+/* Stat figures line up in columns and don't jitter as they change. */
+.nums { font-variant-numeric: tabular-nums; }
+
+/* Big display numbers: the thing a fan's eye should land on first. */
+.stat-figure {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }

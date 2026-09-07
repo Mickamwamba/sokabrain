@@ -18,9 +18,25 @@ render a "can't reach the API" message rather than a stack trace.
 
 | Route | Shows |
 |---|---|
-| `/` | competitions grouped by country, editions with match counts |
-| `/editions/[id]` | league table + top scorers for one edition |
-| `/matches` | paginated match list; `?editionId=`, `?status=`, `?offset=` |
+| `/` | stats dashboard: headline totals, top scorers, top clubs, latest results |
+| `/players` | player leaderboard; `?sort=goals\|appearances\|yellowCards\|redCards`, `?position=`, `?editionId=`, `?teamId=` |
+| `/clubs` | club leaderboard; `?sort=points\|goalsFor\|cleanSheets\|winRate`, `?editionId=` |
+| `/head-to-head` | two-club comparison; `?teamA=&teamB=` |
+| `/competitions` | published editions grouped by country |
+| `/editions/[id]` | table + top scorers for one edition |
+| `/matches` | results grouped by day; `?editionId=`, `?status=`, `?offset=` |
+
+## Design
+
+- **Light only, no dark mode.** One fixed palette in `globals.css` so a stat card
+  looks identical everywhere. There are no `dark:` variants anywhere — don't
+  reintroduce them without doing the whole palette.
+- **Archivo for display, Inter for body.** Archivo carries the heavy weights the
+  stat figures need; Inter keeps dense tables readable small. Stat numbers use
+  `.stat-figure` and tables use `.nums` for tabular figures so columns don't
+  jitter.
+- **Filters are links, not client state**, so every filtered view is a URL a fan
+  can share and every page stays a server component.
 
 ## Notes for whoever picks this up
 

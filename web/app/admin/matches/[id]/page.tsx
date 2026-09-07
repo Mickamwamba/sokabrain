@@ -32,7 +32,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
     if (err instanceof AdminApiError && err.status === 401) redirect('/admin/login');
     if (err instanceof AdminApiError && err.status === 404) notFound();
     if (err instanceof AdminApiError) {
-      return <p className="text-sm text-red-600 dark:text-red-400">{err.message}</p>;
+      return <p className="text-sm text-red-600">{err.message}</p>;
     }
     throw err;
   }
@@ -140,7 +140,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
                 </span>
                 <span className="w-32 shrink-0 text-xs">{e.type.replaceAll('_', ' ')}</span>
                 <span className="min-w-0 flex-1 truncate">
-                  {e.playerName ?? <span className="text-red-600 dark:text-red-400">no player recorded</span>}
+                  {e.playerName ?? <span className="text-red-600">no player recorded</span>}
                 </span>
                 <span className="w-36 shrink-0 truncate text-xs text-muted">{e.teamName ?? '—'}</span>
                 <ActionForm
