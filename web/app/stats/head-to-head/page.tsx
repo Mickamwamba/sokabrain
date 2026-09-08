@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { api, ApiError, type HeadToHead, type TeamRefLite } from "@/lib/api";
 import { Card, CardHead, Crest, Empty } from "@/components/ui";
+import { AllTimeBadge } from "@/components/season-select";
 
 export const dynamic = "force-dynamic";
 
@@ -83,9 +84,13 @@ export default async function HeadToHeadPage(props: PageProps<"/stats/head-to-he
 
   return (
     <div>
-      <p className="mb-4 text-sm text-muted">
-        Every recorded meeting between two clubs, across all published competitions.
-      </p>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-muted">
+          Every recorded meeting between two clubs. There is no season selector here on
+          purpose — two clubs meet twice a season, so a single season is not a record.
+        </p>
+        <AllTimeBadge />
+      </div>
 
       {h2h ? (
         <div className="mb-6 space-y-5">

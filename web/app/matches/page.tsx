@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import { ChipRow, Empty, PageTitle } from "@/components/ui";
+import { ALL_TIME } from "@/lib/season";
+import { SeasonSelect } from "@/components/season-select";
 import { MatchDays } from "@/components/match-list";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +18,8 @@ const STATUSES = [
 export default async function MatchesPage(props: PageProps<"/matches">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
-  const editionId = one(sp.editionId);
+  const seasonParam = one(sp.editionId);
+  const editionId = seasonParam === ALL_TIME ? undefined : seasonParam;
   const status = one(sp.status);
   const offset = Math.max(0, Number(one(sp.offset) ?? 0) || 0);
 
@@ -48,6 +51,17 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
       <PageTitle
         title="All matches"
         sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""} · newest first`}
+        right={
+          <SeasonSelect
+            seasons={editions
+              .slice()
+              .sort((a, b) => b.season.localeCompare(a.season))
+              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+            value={editionId ?? ALL_TIME}
+            allowAllTime
+            clears={["offset"]}
+          />
+        }
       />
 
       <p className="mb-5 text-sm text-muted">
@@ -59,21 +73,6 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
       </p>
 
       <div className="mb-5 space-y-2.5">
-        <ChipRow
-          label="Season"
-          options={[
-            { value: undefined, label: "All" },
-            // Every season, newest first, labelled the way the rest of the site
-            // labels them. The old list showed seven in load order and called
-            // 2018/19 "Premier League 2018".
-            ...editions
-              .slice()
-              .sort((a, b) => b.season.localeCompare(a.season))
-              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") })),
-          ]}
-          activeValue={editionId}
-          hrefFor={(v) => href({ editionId: v, offset: 0 })}
-        />
         <ChipRow
           label="Status"
           options={STATUSES}

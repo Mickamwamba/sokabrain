@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { api, ApiError, type Edition } from "@/lib/api";
-import { Card, ChipRow, Crest, Empty, PageTitle } from "@/components/ui";
+import { Card, Crest, Empty, PageTitle } from "@/components/ui";
+import { SeasonSelect } from "@/components/season-select";
 import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
 import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
 
@@ -100,6 +101,11 @@ export default async function MatchesHub(props: PageProps<"/">) {
       ? await api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
       : { matches: [] as (typeof list)["matches"] };
 
+  const seasonOptions = editions
+    .slice()
+    .sort((a, b) => b.season.localeCompare(a.season))
+    .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }));
+
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
     const merged = { mode, date, round, editionId: String(editionId), ...patch };
@@ -116,8 +122,16 @@ export default async function MatchesHub(props: PageProps<"/">) {
         title="Matches"
         sub={
           edition
-            ? `${edition.competition} · ${edition.season}${context.inSeason && editionId === context.editionId ? " · in progress" : ""}`
+            ? `${edition.competition}${context.inSeason && editionId === context.editionId ? " · season in progress" : ""}`
             : undefined
+        }
+        right={
+          <SeasonSelect
+            seasons={seasonOptions}
+            value={String(editionId)}
+            // A day or a round belongs to the season it came from.
+            clears={["date", "round"]}
+          />
         }
       />
 
@@ -128,15 +142,6 @@ export default async function MatchesHub(props: PageProps<"/">) {
       ) : null}
 
       <div className="mb-4 space-y-3">
-        <ChipRow
-          label="Season"
-          options={editions
-            .slice()
-            .sort((a, b) => b.season.localeCompare(a.season))
-            .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
-          activeValue={String(editionId)}
-          hrefFor={(v) => `/?editionId=${v}&mode=${mode}`}
-        />
         <ModeTabs
           mode={mode}
           byDateHref={`/?editionId=${editionId}&mode=date`}

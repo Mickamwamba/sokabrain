@@ -154,11 +154,23 @@ export function DataNote({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function PageTitle({ title, sub }: { title: string; sub?: string }) {
+export function PageTitle({
+  title,
+  sub,
+  /** Sits opposite the title — where the season selector goes on every page. */
+  right,
+}: {
+  title: string;
+  sub?: string;
+  right?: React.ReactNode;
+}) {
   return (
-    <div className="mb-6">
-      <h1 className="display text-3xl font-extrabold tracking-tight">{title}</h1>
-      {sub ? <p className="mt-1.5 text-sm text-muted">{sub}</p> : null}
+    <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h1 className="display text-3xl font-extrabold tracking-tight">{title}</h1>
+        {sub ? <p className="mt-1.5 text-sm text-muted">{sub}</p> : null}
+      </div>
+      {right ? <div className="pt-1">{right}</div> : null}
     </div>
   );
 }

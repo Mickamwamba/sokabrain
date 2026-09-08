@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition } from "@/lib/api";
 import { Card, ChipRow, Crest, DataNote, Empty, Rank, StatTile } from "@/components/ui";
+import { resolveSeason } from "@/lib/season";
+import { AllTimeBadge, SeasonSelect } from "@/components/season-select";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +19,8 @@ export default async function ClubsPage(props: PageProps<"/stats/clubs">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const sort = one(sp.sort);
-  const editionId = one(sp.editionId);
+  const season = await resolveSeason(one(sp.editionId));
+  const editionId = season.editionId === undefined ? undefined : String(season.editionId);
 
   let clubs: ClubStat[];
   let editions: Edition[];
@@ -38,11 +41,11 @@ export default async function ClubsPage(props: PageProps<"/stats/clubs">) {
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ sort, editionId, ...patch })) {
+    for (const [k, v] of Object.entries({ sort, editionId: season.value, ...patch })) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
-    return s ? `/clubs?${s}` : "/stats/clubs";
+    return s ? `/stats/clubs?${s}` : "/stats/clubs";
   };
 
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
@@ -52,11 +55,22 @@ export default async function ClubsPage(props: PageProps<"/stats/clubs">) {
 
   return (
     <div>
-      <p className="mb-4 text-sm text-muted">
-        {activeEdition
-          ? `${activeEdition.competition} ${activeEdition.season}`
-          : "Combined across every published competition"}
-      </p>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-muted">
+          {activeEdition
+            ? `${activeEdition.competition} ${activeEdition.season}`
+            : "Combined across every published competition"}
+        </p>
+        <SeasonSelect
+          seasons={editions
+            .slice()
+            .sort((a, b) => b.season.localeCompare(a.season))
+            .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+          value={season.value}
+          allowAllTime
+        />
+      </div>
+      {season.allTime ? <div className="mb-4"><AllTimeBadge /></div> : null}
 
       {leader && mostGoals && bestDefence ? (
         <div className="mb-5 grid gap-3 sm:grid-cols-3">
@@ -72,18 +86,6 @@ export default async function ClubsPage(props: PageProps<"/stats/clubs">) {
 
       <div className="mb-5 space-y-2.5">
         <ChipRow label="Rank by" options={SORTS} activeValue={sort} hrefFor={(v) => href({ sort: v })} />
-        <ChipRow
-          label="Season"
-          options={[
-            { value: undefined, label: "All time" },
-            ...editions
-              .filter((e) => e.matchCount >= 19)
-              .slice(0, 6)
-              .map((e) => ({ value: String(e.editionId), label: `${e.competition} ${e.season.slice(0, 4)}` })),
-          ]}
-          activeValue={editionId}
-          hrefFor={(v) => href({ editionId: v })}
-        />
       </div>
 
       {sorted.length === 0 ? (

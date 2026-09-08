@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition, type Overview, type PlayerStat } from "@/lib/api";
 import { Card, CardHead, Crest, Empty, Rank } from "@/components/ui";
+import { AllTimeBadge } from "@/components/season-select";
 
 export const dynamic = "force-dynamic";
 
@@ -50,8 +51,13 @@ export default async function StatsHome() {
   const topClubs = clubs.slice(0, 6);
 
   return (
-    <div className="space-y-8">
-      {/* Hero: what the vault holds, stated in one line and six numbers. */}
+    <div className="space-y-5">
+      {/* Hero: what the vault holds, stated in one line and six numbers.
+          There is no season selector here because every figure on this tab is
+          the whole archive; the badge says so rather than leaving it implied. */}
+      <div className="flex justify-end">
+        <AllTimeBadge />
+      </div>
       <section className="overflow-hidden rounded-xl bg-ink px-6 py-8 text-white">
         <h1 className="display max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl">
           East African football, counted properly.

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError, type Edition } from "@/lib/api";
-import { Card, CardHead, ChipRow, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
+import { Card, CardHead, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
+import { SeasonSelect } from "@/components/season-select";
 
 export const dynamic = "force-dynamic";
 
@@ -62,19 +63,19 @@ export default async function TablePage(props: PageProps<"/table">) {
 
   return (
     <div>
-      <PageTitle title="Table" sub={`${edition.competition} · ${edition.season}`} />
-
-      <div className="mb-5">
-        <ChipRow
-          label="Season"
-          options={editions
-            .slice()
-            .sort((a, b) => b.season.localeCompare(a.season))
-            .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
-          activeValue={String(editionId)}
-          hrefFor={(v) => `/table?editionId=${v}`}
-        />
-      </div>
+      <PageTitle
+        title="Table"
+        sub={edition.competition}
+        right={
+          <SeasonSelect
+            seasons={editions
+              .slice()
+              .sort((a, b) => b.season.localeCompare(a.season))
+              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+            value={String(editionId)}
+          />
+        }
+      />
 
       <div className="mb-5 flex flex-wrap gap-2 text-sm">
         <Link
@@ -97,8 +98,11 @@ export default async function TablePage(props: PageProps<"/table">) {
         </Link>
       </div>
 
+      {/* Deliberately not a <Card>: Card hard-codes bg-paper, and a bg-ink
+          passed through className loses to it in the generated CSS, which
+          rendered this banner as white text on a white background. */}
       {champion ? (
-        <Card className="mb-5 flex items-center gap-4 bg-ink px-6 py-5 text-white">
+        <div className="mb-5 flex items-center gap-4 rounded-xl bg-ink px-6 py-5 text-white">
           <Crest name={champion.teamName} size={44} />
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-white/50">
@@ -112,7 +116,7 @@ export default async function TablePage(props: PageProps<"/table">) {
               Points
             </p>
           </div>
-        </Card>
+        </div>
       ) : null}
 
       <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">

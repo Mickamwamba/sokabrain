@@ -126,6 +126,14 @@ explicitly out of scope — see "Non-goals" below).
   unless a player has at least as many recorded appearances as goals — lineups
   cover ~600 of 1,639 players, so the raw ratio measured missing data, not form
   (it read "4.6 goals per game" for the top scorer before the fix).
+- **Season is picked from one dropdown, top right, on every page.** Nineteen
+  seasons as chips filled three lines and pushed the content below the fold.
+  `components/season-select.tsx` is the single control; `lib/season.ts`
+  resolves the `editionId` param — **absent means the season in play**, and
+  `editionId=all` is an explicit all-time value. Statistics pages offer All
+  time and show `<AllTimeBadge/>` when it is active; Matches and Table do not,
+  because a fixture list and a table are per-season by nature. Head to head is
+  all-time only, badged, since two clubs meet twice a season.
 - **The public site is organised around three things, not six.** Nav is
   **Matches · Table · Statistics**. `/` is the fixture hub (season picker, date
   strip, round browsing, next-match card); `/matches/[id]` is a full match page

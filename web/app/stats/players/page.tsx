@@ -6,6 +6,8 @@ import {
   type PlayerStatsCoverage,
   type TeamRefLite,
 } from "@/lib/api";
+import { ALL_TIME, resolveSeason } from "@/lib/season";
+import { AllTimeBadge, SeasonSelect } from "@/components/season-select";
 import { Card, ChipRow, Crest, DataNote, Empty, Rank } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
@@ -30,8 +32,9 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const sort = one(sp.sort);
   const position = one(sp.position);
-  const editionId = one(sp.editionId);
   const teamId = one(sp.teamId);
+  const season = await resolveSeason(one(sp.editionId));
+  const editionId = season.editionId === undefined ? undefined : String(season.editionId);
 
   let players: PlayerStat[];
   let coverage: PlayerStatsCoverage;
@@ -54,13 +57,17 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ sort, position, editionId, teamId, ...patch })) {
+    for (const [k, v] of Object.entries({ sort, position, editionId: season.value, teamId, ...patch })) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
     return s ? `/players?${s}` : "/stats/players";
   };
 
+  const seasonOptions = editions
+    .slice()
+    .sort((a, b) => b.season.localeCompare(a.season))
+    .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }));
   const activeTeam = teams.find((t) => String(t.id) === teamId);
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
   // Offering "sort by appearances" while appearances are suppressed would rank
@@ -79,9 +86,17 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
 
   return (
     <div>
-      <p className="mb-4 text-sm text-muted">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-muted">
         {`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
-      </p>
+        </p>
+        <SeasonSelect
+          seasons={seasonOptions}
+          value={season.value}
+          allowAllTime
+        />
+      </div>
+      {season.allTime ? <div className="mb-4"><AllTimeBadge /></div> : null}
 
       <div className="mb-5 space-y-2.5">
         <ChipRow
@@ -91,18 +106,6 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
           hrefFor={(v) => href({ sort: v })}
         />
         <ChipRow label="Position" options={POSITIONS} activeValue={position} hrefFor={(v) => href({ position: v })} />
-        <ChipRow
-          label="Season"
-          options={[
-            { value: undefined, label: "All time" },
-            ...editions
-              .filter((e) => e.matchCount >= 19)
-              .slice(0, 6)
-              .map((e) => ({ value: String(e.editionId), label: `${e.competition} ${e.season.slice(0, 4)}` })),
-          ]}
-          activeValue={editionId}
-          hrefFor={(v) => href({ editionId: v })}
-        />
       </div>
 
       {players.length === 0 ? (
