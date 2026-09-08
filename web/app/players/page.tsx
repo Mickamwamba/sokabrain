@@ -141,7 +141,7 @@ export default async function PlayersPage(props: PageProps<"/players">) {
                     <td className="stat-figure px-2 py-2.5 text-right text-base">{p.goals}</td>
                     <td className="px-2 py-2.5 text-right nums text-muted">{p.penalties}</td>
                     <td className="px-2 py-2.5 text-right nums text-muted">
-                      {coverage.assistsRecorded > 0 ? p.assists : "—"}
+                      {p.assists ?? "—"}
                     </td>
                     <td className="px-2 py-2.5 text-right nums text-muted">
                       {p.appearances && p.appearances > 0 ? p.appearances : "—"}
@@ -178,7 +178,8 @@ export default async function PlayersPage(props: PageProps<"/players">) {
             <>
               Assists are recorded from {coverage.seasonsWithAssists} of{" "}
               {coverage.seasonsInScope} seasons in view — the source only began naming
-              them in 2023/24 — and the record does not say which goal each one created.{" "}
+              them in 2023/24 — and the record does not say which goal each one created. A player who never
+              featured in one of those seasons shows “—”, not zero.{" "}
             </>
           ) : (
             <>No season in view has assists recorded, so that column reads “—”. </>

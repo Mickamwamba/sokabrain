@@ -149,7 +149,8 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
-  assists: number;
+  // Null for a player with no record in a season that logs assists at all.
+  assists: number | null;
   // Null means the record is too thin to state a number, not zero.
   appearances: number | null;
   yellowCards: number | null;

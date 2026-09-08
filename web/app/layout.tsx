@@ -61,9 +61,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-muted">
             <p className="font-medium text-ink">Sokabrain</p>
             <p className="mt-1 max-w-2xl">
-              Records migrated from SokaFC (2017–2020). Only competitions reviewed and
-              released by an editor appear here, and each page states what its data is
-              missing rather than filling the gaps with guesses.
+              Tanzania Premier League, 2008/09 to 2026/27, built from the SokaFC archive
+              and reconciled against the official league site, RSSSF and WhoScored. Only
+              competitions reviewed and released by an editor appear here, and each page
+              states what its data is missing rather than filling the gaps with guesses.
             </p>
             <Link href="/admin" className="mt-3 inline-block text-muted hover:text-ink">
               Admin

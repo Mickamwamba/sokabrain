@@ -96,7 +96,12 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
-  assists: number;
+  /**
+   * Null for a player with no record in any season that records assists at all.
+   * Assists only exist from 2023/24, so a 0 for someone who played 2017-2020
+   * would claim they never assisted when nobody was writing assists down.
+   */
+  assists: number | null;
   /**
    * Null where the underlying record is too thin to state a number. A zero here
    * would be read as "never happened" when the truth is "never recorded".
@@ -174,15 +179,24 @@ export async function playerStats(opts: {
 
   const orderBy = {
     goals: Prisma.sql`goals DESC, appearances ASC`,
-    assists: Prisma.sql`assists DESC, goals DESC`,
+    assists: Prisma.sql`assists DESC NULLS LAST, goals DESC`,
     appearances: Prisma.sql`appearances DESC, goals DESC`,
     yellowCards: Prisma.sql`"yellowCards" DESC, goals DESC`,
     redCards: Prisma.sql`"redCards" DESC, "yellowCards" DESC`,
   }[sort];
 
   const rows = await prisma.$queryRaw<PlayerStat[]>(Prisma.sql`
-    WITH ev AS (
-      SELECT e.player_id, e.team_id, e.type, e.match_id
+    WITH assist_editions AS (
+      -- Editions where assists were recorded at all. A player who never
+      -- features in one of these has an unknown assist count, not zero.
+      SELECT DISTINCT m.competition_edition_id AS id
+      FROM match_events e
+      JOIN matches m ON m.id = e.match_id
+      WHERE e.type = 'ASSIST'
+    ),
+    ev AS (
+      SELECT e.player_id, e.team_id, e.type, e.match_id,
+             m.competition_edition_id AS edition_id
       FROM match_events e
       JOIN matches m ON m.id = e.match_id
       WHERE m.competition_edition_id IN (${publishedEditions})
@@ -216,6 +230,7 @@ export async function playerStats(opts: {
         count(*) FILTER (WHERE type IN ('GOAL','PENALTY_GOAL'))::int AS goals,
         count(*) FILTER (WHERE type = 'PENALTY_GOAL')::int           AS penalties,
         count(*) FILTER (WHERE type = 'ASSIST')::int                  AS assists,
+        bool_or(edition_id IN (SELECT id FROM assist_editions))       AS "assistsKnown",
         count(*) FILTER (WHERE type = 'YELLOW_CARD')::int            AS "yellowCards",
         count(*) FILTER (WHERE type = 'RED_CARD')::int               AS "redCards",
         mode() WITHIN GROUP (ORDER BY team_id)                       AS team_id
@@ -226,7 +241,9 @@ export async function playerStats(opts: {
       t.id AS "teamId", t.name AS "teamName",
       COALESCE(a.goals, 0) AS goals,
       COALESCE(a.penalties, 0) AS penalties,
-      (COALESCE(a.assists, 0) + COALESCE(la.n, 0)) AS assists,
+      CASE WHEN COALESCE(a."assistsKnown", FALSE) OR COALESCE(la.n, 0) > 0
+           THEN COALESCE(a.assists, 0) + COALESCE(la.n, 0)
+           ELSE NULL END AS assists,
       COALESCE(ap.appearances, 0) AS appearances,
       COALESCE(a."yellowCards", 0) AS "yellowCards",
       COALESCE(a."redCards", 0) AS "redCards",
