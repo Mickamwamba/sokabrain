@@ -250,3 +250,70 @@ Tanzanian local time, and the migration stored them as UTC. All 1,549 matches
 with a real time were shifted back three hours; five "time unknown" placeholders
 at 00:00–01:00 were left alone. No kickoff date moved, so every reconciliation
 recorded above still holds. Full rationale is in the schema doc.
+
+
+---
+
+## whoscored.com as a third source (2026-09-08)
+
+Added while ingesting the full league history (see `../ingestion/README.md`).
+WhoScored covers 2008/09 to 2026/27 but **skips 2017/2018**, so it overlaps two
+of the vault's three reconciled seasons.
+
+### It agrees with the vault completely on scores
+
+| | fixtures joined | scores disagreeing |
+|---|---|---|
+| 2018/19 | 376 | **0** |
+| 2019/20 | 380 | **0** |
+
+Zero. That, plus zero conflicts against the official league site over another
+986 matches, is what made WhoScored trustworthy enough to accept alone for
+2008/09–2016/17, where no second source exists.
+
+### It settled all four open date flags
+
+Flags 24–27 were raised because RSSSF disagreed with the vault about a kickoff
+date and there was no third source to break the tie. WhoScored agrees with
+RSSSF against us on **all four**, so all four are closed and the dates
+corrected:
+
+| match | vault held | RSSSF and WhoScored both say |
+|---|---|---|
+| 365 Stand United v Tanzania Prisons | 2018-09-28 | 2018-09-27 |
+| 442 Lipuli v Biashara United | 2018-12-02 | 2018-12-03 |
+| 522 Coastal Union v African Lyon | 2019-01-19 | 2019-01-20 |
+| 440 Mtibwa Sugar v Singida United | 2019-01-22 | **2019-03-12** |
+
+Match 440 was the 49-day disagreement. The earlier note that our date looked
+like a deliberate reschedule still stands — it was one — but whoever entered it
+was wrong, and two independent compilers say so.
+
+### And it exposed 82 wrong dates in 2019/20
+
+A bigger find. RSSSF and WhoScored agree with **each other** on 373 of that
+season's 380 kickoff dates, and the vault disagreed with the agreed date on 82
+of them.
+
+The season was suspended for COVID in March 2020, resumed in June and finished
+on 26 July. Both sources place the resumed fixtures in June and July, and
+neither has a single match in April or May. **The vault had 60 matches inside
+the suspension**, including one on 2019-05-13, three months before the season
+began.
+
+The cause: the 2019/20 pass reconciled *scores* against RSSSF and filled them
+correctly, but never corrected the kickoff dates on the rows it filled, so
+those matches kept their legacy dates. The season's own write-up recorded the
+June restart while the data said May, and nothing checked one against the
+other.
+
+86 dates were corrected in total (82 in 2019/20, 4 in 2018/19), applied as
+`fixes/2026-09-08_kickoff_dates.sql`. Only the date moved; the time of day was
+left alone. Seven dates where the two sources disagree with each other were
+left alone too — the vault already sides with one of them in every case.
+
+### Where WhoScored is wrong
+
+Two 2018/19 fixtures are the wrong way round on it — `Kagera Sugar 0-0 Mbao`
+and `Ndanda 1-3 Mwadui` — where RSSSF and the vault agree with each other. Its
+home/away is not reliable on its own, so orientation is decided by majority.

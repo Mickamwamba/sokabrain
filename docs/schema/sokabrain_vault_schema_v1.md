@@ -482,3 +482,49 @@ still hold. The statement is in `docs/reconciliation/fixes/`.
 Ingestion code must not reintroduce this: a provider that publishes UTC (as
 API-Football does) is already correct and needs no shift, whereas a scraped
 local fixture list needs its zone applied explicitly.
+
+
+---
+
+## Addendum: the 2008–2027 ingestion (2026-09-08)
+
+Sixteen new editions of the Tanzania Premier League were loaded from
+`ligikuu.co.tz` and `whoscored.com`. Both are registered in `data_sources`, and
+every match, team and player row carries its `entity_source_map` provenance —
+matches from both sources carry one row per source, which is what makes the
+cross-source agreement auditable after the fact.
+
+Three schema-level notes:
+
+### `competition_edition_teams` is no longer empty
+
+It was empty for every migrated edition, and the read API worked around that by
+deriving participants from `matches`. The ingestion populates it, and the three
+migrated editions were backfilled from their own fixtures, so the column now
+means the same thing in every season. `num_teams` was filled in the same pass.
+The derivation in the read API still works and was left as it is.
+
+### Performance rows are stints, not lineups
+
+The official site records a per-player row only for players who did something in
+the match — about four a side's worth per fixture, never a full eleven. Loading
+those as `match_lineups` would have invented appearances, and the public site
+suppresses goals-per-appearance based on appearance counts, so it would have
+produced exactly the misleading ratio that suppression exists to prevent
+(principle 6).
+
+They are loaded as `player_team_stints` instead, which is what the evidence
+actually supports: this player turned out for this club, between the first and
+last date we have him playing. **A stint written this way is a floor on the real
+spell, not a transfer record** — the sources carry no transfer dates, and
+`transfer_type` is left NULL.
+
+### Early seasons have scores but no events
+
+2008/09 through 2022/23 have complete scores and no `match_events` at all,
+because WhoScored publishes no goalscorers and the official site's event log
+only starts in 2023/24. This is a source limit, not a gap to be filled by
+derivation: **do not generate derived goal events for these seasons.** The
+existing derived rows (`detail->>'derived' = 'score'`) exist only for 2019/20,
+where a verified score made the team attributable; here the same trick would add
+5,000 rows asserting little and blocking a real scorer feed later.

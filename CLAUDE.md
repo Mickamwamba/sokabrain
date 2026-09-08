@@ -126,11 +126,24 @@ explicitly out of scope — see "Non-goals" below).
   unless a player has at least as many recorded appearances as goals — lineups
   cover ~600 of 1,639 players, so the raw ratio measured missing data, not form
   (it read "4.6 goals per game" for the top scorer before the fix).
-- **Public scope is now Tanzania Premier League only** — its three seasons
-  (2017/18, 2018/19, 2019/20) are published and everything else is hidden. The
-  current work is fixing TPL data season by season, **starting with 2017/18**
-  (edition 1: 240 matches, 42 with no score, 42 with no event log, 42 goals
-  with no scorer).
+- **Public scope is Tanzania Premier League only.** Its three original seasons
+  (2017/18, 2018/19, 2019/20) are published; everything else is hidden.
+- **The full league history is now in the vault: 19 seasons, 2008/09 to
+  2026/27, 4,380 matches.** Ingested 2026-09-08 from two new sources — see
+  `docs/ingestion/README.md` for the pipeline and the judgement calls.
+  - `ligikuu.co.tz` (official) runs SportsPress, whose **REST API is open** at
+    `/wp-json/sportspress/v2/`. It has goalscorers with minutes, and covers
+    2020/21 onward (a season earlier than expected).
+  - `whoscored.com` covers 2008/09–2026/27 but **skips 2017/18**, and has
+    fixtures and scores only, no scorers. It needs a real browser: Cloudflare
+    403s plain HTTP. The fixture feed is `/tournaments/{stageId}/data/?d=YYYYMM`.
+  - **Zero score conflicts in 1,742 cross-checked matches** (both sources vs the
+    vault, and against each other). That is what justified accepting WhoScored
+    alone for 2008/09–2016/17, where there is no second source.
+  - **The 16 new editions are all unpublished.** Nothing reaches the public site
+    until someone publishes it in the dashboard.
+  - Early seasons have no event log because neither source has one — not
+    because anything was dropped.
 - **Admin restructured around competitions.** Left sidebar nav; a searchable
   competitions list with "add competition"; and a competition page where you
   pick a season and get its completeness stats, detected issues, publish
@@ -139,9 +152,13 @@ explicitly out of scope — see "Non-goals" below).
   `GET /api/admin/reference`.
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, a handful of
-  duplicate lineup rows, and kickoff times stored three hours late (legacy
-  local time written as UTC). Full detail is in the schema doc's audit
-  section.
+  duplicate lineup rows, kickoff times stored three hours late (legacy local
+  time written as UTC), and 86 wrong kickoff dates — 82 of them in 2019/20,
+  where the COVID-restart fixtures had been left on their legacy dates, inside
+  the suspension. Full detail is in the schema doc's audit section.
+- `competition_edition_teams` **is now populated for every Premier League
+  edition**, including the three migrated ones (backfilled from their
+  fixtures). The old note that it is always empty no longer holds.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.
