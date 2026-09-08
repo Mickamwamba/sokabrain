@@ -317,3 +317,47 @@ left alone too — the vault already sides with one of them in every case.
 Two 2018/19 fixtures are the wrong way round on it — `Kagera Sugar 0-0 Mbao`
 and `Ndanda 1-3 Mwadui` — where RSSSF and the vault agree with each other. Its
 home/away is not reliable on its own, so orientation is decided by majority.
+
+
+---
+
+## Round numbers, from RSSSF's round-by-round pages (2026-09-08)
+
+Neither WhoScored nor the official site publishes a round number, so 16 of the
+19 seasons had none and could not be browsed by matchday. RSSSF does, in plain
+text, for most seasons — `rsssf.org/tablest/tanz<end-year>.html`.
+
+**2,577 of 4,380 matches now carry a real round.** Ten seasons are at 97-100%.
+
+### The join is the filter, and the score is the gate
+
+The parse does not need to be clean. A parsed line that does not correspond to a
+real fixture is simply dropped, so table rows and stray text cost nothing. On
+top of that, a round is accepted **only from a row whose score also agrees with
+the vault** — which rejects a confidently-wrong join rather than trusting a
+club-name alias.
+
+That second rule earned its keep immediately: 46 rows were rejected, 40 of them
+because RSSSF's **"Singida BS" means Singida Big Stars (now Fountain Gate) in
+some seasons and Singida Black Stars in others**. No alias table can express an
+ambiguity that changes by season; the score gate throws those rows out by itself.
+
+The same pages also carry the **cup**, with its own "Round 1", "Round 2"
+headings further down. Read straight through, that mixes 133 cup ties into the
+league. The league is the first ascending run of rounds, so parsing stops as
+soon as a round number goes backwards.
+
+### What is still missing, and why nothing was invented
+
+2008/09, 2011/12 and 2026/27 have no RSSSF round page, and 2020/21 only reaches
+round 12.
+
+Rounds could be *derived* — matchday = one more than the most games either club
+has already played — but measured against the three seasons whose real rounds we
+already have, that is **72-98% accurate**, and a postponed fixture lands in the
+wrong matchday every time. A table labelled "Round 15" that is wrong one time in
+four is worse than no label, so nothing was written.
+
+The UI takes the consequence rather than hiding it: **date is the primary axis**
+because it is complete and twice-verified for all 4,380 matches, and round
+browsing appears only for seasons that genuinely have rounds.
