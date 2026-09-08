@@ -443,7 +443,7 @@ adminRouter.patch('/matches/:id', async (req, res) => {
 
 const EVENT_TYPES = [
   'GOAL', 'OWN_GOAL', 'PENALTY_GOAL', 'PENALTY_MISS', 'YELLOW_CARD',
-  'SECOND_YELLOW', 'RED_CARD', 'SUBSTITUTION', 'VAR_REVIEW',
+  'SECOND_YELLOW', 'RED_CARD', 'SUBSTITUTION', 'VAR_REVIEW', 'ASSIST',
 ] as const;
 
 const eventBody = z.object({

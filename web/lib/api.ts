@@ -149,6 +149,7 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
+  assists: number;
   // Null means the record is too thin to state a number, not zero.
   appearances: number | null;
   yellowCards: number | null;
@@ -162,6 +163,8 @@ export type PlayerStatsCoverage = {
   goalAttributionRate: number;
   seasonsInScope: number;
   seasonsWithScorers: number;
+  seasonsWithAssists: number;
+  assistsRecorded: number;
   matchesInScope: number;
   matchesWithLineups: number;
   appearancesReliable: boolean;

@@ -21,7 +21,7 @@ const GOAL_TYPES = new Set(['GOAL', 'PENALTY_GOAL', 'OWN_GOAL']);
 const ICON: Record<string, string> = {
   GOAL: '⚽', PENALTY_GOAL: '⚽', OWN_GOAL: '⚽',
   YELLOW_CARD: '🟨', SECOND_YELLOW: '🟨', RED_CARD: '🟥',
-  SUBSTITUTION: '↔', PENALTY_MISS: '✗', VAR_REVIEW: '⌾',
+  SUBSTITUTION: '↔', PENALTY_MISS: '✗', VAR_REVIEW: '⌾', ASSIST: '➜',
 };
 
 /** "the 23' goal" / "the goal (minute unknown)" — used in confirmation copy. */

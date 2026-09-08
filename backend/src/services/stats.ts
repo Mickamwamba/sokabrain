@@ -96,6 +96,7 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
+  assists: number;
   /**
    * Null where the underlying record is too thin to state a number. A zero here
    * would be read as "never happened" when the truth is "never recorded".
@@ -122,6 +123,9 @@ export type PlayerStatsCoverage = {
   goalAttributionRate: number;
   seasonsInScope: number;
   seasonsWithScorers: number;
+  /** Assists start later than scorers: 2023/24 onward, where scorers start 2017/18. */
+  seasonsWithAssists: number;
+  assistsRecorded: number;
   matchesInScope: number;
   matchesWithLineups: number;
   /** False when `appearances` is suppressed to null across the board. */
@@ -142,7 +146,7 @@ export type PlayerStatsResult = {
  */
 const RELIABLE_AT = 0.5;
 
-export type PlayerSort = 'goals' | 'appearances' | 'yellowCards' | 'redCards';
+export type PlayerSort = 'goals' | 'assists' | 'appearances' | 'yellowCards' | 'redCards';
 
 /**
  * Player aggregates.
@@ -170,6 +174,7 @@ export async function playerStats(opts: {
 
   const orderBy = {
     goals: Prisma.sql`goals DESC, appearances ASC`,
+    assists: Prisma.sql`assists DESC, goals DESC`,
     appearances: Prisma.sql`appearances DESC, goals DESC`,
     yellowCards: Prisma.sql`"yellowCards" DESC, goals DESC`,
     redCards: Prisma.sql`"redCards" DESC, "yellowCards" DESC`,
@@ -192,11 +197,25 @@ export async function playerStats(opts: {
         ${editionScope}
       GROUP BY l.player_id
     ),
+    assisted AS (
+      -- The schema supports two shapes of assist: a standalone ASSIST row
+      -- (a source that does not say which goal it created) and
+      -- related_player_id on the goal itself (a source that does). Union them
+      -- so neither is missed; a given assist is only ever recorded one way.
+      SELECT e.related_player_id AS player_id
+      FROM match_events e
+      JOIN matches m ON m.id = e.match_id
+      WHERE m.competition_edition_id IN (${publishedEditions})
+        AND e.related_player_id IS NOT NULL
+        AND e.type IN ('GOAL','PENALTY_GOAL')
+        ${editionScope}
+    ),
     agg AS (
       SELECT
         player_id,
         count(*) FILTER (WHERE type IN ('GOAL','PENALTY_GOAL'))::int AS goals,
         count(*) FILTER (WHERE type = 'PENALTY_GOAL')::int           AS penalties,
+        count(*) FILTER (WHERE type = 'ASSIST')::int                  AS assists,
         count(*) FILTER (WHERE type = 'YELLOW_CARD')::int            AS "yellowCards",
         count(*) FILTER (WHERE type = 'RED_CARD')::int               AS "redCards",
         mode() WITHIN GROUP (ORDER BY team_id)                       AS team_id
@@ -207,6 +226,7 @@ export async function playerStats(opts: {
       t.id AS "teamId", t.name AS "teamName",
       COALESCE(a.goals, 0) AS goals,
       COALESCE(a.penalties, 0) AS penalties,
+      (COALESCE(a.assists, 0) + COALESCE(la.n, 0)) AS assists,
       COALESCE(ap.appearances, 0) AS appearances,
       COALESCE(a."yellowCards", 0) AS "yellowCards",
       COALESCE(a."redCards", 0) AS "redCards",
@@ -220,8 +240,11 @@ export async function playerStats(opts: {
     FROM players p
     LEFT JOIN agg a  ON a.player_id = p.id
     LEFT JOIN apps ap ON ap.player_id = p.id
+    LEFT JOIN (SELECT player_id, count(*)::int AS n FROM assisted GROUP BY player_id) la
+           ON la.player_id = p.id
     LEFT JOIN teams t ON t.id = a.team_id
     WHERE (COALESCE(a.goals,0) > 0 OR COALESCE(ap.appearances,0) > 0
+           OR COALESCE(a.assists,0) > 0 OR COALESCE(la.n,0) > 0
            OR COALESCE(a."yellowCards",0) > 0 OR COALESCE(a."redCards",0) > 0)
       ${teamId ? Prisma.sql`AND t.id = ${teamId}` : Prisma.empty}
       ${position ? Prisma.sql`AND p."position" = ${position}` : Prisma.empty}
@@ -234,6 +257,8 @@ export async function playerStats(opts: {
     goalsAttributed: number;
     seasonsInScope: number;
     seasonsWithScorers: number;
+    seasonsWithAssists: number;
+    assistsRecorded: number;
     matchesInScope: number;
     matchesWithLineups: number;
   }>>(Prisma.sql`
@@ -257,6 +282,14 @@ export async function playerStats(opts: {
           FROM scope s2 JOIN match_events me ON me.match_id = s2.id
           WHERE me.type IN ('GOAL','PENALTY_GOAL') AND me.player_id IS NOT NULL
        ) e)::int AS "seasonsWithScorers",
+      (SELECT count(DISTINCT e.competition_edition_id) FROM (
+          SELECT s3.competition_edition_id
+          FROM scope s3 JOIN match_events me ON me.match_id = s3.id
+          WHERE me.type = 'ASSIST'
+       ) e)::int AS "seasonsWithAssists",
+      (SELECT count(*) FROM match_events e
+        WHERE e.match_id IN (SELECT id FROM scope) AND e.type = 'ASSIST')::int
+        AS "assistsRecorded",
       count(*)::int AS "matchesInScope",
       (SELECT count(DISTINCT l.match_id) FROM match_lineups l
         WHERE l.match_id IN (SELECT id FROM scope))::int AS "matchesWithLineups"
@@ -278,6 +311,8 @@ export async function playerStats(opts: {
     goalAttributionRate: goalsInScope ? (cov?.goalsAttributed ?? 0) / goalsInScope : 0,
     seasonsInScope: cov?.seasonsInScope ?? 0,
     seasonsWithScorers: cov?.seasonsWithScorers ?? 0,
+    seasonsWithAssists: cov?.seasonsWithAssists ?? 0,
+    assistsRecorded: cov?.assistsRecorded ?? 0,
     matchesInScope,
     matchesWithLineups: cov?.matchesWithLineups ?? 0,
     appearancesReliable,

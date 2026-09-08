@@ -149,6 +149,12 @@ def normalize(src):
                     for _ in range(count_only(stat.get("owngoals"))):
                         events.append({"type": "OWN_GOAL", "side": side, "player_source_id": pid,
                                        "player_name": name, "minute": None, "added_time": None})
+                    # A bare count, with no minute and no indication of which
+                    # goal it created, so it becomes a standalone ASSIST row
+                    # rather than a related_player_id on some guessed goal.
+                    for _ in range(count_only(stat.get("assists"))):
+                        events.append({"type": "ASSIST", "side": side, "player_source_id": pid,
+                                       "player_name": name, "minute": None, "added_time": None})
                     for _ in range(count_only(stat.get("yellowcards"))):
                         events.append({"type": "YELLOW_CARD", "side": side, "player_source_id": pid,
                                        "player_name": name, "minute": None, "added_time": None})

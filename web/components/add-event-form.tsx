@@ -9,7 +9,7 @@ type Action = (prev: ActionState, formData: FormData) => Promise<ActionState>;
 
 const EVENT_TYPES = [
   'GOAL', 'OWN_GOAL', 'PENALTY_GOAL', 'PENALTY_MISS', 'YELLOW_CARD',
-  'SECOND_YELLOW', 'RED_CARD', 'SUBSTITUTION', 'VAR_REVIEW',
+  'SECOND_YELLOW', 'RED_CARD', 'SUBSTITUTION', 'VAR_REVIEW', 'ASSIST',
 ];
 const field = 'rounded-lg border border-line bg-paper px-2.5 py-1.5 text-sm';
 

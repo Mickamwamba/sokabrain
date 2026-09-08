@@ -169,7 +169,7 @@ const playerQuery = z.object({
   editionId: z.coerce.number().int().positive().optional(),
   teamId: z.coerce.number().int().positive().optional(),
   position: z.enum(['GK', 'DF', 'MF', 'FW']).optional(),
-  sort: z.enum(['goals', 'appearances', 'yellowCards', 'redCards']).default('goals'),
+  sort: z.enum(['goals', 'assists', 'appearances', 'yellowCards', 'redCards']).default('goals'),
   limit: z.coerce.number().int().min(1).max(100).default(25),
 });
 

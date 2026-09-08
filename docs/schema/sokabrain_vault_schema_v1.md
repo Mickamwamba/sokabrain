@@ -585,3 +585,45 @@ The former names are registered in `docs/ingestion/teamnames.py`, so ingesting a
 old season resolves them to the same club instead of splitting the history
 again. **Check that file before adding a club** — a rename that is not listed
 there will silently create a second club.
+
+
+---
+
+## Addendum: assists (2026-09-08)
+
+`match_events.type` gained **`ASSIST`** — the first change to that constraint
+since the migration. `sokabrain_schema_ddl.sql` was updated in the same commit
+and round-trips against the live database.
+
+### Why not `related_player_id`, which already exists for this
+
+The column was designed for exactly this and is the better representation: it
+ties an assist to the goal it created, so the two can never disagree about how
+many goals were assisted. It needs a source that says **which** goal each assist
+belongs to.
+
+Ours does not. ligikuu.co.tz records assists as a bare per-player, per-match
+count — `assists: "2"`, no minute, no goal reference. Populating
+`related_player_id` from that would mean guessing which goal each assist set up,
+wrong roughly half the time in any match where a team scored more than once.
+
+A standalone `ASSIST` row claims exactly what the source supports: this player
+assisted, in this match, once per row. Its `detail` carries
+`{"linkedToGoal": false}` so the distinction survives.
+
+### Both shapes are valid, and counting must union them
+
+A future source that links assists to goals should populate
+`related_player_id` rather than adding ASSIST rows. `playerStats` therefore
+counts **both** — ASSIST rows plus non-null `related_player_id` on GOAL and
+PENALTY_GOAL — so neither shape is silently dropped. A single assist is only
+ever recorded one way, so the union cannot double-count.
+
+### Coverage
+
+1,078 assists across 547 matches, all attributed to a named player, in
+**2023/24 onward only**. Assists start six seasons later than scorers do, which
+is why `PlayerStatsCoverage` reports `seasonsWithAssists` separately from
+`seasonsWithScorers`: an all-time assist ranking covers 4 of 19 seasons where
+the goal ranking covers 7. The players page says so, and hides the assist
+column and sort entirely for a scope with none.

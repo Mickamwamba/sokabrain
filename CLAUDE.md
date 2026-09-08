@@ -156,6 +156,12 @@ explicitly out of scope — see "Non-goals" below).
   trips it (43 fixtures absent from every source, clubs on 10 to 36 games) and
   is shown as "Table (incomplete season)" with no champion named. A season
   merely in progress does not trip it.
+- **Assists are ingested** — 1,078 across 547 matches, **2023/24 onward only**,
+  which is six seasons later than scorers begin. This added `ASSIST` to the
+  `match_events.type` constraint (the first change to it since the migration;
+  the DDL was updated in step). `related_player_id` is NOT used for these:
+  the source gives a bare per-match count with no link to a goal, so filling it
+  would be guesswork. Both shapes stay valid and `playerStats` unions them.
 - **Two clubs were merged, being renames**: `JKT Ruvu Stars` → `JKT Tanzania`,
   `Singida United` → `Singida Black Stars`. Their former names live in
   `docs/ingestion/teamnames.py`; check it before adding a club, or a rename will

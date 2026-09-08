@@ -168,7 +168,9 @@ CREATE TABLE match_events (
     added_time      SMALLINT,
     type            VARCHAR(20) NOT NULL CHECK (type IN
                         ('GOAL','OWN_GOAL','PENALTY_GOAL','PENALTY_MISS',
-                         'YELLOW_CARD','SECOND_YELLOW','RED_CARD','SUBSTITUTION','VAR_REVIEW')),
+                         'YELLOW_CARD','SECOND_YELLOW','RED_CARD','SUBSTITUTION','VAR_REVIEW',
+                         'ASSIST')),   -- ASSIST: one row per assist, for sources that
+                                       -- do not say which goal it created
     detail          JSONB               -- flexible extra data without schema churn
 );
 

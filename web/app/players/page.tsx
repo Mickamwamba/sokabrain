@@ -12,6 +12,7 @@ export const dynamic = "force-dynamic";
 
 const SORTS = [
   { value: undefined, label: "Goals" },
+  { value: "assists", label: "Assists" },
   { value: "appearances", label: "Appearances" },
   { value: "yellowCards", label: "Yellow cards" },
   { value: "redCards", label: "Red cards" },
@@ -66,6 +67,7 @@ export default async function PlayersPage(props: PageProps<"/players">) {
   // the table on numbers the page declines to print.
   const availableSorts = SORTS.filter(
     (s) =>
+      (s.value !== "assists" || coverage.assistsRecorded > 0) &&
       (s.value !== "appearances" || coverage.appearancesReliable) &&
       (s.value !== "yellowCards" || coverage.cardsReliable) &&
       (s.value !== "redCards" || coverage.cardsReliable),
@@ -118,6 +120,7 @@ export default async function PlayersPage(props: PageProps<"/players">) {
                   <th className="px-2 py-2.5 text-center">Pos</th>
                   <th className="px-2 py-2.5 text-right">Goals</th>
                   <th className="px-2 py-2.5 text-right">Pens</th>
+                  <th className="px-2 py-2.5 text-right">Ast</th>
                   <th className="px-2 py-2.5 text-right">Apps</th>
                   <th className="px-2 py-2.5 text-right">Yel</th>
                   <th className="py-2.5 pl-2 pr-5 text-right">Red</th>
@@ -137,6 +140,9 @@ export default async function PlayersPage(props: PageProps<"/players">) {
                     <td className="px-2 py-2.5 text-center text-xs text-muted">{p.position ?? "—"}</td>
                     <td className="stat-figure px-2 py-2.5 text-right text-base">{p.goals}</td>
                     <td className="px-2 py-2.5 text-right nums text-muted">{p.penalties}</td>
+                    <td className="px-2 py-2.5 text-right nums text-muted">
+                      {coverage.assistsRecorded > 0 ? p.assists : "—"}
+                    </td>
                     <td className="px-2 py-2.5 text-right nums text-muted">
                       {p.appearances && p.appearances > 0 ? p.appearances : "—"}
                     </td>
@@ -167,6 +173,15 @@ export default async function PlayersPage(props: PageProps<"/players">) {
             </>
           ) : (
             <>A scorer is recorded for every goal in view. </>
+          )}
+          {coverage.assistsRecorded > 0 ? (
+            <>
+              Assists are recorded from {coverage.seasonsWithAssists} of{" "}
+              {coverage.seasonsInScope} seasons in view — the source only began naming
+              them in 2023/24 — and the record does not say which goal each one created.{" "}
+            </>
+          ) : (
+            <>No season in view has assists recorded, so that column reads “—”. </>
           )}
           {!coverage.appearancesReliable && (
             <>

@@ -113,6 +113,20 @@ The WhoScored harvest is a browser snippet rather than a script, because it has
 to run inside a page that has already passed Cloudflare. It is kept in
 `harvest_whoscored.js`.
 
+## Assists, added afterwards
+
+`load.py` skips an edition that already holds matches, which is what makes it
+safe to re-run — but it also means it cannot pick up a field that was missed the
+first time. `load_assists.py` does that one job: it finds each match through its
+`entity_source_map` provenance (the ligikuu event id recorded at load, so the
+join is exact rather than a re-match on names and dates) and adds ASSIST rows.
+A match that already has them is skipped, so re-running cannot double a tally.
+
+1,078 assists, all attributed, 2023/24 onward — the source records none before
+that. They are standalone rows rather than `related_player_id` on a goal,
+because the source gives a bare count with no indication of which goal each one
+created; the schema doc explains the choice.
+
 ## What landed
 
 19 editions of the competition, 4,380 matches, 4,169 with a score. 20 clubs and
