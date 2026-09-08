@@ -126,6 +126,20 @@ explicitly out of scope — see "Non-goals" below).
   unless a player has at least as many recorded appearances as goals — lineups
   cover ~600 of 1,639 players, so the raw ratio measured missing data, not form
   (it read "4.6 goals per game" for the top scorer before the fix).
+- **The public site is organised around three things, not six.** Nav is
+  **Matches · Table · Statistics**. `/` is the fixture hub (season picker, date
+  strip, round browsing, next-match card); `/matches/[id]` is a full match page
+  with its event timeline, head-to-head and form; `/table` is the league table
+  with a season picker; `/stats` holds Overview / Players / Clubs / Head to head
+  as tabs. Date is the primary axis everywhere because kickoff dates are
+  complete; round browsing appears only where real rounds exist (2,577 of 4,380
+  matches, from RSSSF).
+- **Fixed: every kickoff the API served was shifted by the server's UTC offset.**
+  `@prisma/adapter-pg` decodes a TIMESTAMPTZ by taking the wall-clock Postgres
+  renders and dropping the offset, so on a machine in America/Chicago a 13:00Z
+  kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
+  session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
+  same** — a late kickoff otherwise lands on the wrong day.
 - **Public scope is Tanzania Premier League only.** Its three original seasons
   (2017/18, 2018/19, 2019/20) are published; everything else is hidden.
 - **The full league history is now in the vault: 19 seasons, 2008/09 to

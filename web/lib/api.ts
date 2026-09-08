@@ -201,6 +201,62 @@ export type HeadToHead = {
   }[];
 };
 
+export type MatchEventRow = {
+  id: number;
+  type: string;
+  minute: number | null;
+  addedTime: number | null;
+  side: "home" | "away" | null;
+  playerId: number | null;
+  playerName: string | null;
+  countsForOtherSide: boolean;
+};
+
+export type MatchDetail = {
+  id: number;
+  kickoffAt: string | null;
+  status: string;
+  round: string | null;
+  venue: string | null;
+  competition: { editionId: number; name: string; season: string };
+  home: { id: number; name: string; shortName: string | null; score: number | null };
+  away: { id: number; name: string; shortName: string | null; score: number | null };
+  events: MatchEventRow[];
+  coverage: {
+    goalsInScore: number;
+    goalEventsRecorded: number;
+    eventLogComplete: boolean;
+    noEventLog: boolean;
+    unnamedScorers: number;
+    hasAssists: boolean;
+  };
+  headToHead: { played: number; homeWins: number; awayWins: number; draws: number };
+  form: {
+    home: { matchId: number; result: "W" | "D" | "L"; opponent: string; score: string }[];
+    away: { matchId: number; result: "W" | "D" | "L"; opponent: string; score: string }[];
+  };
+};
+
+export type DayCount = { date: string; matches: number; played: number };
+
+export type RoundSummary = {
+  round: string;
+  sortKey: number;
+  matches: number;
+  played: number;
+  firstDate: string | null;
+  lastDate: string | null;
+};
+
+export type ScheduleContext = {
+  editionId: number | null;
+  season: string | null;
+  competition: string | null;
+  nextMatchDate: string | null;
+  lastMatchDate: string | null;
+  inSeason: boolean;
+};
+
 /** Thrown so pages can distinguish "backend is down" from "no such edition". */
 export class ApiError extends Error {
   constructor(
@@ -232,6 +288,19 @@ async function get<T>(path: string): Promise<T> {
 
 export const api = {
   editions: () => get<{ editions: Edition[] }>('/api/vault/editions'),
+  match: (id: number | string) => get<MatchDetail>(`/api/vault/matches/${id}`),
+  context: () => get<ScheduleContext>('/api/vault/schedule/context'),
+  days: (params: Record<string, string | number | undefined>) => {
+    const qs = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (v !== undefined && v !== '') qs.set(k, String(v));
+    }
+    return get<{ days: DayCount[]; nearest: string | null }>(`/api/vault/schedule/days?${qs}`);
+  },
+  rounds: (editionId: number | string) =>
+    get<{ rounds: RoundSummary[]; currentRound: string | null; hasRounds: boolean; withoutRound: number }>(
+      `/api/vault/schedule/rounds/${editionId}`,
+    ),
   standings: (id: number) => get<StandingsResponse>(`/api/vault/editions/${id}/standings`),
   topScorers: (id: number, limit = 20) =>
     get<TopScorersResponse>(`/api/vault/editions/${id}/top-scorers?limit=${limit}`),

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { api, ApiError, type HeadToHead, type TeamRefLite } from "@/lib/api";
-import { Card, CardHead, Crest, Empty, PageTitle } from "@/components/ui";
+import { Card, CardHead, Crest, Empty } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +45,7 @@ function Picker({
   );
 }
 
-export default async function HeadToHeadPage(props: PageProps<"/head-to-head">) {
+export default async function HeadToHeadPage(props: PageProps<"/stats/head-to-head">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const teamA = one(sp.teamA);
@@ -83,10 +83,9 @@ export default async function HeadToHeadPage(props: PageProps<"/head-to-head">) 
 
   return (
     <div>
-      <PageTitle
-        title="Head to head"
-        sub="Every recorded meeting between two clubs, across all published competitions."
-      />
+      <p className="mb-4 text-sm text-muted">
+        Every recorded meeting between two clubs, across all published competitions.
+      </p>
 
       {h2h ? (
         <div className="mb-6 space-y-5">
@@ -163,7 +162,7 @@ export default async function HeadToHeadPage(props: PageProps<"/head-to-head">) 
             )}
           </Card>
 
-          <Link href="/head-to-head" className="inline-block text-sm font-semibold text-brand hover:text-brand-dark">
+          <Link href="/stats/head-to-head" className="inline-block text-sm font-semibold text-brand hover:text-brand-dark">
             ← Pick two different clubs
           </Link>
         </div>

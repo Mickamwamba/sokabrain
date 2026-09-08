@@ -18,13 +18,19 @@ export const metadata: Metadata = {
     "Records, tables and stats for Tanzanian and Kenyan football — the depth global apps reserve for Europe.",
 };
 
+/**
+ * Three destinations, because a fan only distinguishes three things: what is on,
+ * where my club stands, and the numbers.
+ *
+ * The previous six put Stats, Players, Clubs and Head to head side by side, all
+ * of which are statistics; a fan had to know our internal split before
+ * clicking. Those are now tabs inside Statistics, and Competitions is the
+ * season picker on the Table page rather than a destination of its own.
+ */
 const NAV = [
-  { href: "/", label: "Stats" },
-  { href: "/players", label: "Players" },
-  { href: "/clubs", label: "Clubs" },
-  { href: "/head-to-head", label: "Head to head" },
-  { href: "/competitions", label: "Competitions" },
-  { href: "/matches", label: "Matches" },
+  { href: "/", label: "Matches" },
+  { href: "/table", label: "Table" },
+  { href: "/stats", label: "Statistics" },
 ];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

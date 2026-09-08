@@ -6,8 +6,11 @@ export type MatchListFilters = {
   editionId?: number | undefined;
   teamId?: number | undefined;
   status?: string | undefined;
+  round?: string | undefined;
   from?: Date | undefined;
   to?: Date | undefined;
+  /** 'asc' when browsing a round or a day forwards; 'desc' for the archive. */
+  order?: 'asc' | 'desc' | undefined;
   limit: number;
   offset: number;
 };
@@ -18,13 +21,14 @@ export type MatchListFilters = {
  * raw SQL, per the repo conventions.
  */
 export async function listMatches(filters: MatchListFilters) {
-  const { editionId, teamId, status, from, to, limit, offset } = filters;
+  const { editionId, teamId, status, round, from, to, order, limit, offset } = filters;
 
   const where = {
     // Public match list never leaks matches from unpublished editions.
     competition_editions: { is_published: true },
     ...(editionId !== undefined && { competition_edition_id: editionId }),
     ...(status !== undefined && { status }),
+    ...(round !== undefined && { round }),
     ...(teamId !== undefined && {
       OR: [{ home_team_id: teamId }, { away_team_id: teamId }],
     }),
@@ -42,7 +46,9 @@ export async function listMatches(filters: MatchListFilters) {
       where,
       // Newest first, with a stable id tiebreak so pagination can't repeat or
       // skip rows when many matches share a kickoff time (common in this data).
-      orderBy: [{ kickoff_at: 'desc' }, { id: 'desc' }],
+      orderBy: order === 'asc'
+        ? [{ kickoff_at: 'asc' as const }, { id: 'asc' as const }]
+        : [{ kickoff_at: 'desc' as const }, { id: 'desc' as const }],
       take: limit,
       skip: offset,
       include: {

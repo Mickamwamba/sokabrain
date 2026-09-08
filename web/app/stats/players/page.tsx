@@ -6,7 +6,7 @@ import {
   type PlayerStatsCoverage,
   type TeamRefLite,
 } from "@/lib/api";
-import { Card, ChipRow, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
+import { Card, ChipRow, Crest, DataNote, Empty, Rank } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +25,7 @@ const POSITIONS = [
   { value: "FW", label: "Forwards" },
 ];
 
-export default async function PlayersPage(props: PageProps<"/players">) {
+export default async function PlayersPage(props: PageProps<"/stats/players">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const sort = one(sp.sort);
@@ -58,7 +58,7 @@ export default async function PlayersPage(props: PageProps<"/players">) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
-    return s ? `/players?${s}` : "/players";
+    return s ? `/players?${s}` : "/stats/players";
   };
 
   const activeTeam = teams.find((t) => String(t.id) === teamId);
@@ -79,10 +79,9 @@ export default async function PlayersPage(props: PageProps<"/players">) {
 
   return (
     <div>
-      <PageTitle
-        title="Players"
-        sub={`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
-      />
+      <p className="mb-4 text-sm text-muted">
+        {`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
+      </p>
 
       <div className="mb-5 space-y-2.5">
         <ChipRow

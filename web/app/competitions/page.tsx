@@ -50,7 +50,7 @@ export default async function CompetitionsPage() {
             </h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((e) => (
-                <Link key={e.editionId} href={`/editions/${e.editionId}`} className="block">
+                <Link key={e.editionId} href={`/table?editionId=${e.editionId}`} className="block">
                   <Card className="h-full px-4 py-4 transition-colors hover:border-ink">
                     <div className="flex items-start gap-3">
                       <Crest name={e.competition} size={32} />

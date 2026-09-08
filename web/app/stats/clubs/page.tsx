@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition } from "@/lib/api";
-import { Card, ChipRow, Crest, DataNote, Empty, PageTitle, Rank, StatTile } from "@/components/ui";
+import { Card, ChipRow, Crest, DataNote, Empty, Rank, StatTile } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ const SORTS: { value: string | undefined; label: string; key: SortKey }[] = [
   { value: "winRate", label: "Win %", key: "winRate" },
 ];
 
-export default async function ClubsPage(props: PageProps<"/clubs">) {
+export default async function ClubsPage(props: PageProps<"/stats/clubs">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const sort = one(sp.sort);
@@ -42,7 +42,7 @@ export default async function ClubsPage(props: PageProps<"/clubs">) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
-    return s ? `/clubs?${s}` : "/clubs";
+    return s ? `/clubs?${s}` : "/stats/clubs";
   };
 
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
@@ -52,14 +52,11 @@ export default async function ClubsPage(props: PageProps<"/clubs">) {
 
   return (
     <div>
-      <PageTitle
-        title="Clubs"
-        sub={
-          activeEdition
-            ? `${activeEdition.competition} ${activeEdition.season}`
-            : "Combined across every published competition"
-        }
-      />
+      <p className="mb-4 text-sm text-muted">
+        {activeEdition
+          ? `${activeEdition.competition} ${activeEdition.season}`
+          : "Combined across every published competition"}
+      </p>
 
       {leader && mostGoals && bestDefence ? (
         <div className="mb-5 grid gap-3 sm:grid-cols-3">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { api, ApiError } from "@/lib/api";
-import { Card, CardHead, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
+import { api, ApiError, type Edition } from "@/lib/api";
+import { Card, CardHead, ChipRow, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -15,10 +15,33 @@ const KIND: Record<string, string> = {
   FRIENDLY: "a set of friendlies",
 };
 
-export default async function EditionPage(props: PageProps<"/editions/[id]">) {
-  const { id } = await props.params;
-  const editionId = Number(id);
-  if (!Number.isInteger(editionId) || editionId <= 0) notFound();
+/**
+ * The league table, for whichever season you pick.
+ *
+ * Defaults to the season in play rather than to an archive index: a fan opening
+ * "Table" wants this year's table, and only sometimes 2011/12's.
+ */
+export default async function TablePage(props: PageProps<"/table">) {
+  const sp = await props.searchParams;
+  const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
+
+  let editions: Edition[];
+  let context: Awaited<ReturnType<typeof api.context>>;
+  try {
+    [editions, context] = await Promise.all([
+      api.editions().then((r) => r.editions),
+      api.context(),
+    ]);
+  } catch (err) {
+    if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
+    throw err;
+  }
+
+  const param = one(sp.editionId);
+  const editionId = param ? Number(param) : context.editionId;
+  if (!editionId || !Number.isInteger(editionId) || editionId <= 0) {
+    return <Empty>No published season to show yet.</Empty>;
+  }
 
   let standings: Awaited<ReturnType<typeof api.standings>>;
   let scorers: Awaited<ReturnType<typeof api.topScorers>>;
@@ -39,11 +62,23 @@ export default async function EditionPage(props: PageProps<"/editions/[id]">) {
 
   return (
     <div>
-      <PageTitle title={edition.competition} sub={edition.season} />
+      <PageTitle title="Table" sub={`${edition.competition} · ${edition.season}`} />
+
+      <div className="mb-5">
+        <ChipRow
+          label="Season"
+          options={editions
+            .slice()
+            .sort((a, b) => b.season.localeCompare(a.season))
+            .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+          activeValue={String(editionId)}
+          hrefFor={(v) => `/table?editionId=${v}`}
+        />
+      </div>
 
       <div className="mb-5 flex flex-wrap gap-2 text-sm">
         <Link
-          href={`/matches?editionId=${editionId}`}
+          href={`/?editionId=${editionId}`}
           className="rounded-full border border-line bg-paper px-4 py-1.5 font-medium hover:border-ink"
         >
           All matches

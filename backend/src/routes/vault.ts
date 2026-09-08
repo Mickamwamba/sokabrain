@@ -4,6 +4,8 @@ import { prisma } from '../db.js';
 import { getStandings } from '../services/standings.js';
 import { getTopScorers } from '../services/topScorers.js';
 import { listMatches } from '../services/matches.js';
+import { getMatchDetail } from '../services/matchDetail.js';
+import { currentContext, editionRounds, matchDays } from '../services/schedule.js';
 import {
   clubStats,
   headToHead,
@@ -128,8 +130,10 @@ const matchesQuery = z.object({
   status: z
     .enum(['SCHEDULED', 'LIVE', 'FULL_TIME', 'POSTPONED', 'ABANDONED', 'CANCELLED'])
     .optional(),
+  round: z.string().max(30).optional(),
   from: z.coerce.date().optional(),
   to: z.coerce.date().optional(),
+  order: z.enum(['asc', 'desc']).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(25),
   offset: z.coerce.number().int().min(0).default(0),
 });
@@ -143,6 +147,43 @@ vaultRouter.get('/matches', async (req, res) => {
     });
   }
   res.json(await listMatches(query.data));
+});
+
+/** One match, with its event log, head-to-head and both sides' recent form. */
+vaultRouter.get('/matches/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'Invalid match id' });
+  const match = await getMatchDetail(id);
+  if (!match) return res.status(404).json({ error: 'No published match with that id' });
+  res.json(match);
+});
+
+/* --------------------------------------------------------------- schedule -- */
+// Navigation aids for the fixture pages: which days have football, which rounds
+// exist, and where the competition is right now.
+
+vaultRouter.get('/schedule/context', async (_req, res) => {
+  res.json(await currentContext());
+});
+
+const daysQuery = z.object({
+  editionId: z.coerce.number().int().positive().optional(),
+  around: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  before: z.coerce.number().int().min(0).max(60).optional(),
+  after: z.coerce.number().int().min(0).max(60).optional(),
+});
+
+vaultRouter.get('/schedule/days', async (req, res) => {
+  const q = daysQuery.safeParse(req.query);
+  if (!q.success) return res.status(400).json({ error: 'Invalid query', details: z.treeifyError(q.error) });
+  const around = q.data.around ?? new Date().toISOString().slice(0, 10);
+  res.json(await matchDays({ ...q.data, around }));
+});
+
+vaultRouter.get('/schedule/rounds/:editionId', async (req, res) => {
+  const id = Number(req.params.editionId);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'Invalid edition id' });
+  res.json(await editionRounds(id));
 });
 
 

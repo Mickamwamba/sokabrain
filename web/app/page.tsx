@@ -1,196 +1,177 @@
 import Link from "next/link";
-import { api, ApiError, type ClubStat, type Edition, type Overview, type PlayerStat } from "@/lib/api";
-import { Card, CardHead, Crest, Empty, Rank } from "@/components/ui";
+import { api, ApiError, type Edition } from "@/lib/api";
+import { Card, ChipRow, Crest, Empty, PageTitle } from "@/components/ui";
+import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
+import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
 
 export const dynamic = "force-dynamic";
 
-function fmtDate(iso: string | null) {
-  if (!iso) return "—";
-  return new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+/**
+ * The fixture hub, and the site's front door.
+ *
+ * A fan arrives wanting one of two things: what is on now, or what is on next.
+ * So the page opens on the current season and the nearest day with football,
+ * rather than on an archive index.
+ *
+ * Date is the primary axis because kickoff dates are complete for every match
+ * in the vault. Round browsing is offered only for seasons whose sources
+ * actually publish round numbers — see the note under the list.
+ */
+
+function one(v: string | string[] | undefined) {
+  return Array.isArray(v) ? v[0] : v;
 }
 
-export default async function StatsHome() {
-  let overview: Overview;
-  let scorers: PlayerStat[];
-  let clubs: ClubStat[];
-  let editions: Edition[];
-  let recent: Awaited<ReturnType<typeof api.matches>>;
+function NextUp({ match }: { match: NonNullable<Awaited<ReturnType<typeof api.matches>>["matches"][number]> }) {
+  const time = kickoffTime(match.kickoffAt);
+  const day = match.kickoffAt
+    ? new Date(match.kickoffAt).toLocaleDateString("en-GB", {
+        weekday: "long", day: "numeric", month: "long", timeZone: "Africa/Dar_es_Salaam",
+      })
+    : null;
+  return (
+    <Link href={`/matches/${match.id}`} className="block">
+      <Card className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-wash">
+        <div className="min-w-0 flex-1">
+          <p className="display text-[10px] font-bold uppercase tracking-wider text-muted">Next match</p>
+          <div className="mt-1.5 flex items-center gap-2.5">
+            <Crest name={match.homeTeam.name} size={26} />
+            <span className="truncate font-semibold">{match.homeTeam.name}</span>
+            <span className="text-muted">v</span>
+            <Crest name={match.awayTeam.name} size={26} />
+            <span className="truncate font-semibold">{match.awayTeam.name}</span>
+          </div>
+        </div>
+        <div className="shrink-0 text-right">
+          <p className="stat-figure text-lg leading-none">{time ?? "—"}</p>
+          <p className="mt-1 text-xs text-muted">{day}</p>
+        </div>
+      </Card>
+    </Link>
+  );
+}
 
+export default async function MatchesHub(props: PageProps<"/">) {
+  const sp = await props.searchParams;
+  const mode = one(sp.mode) === "round" ? "round" : "date";
+  const dateParam = one(sp.date);
+  const roundParam = one(sp.round);
+  const editionParam = one(sp.editionId);
+
+  let editions: Edition[];
+  let context: Awaited<ReturnType<typeof api.context>>;
   try {
-    [overview, scorers, clubs, editions, recent] = await Promise.all([
-      api.overview(),
-      api.players({ limit: 6 }).then((r) => r.players),
-      api.clubs().then((r) => r.clubs),
+    [editions, context] = await Promise.all([
       api.editions().then((r) => r.editions),
-      api.matches({ status: "FULL_TIME", limit: 6 }),
+      api.context(),
     ]);
   } catch (err) {
-    if (err instanceof ApiError) {
-      return (
-        <Empty>
-          <p className="font-semibold text-ink">Can’t reach the stats service.</p>
-          <p className="mt-1">{err.message}</p>
-        </Empty>
-      );
-    }
+    if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
   }
 
-  if (overview.matches === 0) {
-    return (
-      <Empty>
-        <p className="font-semibold text-ink">Nothing published yet.</p>
-        <p className="mt-1">
-          Competitions appear here once an editor releases them in the admin area.
-        </p>
-      </Empty>
-    );
-  }
+  const editionId = editionParam ? Number(editionParam) : context.editionId;
+  const edition = editions.find((e) => e.editionId === editionId);
+  if (!editionId) return <Empty>No published season to show yet.</Empty>;
 
-  const topClubs = clubs.slice(0, 6);
+  const rounds = await api.rounds(editionId);
+  // Opening on the round in play is what a fan wants; opening on round 1 of a
+  // finished season is not.
+  const round = mode === "round" ? roundParam ?? rounds.currentRound : null;
+
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Dar_es_Salaam" });
+  const dayData =
+    mode === "date"
+      ? await api.days({ editionId, around: dateParam ?? today, before: 8, after: 8 })
+      : { days: [], nearest: null };
+  const date = mode === "date" ? dateParam ?? dayData.nearest : null;
+
+  const list = await api.matches(
+    mode === "round" && round
+      ? { editionId, round, order: "asc", limit: 100 }
+      : date
+        ? { editionId, from: `${date}T00:00:00Z`, to: `${date}T23:59:59Z`, order: "asc", limit: 100 }
+        : { editionId, order: "desc", limit: 20 },
+  );
+
+  // Shown only when the current season still has fixtures ahead of it.
+  const upcoming =
+    context.inSeason && context.nextMatchDate
+      ? await api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
+      : { matches: [] as (typeof list)["matches"] };
+
+  const href = (patch: Record<string, string | undefined>) => {
+    const q = new URLSearchParams();
+    const merged = { mode, date, round, editionId: String(editionId), ...patch };
+    for (const [k, v] of Object.entries(merged)) {
+      if (v !== undefined && v !== null && v !== "") q.set(k, String(v));
+    }
+    const s = q.toString();
+    return s ? `/?${s}` : "/";
+  };
 
   return (
-    <div className="space-y-8">
-      {/* Hero: what the vault holds, stated in one line and six numbers. */}
-      <section className="overflow-hidden rounded-xl bg-ink px-6 py-8 text-white">
-        <h1 className="display max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl">
-          East African football, counted properly.
-        </h1>
-        <p className="mt-2 max-w-xl text-sm text-white/70">
-          Every goal, table and derby from the Tanzanian and Kenyan leagues — the
-          statistical depth global apps keep for Europe.
-        </p>
-        <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-6">
-          {[
-            { n: overview.matches, l: "Matches" },
-            { n: overview.goals, l: "Goals" },
-            { n: overview.clubs, l: "Clubs" },
-            { n: overview.players, l: "Players" },
-            { n: overview.competitions, l: "Competitions" },
-            { n: overview.seasons, l: "Seasons" },
-          ].map((s) => (
-            <div key={s.l}>
-              <p className="stat-figure text-2xl text-white sm:text-3xl">
-                {s.n.toLocaleString()}
-              </p>
-              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-white/50">
-                {s.l}
-              </p>
-            </div>
-          ))}
+    <div>
+      <PageTitle
+        title="Matches"
+        sub={
+          edition
+            ? `${edition.competition} · ${edition.season}${context.inSeason && editionId === context.editionId ? " · in progress" : ""}`
+            : undefined
+        }
+      />
+
+      {upcoming.matches[0] ? (
+        <div className="mb-5">
+          <NextUp match={upcoming.matches[0]} />
         </div>
-      </section>
+      ) : null}
 
-      <div className="grid gap-5 lg:grid-cols-2">
-        <Card>
-          <CardHead
-            title="Top scorers"
-            hint="Across every published competition"
-            action={{ href: "/players", label: "All players" }}
-          />
-          <ol>
-            {scorers.map((p, i) => (
-              <li
-                key={p.playerId}
-                className="flex items-center gap-3 border-b border-line px-5 py-3 last:border-0"
-              >
-                <Rank n={i + 1} />
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold">{p.playerName}</span>
-                  <span className="block truncate text-xs text-muted">
-                    {p.teamName ?? "—"}
-                  </span>
-                </span>
-                <span className="stat-figure text-xl">{p.goals}</span>
-              </li>
-            ))}
-          </ol>
-        </Card>
-
-        <Card>
-          <CardHead
-            title="Clubs by points"
-            hint="All competitions combined"
-            action={{ href: "/clubs", label: "All clubs" }}
-          />
-          <ol>
-            {topClubs.map((c, i) => (
-              <li
-                key={c.teamId}
-                className="flex items-center gap-3 border-b border-line px-5 py-3 last:border-0"
-              >
-                <Rank n={i + 1} />
-                <Crest name={c.teamName} size={26} />
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold">{c.teamName}</span>
-                  <span className="block text-xs text-muted nums">
-                    {c.played} played · {c.won}W {c.drawn}D {c.lost}L
-                  </span>
-                </span>
-                <span className="stat-figure text-xl">{c.points}</span>
-              </li>
-            ))}
-          </ol>
-        </Card>
+      <div className="mb-4 space-y-3">
+        <ChipRow
+          label="Season"
+          options={editions
+            .slice()
+            .sort((a, b) => b.season.localeCompare(a.season))
+            .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+          activeValue={String(editionId)}
+          hrefFor={(v) => `/?editionId=${v}&mode=${mode}`}
+        />
+        <ModeTabs
+          mode={mode}
+          byDateHref={`/?editionId=${editionId}&mode=date`}
+          byRoundHref={`/?editionId=${editionId}&mode=round`}
+          roundsAvailable={rounds.hasRounds}
+        />
+        {mode === "date" ? (
+          <DateStrip days={dayData.days} active={date} hrefFor={(d) => href({ date: d })} />
+        ) : (
+          <RoundStrip rounds={rounds.rounds} active={round} hrefFor={(r) => href({ round: r })} />
+        )}
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2">
-        <Card>
-          <CardHead
-            title="Latest results"
-            action={{ href: "/matches", label: "All matches" }}
-          />
-          <ul>
-            {recent.matches.map((m) => (
-              <li
-                key={m.id}
-                className="flex items-center gap-3 border-b border-line px-5 py-3 text-sm last:border-0"
-              >
-                <span className="w-12 shrink-0 text-xs text-muted">{fmtDate(m.kickoffAt)}</span>
-                <span className="min-w-0 flex-1 truncate text-right">{m.homeTeam.name}</span>
-                <span className="stat-figure shrink-0 rounded bg-wash px-2 py-1 text-sm">
-                  {m.score.home ?? "–"}‑{m.score.away ?? "–"}
-                </span>
-                <span className="min-w-0 flex-1 truncate">{m.awayTeam.name}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
+      {list.matches.length === 0 ? (
+        <Empty>No matches on this {mode === "round" ? "round" : "day"}.</Empty>
+      ) : mode === "round" ? (
+        <MatchDays matches={list.matches} />
+      ) : (
+        <MatchRows matches={list.matches} />
+      )}
 
-        <Card>
-          <CardHead
-            title="Competitions"
-            action={{ href: "/competitions", label: "Browse all" }}
-          />
-          <ul className="grid gap-px bg-line sm:grid-cols-2">
-            {editions.slice(0, 6).map((e) => (
-              <li key={e.editionId} className="bg-paper">
-                <Link
-                  href={`/editions/${e.editionId}`}
-                  className="block px-5 py-3.5 transition-colors hover:bg-wash"
-                >
-                  <span className="block truncate text-sm font-semibold">{e.competition}</span>
-                  <span className="mt-0.5 block text-xs text-muted">
-                    {e.season} · {e.matchCount} matches
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
-      </div>
-
-      <Card className="px-5 py-4">
-        <p className="text-sm">
-          <span className="font-semibold">Compare any two clubs.</span>{" "}
-          <span className="text-muted">
-            Every meeting, the running record and the goals between them.
-          </span>{" "}
-          <Link href="/head-to-head" className="font-semibold text-brand hover:text-brand-dark">
-            Head to head →
-          </Link>
+      {mode === "round" && rounds.withoutRound > 0 ? (
+        <p className="mt-4 text-xs text-muted">
+          {rounds.withoutRound} of this season&rsquo;s matches carry no round number in any
+          source, so the rounds above are missing some fixtures. Every match is reachable by
+          date.
         </p>
-      </Card>
+      ) : null}
+      {!rounds.hasRounds ? (
+        <p className="mt-4 text-xs text-muted">
+          No source publishes round numbers for {edition?.season}, so this season is browsed by
+          date. Nothing is guessed — deriving matchdays from the fixture list gets one in four
+          wrong whenever a match was postponed.
+        </p>
+      ) : null}
     </div>
   );
 }
