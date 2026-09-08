@@ -1,0 +1,70 @@
+{
+    "match": {
+        "id": 1252,
+        "competition_edition_id": 17,
+        "group_id": null,
+        "round": "18",
+        "home_team_id": 101,
+        "away_team_id": 15,
+        "stadium_id": 30,
+        "kickoff_at": "2020-02-01T10:00:00-06:00",
+        "status": "CANCELLED",
+        "home_score": null,
+        "away_score": null,
+        "home_score_et": null,
+        "away_score_et": null,
+        "home_score_pens": null,
+        "away_score_pens": null,
+        "attendance": null,
+        "referee_id": null
+    },
+    "events": [
+        {
+            "id": 2767,
+            "match_id": 1252,
+            "team_id": 101,
+            "player_id": 1367,
+            "related_player_id": null,
+            "minute": 29,
+            "added_time": null,
+            "type": "GOAL",
+            "detail": null
+        },
+        {
+            "id": 2768,
+            "match_id": 1252,
+            "team_id": 101,
+            "player_id": 1367,
+            "related_player_id": null,
+            "minute": 42,
+            "added_time": null,
+            "type": "GOAL",
+            "detail": null
+        },
+        {
+            "id": 2769,
+            "match_id": 1252,
+            "team_id": 15,
+            "player_id": 1216,
+            "related_player_id": null,
+            "minute": 65,
+            "added_time": null,
+            "type": "GOAL",
+            "detail": null
+        }
+    ],
+    "provenance": [
+        {
+            "source": "legacy_sokafc",
+            "external_id": "1252"
+        },
+        {
+            "source": "manual_admin",
+            "external_id": "1252"
+        },
+        {
+            "source": "rsssf",
+            "external_id": "1252"
+        }
+    ]
+}

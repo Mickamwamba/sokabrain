@@ -162,9 +162,12 @@ A third `Biashara United v Ruvu Shooting` fixture when both legs already exist
 crediting two goals to Tarick Seif for Biashara on 2020-02-01 — a month after he
 transferred to Yanga. RSSSF has no such match.
 
-It is set to CANCELLED with no score so it cannot affect any table, but **not
-deleted**, because it carries three event rows that may be salvageable. Flagged
-BLOCKER for a human to decide.
+**Deleted** (2026-09-08), along with its three event rows and provenance. The
+row is preserved verbatim in `deleted_match_1252.json` should it ever need to be
+reconstructed. 2019/20 is now exactly 380 rows, all FULL_TIME.
+
+It was voided to CANCELLED first and flagged BLOCKER rather than deleted
+outright, so the decision to destroy it was a person's rather than a script's.
 
 ### Parsing note
 
