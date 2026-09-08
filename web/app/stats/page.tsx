@@ -138,7 +138,7 @@ export default async function StatsHome() {
         <Card>
           <CardHead
             title="Latest results"
-            action={{ href: "/matches", label: "All matches" }}
+            action={{ href: "/matches", label: "Full archive" }}
           />
           <ul>
             {recent.matches.map((m) => (

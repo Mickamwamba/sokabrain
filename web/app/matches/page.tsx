@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { api, ApiError, type Match } from "@/lib/api";
-import { Card, ChipRow, Crest, Empty, PageTitle } from "@/components/ui";
+import { api, ApiError } from "@/lib/api";
+import { ChipRow, Empty, PageTitle } from "@/components/ui";
+import { MatchDays } from "@/components/match-list";
 
 export const dynamic = "force-dynamic";
 
@@ -11,46 +12,6 @@ const STATUSES = [
   { value: "SCHEDULED", label: "Scheduled" },
   { value: "POSTPONED", label: "Postponed" },
 ];
-
-/** Group matches by calendar day, the way a fan reads a fixture list. */
-function byDay(matches: Match[]) {
-  const days = new Map<string, Match[]>();
-  for (const m of matches) {
-    const key = m.kickoffAt
-      ? new Date(m.kickoffAt).toLocaleDateString("en-GB", {
-          weekday: "short",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      : "Date unknown";
-    const list = days.get(key);
-    if (list) list.push(m);
-    else days.set(key, [m]);
-  }
-  return [...days.entries()];
-}
-
-function Score({ match }: { match: Match }) {
-  const { home, away, homePenalties, awayPenalties } = match.score;
-  if (home === null || away === null) {
-    return (
-      <span className="rounded bg-wash px-2.5 py-1 text-xs font-medium text-muted">
-        {match.status === "FULL_TIME" ? "No score" : match.status.replace("_", " ").toLowerCase()}
-      </span>
-    );
-  }
-  return (
-    <span className="stat-figure whitespace-nowrap rounded bg-ink px-2.5 py-1 text-sm text-white">
-      {home}‑{away}
-      {homePenalties !== null && awayPenalties !== null ? (
-        <span className="ml-1 text-[10px] font-normal text-white/70">
-          ({homePenalties}‑{awayPenalties}p)
-        </span>
-      ) : null}
-    </span>
-  );
-}
 
 export default async function MatchesPage(props: PageProps<"/matches">) {
   const sp = await props.searchParams;
@@ -85,19 +46,30 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
   return (
     <div>
       <PageTitle
-        title="Matches"
-        sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""}`}
+        title="All matches"
+        sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""} · newest first`}
       />
+
+      <p className="mb-5 text-sm text-muted">
+        The full archive, across every published season.{" "}
+        <Link href="/" className="font-medium text-brand hover:text-brand-dark">
+          Browse by date or round
+        </Link>{" "}
+        for what is on now.
+      </p>
 
       <div className="mb-5 space-y-2.5">
         <ChipRow
-          label="Competition"
+          label="Season"
           options={[
             { value: undefined, label: "All" },
+            // Every season, newest first, labelled the way the rest of the site
+            // labels them. The old list showed seven in load order and called
+            // 2018/19 "Premier League 2018".
             ...editions
-              .filter((e) => e.matchCount >= 19)
-              .slice(0, 7)
-              .map((e) => ({ value: String(e.editionId), label: `${e.competition} ${e.season.slice(0, 4)}` })),
+              .slice()
+              .sort((a, b) => b.season.localeCompare(a.season))
+              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") })),
           ]}
           activeValue={editionId}
           hrefFor={(v) => href({ editionId: v, offset: 0 })}
@@ -113,40 +85,7 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
       {data.matches.length === 0 ? (
         <Empty>No matches match these filters.</Empty>
       ) : (
-        <div className="space-y-5">
-          {byDay(data.matches).map(([day, list]) => (
-            <div key={day}>
-              <h2 className="display mb-2 text-xs font-bold uppercase tracking-wider text-muted">
-                {day}
-              </h2>
-              <Card className="overflow-hidden">
-                <ul>
-                  {list.map((m) => (
-                    <li
-                      key={m.id}
-                      className="flex items-center gap-3 border-b border-line px-4 py-3 text-sm last:border-0"
-                    >
-                      <span className="flex min-w-0 flex-1 items-center justify-end gap-2">
-                        <span className="truncate font-medium">{m.homeTeam.name}</span>
-                        <Crest name={m.homeTeam.name} size={24} />
-                      </span>
-                      <span className="w-24 shrink-0 text-center">
-                        <Score match={m} />
-                      </span>
-                      <span className="flex min-w-0 flex-1 items-center gap-2">
-                        <Crest name={m.awayTeam.name} size={24} />
-                        <span className="truncate font-medium">{m.awayTeam.name}</span>
-                      </span>
-                      <span className="hidden w-40 shrink-0 truncate text-right text-xs text-muted lg:block">
-                        {m.competition.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-          ))}
-        </div>
+        <MatchDays matches={data.matches} showCompetition />
       )}
 
       <div className="mt-6 flex items-center justify-between text-sm">
