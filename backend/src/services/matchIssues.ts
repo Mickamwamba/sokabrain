@@ -49,6 +49,7 @@ type Row = {
   goal_events: number;
   unnamed_goals: number;
   orphan_events: number;
+  derived_goals: number;
   credited_home: number;
   credited_away: number;
 };
@@ -71,6 +72,11 @@ export async function detectMatchIssues(editionId: number): Promise<MatchWithIss
       (SELECT count(*) FROM match_events e
          WHERE e.match_id = m.id AND e.type IN ('GOAL','PENALTY_GOAL')
            AND e.player_id IS NULL)::int AS unnamed_goals,
+      -- Goal rows derived from the score rather than observed: the team is
+      -- known, nothing else is. Surfaced separately so they are never mistaken
+      -- for a real record that merely lacks a name.
+      (SELECT count(*) FROM match_events e
+         WHERE e.match_id = m.id AND e.detail->>'derived' = 'score')::int AS derived_goals,
       (SELECT count(*) FROM match_events e
          WHERE e.match_id = m.id AND e.team_id IS NULL)::int AS orphan_events,
       (SELECT count(*) FROM match_events e WHERE e.match_id = m.id
@@ -135,10 +141,16 @@ export async function detectMatchIssues(editionId: number): Promise<MatchWithIss
       });
     }
     if (r.unnamed_goals > 0) {
+      const observed = r.unnamed_goals - r.derived_goals;
+      const parts: string[] = [];
+      if (observed > 0) parts.push(`${observed} recorded`);
+      if (r.derived_goals > 0) parts.push(`${r.derived_goals} derived from the score`);
       issues.push({
         kind: 'UNNAMED_SCORER',
         severity: 'WARNING',
-        detail: `${r.unnamed_goals} goal${r.unnamed_goals === 1 ? '' : 's'} with no scorer named`,
+        detail:
+          `${r.unnamed_goals} goal${r.unnamed_goals === 1 ? '' : 's'} with no scorer named` +
+          (parts.length > 1 ? ` (${parts.join(', ')})` : r.derived_goals > 0 ? ' (derived from the score)' : ''),
       });
     }
     if (r.orphan_events > 0) {

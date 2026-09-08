@@ -400,3 +400,52 @@ completed matches with no event log (WARNING), goals with no scorer (WARNING).
 These are surfaced in the dashboard as one-click flags, so an editor starts from
 a real list instead of a blank page. Nothing is written until they choose to
 raise one.
+
+
+---
+
+## Addendum: derived goal events
+
+`match_events.detail` — a JSONB column the migration never used — now carries a
+marker on goal rows that were **derived from the stored score rather than
+observed**:
+
+```json
+{ "derived": "score", "scorer": "unknown" }
+```
+
+### Why they exist
+
+Many matches carry a correct, source-verified score but no event log at all,
+because the legacy data captured results without match detail. A goal row can
+still be created for each of those goals: the score tells us how many each side
+scored, so the **team is a fact**, even though the scorer, minute and exact type
+are not. This makes the event log structurally complete — every goal has a row —
+and turns "no event log" into the single, tractable problem of "scorer unknown".
+
+### Why they are marked
+
+Without the marker they would be indistinguishable from observed events, and
+importing a real scorer feed later would **double every goal**. The marker makes
+them identifiable and removable in one statement:
+
+```sql
+DELETE FROM match_events WHERE detail->>'derived' = 'score';
+```
+
+Do exactly that before importing any real event source for these seasons.
+
+### What they assert, and what they do not
+
+They assert only *which team scored*. They record `type = 'GOAL'` because the
+type is unknown, so a small number are really penalties or own goals — roughly
+3% based on the observed mix. **This does not affect any table**: an own goal is
+credited to the opposing team on the read side, and a derived GOAL is already
+attributed to that same credited team, so standings are identical either way.
+What is lost is the narrative, not the arithmetic.
+
+### One consequence to keep in mind
+
+Because these rows are generated from the score, the event-log-versus-score
+cross-check can no longer fail for the matches that have them. That check keeps
+its value only for matches with genuinely observed events.
