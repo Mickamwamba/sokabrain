@@ -45,6 +45,14 @@ export type StandingsResponse = {
     matchesFullTime: number;
     matchesCounted: number;
     matchesMissingScore: number;
+    fixturesPresent: number;
+    fixturesExpected: number | null;
+    missingFixtures: number;
+    minPlayed: number;
+    maxPlayed: number;
+    // True when the fixture list itself has holes, so clubs have played
+    // materially different numbers of games and the table is not a final one.
+    isProvisional: boolean;
   };
   standings: StandingsRow[];
 };
@@ -141,10 +149,23 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
-  appearances: number;
-  yellowCards: number;
-  redCards: number;
+  // Null means the record is too thin to state a number, not zero.
+  appearances: number | null;
+  yellowCards: number | null;
+  redCards: number | null;
   goalsPerApp: number | null;
+};
+
+export type PlayerStatsCoverage = {
+  goalsInScope: number;
+  goalsAttributed: number;
+  goalAttributionRate: number;
+  seasonsInScope: number;
+  seasonsWithScorers: number;
+  matchesInScope: number;
+  matchesWithLineups: number;
+  appearancesReliable: boolean;
+  cardsReliable: boolean;
 };
 
 export type TeamRefLite = {
@@ -221,7 +242,9 @@ export const api = {
     for (const [k, v] of Object.entries(params)) {
       if (v !== undefined && v !== '') qs.set(k, String(v));
     }
-    return get<{ players: PlayerStat[] }>(`/api/vault/stats/players?${qs}`);
+    return get<{ players: PlayerStat[]; coverage: PlayerStatsCoverage }>(
+      `/api/vault/stats/players?${qs}`,
+    );
   },
   headToHead: (a: number | string, b: number | string) =>
     get<HeadToHead>(`/api/vault/stats/head-to-head?teamA=${a}&teamB=${b}`),

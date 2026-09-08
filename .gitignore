@@ -22,3 +22,7 @@ npm-debug.log*
 # Editor
 .vscode/
 .idea/
+
+# Python bytecode from the ingestion scripts
+__pycache__/
+*.pyc

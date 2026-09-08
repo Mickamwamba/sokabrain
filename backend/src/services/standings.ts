@@ -41,15 +41,30 @@ export type StandingsRow = {
 export type StandingsResult = {
   standings: StandingsRow[];
   /**
-   * Many migrated matches are marked FULL_TIME but carry no score, so teams can
-   * legitimately show different `played` counts and the table will not sum to
-   * the edition's full fixture list. Callers should surface this rather than
-   * let the table read as broken.
+   * Why a table may not be what it looks like. Two different problems live
+   * here, and they need telling apart:
+   *
+   *  - `matchesMissingScore`: the fixture exists but has no result, so it is
+   *    left out of the tally.
+   *  - `missingFixtures`: the fixture is not in the vault at all. Counting
+   *    scores cannot detect this — TPL 2020/21 reports zero missing scores
+   *    while 43 of its fixtures are simply absent from every source, leaving
+   *    two clubs on 10 games and the rest on 36.
+   *
+   * `isProvisional` is the single flag a caller should branch on: true means
+   * the table is built on an incomplete fixture list and must not be presented
+   * as a final league table.
    */
   coverage: {
     matchesFullTime: number;
     matchesCounted: number;
     matchesMissingScore: number;
+    fixturesPresent: number;
+    fixturesExpected: number | null;
+    missingFixtures: number;
+    minPlayed: number;
+    maxPlayed: number;
+    isProvisional: boolean;
   };
 };
 
@@ -94,25 +109,57 @@ export async function getStandings(editionId: number): Promise<StandingsResult> 
     ORDER BY x.points DESC, x."goalDifference" DESC, x."goalsFor" DESC, t.name ASC
   `);
 
-  const [coverage] = await prisma.$queryRaw<Array<StandingsResult['coverage']>>(Prisma.sql`
+  const [raw] = await prisma.$queryRaw<Array<{
+    matchesFullTime: number;
+    matchesCounted: number;
+    matchesMissingScore: number;
+    fixturesPresent: number;
+    numTeams: number | null;
+  }>>(Prisma.sql`
     SELECT
-      count(*) FILTER (WHERE status = 'FULL_TIME')::int AS "matchesFullTime",
+      count(*) FILTER (WHERE m.status = 'FULL_TIME')::int AS "matchesFullTime",
       count(*) FILTER (
-        WHERE status = 'FULL_TIME' AND home_score IS NOT NULL AND away_score IS NOT NULL
+        WHERE m.status = 'FULL_TIME' AND m.home_score IS NOT NULL AND m.away_score IS NOT NULL
       )::int AS "matchesCounted",
       count(*) FILTER (
-        WHERE status = 'FULL_TIME' AND (home_score IS NULL OR away_score IS NULL)
-      )::int AS "matchesMissingScore"
-    FROM matches
-    WHERE competition_edition_id = ${editionId}
+        WHERE m.status = 'FULL_TIME' AND (m.home_score IS NULL OR m.away_score IS NULL)
+      )::int AS "matchesMissingScore",
+      count(*)::int AS "fixturesPresent",
+      max(ce.num_teams)::int AS "numTeams"
+    FROM matches m
+    JOIN competition_editions ce ON ce.id = m.competition_edition_id
+    WHERE m.competition_edition_id = ${editionId}
   `);
+
+  const played = rows.map((r) => r.played);
+  // Every edition of this competition is a double round robin, so n*(n-1) is
+  // the fixture count a complete season implies. Editions with no recorded team
+  // count cannot be judged this way and are never called provisional on this
+  // basis alone.
+  const fixturesExpected =
+    raw?.numTeams && raw.numTeams > 1 ? raw.numTeams * (raw.numTeams - 1) : null;
+  const missingFixtures =
+    fixturesExpected === null ? 0 : Math.max(0, fixturesExpected - (raw?.fixturesPresent ?? 0));
 
   return {
     standings: rows.map((row, i) => ({ position: i + 1, ...row })),
-    coverage: coverage ?? {
-      matchesFullTime: 0,
-      matchesCounted: 0,
-      matchesMissingScore: 0,
+    coverage: {
+      matchesFullTime: raw?.matchesFullTime ?? 0,
+      matchesCounted: raw?.matchesCounted ?? 0,
+      matchesMissingScore: raw?.matchesMissingScore ?? 0,
+      fixturesPresent: raw?.fixturesPresent ?? 0,
+      fixturesExpected,
+      missingFixtures,
+      minPlayed: played.length ? Math.min(...played) : 0,
+      maxPlayed: played.length ? Math.max(...played) : 0,
+      // An unfinished season in progress is not provisional in this sense --
+      // it is simply not over. What makes a table untrustworthy is clubs having
+      // played materially different numbers of games, which is what a hole in
+      // the fixture list produces.
+      isProvisional:
+        missingFixtures > 0 &&
+        played.length > 0 &&
+        Math.max(...played) - Math.min(...played) > 2,
     },
   };
 }

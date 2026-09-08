@@ -144,6 +144,22 @@ explicitly out of scope — see "Non-goals" below).
     until someone publishes it in the dashboard.
   - Early seasons have no event log because neither source has one — not
     because anything was dropped.
+- **The public site suppresses stats it cannot support, rather than showing 0.**
+  `appearances`, `yellowCards` and `redCards` come back as **null** whenever
+  team-sheet coverage for the scope is under 50% — which is everywhere, at 80 of
+  4,169 matches. Goal totals are kept but labelled a minimum: only 36% of goals
+  across all seasons have a named scorer (96% within 2023/24). The players page
+  also drops the sort options that would rank on suppressed numbers. Details in
+  the schema doc's "what the public site is allowed to state" addendum.
+- **A league table now knows the difference between a missing score and a
+  missing fixture.** Standings coverage carries `isProvisional`; TPL 2020/21
+  trips it (43 fixtures absent from every source, clubs on 10 to 36 games) and
+  is shown as "Table (incomplete season)" with no champion named. A season
+  merely in progress does not trip it.
+- **Two clubs were merged, being renames**: `JKT Ruvu Stars` → `JKT Tanzania`,
+  `Singida United` → `Singida Black Stars`. Their former names live in
+  `docs/ingestion/teamnames.py`; check it before adding a club, or a rename will
+  silently split a club's history in two again.
 - **Admin restructured around competitions.** Left sidebar nav; a searchable
   competitions list with "add competition"; and a competition page where you
   pick a season and get its completeness stats, detected issues, publish

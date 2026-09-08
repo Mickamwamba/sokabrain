@@ -96,11 +96,51 @@ export type PlayerStat = {
   teamName: string | null;
   goals: number;
   penalties: number;
-  appearances: number;
-  yellowCards: number;
-  redCards: number;
+  /**
+   * Null where the underlying record is too thin to state a number. A zero here
+   * would be read as "never happened" when the truth is "never recorded".
+   */
+  appearances: number | null;
+  yellowCards: number | null;
+  redCards: number | null;
   goalsPerApp: number | null;
 };
+
+/**
+ * How much of the scope these numbers actually rest on.
+ *
+ * The vault's coverage is wildly uneven across eras: scores are complete for
+ * every season, but goalscorers exist for only 7 of 19 and lineups for almost
+ * none. A leaderboard that silently mixes them reads as an all-time ranking
+ * while being a ranking of the seasons that happen to have data. The caller is
+ * given the numbers to say so.
+ */
+export type PlayerStatsCoverage = {
+  goalsInScope: number;
+  goalsAttributed: number;
+  /** 0-1. Below 1, a "career goals" figure is a floor, not a total. */
+  goalAttributionRate: number;
+  seasonsInScope: number;
+  seasonsWithScorers: number;
+  matchesInScope: number;
+  matchesWithLineups: number;
+  /** False when `appearances` is suppressed to null across the board. */
+  appearancesReliable: boolean;
+  /** False when `yellowCards` / `redCards` are suppressed to null. */
+  cardsReliable: boolean;
+};
+
+export type PlayerStatsResult = {
+  players: PlayerStat[];
+  coverage: PlayerStatsCoverage;
+};
+
+/**
+ * A metric is reported only when the record behind it covers at least this much
+ * of the scope. Below it the numbers describe the gaps in the source rather
+ * than anything that happened on a pitch, so they are returned as null.
+ */
+const RELIABLE_AT = 0.5;
 
 export type PlayerSort = 'goals' | 'appearances' | 'yellowCards' | 'redCards';
 
@@ -121,7 +161,7 @@ export async function playerStats(opts: {
   position?: string;
   sort?: PlayerSort;
   limit: number;
-}): Promise<PlayerStat[]> {
+}): Promise<PlayerStatsResult> {
   const { editionId, teamId, position, sort = 'goals', limit } = opts;
 
   const editionScope = editionId
@@ -135,7 +175,7 @@ export async function playerStats(opts: {
     redCards: Prisma.sql`"redCards" DESC, "yellowCards" DESC`,
   }[sort];
 
-  return prisma.$queryRaw<PlayerStat[]>(Prisma.sql`
+  const rows = await prisma.$queryRaw<PlayerStat[]>(Prisma.sql`
     WITH ev AS (
       SELECT e.player_id, e.team_id, e.type, e.match_id
       FROM match_events e
@@ -188,6 +228,71 @@ export async function playerStats(opts: {
     ORDER BY ${orderBy}, p.full_name ASC
     LIMIT ${limit}
   `);
+
+  const [cov] = await prisma.$queryRaw<Array<{
+    goalsInScope: number;
+    goalsAttributed: number;
+    seasonsInScope: number;
+    seasonsWithScorers: number;
+    matchesInScope: number;
+    matchesWithLineups: number;
+  }>>(Prisma.sql`
+    WITH scope AS (
+      SELECT m.id, m.competition_edition_id,
+             coalesce(m.home_score,0) + coalesce(m.away_score,0) AS goals
+      FROM matches m
+      WHERE m.competition_edition_id IN (${publishedEditions})
+        AND m.home_score IS NOT NULL
+        ${editionScope}
+    )
+    SELECT
+      COALESCE(sum(s.goals), 0)::int AS "goalsInScope",
+      (SELECT count(*) FROM match_events e
+        WHERE e.match_id IN (SELECT id FROM scope)
+          AND e.type IN ('GOAL','PENALTY_GOAL') AND e.player_id IS NOT NULL)::int
+        AS "goalsAttributed",
+      count(DISTINCT s.competition_edition_id)::int AS "seasonsInScope",
+      (SELECT count(DISTINCT e.competition_edition_id) FROM (
+          SELECT s2.competition_edition_id
+          FROM scope s2 JOIN match_events me ON me.match_id = s2.id
+          WHERE me.type IN ('GOAL','PENALTY_GOAL') AND me.player_id IS NOT NULL
+       ) e)::int AS "seasonsWithScorers",
+      count(*)::int AS "matchesInScope",
+      (SELECT count(DISTINCT l.match_id) FROM match_lineups l
+        WHERE l.match_id IN (SELECT id FROM scope))::int AS "matchesWithLineups"
+    FROM scope s
+  `);
+
+  const goalsInScope = cov?.goalsInScope ?? 0;
+  const matchesInScope = cov?.matchesInScope ?? 0;
+  const appearanceRate = matchesInScope ? (cov?.matchesWithLineups ?? 0) / matchesInScope : 0;
+
+  // Cards ride on the same record as appearances -- a card is only known if
+  // someone logged the match in detail -- so they are gated together.
+  const appearancesReliable = appearanceRate >= RELIABLE_AT;
+  const cardsReliable = appearancesReliable;
+
+  const coverage: PlayerStatsCoverage = {
+    goalsInScope,
+    goalsAttributed: cov?.goalsAttributed ?? 0,
+    goalAttributionRate: goalsInScope ? (cov?.goalsAttributed ?? 0) / goalsInScope : 0,
+    seasonsInScope: cov?.seasonsInScope ?? 0,
+    seasonsWithScorers: cov?.seasonsWithScorers ?? 0,
+    matchesInScope,
+    matchesWithLineups: cov?.matchesWithLineups ?? 0,
+    appearancesReliable,
+    cardsReliable,
+  };
+
+  return {
+    players: rows.map((r) => ({
+      ...r,
+      appearances: appearancesReliable ? r.appearances : null,
+      yellowCards: cardsReliable ? r.yellowCards : null,
+      redCards: cardsReliable ? r.redCards : null,
+    })),
+    coverage,
+  };
 }
 
 export type HeadToHead = {

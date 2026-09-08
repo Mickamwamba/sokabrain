@@ -1,4 +1,11 @@
-import { api, ApiError, type Edition, type PlayerStat, type TeamRefLite } from "@/lib/api";
+import {
+  api,
+  ApiError,
+  type Edition,
+  type PlayerStat,
+  type PlayerStatsCoverage,
+  type TeamRefLite,
+} from "@/lib/api";
 import { Card, ChipRow, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
@@ -26,14 +33,19 @@ export default async function PlayersPage(props: PageProps<"/players">) {
   const teamId = one(sp.teamId);
 
   let players: PlayerStat[];
+  let coverage: PlayerStatsCoverage;
   let editions: Edition[];
   let teams: TeamRefLite[];
   try {
-    [players, editions, teams] = await Promise.all([
-      api.players({ sort, position, editionId, teamId, limit: 50 }).then((r) => r.players),
-      api.editions().then((r) => r.editions),
-      api.teams().then((r) => r.teams),
+    const [playerData, editionData, teamData] = await Promise.all([
+      api.players({ sort, position, editionId, teamId, limit: 50 }),
+      api.editions(),
+      api.teams(),
     ]);
+    players = playerData.players;
+    coverage = playerData.coverage;
+    editions = editionData.editions;
+    teams = teamData.teams;
   } catch (err) {
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
@@ -50,7 +62,18 @@ export default async function PlayersPage(props: PageProps<"/players">) {
 
   const activeTeam = teams.find((t) => String(t.id) === teamId);
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
-  const sortLabel = SORTS.find((s) => s.value === sort)?.label ?? "Goals";
+  // Offering "sort by appearances" while appearances are suppressed would rank
+  // the table on numbers the page declines to print.
+  const availableSorts = SORTS.filter(
+    (s) =>
+      (s.value !== "appearances" || coverage.appearancesReliable) &&
+      (s.value !== "yellowCards" || coverage.cardsReliable) &&
+      (s.value !== "redCards" || coverage.cardsReliable),
+  );
+  const sortLabel = availableSorts.find((s) => s.value === sort)?.label ?? "Goals";
+
+  const pct = (n: number) => Math.round(n * 100);
+  const goalsAreAFloor = coverage.goalAttributionRate < 0.995;
 
   return (
     <div>
@@ -60,7 +83,12 @@ export default async function PlayersPage(props: PageProps<"/players">) {
       />
 
       <div className="mb-5 space-y-2.5">
-        <ChipRow label="Rank by" options={SORTS} activeValue={sort} hrefFor={(v) => href({ sort: v })} />
+        <ChipRow
+          label="Rank by"
+          options={availableSorts}
+          activeValue={sort}
+          hrefFor={(v) => href({ sort: v })}
+        />
         <ChipRow label="Position" options={POSITIONS} activeValue={position} hrefFor={(v) => href({ position: v })} />
         <ChipRow
           label="Season"
@@ -110,10 +138,14 @@ export default async function PlayersPage(props: PageProps<"/players">) {
                     <td className="stat-figure px-2 py-2.5 text-right text-base">{p.goals}</td>
                     <td className="px-2 py-2.5 text-right nums text-muted">{p.penalties}</td>
                     <td className="px-2 py-2.5 text-right nums text-muted">
-                      {p.appearances > 0 ? p.appearances : "—"}
+                      {p.appearances && p.appearances > 0 ? p.appearances : "—"}
                     </td>
-                    <td className="px-2 py-2.5 text-right nums text-muted">{p.yellowCards}</td>
-                    <td className="py-2.5 pl-2 pr-5 text-right nums text-muted">{p.redCards}</td>
+                    <td className="px-2 py-2.5 text-right nums text-muted">
+                      {p.yellowCards ?? "—"}
+                    </td>
+                    <td className="py-2.5 pl-2 pr-5 text-right nums text-muted">
+                      {p.redCards ?? "—"}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -124,10 +156,27 @@ export default async function PlayersPage(props: PageProps<"/players">) {
 
       <div className="mt-4">
         <DataNote>
-          Goals come from the recorded event log, which does not name a scorer for every
-          goal — treat these totals as a minimum. Appearances are shown only where a team
-          sheet survives, so they are missing for many players and are not comparable
-          between them. Own goals are never credited to the scorer.
+          {goalsAreAFloor ? (
+            <>
+              These are <strong>minimum</strong> totals, not career totals. A scorer is
+              recorded for {pct(coverage.goalAttributionRate)}% of the{" "}
+              {coverage.goalsInScope.toLocaleString()} goals in view —{" "}
+              {coverage.seasonsWithScorers} of {coverage.seasonsInScope} seasons name
+              scorers at all, so goals from the other seasons are credited to nobody and a
+              player who scored in them will look worse than they were.{" "}
+            </>
+          ) : (
+            <>A scorer is recorded for every goal in view. </>
+          )}
+          {!coverage.appearancesReliable && (
+            <>
+              Appearances and cards are shown as “—” rather than as numbers: a team sheet
+              survives for only {coverage.matchesWithLineups.toLocaleString()} of{" "}
+              {coverage.matchesInScope.toLocaleString()} matches here, so any count would
+              measure what was written down rather than who played.{" "}
+            </>
+          )}
+          Own goals are never credited to the scorer.
         </DataNote>
       </div>
     </div>

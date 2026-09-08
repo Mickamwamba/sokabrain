@@ -179,15 +179,15 @@ vaultRouter.get('/stats/players', async (req, res) => {
     return res.status(400).json({ error: 'Invalid query', details: z.treeifyError(q.error) });
   }
   const { editionId, teamId, position, sort, limit } = q.data;
-  res.json({
-    players: await playerStats({
+  res.json(
+    await playerStats({
       ...(editionId !== undefined && { editionId }),
       ...(teamId !== undefined && { teamId }),
       ...(position !== undefined && { position }),
       sort: sort as PlayerSort,
       limit,
     }),
-  });
+  );
 });
 
 const h2hQuery = z.object({

@@ -528,3 +528,60 @@ derivation: **do not generate derived goal events for these seasons.** The
 existing derived rows (`detail->>'derived' = 'score'`) exist only for 2019/20,
 where a verified score made the team attributable; here the same trick would add
 5,000 rows asserting little and blocking a real scorer feed later.
+
+
+---
+
+## Addendum: what the public site is allowed to state (2026-09-08)
+
+The vault's coverage is deliberately uneven and always will be: scores are
+complete for every season, but goalscorers exist for 7 of 19 and team sheets for
+almost none. A leaderboard that mixes those eras silently reads as an all-time
+ranking while actually ranking the seasons that happen to have data. Three gates
+now stop that, and they are worth understanding before adding any new stat.
+
+### `playerStats` returns coverage, and suppresses what it cannot support
+
+`appearances`, `yellowCards` and `redCards` are `number | null`. They are
+returned as **null, not 0**, whenever team-sheet coverage over the queried scope
+falls below `RELIABLE_AT` (0.5). Across all published editions the real figure is
+80 of 4,169 matches, so they are null there and shown as "—".
+
+Zero is not a safe placeholder for a missing record: it reads as "never
+happened" when the truth is "never written down". Anything derived from a
+suppressed metric goes with it — the players page removes the sort options that
+would rank on numbers it declines to print.
+
+`goalAttributionRate` tells a caller how much of the scope's goals have a named
+scorer (0.36 across all seasons, 0.96 in 2023/24). Goal totals are **not**
+suppressed, because the attributed goals really happened; they are labelled a
+minimum instead.
+
+### `getStandings` distinguishes a missing score from a missing fixture
+
+The old coverage block counted only matches with no score, which reported TPL
+2020/21 as fully covered while 43 of its fixtures were absent from every source,
+leaving two clubs on 10 games and the rest on 36.
+
+Coverage now also carries `fixturesExpected` (n*(n-1), since every edition of
+this competition is a double round robin), `missingFixtures`, `minPlayed`,
+`maxPlayed`, and `isProvisional` — the single flag a caller should branch on.
+Provisional means a holed fixture list **and** a spread of more than two games
+between clubs, so a season merely in progress does not trip it and a single
+missing fixture does not either.
+
+A provisional table is still shown, because the results in it are correct, but
+it is titled "Table (incomplete season)" and **no champion is named** from it.
+
+### Renamed clubs are one row, not two
+
+`JKT Ruvu Stars` was merged into `JKT Tanzania`, and `Singida United` into
+`Singida Black Stars`. Each pair is one club under two names; left split, the
+all-time record, head-to-head and club page each showed half a club and called
+it the whole. The surviving row keeps the current name and inherits the other's
+matches, events, stints and provenance.
+
+The former names are registered in `docs/ingestion/teamnames.py`, so ingesting an
+old season resolves them to the same club instead of splitting the history
+again. **Check that file before adding a club** — a rename that is not listed
+there will silently create a second club.

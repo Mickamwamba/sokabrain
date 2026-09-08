@@ -9,14 +9,18 @@ import re
 import unicodedata
 
 # Different names for the same club. Key is the canonical vault name.
+#
+# Two of these are renames rather than spelling variants, and the club was
+# merged in the vault on 2026-09-08 (see reconciliation/fixes/): JKT Ruvu Stars
+# became JKT Tanzania, and Singida United became Singida Black Stars. Their old
+# names stay listed here so ingesting an old season resolves to the same club
+# instead of splitting its history in half again.
 ALIASES = {
     "Yanga SC":           ["Young Africans", "Yanga", "Yanga Sc"],
     "KMC FC":             ["Kinondoni MC", "KMC", "Kinondoni Municipal Council"],
     "Namungo":            ["Namungo FC"],
     "Biashara United":    ["Biashara Mara United", "Biashara Utd"],
     "Polisi Tanzania":    ["Polisi Tanzania FC", "Polisi"],
-    "Singida United":     ["Singida Utd"],
-    "Singida Black Stars":["Singida BS", "Singida Big Stars"],
     "Dodoma Jiji FC":     ["Dodoma Jiji", "Dodoma Mji", "Dodoma City"],
     "Fountain Gate FC":   ["Fountain Gate", "Singida FG FC", "Singida Fountain Gate"],
     "Geita Gold FC":      ["Geita Gold"],
@@ -27,7 +31,8 @@ ALIASES = {
     "Gwambina FC":        ["Gwambina"],
     "Mbeya Kwanza FC":    ["Mbeya Kwanza"],
     "TRA United":         ["TRA", "Tra United"],
-    "JKT Tanzania":       ["JKT Tanzania FC"],
+    "JKT Tanzania":       ["JKT Tanzania FC", "JKT Ruvu Stars", "JKT Ruvu"],
+    "Singida Black Stars":["Singida BS", "Singida Big Stars", "Singida United", "Singida Utd"],
 }
 
 # Suffixes that carry no identity, stripped before comparing.

@@ -35,7 +35,7 @@ export default async function EditionPage(props: PageProps<"/editions/[id]">) {
 
   const { edition, coverage, isLeagueTable } = standings;
   const table = standings.standings;
-  const champion = isLeagueTable ? table[0] : undefined;
+  const champion = isLeagueTable && !coverage.isProvisional ? table[0] : undefined;
 
   return (
     <div>
@@ -82,7 +82,15 @@ export default async function EditionPage(props: PageProps<"/editions/[id]">) {
 
       <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
         <Card className="overflow-hidden">
-          <CardHead title={isLeagueTable ? "Table" : "Results summary"} />
+          <CardHead
+            title={
+              isLeagueTable
+                ? coverage.isProvisional
+                  ? "Table (incomplete season)"
+                  : "Table"
+                : "Results summary"
+            }
+          />
           {table.length === 0 ? (
             <p className="px-5 py-10 text-center text-sm text-muted">
               No completed matches with a score yet.
@@ -158,6 +166,16 @@ export default async function EditionPage(props: PageProps<"/editions/[id]">) {
         {!isLeagueTable ? (
           <DataNote>
             {`This is ${KIND[edition.competitionType] ?? "not a league"}, not a round-robin league — the standings above summarise results across the edition but are not an official table.`}
+          </DataNote>
+        ) : null}
+        {coverage.isProvisional ? (
+          <DataNote>
+            <strong>This table is not a final standing.</strong>{" "}
+            {coverage.missingFixtures} of the {coverage.fixturesExpected} fixtures this
+            season implies are missing from every source we have, not merely unscored, so
+            clubs here have played between {coverage.minPlayed} and {coverage.maxPlayed}{" "}
+            matches. The individual results shown are correct; their sum is not a league
+            table, and the order should not be read as final positions.
           </DataNote>
         ) : null}
         {coverage.matchesMissingScore > 0 ? (
