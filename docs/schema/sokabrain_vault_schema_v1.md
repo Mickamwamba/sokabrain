@@ -449,3 +449,36 @@ What is lost is the narrative, not the arithmetic.
 Because these rows are generated from the score, the event-log-versus-score
 cross-check can no longer fail for the matches that have them. That check keeps
 its value only for matches with genuinely observed events.
+
+
+---
+
+## Addendum: `matches.kickoff_at` was three hours late
+
+Corrected 2026-09-08, across all 1,549 migrated matches that carry a real time.
+
+The legacy SokaFC database stored kickoffs in MySQL `datetime` columns, which
+carry no zone. The app was operated from Tanzania, so those columns hold **local
+wall-clock (EAT, UTC+3)** as typed by the operator. The migration wrote those
+hours into `TIMESTAMPTZ` as if they were UTC, which put every kickoff three
+hours late.
+
+The defect was invisible in the product — the web app renders `kickoff_at` with
+`toLocaleDateString`, never a time — but the data was wrong, and it said the
+Tanzanian Premier League's standard kickoff was 19:00 and that 35 of its matches
+kicked off at 23:00. Corrected, 797 of the league's matches sit on its actual
+16:00 kickoff.
+
+Five rows were deliberately **not** shifted: matches 733, 747, 750, 925 and 926,
+whose legacy time is 00:00 or 01:00. Those are "time unknown" placeholders
+rather than kickoffs, and shifting them back would have moved them to the
+previous day, destroying a date that *is* known. They keep a time that should be
+read as absent.
+
+No kickoff date moved, which was checked as part of applying the fix — every
+reconciliation against Wikipedia and RSSSF was made on the date, so all of them
+still hold. The statement is in `docs/reconciliation/fixes/`.
+
+Ingestion code must not reintroduce this: a provider that publishes UTC (as
+API-Football does) is already correct and needs no shift, whereas a scraped
+local fixture list needs its zone applied explicitly.

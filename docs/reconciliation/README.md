@@ -177,3 +177,76 @@ Tanzania Prisons`, Ruvu having failed to provide an ambulance. RSSSF writes it a
 `ambulance]` onto the next fixture's away team. Both had to be handled explicitly.
 The vault has no way to record that a result was awarded rather than played; it
 now looks like an ordinary 3-0.
+
+
+---
+
+## The four earlier legacy snapshots — checked, and they hold nothing new
+
+`compare_legacy_snapshots.py`, run against
+`~/Documents/Hype/Backups/SokaDatabase` (2026-09-08).
+
+The migration read one dump, `sokafc_02_APRIL_2020.sql`. Four earlier snapshots
+of the same production database sit beside it — July, August, November and
+December 2018. They were never examined. If production had ever lost a row, an
+earlier snapshot would still hold it, and the vault's largest remaining gap —
+goals with no scorer — could have been closed from our own history rather than
+from an external source.
+
+It cannot. The result is a clean negative, and worth recording so nobody spends
+the afternoon again.
+
+| Checked against April 2020 | jul2018 | aug2018 | nov2018 | dec2018 |
+|---|---|---|---|---|
+| matches absent | 0 | 0 | 0 | 0 |
+| lineup rows absent | 0 | 0 | 0 | 0 |
+| events absent | 0 | 4 | 3 | 7 |
+| **events that lost their scorer** | **0** | **0** | **0** | **0** |
+| events whose scorer changed | 0 | 0 | 0 | 0 |
+
+Primary keys are stable across all five snapshots, so the join is exact rather
+than heuristic: of jul2018's 544 events, all 544 appear in April 2020 with an
+identical `(match, type, minute)` tuple.
+
+### What this settles
+
+**Not one event ever lost its scorer.** The goals with no scorer were entered
+without one, on the day, and stayed that way — 823 of April 2020's 3,062 goal
+events, and already 76 of 544 in the very first snapshot. This is not migration
+damage and not production data loss; it is what the source has always been. The
+only way to fill them is a source outside SokaFC, and none has been found (see
+"Goalscorers: still missing" above).
+
+Coverage never went backwards either: lineup rows grew 1,502 → 1,553 → 1,589 →
+2,024, and no match or lineup row was ever deleted. The vault holds everything
+the legacy app ever held.
+
+### The eleven deleted events
+
+Four are cards. **Seven are goals, and every one of them had no scorer** —
+someone was tidying up unattributed goals by hand. They belong to matches 351,
+372, 387, 442, 456 and 466. All of those matches now carry a score verified
+against RSSSF, and their event logs reconcile to it, so the deletions did no
+harm and nothing needs restoring.
+
+### A side finding: our disputed dates are entered reschedules
+
+The snapshots also show *how* our kickoff dates came to be. Match 440 (Mtibwa
+Sugar v Singida United, flagged as disagreeing with RSSSF by 49 days) sat at
+2018-12-01 with status `PP` in December 2018, and was re-entered by hand as
+2019-01-22 sometime before April 2020. Its round-mate 439 was rescheduled the
+same way, from 2018-12-01 to 2019-04-17 — and RSSSF agrees with that one
+exactly.
+
+So our 2019-01-22 is a deliberate entry by someone following the league, not a
+migration artefact, which makes it harder to dismiss in favour of RSSSF's
+2019-03-12. The flag stays open and still wants a third source.
+
+## Kickoff times were three hours late
+
+Not a source comparison but found in the same pass, and applied as
+`fixes/2026-09-08_kickoff_timezone.sql`: legacy MySQL `datetime` values are
+Tanzanian local time, and the migration stored them as UTC. All 1,549 matches
+with a real time were shifted back three hours; five "time unknown" placeholders
+at 00:00–01:00 were left alone. No kickoff date moved, so every reconciliation
+recorded above still holds. Full rationale is in the schema doc.

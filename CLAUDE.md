@@ -138,9 +138,17 @@ explicitly out of scope — see "Non-goals" below).
   `GET /api/admin/competitions/:id`, `GET /api/admin/editions/:id/summary`,
   `GET /api/admin/reference`.
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
-  attribution bug, a Kenya Premier League country miscoding, and a handful
-  of duplicate lineup rows. Full detail is in the schema doc's audit
+  attribution bug, a Kenya Premier League country miscoding, a handful of
+  duplicate lineup rows, and kickoff times stored three hours late (legacy
+  local time written as UTC). Full detail is in the schema doc's audit
   section.
+- **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
+  snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
+  lineup or event was ever lost, and **not one event ever lost its scorer**.
+  The unattributed goals were entered without a scorer and always were. Filling
+  them needs a source outside SokaFC, and none has been found. Re-run the check
+  with `docs/reconciliation/compare_legacy_snapshots.py` rather than redoing it
+  by hand.
 
 ## Tech stack (do not deviate without discussion)
 
