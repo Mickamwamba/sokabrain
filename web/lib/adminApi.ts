@@ -141,6 +141,8 @@ export type AdminEditionRow = {
   editionId: number;
   season: string;
   seasonId: number;
+  format: string | null;
+  numTeams: number | null;
   matchCount: number;
   isPublished: boolean;
   publishedAt: string | null;
@@ -213,3 +215,157 @@ export type IssuesResponse = {
   };
   matches: MatchWithIssues[];
 };
+
+/* ------------------------------------------------ reference-entity management -- */
+
+export type Lookups = {
+  countries: { id: number; name: string }[];
+  seasons: { id: number; label: string }[];
+  stadiums: { id: number; name: string; city: string | null }[];
+  competitions: { id: number; name: string }[];
+  competitionTypes: string[];
+  editionFormats: string[];
+};
+
+export type Paged<K extends string, T> = { total: number; page: number; pageSize: number } & Record<K, T[]>;
+
+export type Usage = { label: string; count: number }[];
+
+export type PlayerRow = {
+  id: number;
+  fullName: string;
+  position: string | null;
+  dob: string | null;
+  nationality: string | null;
+  teams: { id: number; name: string }[];
+  /** The club spell running today; 'FREE_AGENT' with only past club spells; null with none recorded. */
+  currentClub: { id: number; name: string } | 'FREE_AGENT' | null;
+  events: number;
+  appearances: number;
+};
+
+export type PlayerRecord = {
+  id: number;
+  full_name: string;
+  first_name: string | null;
+  last_name: string | null;
+  dob: string | null;
+  nationality_id: number | null;
+  position: string | null;
+  height_cm: number | null;
+  preferred_foot: string | null;
+  player_team_stints: {
+    id: number;
+    start_date: string | null;
+    end_date: string | null;
+    shirt_number: number | null;
+    teams: { id: number; name: string };
+  }[];
+};
+
+export type TeamRow = {
+  id: number;
+  name: string;
+  shortName: string | null;
+  type: 'CLUB' | 'NATIONAL';
+  country: string;
+  stadium: string | null;
+  matches: number;
+  seasons: number;
+  players: number;
+};
+
+export type TeamRecord = {
+  id: number;
+  name: string;
+  short_name: string | null;
+  type: 'CLUB' | 'NATIONAL';
+  country_id: number;
+  stadium_id: number | null;
+};
+
+export type SeasonRow = {
+  id: number;
+  label: string;
+  startDate: string | null;
+  endDate: string | null;
+  editions: number;
+  published: number;
+  competitions: string[];
+};
+
+export type Participants = {
+  edition: {
+    id: number;
+    competitionId: number;
+    competition: string;
+    competitionType: string;
+    season: string;
+    numTeams: number | null;
+    isPublished: boolean;
+  };
+  groups: { id: number; name: string }[];
+  participants: {
+    teamId: number;
+    name: string;
+    type: string;
+    country: string;
+    group: { id: number; name: string } | null;
+    matches: number;
+  }[];
+  unlisted: { id: number; name: string }[];
+};
+
+export type AdminAccount = {
+  id: number;
+  email: string;
+  displayName: string;
+  isActive: boolean;
+  createdAt: string;
+  lastLoginAt: string | null;
+};
+
+/* ---------------------------------------------------------------- careers -- */
+
+export type SpellType = 'PERMANENT' | 'LOAN' | 'FREE' | 'YOUTH';
+
+export type CareerSpell = {
+  id: number;
+  team: { id: number; name: string; type: 'CLUB' | 'NATIONAL' };
+  start: string;
+  end: string | null;
+  type: SpellType | null;
+  shirtNumber: number | null;
+  fee: string | null;
+  /** Other spells this one contradicts. */
+  conflictsWith: number[];
+  /** Set on an open spell a later one contradicts: the end date that fixes it. */
+  staleSuggestedEnd: string | null;
+};
+
+export type CareerStatus =
+  | { kind: 'AT_CLUB'; club: CareerSpell; loan: CareerSpell | null }
+  | { kind: 'ON_LOAN_ONLY'; loan: CareerSpell }
+  | { kind: 'FREE_AGENT'; lastClub: CareerSpell }
+  | { kind: 'NO_CLUB_HISTORY' };
+
+export type Career = {
+  player: { id: number; name: string };
+  today: string;
+  status: CareerStatus;
+  clubSpells: CareerSpell[];
+  nationalSpells: CareerSpell[];
+};
+
+export type SquadEntry = {
+  spellId: number;
+  player: { id: number; name: string; position: string | null };
+  start: string | null;
+  end: string | null;
+  type: SpellType | null;
+  shirtNumber: number | null;
+};
+
+export type Squad = { today: string; current: SquadEntry[]; former: SquadEntry[] };
+
+export type TeamOption = { id: number; name: string; type: 'CLUB' | 'NATIONAL' };

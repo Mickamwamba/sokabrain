@@ -47,8 +47,6 @@ Requires `JWT_SECRET` in `.env` (`openssl rand -hex 32`). Tokens last 12 hours.
 | POST | `/api/admin/auth/login` | → `{ token, admin }` |
 | GET | `/api/admin/me` | current admin |
 | POST | `/api/admin/me/password` | `currentPassword`, `newPassword` (min 12) |
-| POST/PATCH | `/api/admin/teams[/:id]` | |
-| POST/PATCH | `/api/admin/players[/:id]` | |
 | POST/PATCH | `/api/admin/matches[/:id]` | PATCH is how you fill a missing score |
 | POST | `/api/admin/matches/:id/events` | `team_id` must be one of the two teams |
 | DELETE | `/api/admin/matches/:id/events/:eventId` | also removes the provenance row |
@@ -146,6 +144,61 @@ The migrated vault knows nothing about API-Football, so nothing syncs until
 ever proposes exact post-normalisation name matches; ambiguous ones are listed
 for a human rather than guessed, because a wrong team mapping corrupts scores on
 every subsequent sync.
+
+## Management API (admin dashboard)
+
+Create/read/update/delete for the vault's reference entities and for admin
+accounts, in `src/routes/adminManage.ts`. Every create and update records
+`manual_admin` provenance in the same transaction.
+
+| Method | Path | Notes |
+|---|---|---|
+| GET/POST | `/api/admin/players` | `?q=`, `?teamId=`, `?page=`, `?pageSize=` |
+| GET/PATCH/DELETE | `/api/admin/players/:id` | GET includes `usage` — what depends on the player |
+| GET/POST | `/api/admin/teams` | `?q=`, `?type=CLUB\|NATIONAL`, paging |
+| GET/PATCH/DELETE | `/api/admin/teams/:id` | GET includes `usage` |
+| PATCH/DELETE | `/api/admin/competitions/:id` | create stays `POST /api/admin/competitions` |
+| POST | `/api/admin/competitions/:id/editions` | `seasonId`, `format`, `numTeams`; always created unpublished |
+| PATCH/DELETE | `/api/admin/editions/:id` | the season itself is not editable — delete and recreate |
+| GET/POST | `/api/admin/editions/:id/participants` | GET also lists teams with matches but no participant row |
+| PATCH/DELETE | `/api/admin/editions/:id/participants/:teamId` | PATCH sets `groupId` |
+| GET/POST | `/api/admin/seasons` | label `2025/2026` or `2025` |
+| PATCH/DELETE | `/api/admin/seasons/:id` | |
+| GET/POST | `/api/admin/admins` | GET also returns `currentAdminId` |
+| PATCH | `/api/admin/admins/:id` | `displayName`, `isActive` |
+| POST | `/api/admin/admins/:id/password` | set someone else's password; your own goes through `/me/password` |
+| GET | `/api/admin/players/:id/career` | club status, club and international spells, overlaps and stale open spells flagged |
+| POST | `/api/admin/players/:id/transfers` | `toTeamId` (null = release), `date`, `type`, `loanUntil`, `fee`, `shirtNumber` |
+| POST | `/api/admin/players/:id/spells` | add a past spell directly; refused if it overlaps another club contract |
+| PATCH/DELETE | `/api/admin/spells/:id` | correct or remove a spell |
+| GET | `/api/admin/teams/:id/squad` | spells running today, newest signing first, plus former players |
+| GET | `/api/admin/lookups` | countries, seasons, stadiums, competitions, types, formats |
+| GET | `/api/admin/team-options` | every team, name only, `?type=` |
+
+Rules worth knowing before calling these:
+
+- **A delete never cascades through match history.** It answers 409 and names
+  what depends on the row ("Azam FC can't be deleted: it has 562 matches, …").
+  Only a row nothing references can be deleted, and its provenance goes with it.
+  An edition must also be unpublished first; deleting one removes its groups
+  and participant list, which describe nothing once it has no matches.
+- **Admins are deactivated, never deleted.** `competition_editions.published_by`
+  and `data_flags.created_by` point at them. Nobody can deactivate themselves,
+  and the last active admin cannot be deactivated at all.
+- **There are no roles.** Every active admin can manage every account, matching
+  the single `admins` table. Roles would need a schema change.
+- **Careers follow the vault's own conventions** (`services/careers.ts`, unit
+  tested): a move ends the old spell on the day the new one starts, so touching
+  spells don't overlap; national-team spells are a separate career that no
+  transfer ever ends; a loan runs inside its parent spell and can't outlive it.
+  A permanent move or release ends every club spell running on the date. The
+  API refuses a move the recorded history contradicts rather than guessing.
+  `POST /players` takes an optional `club` (`teamId`, `startDate`, `type`,
+  `shirtNumber`) — omit it for a free agent. Deleting a player takes their
+  spells with them; only match history blocks it.
+- Unique-constraint clashes (a duplicate season label, a team already in an
+  edition, an email already registered) come back as 409 with a readable
+  message, not a 500.
 
 ## Editorial API (admin dashboard)
 

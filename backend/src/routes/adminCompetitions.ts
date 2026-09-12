@@ -164,6 +164,8 @@ adminCompetitionsRouter.get('/competitions/:id', async (req, res) => {
         editionId: e.id,
         season: e.seasons.label,
         seasonId: e.seasons.id,
+        format: e.format,
+        numTeams: e.num_teams,
         matchCount: e._count.matches,
         isPublished: e.is_published,
         publishedAt: e.published_at,
@@ -184,6 +186,7 @@ adminCompetitionsRouter.get('/competitions/:id', async (req, res) => {
       type: competition.type,
       tier: competition.tier,
       country: competition.countries?.name ?? null,
+      countryId: competition.countries?.id ?? null,
     },
     editions,
   });

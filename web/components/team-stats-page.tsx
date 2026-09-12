@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition, type TeamType } from "@/lib/api";
-import { Card, ChipRow, Crest, DataNote, Empty, Rank, StatTile } from "@/components/ui";
+import { Card, ChipRow, Crest, DataNote, Empty, Rank, StatTile, TeamLink } from "@/components/ui";
 import { resolveScope, seasonOptionsFor, type ResolvedScope } from "@/lib/scope";
 import { AllTimeBadge, ScopeSelect } from "@/components/scope-select";
 
@@ -137,13 +136,10 @@ export async function TeamStatsPage({
                   <tr key={c.teamId} className="border-b border-line last:border-0 hover:bg-wash">
                     <td className="py-2.5 pl-5 pr-2"><Rank n={i + 1} /></td>
                     <td className="px-2 py-2.5">
-                      <Link
-                        href={`/stats/head-to-head?teamA=${c.teamId}`}
-                        className="flex items-center gap-2 font-semibold hover:text-brand"
-                      >
+                      <TeamLink id={c.teamId} name={c.teamName} className="flex items-center gap-2 font-semibold">
                         <Crest name={c.teamName} size={22} />
                         <span className="truncate">{c.teamName}</span>
-                      </Link>
+                      </TeamLink>
                     </td>
                     {[c.played, c.won, c.drawn, c.lost, c.goalsFor, c.goalsAgainst].map((v, j) => (
                       <td key={j} className="px-2 py-2.5 text-right nums text-muted">{v}</td>

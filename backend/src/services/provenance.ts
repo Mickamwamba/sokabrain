@@ -12,7 +12,10 @@ export type ProvenanceEntity =
   | 'coach'
   | 'competition'
   | 'season'
-  | 'country';
+  | 'country'
+  // A player's spell at a club, as entered or edited by an admin. The legacy
+  // migration recorded none, so manual rows are the first of this type.
+  | 'player_team_stint';
 
 /** Names of the `data_sources` rows this codebase writes provenance for. */
 export type SourceName = 'legacy_sokafc' | 'manual_admin' | 'api_football';

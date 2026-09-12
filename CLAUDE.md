@@ -237,6 +237,48 @@ explicitly out of scope — see "Non-goals" below).
   toggle and full match list. New endpoints: `GET/POST /api/admin/competitions`,
   `GET /api/admin/competitions/:id`, `GET /api/admin/editions/:id/summary`,
   `GET /api/admin/reference`.
+- **Every team has a page: `/teams/[id]`**, backed by `GET /api/vault/teams/:id`
+  (`services/teamProfile.ts`). All-time across published competitions, broken
+  down per competition and per season; team names link to it site-wide.
+  - **Titles are only counted where they can be stated.** A league title needs a
+    finished season that is not provisional — the same test as `/table`'s
+    `isProvisional` (duplicated in SQL; keep the two in step) — so neither the
+    season in play nor TPL 2020/21 names a champion. A tournament title comes
+    from the final's result: penalties, then extra time, then 90 minutes.
+    Verified against all 13 AFCON winners and every TPL champion `/table` names.
+  - **Postgres `LEAST`/`GREATEST` ignore NULL.** `LEAST(NULL, 3)` is 3, which
+    once made Azam's scorer coverage read 99% instead of 34%. Wrap a
+    possibly-null argument in a CASE before using either.
+  - 12 fixtures from 2021 (TPL 2020/21) are still `SCHEDULED` five years on.
+    Not fixed — a data call for an editor.
+- **The admin is a full console, with CRUD for everything and a confirmation
+  dialog on every change** (2026-09-12). Grouped left sidebar with icons
+  (`lucide-react`); pages for competitions, seasons, participants, matches,
+  teams, players, issues, flags, access management and your own account.
+  Backend: `routes/adminManage.ts`; web: `app/admin/(console)/` and
+  `components/admin/`. Details in both READMEs.
+  - **`components/admin/confirm-form.tsx` is the only way the console submits
+    a change.** Build anything new on it. It reads `data-label` fields back into
+    the dialog (old → new for an edit), blocks Enter from bypassing it, and keeps
+    typed input when a save is rejected.
+  - **Deletes never cascade through history**: the API answers 409 naming what
+    depends on the row. **Admins are deactivated, never deleted** (FKs from
+    `published_by` and `data_flags`); you can't deactivate yourself or the last
+    active admin. **There are no roles** — any active admin manages access.
+  - **Player careers and transfers are managed in the console.** Register a
+    player at a club (with join date) or as a free agent; record a transfer,
+    loan or release, which ends the right spells itself; edit past spells; see
+    each team's current squad. Rules in `services/careers.ts` (unit tested):
+    touching spells don't overlap (the legacy convention), national-team spells
+    are never ended by a transfer, and a loan can't outlive its parent spell.
+    **The existing spells are not clean** — 46 club spells were left open after
+    the player moved on and 69 club pairs overlap (53 players). They are flagged
+    on each player's page with a one-click fix, never auto-corrected.
+    Manual spells record provenance as `player_team_stint`, a new entity type.
+  - **The public site and the console no longer share a layout.** Public pages
+    live in `app/(site)/` (header/footer there); the root layout is only the
+    document. URLs are unchanged. Run `next typegen` after moving routes, or
+    `tsc` fails on stale `.next/types`.
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, a handful of
   duplicate lineup rows, kickoff times stored three hours late (legacy local
@@ -334,9 +376,12 @@ soka-brain/
 │   ├── .env.example
 │   └── package.json
 ├── web/                                # Next.js 16 App Router app
-│   ├── app/                            # /, /editions/[id], /matches
-│   ├── components/ui.tsx               # coverage notes, crests, empty states
-│   └── lib/api.ts                      # hand-written types for the read API
+│   ├── app/(site)/                     # public pages + their header/footer
+│   ├── app/admin/(console)/            # admin console pages (sidebar shell)
+│   ├── app/admin/login/                # sign-in, outside the console shell
+│   ├── components/ui.tsx               # public: coverage notes, crests, empty states
+│   ├── components/admin/               # console kit, confirm dialog, shell, toaster
+│   └── lib/api.ts, lib/adminApi.ts     # hand-written types for the read and admin APIs
 └── mobile/                             # Flutter app — placeholder until Phase 2
 ```
 

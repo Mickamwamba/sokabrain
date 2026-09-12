@@ -331,6 +331,94 @@ async function get<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+
+/* ------------------------------------------------------------ team pages -- */
+
+export type TeamRecord = {
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+  points: number;
+  cleanSheets: number;
+  /** Matches in which the team failed to score. */
+  blanks: number;
+  winRate: number;
+  goalsPerGame: number;
+};
+
+export type TeamSeason = TeamRecord & {
+  editionId: number;
+  season: string;
+  competitionId: number;
+  competition: string;
+  competitionType: string;
+  /** League only — a cup's combined ranking is not a standing. */
+  position: number | null;
+  teamsInEdition: number | null;
+  /** Tournament only — how far they got. */
+  furthestRound: string | null;
+  /** False while the edition still has fixtures to play. */
+  finished: boolean;
+  /** False when fixtures are missing from every source (TPL 2020/21). */
+  settled: boolean;
+  /** Won it that season. Null when that cannot be said yet, or at all. */
+  champion: boolean | null;
+};
+
+export type TeamCompetitionRecord = TeamRecord & {
+  competitionId: number;
+  competition: string;
+  competitionType: string;
+  seasons: number;
+  firstSeason: string;
+  lastSeason: string;
+  /** Only seasons where `champion` is known count toward this. */
+  titles: number;
+};
+
+export type TeamFormMatch = {
+  matchId: number;
+  kickoffAt: string | null;
+  competition: string;
+  season: string;
+  home: boolean;
+  opponentId: number;
+  opponent: string;
+  goalsFor: number;
+  goalsAgainst: number;
+  result: 'W' | 'D' | 'L';
+};
+
+export type TeamProfile = {
+  team: {
+    id: number;
+    name: string;
+    shortName: string | null;
+    type: TeamType;
+    country: string | null;
+    logoUrl: string | null;
+    stadium: { name: string; city: string | null; capacity: number | null } | null;
+  };
+  record: TeamRecord;
+  competitions: TeamCompetitionRecord[];
+  seasons: TeamSeason[];
+  form: TeamFormMatch[];
+  biggestWin: TeamFormMatch | null;
+  heaviestDefeat: TeamFormMatch | null;
+  players: { players: PlayerStat[]; coverage: PlayerStatsCoverage };
+  coverage: {
+    goalAttributionRate: number;
+    goalsScored: number;
+    goalsAttributed: number;
+    seasonsWithScorers: number;
+    seasonsPlayed: number;
+  };
+};
+
 export const api = {
   editions: () => get<{ editions: Edition[] }>('/api/vault/editions'),
   match: (id: number | string) => get<MatchDetail>(`/api/vault/matches/${id}`),
@@ -356,6 +444,7 @@ export const api = {
     const q = qs.toString();
     return get<Overview>(`/api/vault/stats/overview${q ? `?${q}` : ''}`);
   },
+  team: (id: number | string) => get<TeamProfile>(`/api/vault/teams/${id}`),
   teams: (type?: TeamType) =>
     get<{ teams: TeamRefLite[] }>(`/api/vault/teams${type ? `?type=${type}` : ''}`),
   clubs: (scope: { competitionId?: number; editionId?: number; type?: TeamType } = {}) => {

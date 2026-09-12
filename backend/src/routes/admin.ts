@@ -8,6 +8,8 @@ import { requireAdmin } from '../auth/middleware.js';
 import { recordManualProvenance } from '../services/provenance.js';
 import { editorialRouter } from './adminEditorial.js';
 import { adminCompetitionsRouter } from './adminCompetitions.js';
+import { manageRouter } from './adminManage.js';
+import { careersRouter } from './adminCareers.js';
 
 export const adminRouter = Router();
 
@@ -101,6 +103,8 @@ adminRouter.use(requireAdmin);
 // Editorial routes (publishing, flags) share the same auth boundary.
 adminRouter.use('/', editorialRouter);
 adminRouter.use('/', adminCompetitionsRouter);
+adminRouter.use('/', manageRouter);
+adminRouter.use('/', careersRouter);
 
 /**
  * Admin match list. Unlike the public one this ignores publication state —
@@ -268,92 +272,8 @@ adminRouter.get('/matches/:id', async (req, res) => {
   });
 });
 
-const teamBody = z.object({
-  name: z.string().min(1).max(150),
-  short_name: z.string().max(10).nullish(),
-  type: z.enum(['CLUB', 'NATIONAL']),
-  // NOT NULL in the schema — a team always belongs to a country.
-  country_id: z.number().int().positive(),
-  stadium_id: z.number().int().positive().nullish(),
-  founded_year: z.number().int().min(1800).max(2100).nullish(),
-  logo_url: z.string().max(255).nullish(),
-});
-
-adminRouter.post('/teams', async (req, res) => {
-  const parsed = teamBody.safeParse(req.body);
-  if (!parsed.success) return badRequest(res, parsed.error);
-
-  const team = await prisma.$transaction(async (tx) => {
-    const data: Prisma.teamsUncheckedCreateInput = definedOnly(parsed.data);
-    const created = await tx.teams.create({ data });
-    await recordManualProvenance(tx, 'team', created.id);
-    return created;
-  });
-  res.status(201).json({ team });
-});
-
-adminRouter.patch('/teams/:id', async (req, res) => {
-  const params = idParam.safeParse(req.params);
-  if (!params.success) return res.status(400).json({ error: 'id must be a positive integer' });
-  const parsed = teamBody.partial().safeParse(req.body);
-  if (!parsed.success) return badRequest(res, parsed.error);
-
-  if (!(await prisma.teams.findUnique({ where: { id: params.data.id }, select: { id: true } }))) {
-    return res.status(404).json({ error: `No team with id ${params.data.id}` });
-  }
-
-  const team = await prisma.$transaction(async (tx) => {
-    const data: Prisma.teamsUncheckedUpdateInput = definedOnly(parsed.data);
-    const updated = await tx.teams.update({ where: { id: params.data.id }, data });
-    await recordManualProvenance(tx, 'team', updated.id);
-    return updated;
-  });
-  res.json({ team });
-});
-
-const playerBody = z.object({
-  full_name: z.string().min(1).max(150),
-  first_name: z.string().max(60).nullish(),
-  last_name: z.string().max(60).nullish(),
-  dob: z.coerce.date().nullish(),
-  nationality_id: z.number().int().positive().nullish(),
-  position: z.enum(['GK', 'DF', 'MF', 'FW']).nullish(),
-  height_cm: z.number().int().min(100).max(250).nullish(),
-  preferred_foot: z.enum(['LEFT', 'RIGHT', 'BOTH']).nullish(),
-  photo_url: z.string().max(255).nullish(),
-});
-
-adminRouter.post('/players', async (req, res) => {
-  const parsed = playerBody.safeParse(req.body);
-  if (!parsed.success) return badRequest(res, parsed.error);
-
-  const player = await prisma.$transaction(async (tx) => {
-    const data: Prisma.playersUncheckedCreateInput = definedOnly(parsed.data);
-    const created = await tx.players.create({ data });
-    await recordManualProvenance(tx, 'player', created.id);
-    return created;
-  });
-  res.status(201).json({ player });
-});
-
-adminRouter.patch('/players/:id', async (req, res) => {
-  const params = idParam.safeParse(req.params);
-  if (!params.success) return res.status(400).json({ error: 'id must be a positive integer' });
-  const parsed = playerBody.partial().safeParse(req.body);
-  if (!parsed.success) return badRequest(res, parsed.error);
-
-  if (!(await prisma.players.findUnique({ where: { id: params.data.id }, select: { id: true } }))) {
-    return res.status(404).json({ error: `No player with id ${params.data.id}` });
-  }
-
-  const player = await prisma.$transaction(async (tx) => {
-    const data: Prisma.playersUncheckedUpdateInput = definedOnly(parsed.data);
-    const updated = await tx.players.update({ where: { id: params.data.id }, data });
-    await recordManualProvenance(tx, 'player', updated.id);
-    return updated;
-  });
-  res.json({ player });
-});
+// Team and player create/read/update/delete live in adminManage.ts, alongside
+// the rest of the reference-entity management.
 
 const MATCH_STATUSES = [
   'SCHEDULED', 'LIVE', 'FULL_TIME', 'POSTPONED', 'ABANDONED', 'CANCELLED',

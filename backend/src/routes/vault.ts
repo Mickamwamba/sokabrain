@@ -14,6 +14,7 @@ import {
   publishedTeams,
   type PlayerSort,
 } from '../services/stats.js';
+import { teamProfile } from '../services/teamProfile.js';
 
 export const vaultRouter = Router();
 
@@ -229,6 +230,17 @@ vaultRouter.get('/teams', async (req, res) => {
   const scope = scopeOf(req.query);
   if (!scope) return res.status(400).json({ error: 'Invalid scope' });
   res.json({ teams: await publishedTeams(q.data.type, scope) });
+});
+
+/** One team's whole record: all-time, per competition, per season. */
+vaultRouter.get('/teams/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'Invalid team id' });
+  const profile = await teamProfile(id);
+  if (!profile) return res.status(404).json({ error: 'No team with that id' });
+  // A team that exists but has never played in a published edition is not a
+  // 404 — it is a real team with nothing to show yet, and the page says so.
+  res.json(profile);
 });
 
 vaultRouter.get('/stats/clubs', async (req, res) => {

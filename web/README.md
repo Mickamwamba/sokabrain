@@ -60,20 +60,56 @@ render a "can't reach the API" message rather than a stack trace.
 
 ## Admin dashboard (`/admin`)
 
-Sign in with an account made by `npm run admin:create` in `backend/`.
+A full-screen console, separate from the public site: a dark left sidebar with
+every section grouped under Overview, Vault, Data quality and Settings, and a
+slim top bar with the signed-in admin and sign-out. Below the `lg` breakpoint
+the sidebar becomes a drawer behind a menu button.
 
-Left sidebar navigation; the working area sits beside it.
+The first account comes from `npm run admin:create` in `backend/`; after that,
+admins add each other under Access management.
 
 | Route | Does |
 |---|---|
-| `/admin/login` | sign in (renders without the sidebar) |
-| `/admin` | overview: what's live, what needs attention, open flags |
-| `/admin/competitions` | all competitions, searchable, with "add competition" |
-| `/admin/competitions/[id]` | one competition — pick a season, see its stats and every match |
-| `/admin/matches` | matches for one competition + season, chosen by dropdown; optional "needs a score" filter |
-| `/admin/matches/[id]` | two-sided match sheet: home events left, away right; name missing scorers inline; edit score & status; raise flags |
-| `/admin/issues` | **every match needing attention**, by competition + season + issue type |
-| `/admin/flags` | open and resolved flags, with resolution notes |
+| `/admin/login` | sign in (outside the console shell) |
+| `/admin` | dashboard: totals, what's live, open flags, seasons needing attention |
+| `/admin/competitions` | all competitions, searchable · `/new` to create |
+| `/admin/competitions/[id]` | one competition: pick a season for its stats, matches, detected issues, publish toggle, settings, add or delete a season |
+| `/admin/competitions/[id]/edit` | rename, retype, delete |
+| `/admin/seasons` | every season with the competitions using it; add one · `/[id]` to edit or delete |
+| `/admin/participants` | teams in a competition's season: add, set group, remove; picks up teams playing matches but not listed |
+| `/admin/matches` | matches for one competition + season; optional "needs a score" filter |
+| `/admin/matches/[id]` | two-sided match sheet: events per side, missing scorers, result, add event, raise and resolve flags |
+| `/admin/teams` | clubs and national teams, searchable and paged · `/new` · `/[id]` shows the current squad and former players, and edits or deletes |
+| `/admin/players` | players with their current club (or free agent), searchable and paged · `/new` registers with a club and join date, or as a free agent |
+| `/admin/players/[id]` | career history (club and international, overlaps flagged with one-click fixes), record a transfer/loan/release, details, delete |
+| `/admin/issues` | every match needing attention, by competition + season + issue type |
+| `/admin/flags` | open and resolved flags |
+| `/admin/access` | admin accounts: add, rename, reset password, revoke or restore access |
+| `/admin/account` | your own details and password |
+
+### Every change goes through a confirmation dialog
+
+`components/admin/confirm-form.tsx` is the only way the console submits a
+change — create, edit, delete, publish, resolve, sign out. Use it for anything
+new; there is no other form wrapper.
+
+- **It shows what will be written.** Fields carrying `data-label` are read back
+  into the dialog: every value for `review="all"`, old → new for
+  `review="changes"`. An edit that changes nothing says so and can't be
+  confirmed.
+- **Enter can't bypass it.** An implicit submit while the dialog is closed opens
+  the dialog instead. The guard asks the `<dialog>` element whether it is open —
+  React state went stale once and let a save straight through.
+- **A failed save keeps the editor's input.** The action is dispatched in a
+  transition rather than through the form's `action` prop, because React resets
+  a form after its action settles, even when the server rejected it.
+- **Short prompts live inside the dialog** via `fields` (a new password, a
+  resolution note), validated on confirm.
+- Success closes the dialog and raises a toast (`components/admin/toaster.tsx`,
+  mounted in `app/admin/layout.tsx` so it survives the redirect after a create).
+
+Deletes are refused by the API when anything depends on the record, and the edit
+pages show that dependency list up front, with the delete button disabled.
 
 ### Two kinds of problem
 
@@ -87,11 +123,9 @@ Left sidebar navigation; the working area sits beside it.
   contradicted by an external source, a score disputed by a match report. They
   persist until someone resolves them, with a note.
 
-Adding, editing and deleting an event each go through a confirmation dialog
-that names what will change — "Removing the 23' goal by John Bocco for Simba
-SC" rather than a generic "Are you sure?". For an own goal the dialog also
-states which side the goal will count for. The submit button lives inside the
-dialog, so Enter in the form cannot bypass it.
+Event dialogs name exactly what will change — "Removing the 23' goal by John
+Bocco for Simba SC" rather than a generic "Are you sure?". For an own goal the
+dialog also states which side the goal will count for.
 
 Matches with goals whose scorer was never recorded carry a red dot and a count
 in every list. The dot has a screen-reader label with the exact count, so the
@@ -107,8 +141,15 @@ highlighted.
 
 - **Session is a JWT in an httpOnly cookie**, so page JavaScript cannot read it
   and an XSS bug can't exfiltrate it. Every admin API call is made server-side.
-- **Mutations are server actions**, not client fetches. Each screen redirects to
-  login on a 401 rather than rendering a broken page.
+- **Mutations are server actions**, not client fetches: `app/admin/actions.ts`
+  and `app/admin/manage-actions.ts`, sharing `lib/admin-actions.ts`.
+- **The console checks the session once**, in `app/admin/(console)/layout.tsx`,
+  against `/api/admin/me` — so a deactivated admin's still-valid cookie gets
+  nothing. Pages load through `lib/admin-page.ts`, which sends a 401 to sign-in
+  and a 404 to the not-found page.
+- **Two route groups keep the chromes apart.** `app/(site)/` holds the public
+  pages and their header/footer; `app/admin/(console)/` holds the sidebar shell.
+  The root layout is only the document. Neither group changes a URL.
 - **Publishing is the public gate.** An edition is invisible to the public site
   until published, and can't be published while it carries an open BLOCKER flag.
 - **A blank score box means "unknown", not 0.** The editor sends null, so an

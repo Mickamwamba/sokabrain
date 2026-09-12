@@ -1,4 +1,7 @@
 import { api, type Edition } from "@/lib/api";
+import { competitionFromParams } from "@/lib/scope-params";
+
+export { competitionFromParams };
 
 /**
  * What every public page is scoped to: one competition, and one season within
@@ -65,10 +68,7 @@ export async function resolveScope(
 
   // Which competition? An explicit choice, else the one the named edition
   // belongs to, else whatever is in season, else the first alphabetically.
-  const named = Number(competitionParam);
-  const byEdition = editions.find((e) => String(e.editionId) === editionParam);
-  let competitionId =
-    competitions.find((c) => c.id === named)?.id ?? byEdition?.competitionId;
+  let competitionId = competitionFromParams(competitionParam, editionParam, editions);
 
   if (competitionId === undefined) {
     const ctx = await api.context().catch(() => null);

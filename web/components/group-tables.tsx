@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { GroupTable, KnockoutRound, StandingsRow } from "@/lib/api";
-import { Card, CardHead, Crest, Rank } from "@/components/ui";
+import { Card, CardHead, Crest, Rank, TeamLink } from "@/components/ui";
 
 /**
  * A tournament's group stage and knockout bracket.
@@ -55,10 +55,10 @@ export function GroupTables({ groups }: { groups: GroupTable[] }) {
                   >
                     <td className="py-2.5 pl-5 pr-2"><Rank n={r.position} /></td>
                     <td className="px-2 py-2.5">
-                      <span className="flex items-center gap-2 font-semibold">
+                      <TeamLink id={r.teamId} name={r.teamName} className="flex items-center gap-2 font-semibold">
                         <Crest name={r.teamName} size={20} />
                         <span className="truncate">{r.teamName}</span>
-                      </span>
+                      </TeamLink>
                     </td>
                     {cells(r).map((v, i) => (
                       <td key={i} className="px-2 py-2.5 text-right nums text-muted">{v}</td>

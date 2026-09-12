@@ -193,3 +193,33 @@ export function FormDots({ results }: { results: ("W" | "D" | "L")[] }) {
     </span>
   );
 }
+
+/**
+ * A team's name, linking to its page.
+ *
+ * One component so every table, leaderboard and match header links a team the
+ * same way. Falls back to plain text when there is no id to link to — a
+ * player whose club is unrecorded, or a tournament winner known only by name.
+ *
+ * Never place this inside another link: a row that already opens a match is a
+ * link, and a nested anchor is invalid HTML that browsers resolve unpredictably.
+ */
+export function TeamLink({
+  id,
+  name,
+  className = "",
+  children,
+}: {
+  id: number | null | undefined;
+  name: string;
+  className?: string;
+  /** Defaults to the name; pass a crest-and-name layout to link the lot. */
+  children?: React.ReactNode;
+}) {
+  if (id == null) return <span className={className}>{children ?? name}</span>;
+  return (
+    <Link href={`/teams/${id}`} className={`transition-colors hover:text-brand ${className}`}>
+      {children ?? name}
+    </Link>
+  );
+}
