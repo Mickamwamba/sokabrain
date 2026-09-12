@@ -127,7 +127,7 @@ export async function TeamStatsPage({
                     <td className="py-2.5 pl-5 pr-2"><Rank n={i + 1} /></td>
                     <td className="px-2 py-2.5">
                       <Link
-                        href={`/head-to-head?teamA=${c.teamId}`}
+                        href={`/stats/head-to-head?teamA=${c.teamId}`}
                         className="flex items-center gap-2 font-semibold hover:text-brand"
                       >
                         <Crest name={c.teamName} size={22} />

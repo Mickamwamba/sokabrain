@@ -61,7 +61,7 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
-    return s ? `/players?${s}` : "/stats/players";
+    return s ? `/stats/players?${s}` : "/stats/players";
   };
 
   const seasonChoices = seasonOptions(editions);

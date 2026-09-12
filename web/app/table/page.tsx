@@ -65,6 +65,13 @@ export default async function TablePage(props: PageProps<"/table">) {
   // A tournament played in groups is shown as its groups and its bracket. The
   // combined ranking is still available below, but as a summary, not a table.
   const isTournament = groups.length > 0 || knockout.length > 0;
+  // A national-team competition belongs on the nations board; sending it to
+  // "Club stats" was what made Egypt look like a club in the first place.
+  const isNationalTeam = ["CONTINENTAL_NATIONAL", "WORLD_CUP", "QUALIFIER"].includes(
+    edition.competitionType,
+  );
+  const teamStatsPath = isNationalTeam ? "/stats/nations" : "/stats/clubs";
+  const teamStatsLabel = isNationalTeam ? "Nation stats" : "Club stats";
   const finalTie = knockout.find((r) => r.round.toUpperCase() === "FINAL")?.matches[0];
   const winnerName =
     finalTie?.winnerTeamId === finalTie?.homeTeamId
@@ -79,7 +86,7 @@ export default async function TablePage(props: PageProps<"/table">) {
       <Card className="overflow-hidden self-start">
         <CardHead
           title="Top scorers"
-          action={{ href: `/players?editionId=${editionId}`, label: "Full list" }}
+          action={{ href: `/stats/players?editionId=${editionId}`, label: "Full list" }}
         />
         {scorers.scorers.length === 0 ? (
           <p className="px-5 py-10 text-center text-sm text-muted">
@@ -126,13 +133,13 @@ export default async function TablePage(props: PageProps<"/table">) {
           All matches
         </Link>
         <Link
-          href={`/clubs?editionId=${editionId}`}
+          href={`${teamStatsPath}?editionId=${editionId}`}
           className="rounded-full border border-line bg-paper px-4 py-1.5 font-medium hover:border-ink"
         >
-          Club stats
+          {teamStatsLabel}
         </Link>
         <Link
-          href={`/players?editionId=${editionId}`}
+          href={`/stats/players?editionId=${editionId}`}
           className="rounded-full border border-line bg-paper px-4 py-1.5 font-medium hover:border-ink"
         >
           Player stats

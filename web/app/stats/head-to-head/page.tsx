@@ -98,7 +98,7 @@ export default async function HeadToHeadPage(props: PageProps<"/stats/head-to-he
       if (teamA) q.set("teamA", teamA);
       q.set("teamB", String(id));
     }
-    return `/head-to-head?${q}`;
+    return `/stats/head-to-head?${q}`;
   };
 
   return (
