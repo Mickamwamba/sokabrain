@@ -115,6 +115,7 @@ export async function getStandings(editionId: number): Promise<StandingsResult> 
     matchesMissingScore: number;
     fixturesPresent: number;
     numTeams: number | null;
+    isRoundRobin: boolean | null;
   }>>(Prisma.sql`
     SELECT
       count(*) FILTER (WHERE m.status = 'FULL_TIME')::int AS "matchesFullTime",
@@ -125,19 +126,26 @@ export async function getStandings(editionId: number): Promise<StandingsResult> 
         WHERE m.status = 'FULL_TIME' AND (m.home_score IS NULL OR m.away_score IS NULL)
       )::int AS "matchesMissingScore",
       count(*)::int AS "fixturesPresent",
-      max(ce.num_teams)::int AS "numTeams"
+      max(ce.num_teams)::int AS "numTeams",
+      bool_or(c.type = 'LEAGUE') AS "isRoundRobin"
     FROM matches m
     JOIN competition_editions ce ON ce.id = m.competition_edition_id
+    JOIN competitions c ON c.id = ce.competition_id
     WHERE m.competition_edition_id = ${editionId}
   `);
 
   const played = rows.map((r) => r.played);
-  // Every edition of this competition is a double round robin, so n*(n-1) is
-  // the fixture count a complete season implies. Editions with no recorded team
-  // count cannot be judged this way and are never called provisional on this
+  // n*(n-1) is the fixture count a complete season implies -- but only for a
+  // double round robin, where every team plays every other twice. It says
+  // nothing about a cup: AFCON 2019 has all 52 of its fixtures, yet 24 teams
+  // would imply 552 and the page would claim 500 were missing. So this is only
+  // computed for a LEAGUE. Editions with no recorded team count cannot be
+  // judged this way either, and neither kind is called provisional on this
   // basis alone.
   const fixturesExpected =
-    raw?.numTeams && raw.numTeams > 1 ? raw.numTeams * (raw.numTeams - 1) : null;
+    raw?.isRoundRobin && raw.numTeams && raw.numTeams > 1
+      ? raw.numTeams * (raw.numTeams - 1)
+      : null;
   const missingFixtures =
     fixturesExpected === null ? 0 : Math.max(0, fixturesExpected - (raw?.fixturesPresent ?? 0));
 

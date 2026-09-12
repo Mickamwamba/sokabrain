@@ -1659,19 +1659,19 @@ COPY public.competition_editions (id, competition_id, season_id, host_country_id
 127	1	101	56	ROUND_ROBIN	16	t	2026-09-08 06:16:33.135118-05	1
 128	1	102	56	ROUND_ROBIN	16	t	2026-09-08 06:16:33.135118-05	1
 129	1	103	56	ROUND_ROBIN	16	t	2026-09-08 06:16:33.135118-05	1
-178	16	153	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-179	16	154	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-180	16	155	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-181	16	156	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-182	16	157	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-183	16	158	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-184	16	159	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-185	16	160	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-186	16	161	\N	GROUPS_KNOCKOUT	16	f	\N	\N
-187	16	162	\N	GROUPS_KNOCKOUT	24	f	\N	\N
-188	16	163	\N	GROUPS_KNOCKOUT	24	f	\N	\N
-14	16	3	\N	GROUPS_KNOCKOUT	24	f	2026-09-07 00:26:19.95-05	1
 189	16	164	\N	GROUPS_KNOCKOUT	24	t	2026-09-12 08:16:58.023-05	1
+178	16	153	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+179	16	154	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+180	16	155	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+181	16	156	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+182	16	157	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+183	16	158	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+184	16	159	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+185	16	160	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+186	16	161	\N	GROUPS_KNOCKOUT	16	t	2026-09-12 08:56:41.951194-05	1
+187	16	162	\N	GROUPS_KNOCKOUT	24	t	2026-09-12 08:56:41.951194-05	1
+188	16	163	\N	GROUPS_KNOCKOUT	24	t	2026-09-12 08:56:41.951194-05	1
+14	16	3	\N	GROUPS_KNOCKOUT	24	t	2026-09-12 08:56:41.951194-05	1
 \.
 
 
@@ -38436,7 +38436,7 @@ SELECT pg_catalog.setval('public.competition_edition_teams_id_seq', 1928, true);
 -- Name: competition_editions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competition_editions_id_seq', 189, true);
+SELECT pg_catalog.setval('public.competition_editions_id_seq', 191, true);
 
 
 --
@@ -38450,7 +38450,7 @@ SELECT pg_catalog.setval('public.competition_groups_id_seq', 168, true);
 -- Name: competitions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competitions_id_seq', 67, true);
+SELECT pg_catalog.setval('public.competitions_id_seq', 69, true);
 
 
 --
@@ -38464,14 +38464,14 @@ SELECT pg_catalog.setval('public.confederations_id_seq', 6, true);
 -- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.countries_id_seq', 107, true);
+SELECT pg_catalog.setval('public.countries_id_seq', 109, true);
 
 
 --
 -- Name: data_flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_flags_id_seq', 81, true);
+SELECT pg_catalog.setval('public.data_flags_id_seq', 84, true);
 
 
 --
@@ -38485,7 +38485,7 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 16, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 66047, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 66056, true);
 
 
 --
@@ -38506,7 +38506,7 @@ SELECT pg_catalog.setval('public.match_lineups_id_seq', 7623, true);
 -- Name: matches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.matches_id_seq', 19861, true);
+SELECT pg_catalog.setval('public.matches_id_seq', 19863, true);
 
 
 --
@@ -38527,21 +38527,21 @@ SELECT pg_catalog.setval('public.players_id_seq', 8166, true);
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 409, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 411, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 51, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 52, true);
 
 
 --
 -- Name: seasons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.seasons_id_seq', 164, true);
+SELECT pg_catalog.setval('public.seasons_id_seq', 166, true);
 
 
 --
@@ -38555,7 +38555,7 @@ SELECT pg_catalog.setval('public.stadiums_id_seq', 127, true);
 -- Name: teams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.teams_id_seq', 402, true);
+SELECT pg_catalog.setval('public.teams_id_seq', 406, true);
 
 
 --

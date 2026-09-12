@@ -155,8 +155,22 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
-- **Public scope is Tanzania Premier League only.** Its three original seasons
-  (2017/18, 2018/19, 2019/20) are published; everything else is hidden.
+- **The public site now covers two competitions**: all 19 Tanzania Premier
+  League editions and all 13 Africa Cup of Nations editions, published
+  2026-09-12. It is the first time the site has shown anything but the TPL, and
+  **the site is not fully competition-aware yet** — two known consequences:
+  - `/api/vault/stats/clubs` has no `teams.type` filter, so the "Club stats"
+    page lists Egypt, Nigeria and Cameroon alongside Yanga and Simba.
+  - The season dropdown is one flat list of all 32 published editions with no
+    competition label, so TPL 2018/19 and AFCON 2019 both read "2018/19".
+  Reverse the AFCON half with
+  `UPDATE competition_editions SET is_published = FALSE WHERE competition_id = 16;`
+- **A league table's "expected fixtures" is only computed for a LEAGUE.**
+  `standings.ts` derives it as n*(n-1), which is meaningless for a cup: AFCON
+  2019 holds all 52 of its fixtures but 24 teams imply 552, and the page
+  claimed 500 were missing from every source. It is NULL for a non-league, so
+  `isProvisional` cannot fire on that basis. TPL 2020/21 still reports its 43
+  genuinely absent fixtures.
 - **The full league history is now in the vault: 19 seasons, 2008/09 to
   2026/27, 4,380 matches.** Ingested 2026-09-08 from two new sources — see
   `docs/ingestion/README.md` for the pipeline and the judgement calls.
