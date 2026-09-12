@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import { ChipRow, Empty, PageTitle } from "@/components/ui";
-import { ALL_TIME, seasonOptions } from "@/lib/season";
-import { SeasonSelect } from "@/components/season-select";
+import { ScopeSelect } from "@/components/scope-select";
+import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { MatchDays, MatchStages } from "@/components/match-list";
 
 export const dynamic = "force-dynamic";
@@ -22,20 +22,24 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
   const sp = await props.searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const seasonParam = one(sp.editionId);
-  const editionId = seasonParam === ALL_TIME ? undefined : seasonParam;
   const status = one(sp.status);
   const offset = Math.max(0, Number(one(sp.offset) ?? 0) || 0);
 
   let data: Awaited<ReturnType<typeof api.matches>>;
   let editions: Awaited<ReturnType<typeof api.editions>>["editions"];
+  let scope: Awaited<ReturnType<typeof resolveScope>>;
+  let editionId: string | undefined;
   try {
     // Editions first, because whether this is a tournament decides how the
     // matches are asked for: a cup is read as a whole, in playing order.
     editions = await api.editions().then((r) => r.editions);
+    scope = await resolveScope(one(sp.competitionId), seasonParam, editions);
+    editionId = scope.editionId === undefined ? undefined : String(scope.editionId);
     const selected = editions.find((e) => String(e.editionId) === editionId);
     const tournament = Boolean(selected && selected.competitionType !== "LEAGUE");
     data = await api.matches({
       editionId,
+      competitionId: scope.competitionId,
       status,
       limit: tournament ? TOURNAMENT_PAGE : PAGE_SIZE,
       offset: tournament ? 0 : offset,
@@ -48,7 +52,9 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
 
   const href = (patch: Record<string, string | number | undefined>) => {
     const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ editionId, status, offset, ...patch })) {
+    for (const [k, v] of Object.entries({
+      competitionId: String(scope.competitionId), editionId, status, offset, ...patch,
+    })) {
       if (v !== undefined && v !== "" && !(k === "offset" && Number(v) === 0)) q.set(k, String(v));
     }
     const s = q.toString();
@@ -67,9 +73,11 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
         title="All matches"
         sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""} · newest first`}
         right={
-          <SeasonSelect
-            seasons={seasonOptions(editions)}
-            value={editionId ?? ALL_TIME}
+          <ScopeSelect
+            competitions={scope.competitions}
+            competitionId={scope.competitionId}
+            seasons={seasonOptionsFor(scope)}
+            value={scope.value}
             allowAllTime
             clears={["offset"]}
           />

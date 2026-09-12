@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition, type TeamType } from "@/lib/api";
 import { Card, ChipRow, Crest, DataNote, Empty, Rank, StatTile } from "@/components/ui";
-import { resolveSeason, seasonOptions } from "@/lib/season";
-import { AllTimeBadge, SeasonSelect } from "@/components/season-select";
+import { resolveScope, seasonOptionsFor, type ResolvedScope } from "@/lib/scope";
+import { AllTimeBadge, ScopeSelect } from "@/components/scope-select";
 
 type SortKey = "points" | "goalsFor" | "cleanSheets" | "winRate";
 
@@ -28,9 +28,12 @@ export async function TeamStatsPage({
   basePath,
   noun,
   nounPlural,
+  only,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
   teamType: TeamType;
+  /** Restricts the competition picker to ones this kind of team plays in. */
+  only?: (e: Edition) => boolean;
   basePath: string;
   /** Column heading, e.g. "Club" or "Nation". */
   noun: string;
@@ -39,20 +42,19 @@ export async function TeamStatsPage({
   const sp = await searchParams;
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const sort = one(sp.sort);
-  const season = await resolveSeason(one(sp.editionId));
-  const editionId = season.editionId === undefined ? undefined : String(season.editionId);
 
+  let scope: ResolvedScope;
   let clubs: ClubStat[];
-  let editions: Edition[];
   try {
-    [clubs, editions] = await Promise.all([
-      api.clubs(editionId, teamType).then((r) => r.clubs),
-      api.editions().then((r) => r.editions),
-    ]);
+    scope = await resolveScope(one(sp.competitionId), one(sp.editionId), undefined, only);
+    clubs = await api
+      .clubs({ competitionId: scope.competitionId, editionId: scope.editionId, type: teamType })
+      .then((r) => r.clubs);
   } catch (err) {
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
   }
+  const editionId = scope.editionId === undefined ? undefined : String(scope.editionId);
 
   const key: SortKey = SORTS.find((s) => s.value === sort)?.key ?? "points";
   // Sorting client-side: the whole club list is small enough that a round trip
@@ -61,14 +63,19 @@ export async function TeamStatsPage({
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ sort, editionId: season.value, ...patch })) {
+    for (const [k, v] of Object.entries({
+      sort,
+      competitionId: String(scope.competitionId),
+      editionId: scope.value,
+      ...patch,
+    })) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
     return s ? `${basePath}?${s}` : basePath;
   };
 
-  const activeEdition = editions.find((e) => String(e.editionId) === editionId);
+  const activeEdition = scope.editions.find((e) => String(e.editionId) === editionId);
   const leader = sorted[0];
   const mostGoals = [...clubs].sort((a, b) => b.goalsFor - a.goalsFor)[0];
   const bestDefence = [...clubs].sort((a, b) => b.cleanSheets - a.cleanSheets)[0];
@@ -79,15 +86,19 @@ export async function TeamStatsPage({
         <p className="text-sm text-muted">
           {activeEdition
             ? `${activeEdition.competition} ${activeEdition.season}`
-            : "Combined across every published competition"}
+            : `${scope.competitionName} — every published season`}
         </p>
-        <SeasonSelect
-          seasons={seasonOptions(editions)}
-          value={season.value}
+        <ScopeSelect
+          competitions={scope.competitions}
+          competitionId={scope.competitionId}
+          seasons={seasonOptionsFor(scope)}
+          value={scope.value}
           allowAllTime
         />
       </div>
-      {season.allTime ? <div className="mb-4"><AllTimeBadge /></div> : null}
+      {scope.allTime ? (
+        <div className="mb-4"><AllTimeBadge competition={scope.competitionName} /></div>
+      ) : null}
 
       {leader && mostGoals && bestDefence ? (
         <div className="mb-5 grid gap-3 sm:grid-cols-3">

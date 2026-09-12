@@ -172,9 +172,21 @@ explicitly out of scope — see "Non-goals" below).
     `/stats/nations`, both `teams.type`-filtered via `?type=`. They are not
     comparable: a club plays a 30-match league season, a nation three group
     matches every other year.
-  - **The season dropdown groups by competition**, because TPL 2018/19 and
-    AFCON 2019 otherwise both render as "2018/19". `seasonOptions()` in
-    `lib/season.ts` is the one place that builds those options.
+  - **Every public page is scoped by competition AND season, together.** The
+    URL carries `competitionId` and `editionId`; the header has two dropdowns.
+    `lib/scope.ts` (`resolveScope`) is the single resolver and
+    `components/scope-select.tsx` the single control — `lib/season.ts` and
+    `season-select.tsx` are gone. Picking a competition clears the season, so a
+    page never keeps a season belonging to the competition just left. A bare
+    `?editionId=` still works: an edition implies its competition.
+  - **`editionId=all` means all time WITHIN the chosen competition**, not across
+    all of them. Every stats query is scoped through one SQL fragment,
+    `publishedEditionsIn(competitionId)` in `services/stats.ts`, so the whole
+    stats layer is competition-aware in one place. Kagere's 42 league goals and
+    Eto'o's 13 at AFCON never share a leaderboard.
+  - The Clubs and Nations pages only offer competitions their kind of team
+    plays in, so the picker cannot select a combination that is empty. The
+    competition dropdown hides itself when only one competition qualifies.
 - **A league table's "expected fixtures" is only computed for a LEAGUE.**
   `standings.ts` derives it as n*(n-1), which is meaningless for a cup: AFCON
   2019 holds all 52 of its fixtures but 24 teams imply 552, and the page

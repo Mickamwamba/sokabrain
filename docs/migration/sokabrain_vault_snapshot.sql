@@ -38436,7 +38436,7 @@ SELECT pg_catalog.setval('public.competition_edition_teams_id_seq', 1928, true);
 -- Name: competition_editions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competition_editions_id_seq', 193, true);
+SELECT pg_catalog.setval('public.competition_editions_id_seq', 195, true);
 
 
 --
@@ -38450,7 +38450,7 @@ SELECT pg_catalog.setval('public.competition_groups_id_seq', 168, true);
 -- Name: competitions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competitions_id_seq', 71, true);
+SELECT pg_catalog.setval('public.competitions_id_seq', 73, true);
 
 
 --
@@ -38464,14 +38464,14 @@ SELECT pg_catalog.setval('public.confederations_id_seq', 6, true);
 -- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.countries_id_seq', 111, true);
+SELECT pg_catalog.setval('public.countries_id_seq', 113, true);
 
 
 --
 -- Name: data_flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_flags_id_seq', 87, true);
+SELECT pg_catalog.setval('public.data_flags_id_seq', 90, true);
 
 
 --
@@ -38485,7 +38485,7 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 16, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 66065, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 66074, true);
 
 
 --
@@ -38506,7 +38506,7 @@ SELECT pg_catalog.setval('public.match_lineups_id_seq', 7623, true);
 -- Name: matches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.matches_id_seq', 19865, true);
+SELECT pg_catalog.setval('public.matches_id_seq', 19867, true);
 
 
 --
@@ -38527,21 +38527,21 @@ SELECT pg_catalog.setval('public.players_id_seq', 8166, true);
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 413, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 415, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 53, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 54, true);
 
 
 --
 -- Name: seasons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.seasons_id_seq', 168, true);
+SELECT pg_catalog.setval('public.seasons_id_seq', 170, true);
 
 
 --
@@ -38555,7 +38555,7 @@ SELECT pg_catalog.setval('public.stadiums_id_seq', 127, true);
 -- Name: teams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.teams_id_seq', 410, true);
+SELECT pg_catalog.setval('public.teams_id_seq', 414, true);
 
 
 --

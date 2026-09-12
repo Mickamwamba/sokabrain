@@ -1,4 +1,5 @@
 import { TeamStatsPage } from "@/components/team-stats-page";
+import { isNationalTeamEdition } from "@/lib/scope";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,7 @@ export default async function NationsPage(props: PageProps<"/stats/nations">) {
       basePath="/stats/nations"
       noun="Nation"
       nounPlural="Nations"
+      only={isNationalTeamEdition}
     />
   );
 }

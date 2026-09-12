@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { api, ApiError, type HeadToHead, type TeamRefLite } from "@/lib/api";
 import { Card, CardHead, Crest, Empty } from "@/components/ui";
-import { AllTimeBadge } from "@/components/season-select";
+import { AllTimeBadge } from "@/components/scope-select";
 
 export const dynamic = "force-dynamic";
 

@@ -79,9 +79,13 @@ export async function editionRounds(editionId: number): Promise<{
 }> {
   const rounds = await prisma.$queryRaw<RoundSummary[]>(Prisma.sql`
     SELECT m.round,
-           -- Rounds are stored as text; order numerically where they are
-           -- numeric, so "9" does not sort after "10".
-           COALESCE(NULLIF(regexp_replace(m.round, '\D', '', 'g'), ''), '0')::int AS "sortKey",
+           -- A league numbers its rounds, so "9" must not sort after "10".
+           -- A cup names them, and pulling digits out of a name is worse than
+           -- useless: it gave 'ROUND OF 16' a key of 16 and sorted it after the
+           -- final. So only an all-digits round gets a numeric key; the rest
+           -- fall through to kickoff order below, which is the order a
+           -- tournament is actually played in.
+           CASE WHEN m.round ~ '^[0-9]+$' THEN m.round::int END AS "sortKey",
            count(*)::int AS matches,
            count(*) FILTER (WHERE m.home_score IS NOT NULL)::int AS played,
            to_char(min(m.kickoff_at AT TIME ZONE 'Africa/Dar_es_Salaam'), 'YYYY-MM-DD') AS "firstDate",
@@ -90,7 +94,7 @@ export async function editionRounds(editionId: number): Promise<{
       JOIN competition_editions ce ON ce.id = m.competition_edition_id AND ce.is_published = TRUE
      WHERE m.competition_edition_id = ${editionId} AND m.round IS NOT NULL
      GROUP BY m.round
-     ORDER BY "sortKey", m.round
+     ORDER BY "sortKey" NULLS LAST, min(m.kickoff_at), m.round
   `);
 
   // Round coverage is partial for most seasons, so a round can be missing some

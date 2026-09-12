@@ -14,9 +14,27 @@ import { prisma } from '../db.js';
  */
 
 /** Reused everywhere: the set of editions the public is allowed to see. */
-const publishedEditions = Prisma.sql`
-  SELECT id FROM competition_editions WHERE is_published = TRUE
-`;
+/**
+ * The editions a public query may read, optionally narrowed to one competition.
+ *
+ * Every stat is scoped through this one fragment, so making it competition-
+ * aware makes all of them competition-aware at once. That matters now the site
+ * carries more than the league: an all-time top scorer list spanning the TPL
+ * and AFCON together answers a question nobody asked.
+ */
+function publishedEditionsIn(competitionId?: number) {
+  return competitionId
+    ? Prisma.sql`
+        SELECT id FROM competition_editions
+         WHERE is_published = TRUE AND competition_id = ${competitionId}`
+    : Prisma.sql`SELECT id FROM competition_editions WHERE is_published = TRUE`;
+}
+
+/** Shared scope for every stats query: a competition, a season, or neither. */
+export type StatsScope = {
+  competitionId?: number | undefined;
+  editionId?: number | undefined;
+};
 
 export type ClubStat = {
   teamId: number;
@@ -52,9 +70,10 @@ export type ClubStat = {
 export type TeamType = 'CLUB' | 'NATIONAL';
 
 export async function clubStats(
-  editionId?: number,
+  scopeIn: StatsScope = {},
   teamType?: TeamType,
 ): Promise<ClubStat[]> {
+  const { competitionId, editionId } = scopeIn;
   const scope = editionId
     ? Prisma.sql`AND m.competition_edition_id = ${editionId}`
     : Prisma.empty;
@@ -66,14 +85,14 @@ export async function clubStats(
     WITH sides AS (
       SELECT m.home_team_id AS team_id, m.home_score AS gf, m.away_score AS ga
       FROM matches m
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         AND m.status = 'FULL_TIME'
         AND m.home_score IS NOT NULL AND m.away_score IS NOT NULL
         ${scope}
       UNION ALL
       SELECT m.away_team_id, m.away_score, m.home_score
       FROM matches m
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         AND m.status = 'FULL_TIME'
         AND m.home_score IS NOT NULL AND m.away_score IS NOT NULL
         ${scope}
@@ -182,13 +201,14 @@ export type PlayerSort = 'goals' | 'assists' | 'appearances' | 'yellowCards' | '
  * measures how incomplete the lineup data is, not how prolific the player was.
  */
 export async function playerStats(opts: {
-  editionId?: number;
-  teamId?: number;
-  position?: string;
-  sort?: PlayerSort;
+  competitionId?: number | undefined;
+  editionId?: number | undefined;
+  teamId?: number | undefined;
+  position?: string | undefined;
+  sort?: PlayerSort | undefined;
   limit: number;
 }): Promise<PlayerStatsResult> {
-  const { editionId, teamId, position, sort = 'goals', limit } = opts;
+  const { competitionId, editionId, teamId, position, sort = 'goals', limit } = opts;
 
   const editionScope = editionId
     ? Prisma.sql`AND m.competition_edition_id = ${editionId}`
@@ -216,7 +236,7 @@ export async function playerStats(opts: {
              m.competition_edition_id AS edition_id
       FROM match_events e
       JOIN matches m ON m.id = e.match_id
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         AND e.player_id IS NOT NULL
         ${editionScope}
     ),
@@ -224,7 +244,7 @@ export async function playerStats(opts: {
       SELECT l.player_id, count(DISTINCT l.match_id)::int AS appearances
       FROM match_lineups l
       JOIN matches m ON m.id = l.match_id
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         ${editionScope}
       GROUP BY l.player_id
     ),
@@ -236,7 +256,7 @@ export async function playerStats(opts: {
       SELECT e.related_player_id AS player_id
       FROM match_events e
       JOIN matches m ON m.id = e.match_id
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         AND e.related_player_id IS NOT NULL
         AND e.type IN ('GOAL','PENALTY_GOAL')
         ${editionScope}
@@ -300,7 +320,7 @@ export async function playerStats(opts: {
       SELECT m.id, m.competition_edition_id,
              coalesce(m.home_score,0) + coalesce(m.away_score,0) AS goals
       FROM matches m
-      WHERE m.competition_edition_id IN (${publishedEditions})
+      WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
         AND m.home_score IS NOT NULL
         ${editionScope}
     )
@@ -387,7 +407,12 @@ export type HeadToHead = {
 };
 
 /** Every published meeting between two clubs, with the running record. */
-export async function headToHead(teamAId: number, teamBId: number): Promise<HeadToHead | null> {
+export async function headToHead(
+  teamAId: number,
+  teamBId: number,
+  scopeIn: StatsScope = {},
+): Promise<HeadToHead | null> {
+  const { competitionId } = scopeIn;
   const [a, b] = await Promise.all([
     prisma.teams.findUnique({ where: { id: teamAId }, select: { id: true, name: true } }),
     prisma.teams.findUnique({ where: { id: teamBId }, select: { id: true, name: true } }),
@@ -443,25 +468,26 @@ export async function headToHead(teamAId: number, teamBId: number): Promise<Head
 }
 
 /** Headline numbers for the stats landing page. */
-export async function overview() {
+export async function overview(scopeIn: StatsScope = {}) {
+  const { competitionId } = scopeIn;
   const [totals] = await prisma.$queryRaw<
     { matches: number; goals: number; clubs: number; players: number; seasons: number; competitions: number }[]
   >(Prisma.sql`
     SELECT
       (SELECT count(*) FROM matches m
-        WHERE m.competition_edition_id IN (${publishedEditions})
+        WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
           AND m.home_score IS NOT NULL)::int AS matches,
       (SELECT COALESCE(sum(m.home_score + m.away_score), 0) FROM matches m
-        WHERE m.competition_edition_id IN (${publishedEditions})
+        WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
           AND m.home_score IS NOT NULL)::int AS goals,
       (SELECT count(DISTINCT t.id) FROM teams t
         WHERE t.id IN (
-          SELECT home_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
-          UNION SELECT away_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
+          SELECT home_team_id FROM matches WHERE competition_edition_id IN (${publishedEditionsIn(competitionId)})
+          UNION SELECT away_team_id FROM matches WHERE competition_edition_id IN (${publishedEditionsIn(competitionId)})
         ))::int AS clubs,
       (SELECT count(DISTINCT e.player_id) FROM match_events e
         JOIN matches m ON m.id = e.match_id
-        WHERE m.competition_edition_id IN (${publishedEditions})
+        WHERE m.competition_edition_id IN (${publishedEditionsIn(competitionId)})
           AND e.player_id IS NOT NULL)::int AS players,
       (SELECT count(DISTINCT ce.season_id) FROM competition_editions ce WHERE ce.is_published)::int AS seasons,
       (SELECT count(DISTINCT ce.competition_id) FROM competition_editions ce WHERE ce.is_published)::int AS competitions
@@ -471,7 +497,8 @@ export async function overview() {
 }
 
 /** Clubs that appear in any published edition — for pickers and club pages. */
-export async function publishedTeams(teamType?: TeamType) {
+export async function publishedTeams(teamType?: TeamType, scopeIn: StatsScope = {}) {
+  const { competitionId } = scopeIn;
   const kind = teamType ? Prisma.sql`AND t.type = ${teamType}` : Prisma.empty;
   return prisma.$queryRaw<{
     id: number; name: string; shortName: string | null; country: string | null; type: string;
@@ -481,8 +508,8 @@ export async function publishedTeams(teamType?: TeamType) {
       FROM teams t
       LEFT JOIN countries co ON co.id = t.country_id
       WHERE t.id IN (
-        SELECT home_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
-        UNION SELECT away_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
+        SELECT home_team_id FROM matches WHERE competition_edition_id IN (${publishedEditionsIn(competitionId)})
+        UNION SELECT away_team_id FROM matches WHERE competition_edition_id IN (${publishedEditionsIn(competitionId)})
       )
       ${kind}
       ORDER BY t.name

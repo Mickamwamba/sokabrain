@@ -8,6 +8,7 @@ const API_URL = process.env.API_URL ?? 'http://localhost:4010';
 
 export type Edition = {
   editionId: number;
+  competitionId: number;
   competition: string;
   competitionType: string;
   tier: number | null;
@@ -348,13 +349,20 @@ export const api = {
   standings: (id: number) => get<StandingsResponse>(`/api/vault/editions/${id}/standings`),
   topScorers: (id: number, limit = 20) =>
     get<TopScorersResponse>(`/api/vault/editions/${id}/top-scorers?limit=${limit}`),
-  overview: () => get<Overview>('/api/vault/stats/overview'),
+  overview: (scope: { competitionId?: number; editionId?: number } = {}) => {
+    const qs = new URLSearchParams();
+    if (scope.competitionId) qs.set('competitionId', String(scope.competitionId));
+    if (scope.editionId) qs.set('editionId', String(scope.editionId));
+    const q = qs.toString();
+    return get<Overview>(`/api/vault/stats/overview${q ? `?${q}` : ''}`);
+  },
   teams: (type?: TeamType) =>
     get<{ teams: TeamRefLite[] }>(`/api/vault/teams${type ? `?type=${type}` : ''}`),
-  clubs: (editionId?: string | number, type?: TeamType) => {
+  clubs: (scope: { competitionId?: number; editionId?: number; type?: TeamType } = {}) => {
     const qs = new URLSearchParams();
-    if (editionId) qs.set('editionId', String(editionId));
-    if (type) qs.set('type', type);
+    if (scope.competitionId) qs.set('competitionId', String(scope.competitionId));
+    if (scope.editionId) qs.set('editionId', String(scope.editionId));
+    if (scope.type) qs.set('type', scope.type);
     const q = qs.toString();
     return get<{ clubs: ClubStat[] }>(`/api/vault/stats/clubs${q ? `?${q}` : ''}`);
   },

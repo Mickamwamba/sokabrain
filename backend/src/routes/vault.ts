@@ -50,6 +50,7 @@ vaultRouter.get('/editions', async (_req, res) => {
     editions: editions
       .map((e) => ({
         editionId: e.id,
+        competitionId: e.competitions.id,
         competition: e.competitions.name,
         competitionType: e.competitions.type,
         tier: e.competitions.tier,
@@ -195,31 +196,51 @@ vaultRouter.get('/schedule/rounds/:editionId', async (req, res) => {
 /* ------------------------------------------------------------------ stats -- */
 // Fan-facing aggregates. All scoped to published editions by the service layer.
 
-vaultRouter.get('/stats/overview', async (_req, res) => {
-  res.json(await overview());
+vaultRouter.get('/stats/overview', async (req, res) => {
+  const scope = scopeOf(req.query);
+  if (!scope) return res.status(400).json({ error: 'Invalid scope' });
+  res.json(await overview(scope));
 });
 
 // `type` separates clubs from national teams. Absent means both, so an existing
 // caller keeps working; the club and nation pages each ask for one.
 const teamTypeQuery = z.object({ type: z.enum(['CLUB', 'NATIONAL']).optional() });
 
+// Every stats page is scoped by competition and season together. competitionId
+// alone means all time within that competition; editionId alone identifies both,
+// since an edition belongs to exactly one competition.
+const scopeQuery = z.object({
+  competitionId: z.coerce.number().int().positive().optional(),
+  editionId: z.coerce.number().int().positive().optional(),
+});
+
+function scopeOf(query: unknown) {
+  const q = scopeQuery.safeParse(query);
+  if (!q.success) return null;
+  return {
+    ...(q.data.competitionId !== undefined && { competitionId: q.data.competitionId }),
+    ...(q.data.editionId !== undefined && { editionId: q.data.editionId }),
+  };
+}
+
 vaultRouter.get('/teams', async (req, res) => {
   const q = teamTypeQuery.safeParse(req.query);
   if (!q.success) return res.status(400).json({ error: "type must be CLUB or NATIONAL" });
-  res.json({ teams: await publishedTeams(q.data.type) });
+  const scope = scopeOf(req.query);
+  if (!scope) return res.status(400).json({ error: 'Invalid scope' });
+  res.json({ teams: await publishedTeams(q.data.type, scope) });
 });
 
-const clubQuery = z.object({ editionId: z.coerce.number().int().positive().optional() });
-
 vaultRouter.get('/stats/clubs', async (req, res) => {
-  const q = clubQuery.safeParse(req.query);
-  if (!q.success) return res.status(400).json({ error: 'editionId must be a positive integer' });
+  const scope = scopeOf(req.query);
+  if (!scope) return res.status(400).json({ error: 'Invalid scope' });
   const t = teamTypeQuery.safeParse(req.query);
   if (!t.success) return res.status(400).json({ error: "type must be CLUB or NATIONAL" });
-  res.json({ clubs: await clubStats(q.data.editionId, t.data.type) });
+  res.json({ clubs: await clubStats(scope, t.data.type) });
 });
 
 const playerQuery = z.object({
+  competitionId: z.coerce.number().int().positive().optional(),
   editionId: z.coerce.number().int().positive().optional(),
   teamId: z.coerce.number().int().positive().optional(),
   position: z.enum(['GK', 'DF', 'MF', 'FW']).optional(),
@@ -232,9 +253,10 @@ vaultRouter.get('/stats/players', async (req, res) => {
   if (!q.success) {
     return res.status(400).json({ error: 'Invalid query', details: z.treeifyError(q.error) });
   }
-  const { editionId, teamId, position, sort, limit } = q.data;
+  const { competitionId, editionId, teamId, position, sort, limit } = q.data;
   res.json(
     await playerStats({
+      ...(competitionId !== undefined && { competitionId }),
       ...(editionId !== undefined && { editionId }),
       ...(teamId !== undefined && { teamId }),
       ...(position !== undefined && { position }),
@@ -255,7 +277,7 @@ vaultRouter.get('/stats/head-to-head', async (req, res) => {
   if (q.data.teamA === q.data.teamB) {
     return res.status(400).json({ error: 'Pick two different clubs' });
   }
-  const result = await headToHead(q.data.teamA, q.data.teamB);
+  const result = await headToHead(q.data.teamA, q.data.teamB, scopeOf(req.query) ?? {});
   if (!result) return res.status(404).json({ error: 'One or both clubs not found' });
   res.json(result);
 });

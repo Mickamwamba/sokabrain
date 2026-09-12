@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { seasonOptions } from "@/lib/season";
+import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { api, ApiError, type Edition } from "@/lib/api";
 import { Card, Crest, Empty, PageTitle } from "@/components/ui";
-import { SeasonSelect } from "@/components/season-select";
+import { ScopeSelect } from "@/components/scope-select";
 import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
 import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
 
@@ -72,7 +72,8 @@ export default async function MatchesHub(props: PageProps<"/">) {
     throw err;
   }
 
-  const editionId = editionParam ? Number(editionParam) : context.editionId;
+  const scope = await resolveScope(one(sp.competitionId), editionParam, editions);
+  const editionId = scope.editionId ?? context.editionId;
   const edition = editions.find((e) => e.editionId === editionId);
   if (!editionId) return <Empty>No published season to show yet.</Empty>;
 
@@ -102,11 +103,16 @@ export default async function MatchesHub(props: PageProps<"/">) {
       ? await api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
       : { matches: [] as (typeof list)["matches"] };
 
-  const seasonChoices = seasonOptions(editions);
+  const seasonChoices = seasonOptionsFor(scope);
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    const merged = { mode, date, round, editionId: String(editionId), ...patch };
+    const merged = {
+      mode, date, round,
+      competitionId: String(scope.competitionId),
+      editionId: String(editionId),
+      ...patch,
+    };
     for (const [k, v] of Object.entries(merged)) {
       if (v !== undefined && v !== null && v !== "") q.set(k, String(v));
     }
@@ -124,7 +130,9 @@ export default async function MatchesHub(props: PageProps<"/">) {
             : undefined
         }
         right={
-          <SeasonSelect
+          <ScopeSelect
+            competitions={scope.competitions}
+            competitionId={scope.competitionId}
             seasons={seasonChoices}
             value={String(editionId)}
             // A day or a round belongs to the season it came from.

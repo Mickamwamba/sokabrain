@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { api, ApiError, type ClubStat, type Edition, type Overview, type PlayerStat } from "@/lib/api";
 import { Card, CardHead, Crest, Empty, Rank } from "@/components/ui";
-import { AllTimeBadge } from "@/components/season-select";
+import { AllTimeBadge, ScopeSelect } from "@/components/scope-select";
+import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 
 export const dynamic = "force-dynamic";
 
@@ -10,20 +11,25 @@ function fmtDate(iso: string | null) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
 }
 
-export default async function StatsHome() {
+export default async function StatsHome(props: PageProps<"/stats">) {
+  const sp = await props.searchParams;
+  const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   let overview: Overview;
   let scorers: PlayerStat[];
   let clubs: ClubStat[];
   let editions: Edition[];
   let recent: Awaited<ReturnType<typeof api.matches>>;
 
+  let scope: Awaited<ReturnType<typeof resolveScope>>;
   try {
-    [overview, scorers, clubs, editions, recent] = await Promise.all([
-      api.overview(),
-      api.players({ limit: 6 }).then((r) => r.players),
-      api.clubs().then((r) => r.clubs),
-      api.editions().then((r) => r.editions),
-      api.matches({ status: "FULL_TIME", limit: 6 }),
+    editions = await api.editions().then((r) => r.editions);
+    scope = await resolveScope(one(sp.competitionId), one(sp.editionId), editions);
+    const q = { competitionId: scope.competitionId, editionId: scope.editionId };
+    [overview, scorers, clubs, recent] = await Promise.all([
+      api.overview(q),
+      api.players({ ...q, limit: 6 }).then((r) => r.players),
+      api.clubs(q).then((r) => r.clubs),
+      api.matches({ ...q, status: "FULL_TIME", limit: 6 }),
     ]);
   } catch (err) {
     if (err instanceof ApiError) {
@@ -53,10 +59,18 @@ export default async function StatsHome() {
   return (
     <div className="space-y-5">
       {/* Hero: what the vault holds, stated in one line and six numbers.
-          There is no season selector here because every figure on this tab is
-          the whole archive; the badge says so rather than leaving it implied. */}
-      <div className="flex justify-end">
-        <AllTimeBadge />
+          Scoped like every other tab — a figure that mixes a league season with
+          a continental tournament is not a figure anyone asked for. The badge
+          says when the whole of a competition's history is on screen. */}
+      <div className="flex flex-wrap items-center justify-end gap-3">
+        {scope.allTime ? <AllTimeBadge competition={scope.competitionName} /> : null}
+        <ScopeSelect
+          competitions={scope.competitions}
+          competitionId={scope.competitionId}
+          seasons={seasonOptionsFor(scope)}
+          value={scope.value}
+          allowAllTime
+        />
       </div>
       <section className="overflow-hidden rounded-xl bg-ink px-6 py-8 text-white">
         <h1 className="display max-w-2xl text-3xl font-extrabold leading-tight sm:text-4xl">

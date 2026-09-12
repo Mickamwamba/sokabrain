@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { seasonOptions } from "@/lib/season";
 import { api, ApiError, type Edition } from "@/lib/api";
 import { Card, CardHead, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
-import { SeasonSelect } from "@/components/season-select";
+import { ScopeSelect } from "@/components/scope-select";
+import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { GroupTables, KnockoutBracket } from "@/components/group-tables";
 
 export const dynamic = "force-dynamic";
@@ -29,20 +29,16 @@ export default async function TablePage(props: PageProps<"/table">) {
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
   let editions: Edition[];
-  let context: Awaited<ReturnType<typeof api.context>>;
   try {
-    [editions, context] = await Promise.all([
-      api.editions().then((r) => r.editions),
-      api.context(),
-    ]);
+    editions = await api.editions().then((r) => r.editions);
   } catch (err) {
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
   }
 
-  const param = one(sp.editionId);
-  const editionId = param ? Number(param) : context.editionId;
-  if (!editionId || !Number.isInteger(editionId) || editionId <= 0) {
+  const scope = await resolveScope(one(sp.competitionId), one(sp.editionId), editions);
+  const editionId = scope.editionId;
+  if (!editionId) {
     return <Empty>No published season to show yet.</Empty>;
   }
 
@@ -118,8 +114,10 @@ export default async function TablePage(props: PageProps<"/table">) {
         title={isTournament ? "Tournament" : "Table"}
         sub={edition.competition}
         right={
-          <SeasonSelect
-            seasons={seasonOptions(editions)}
+          <ScopeSelect
+            competitions={scope.competitions}
+            competitionId={scope.competitionId}
+            seasons={seasonOptionsFor(scope)}
             value={String(editionId)}
           />
         }

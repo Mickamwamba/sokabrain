@@ -6,8 +6,8 @@ import {
   type PlayerStatsCoverage,
   type TeamRefLite,
 } from "@/lib/api";
-import { ALL_TIME, resolveSeason, seasonOptions } from "@/lib/season";
-import { AllTimeBadge, SeasonSelect } from "@/components/season-select";
+import { resolveScope, seasonOptionsFor } from "@/lib/scope";
+import { AllTimeBadge, ScopeSelect } from "@/components/scope-select";
 import { Card, ChipRow, Crest, DataNote, Empty, Rank } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
@@ -33,8 +33,8 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   const sort = one(sp.sort);
   const position = one(sp.position);
   const teamId = one(sp.teamId);
-  const season = await resolveSeason(one(sp.editionId));
-  const editionId = season.editionId === undefined ? undefined : String(season.editionId);
+  const scope = await resolveScope(one(sp.competitionId), one(sp.editionId));
+  const editionId = scope.editionId === undefined ? undefined : String(scope.editionId);
 
   let players: PlayerStat[];
   let coverage: PlayerStatsCoverage;
@@ -42,7 +42,10 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   let teams: TeamRefLite[];
   try {
     const [playerData, editionData, teamData] = await Promise.all([
-      api.players({ sort, position, editionId, teamId, limit: 50 }),
+      api.players({
+        sort, position, editionId, teamId, limit: 50,
+        competitionId: scope.competitionId,
+      }),
       api.editions(),
       api.teams(),
     ]);
@@ -57,14 +60,19 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    for (const [k, v] of Object.entries({ sort, position, editionId: season.value, teamId, ...patch })) {
+    for (const [k, v] of Object.entries({
+      sort, position, teamId,
+      competitionId: String(scope.competitionId),
+      editionId: scope.value,
+      ...patch,
+    })) {
       if (v !== undefined && v !== "") q.set(k, v);
     }
     const s = q.toString();
     return s ? `/stats/players?${s}` : "/stats/players";
   };
 
-  const seasonChoices = seasonOptions(editions);
+  const seasonChoices = seasonOptionsFor(scope);
   const activeTeam = teams.find((t) => String(t.id) === teamId);
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
   // Offering "sort by appearances" while appearances are suppressed would rank
@@ -87,13 +95,17 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
         <p className="text-sm text-muted">
         {`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
         </p>
-        <SeasonSelect
+        <ScopeSelect
+          competitions={scope.competitions}
+          competitionId={scope.competitionId}
           seasons={seasonChoices}
-          value={season.value}
+          value={scope.value}
           allowAllTime
         />
       </div>
-      {season.allTime ? <div className="mb-4"><AllTimeBadge /></div> : null}
+      {scope.allTime ? (
+        <div className="mb-4"><AllTimeBadge competition={scope.competitionName} /></div>
+      ) : null}
 
       <div className="mb-5 space-y-2.5">
         <ChipRow
