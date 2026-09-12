@@ -22,9 +22,16 @@ explicitly out of scope — see "Non-goals" below).
   2020) has already been **audited and migrated** into a new standardized
   Postgres schema. See `docs/schema/sokabrain_vault_schema_v1.md` for full
   rationale and `docs/schema/sokabrain_schema_ddl.sql` for the tested DDL.
-- The migrated data lives in `docs/migration/sokabrain_vault_migrated.sql`
-  (a pg_dump — restore this into a fresh Postgres instance to get real data
-  immediately instead of building against an empty schema).
+- **To get a working database, restore
+  `docs/migration/sokabrain_vault_snapshot.sql`** — a pg_dump of the whole
+  current vault, which is what `./scripts/restore_db.sh` uses by default.
+  Refresh it with `./scripts/dump_db.sh` after any ingestion, or a rebuild
+  silently rolls the vault back. Admin credentials are scrubbed on the way out,
+  so provision an account with `npm run admin:create` after restoring.
+- `docs/migration/sokabrain_vault_migrated.sql` is the *original* legacy
+  migration alone (`migrate.py`'s output, Sep 2026) and predates every
+  ingestion since. It is a historical artifact, not a baseline to develop
+  against — `SOURCE=migration ./scripts/restore_db.sh` if you ever want it.
 - The migration script (`docs/migration/migrate.py`) is rerunnable if a
   fresher legacy dump ever needs re-migrating.
 - **Build priority 1 is done.** The dump is restored into a local Postgres 16
@@ -266,14 +273,16 @@ explicitly out of scope — see "Non-goals" below).
 soka-brain/
 ├── CLAUDE.md                          # this file
 ├── scripts/
-│   └── restore_db.sh                  # recreate the vault DB from the dump
+│   ├── restore_db.sh                  # recreate the vault DB from a dump
+│   └── dump_db.sh                     # write that dump, credentials scrubbed
 ├── docs/
 │   ├── schema/
 │   │   ├── sokabrain_vault_schema_v1.md
 │   │   └── sokabrain_schema_ddl.sql
 │   └── migration/
 │       ├── migrate.py
-│       └── sokabrain_vault_migrated.sql
+│       ├── sokabrain_vault_migrated.sql   # legacy migration only (historical)
+│       └── sokabrain_vault_snapshot.sql   # the whole current vault
 ├── backend/
 │   ├── src/
 │   │   ├── routes/                    # vault (read), admin (write), live (sync)
@@ -336,7 +345,7 @@ soka-brain/
 ## Immediate build priorities, in order
 
 1. Stand up Postgres (Neon/Railway free tier is fine), restore
-   `docs/migration/sokabrain_vault_migrated.sql` into it.
+   `docs/migration/sokabrain_vault_snapshot.sql` into it.
 2. Scaffold `backend/`: Express + Prisma pointed at that database. First
    three endpoints: league standings, top scorers, match list — these
    alone prove the schema supports the product.
