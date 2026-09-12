@@ -26,3 +26,6 @@ npm-debug.log*
 # Python bytecode from the ingestion scripts
 __pycache__/
 *.pyc
+
+# Local python venv for the ingestion scripts
+.venv/

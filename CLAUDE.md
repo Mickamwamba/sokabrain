@@ -203,6 +203,42 @@ explicitly out of scope — see "Non-goals" below).
 - `competition_edition_teams` **is now populated for every Premier League
   edition**, including the three migrated ones (backfilled from their
   fixtures). The old note that it is always empty no longer holds.
+- **The Africa Cup of Nations is in the vault: 13 tournaments, 2002-2025,
+  496 matches, 1,121 goals.** Ingested 2026-09-12 from whoscored.com — see
+  `docs/ingestion/AFCON.md` for the pipeline and the judgement calls. This is
+  the first national-team competition in the vault; no schema change was needed
+  (`CONTINENTAL_NATIONAL`, `teams.type='NATIONAL'`, `competition_groups`,
+  `matches.round` and the ET/pens columns were all already there).
+  - **98.2% of goals name a scorer** — far better than the TPL's 36%. Group,
+    round of 16, quarter final, semi final, third place and final are each
+    labelled, and every match is in its group.
+  - **The 12 new editions are all unpublished**, as is the pre-existing 2019.
+  - **WhoScored files own goals under opposite teams either side of 2013.** The
+    modern pages use the scoring player's own team (our convention); the older
+    ones use the team the goal counts for. `normalize_afcon.py` flips the older
+    ones — do not "simplify" that away.
+  - Two more source traps, both handled: `homeScore` already includes extra
+    time, and `etScore` is *not* the after-extra-time score (it zeroes the
+    loser, so Tunisia 1-2 Equatorial Guinea reads `0 : 2`).
+  - Substitutions were deliberately not loaded, though 2,666 are in the raw
+    harvest at `docs/ingestion/raw/afcon/events.json`.
+- **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
+  Reconciliation run 38 recorded 24 diffs across 19 matches and they were
+  applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`
+  (all diffs now `ACCEPT_B`). Do not "re-fix" these: 10 group matches had an
+  inflated away score (Ghana v Benin stored 2-6, actually 2-2), 4 knockout ties
+  credited the shootout winner an extra goal as a phantom `PENALTY_GOAL` in
+  minute 120 with no player (deleted; the shootout now lives in `*_score_pens`),
+  and 5 matches left NULL were 0-0 — the same lost-goalless-draw bug as TPL
+  2017/18. The evidence was internal: for 16 of them the stored score
+  disagreed with the edition's *own* `match_events`.
+  The same change gave edition 14 its six groups, its 24 participants, and
+  `ROUND OF 16`/`THIRD PLACE` split out of the old catch-all `KNOCKOUT` label,
+  so all 13 AFCON editions now have the same shape.
+- **Across all 13 AFCON tournaments, 491 of 493 played matches have a score
+  reproduced exactly by their own event log.** The 2 exceptions are a missing
+  *event*, not a wrong score: Zambia 1-1 Tanzania (2023) and Tunisia 1-1 Angola
+  (2019) are each one goal event short in their source.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

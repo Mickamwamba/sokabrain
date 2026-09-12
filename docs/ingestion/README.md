@@ -1,5 +1,11 @@
 # Ingestion: the Tanzania Premier League, 2008/09 to 2026/27
 
+> For the Africa Cup of Nations (13 tournaments, 2002-2025) see
+> [AFCON.md](AFCON.md). It uses the same WhoScored browser harvest but a
+> separate pipeline, because the source changes page format halfway
+> through and files own goals under opposite teams either side of that
+> split.
+
 How the vault went from three seasons of the TPL to nineteen, and what each
 source is actually good for. The scripts here re-run the whole thing.
 
