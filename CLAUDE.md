@@ -155,16 +155,26 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
-- **The public site now covers two competitions**: all 19 Tanzania Premier
-  League editions and all 13 Africa Cup of Nations editions, published
-  2026-09-12. It is the first time the site has shown anything but the TPL, and
-  **the site is not fully competition-aware yet** — two known consequences:
-  - `/api/vault/stats/clubs` has no `teams.type` filter, so the "Club stats"
-    page lists Egypt, Nigeria and Cameroon alongside Yanga and Simba.
-  - The season dropdown is one flat list of all 32 published editions with no
-    competition label, so TPL 2018/19 and AFCON 2019 both read "2018/19".
-  Reverse the AFCON half with
+- **The public site covers two competitions and is competition-aware.** All 19
+  Tanzania Premier League editions and all 13 Africa Cup of Nations editions
+  are published (2026-09-12). Revert the AFCON half with
   `UPDATE competition_editions SET is_published = FALSE WHERE competition_id = 16;`
+  - **A tournament is shown as its groups and its bracket, never as one table.**
+    `/editions/:id/standings` returns `groups[]` and `knockout[]` alongside the
+    combined `standings`; `/table` renders those and hides the combined ranking,
+    which for a cup sums group and knockout results into a meaningless order.
+    Both are empty for a LEAGUE — and must stay that way, because league rounds
+    are numbered and carry no `group_id`, so an ungated knockout query reads a
+    whole league season as knockout ties.
+  - **Matches are laid out by stage for a tournament**, by date otherwise. A
+    selected tournament loads whole and in playing order rather than paged.
+  - **Clubs and nations are ranked separately** — `/stats/clubs` and
+    `/stats/nations`, both `teams.type`-filtered via `?type=`. They are not
+    comparable: a club plays a 30-match league season, a nation three group
+    matches every other year.
+  - **The season dropdown groups by competition**, because TPL 2018/19 and
+    AFCON 2019 otherwise both render as "2018/19". `seasonOptions()` in
+    `lib/season.ts` is the one place that builds those options.
 - **A league table's "expected fixtures" is only computed for a LEAGUE.**
   `standings.ts` derives it as n*(n-1), which is meaningless for a cup: AFCON
   2019 holds all 52 of its fixtures but 24 teams imply 552, and the page

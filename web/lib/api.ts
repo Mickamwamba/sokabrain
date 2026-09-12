@@ -55,6 +55,43 @@ export type StandingsResponse = {
     isProvisional: boolean;
   };
   standings: StandingsRow[];
+  /**
+   * One mini-table per group, for a tournament played in groups; empty for a
+   * league. Prefer these over `standings`, which for a cup sums group and
+   * knockout results into a ranking that means nothing.
+   */
+  groups: GroupTable[];
+  /** The knockout ties by round, in the order they are played. */
+  knockout: KnockoutRound[];
+};
+
+export type GroupTable = {
+  groupId: number;
+  name: string;
+  standings: StandingsRow[];
+};
+
+export type KnockoutMatch = {
+  matchId: number;
+  kickoffAt: string | null;
+  status: string;
+  homeTeamId: number;
+  homeTeamName: string;
+  awayTeamId: number;
+  awayTeamName: string;
+  homeScore: number | null;
+  awayScore: number | null;
+  homeScoreEt: number | null;
+  awayScoreEt: number | null;
+  homeScorePens: number | null;
+  awayScorePens: number | null;
+  /** Who advanced. Null while the tie is undecided. */
+  winnerTeamId: number | null;
+};
+
+export type KnockoutRound = {
+  round: string;
+  matches: KnockoutMatch[];
 };
 
 export type TopScorersResponse = {
@@ -83,11 +120,16 @@ export type TeamRef = {
   logo_url: string | null;
 };
 
+/** Clubs and national teams are ranked separately; `teams.type` separates them. */
+export type TeamType = 'CLUB' | 'NATIONAL';
+
 export type Match = {
   id: number;
   kickoffAt: string | null;
   status: string;
   round: string | null;
+  /** Set for a group-stage fixture; null for a league match or a knockout tie. */
+  group: { id: number; name: string } | null;
   attendance: number | null;
   competition: {
     editionId: number | null;
@@ -173,6 +215,8 @@ export type PlayerStatsCoverage = {
 };
 
 export type TeamRefLite = {
+  /** 'CLUB' or 'NATIONAL' — the list mixes both, so the picker can label them. */
+  type?: string;
   id: number;
   name: string;
   shortName: string | null;
@@ -305,11 +349,15 @@ export const api = {
   topScorers: (id: number, limit = 20) =>
     get<TopScorersResponse>(`/api/vault/editions/${id}/top-scorers?limit=${limit}`),
   overview: () => get<Overview>('/api/vault/stats/overview'),
-  teams: () => get<{ teams: TeamRefLite[] }>('/api/vault/teams'),
-  clubs: (editionId?: string | number) =>
-    get<{ clubs: ClubStat[] }>(
-      `/api/vault/stats/clubs${editionId ? `?editionId=${editionId}` : ''}`,
-    ),
+  teams: (type?: TeamType) =>
+    get<{ teams: TeamRefLite[] }>(`/api/vault/teams${type ? `?type=${type}` : ''}`),
+  clubs: (editionId?: string | number, type?: TeamType) => {
+    const qs = new URLSearchParams();
+    if (editionId) qs.set('editionId', String(editionId));
+    if (type) qs.set('type', type);
+    const q = qs.toString();
+    return get<{ clubs: ClubStat[] }>(`/api/vault/stats/clubs${q ? `?${q}` : ''}`);
+  },
   players: (params: Record<string, string | number | undefined>) => {
     const qs = new URLSearchParams();
     for (const [k, v] of Object.entries(params)) {

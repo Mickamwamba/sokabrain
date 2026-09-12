@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import { ChipRow, Empty, PageTitle } from "@/components/ui";
-import { ALL_TIME } from "@/lib/season";
+import { ALL_TIME, seasonOptions } from "@/lib/season";
 import { SeasonSelect } from "@/components/season-select";
-import { MatchDays } from "@/components/match-list";
+import { MatchDays, MatchStages } from "@/components/match-list";
 
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 25;
+// A tournament is shown whole rather than paged: the largest here is 52
+// matches, and splitting a bracket across pages makes it unreadable.
+const TOURNAMENT_PAGE = 100;
 const STATUSES = [
   { value: undefined, label: "Any" },
   { value: "FULL_TIME", label: "Finished" },
@@ -26,10 +29,18 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
   let data: Awaited<ReturnType<typeof api.matches>>;
   let editions: Awaited<ReturnType<typeof api.editions>>["editions"];
   try {
-    [data, editions] = await Promise.all([
-      api.matches({ editionId, status, limit: PAGE_SIZE, offset }),
-      api.editions().then((r) => r.editions),
-    ]);
+    // Editions first, because whether this is a tournament decides how the
+    // matches are asked for: a cup is read as a whole, in playing order.
+    editions = await api.editions().then((r) => r.editions);
+    const selected = editions.find((e) => String(e.editionId) === editionId);
+    const tournament = Boolean(selected && selected.competitionType !== "LEAGUE");
+    data = await api.matches({
+      editionId,
+      status,
+      limit: tournament ? TOURNAMENT_PAGE : PAGE_SIZE,
+      offset: tournament ? 0 : offset,
+      ...(tournament ? { order: "asc" } : {}),
+    });
   } catch (err) {
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
@@ -45,6 +56,10 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
   };
 
   const active = editions.find((e) => String(e.editionId) === editionId);
+  // A cup is read by stage — which group, then how far a side got — so when one
+  // tournament is selected the list groups by stage instead of by date. Across
+  // all seasons, or for a league, the date is still the axis that makes sense.
+  const byStage = Boolean(active && active.competitionType !== "LEAGUE");
 
   return (
     <div>
@@ -53,10 +68,7 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
         sub={`${data.total.toLocaleString()} results${active ? ` · ${active.competition} ${active.season}` : ""} · newest first`}
         right={
           <SeasonSelect
-            seasons={editions
-              .slice()
-              .sort((a, b) => b.season.localeCompare(a.season))
-              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+            seasons={seasonOptions(editions)}
             value={editionId ?? ALL_TIME}
             allowAllTime
             clears={["offset"]}
@@ -84,7 +96,11 @@ export default async function MatchesPage(props: PageProps<"/matches">) {
       {data.matches.length === 0 ? (
         <Empty>No matches match these filters.</Empty>
       ) : (
-        <MatchDays matches={data.matches} showCompetition />
+        byStage ? (
+          <MatchStages matches={data.matches} showCompetition={false} />
+        ) : (
+          <MatchDays matches={data.matches} showCompetition />
+        )
       )}
 
       <div className="mt-6 flex items-center justify-between text-sm">

@@ -41,9 +41,25 @@ export type ClubStat = {
  * Clean sheets are derived from the stored score (opponent scored zero), not
  * from the event log — the event log is too incomplete to count absences from.
  */
-export async function clubStats(editionId?: number): Promise<ClubStat[]> {
+/**
+ * Which kind of team a stats page is about.
+ *
+ * `teams.type` already separates these, and the distinction became load-bearing
+ * the day AFCON was published: without it a page headed "Club stats" lists
+ * Egypt and Nigeria next to Yanga and Simba, and a club/country comparison is
+ * not a comparison at all.
+ */
+export type TeamType = 'CLUB' | 'NATIONAL';
+
+export async function clubStats(
+  editionId?: number,
+  teamType?: TeamType,
+): Promise<ClubStat[]> {
   const scope = editionId
     ? Prisma.sql`AND m.competition_edition_id = ${editionId}`
+    : Prisma.empty;
+  const kind = teamType
+    ? Prisma.sql`WHERE t.type = ${teamType}`
     : Prisma.empty;
 
   return prisma.$queryRaw<ClubStat[]>(Prisma.sql`
@@ -84,6 +100,7 @@ export async function clubStats(editionId?: number): Promise<ClubStat[]> {
       ROUND(x.won::numeric * 100 / NULLIF(x.played, 0), 1)::float8       AS "winRate",
       ROUND(x."goalsFor"::numeric / NULLIF(x.played, 0), 2)::float8      AS "goalsPerGame"
     FROM tallied x JOIN teams t ON t.id = x.team_id
+    ${kind}
     ORDER BY x.points DESC, x."goalDifference" DESC, t.name ASC
   `);
 }
@@ -454,16 +471,20 @@ export async function overview() {
 }
 
 /** Clubs that appear in any published edition — for pickers and club pages. */
-export async function publishedTeams() {
-  return prisma.$queryRaw<{ id: number; name: string; shortName: string | null; country: string | null }[]>(
+export async function publishedTeams(teamType?: TeamType) {
+  const kind = teamType ? Prisma.sql`AND t.type = ${teamType}` : Prisma.empty;
+  return prisma.$queryRaw<{
+    id: number; name: string; shortName: string | null; country: string | null; type: string;
+  }[]>(
     Prisma.sql`
-      SELECT DISTINCT t.id, t.name, t.short_name AS "shortName", co.name AS country
+      SELECT DISTINCT t.id, t.name, t.short_name AS "shortName", co.name AS country, t.type
       FROM teams t
       LEFT JOIN countries co ON co.id = t.country_id
       WHERE t.id IN (
         SELECT home_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
         UNION SELECT away_team_id FROM matches WHERE competition_edition_id IN (${publishedEditions})
       )
+      ${kind}
       ORDER BY t.name
     `,
   );

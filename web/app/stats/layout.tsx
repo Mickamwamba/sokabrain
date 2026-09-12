@@ -15,6 +15,7 @@ const TABS = [
   { href: "/stats", label: "Overview" },
   { href: "/stats/players", label: "Players" },
   { href: "/stats/clubs", label: "Clubs" },
+  { href: "/stats/nations", label: "Nations" },
   { href: "/stats/head-to-head", label: "Head to head" },
 ];
 

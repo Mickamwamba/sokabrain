@@ -22,11 +22,28 @@ function Picker({
   teams: TeamRefLite[];
   hrefFor: (side: "teamA" | "teamB", id: number) => string;
 }) {
+  const clubs = teams.filter((t) => t.type !== "NATIONAL");
+  const nations = teams.filter((t) => t.type === "NATIONAL");
+  const ordered: [string, TeamRefLite[]][] = [];
+  if (clubs.length) ordered.push(["Clubs", clubs]);
+  if (nations.length) ordered.push(["National teams", nations]);
+  const showHeadings = ordered.length > 1;
+
   return (
     <Card className="overflow-hidden">
-      <CardHead title={side === "teamA" ? "Club one" : "Club two"} />
+      <CardHead title={side === "teamA" ? "Team one" : "Team two"} />
       <div className="max-h-72 overflow-y-auto">
-        {teams.map((t) => (
+        {/* Clubs and nations are listed under their own heading: they never
+            meet, so an unlabelled single list invites a pairing that can only
+            ever return no matches. */}
+        {ordered.map(([heading, list]) => (
+          <div key={heading}>
+            {showHeadings ? (
+              <p className="sticky top-0 border-b border-line bg-wash px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
+                {heading}
+              </p>
+            ) : null}
+            {list.map((t) => (
           <Link
             key={t.id}
             href={hrefFor(side, t.id)}
@@ -40,6 +57,8 @@ function Picker({
               <span className="shrink-0 text-[11px] text-muted">{t.country.slice(0, 12)}</span>
             ) : null}
           </Link>
+            ))}
+          </div>
         ))}
       </div>
     </Card>

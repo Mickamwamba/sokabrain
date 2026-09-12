@@ -81,7 +81,7 @@ vaultRouter.get('/editions/:editionId/standings', async (req, res) => {
   });
   if (!edition) return res.status(404).json({ error: `No edition with id ${editionId}` });
 
-  const { standings, coverage } = await getStandings(editionId);
+  const { standings, coverage, groups, knockout } = await getStandings(editionId);
 
   res.json({
     edition: {
@@ -95,6 +95,11 @@ vaultRouter.get('/editions/:editionId/standings', async (req, res) => {
     isLeagueTable: edition.competitions.type === 'LEAGUE',
     coverage,
     standings,
+    // Present for a tournament played in groups; empty for a league. The
+    // caller should prefer these over `standings`, which for a cup mixes group
+    // and knockout results into one meaningless ranking.
+    groups,
+    knockout,
   });
 });
 
@@ -194,8 +199,14 @@ vaultRouter.get('/stats/overview', async (_req, res) => {
   res.json(await overview());
 });
 
-vaultRouter.get('/teams', async (_req, res) => {
-  res.json({ teams: await publishedTeams() });
+// `type` separates clubs from national teams. Absent means both, so an existing
+// caller keeps working; the club and nation pages each ask for one.
+const teamTypeQuery = z.object({ type: z.enum(['CLUB', 'NATIONAL']).optional() });
+
+vaultRouter.get('/teams', async (req, res) => {
+  const q = teamTypeQuery.safeParse(req.query);
+  if (!q.success) return res.status(400).json({ error: "type must be CLUB or NATIONAL" });
+  res.json({ teams: await publishedTeams(q.data.type) });
 });
 
 const clubQuery = z.object({ editionId: z.coerce.number().int().positive().optional() });
@@ -203,7 +214,9 @@ const clubQuery = z.object({ editionId: z.coerce.number().int().positive().optio
 vaultRouter.get('/stats/clubs', async (req, res) => {
   const q = clubQuery.safeParse(req.query);
   if (!q.success) return res.status(400).json({ error: 'editionId must be a positive integer' });
-  res.json({ clubs: await clubStats(q.data.editionId) });
+  const t = teamTypeQuery.safeParse(req.query);
+  if (!t.success) return res.status(400).json({ error: "type must be CLUB or NATIONAL" });
+  res.json({ clubs: await clubStats(q.data.editionId, t.data.type) });
 });
 
 const playerQuery = z.object({

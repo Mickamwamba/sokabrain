@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { seasonOptions } from "@/lib/season";
 import { api, ApiError, type Edition } from "@/lib/api";
 import { Card, Crest, Empty, PageTitle } from "@/components/ui";
 import { SeasonSelect } from "@/components/season-select";
@@ -101,10 +102,7 @@ export default async function MatchesHub(props: PageProps<"/">) {
       ? await api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
       : { matches: [] as (typeof list)["matches"] };
 
-  const seasonOptions = editions
-    .slice()
-    .sort((a, b) => b.season.localeCompare(a.season))
-    .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }));
+  const seasonChoices = seasonOptions(editions);
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
@@ -127,7 +125,7 @@ export default async function MatchesHub(props: PageProps<"/">) {
         }
         right={
           <SeasonSelect
-            seasons={seasonOptions}
+            seasons={seasonChoices}
             value={String(editionId)}
             // A day or a round belongs to the season it came from.
             clears={["date", "round"]}

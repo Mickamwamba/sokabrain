@@ -122,3 +122,55 @@ export function MatchDays({ matches, showCompetition = false }: {
     </div>
   );
 }
+
+/** Bracket order, so stages read in the order they are played. */
+const STAGE_ORDER = ["ROUND OF 16", "QUARTER FINAL", "SEMI FINAL", "THIRD PLACE", "FINAL"];
+
+function stageOf(m: Match) {
+  if (m.group) return { key: `G:${m.group.name}`, label: `Group ${m.group.name}`, rank: -1 };
+  const round = (m.round ?? "").toUpperCase();
+  if (!round) return { key: "none", label: "Stage unknown", rank: 99 };
+  const rank = STAGE_ORDER.indexOf(round);
+  const label = round
+    .toLowerCase()
+    .split(" ")
+    .map((w, i) => (i > 0 && (w === "of" || w === "the") ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+  return { key: round, label, rank: rank === -1 ? 98 : rank };
+}
+
+/**
+ * A tournament's matches, laid out by stage rather than by date.
+ *
+ * A cup is read by stage — the group you were in, then how far you got — and a
+ * date heading answers a different question. Groups come first, alphabetically,
+ * then the knockout rounds in bracket order. Within a stage the matches stay in
+ * the order the API returned them, which is chronological.
+ */
+export function MatchStages({ matches, showCompetition = false }: {
+  matches: Match[];
+  showCompetition?: boolean;
+}) {
+  const stages = new Map<string, { label: string; rank: number; list: Match[] }>();
+  for (const m of matches) {
+    const s = stageOf(m);
+    const hit = stages.get(s.key);
+    if (hit) hit.list.push(m);
+    else stages.set(s.key, { label: s.label, rank: s.rank, list: [m] });
+  }
+  const ordered = [...stages.values()].sort(
+    (a, b) => a.rank - b.rank || a.label.localeCompare(b.label),
+  );
+  return (
+    <div className="space-y-5">
+      {ordered.map((s) => (
+        <div key={s.label}>
+          <h2 className="display mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+            {s.label}
+          </h2>
+          <MatchRows matches={s.list} showCompetition={showCompetition} />
+        </div>
+      ))}
+    </div>
+  );
+}

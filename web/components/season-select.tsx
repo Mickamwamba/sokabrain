@@ -28,7 +28,7 @@ export function SeasonSelect({
   clears = [],
   param = "editionId",
 }: {
-  seasons: { value: string; label: string }[];
+  seasons: { value: string; label: string; group?: string }[];
   value: string;
   allowAllTime?: boolean;
   clears?: string[];
@@ -37,6 +37,19 @@ export function SeasonSelect({
   const router = useRouter();
   const pathname = usePathname();
   const search = useSearchParams();
+
+  // Once the site carries more than one competition, a flat list of years is
+  // ambiguous: TPL 2018/19 and AFCON 2019 both render as "2018/19". Grouping by
+  // competition disambiguates them without lengthening every label. With a
+  // single competition there is nothing to disambiguate, so the groups are
+  // dropped rather than wrapping the whole list in one redundant heading.
+  const grouped = Array.from(
+    seasons.reduce((acc, s) => {
+      const key = s.group ?? "";
+      (acc.get(key) ?? acc.set(key, []).get(key)!).push(s);
+      return acc;
+    }, new Map<string, typeof seasons>()),
+  );
 
   function go(next: string) {
     const q = new URLSearchParams(search.toString());
@@ -56,11 +69,21 @@ export function SeasonSelect({
         className="nums cursor-pointer rounded-lg border border-line bg-paper py-1.5 pl-3 pr-8 text-sm font-semibold hover:border-ink focus:border-ink focus:outline-none"
       >
         {allowAllTime ? <option value={ALL_TIME}>All time</option> : null}
-        {seasons.map((s) => (
-          <option key={s.value} value={s.value}>
-            {s.label}
-          </option>
-        ))}
+        {grouped.length > 1
+          ? grouped.map(([label, list]) => (
+              <optgroup key={label} label={label}>
+                {list.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.label}
+                  </option>
+                ))}
+              </optgroup>
+            ))
+          : seasons.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
       </select>
     </label>
   );

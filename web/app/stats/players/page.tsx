@@ -6,7 +6,7 @@ import {
   type PlayerStatsCoverage,
   type TeamRefLite,
 } from "@/lib/api";
-import { ALL_TIME, resolveSeason } from "@/lib/season";
+import { ALL_TIME, resolveSeason, seasonOptions } from "@/lib/season";
 import { AllTimeBadge, SeasonSelect } from "@/components/season-select";
 import { Card, ChipRow, Crest, DataNote, Empty, Rank } from "@/components/ui";
 
@@ -64,10 +64,7 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
     return s ? `/players?${s}` : "/stats/players";
   };
 
-  const seasonOptions = editions
-    .slice()
-    .sort((a, b) => b.season.localeCompare(a.season))
-    .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }));
+  const seasonChoices = seasonOptions(editions);
   const activeTeam = teams.find((t) => String(t.id) === teamId);
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
   // Offering "sort by appearances" while appearances are suppressed would rank
@@ -91,7 +88,7 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
         {`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
         </p>
         <SeasonSelect
-          seasons={seasonOptions}
+          seasons={seasonChoices}
           value={season.value}
           allowAllTime
         />

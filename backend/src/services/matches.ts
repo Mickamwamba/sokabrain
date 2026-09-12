@@ -59,6 +59,7 @@ export async function listMatches(filters: MatchListFilters) {
           select: { id: true, name: true, short_name: true, logo_url: true },
         },
         stadiums: { select: { id: true, name: true, city: true } },
+        competition_groups: { select: { id: true, name: true } },
         competition_editions: {
           select: {
             id: true,
@@ -79,6 +80,10 @@ export async function listMatches(filters: MatchListFilters) {
       kickoffAt: m.kickoff_at,
       status: m.status,
       round: m.round,
+      // The group a match belongs to, for a tournament played in groups. Null
+      // for a league fixture and for every knockout tie, which is what lets a
+      // caller lay a cup out by stage.
+      group: m.competition_groups ? { id: m.competition_groups.id, name: m.competition_groups.name } : null,
       attendance: m.attendance,
       competition: {
         editionId: m.competition_editions?.id ?? null,

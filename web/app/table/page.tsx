@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { seasonOptions } from "@/lib/season";
 import { api, ApiError, type Edition } from "@/lib/api";
 import { Card, CardHead, Crest, DataNote, Empty, PageTitle, Rank } from "@/components/ui";
 import { SeasonSelect } from "@/components/season-select";
+import { GroupTables, KnockoutBracket } from "@/components/group-tables";
 
 export const dynamic = "force-dynamic";
 
@@ -57,21 +59,60 @@ export default async function TablePage(props: PageProps<"/table">) {
     throw err;
   }
 
-  const { edition, coverage, isLeagueTable } = standings;
+  const { edition, coverage, isLeagueTable, groups, knockout } = standings;
   const table = standings.standings;
   const champion = isLeagueTable && !coverage.isProvisional ? table[0] : undefined;
+  // A tournament played in groups is shown as its groups and its bracket. The
+  // combined ranking is still available below, but as a summary, not a table.
+  const isTournament = groups.length > 0 || knockout.length > 0;
+  const finalTie = knockout.find((r) => r.round.toUpperCase() === "FINAL")?.matches[0];
+  const winnerName =
+    finalTie?.winnerTeamId === finalTie?.homeTeamId
+      ? finalTie?.homeTeamName
+      : finalTie?.winnerTeamId
+        ? finalTie?.awayTeamName
+        : undefined;
+
+  // Used by both layouts: a league shows it beside the table, a tournament
+  // beside the bracket.
+  const scorersCard = (
+      <Card className="overflow-hidden self-start">
+        <CardHead
+          title="Top scorers"
+          action={{ href: `/players?editionId=${editionId}`, label: "Full list" }}
+        />
+        {scorers.scorers.length === 0 ? (
+          <p className="px-5 py-10 text-center text-sm text-muted">
+            No goalscorer data recorded.
+          </p>
+        ) : (
+          <ol>
+            {scorers.scorers.map((s) => (
+              <li
+                key={s.playerId}
+                className="flex items-center gap-3 border-b border-line px-5 py-2.5 last:border-0"
+              >
+                <Rank n={s.rank} />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-semibold">{s.playerName}</span>
+                  <span className="block truncate text-xs text-muted">{s.teamName ?? "—"}</span>
+                </span>
+                <span className="stat-figure text-lg">{s.goals}</span>
+              </li>
+            ))}
+          </ol>
+        )}
+      </Card>
+  );
 
   return (
     <div>
       <PageTitle
-        title="Table"
+        title={isTournament ? "Tournament" : "Table"}
         sub={edition.competition}
         right={
           <SeasonSelect
-            seasons={editions
-              .slice()
-              .sort((a, b) => b.season.localeCompare(a.season))
-              .map((e) => ({ value: String(e.editionId), label: e.season.replace("/20", "/") }))}
+            seasons={seasonOptions(editions)}
             value={String(editionId)}
           />
         }
@@ -101,25 +142,50 @@ export default async function TablePage(props: PageProps<"/table">) {
       {/* Deliberately not a <Card>: Card hard-codes bg-paper, and a bg-ink
           passed through className loses to it in the generated CSS, which
           rendered this banner as white text on a white background. */}
-      {champion ? (
+      {champion || winnerName ? (
         <div className="mb-5 flex items-center gap-4 rounded-xl bg-ink px-6 py-5 text-white">
-          <Crest name={champion.teamName} size={44} />
+          <Crest name={champion?.teamName ?? winnerName!} size={44} />
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-white/50">
-              Top of the table
+              {champion ? "Top of the table" : "Winner"}
             </p>
-            <p className="display truncate text-xl font-extrabold">{champion.teamName}</p>
-          </div>
-          <div className="ml-auto shrink-0 text-right">
-            <p className="stat-figure text-3xl">{champion.points}</p>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-white/50">
-              Points
+            <p className="display truncate text-xl font-extrabold">
+              {champion?.teamName ?? winnerName}
             </p>
           </div>
+          {champion ? (
+            <div className="ml-auto shrink-0 text-right">
+              <p className="stat-figure text-3xl">{champion.points}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-white/50">
+                Points
+              </p>
+            </div>
+          ) : null}
         </div>
       ) : null}
 
-      <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
+      {isTournament ? (
+        <div className="space-y-5">
+          {groups.length > 0 ? (
+            <div>
+              <h2 className="display mb-3 text-lg font-extrabold">Group stage</h2>
+              <GroupTables groups={groups} />
+            </div>
+          ) : null}
+          <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
+            <div>
+              {knockout.length > 0 ? (
+                <>
+                  <h2 className="display mb-3 text-lg font-extrabold">Knockout stage</h2>
+                  <KnockoutBracket rounds={knockout} />
+                </>
+              ) : null}
+            </div>
+            {scorersCard}
+          </div>
+        </div>
+      ) : (
+        <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
         <Card className="overflow-hidden">
           <CardHead
             title={
@@ -171,40 +237,16 @@ export default async function TablePage(props: PageProps<"/table">) {
             </div>
           )}
         </Card>
-
-        <Card className="overflow-hidden self-start">
-          <CardHead
-            title="Top scorers"
-            action={{ href: `/players?editionId=${editionId}`, label: "Full list" }}
-          />
-          {scorers.scorers.length === 0 ? (
-            <p className="px-5 py-10 text-center text-sm text-muted">
-              No goalscorer data recorded.
-            </p>
-          ) : (
-            <ol>
-              {scorers.scorers.map((s) => (
-                <li
-                  key={s.playerId}
-                  className="flex items-center gap-3 border-b border-line px-5 py-2.5 last:border-0"
-                >
-                  <Rank n={s.rank} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-semibold">{s.playerName}</span>
-                    <span className="block truncate text-xs text-muted">{s.teamName ?? "—"}</span>
-                  </span>
-                  <span className="stat-figure text-lg">{s.goals}</span>
-                </li>
-              ))}
-            </ol>
-          )}
-        </Card>
-      </div>
+          {scorersCard}
+        </div>
+      )}
 
       <div className="mt-5 space-y-2">
         {!isLeagueTable ? (
           <DataNote>
-            {`This is ${KIND[edition.competitionType] ?? "not a league"}, not a round-robin league — the standings above summarise results across the edition but are not an official table.`}
+            {isTournament
+              ? `This is ${KIND[edition.competitionType] ?? "not a league"}. Each group is its own round robin, so those are shown as tables; the knockout rounds are ties, decided on the day and by penalties where level.`
+              : `This is ${KIND[edition.competitionType] ?? "not a league"}, not a round-robin league — the standings above summarise results across the edition but are not an official table.`}
           </DataNote>
         ) : null}
         {coverage.isProvisional ? (
