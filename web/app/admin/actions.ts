@@ -120,12 +120,15 @@ export async function saveMatchAction(_prev: ActionState, fd: FormData): Promise
     if (Number.isNaN(v)) return fail('Scores and attendance must be whole numbers, or left blank if unknown.');
     if (v !== null && v < 0) return fail('Scores and attendance cannot be negative.');
   }
+  const body: Record<string, unknown> = { status: text(fd, 'status'), home_score: home, away_score: away, attendance };
+  // The kickoff field is entered in Tanzanian time (UTC+3); blank clears it.
+  if (fd.has('kickoff')) {
+    const kickoff = text(fd, 'kickoff');
+    if (kickoff && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(kickoff)) return fail('Enter the kickoff as a date and time.');
+    body.kickoff_at = kickoff ? new Date(`${kickoff}:00+03:00`).toISOString() : null;
+  }
   const state = await mutate(
-    () =>
-      adminFetch(`/api/admin/matches/${matchId}`, {
-        method: 'PATCH',
-        body: { status: text(fd, 'status'), home_score: home, away_score: away, attendance },
-      }),
+    () => adminFetch(`/api/admin/matches/${matchId}`, { method: 'PATCH', body }),
     'Match saved.',
   );
   revalidatePath('/admin', 'layout');
@@ -274,6 +277,84 @@ export async function deleteEditionAction(_prev: ActionState, fd: FormData): Pro
     () => adminFetch(`/api/admin/editions/${id(fd, 'editionId')}`, { method: 'DELETE' }),
     'Season removed from the competition.',
     { redirectTo: `/admin/competitions/${competitionId}` },
+  );
+  revalidatePath('/admin', 'layout');
+  return state;
+}
+
+/* ------------------------------------------------------------ data audit -- */
+
+export async function runAuditAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const whole = text(fd, 'scope') !== 'selected';
+  const competitionIds = whole ? [] : fd.getAll('competitionIds').map(Number).filter(Boolean);
+  const editionIds = whole ? [] : fd.getAll('editionIds').map(Number).filter(Boolean);
+  const includeCareers = fd.get('includeCareers') === 'on';
+  if (!whole && competitionIds.length === 0 && editionIds.length === 0 && !includeCareers) {
+    return fail('Choose at least one competition or season, or include player careers.');
+  }
+  const state = await mutate(
+    () =>
+      adminFetch<{ run: { id: number; detected: number; opened: number; reopened: number; resolved: number } }>(
+        '/api/admin/audit/runs',
+        {
+          method: 'POST',
+          body: {
+            ...(competitionIds.length && { competitionIds }),
+            ...(editionIds.length && { editionIds }),
+            includeCareers,
+          },
+        },
+      ),
+    (r) => {
+      const run = (r as { run: { id: number; detected: number; opened: number; reopened: number; resolved: number } }).run;
+      return `Audit #${run.id} finished: ${run.detected} problems detected — ${run.opened} new, ${run.reopened} reopened, ${run.resolved} resolved.`;
+    },
+  );
+  revalidatePath('/admin', 'layout');
+  return state;
+}
+
+export async function reviewFindingAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const decision = text(fd, 'decision');
+  const note = text(fd, 'note');
+  const state = await mutate(
+    () =>
+      adminFetch(`/api/admin/audit/findings/${id(fd, 'findingId')}/review`, {
+        method: 'POST',
+        body: { decision, ...(note && { note }) },
+      }),
+    decision === 'FIXED'
+      ? 'Marked fixed. The next audit run will confirm it — or reopen it.'
+      : decision === 'ACCEPTED'
+        ? 'Accepted. It stays closed while the problem is unchanged.'
+        : 'Reopened.',
+  );
+  revalidatePath('/admin/audit');
+  return state;
+}
+
+export async function bulkReviewAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const decision = text(fd, 'decision');
+  const note = text(fd, 'note');
+  const filter: Record<string, unknown> = {};
+  for (const key of ['severity', 'checkKey', 'area']) if (text(fd, key)) filter[key] = text(fd, key);
+  for (const key of ['competitionId', 'editionId']) if (text(fd, key)) filter[key] = id(fd, key);
+  const state = await mutate(
+    () =>
+      adminFetch<{ updated: number }>('/api/admin/audit/findings/review-bulk', {
+        method: 'POST',
+        body: { ...filter, decision, expectedCount: id(fd, 'expectedCount'), ...(note && { note }) },
+      }),
+    (r) => `${(r as { updated: number }).updated} findings marked ${decision === 'FIXED' ? 'fixed' : 'accepted'}.`,
+  );
+  revalidatePath('/admin/audit');
+  return state;
+}
+
+export async function escalateFindingAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const state = await mutate(
+    () => adminFetch(`/api/admin/audit/findings/${id(fd, 'findingId')}/escalate`, { method: 'POST' }),
+    'Escalated to a BLOCKER flag — its season can’t be published until the flag is resolved.',
   );
   revalidatePath('/admin', 'layout');
   return state;

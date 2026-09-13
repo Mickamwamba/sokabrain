@@ -1,12 +1,16 @@
-import { Save, Trash2, UserRound } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRightLeft, Save, Trash2, UserRound } from 'lucide-react';
 import {
-  adminFetch, type Career, type CareerSpell, type Lookups, type PlayerRecord, type TeamOption, type Usage,
+  adminFetch, type AuditFindings, type Career, type CareerSpell, type Lookups, type PlayerRecord, type TeamOption, type Usage,
 } from '@/lib/adminApi';
-import { load } from '@/lib/admin-page';
+import { load, one } from '@/lib/admin-page';
+import { safeReturn } from '@/lib/audit-targets';
+import { EntityFindings } from '@/components/admin/entity-findings';
 import { Badge, ErrorState, Facts, PageHeader, Panel } from '@/components/admin/kit';
 import { ConfirmForm } from '@/components/admin/confirm-form';
 import { PlayerFields } from '@/components/admin/player-fields';
 import { TransferForm } from '@/components/admin/transfer-form';
+import { btn } from '@/components/admin/styles';
 import { CareerHistory, CareerStatusLine } from '@/components/admin/career';
 import {
   addSpellAction, deletePlayerAction, deleteSpellAction, endSpellAction,
@@ -17,6 +21,8 @@ export const dynamic = 'force-dynamic';
 
 export default async function EditPlayerPage(props: PageProps<'/admin/players/[id]'>) {
   const { id } = await props.params;
+  const sp = await props.searchParams;
+  const returnTo = safeReturn(one(sp.from));
   const pid = Number(id);
   const res = await load(() =>
     Promise.all([
@@ -24,10 +30,11 @@ export default async function EditPlayerPage(props: PageProps<'/admin/players/[i
       adminFetch<Lookups>('/api/admin/lookups'),
       adminFetch<Career>(`/api/admin/players/${pid}/career`),
       adminFetch<{ teams: TeamOption[] }>('/api/admin/team-options').then((r) => r.teams),
+      adminFetch<AuditFindings>(`/api/admin/audit/findings?entityType=player&entityId=${pid}&status=ACTIVE`).then((r) => r.findings),
     ]),
   );
   if (!res.ok) return <ErrorState message={res.error} />;
-  const [{ player, usage }, lookups, career, teams] = res.data;
+  const [{ player, usage }, lookups, career, teams, findings] = res.data;
   const clubs = teams.filter((t) => t.type === 'CLUB');
   // Career spells go with the player; only match history blocks a delete.
   const inUse = usage.filter((u) => u.count > 0 && !/club spell/.test(u.label));
@@ -47,6 +54,7 @@ export default async function EditPlayerPage(props: PageProps<'/admin/players/[i
 
       <div className="grid gap-6 xl:grid-cols-3">
         <div className="space-y-6 xl:col-span-2">
+          <EntityFindings findings={findings} returnTo={returnTo} auditHref={`/admin/audit?area=Careers`} />
           <CareerHistory
             career={career}
             teams={teams}
@@ -69,7 +77,15 @@ export default async function EditPlayerPage(props: PageProps<'/admin/players/[i
         </div>
 
         <div className="space-y-6">
-          <Panel title="Record a move" description="A transfer, a loan, or a release. The spells it ends are closed for you.">
+          <Panel
+            title="Record a move"
+            description="A transfer, a loan, or a release. The spells it ends are closed for you."
+            actions={
+              <Link href={`/admin/transfers?playerId=${player.id}`} className={btn('ghost', 'sm')}>
+                <ArrowRightLeft /> Transfer centre
+              </Link>
+            }
+          >
             <TransferForm
               playerId={player.id}
               playerName={player.full_name}

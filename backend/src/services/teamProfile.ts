@@ -266,11 +266,10 @@ type KnockoutRun = { round: string; wonFinal: boolean | null };
  * Who won a knockout tie, from the stored scores.
  *
  * Penalties decide it if there were any, then extra time, then the ninety
- * minutes. Extra time is compared only against itself: WhoScored's ET figure
- * zeroes the loser rather than giving the after-extra-time score (see
- * docs/ingestion/AFCON.md), so it says who won the period but cannot be
- * added to or compared with the regular score. Checked against all 13 AFCON
- * finals in the vault, including 2025's 1-0 decided in extra time.
+ * minutes. The vault stores the ET columns as the score after extra time (the
+ * AFCON ingest normalised WhoScored's form, which zeroes the loser), so
+ * comparing them with each other gives the result either way. Checked against
+ * all 13 AFCON finals in the vault, including 2025's 1-0 decided in extra time.
  */
 function homeWon(m: {
   hs: number | null; as: number | null;

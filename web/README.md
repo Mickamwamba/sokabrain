@@ -79,13 +79,28 @@ admins add each other under Access management.
 | `/admin/participants` | teams in a competition's season: add, set group, remove; picks up teams playing matches but not listed |
 | `/admin/matches` | matches for one competition + season; optional "needs a score" filter |
 | `/admin/matches/[id]` | two-sided match sheet: events per side, missing scorers, result, add event, raise and resolve flags |
+| `/admin/transfers` | transfer centre: every transfer, loan, departure and first club, filterable by club, player and dates; edit or undo any move; record a move for any player picked by name |
 | `/admin/teams` | clubs and national teams, searchable and paged · `/new` · `/[id]` shows the current squad and former players, and edits or deletes |
 | `/admin/players` | players with their current club (or free agent), searchable and paged · `/new` registers with a club and join date, or as a free agent |
 | `/admin/players/[id]` | career history (club and international, overlaps flagged with one-click fixes), record a transfer/loan/release, details, delete |
-| `/admin/issues` | every match needing attention, by competition + season + issue type |
+| `/admin/audit` | **data audit**: run the 23 checks over the vault or chosen competitions/seasons; review findings (fixed, accepted, reopen, escalate to a blocker flag), singly or in bulk; run history. `/admin/issues` redirects here |
 | `/admin/flags` | open and resolved flags |
 | `/admin/access` | admin accounts: add, rename, reset password, revoke or restore access |
 | `/admin/account` | your own details and password |
+
+### From a finding to the fix
+
+Every audit finding has a **Fix** button that opens the record and scrolls to
+the part that needs changing — a match's result or event log, a player's
+career, a season's participants, settings or match list. `lib/audit-targets.ts`
+is the one map from check to destination; target pages give that section an
+`id` and `Panel` highlights whichever one the URL's hash names.
+
+Each of those pages shows the record's own open findings above the fix
+(`components/admin/entity-findings.tsx`), with the same Fixed / Accept /
+Escalate buttons as the audit list, and a **Back to the audit** link to the
+exact filtered page the editor came from. That link comes from a `from`
+parameter, which `safeReturn` only honours for `/admin/audit` URLs.
 
 ### Every change goes through a confirmation dialog
 

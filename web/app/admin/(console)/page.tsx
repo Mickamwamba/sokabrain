@@ -101,7 +101,7 @@ export default async function AdminDashboardPage() {
                   ) : (
                     <Badge tone="green"><CircleCheck className="h-3 w-3" /> Clean</Badge>
                   )}
-                  <Link href={`/admin/issues?editionId=${e.editionId}`} className={btn('ghost', 'sm')}>
+                  <Link href={`/admin/audit?editionId=${e.editionId}`} className={btn('ghost', 'sm')}>
                     Review <ArrowRight />
                   </Link>
                 </li>
@@ -154,7 +154,7 @@ export default async function AdminDashboardPage() {
                       {e.issues.map((i) => `${i.count} ${i.label}`).join(' · ')}
                     </td>
                     <td className="py-3 pl-3 pr-5 text-right">
-                      <Link href={`/admin/issues?editionId=${e.editionId}`} className={btn('secondary', 'sm')}>
+                      <Link href={`/admin/audit?editionId=${e.editionId}`} className={btn('secondary', 'sm')}>
                         <TriangleAlert /> Fix
                       </Link>
                     </td>

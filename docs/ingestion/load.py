@@ -12,9 +12,10 @@ Two rules from the schema doc are enforced here rather than assumed:
   in the vault is skipped entirely; within a new season, where the two sources
   disagree the record is written from the preferred source and the
   disagreement is recorded in `reconciliation_diffs`.
-* **An OWN_GOAL's team is the scoring player's own team** (principle 5), which
-  is the convention both the vault and the official site already use, so own
-  goals are carried across unchanged and credited on the read side.
+* **An OWN_GOAL's team is the scoring player's own team** (principle 5). The
+  official site only sometimes files them that way, so normalize_ligikuu.py's
+  orient_own_goals() settles each match on its score before anything reaches
+  here; own goals then load unchanged and are credited on the read side.
 
 Usage:
     python3 load.py <canon_ligikuu.json> <canon_whoscored.json> [--commit]

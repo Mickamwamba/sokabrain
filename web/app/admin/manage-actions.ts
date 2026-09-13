@@ -336,3 +336,61 @@ export async function deleteSpellAction(_prev: ActionState, fd: FormData): Promi
   revalidatePath('/admin', 'layout');
   return state;
 }
+
+/* -------------------------------------------------------- transfer centre -- */
+
+/**
+ * Typeahead for the transfer centre's player picker. A server action that
+ * returns data rather than ActionState: the browser never holds the token, so
+ * the search has to run here.
+ */
+export async function searchPlayersAction(q: string): Promise<import('@/lib/adminApi').PlayerHit[]> {
+  const term = q.trim();
+  if (term.length < 2) return [];
+  const { players } = await adminFetch<{ players: import('@/lib/adminApi').PlayerRow[] }>(
+    `/api/admin/players?q=${encodeURIComponent(term)}&pageSize=8`,
+  );
+  return players.map((p) => ({
+    id: p.id,
+    name: p.fullName,
+    club: p.currentClub === 'FREE_AGENT' ? 'Free agent' : p.currentClub ? p.currentClub.name : 'No club recorded',
+  }));
+}
+
+export async function undoMoveAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const state = await mutate(
+    () =>
+      adminFetch<{ reopened: string | null }>('/api/admin/transfers/undo', {
+        method: 'POST',
+        body: { kind: text(fd, 'kind'), spellId: id(fd, 'spellId') },
+      }),
+    (r) => {
+      const reopened = (r as { reopened: string | null }).reopened;
+      return reopened ? `Move undone — back at ${reopened}.` : 'Move undone.';
+    },
+  );
+  revalidatePath('/admin', 'layout');
+  return state;
+}
+
+export async function editMoveAction(_prev: ActionState, fd: FormData): Promise<ActionState> {
+  const kind = text(fd, 'kind');
+  const body: Record<string, unknown> = { kind, spellId: id(fd, 'spellId') };
+  if (text(fd, 'date')) body.date = text(fd, 'date');
+  if (kind === 'TRANSFER' || kind === 'FIRST_CLUB') {
+    body.type = textOrNull(fd, 'type');
+  }
+  if (kind !== 'RELEASE') {
+    const shirt = intOrNull(fd, 'shirtNumber');
+    const fee = feeOrNull(fd, 'fee');
+    if (Number.isNaN(shirt) || Number.isNaN(fee)) return fail('Shirt number and fee must be numbers.');
+    body.shirtNumber = shirt;
+    body.fee = fee;
+  }
+  const state = await mutate(
+    () => adminFetch('/api/admin/transfers', { method: 'PATCH', body }),
+    'Move updated.',
+  );
+  revalidatePath('/admin', 'layout');
+  return state;
+}

@@ -53,6 +53,7 @@ export function PageHeader({
 }
 
 export function Panel({
+  id,
   title,
   description,
   actions,
@@ -61,6 +62,8 @@ export function Panel({
   bodyClassName = '',
   tone = 'default',
 }: {
+  /** An anchor for deep links; the panel is highlighted while the URL targets it. */
+  id?: string;
   title?: ReactNode;
   description?: ReactNode;
   actions?: ReactNode;
@@ -71,7 +74,8 @@ export function Panel({
 }) {
   return (
     <section
-      className={`overflow-hidden rounded-xl border bg-paper shadow-sm ${
+      id={id}
+      className={`scroll-mt-24 overflow-hidden rounded-xl border bg-paper shadow-sm transition-shadow target:ring-2 target:ring-gold target:ring-offset-2 target:ring-offset-wash ${
         tone === 'danger' ? 'border-loss/30' : 'border-line'
       } ${className}`}
     >

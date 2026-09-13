@@ -9,17 +9,20 @@ import {
   Pencil,
   Save,
   Trash2,
-  TriangleAlert,
+  ScanSearch,
   Trophy,
 } from 'lucide-react';
 import {
   adminFetch,
   type AdminEditionRow,
   type AdminMatchRow,
+  type AuditFindings,
   type EditionSummary,
   type Lookups,
 } from '@/lib/adminApi';
 import { load, one } from '@/lib/admin-page';
+import { safeReturn } from '@/lib/audit-targets';
+import { EntityFindings } from '@/components/admin/entity-findings';
 import {
   Badge,
   EmptyState,
@@ -86,6 +89,15 @@ export default async function AdminCompetitionPage(props: PageProps<'/admin/comp
     : null;
   if (season && !season.ok) return <ErrorState message={season.error} />;
   const [summary, matches] = season?.ok ? season.data : [null, [] as AdminMatchRow[]];
+  const returnTo = safeReturn(one(sp.from));
+  // The season's own findings (settings, missing fixtures); match-level ones
+  // live on each match.
+  const seasonFindings = selected
+    ? await load(() =>
+        adminFetch<AuditFindings>(`/api/admin/audit/findings?entityType=competition_edition&entityId=${selected.editionId}&status=ACTIVE`)
+          .then((r) => r.findings),
+      )
+    : null;
 
   const takenSeasons = new Set(editions.map((e) => e.seasonId));
   const freeSeasons = lookups.seasons.filter((s) => !takenSeasons.has(s.id));
@@ -195,8 +207,8 @@ export default async function AdminCompetitionPage(props: PageProps<'/admin/comp
               <Link href={`/admin/participants?editionId=${selected.editionId}`} className={btn('secondary', 'sm')}>
                 <ListChecks /> Participants
               </Link>
-              <Link href={`/admin/issues?editionId=${selected.editionId}`} className={btn('secondary', 'sm')}>
-                <TriangleAlert /> Issues
+              <Link href={`/admin/audit?competitionId=${competition.id}&editionId=${selected.editionId}`} className={btn('secondary', 'sm')}>
+                <ScanSearch /> Data audit
               </Link>
               {summary.edition.isPublished ? (
                 <ConfirmForm
@@ -235,6 +247,12 @@ export default async function AdminCompetitionPage(props: PageProps<'/admin/comp
             </div>
           </div>
 
+          <EntityFindings
+            findings={seasonFindings?.ok ? seasonFindings.data : []}
+            returnTo={returnTo}
+            auditHref={`/admin/audit?competitionId=${competition.id}&editionId=${selected.editionId}`}
+          />
+
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
             <StatCard label="Matches" value={summary.counts.total} />
             <StatCard label="Teams" value={summary.counts.teams} />
@@ -248,6 +266,7 @@ export default async function AdminCompetitionPage(props: PageProps<'/admin/comp
 
           <div className="grid gap-6 xl:grid-cols-3">
             <Panel
+              id="matches"
               className="xl:col-span-2"
               title={`Matches (${matches.length})`}
               description="Completed matches with no score are highlighted"
@@ -312,7 +331,7 @@ export default async function AdminCompetitionPage(props: PageProps<'/admin/comp
                 )}
               </Panel>
 
-              <Panel title="Season settings">
+              <Panel id="season-settings" title="Season settings">
                 <ConfirmForm
                   action={updateEditionAction}
                   title={`Save ${summary.edition.season} settings?`}

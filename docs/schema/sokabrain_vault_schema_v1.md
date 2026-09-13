@@ -627,3 +627,54 @@ is why `PlayerStatsCoverage` reports `seasonsWithAssists` separately from
 `seasonsWithScorers`: an all-time assist ranking covers 4 of 19 seasons where
 the goal ranking covers 7. The players page says so, and hides the assist
 column and sort entirely for a scope with none.
+
+---
+
+## Addendum: data audit (2026-09-12)
+
+Two tables, `audit_runs` and `audit_findings`, back the admin console's Data
+Audit. They replace the Issues page, which computed a subset of these problems
+live on every read and so could hold no history and accept no decision.
+
+### What a run does
+
+A run applies every check (`backend/src/services/audit/checks.ts`) to a scope —
+the whole vault, or a union of competitions and seasons, optionally with player
+careers — and reconciles the result with the findings on record
+(`services/audit/reconcile.ts`, unit tested):
+
+| Detected? | Finding was | Becomes |
+|---|---|---|
+| yes | — | `OPEN` |
+| yes | `OPEN` | `OPEN`, detail refreshed |
+| yes | `FIXED` | `OPEN` — the fix did not take |
+| yes | `ACCEPTED`, same fingerprint | `ACCEPTED` |
+| yes | `ACCEPTED`, fingerprint changed | `OPEN` |
+| yes | `RESOLVED` | `OPEN` — it came back |
+| no | anything but `RESOLVED` | `RESOLVED` by this run |
+
+A run only resolves findings inside its scope; one season's audit never closes
+another season's findings. Runs read, never write to the vault's data.
+
+### Identity and fingerprint
+
+A finding is one problem on one record: `UNIQUE (check_key, entity_type,
+entity_id)`, so re-runs update rather than duplicate. `fingerprint` hashes the
+facts behind it — the score, the counts, the clashing spell ids — never anything
+that drifts by itself ("kickoff was 3 days ago"), or an accepted finding would
+reopen daily.
+
+### Why a separate table, not `data_flags`
+
+Flags are what a person knows and the data cannot reveal, and a BLOCKER flag
+gates publication. Findings are what the data reveals about itself, and are
+advisory. An admin escalates a finding to a BLOCKER flag when it should gate
+publication. Keeping them apart preserves both meanings.
+
+### One data fact the audit surfaced
+
+For the 46 matches decided in extra time, `home_score`/`away_score` hold the
+90 minutes and `home_score_et`/`away_score_et` the result after extra time, as a
+running total — the AFCON ingest normalised WhoScored's form, which zeroed the
+loser. Checks comparing the event log with the score use the after-extra-time
+result; the first draft did not, and flagged 15 extra-time goals as extra events.

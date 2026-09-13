@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { ExternalLink, Flag as FlagIcon, Save, CircleCheck } from 'lucide-react';
-import { adminFetch, type AdminMatchDetail, type SquadPlayer } from '@/lib/adminApi';
-import { load } from '@/lib/admin-page';
+import { adminFetch, type AdminMatchDetail, type AuditFindings, type SquadPlayer } from '@/lib/adminApi';
+import { load, one } from '@/lib/admin-page';
+import { safeReturn } from '@/lib/audit-targets';
+import { EntityFindings } from '@/components/admin/entity-findings';
 import { Badge, ErrorState, Field, PageHeader, Panel, SeverityBadge, humanise } from '@/components/admin/kit';
 import { ConfirmForm } from '@/components/admin/confirm-form';
 import { EventRow } from '@/components/admin/event-row';
@@ -21,16 +23,23 @@ export const dynamic = 'force-dynamic';
 
 const STATUSES = ['SCHEDULED', 'LIVE', 'FULL_TIME', 'POSTPONED', 'ABANDONED', 'CANCELLED'];
 
+/** Kickoffs are stored UTC and edited in Tanzanian time (UTC+3, no daylight saving). */
+const EAT_OFFSET_MS = 3 * 60 * 60 * 1000;
+const toEatInput = (iso: string | null) => (iso ? new Date(Date.parse(iso) + EAT_OFFSET_MS).toISOString().slice(0, 16) : '');
+
 export default async function AdminMatchPage(props: PageProps<'/admin/matches/[id]'>) {
   const { id } = await props.params;
+  const sp = await props.searchParams;
+  const returnTo = safeReturn(one(sp.from));
   const res = await load(() =>
     Promise.all([
       adminFetch<{ match: AdminMatchDetail }>(`/api/admin/matches/${Number(id)}`).then((r) => r.match),
       adminFetch<{ squad: SquadPlayer[] }>(`/api/admin/matches/${Number(id)}/squad`).then((r) => r.squad),
+      adminFetch<AuditFindings>(`/api/admin/audit/findings?entityType=match&entityId=${Number(id)}&status=ACTIVE`).then((r) => r.findings),
     ]),
   );
   if (!res.ok) return <ErrorState message={res.error} />;
-  const [match, squad] = res.data;
+  const [match, squad, findings] = res.data;
 
   // Each event belongs to one side. Anything without a team (the schema allows
   // it) goes in a third bucket rather than being silently dropped.
@@ -103,6 +112,8 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
         ) : null}
       </div>
 
+      <EntityFindings findings={findings} returnTo={returnTo} auditHref={`/admin/audit?editionId=${match.edition.id}`} />
+
       {match.openFlags.length ? (
         <Panel title="Open flags" tone="danger">
           <ul className="divide-y divide-line">
@@ -132,7 +143,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
         </Panel>
       ) : null}
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div id="events" className="grid scroll-mt-24 gap-6 rounded-xl md:grid-cols-2 target:ring-2 target:ring-gold target:ring-offset-4 target:ring-offset-wash">
         {side(match.homeTeam, homeEvents, 'left')}
         {side(match.awayTeam, awayEvents, 'right')}
       </div>
@@ -149,7 +160,7 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
       ) : null}
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Panel title="Result" description="Blank means unknown — not zero.">
+        <Panel id="result" title="Result" description="Blank means unknown — not zero.">
           <ConfirmForm
             action={saveMatchAction}
             title={`Save the result of ${label}?`}
@@ -179,6 +190,10 @@ export default async function AdminMatchPage(props: PageProps<'/admin/matches/[i
                   data-label="Attendance" className={input} />
               </Field>
             </div>
+            <Field label="Kickoff" hint="Tanzanian time. Clear it if the date is genuinely unknown.">
+              <input name="kickoff" type="datetime-local" defaultValue={toEatInput(match.kickoffAt)}
+                data-label="Kickoff (Tanzanian time)" className={`${input} sm:max-w-xs`} />
+            </Field>
           </ConfirmForm>
         </Panel>
 

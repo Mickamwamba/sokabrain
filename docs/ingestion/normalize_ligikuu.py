@@ -60,6 +60,54 @@ def count_only(value):
     return int(m.group(1)) if m else 0
 
 
+def orient_own_goals(events, home_score, away_score):
+    """Put each own goal under the scoring player's OWN team, as the vault needs.
+
+    The site is not consistent about it. Until early 2026 its editors listed an
+    own-goal scorer in the table of the team the goal COUNTS FOR; from April 2026
+    (and in two matches in late 2024) under the scorer's own team. There is no
+    field that says which, so the stored score decides: if the goal events only
+    reproduce the score with the own goals flipped to the other side, they are
+    flipped. Both readings agreeing, or neither (an incomplete log), leaves the
+    events as listed -- there is nothing to decide on.
+
+    Found by the data audit on TPL 2023/24-2025/26: 19 matches read the wrong
+    result, e.g. TRA United 3-0 KMC FC read 2-1. Corrected in the vault by
+    docs/reconciliation/fixes/2026-09-12_ligikuu_own_goal_sides.sql.
+
+    >>> ev = [{"type": "GOAL", "side": "home"}, {"type": "GOAL", "side": "home"},
+    ...       {"type": "OWN_GOAL", "side": "home"}]
+    >>> [e["side"] for e in orient_own_goals(ev, 3, 0)]
+    ['home', 'home', 'away']
+    >>> [e["side"] for e in orient_own_goals([{"type": "OWN_GOAL", "side": "away"}], 1, 0)]
+    ['away']
+    >>> [e["side"] for e in orient_own_goals([{"type": "GOAL", "side": "home"}], 2, 0)]
+    ['home']
+    """
+    goals = [e for e in events if e["type"] in ("GOAL", "PENALTY_GOAL", "OWN_GOAL")]
+    own = [e for e in goals if e["type"] == "OWN_GOAL"]
+    if not own or len(goals) != home_score + away_score:
+        return events
+
+    def home_tally(flip):
+        n = 0
+        for e in goals:
+            side = e["side"]
+            if e["type"] == "OWN_GOAL":
+                # As stored in the vault, an own goal counts for the other side;
+                # "flip" first moves it to the other team's table.
+                side = {"home": "away", "away": "home"}[side] if flip else side
+                side = {"home": "away", "away": "home"}[side]
+            n += side == "home"
+        return n
+
+    as_listed, flipped = home_tally(False) == home_score, home_tally(True) == home_score
+    if flipped and not as_listed:
+        other = {"home": "away", "away": "home"}
+        return [dict(e, side=other[e["side"]]) if e["type"] == "OWN_GOAL" else e for e in events]
+    return events
+
+
 def load(src):
     src = Path(src)
     data = {}
@@ -144,8 +192,9 @@ def normalize(src):
                         minute, added = minutes[i] if i < len(minutes) else (None, None)
                         events.append({"type": "GOAL", "side": side, "player_source_id": pid,
                                        "player_name": name, "minute": minute, "added_time": added})
-                    # An own goal sits under the scoring player's OWN team here,
-                    # which is the convention the vault schema uses too.
+                    # An own goal is listed under whichever team's table the
+                    # site's editor put the scorer in -- which changed over time.
+                    # orient_own_goals() below settles each match on the score.
                     for _ in range(count_only(stat.get("owngoals"))):
                         events.append({"type": "OWN_GOAL", "side": side, "player_source_id": pid,
                                        "player_name": name, "minute": None, "added_time": None})
@@ -161,6 +210,9 @@ def normalize(src):
                     for _ in range(count_only(stat.get("redcards"))):
                         events.append({"type": "RED_CARD", "side": side, "player_source_id": pid,
                                        "player_name": name, "minute": None, "added_time": None})
+
+        if played:
+            events = orient_own_goals(events, int(hs), int(as_))
 
         out.append({
             "source": "ligikuu",

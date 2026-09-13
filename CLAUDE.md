@@ -275,10 +275,45 @@ explicitly out of scope — see "Non-goals" below).
     the player moved on and 69 club pairs overlap (53 players). They are flagged
     on each player's page with a one-click fix, never auto-corrected.
     Manual spells record provenance as `player_team_stint`, a new entity type.
+  - **The transfer centre (`/admin/transfers`) lists every move and manages
+    them** — edit (a date change moves both touching spells), undo (reopens the
+    old spell only when nothing later depends on it), and record a move for any
+    player. Moves are not stored: `movesOf` in `services/careers.ts` reads
+    them off the spells, so the centre and each player's page share one rule.
+    Of the vault's moves, 351 are transfers and 835 are departures with no
+    recorded destination; there are no loans on record yet.
+  - **Data audit (`/admin/audit`) replaced the Issues page.** 23 checks
+    (`services/audit/checks.ts`) over scores, events, fixtures, seasons and
+    careers, run on demand over the vault or a union of competitions and
+    seasons; a full run takes well under a second. Findings persist in the new
+    `audit_runs`/`audit_findings` tables and reconcile on every run
+    (`services/audit/reconcile.ts`, unit tested): undetected → RESOLVED by the
+    run; FIXED but still detected → reopened; ACCEPTED stays closed until its
+    fingerprint (the facts, never "N days ago") changes. Findings are advisory;
+    escalate one to a BLOCKER flag to gate publishing. A first full run found
+    680 problems, including club-credited goals in legacy AFCON 2019.
+    **Extra-time matches store 90 minutes in `*_score` and the after-ET running
+    total in `*_score_et`** — compare event logs with the latter.
+    `npm test` now quotes its glob; before, nested test folders silently never ran.
+    Each finding's **Fix** button deep-links to the section that fixes it
+    (`web/lib/audit-targets.ts`), and those pages list the record's open
+    findings with a way back to the filtered audit. The match result form now
+    edits the kickoff too, in Tanzanian time (UTC+3).
   - **The public site and the console no longer share a layout.** Public pages
     live in `app/(site)/` (header/footer there); the root layout is only the
     document. URLs are unchanged. Run `next typegen` after moving routes, or
     `tsc` fails on stale `.next/types`.
+- **ligikuu own goals were filed under the wrong team until early 2026, now
+  corrected** (2026-09-12, `docs/reconciliation/fixes/2026-09-12_ligikuu_own_goal_sides.sql`,
+  reconciliation run 67). The official site listed an own-goal scorer in the
+  team the goal *counts for* until January 2026, and under the scorer's own team
+  from April 2026 (and in two late-2024 matches); the loader assumed the latter
+  throughout. 20 own goals (TPL 2023/24-2025/26) were moved to the scorer's own
+  team, and 20 one-day player spells the mistake had created at the benefiting
+  club were deleted. `normalize_ligikuu.py` now decides each match on its score
+  (`orient_own_goals`, doctested). The Data Audit caught it — TRA United 3-0
+  KMC FC read "Events read 2-1" — and run #2 then resolved all 19 contradictions
+  on its own. **The counting rule (principle 5) was never wrong; the data was.**
 - Known, already-fixed data issues (do not "fix" these again): an own-goal
   attribution bug, a Kenya Premier League country miscoding, a handful of
   duplicate lineup rows, kickoff times stored three hours late (legacy local

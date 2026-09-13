@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clubStatus, conflictsFor, overlaps, planTransfer, staleOpenSpells, type Spell } from './careers.js';
+import { clubStatus, conflictsFor, movesOf, overlaps, planTransfer, staleOpenSpells, type Spell } from './careers.js';
 
 let seq = 0;
 const spell = (p: Partial<Spell> & Pick<Spell, 'teamId' | 'start'>): Spell => ({
@@ -107,4 +107,39 @@ test('a loan cannot outlive the parent spell it belongs to', () => {
   assert.ok('error' in tooLong, 'loan ending after the parent');
   const fits = planTransfer([parent, later], { toTeam: club(2), date: '2026-07-01', type: 'LOAN', loanUntil: '2026-08-01' });
   assert.ok(!('error' in fits), 'loan ending with the parent is fine');
+});
+
+test('moves are read off spells: first club, transfer, loan, release', () => {
+  const singida = spell({ teamId: 347, teamName: 'Singida', start: '2017-08-01', end: '2018-08-01' });
+  const yanga = spell({ teamId: 76, teamName: 'Yanga', start: '2018-08-01', end: '2023-07-01' });
+  const loan = spell({ teamId: 9, teamName: 'Loan FC', start: '2020-01-10', end: '2020-06-30', type: 'LOAN' });
+  const nation = spell({ teamId: 900, teamType: 'NATIONAL', start: '2019-01-01' });
+  const moves = movesOf([singida, yanga, loan, nation]);
+  const pick = (k: string) => moves.filter((m) => m.kind === k);
+
+  assert.deepEqual(pick('FIRST_CLUB').map((m) => m.to?.id), [singida.id]);
+  assert.deepEqual(pick('TRANSFER').map((m) => [m.from?.id, m.to?.id, m.date]), [[singida.id, yanga.id, '2018-08-01']]);
+  assert.deepEqual(pick('LOAN').map((m) => [m.from?.id, m.to?.id]), [[yanga.id, loan.id]], 'loan names the parent');
+  assert.deepEqual(pick('RELEASE').map((m) => [m.from?.id, m.date]), [[yanga.id, '2023-07-01']]);
+  assert.ok(moves.every((m) => m.to?.teamType !== 'NATIONAL'), 'call-ups are not moves');
+  assert.deepEqual(moves.map((m) => m.date), [...moves.map((m) => m.date)].sort().reverse(), 'newest first');
+});
+
+test('undoing a transfer reopens the old spell only when nothing else depends on it', () => {
+  const azam = spell({ teamId: 1, start: '2022-07-01', end: '2026-08-01' });
+  const simba = spell({ teamId: 2, start: '2026-08-01' });
+  const [move] = movesOf([azam, simba]).filter((m) => m.kind === 'TRANSFER');
+  assert.equal(move?.reopens?.id, azam.id, 'the latest move, touching: reopen the old club');
+
+  // A gap between spells: the old spell ended for its own reasons.
+  const gap = movesOf([spell({ teamId: 1, start: '2020-01-01', end: '2021-01-01' }), spell({ teamId: 2, start: '2021-06-01' })])
+    .find((m) => m.kind === 'TRANSFER');
+  assert.equal(gap?.reopens, null);
+
+  // A move in the middle of a career: reopening would collide with later spells.
+  const a = spell({ teamId: 1, start: '2015-01-01', end: '2018-01-01' });
+  const b = spell({ teamId: 2, start: '2018-01-01', end: '2020-01-01' });
+  const c = spell({ teamId: 3, start: '2020-01-01' });
+  const middle = movesOf([a, b, c]).find((m) => m.to?.id === b.id);
+  assert.equal(middle?.reopens, null);
 });

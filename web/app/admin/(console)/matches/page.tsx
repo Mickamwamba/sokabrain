@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { CalendarDays } from 'lucide-react';
-import { adminFetch, type AdminCompetition, type AdminMatchRow } from '@/lib/adminApi';
+import { adminFetch, type AdminCompetition, type AdminMatchRow, type AuditFinding, type AuditFindings } from '@/lib/adminApi';
+import { safeReturn } from '@/lib/audit-targets';
+import { EntityFindings } from '@/components/admin/entity-findings';
 import { load, one } from '@/lib/admin-page';
 import {
   Badge, EmptyState, ErrorState, IncompleteDot, PageHeader, Panel, SeverityBadge, fmtDate,
@@ -9,6 +11,8 @@ import { MatchFilters } from '@/components/admin/match-filters';
 import { btn } from '@/components/admin/styles';
 
 export const dynamic = 'force-dynamic';
+
+const SEASON_MATCH_CHECKS = new Set(['MISSING_FIXTURES', 'UNEVEN_GAMES_PLAYED', 'NO_EVENT_LOG', 'DERIVED_SCORERS_UNKNOWN']);
 
 export default async function AdminMatchesPage(props: PageProps<'/admin/matches'>) {
   const sp = await props.searchParams;
@@ -32,13 +36,22 @@ export default async function AdminMatchesPage(props: PageProps<'/admin/matches'
 
   let matches: AdminMatchRow[] = [];
   let total = 0;
+  let findings: AuditFinding[] = [];
   if (edition) {
     const qs = new URLSearchParams({ editionId: String(edition.editionId), limit: '500' });
     if (needsAttention) qs.set('needsAttention', 'true');
-    const res = await load(() => adminFetch<{ total: number; matches: AdminMatchRow[] }>(`/api/admin/matches?${qs}`));
+    const res = await load(() =>
+      Promise.all([
+        adminFetch<{ total: number; matches: AdminMatchRow[] }>(`/api/admin/matches?${qs}`),
+        // Season-wide findings whose fix is working through the match list.
+        adminFetch<AuditFindings>(`/api/admin/audit/findings?entityType=competition_edition&entityId=${edition.editionId}&status=ACTIVE`)
+          .then((r) => r.findings.filter((f) => SEASON_MATCH_CHECKS.has(f.check.key))),
+      ]),
+    );
     if (!res.ok) return <ErrorState message={res.error} />;
-    ({ matches, total } = res.data);
+    [{ matches, total }, findings] = res.data;
   }
+  const returnTo = safeReturn(one(sp.from));
 
   const noScore = (m: AdminMatchRow) => m.status === 'FULL_TIME' && (m.homeScore === null || m.awayScore === null);
 
@@ -61,10 +74,15 @@ export default async function AdminMatchesPage(props: PageProps<'/admin/matches'
         </Panel>
       ) : null}
 
+      {edition ? (
+        <EntityFindings findings={findings} returnTo={returnTo} auditHref={`/admin/audit?editionId=${edition.editionId}`} />
+      ) : null}
+
       {!competition || !edition ? (
         <Panel><EmptyState icon={<CalendarDays />} title="No competition has any seasons recorded" /></Panel>
       ) : (
         <Panel
+          id="matches"
           title={`${competition.name} ${edition.season}`}
           description={`${total.toLocaleString()} match${total === 1 ? '' : 'es'}${needsAttention ? ' needing a score' : ''}`}
           actions={

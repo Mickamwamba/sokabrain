@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ListChecks, Plus, Save, Trash2, Users } from 'lucide-react';
-import { adminFetch, type AdminCompetition, type Participants } from '@/lib/adminApi';
+import { adminFetch, type AdminCompetition, type AuditFindings, type Participants } from '@/lib/adminApi';
+import { safeReturn } from '@/lib/audit-targets';
+import { EntityFindings } from '@/components/admin/entity-findings';
 import { load, one } from '@/lib/admin-page';
 import { Badge, EmptyState, ErrorState, Field, PageHeader, Panel } from '@/components/admin/kit';
 import { ConfirmForm } from '@/components/admin/confirm-form';
@@ -15,6 +17,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const NATIONAL_TYPES = new Set(['CONTINENTAL_NATIONAL', 'WORLD_CUP', 'QUALIFIER']);
+const PARTICIPANT_CHECKS = new Set(['UNLISTED_PARTICIPANTS', 'PARTICIPANTS_WITHOUT_MATCHES', 'TEAM_COUNT_MISMATCH']);
 
 export default async function AdminParticipantsPage(props: PageProps<'/admin/participants'>) {
   const sp = await props.searchParams;
@@ -61,10 +64,13 @@ export default async function AdminParticipantsPage(props: PageProps<'/admin/par
       adminFetch<{ teams: { id: number; name: string }[] }>(
         `/api/admin/team-options?type=${NATIONAL_TYPES.has(competition.type) ? 'NATIONAL' : 'CLUB'}`,
       ).then((r) => r.teams),
+      adminFetch<AuditFindings>(`/api/admin/audit/findings?entityType=competition_edition&entityId=${edition.editionId}&status=ACTIVE`)
+        .then((r) => r.findings.filter((f) => PARTICIPANT_CHECKS.has(f.check.key))),
     ]),
   );
   if (!res.ok) return <ErrorState message={res.error} />;
-  const [data, teamOptions] = res.data;
+  const [data, teamOptions, findings] = res.data;
+  const returnTo = safeReturn(one(sp.from));
   const listed = new Set(data.participants.map((p) => p.teamId));
   const addable = teamOptions.filter((t) => !listed.has(t.id));
   const hasGroups = data.groups.length > 0;
@@ -83,8 +89,11 @@ export default async function AdminParticipantsPage(props: PageProps<'/admin/par
         />
       </Panel>
 
+      <EntityFindings findings={findings} returnTo={returnTo} auditHref={`/admin/audit?editionId=${edition.editionId}&area=Seasons`} />
+
       <div className="grid gap-6 xl:grid-cols-3">
         <Panel
+          id="participants"
           className="xl:col-span-2"
           title={label}
           description={

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
 import {
+  ArrowRightLeft,
   CalendarDays,
   CalendarRange,
   ExternalLink,
@@ -13,7 +14,7 @@ import {
   ListChecks,
   Menu,
   Shield,
-  TriangleAlert,
+  ScanSearch,
   Trophy,
   UserCog,
   UserRound,
@@ -47,12 +48,13 @@ const GROUPS: { label: string; items: Item[] }[] = [
       { href: '/admin/matches', label: 'Matches', icon: CalendarDays },
       { href: '/admin/teams', label: 'Teams', icon: Shield },
       { href: '/admin/players', label: 'Players', icon: UserRound },
+      { href: '/admin/transfers', label: 'Transfers', icon: ArrowRightLeft },
     ],
   },
   {
     label: 'Data quality',
     items: [
-      { href: '/admin/issues', label: 'Issues', icon: TriangleAlert },
+      { href: '/admin/audit', label: 'Data audit', icon: ScanSearch },
       { href: '/admin/flags', label: 'Flags', icon: Flag },
     ],
   },

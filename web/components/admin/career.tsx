@@ -178,6 +178,7 @@ export function CareerHistory({
   return (
     <div className="space-y-6">
       <Panel
+        id="career"
         title="Club history"
         description={`${career.clubSpells.length} spell${career.clubSpells.length === 1 ? '' : 's'}, newest first`}
         actions={problems ? <Badge tone="amber">{problems} need{problems === 1 ? 's' : ''} attention</Badge> : null}

@@ -171,7 +171,17 @@ accounts, in `src/routes/adminManage.ts`. Every create and update records
 | POST | `/api/admin/players/:id/transfers` | `toTeamId` (null = release), `date`, `type`, `loanUntil`, `fee`, `shirtNumber` |
 | POST | `/api/admin/players/:id/spells` | add a past spell directly; refused if it overlaps another club contract |
 | PATCH/DELETE | `/api/admin/spells/:id` | correct or remove a spell |
+| GET | `/api/admin/transfers` | every move read off the spells: `?kind=MOVES\|ALL\|TRANSFER\|LOAN\|RELEASE\|FIRST_CLUB`, `teamId`, `q`, `from`, `to`, paging; plus counts and a summary |
+| PATCH | `/api/admin/transfers` | `kind`, `spellId`, and `date`/`type`/`fee`/`shirtNumber`; a transfer's date moves the old spell's end with it when they touch |
+| POST | `/api/admin/transfers/undo` | `kind`, `spellId`; removes the arrival and reopens the old spell when nothing later depends on it |
 | GET | `/api/admin/teams/:id/squad` | spells running today, newest signing first, plus former players |
+| POST | `/api/admin/audit/runs` | `competitionIds`, `editionIds` (a union; neither = whole vault), `includeCareers`; runs synchronously, 409 if one is running |
+| GET | `/api/admin/audit/runs` | recent runs with named scope and new/reopened/resolved counts |
+| GET | `/api/admin/audit/findings` | `status=ACTIVE\|OPEN\|FIXED\|ACCEPTED\|RESOLVED\|ALL`, `severity`, `checkKey`, `area`, `competitionId`, `editionId`, paging; counts per status, severity and check |
+| POST | `/api/admin/audit/findings/:id/review` | `decision` FIXED / ACCEPTED (note required) / OPEN |
+| POST | `/api/admin/audit/findings/review-bulk` | same filter + `decision` + `expectedCount`; open findings only, 409 if the count moved |
+| POST | `/api/admin/audit/findings/:id/escalate` | raises a BLOCKER `data_flags` row for the finding's record |
+| GET | `/api/admin/audit/checks` | the 23 checks, with area, severity and description |
 | GET | `/api/admin/lookups` | countries, seasons, stadiums, competitions, types, formats |
 | GET | `/api/admin/team-options` | every team, name only, `?type=` |
 
@@ -191,7 +201,11 @@ Rules worth knowing before calling these:
   tested): a move ends the old spell on the day the new one starts, so touching
   spells don't overlap; national-team spells are a separate career that no
   transfer ever ends; a loan runs inside its parent spell and can't outlive it.
-  A permanent move or release ends every club spell running on the date. The
+  A permanent move or release ends every club spell running on the date.
+  There is no transfers table: `movesOf` reads moves off the spells — an
+  arrival from the spell that ended most recently before it (TRANSFER), from
+  nowhere on record (FIRST_CLUB), on loan from a running parent (LOAN), or a
+  contract that ended with nothing after it (RELEASE). The
   API refuses a move the recorded history contradicts rather than guessing.
   `POST /players` takes an optional `club` (`teamId`, `startDate`, `type`,
   `shirtNumber`) — omit it for a free agent. Deleting a player takes their

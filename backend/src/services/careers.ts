@@ -176,3 +176,68 @@ export function planTransfer(spells: Spell[], req: TransferRequest): TransferPla
       : null,
   };
 }
+
+/* ----------------------------------------------------------------- moves -- */
+
+export type MoveKind = 'TRANSFER' | 'LOAN' | 'FIRST_CLUB' | 'RELEASE';
+
+export type Move = {
+  kind: MoveKind;
+  date: string;
+  /** The spell the player left, or for a loan the parent club they stay at. */
+  from: Spell | null;
+  /** The spell that began; null for a release. */
+  to: Spell | null;
+  /**
+   * For undoing a TRANSFER: the spell that would carry on again once the move
+   * is removed. Set only when the old spell ended the very day the new one
+   * began and nothing later depends on it, so reopening it rewrites nothing
+   * else. Null means undo removes the new spell and leaves the rest alone.
+   */
+  reopens: Spell | null;
+};
+
+/**
+ * The moves a player's club spells describe.
+ *
+ * The vault stores spells, not transfers, so a move is read off the spells:
+ * a spell beginning is an arrival — from the club spell that ended most
+ * recently before it (a TRANSFER), from nowhere on record (FIRST_CLUB), or on
+ * loan from the parent spell still running (LOAN). A contract spell that ended
+ * with nothing after it is a RELEASE: the player left, destination unrecorded.
+ */
+export function movesOf(spells: Spell[]): Move[] {
+  const clubs = spells.filter((s) => s.teamType === 'CLUB').sort((a, b) => a.start.localeCompare(b.start));
+  const contracts = clubs.filter((s) => !isLoan(s));
+  const moves: Move[] = [];
+
+  for (const a of clubs) {
+    if (isLoan(a)) {
+      const parent = contracts
+        .filter((p) => p.start < a.start && (p.end === null || p.end > a.start))
+        .sort((x, y) => y.start.localeCompare(x.start))[0] ?? null;
+      moves.push({ kind: 'LOAN', date: a.start, from: parent, to: a, reopens: null });
+      continue;
+    }
+    const prev = contracts
+      .filter((p) => p.id !== a.id && p.end !== null && p.end <= a.start)
+      .sort((x, y) => y.end!.localeCompare(x.end!) || y.start.localeCompare(x.start))[0] ?? null;
+    const nothingAfterPrev =
+      prev !== null && !contracts.some((c) => c.id !== a.id && c.id !== prev.id && c.start > prev.start);
+    moves.push({
+      kind: prev ? 'TRANSFER' : 'FIRST_CLUB',
+      date: a.start,
+      from: prev,
+      to: a,
+      reopens: prev && prev.end === a.start && nothingAfterPrev ? prev : null,
+    });
+  }
+
+  for (const r of contracts) {
+    if (r.end === null) continue;
+    const followed = contracts.some((n) => n.id !== r.id && n.start >= r.end!);
+    if (!followed) moves.push({ kind: 'RELEASE', date: r.end, from: r, to: null, reopens: r });
+  }
+
+  return moves.sort((a, b) => b.date.localeCompare(a.date));
+}

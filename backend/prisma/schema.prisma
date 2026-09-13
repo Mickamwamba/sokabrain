@@ -52,6 +52,7 @@ model competition_editions {
   is_published              Boolean                     @default(false)
   published_at              DateTime?                   @db.Timestamptz(6)
   published_by              Int?
+  audit_findings            audit_findings[]
   competition_edition_teams competition_edition_teams[]
   competitions              competitions                @relation(fields: [competition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   countries                 countries?                  @relation(fields: [host_country_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -342,6 +343,8 @@ model admins {
   is_active                                 Boolean                @default(true)
   created_at                                DateTime               @default(now()) @db.Timestamptz(6)
   last_login_at                             DateTime?              @db.Timestamptz(6)
+  audit_findings                            audit_findings[]
+  audit_runs                                audit_runs[]
   competition_editions                      competition_editions[]
   data_flags_data_flags_created_byToadmins  data_flags[]           @relation("data_flags_created_byToadmins")
   data_flags_data_flags_resolved_byToadmins data_flags[]           @relation("data_flags_resolved_byToadmins")
@@ -365,4 +368,58 @@ model data_flags {
 
   @@index([entity_type, entity_id], map: "data_flags_open_idx", where: raw("((status)::text = 'OPEN'::text)"))
   @@index([status, severity], map: "data_flags_status_idx")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model audit_findings {
+  id                                                      Int                   @id @default(autoincrement())
+  check_key                                               String                @db.VarChar(40)
+  entity_type                                             String                @db.VarChar(30)
+  entity_id                                               Int
+  edition_id                                              Int?
+  severity                                                String                @db.VarChar(10)
+  detail                                                  String
+  fingerprint                                             String                @db.VarChar(64)
+  status                                                  String                @default("OPEN") @db.VarChar(10)
+  first_seen_run_id                                       Int
+  last_seen_run_id                                        Int
+  resolved_run_id                                         Int?
+  reviewed_by                                             Int?
+  reviewed_at                                             DateTime?             @db.Timestamptz(6)
+  review_note                                             String?
+  times_reopened                                          Int                   @default(0)
+  created_at                                              DateTime              @default(now()) @db.Timestamptz(6)
+  updated_at                                              DateTime              @default(now()) @db.Timestamptz(6)
+  competition_editions                                    competition_editions? @relation(fields: [edition_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  audit_runs_audit_findings_first_seen_run_idToaudit_runs audit_runs            @relation("audit_findings_first_seen_run_idToaudit_runs", fields: [first_seen_run_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  audit_runs_audit_findings_last_seen_run_idToaudit_runs  audit_runs            @relation("audit_findings_last_seen_run_idToaudit_runs", fields: [last_seen_run_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  audit_runs_audit_findings_resolved_run_idToaudit_runs   audit_runs?           @relation("audit_findings_resolved_run_idToaudit_runs", fields: [resolved_run_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  admins                                                  admins?               @relation(fields: [reviewed_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([check_key, entity_type, entity_id])
+  @@index([edition_id, status], map: "audit_findings_edition_idx")
+  @@index([entity_type, entity_id], map: "audit_findings_entity_idx")
+  @@index([status, severity], map: "audit_findings_open_idx", where: raw("((status)::text = ANY ((ARRAY['OPEN'::character varying, 'FIXED'::character varying])::text[]))"))
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model audit_runs {
+  id                                                          Int              @id @default(autoincrement())
+  started_at                                                  DateTime         @default(now()) @db.Timestamptz(6)
+  finished_at                                                 DateTime?        @db.Timestamptz(6)
+  status                                                      String           @default("RUNNING") @db.VarChar(10)
+  started_by                                                  Int?
+  scope_competition_ids                                       Int[]
+  scope_edition_ids                                           Int[]
+  include_careers                                             Boolean          @default(false)
+  checks_run                                                  Int?
+  detected                                                    Int?
+  opened                                                      Int?
+  reopened                                                    Int?
+  resolved                                                    Int?
+  error                                                       String?
+  audit_findings_audit_findings_first_seen_run_idToaudit_runs audit_findings[] @relation("audit_findings_first_seen_run_idToaudit_runs")
+  audit_findings_audit_findings_last_seen_run_idToaudit_runs  audit_findings[] @relation("audit_findings_last_seen_run_idToaudit_runs")
+  audit_findings_audit_findings_resolved_run_idToaudit_runs   audit_findings[] @relation("audit_findings_resolved_run_idToaudit_runs")
+  admins                                                      admins?          @relation(fields: [started_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

@@ -72,7 +72,7 @@ export default async function AdminFlagsPage(props: PageProps<'/admin/flags'>) {
                   {f.entityType === 'match' ? (
                     <Link href={`/admin/matches/${f.entityId}`} className={btn('secondary', 'sm')}><ExternalLink /> Open match</Link>
                   ) : f.entityType === 'competition_edition' ? (
-                    <Link href={`/admin/issues?editionId=${f.entityId}`} className={btn('secondary', 'sm')}><ExternalLink /> Open season</Link>
+                    <Link href={`/admin/audit?editionId=${f.entityId}`} className={btn('secondary', 'sm')}><ExternalLink /> Open season</Link>
                   ) : null}
                   {f.status === 'OPEN' ? (
                     <ConfirmForm

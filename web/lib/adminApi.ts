@@ -184,38 +184,6 @@ export type AdminReference = {
   competitionTypes: string[];
 };
 
-export type MatchIssue = { kind: string; severity: string; detail: string };
-
-export type MatchWithIssues = {
-  matchId: number;
-  kickoffAt: string | null;
-  status: string;
-  round: string | null;
-  homeTeam: string;
-  awayTeam: string;
-  homeScore: number | null;
-  awayScore: number | null;
-  issues: MatchIssue[];
-  openFlags: { id: number; severity: string; reason: string }[];
-};
-
-export type IssuesResponse = {
-  edition: {
-    editionId: number;
-    competitionId: number;
-    competition: string;
-    season: string;
-    isPublished: boolean;
-  };
-  totals: {
-    matchesWithIssues: number;
-    blockers: number;
-    openFlags: number;
-    byKind: Record<string, number>;
-  };
-  matches: MatchWithIssues[];
-};
-
 /* ------------------------------------------------ reference-entity management -- */
 
 export type Lookups = {
@@ -369,3 +337,91 @@ export type SquadEntry = {
 export type Squad = { today: string; current: SquadEntry[]; former: SquadEntry[] };
 
 export type TeamOption = { id: number; name: string; type: 'CLUB' | 'NATIONAL' };
+
+export type MoveKind = 'TRANSFER' | 'LOAN' | 'FIRST_CLUB' | 'RELEASE';
+
+export type MoveSide = {
+  spellId: number;
+  team: { id: number; name: string };
+  start: string;
+  end: string | null;
+  type: SpellType | null;
+  shirtNumber: number | null;
+  fee: string | null;
+};
+
+export type MoveRow = {
+  key: string;
+  kind: MoveKind;
+  date: string;
+  player: { id: number; name: string };
+  from: MoveSide | null;
+  to: MoveSide | null;
+  /** The spell an undo would carry on again, if any. */
+  reopens: { spellId: number; team: { id: number; name: string } } | null;
+};
+
+export type TransferFeed = {
+  today: string;
+  total: number;
+  page: number;
+  pageSize: number;
+  counts: Record<MoveKind, number>;
+  summary: { movesLast30Days: number; activeLoans: number; freeAgents: number };
+  moves: MoveRow[];
+};
+
+export type PlayerHit = { id: number; name: string; club: string };
+
+/* ------------------------------------------------------------ data audit -- */
+
+export type AuditSeverity = 'INFO' | 'WARNING' | 'CRITICAL';
+export type FindingStatus = 'OPEN' | 'FIXED' | 'ACCEPTED' | 'RESOLVED';
+export type AuditArea = 'Scores' | 'Events' | 'Fixtures' | 'Seasons' | 'Careers';
+
+export type AuditCheck = { key: string; label: string; area: AuditArea; severity: AuditSeverity; describes: string };
+
+export type AuditRun = {
+  id: number;
+  status: 'RUNNING' | 'COMPLETED' | 'FAILED';
+  startedAt: string;
+  finishedAt: string | null;
+  startedBy: string | null;
+  scope: { competitions: string[]; editions: string[]; includeCareers: boolean };
+  checksRun: number | null;
+  detected: number | null;
+  opened: number | null;
+  reopened: number | null;
+  resolved: number | null;
+  error: string | null;
+};
+
+export type AuditFinding = {
+  id: number;
+  check: { key: string; label: string; area: AuditArea | null };
+  severity: AuditSeverity;
+  status: FindingStatus;
+  detail: string;
+  entity: { type: 'match' | 'player' | 'competition_edition'; id: number; label: string; date: string | null };
+  edition: { id: number; competitionId: number; label: string } | null;
+  firstSeenRunId: number;
+  lastSeenRunId: number;
+  resolvedRunId: number | null;
+  reviewedBy: string | null;
+  reviewedAt: string | null;
+  reviewNote: string | null;
+  timesReopened: number;
+  updatedAt: string;
+};
+
+export type AuditFindings = {
+  total: number;
+  page: number;
+  pageSize: number;
+  counts: {
+    status: Partial<Record<FindingStatus, number>>;
+    severity: Partial<Record<AuditSeverity, number>>;
+    check: Record<string, number>;
+  };
+  findings: AuditFinding[];
+};

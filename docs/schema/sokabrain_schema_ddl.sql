@@ -298,3 +298,78 @@ CREATE TABLE data_flags (
 -- The dashboard's hot path: open flags for a given entity.
 CREATE INDEX data_flags_open_idx ON data_flags (entity_type, entity_id) WHERE status = 'OPEN';
 CREATE INDEX data_flags_status_idx ON data_flags (status, severity);
+
+-- ---------------------------------------------------------------------------
+-- Data audit (added for the admin console's Data Audit, 2026-09-12).
+--
+-- An audit run applies every check to a scope — the whole vault, or chosen
+-- competitions and seasons — and reconciles what it finds against the findings
+-- already on record:
+--   * a problem seen for the first time opens a finding;
+--   * a problem no longer detected is RESOLVED by the run, not by a person;
+--   * a finding an admin marked FIXED reopens if the run still detects it —
+--     the fix did not take;
+--   * a finding an admin ACCEPTED stays closed while the problem is unchanged
+--     (same fingerprint), and reopens only if it changes.
+--
+-- Findings are advisory. They never block publication; an admin escalates one
+-- to a BLOCKER `data_flags` row when it should. `data_flags` remains the record
+-- of what a person knows that the data cannot reveal.
+-- ---------------------------------------------------------------------------
+CREATE TABLE audit_runs (
+    id                  SERIAL PRIMARY KEY,
+    started_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+    finished_at         TIMESTAMPTZ,
+    status              VARCHAR(10) NOT NULL DEFAULT 'RUNNING'
+                            CHECK (status IN ('RUNNING','COMPLETED','FAILED')),
+    started_by          INT REFERENCES admins(id),
+    -- NULL means unrestricted: every competition, or every season of the
+    -- chosen competitions.
+    scope_competition_ids INT[],
+    scope_edition_ids   INT[],
+    -- Player-career checks are not tied to a season, so they are opted into.
+    include_careers     BOOLEAN NOT NULL DEFAULT FALSE,
+    checks_run          INT,
+    detected            INT,   -- problems present at the end of the run
+    opened              INT,   -- new findings
+    reopened            INT,   -- FIXED or changed-ACCEPTED findings back to OPEN
+    resolved            INT,   -- findings the run no longer detected
+    error               TEXT
+);
+
+CREATE TABLE audit_findings (
+    id                  SERIAL PRIMARY KEY,
+    -- Which check raised it, e.g. 'EVENTS_CONTRADICT_SCORE'. Stable: renaming a
+    -- check orphans its findings.
+    check_key           VARCHAR(40) NOT NULL,
+    entity_type         VARCHAR(30) NOT NULL
+                            CHECK (entity_type IN ('competition_edition','match','player')),
+    entity_id           INT NOT NULL,
+    -- The season a finding belongs to, for scoping runs and filtering. NULL for
+    -- a player-career finding.
+    edition_id          INT REFERENCES competition_editions(id) ON DELETE CASCADE,
+    severity            VARCHAR(10) NOT NULL
+                            CHECK (severity IN ('INFO','WARNING','CRITICAL')),
+    detail              TEXT NOT NULL,
+    -- Hash of the facts behind the finding (counts, scores). An ACCEPTED finding
+    -- reopens when this changes, because what was accepted is no longer what
+    -- the data says.
+    fingerprint         VARCHAR(64) NOT NULL,
+    status              VARCHAR(10) NOT NULL DEFAULT 'OPEN'
+                            CHECK (status IN ('OPEN','FIXED','ACCEPTED','RESOLVED')),
+    first_seen_run_id   INT NOT NULL REFERENCES audit_runs(id),
+    last_seen_run_id    INT NOT NULL REFERENCES audit_runs(id),
+    resolved_run_id     INT REFERENCES audit_runs(id),
+    reviewed_by         INT REFERENCES admins(id),
+    reviewed_at         TIMESTAMPTZ,
+    review_note         TEXT,
+    times_reopened      INT NOT NULL DEFAULT 0,
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+    -- One finding per problem per record: a re-run updates it, never duplicates it.
+    UNIQUE (check_key, entity_type, entity_id)
+);
+
+CREATE INDEX audit_findings_open_idx ON audit_findings (status, severity) WHERE status IN ('OPEN','FIXED');
+CREATE INDEX audit_findings_edition_idx ON audit_findings (edition_id, status);
+CREATE INDEX audit_findings_entity_idx ON audit_findings (entity_type, entity_id);
