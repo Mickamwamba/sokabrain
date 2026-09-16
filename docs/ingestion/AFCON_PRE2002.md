@@ -2,8 +2,8 @@
 
 The vault's Africa Cup of Nations used to start in 2002. This is how the other
 22 tournaments — 1957 to 2000, 354 matches — came in from RSSSF, how they were
-checked, and what was decided along the way. **Loaded 2026-09-15**; every one of
-the 22 editions is unpublished until an editor releases it.
+checked, and what was decided along the way. **Loaded and published
+2026-09-15**, so the public site now covers 1957 to 2025.
 
 ```
 fetch_rsssf_afcon.py      rsssf.org/tables/{57..00}a.html -> raw/afcon_pre2002/*.html

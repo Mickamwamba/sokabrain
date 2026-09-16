@@ -345,7 +345,11 @@ explicitly out of scope — see "Non-goals" below).
 - **The Africa Cup of Nations now runs 1957-2025: 35 editions, 850 matches.**
   The 22 tournaments before 2002 were loaded 2026-09-15 from RSSSF — see
   `docs/ingestion/AFCON_PRE2002.md` for the pipeline, the checks and the
-  judgement calls. **All 22 are unpublished.**
+  judgement calls. **All 35 editions are published** (2026-09-15,
+  `docs/reconciliation/fixes/2026-09-15_publish_afcon_pre2002.sql`, which also
+  carries the statement that reverses it). The public AFCON scorer list is 90%
+  attributed: Eto'o 17, Pokou 14, Yekini 12 — each a goal or so short of the
+  real record, which the site's own coverage note states.
   - RSSSF, not Flashscore: it carries dates, scorers with minutes, attendances
     and the final group tables as plain text, and every printed group table
     recomputes exactly from the parsed fixtures. Wikipedia independently
