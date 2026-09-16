@@ -386,9 +386,20 @@ explicitly out of scope — see "Non-goals" below).
   99.90%: 2,005 of 2,007 goals**, and the public top fourteen now matches the
   published all-time list exactly. Hossam Hassan 11, Kalusha Bwalya 10, Joel
   Tiéhi 10 and Benni McCarthy 7 were all short only because of this gap.
-  - **The last 2 are not a naming problem.** Tunisia 1-1 Angola (2019) and
-    Zambia 1-1 Tanzania (2023) are each missing the goal *event* itself in their
-    source, which is a long-standing known gap. Nothing to name.
+  - **Every AFCON goal now names a scorer: 2,007 of 2,007, and all 787 matches
+    with events reproduce their own score.** The last two holes were closed on
+    2026-09-16 (`2026-09-16_two_missing_afcon_goals.sql`): Tunisia 1-1 Angola
+    (2019) and Zambia 1-1 Tanzania (2023) were each missing the goal *event*
+    itself, not just its name. Wikipedia's group-stage articles have both, and
+    each agrees with the goal the vault already held -- Msakni's 34th-minute
+    penalty exactly, Msuva within a minute -- which is what made them usable for
+    the goal it did not. Angola gained Djalma Campos 73', Zambia gained Patson
+    Daka 88'. **Daka already existed** (player 2510) and the event attached to
+    him; a second Patson Daka is the defect this session spent its time undoing.
+  - **The modern articles keep match reports on group subpages**, so
+    `fetch_wikipedia_afcon.py` also takes an exact title
+    (`"2023 Africa Cup of Nations Group F"`), not just a year. A bare year is
+    still a whole tournament.
   - **A match that already has goal events is never added to**, so the 1980/94
     pass wrote only 5 events, for the one match that had none. The single
     remaining unnamed event, Ghana's in the 1994 quarter-final, was named as a
@@ -498,10 +509,10 @@ explicitly out of scope — see "Non-goals" below).
   The same change gave edition 14 its six groups, its 24 participants, and
   `ROUND OF 16`/`THIRD PLACE` split out of the old catch-all `KNOCKOUT` label,
   so all 13 AFCON editions now have the same shape.
-- **Across all 13 AFCON tournaments, 491 of 493 played matches have a score
-  reproduced exactly by their own event log.** The 2 exceptions are a missing
-  *event*, not a wrong score: Zambia 1-1 Tanzania (2023) and Tunisia 1-1 Angola
-  (2019) are each one goal event short in their source.
+- **Every played AFCON match's event log reproduces its own score**, across all
+  35 tournaments. The two long-standing exceptions -- Zambia 1-1 Tanzania (2023)
+  and Tunisia 1-1 Angola (2019), each a goal event short in its source -- were
+  filled from Wikipedia on 2026-09-16. Do not go looking for them again.
 - **28 legacy events sat on matches their team never played in, and are now
   resolved** (2026-09-16,
   `docs/reconciliation/fixes/2026-09-16_orphan_events_afcon_2019.sql`). These

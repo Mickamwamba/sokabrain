@@ -1,0 +1,887 @@
+{{Short description|Football tournament group stage}}
+{{Use dmy dates|date=April 2019}}
+'''Group E of the [[2019 Africa Cup of Nations]]''' took place from 24 June to 2 July 2019. The group consisted of [[Angola national football team|Angola]], [[Mali national football team|Mali]], [[Mauritania national football team|Mauritania]] and [[Tunisia national football team|Tunisia]].<ref>{{cite news |url=http://www.cafonline.com/en-US/NewsCenter/News/NewsDetails?id=vxbNdpc613I1EvyJc1T0uQ%3d%3d |title=The AFCON 2019 games revealed |website=CAFonline.com |publisher=[[Confederation of African Football]] |date=12 April 2019 |access-date=12 April 2019}}</ref>
+
+Mali and Tunisia advanced to the round of 16.
+
+==Teams==
+{| class="wikitable sortable"
+|-
+!rowspan=2| Draw position
+!rowspan=2| Team
+!rowspan=2| Zone
+!rowspan=2| Method of<br />qualification
+!rowspan=2| Date of<br />qualification
+!rowspan=2| Finals<br />appearance
+!rowspan=2| Last<br />appearance
+!rowspan=2| Previous best<br />performance
+!colspan=2| [[FIFA World Rankings|FIFA Rankings]]
+|-
+! April 2019{{refn|group=nb|The rankings of April 2019 were used for [[2019 Africa Cup of Nations#Draw|seeding for the final draw]].}}
+! June 2019
+|-
+| E1 || style=white-space:nowrap | {{fb|TUN}} || [[Union of North African Football Federations|UNAF]] || data-sort-value="J1" | [[2019 Africa Cup of Nations qualification Group J|Group J]] winners || data-sort-value="2" | 16 October 2018 || 19th || [[2017 Africa Cup of Nations|2017]] || data-sort-value="1" | '''Winners''' ([[2004 Africa Cup of Nations|2004]]) || 28 || 25
+|-
+| E2 || style=white-space:nowrap | {{fb|MLI}} || [[West African Football Union|WAFU]] || data-sort-value="C1" | [[2019 Africa Cup of Nations qualification Group C|Group C]] winners || data-sort-value="8" | 17 November 2018 || 11th || [[2017 Africa Cup of Nations|2017]] || data-sort-value="2" | Runners-up ([[1972 Africa Cup of Nations|1972]]) || 65 || 62
+|-
+| E3 || style=white-space:nowrap | {{fb|MTN}} || [[West African Football Union|WAFU]] || data-sort-value="I2" | [[2019 Africa Cup of Nations qualification Group I|Group I]] runners-up || data-sort-value="11" | 18 November 2018 || 1st || — || data-sort-value="99" | Debut || 103 || 103
+|-
+| E4 || style=white-space:nowrap | {{fb|ANG}} || [[Council of Southern Africa Football Associations|COSAFA]] || data-sort-value="I1" | [[2019 Africa Cup of Nations qualification Group I|Group I]] winners || data-sort-value="15" | 22 March 2019 || 8th || [[2013 Africa Cup of Nations|2013]] || data-sort-value="5" | Quarter-finals ([[2008 Africa Cup of Nations|2008]], [[2010 Africa Cup of Nations|2010]]) || 122 || 123
+|}
+'''Notes'''
+{{reflist|group=nb}}
+
+==Standings==
+{{2019 Africa Cup of Nations group tables|Group E}}
+
+In the [[2019 Africa Cup of Nations knockout stage#Round of 16|round of 16]]:<ref name="regulations">{{cite web|url=http://www.cafonline.com/Portals/0/Regulations%20and%20Official%20Documents/Competitions%20Regulation/Regulation%20AFCON.pdf|title=Regulations of the Africa Cup of Nations|publisher=Confederation of African Football|format=PDF}}</ref>
+* The winners of Group E, [[Mali national football team|Mali]] advanced to play the runners-up of [[2019 Africa Cup of Nations Group D|Group D]], [[Ivory Coast national football team|Ivory Coast]].
+* The runners-up of Group E, [[Tunisia national football team|Tunisia]], advanced to play the winners of [[2019 Africa Cup of Nations Group F|Group F]], [[Ghana national football team|Ghana]].
+
+==Matches==
+{{Hatnote|All match times are local, [[Central Africa Time|CAT]] ([[UTC+02:00|UTC+2]]).}}
+
+===Tunisia vs Angola===
+<section begin=E1 />{{Football box
+|date       = {{Start date|2019|6|24|df=y}}
+|time       = 19:00
+|team1      = {{fb-rt|TUN}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Tunisia vs Angola|1–1}}
+|team2      = {{fb|ANG}}
+|goals1     =
+*[[Youssef Msakni|Msakni]] {{goal|34|pen.}}
+|goals2     =
+*[[Djalma Campos|Djalma]] {{goal|73}}
+|stadium    = [[Suez Stadium]], [[Suez]]
+|attendance = 7,345<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539307 |title=Tunisia vs. Angola |publisher=ESPN |date=24 June 2019 |access-date=2 July 2019}}</ref>
+|referee    = [[Bamlak Tessema Weyesa]] ([[Ethiopian Football Federation|Ethiopia]])
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/9/
+}}<section end=E1 />
+
+{| width=92%
+|-
+|{{Football kit
+ | pattern_la = _tun19h
+ | pattern_b  = _tun19h
+ | pattern_ra = _tun19h
+ | pattern_sh = _tun19h
+ | pattern_so = 
+ | leftarm    = 
+ | body       = 
+ | rightarm   = 
+ | shorts     = 
+ | socks      = 
+ | title      = Tunisia
+}}
+|{{Football kit
+ |pattern_la = _angola1920h
+ |pattern_b  = _angola1920h
+ |pattern_ra = _angola1920h
+ |pattern_sh = 
+ |pattern_so = 
+ |leftarm    = FF0000
+ |body       = FF0000
+ |rightarm   = FF0000
+ |shorts     = 000000
+ |socks      = FF0000
+ |title      = Angola
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Farouk Ben Mustapha]]
+|-
+|CB ||'''3''' ||[[Dylan Bronn]]
+|-
+|CB ||'''6''' ||[[Rami Bedoui]]
+|-
+|CB ||'''4''' ||[[Yassine Meriah]]
+|-
+|CM ||'''20'''||[[Ghailene Chaalali]] || {{yel|27}} || {{suboff|68}}
+|-
+|CM ||'''5''' ||[[Oussama Haddadi]]
+|-
+|CM ||'''7''' ||[[Youssef Msakni]] ([[Captain (association football)|c]]) || {{yel|50}}
+|-
+|RW ||'''2''' ||[[Wajdi Kechrida]]
+|-
+|LW ||'''17'''||[[Ellyes Skhiri]]
+|-
+|CF ||'''23'''||[[Naïm Sliti]] || || {{suboff|79}}
+|-
+|CF ||'''10'''||[[Wahbi Khazri]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''13'''||[[Ferjani Sassi]] || || {{subon|68}}
+|-
+|MF ||'''9''' ||[[Anice Badri]] || || {{subon|79}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Alain Giresse]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''12'''||[[Tony Cabaça]] || {{yel|33}}
+|-
+|CB ||'''15'''||[[Bastos (Angolan footballer)|Bastos Quissanga]]
+|-
+|CB ||'''2''' ||[[Bruno Gaspar]]
+|-
+|CB ||'''5''' ||[[Dani Massunguna]]
+|-
+|RM ||'''16'''||[[Stélvio (footballer)|Stélvio]] || || {{suboff|46}}
+|-
+|CM ||'''8''' ||[[Paizo (footballer)|Paizo]]
+|-
+|CM ||'''18'''||[[Herenilson]]
+|-
+|LM ||'''7''' ||[[Djalma Campos]]
+|-
+|RW ||'''20'''||[[Wilson Eduardo]] || || {{suboff|46}}
+|-
+|CF ||'''17'''||[[Mateus Galiano da Costa|Mateus]] ([[Captain (association football)|c]]) || || {{suboff|87}}
+|-
+|LW ||'''9''' ||[[Fredy (footballer, born 1990)|Fredy]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''10'''||[[Gelson (Angolan footballer)|Gelson Dala]] || || {{subon|46}}
+|-
+|FW ||'''11'''||[[Geraldo (footballer, born 1991)|Geraldo]] || || {{subon|46}}
+|-
+|MF ||'''13'''||[[José Macaia|Macaia]] || || {{subon|87}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|SRB}} [[Srđan Vasiljević]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Wahbi Khazri]] (Tunisia)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1143235849083084800 |title=W. Khazri has been selected as the Total Man of the Match, well done! |date=24 June 2019 |access-date=25 June 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Waleed Ahmed Ali ([[Sudan Football Association|Sudan]])<br />Samuel Temesgin ([[Ethiopian Football Federation|Ethiopia]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Peter Waweru ([[Football Kenya Federation|Kenya]])
+|}
+
+===Mali vs Mauritania===
+<section begin=E2 />{{Football box
+|date       = {{Start date|2019|6|24|df=y}}
+|time       = 22:00
+|team1      = {{fb-rt|MLI}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Mali vs Mauritania|4–1}}
+|team2      = {{fb|MTN}}
+|goals1     =
+*[[Abdoulay Diaby|Diaby]] {{goal|37}}
+*[[Moussa Marega|Marega]] {{goal|45|pen.}}
+*[[Adama Traoré (footballer, born 28 June 1995)|A. Traoré II]] {{goal|55}}
+*[[Adama Traoré (footballer, born 5 June 1995)|A. Traoré I]] {{goal|74}}
+|goals2     =
+*[[Moctar Sidi El Hacen|El Hacen]] {{goal|72|pen.}}
+|stadium    = [[Suez Stadium]], [[Suez]]
+|attendance = 6,202<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539306 |title=Mali vs. Mauritania |publisher=ESPN |date=24 June 2019 |access-date=2 July 2019}}</ref>
+|referee    = [[Jean-Jacques Ndala]] ([[Congolese Association Football Federation|DR Congo]])
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/10/
+}}<section end=E2 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la = _mali1920h
+ |pattern_b  = _mali1920h
+ |pattern_ra = _mali1920h
+ |pattern_sh = 
+ |pattern_so = _mali1920h
+ |leftarm    = FFFF00
+ |body       = FFFF00
+ |rightarm   = FFFF00
+ |shorts     = FFFF00
+ |socks      = FFFF00
+ |title      = Mali
+}}
+|{{Football kit
+ |pattern_la = _mauritania1921h
+ |pattern_b  = _mauritania1921h
+ |pattern_ra = _mauritania1921h
+ |pattern_sh = _mauritania1921h
+ |pattern_so = _mauritania1921h
+ |leftarm    = 008000
+ |body       = 008000
+ |rightarm   = 008000
+ |shorts     = FFFFFF
+ |socks      = 01924d
+ |title      = Mauritania
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Djigui Diarra]]
+|-
+|RB ||'''2''' ||[[Hamari Traoré]]
+|-
+|CB ||'''3''' ||[[Youssouf Koné (footballer, born 1995)|Youssouf Koné]]
+|-
+|CB ||'''15'''||[[Mamadou Fofana (footballer, born 1998)|Mamadou Fofana]] || {{yel|71}}
+|-
+|LB ||'''13'''||[[Molla Wagué]]
+|-
+|CM ||'''11'''||[[Lassana Coulibaly]]
+|-
+|CM ||'''8''' ||[[Diadie Samassékou]]
+|-
+|RW ||'''21'''||[[Adama Traoré (footballer, born 28 June 1995)|Adama Traoré II]] || || {{suboff|61}}
+|-
+|AM ||'''23'''||[[Abdoulay Diaby]] ([[Captain (association football)|c]]) || || {{suboff|87}}
+|-
+|LW ||'''19'''||[[Moussa Djenepo]] || {{yel|31}} || {{suboff|61}}
+|-
+|CF ||'''9''' ||[[Moussa Marega]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''7''' ||[[Moussa Doumbia (footballer, born 1994)|Moussa Doumbia]] || || {{subon|61}}
+|-
+|MF ||'''14'''||[[Adama Traoré (footballer, born 5 June 1995)|Adama Traoré I]] || || {{subon|61}}
+|-
+|MF ||'''4''' ||[[Amadou Haidara]] || || {{subon|87}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|[[Mohamed Magassouba]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||Brahim Souleymane || {{yel|79}}
+|-
+|RB ||'''4''' ||[[Harouna Abou Demba|Harouna Sy]] || || {{suboff|53}}
+|-
+|CB ||'''15'''||[[Bakary N'Diaye]] || {{yel|19}}
+|-
+|CB ||'''5''' ||[[Abdoul Ba]] ([[Captain (association football)|c]])
+|-
+|LB ||'''3''' ||[[Aly Abeid]]
+|-
+|RM ||'''18'''||[[Moctar Sidi El Hacen|Hacen El Ide]]
+|-
+|CM ||'''19'''||[[Ibréhima Coulibaly]] || || {{suboff|46}}
+|-
+|CM ||'''14'''||[[Mohamed Dellahi Yali|Mohamed Yali]]
+|-
+|LM ||'''6''' ||[[Khassa Camara]] || || {{suboff|82}}
+|-
+|CF ||'''10'''||[[Adama Ba]]
+|-
+|CF ||'''7''' ||[[Ismaël Diakité]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''11'''||[[Bessam]] || || {{subon|46}}
+|-
+|DF ||'''2''' ||[[Moustapha Diaw]] || {{yel|84}} || {{subon|53}}
+|-
+|MF ||'''23'''||[[Abdoulaye Gaye|Silèye Gaye]] || || {{subon|82}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Corentin Martins]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Abdoulay Diaby]] (Mali)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1143277407761248257 |title=The jury has given his verdict! A. Diaby is the Total Man of the Match ! |date=24 June 2019 |access-date=25 June 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Olivier Safari ([[Congolese Association Football Federation|DR Congo]])<br />Soulaimane Amaldine ([[Comoros Football Federation|Comoros]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Andofetra Rakotojaona ([[Malagasy Football Federation|Madagascar]])
+|}
+
+===Tunisia vs Mali===
+<section begin=E3 />{{Football box
+|date       = {{Start date|2019|6|28|df=y}}
+|time       = 16:30
+|team1      = {{fb-rt|TUN}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Tunisia vs Mali|1–1}}
+|team2      = {{fb|MLI}}
+|goals1     =
+*[[Wahbi Khazri|Khazri]] {{goal|70}}
+|goals2     =
+*[[Diadie Samassékou|Samassékou]] {{goal|60}}
+|stadium    = [[Suez Stadium]], [[Suez]]
+|attendance = 16,085<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539297 |title=Tunisia vs. Mali |publisher=ESPN |date=28 June 2019 |access-date=2 July 2019}}</ref>
+|referee    = Joshua Bondo ([[Botswana Football Association|Botswana]])<ref name="TUNMLI">{{cite web |title=Tunisia Vs. Mali |url=https://uk.soccerway.com/matches/2019/06/28/africa/africa-cup-of-nations/tunisia/mali/3008107/?ICID=HP_MS_01_01 |publisher=Soccerway |access-date=28 June 2019}}</ref>
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/19/
+}}<section end=E3 />
+
+{| width=92%
+|-
+|{{Football kit
+ | pattern_la = _tun19h
+ | pattern_b  = _tun19h
+ | pattern_ra = _tun19h
+ | pattern_sh = _tun19h
+ | pattern_so = 
+ | leftarm    = 
+ | body       = 
+ | rightarm   = 
+ | shorts     = 
+ | socks      = 
+ | title      = Tunisia
+}}
+ |{{Football kit
+ |pattern_la = _mali1920h
+ |pattern_b  = _mali1920h
+ |pattern_ra = _mali1920h
+ |pattern_sh = 
+ |pattern_so = _mali1920h
+ |leftarm    = FFFF00
+ |body       = FFFF00
+ |rightarm   = FFFF00
+ |shorts     = FFFF00
+ |socks      = FFFF00
+ |title      = Mali
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Mouez Hassen]]
+|-
+|RB ||'''2''' ||[[Wajdi Kechrida]]
+|-
+|CB ||'''3''' ||[[Dylan Bronn]]
+|-
+|CB ||'''4''' ||[[Yassine Meriah]]
+|-
+|LB ||'''5''' ||[[Oussama Haddadi]]
+|-
+|CM ||'''17'''||[[Ellyes Skhiri]] || {{yel|37}}
+|-
+|CM ||'''20'''||[[Ghailene Chaalali]] || {{yel|64}}
+|-
+|RW ||'''9''' ||[[Anice Badri]] || {{yel|42}} || {{suboff|62}}
+|-
+|AM ||'''10'''||[[Wahbi Khazri]] ([[Captain (association football)|c]])
+|-
+|LW ||'''23'''||[[Naïm Sliti]] || || {{suboff|84}}
+|-
+|CF ||'''11'''||[[Taha Yassine Khenissi]] || || {{suboff|70}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''7''' ||[[Youssef Msakni]] || || {{subon|62}}
+|-
+|FW ||'''8''' ||[[Firas Chaouat]] || || {{subon|70}}
+|-
+|MF ||'''19'''||[[Ayman Ben Mohamed]] || || {{subon|84}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Alain Giresse]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Djigui Diarra]]
+|-
+|RB ||'''2''' ||[[Hamari Traoré]]
+|-
+|CB ||'''13'''||[[Molla Wagué]]
+|-
+|CB ||'''15'''||[[Mamadou Fofana (footballer, born 1998)|Mamadou Fofana]]
+|-
+|LB ||'''3''' ||[[Youssouf Koné (footballer, born 1995)|Youssouf Koné]]
+|-
+|RM ||'''23'''||[[Abdoulay Diaby]] ([[Captain (association football)|c]]) || || {{suboff|80}}
+|-
+|CM ||'''11'''||[[Lassana Coulibaly]]
+|-
+|CM ||'''8''' ||[[Diadie Samassékou]] || {{yel|70}}
+|-
+|CM ||'''4''' ||[[Amadou Haidara]] || {{yel|11}} || {{suboff|86}}
+|-
+|LM ||'''19'''||[[Moussa Djenepo]] || || {{suboff|75}}
+|-
+|CF ||'''9''' ||[[Moussa Marega]] || {{yel|59}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''7''' ||[[Moussa Doumbia (footballer, born 1994)|Moussa Doumbia]] || || {{subon|75}}
+|-
+|MF ||'''14'''||[[Adama Traoré (footballer, born 5 June 1995)|Adama Traoré I]] || || {{subon|80}}
+|-
+|MF ||'''21'''||[[Adama Traoré (footballer, born 28 June 1995)|Adama Traoré II]] || || {{subon|86}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|[[Mohamed Magassouba]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Moussa Marega]] (Mali)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1144641928362942465 |title=After his stellar performance, M. Marega has been selected as the Total Man of the Match. Congrats! |date=28 June 2019 |access-date=28 June 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''<ref name="TUNMLI"/>
+<br />Arsenio Maringule ([[Mozambican Football Federation|Mozambique]])
+<br />Souru Phatsoane ([[Lesotho Football Association|Lesotho]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''<ref name="TUNMLI"/>
+<br />Peter Waweru ([[Football Kenya Federation|Kenya]])
+|}
+
+===Mauritania vs Angola===
+<section begin=E4 />{{Football box
+|date       = {{Start date|2019|6|29|df=y}}
+|time       = 16:30
+|team1      = {{fb-rt|MTN}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Mauritania vs Angola|0–0}}
+|team2      = {{fb|ANG}}
+|goals1     =
+|goals2     =
+|stadium    = [[Suez Stadium]], [[Suez]]
+|attendance = 10,120<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539294 |title=Mauritania vs. Angola |publisher=ESPN |date=29 June 2019 |access-date=2 July 2019}}</ref>
+|referee    = [[Ibrahim Nour El Din]] ([[Egyptian Football Association|Egypt]])
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/22/
+}}<section end=E4 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la =_mauritania1921a 
+ |pattern_b  = _mauritania1921a
+ |pattern_ra =_mauritania1921a 
+ |pattern_sh = _mauritania1921a
+ |leftarm    = FFFFFF
+ |body       = FFFFFF
+ |rightarm   = FFFFFF
+ |shorts     = FFFFFF
+ |socks      = FFFFFF
+ |title      = Mauritania
+}}
+|{{Football kit
+ |pattern_la = _angola1920h
+ |pattern_b  = _angola1920h
+ |pattern_ra = _angola1920h
+ |pattern_sh = 
+ |pattern_so = 
+ |leftarm    = FF0000
+ |body       = FF0000
+ |rightarm   = FF0000
+ |shorts     = 000000
+ |socks      = FF0000
+ |title      = Angola
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||Brahim Souleymane
+|-
+|RB ||'''2''' ||[[Moustapha Diaw]]
+|-
+|CB ||'''15'''||[[Bakary N'Diaye]]
+|-
+|CB ||'''5''' ||[[Abdoul Ba]] ([[Captain (association football)|c]]) || || {{suboff|62}}
+|-
+|LB ||'''3''' ||[[Aly Abeid]] || {{yel|90+3}}
+|-
+|CM ||'''11'''||[[Bessam]]
+|-
+|CM ||'''14'''||[[Mohamed Dellahi Yali|Mohamed Yali]]
+|-
+|CM ||'''6''' ||[[Khassa Camara]] || || {{suboff|70}}
+|-
+|AM ||'''18'''||[[Moctar Sidi El Hacen|Hacen El Ide]]
+|-
+|CF ||'''7''' ||[[Ismaël Diakité]]
+|-
+|CF ||'''10'''||[[Adama Ba]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|DF ||'''21'''||[[Diadié Diarra]] || || {{subon|62}}
+|-
+|MF ||'''23'''||[[Abdoulaye Gaye|Silèye Gaye]] || || {{subon|70}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Corentin Martins]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''12'''||[[Tony Cabaça]]
+|-
+|RB ||'''2''' ||[[Bruno Gaspar]] || {{yel|53}}
+|-
+|CB ||'''5''' ||[[Dani Massunguna]]
+|-
+|CB ||'''15'''||[[Bastos (Angolan footballer)|Bastos Quissanga]]
+|-
+|LB ||'''8''' ||[[Paizo (footballer)|Paizo]]
+|-
+|CM ||'''18'''||[[Herenilson]]
+|-
+|CM ||'''4''' ||[[Manuel Cafumana|Show]]
+|-
+|RW ||'''10'''||[[Gelson (Angolan footballer)|Gelson Dala]]
+|-
+|AM ||'''9''' ||[[Fredy (footballer, born 1990)|Fredy Kulembé]] || || {{suboff|56}}
+|-
+|LW ||'''7''' ||[[Djalma Campos]] || || {{suboff|78}}
+|-
+|CF ||'''17'''||[[Mateus Galiano da Costa|Mateus]] ([[Captain (association football)|c]]) || || {{suboff|56}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''11'''||[[Geraldo (footballer, born 1991)|Geraldo]] || {{yel|90+3}} || {{subon|56}}
+|-
+|FW ||'''20'''||[[Wilson Eduardo]] || || {{subon|56}}
+|-
+|FW ||'''14'''||[[Mabululu]] || || {{subon|78}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|SRB}} [[Srđan Vasiljević]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Gelson (Angolan footballer)|Gelson Dala]] (Angola)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1145011044026392577 |title=The jury has given {{sic|i|t's|nolink=y}} verdict! Gelson Dala is the Total Man of the Match! |date=29 June 2019 |access-date=29 June 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Tahssen Abo El Sadat ([[Egyptian Football Association|Egypt]])
+<br />Ahmed Hossam Taha ([[Egyptian Football Association|Egypt]])<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />[[Gehad Grisha]] ([[Egyptian Football Association|Egypt]])
+|}
+
+===Mauritania vs Tunisia===
+<section begin=E5 />{{Football box
+|date       = {{Start date|2019|7|2|df=y}}
+|time       = 21:00
+|team1      = {{fb-rt|MTN}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Mauritania vs Tunisia|0–0}}
+|team2      = {{fb|TUN}}
+|goals1     =
+|goals2     =
+|stadium    = [[Suez Stadium]], [[Suez]]
+|attendance = 7,732<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539281 |title=Mauritania vs. Tunisia |publisher=ESPN |date=2 July 2019 |access-date=17 July 2019}}</ref>
+|referee    = Louis Hakizimana ([[Rwandese Association Football Federation|Rwanda]])
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/35/
+}}<section end=E5 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la = _mauritania1921h
+ |pattern_b  = _mauritania1921h
+ |pattern_ra = _mauritania1921h
+ |pattern_sh = _mauritania1921h
+ |pattern_so =_mauritania1921h
+ |leftarm    = 008000
+ |body       = 008000
+ |rightarm   = 008000
+ |shorts     = 008000
+ |socks      = 01924d
+ |title      = Mauritania
+}}
+|{{Football kit
+ | pattern_la = _tun19h
+ | pattern_b  = _tun19h
+ | pattern_ra = _tun19h
+ | pattern_sh = _tun19h
+ | pattern_so = 
+ | leftarm    = 
+ | body       = 
+ | rightarm   = 
+ | shorts     = 
+ | socks      = 
+ | title      = Tunisia
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||Brahim Souleymane
+|-
+|RB ||'''2''' ||[[Moustapha Diaw]]
+|-
+|CB ||'''15'''||[[Bakary N'Diaye]]
+|-
+|CB ||'''5''' ||[[Abdoul Ba]] ([[Captain (association football)|c]]) || || {{suboff|17}}
+|-
+|LB ||'''3''' ||[[Aly Abeid]]
+|-
+|CM ||'''14'''||[[Mohamed Dellahi Yali|Mohamed Yali]]
+|-
+|CM ||'''19'''||[[Ibréhima Coulibaly]] || {{yel|45+2}}
+|-
+|RW ||'''7''' ||[[Ismaël Diakité]] || {{yel|31}}
+|-
+|AM ||'''18'''||[[Moctar Sidi El Hacen|Hacen El Ide]] || {{yel|53}}
+|-
+|LW ||'''11'''||[[Bessam]] || || {{suboff|87}}
+|-
+|CF ||'''10'''||[[Adama Ba]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|DF ||'''21'''||[[Diadié Diarra]] || || {{subon|17}} {{suboff|61}}
+|-
+|MF ||'''8''' ||[[Diallo Guidileye]] || || {{subon|61}}
+|-
+|FW ||'''17'''||[[Souleymane Anne]] || || {{subon|87}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Corentin Martins]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Mouez Hassen]]
+|-
+|RB ||'''2''' ||[[Wajdi Kechrida]]
+|-
+|CB ||'''3''' ||[[Dylan Bronn]] || {{yel|36}}
+|-
+|CB ||'''4''' ||[[Yassine Meriah]]
+|-
+|LB ||'''5''' ||[[Oussama Haddadi]]
+|-
+|CM ||'''17'''||[[Ellyes Skhiri]]
+|-
+|CM ||'''12'''||[[Karim Aouadhi]] || {{yel|53}}
+|-
+|RW ||'''18'''||[[Bassem Srarfi]] || || {{suboff|46}}
+|-
+|AM ||'''10'''||[[Wahbi Khazri]]
+|-
+|LW ||'''23'''||[[Naïm Sliti]] || || {{suboff|79}}
+|-
+|CF ||'''7''' ||[[Youssef Msakni]] ([[Captain (association football)|c]])
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''11'''||[[Taha Yassine Khenissi]] || || {{subon|46}}
+|-
+|DF ||'''14'''||[[Mohamed Dräger]] || || {{subon|79}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Alain Giresse]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Moustapha Diaw]] (Mauritania)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1146165139982491648 |title=And the winner of the Total Man of the Match is Mostapha Diaw! |date=2 July 2019 |access-date=2 July 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Arsenio Maringule ([[Mozambican Football Federation|Mozambique]])
+<br />Sidibe Sidiki ([[Guinean Football Federation|Guinea]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Pacifique Ndabihawenimana ([[Football Federation of Burundi|Burundi]])
+|}
+
+===Angola vs Mali===
+<section begin=E6 />{{Football box
+|date       = {{Start date|2019|7|2|df=y}}
+|time       = 21:00
+|team1      = {{fb-rt|ANG}}
+|score      = {{score link|2019 Africa Cup of Nations Group E#Angola vs Mali|0–1}}
+|team2      = {{fb|MLI}}
+|goals1     =
+|goals2     =
+*[[Amadou Haidara|Haidara]] {{goal|37}}
+|stadium    = [[Ismailia Stadium]], [[Ismailia]]
+|attendance = 8,135<ref>{{cite web |url=https://www.espn.com/soccer/match?gameId=539280 |title=Angola vs. Mali |publisher=ESPN |date=2 July 2019 |access-date=17 July 2019}}</ref>
+|referee    = Redouane Jiyed ([[Royal Moroccan Football Federation|Morocco]])
+|report     = https://www.cafonline.com/total-africa-cup-of-nations/matches/36/
+}}<section end=E6 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la = _angola1920h
+ |pattern_b  = _angola1920h
+ |pattern_ra = _angola1920h
+ |pattern_sh = 
+ |pattern_so =
+ |leftarm    = FF0000
+ |body       = FF0000
+ |rightarm   = FF0000
+ |shorts     = 000000
+ |socks      = FF0000
+ |title      = Angola
+}}
+|{{Football kit
+ |pattern_la = _mali1920a
+ |pattern_b  = _mali1920a
+ |pattern_ra = _mali1920a
+ |pattern_sh = 
+ |pattern_so = _mali1920a
+ |leftarm    = FFFFFF
+ |body       = FFFFFF
+ |rightarm   = FFFFFF
+ |shorts     = FFFFFF
+ |socks      = FFFFFF
+ |title      = Mali
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''12'''||[[Tony Cabaça]]
+|-
+|RB ||'''2''' ||[[Bruno Gaspar]]
+|-
+|CB ||'''15'''||[[Bastos (Angolan footballer)|Bastos Quissanga]] || {{yel|90+2}}
+|-
+|CB ||'''5''' ||[[Dani Massunguna]]
+|-
+|LB ||'''8''' ||[[Paizo (footballer)|Paizo]]
+|-
+|CM ||'''7''' ||[[Djalma Campos]]
+|-
+|CM ||'''18'''||[[Herenilson]] || {{yel|80}}
+|-
+|RW ||'''17'''||[[Mateus Galiano da Costa|Mateus]] ([[Captain (association football)|c]]) || || {{suboff|52}}
+|-
+|AM ||'''9''' ||[[Fredy (footballer, born 1990)|Fredy Kulembé]] || || {{suboff|53}}
+|-
+|LW ||'''11'''||[[Geraldo (footballer, born 1991)|Geraldo]] || || {{suboff|81}}
+|-
+|CF ||'''10'''||[[Gelson (Angolan footballer)|Gelson Dala]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''20'''||[[Wilson Eduardo]] || || {{subon|52}}
+|-
+|MF ||'''4''' ||[[Manuel Cafumana|Show]] || || {{subon|53}}
+|-
+|FW ||'''14'''||[[Mabululu]] || || {{subon|81}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|{{flagicon|SRB}} [[Srđan Vasiljević]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Djigui Diarra]] || {{yel|61}}
+|-
+|RB ||'''17'''||[[Falaye Sacko]]
+|-
+|CB ||'''5''' ||[[Boubakar Kouyaté|Kiki Kouyaté]]
+|-
+|CB ||'''13'''||[[Molla Wagué]] ([[Captain (association football)|c]])
+|-
+|LB ||'''6''' ||[[Massadio Haïdara]]
+|-
+|CM ||'''4''' ||[[Amadou Haidara]] || || {{suboff|73}}
+|-
+|CM ||'''11'''||[[Lassana Coulibaly]]
+|-
+|RW ||'''14'''||[[Adama Traoré (footballer, born 5 June 1995)|Adama Traoré I]] || || {{suboff|81}}
+|-
+|AM ||'''21'''||[[Adama Traoré (footballer, born 28 June 1995)|Adam Traoré II]]
+|-
+|LW ||'''7''' ||[[Moussa Doumbia (footballer, born 1994)|Moussa Doumbia]] || || {{suboff|58}}
+|-
+|CF ||'''10'''||[[Kalifa Coulibaly]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''12'''||[[Sékou Koïta]] || || {{subon|58}}
+|-
+|MF ||'''18'''||[[Cheick Doucouré]] || || {{subon|73}}
+|-
+|FW ||'''9''' ||[[Moussa Marega]] || || {{subon|81}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|[[Mohamed Magassouba]]
+|}
+|}
+
+{| width=50% style="font-size: 90%"
+|
+'''Man of the Match:'''
+<br />[[Amadou Haidara]] (Mali)<ref>{{cite tweet |author=Confederation of African Football |user=CAF_Online |number=1146162100097757185 |title=After his stellar performance, Amadou Haidara has been selected as the Total Man of the Match. Congrats! |date=2 July 2019 |access-date=2 July 2019}}</ref>
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Waleed Ahmed Ali ([[Sudan Football Association|Sudan]])
+<br />Tesfagiorghis Berhe ([[Eritrean National Football Federation|Eritrea]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />[[Bernard Camille]] ([[Seychelles Football Federation|Seychelles]])
+|}
+
+==References==
+{{Reflist}}
+
+==External links==
+* {{Official website|http://www.cafonline.com/en-us/competitions/totalafricacupofnations,egypt2019/home}}
+
+{{2019 Africa Cup of Nations}}
+
+{{DEFAULTSORT:Group E}}
+[[Category:2019 Africa Cup of Nations]]

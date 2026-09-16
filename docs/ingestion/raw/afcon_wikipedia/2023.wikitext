@@ -1,0 +1,1109 @@
+{{Short description|International football competition}}
+{{Redirect|2024 Africa Cup of Nations|the women's edition|2024 Women's Africa Cup of Nations}}
+{{Use British English|date=November 2023}}
+{{Use dmy dates|date=February 2024}}
+{{Infobox international football competition
+| tourney_name = 
+| year         = 2023
+| other_titles = Coupe d'Afrique des Nations 2023
+| image        = 2023 Africa Cup of Nations logo.svg
+| size         = 250px
+| caption      = Official logo<ref>{{cite web|date=10 June 2023|title=New identity for TotalEnergies CAF Africa Cup of Nations Côte d'Ivoire 2023 revealed|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/new-identity-for-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023-reve|publisher=[[Confederation of African Football]]|website=CAFonline.com|access-date=13 September 2023}}</ref>
+| country      = Ivory Coast
+| dates        = {{nowrap|13 January – 11 February 2024}}
+| num_teams    = 24
+| venues       = 6
+| cities       = 5
+| champion     = CIV
+| count        = 3
+| second       = NGA
+| third        = RSA
+| fourth       = COD
+| matches      = 52
+| goals        = 119
+| attendance   = {{#expr: <!--Group A-->+ 36858 + 8500 + 13888 + 49517 + 42550 + 15650 <!--Group B-->+ 11933 + 11943 + 20808 + 5794 + 6000 + 15650 <!--Group C-->+ 7896 + 11271 + 19176 + 19822 + 15753 + 24172 <!--Group D-->+ 19740 + 27898 + 33501 + 36318 + 15753 + 28010 <!--Group E-->+ 13991 + 16894 + 18130 + 9304 + 12847 + 15231 <!--Group F-->+ 15478 + 15478 + 13342 + 13342 + 12847 + 15231 <!--Round of 16-->+ 28663 + 22085 + 36340 + 12342 + 16088 + 19948 + 19184 + 19078 <!--Quarter-finals-->+ 18757 + 33278 + 39836 + 12162 <!--Semi-finals-->+ 31227 + 51020 <!--Third place-->+ 21975 <!--Final-->+ 57094}}
+| top_scorer   = {{fbicon|EQG}} [[Emilio Nsue]]<br>(5 goals)
+| player       = {{fbicon|NGA}} [[William Troost-Ekong]]
+| young_player = {{fbicon|CIV}} [[Simon Adingra]]
+| goalkeeper   = {{fbicon|RSA}} [[Ronwen Williams]]
+| fair_play    = {{fb|RSA}}
+| prevseason   = [[2021 Africa Cup of Nations|2021]]
+| nextseason   = [[2025 Africa Cup of Nations|2025]]
+}}
+
+The '''2023 Africa Cup of Nations''', also referred to as '''AFCON 2023''' or '''CAN 2023''', and for [[sponsor (commercial)|sponsorship purposes]] as the '''[[TotalEnergies]] 2023 Africa Cup of Nations''', was the 34th edition of the biennial [[Africa Cup of Nations]] tournament organised by the [[Confederation of African Football]] (CAF). It was hosted by the [[Ivory Coast]], taking place in the country for the second time following [[1984 African Cup of Nations|the 1984 edition]].
+
+This edition of the tournament was initially planned to take place during the Northern Hemisphere's summer like the [[2019 Africa Cup of Nations|2019 edition]], in order to reduce scheduling conflicts with European club teams and competitions.<ref>{{cite web|date=21 July 2017|title=Africa Cup of Nations to switch from January staging to June in 2019|url=https://www.theguardian.com/football/2017/jul/20/africa-cup-nations-staging-expansion|website=[[The Guardian]]|access-date=20 July 2018}}</ref><ref>{{cite web|date=21 July 2017|title=Africa Cup of Nations: Date switch makes African players more attractive, say agents|url=https://www.bbc.com/sport/football/40673626|website=[[BBC Sport]]|access-date=25 July 2017}}</ref><ref>{{cite web|last=Imary|first=Gerald|date=21 July 2017|title=African Cup of Nations finally moved away from mid-season and expanded from 16 to 24 teams|url=https://www.independent.co.uk/sport/football/international/african-cup-of-nations-expansion-date-change-june-july-a7852881.html|url-status=live|archive-url=https://web.archive.org/web/20170725100032/http://www.independent.co.uk/sport/football/international/african-cup-of-nations-expansion-date-change-june-july-a7852881.html|archive-date=25 July 2017|url-access=limited|website=[[The Independent]]|access-date=25 July 2017}}</ref><ref>{{cite news|date=26 October 2018|title=FIFA Council makes key decisions for the future of football development|url=https://www.fifa.com/about-fifa/news/y=2018/m=10/news=fifa-council-makes-key-decisions-for-the-future-of-football-development.html|url-status=dead|archive-url=https://web.archive.org/web/20181026182831/https://www.fifa.com/about-fifa/news/y=2018/m=10/news=fifa-council-makes-key-decisions-for-the-future-of-football-development.html|archive-date=26 October 2018|publisher=[[FIFA]]|access-date=26 October 2018}}</ref> However, it was postponed by CAF to 13 January – 11 February 2024 on 3 July 2022 due to the summer weather concerns in Ivory Coast, although the competition retained the original name for sponsorship purposes.<ref name="PP">{{cite press release|date=3 July 2022|title=CAF President Dr Motsepe announces African Super League launch details, AFCON 2023 and Champions League key decisions|url=https://www.cafonline.com/press-release/news/caf-president-dr-motsepe-announces-african-super-league-launch-details-afcon2023|url-status=dead|archive-url=https://web.archive.org/web/20220703210736/https://www.cafonline.com/press-release/news/caf-president-dr-motsepe-announces-african-super-league-launch-details-afcon2023|archive-date=3 July 2022|publisher=Confederation of African Football|website=CAFonline.com|access-date=3 June 2023|quote=...the Executive Committee has decided that this edition of the tournament will be postponed to the months of January and February 2024. The postponement is as a direct and sole result of the adverse weather conditions in the country and after also having received further technical opinion from experts on adverse effects of staging the matches in that period, as June and July are rainy seasons in Ivory Coast.}}</ref><ref name="Eurosport">{{cite news|last=Southby|first=Ben|date=3 July 2022|title=Africa Cup of Nations 2023 finals have been postponed and moved to January 2024 due to weather concerns in Ivory Coast|url=https://www.eurosport.co.uk/football/africa-cup-of-nations-2023-finals-have-been-postponed-and-moved-to-january-2024-due-to-weather-conce_sto9017466/story.shtml|website=[[Eurosport]]|access-date=3 July 2022}}</ref> This followed [[2021 Africa Cup of Nations|the previous edition in 2021]] in Cameroon also being moved to the Northern Hemisphere's winter season for similar reasons, albeit coupled with postponement due to [[impact of the COVID-19 pandemic on association football|the impact of the COVID-19 pandemic on the CAF calendar]].<ref name="dates">{{cite web|date=31 March 2021|title=CAF Executive Committee put infrastructures as one of the main priorities|url=https://www.cafonline.com/news-center/news/caf-executive-committee-put-infrastructures-as-one-of-the-priorities|url-status=dead|archive-url=https://web.archive.org/web/20210608150040/https://www.cafonline.com/news-center/news/caf-executive-committee-put-infrastructures-as-one-of-the-priorities|archive-date=8 June 2021|publisher=Confederation of African Football|website=CAFonline.com|access-date=1 April 2021}}</ref>
+
+Host nation [[Ivory Coast national football team|Ivory Coast]] won the tournament for their third title, despite barely advancing to the knockout stages and replacing their head coach mid-tournament. They beat [[Nigeria national football team|Nigeria]] {{nowrap|2–1}} in the [[2023 Africa Cup of Nations final|final]], having also beaten defending champions [[Senegal national football team|Senegal]] in the round of 16 on penalties.
+
+==Host selection==
+The hosting rights for this edition of the tournament were initially awarded to Guinea during a meeting of the CAF executive committee on 20 September 2014, which also awarded [[2019 Africa Cup of Nations|the 2019 edition]] to Cameroon and [[2021 Africa Cup of Nations|the 2021 edition]] to Ivory Coast. At the time, the announcement of the 2023 host was unscheduled; Guinea was one of the bidders for the 2019 and 2021 editions, and per CAF's assertions, on the basis of the country's presentation "and commitment", the committee "decided to exercise its power to make an immediate decision".<ref>{{cite news|date=20 September 2014|url=https://www.bbc.com/sport/0/football/29257382|title=Nations Cup: 2019, 2021 and shock 2023 hosts unveiled by Caf|publisher=[[BBC Sport]]|access-date=23 July 2019}}</ref>
+
+A CAF executive committee meeting on 20 July 2017 brought about changes for the tournament moving forward, including an increase in group stage participation teams from 16 to 24 from the 2019 edition.<ref>{{cite web|date=20 July 2017|title=Decisions of CAF Executive Committee – 20 July 2017|url=https://www.cafonline.com/en-US/NewsCenter/News/NewsDetails?id=IBQIwLhKu2GhKGftIp0AZw%3d%3d|url-status=dead|archive-url=https://web.archive.org/web/20170722210856/https://www.cafonline.com/en-US/NewsCenter/News/NewsDetails?id=IBQIwLhKu2GhKGftIp0AZw%3d%3d|archive-date=22 July 2017|publisher=Confederation of African Football|website=CAFonline.com|access-date=22 September 2023|quote=Increasing the Africa Cup of Nations to 24 teams as of the 2019 edition, and the tournament will now be held in the months of June and July.}}</ref> With the new specifications, Cameroon could not reach the preparation deadlines for the-then following 2019 edition and got stripped of the hosting rights on 30 November 2018,<ref>{{cite web|date=30 November 2018|title=Cameroon stripped of hosting 2019 Africa Cup of Nations|url=https://www.bbc.com/sport/football/46407474|website=[[BBC Sport]]|access-date=10 December 2018}}</ref> with the hosting rights handed over to [[Egypt]] on 8 January 2019.<ref>{{cite web|date=8 January 2019|title=Egypt named as 2019 Nations Cup hosts|url=https://www.bbc.com/sport/africa/46788780|website=[[BBC Sport]]|access-date=10 February 2022}}</ref> Cameroon opted for and hosted the 2021 edition instead,<ref>{{cite web|date=21 December 2018|title=Caf: 'Cameroon accepts to host 2021 Afcon'|url=https://www.bbc.com/sport/football/46653173|website=[[BBC Sport]]|access-date=10 February 2022}}</ref> which led to original 2021 hosts Ivory Coast organising the 2023 edition.<ref>{{cite web|date=30 January 2019|title=Cote d'Ivoire agrees CAF timetable shift|url=https://www.cafonline.com/news-center/news/cote-d-ivoire-agrees-caf-timetable-shift|url-status=dead|archive-url=https://web.archive.org/web/20220111091908/https://www.cafonline.com/news-center/news/cote-d-ivoire-agrees-caf-timetable-shift|archive-date=11 January 2022|publisher=Confederation of African Football|website=CAFonline.com|access-date=1 September 2019}}</ref> Guinea's hosting duties were pushed back [[2025 Africa Cup of Nations|to 2025]], which until then had unscheduled hosts, though it could not get ready on time either and was eventually stripped from hosting.<ref>{{cite web|date=30 September 2022|title=CAF President discusses withdrawal by CAF of AFCON Guinea 2025 with Guinea Transition President|url=https://www.cafonline.com/press-release/news/caf-president-discusses-withdrawal-by-caf-of-afcon-guinea-2025-with-guinea-trans|publisher=Confederation of African Football|website=CAFonline.com|access-date=1 February 2023}}</ref><ref>{{cite news|date=30 September 2022|title=Guinea stripped of 2025 Africa Cup of Nations: CAF president|url=https://www.beinsports.com/en/football/news/guinea-stripped-of-2025-africa-cup-of-nations/1959997|website=[[beIN Sports]]|access-date=23 December 2022}}</ref>
+
+Although the tournament retained its original 2023 branding, it was moved to January–February 2024 upon Ivory Coast's request, in order to avoid the West and Central African tropical rain season, which typically reaches its peak around June–July.<ref name="PP" />
+
+==Marketing==
+=== Sponsorship ===
+
+{|class="wikitable" style="width:85%;"
+|-
+! Title sponsor !! Official sponsors !! National sponsors
+|-
+|style="vertical-align:top;"|
+{{col-begin}}{{col-2}}
+*[[TotalEnergies]]
+*[[1xBet|1XBET]]
+*[[Rexona]]
+{{col-2}}
+*[[Visa Inc.|Visa]]
+*[[Puma (brand)|Puma]]
+*[[Orange S.A.|Orange]]
+{{col-end}}
+|style="vertical-align:top;"|
+{{col-begin}}{{col-2}}
+*[[Air Côte d'Ivoire]]<ref>{{cite web|date=5 January 2024|title=CCAF announces Air Cote d'Ivoire as Official Carrier for TotalEnergies CAF Africa Cup of Nations Côte d'Ivoire 2023|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-announces-air-cote-d-ivoire-as-official-carrier-for-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023/|publisher=Confederation of African Football|website=CAFonline.com|access-date=5 January 2024}}</ref>
+*Apsonic<ref>{{cite web|date=10 October 2023|title=CAF and Global motorcycle company, Apsonic conclude Agreement making Apsonic TotalEnergies Africa Cup of Nations 2023 Official Sponsor|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-and-global-motorcycle-company-apsonic-conclude-agreement-making-apsonic-totalenergies-africa-cup-of-nations-2023-official-sponsor/|publisher=Confederation of African Football|website=CAFonline.com|access-date=11 October 2023}}</ref>
+*[[Ecobank]]<ref>{{cite web|date=13 December 2023|title=CAF announces Ecobank as an Official Sponsor of the TotalEnergies CAF Africa Cup of Nations Côte d'Ivoire 2023.|url=https://www.cafonline.com/news/caf-announces-ecobank-as-an-official-sponsor-of-the-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023/|publisher=Confederation of African Football|website=CAFonline.com|access-date=13 December 2023}}</ref>
+{{col-2}}
+*Razzl
+*[[Tecno Mobile|Tecno]]<ref>{{cite web|date=21 September 2023|title=CAF and TECNO Mobile conclude Agreement making TECNO Mobile one of the Official Sponsors of the TotalEnergies CAF Africa Cup of Nations Côte d'Ivoire 2023|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-and-tecno-mobile-conclude-agreement-making-tecno-mobile-one-of-the-official-sponsors-of-the-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023/|publisher=Confederation of African Football|website=CAFonline.com|access-date=23 September 2023}}</ref>
+{{col-end}}
+|style="vertical-align:top;"|
+{{col-begin}}{{col-2}}
+*Celeste
+*Porteo<ref>{{cite web|date=14 October 2023|title=CAF and Porteo conclude agreement making Porteo the National Supporter for the TotalEnergies Africa Cup of Nations 2023 in Cote d'Ivoire|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-and-porteo-conclude-agreement-making-porteo-the-national-supporter-for-the-totalenergies-africa-cup-of-nations-2023-in-cote-d-ivoire/|publisher=Confederation of African Football|website=CAFonline.com|access-date=14 October 2023}}</ref>
+{{col-2}}
+*LONACI<ref>{{cite web|date=21 November 2023|title=CCAF and LONACI conclude agreement making LONACI National Supporter of the TotalEnergies Africa Cup of Nations 2023 in Côte d'Ivoire|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-and-lonaci-conclude-agreement-making-lonaci-national-supporter-of-the-totalenergies-africa-cup-of-nations-2023-in-cote-d-ivoire/|publisher=Confederation of African Football|website=CAFonline.com|access-date=21 November 2023}}</ref>
+*Smart Technologies<ref>{{cite web|date=22 November 2023|title=Smart Technology joins as 'Official National Supporter' of the TotalEnergies CAF Africa Cup of Nations in Cote d'Ivoire|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/smart-technology-joins-as-official-national-supporter-of-the-totalenergies-caf-africa-cup-of-nations-in-cote-d-ivoire/|publisher=Confederation of African Football|website=CAFonline.com|access-date=22 November 2023}}</ref>
+{{col-end}}
+|}
+
+===Mascot===
+[[File:"Akwaba, Africa Cup of Nations Egypt 2023 Mascot, July 2023".jpeg|thumb|Akwaba, the official mascot of the 2023 Africa Cup of Nations|168x168px]]
+The organising board of the 2023 African Cup of Nations unveiled the competition's mascot "Akwaba", which means "Welcome" in the [[Baoulé language]]. It is an elephant whose kit bears resemblance to the host nation [[Ivory Coast national football team|Ivory Coast]]'s home colours.<ref>{{cite web|date=8 July 2023|title=AKWABA', the Official Mascot of TotalEnergies CAF Africa Cup of Nations Cote d'Ivoire 2023 launched|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/akwaba-the-official-mascot-of-totalenergies-caf-africa-cup-of-nations-cote-d-ivo/|publisher=Confederation of African Football|website=CAFonline.com|access-date=10 July 2023}}</ref>
+
+===Match ball===
+On 12 October 2023, CAF and Puma unveiled the "Pokou" as the official tournament match ball ahead of the final tournament draw. The name was chosen to honourthe late legendary Ivorian forward [[Laurent Pokou]], locally known for scoring five goals in the 6–1 victory over Ethiopia at the [[1970 African Cup of Nations|1970 edition]] of the tournament, which stands as a record to date.<ref>{{cite web|date=23 October 2023|title=CAF and PUMA announce the official TotalEnergies Africa Cup of Nations Cote d'Ivoire Official match ball: POKOU!|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-and-puma-announce-the-official-totalenergies-africa-cup-of-nations-cote-d-ivoire-official-match-ball-pokou/|publisher=Confederation of African Football|website=CAFonline.com|access-date=23 October 2023}}</ref>
+
+===Official song===
+On 12 October 2023, CAF announced "[[Akwaba]]", as the official anthem for the competition during the official draw. The song features Nigerian artist [[Yemi Alade]], Egyptian rapper [[Mohamed Ramadan (actor and singer)|Mohamed Ramadan]], and Ivorian music band [[Magic System]]. The anthem, whose title it shares with the tournament's mascot, is a fusion of [[Afrobeats]], rap and [[zouglou]] considered stylistically similar to the competition's [[List of Africa Cup of Nations songs and anthems#Official songs and anthems|previous anthems]].<ref>{{cite web|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/yemi-alade-mohamed-ramadan-et-magic-system-interpretent-akwaba-l-hymne-officielle-de-la-coupe-d-afrique-des-nations-caf-totalenergies-cote-d-ivoire-2023/|title=emi Alade, Mohamed Ramadan and Magic System to perform TotalEnergies CAF Africa Cup of Nations, Cote d'Ivoire 2023 official anthem|date=12 October 2023|publisher=Confederation of African Football|website=CAFonline.com|access-date=12 October 2023}}</ref><ref>{{cite web|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/akwaba-official-song-for-totalenergies-caf-africa-cup-of-nations-goes-live/|title=AKWABA, official song for TotalEnergies CAF Africa Cup of Nations goes live|date=31 October 2023|publisher=Confederation of African Football|website=CAFonline.com|access-date=31 October 2023}}</ref>
+
+==Teams==
+{{Main|2023 Africa Cup of Nations qualification}}
+
+[[File:2023 Afcon qualified teams map.png|thumb|274px|{{legend|#6600ff|Qualified}}
+{{legend|#ff6666|Failed to qualify}}
+{{legend|#000000|Withdrew or did not enter}}
+{{legend|#ffff33|Suspended}}
+{{legend|#ababab|Not a member of the CAF}}]]
+
+All 54 teams originally registered for qualification was held in two rounds like in the previous editions in 2019 and 2021. [[Réunion national football team|Réunion]] and [[Zanzibar national football team|Zanzibar]] were not full members of the CAF and were therefore excluded from participation. [[Eritrea national football team|Eritrea]] withdrew after the first round draw. [[Kenya national football team|Kenya]] and [[Zimbabwe national football team|Zimbabwe]] were suspended by FIFA at the time of the second round draw and were excluded from the competition after their suspensions were not lifted in time.
+
+In [[2023 Africa Cup of Nations qualification preliminary round|the preliminary round]], the twelve lowest-ranked teams in the [[FIFA Men's World Ranking|FIFA world rankings]] of December 2021 competed against each other in a knockout system with two legs. The six winners of the preliminary round and the remaining 42 higher-placed teams were drawn into twelve groups of four in April 2022. The second round was played from June 2022 to September 2023 in a double round format. The group winners and runners-up from all twelve groups, with the exception of [[2023 Africa Cup of Nations qualification Group H|Group H]], qualified for the final round. Apart from the hosts from [[Ivory Coast national football team|Ivory Coast]], only one other team qualified from Group H.
+
+===Qualified teams===
+The following teams qualified for this edition of the tournament with no debutant nation for the first time since [[2015 Africa Cup of Nations|the 2015 edition]]. Seventeen teams that participated in the most recent edition in 2021 returned for the event.
+
+[[DR Congo national football team|DR Congo]], [[South Africa national soccer team|South Africa]], [[Angola national football team|Angola]], [[Namibia national football team|Namibia]], and [[Tanzania national football team|Tanzania]] made their return to the Africa Cup of Nations after missing out on the [[2021 Africa Cup of Nations|2021 edition]]. [[Zambia national football team|Zambia]] made its return after an almost nine-year absence from the event. [[Mozambique national football team|Mozambique]] made its fifth appearance after a fourteen-year absence.<ref>{{cite news | url=https://www.bbc.com/sport/africa/67545224 | title=Africa Cup of Nations 2023 Groups D, e and F preview | work=BBC Sport }}</ref><ref>{{cite web | url=https://www.cafonline.com/caf-africa-cup-of-nations/news/mozambique-seal-afcon-return-after-dramatic-win-over-benin/ | title=Mozambique seal AFCON return after dramatic win over Benin | date=9 September 2023 }}</ref>
+
+The [[Comoros national football team|Comoros]] failed to qualify after making their debut in 2021, whereas [[Kenya national football team|Kenya]] and [[Zimbabwe national football team|Zimbabwe]] were disqualified due to their suspension from FIFA.<ref>{{cite web | url=https://kick442.com/last-time-wonder-comoros-to-miss-afcon-2023/ | title=Last time 'wonder' Comoros to miss AFCON 2023 | date=17 June 2023 }}</ref><ref>{{cite web | url=https://theconversation.com/kenya-and-zimbabwe-have-been-suspended-from-world-football-what-happens-next-178040 | title=Kenya and Zimbabwe have been suspended from world football: What happens next | date=March 2022 }}</ref> [[Sudan national football team|Sudan]], [[Malawi national football team|Malawi]], [[Gabon national football team|Gabon]], [[Sierra Leone national football team|Sierra Leone]], and [[Ethiopia national football team|Ethiopia]] also failed to qualify after appearing in the 2021 tournament.
+
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Method of<br />qualification
+! Date of<br />qualification
+! Finals<br />appearance
+! Last<br />appearance
+! Previous best<br />performance
+|-
+|| {{fb|CIV}} || {{sort|H2|Hosts / [[2023 Africa Cup of Nations qualification Group H|Group H]] runners-up}} || {{dts|2019|1|30|addkey=1|format=dmy}} || 25th || rowspan="3" | [[2021 Africa Cup of Nations|2021]] || {{sort|01|'''Champions'''}} ([[1992 African Cup of Nations|1992]], [[2015 Africa Cup of Nations|2015]])
+|-
+|| {{fb|MAR}} || {{sort|K1|[[2023 Africa Cup of Nations qualification Group K|Group K]] winners}} || {{dts|2023|3|24|addkey=1|format=dmy}} || 19th || {{sort|01|'''Champions'''}} ([[1976 African Cup of Nations|1976]])
+|-
+|| {{fb|ALG}} || {{sort|F1|[[2023 Africa Cup of Nations qualification Group F|Group F]] winners}}|| {{dts|2023|3|27|addkey=1|format=dmy}} || 20th || {{sort|01|'''Champions'''}} ([[1990 African Cup of Nations|1990]], [[2019 Africa Cup of Nations|2019]])
+|-
+|| {{fb|RSA}} || {{sort|K2|[[2023 Africa Cup of Nations qualification Group K|Group K]] runners-up}}|| rowspan="4" | {{dts|2023|3|28|addkey=1|format=dmy}}||11th||[[2019 Africa Cup of Nations|2019]]||{{sort|01|'''Champions'''}} ([[1996 African Cup of Nations|1996]])
+|-
+|| {{fb|SEN}} || {{sort|L1|[[2023 Africa Cup of Nations qualification Group L|Group L]] winners}} || 17th || rowspan="4" | [[2021 Africa Cup of Nations|2021]] || {{sort|01|'''Champions'''}} ([[2021 Africa Cup of Nations|2021]])
+|-
+|| {{fb|BFA}} || {{sort|B1|[[2023 Africa Cup of Nations qualification Group B|Group B]] winners}} || 13th || {{sort|02|Runners-up}} ([[2013 Africa Cup of Nations|2013]])
+|-
+|| {{fb|TUN}} || {{sort|J1|[[2023 Africa Cup of Nations qualification Group J|Group J]] winners}} || 21st || {{sort|01|'''Champions'''}} ([[2004 African Cup of Nations|2004]])
+|-
+|| {{fb|EGY}} || {{sort|D1|[[2023 Africa Cup of Nations qualification Group D|Group D]] winners}} || {{dts|2023|6|14|addkey=1|format=dmy}} || 26th || {{sort|01|'''Champions'''}} ([[1957 African Cup of Nations|1957]], [[1959 African Cup of Nations|1959]], [[1986 African Cup of Nations|1986]], [[1998 African Cup of Nations|1998]], [[2006 Africa Cup of Nations|2006]], [[2008 Africa Cup of Nations|2008]], [[2010 Africa Cup of Nations|2010]])
+|-
+|| {{fb|ZAM}} || {{sort|H1|[[2023 Africa Cup of Nations qualification Group H|Group H]] winners}} || rowspan="2" | {{dts|2023|6|17|addkey=1|format=dmy}} || 18th || [[2015 Africa Cup of Nations|2015]] || {{sort|01|'''Champions'''}} ([[2012 Africa Cup of Nations|2012]])
+|-
+|| {{Fb|EQG}} || {{sort|J2|[[2023 Africa Cup of Nations qualification Group J|Group J]] runners-up}} || 4th || rowspan="7" | [[2021 Africa Cup of Nations|2021]] || {{sort|04|Fourth place}} ([[2015 Africa Cup of Nations|2015]])
+|-
+|| {{fb|NGA}} || {{sort|A1|[[2023 Africa Cup of Nations qualification Group A|Group A]] winners}} || rowspan="4" | {{dts|2023|6|18|addkey=1|format=dmy}} || 20th || {{sort|01|'''Champions'''}} ([[1980 African Cup of Nations|1980]], [[1994 African Cup of Nations|1994]], [[2013 Africa Cup of Nations|2013]])
+|-
+|| {{fb|GNB}} || {{sort|A2|[[2023 Africa Cup of Nations qualification Group A|Group A]] runners-up}} || 4th || {{sort|24|Group stage}} ([[2017 Africa Cup of Nations|2017]], [[2019 Africa Cup of Nations|2019]], [[2021 Africa Cup of Nations|2021]])
+|-
+|| {{fb|CPV}} || {{sort|B2|[[2023 Africa Cup of Nations qualification Group B|Group B]] runners-up}} || 4th || {{sort|08|Quarter-finalists}} ([[2013 Africa Cup of Nations|2013]])
+|-
+|| {{fb|MLI}} || {{sort|G1|[[2023 Africa Cup of Nations qualification Group G|Group G]] winners}} || 13th || {{sort|02|Runners-up}} ([[1972 African Cup of Nations|1972]])
+|-
+|| {{fb|GUI}} ||{{sort|D2|[[2023 Africa Cup of Nations qualification Group D|Group D]] runners-up}} ||{{dts|2023|6|20|addkey=1|format=dmy}}|| 14th || {{sort|02|Runners-up}} ([[1976 African Cup of Nations|1976]])
+|-
+|| {{fb|GHA}} ||{{sort|E1|[[2023 Africa Cup of Nations qualification Group E|Group E]] winners}} || rowspan="3" |{{dts|2023|9|7|addkey=1|format=dmy}}|| 24th || {{sort|01|'''Champions'''}} ([[1963 African Cup of Nations|1963]], [[1965 African Cup of Nations|1965]], [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]])
+|-
+|| {{fb|ANG}} ||{{sort|E2|[[2023 Africa Cup of Nations qualification Group E|Group E]] runners-up}} || 9th || rowspan="2" | [[2019 Africa Cup of Nations|2019]] || {{sort|08|Quarter-finalists}} ([[2008 Africa Cup of Nations|2008]], [[2010 Africa Cup of Nations|2010]])
+|-
+|| {{fb|TAN}} || {{sort|F2|[[2023 Africa Cup of Nations qualification Group F|Group F]] runners-up}} || 3rd || {{sort|24|Group stage}} ([[1980 African Cup of Nations|1980]], [[2019 Africa Cup of Nations|2019]])
+|-
+|| {{fb|MOZ}} || {{sort|L2|[[2023 Africa Cup of Nations qualification Group L|Group L]] runners-up}} || rowspan="3" | {{dts|2023|9|9|addkey=1|format=dmy}} || 5th || [[2010 Africa Cup of Nations|2010]] || {{sort|24|Group stage}} ([[1986 African Cup of Nations|1986]], [[1996 African Cup of Nations|1996]], [[1998 African Cup of Nations|1998]], [[2010 Africa Cup of Nations|2010]])
+|-
+|| {{fb|COD}} || {{sort|I1|[[2023 Africa Cup of Nations qualification Group I|Group I]] winners}} || 20th || [[2019 Africa Cup of Nations|2019]] || {{sort|1|'''Champions'''}} ([[1968 African Cup of Nations|1968]], [[1974 African Cup of Nations|1974]])
+|-
+|| {{fb|MTN}} || {{sort|I2|[[2023 Africa Cup of Nations qualification Group I|Group I]] runners-up}} || 3rd || rowspan="3" | [[2021 Africa Cup of Nations|2021]] || {{sort|24|Group stage}} ([[2019 Africa Cup of Nations|2019]], [[2021 Africa Cup of Nations|2021]])
+|-
+|| {{fb|GAM}} || {{sort|G2|[[2023 Africa Cup of Nations qualification Group G|Group G]] runners-up}} || {{dts|2023|9|10|addkey=1|format=dmy}} || 2nd || {{sort|8|Quarter-finalists}} ([[2021 Africa Cup of Nations|2021]])
+|-
+|| {{fb|CMR}} || {{sort|C1|[[2023 Africa Cup of Nations qualification Group C|Group C]] winners}} || rowspan="2" | {{dts|2023|9|12|addkey=1|format=dmy}} || 21st || {{sort|1|'''Champions'''}} ([[1984 African Cup of Nations|1984]], [[1988 African Cup of Nations|1988]], [[2000 African Cup of Nations|2000]], [[2002 African Cup of Nations|2002]], [[2017 Africa Cup of Nations|2017]])
+|-
+|| {{fb|NAM}} || {{sort|C2|[[2023 Africa Cup of Nations qualification Group C|Group C]] runners-up}} || 4th || [[2019 Africa Cup of Nations|2019]]|| {{sort|24|Group stage}} ([[1998 African Cup of Nations|1998]], [[2008 Africa Cup of Nations|2008]], [[2019 Africa Cup of Nations|2019]])
+|}
+
+==Venues==
+{{OSM Location map | width=350 | height=330| coord={{coord|7.275|-5.504}} | zoom=6| shape1=n-circle | caption=Location of the host cities of the 2023 Africa Cup of Nations | auto-caption=10
+| shape-color1       = #FF8200
+| mark-title1        = [[Abidjan]]
+| mark-description1  = [[Alassane Ouattara Stadium]]<br />[[Felix Houphouet Boigny Stadium]]
+| mark-coord1        = {{Coord|5.316667|-4.033333}}
+| mark-title2        = [[Bouaké]]
+| mark-description2  = [[Stade de la Paix]]
+| mark-coord2        = {{Coord|7.683333|-5.016667}}
+| mark-title3        = [[Korhogo]]
+| mark-description3  = [[Amadou Gon Coulibaly Stadium]]
+| mark-coord3        = {{Coord|9.416667|-5.616667}}
+| mark-title4        = [[San-Pédro, Ivory Coast|San-Pédro]]
+| mark-description4  = [[Laurent Pokou Stadium]]
+| mark-coord4        = {{Coord|4.75|-6.633333}}
+| mark-title5        = [[Yamoussoukro]]
+| mark-description5  = [[Charles Konan Banny Stadium]]
+| mark-coord5        = {{Coord|6.816111|-5.274167}}
+}}
+In September 2017, the government of Ivory Coast launched a public tender for the venues of the competition. This included public tender requested bids for renovating and expanding the existing Felix Houphouët Boigny Stadium in Abidjan and the [[Stade de la Paix]] (Peace Stadium) of Bouaké, and building new stadiums in Yamoussoukro as well as the cities of Korhogo and San-Pédro. The three new stadiums were to have a capacity of 20,000 each.
+
+In addition to the renovation or construction of stadiums, the tender included the renovation or construction of training facilities in the host cities: eight in Abidjan and four in Bouaké, Korhogo, Yamoussoukro and San-Pédro. It also included the construction of 96 villas (five rooms per villa) in those cities. In addition, the bidding nations were to be submitted to build a three-star hotel of fifty rooms in Korhogo.<ref>{{cite news|date=20 September 2017|title=la Côte d'Ivoire lance un appel d'offres pour la construction d'infrastructures sportives et d'hébergements|trans-title=Côte d'Ivoire launches a call for tenders for the construction of sports infrastructure and accommodation|url=https://news.abidjan.net/articles/622530/can-2021-la-cote-divoire-lance-un-appel-doffres-pour-la-construction-dinfrastructures-sportives-et-dhebergements|website=Abidjan.net|access-date=2 September 2018|language=fr}}</ref>
+
+{| class="wikitable sortable"
+!City
+!Stadium
+!Capacity
+|-
+| rowspan="2" |[[Abidjan]]
+|[[Alassane Ouattara Stadium]]
+|60,000
+|-
+|[[Felix Houphouet Boigny Stadium]]
+|33,000
+|-
+|[[Bouaké]]
+|[[Stade de la Paix]]
+|40,000
+|-
+|[[Korhogo]]
+|[[Amadou Gon Coulibaly Stadium]]
+|20,000
+|-
+|[[San-Pédro, Ivory Coast|San-Pédro]]
+|[[Laurent Pokou Stadium]]
+|20,000
+|-
+|[[Yamoussoukro]]
+|[[Charles Konan Banny Stadium]]
+|20,000
+|}
+{{Clear}}
+
+== Opening ceremony ==
+The opening ceremony of the stadium began at 17:25 with the setting up of the animation groups and the cultural activities which lasted until 20:00. Guests and officials were set up until the start of the opening match at 20:00. Among the guests were members of the [[Confederation of African Football]] (CAF), members of the diplomatic corps, presidents of legislative and judicial institutions, members of government including the president of COCAN 2023 and the presidents of CAF and [[FIFA]].<ref>{{cite web|date=13 January 2024|title=Dazzling TotalEnergies CAF AFCON opener showcases Cote d'Ivoire's vibrant culture|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/dazzling-totalenergies-caf-afcon-opener-showcases-cote-divoires-vibrant-culture/|publisher=Confederation of African Football|website=CAFonline.com|access-date=13 January 2024}}</ref><ref>{{cite web|date=13 January 2024|title=PHOTOS: TotalEnergies CAF Africa Cup of Nations, Cote d'Ivoire 2023 opening ceremony|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/photos-totalenergies-caf-africa-cup-of-nations-cote-divoire-2023-opening-ceremony|publisher=Confederation of African Football|website=CAFonline.com|access-date=13 January 2024}}</ref>
+
+==Squads==
+{{main|2023 Africa Cup of Nations squads}}
+
+==Match officials==
+On 12 September 2023, a total of 26 referees, 30 assistants and 12 [[video assistant referee]]s (VAR) were named for the tournament.<ref name="referees">{{cite web |date=7 October 2023 |title=CAF names TotalEnergies CAF Africa Cup of Nations, Cote d'Ivoire 2023 Match Officials |url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-names-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023-match-officials-1/ |access-date=7 October 2023 |publisher=Confederation of African Football|website=CAFonline.com}}</ref> In January 2024, [[Bouchra Karboubi]] became the first woman from [[North Africa]] and the [[Arab world]] to officiate a men's AFCON match by refereeing the match between [[Guinea-Bissau national football team|Guinea-Bissau]] and [[Nigeria national football team|Nigeria]] in the third day of the group stage.<ref>{{cite web |url=https://www.lopinion.ma/CAN-2023-Bouchra-Karboubi-premiere-femme-arabe-a-officier-en-tant-qu-arbitre-principale_a49217.html |title= CAN 2023 : Bouchra Karboubi, première femme arabe à officier en tant qu'arbitre principale|trans-title=CAN 2023: Bouchra Karboubi, the first Arab woman to officiate as the main referee |website=[[L'Opinion]] |date=2024-01-22 |access-date=2024-01-24|language=fr}}</ref>
+
+===Referees===
+{{div col|colwidth=22em}}
+* {{fbaicon|ALG}} [[Mustapha Ghorbal]]
+* {{fbaicon|KEN}} [[Peter Waweru]]
+* {{fbaicon|ETH}} [[Bamlak Tessema Weyesa]] 
+* {{fbaicon|COD}} [[Jean-Jacques Ndala]] 
+* {{fbaicon|EGY}} [[Amin Omar]]
+* {{fbaicon|MTN}} [[Dahane Beida]]
+* {{fbaicon|MAR}} [[Samir Guezzaz]] 
+* {{fbaicon|MLI}} [[Boubou Traoré]]
+* {{fbaicon|RSA}} [[Abongile Tom]] 
+* {{fbaicon|GAB}} [[Pierre Atcho]]
+* {{fbaicon|SDN}} [[Mahmood Ismail]]
+* {{fbaicon|CHA}} [[Alhadi Allaou Mahamat]]
+* {{fbaicon|SEN}} [[Issa Sy]]
+* {{fbaicon|LBY}} [[Mutaz Ibrahim]] 
+* {{fbaicon|BDI}} [[Pacifique Ndabihawenimana]]
+* {{fbaicon|RWA}} [[Samuel Uwikunda]] 
+* {{fbaicon|EGY}} [[Mohamed Maarouf]]
+* {{fbaicon|MTN}} [[Abdel Aziz Mohamed Bouh]]
+* {{fbaicon|GAB}} [[Patrice Tanguy Mebiame]]
+* {{fbaicon|SOM}} [[Omar Artan]]
+* {{fbaicon|ALG}} [[Youcef Gamouh]]
+* {{fbaicon|MAR}} [[Jalal Jayed]]
+* {{fbaicon|CIV}} [[Ibrahim Kalilou Traoré]]
+* {{fbaicon|BEN}} [[Djindo Louis Houngnandande]] 
+* {{fbaicon|EGY}} [[Mohamed Adel (referee)|Mohamed Adel]]
+* {{fbaicon|MAR}} [[Bouchra Karboubi]]
+{{div col end}}
+
+===Assistant referees===
+{{div col|colwidth=22em}}
+* {{fbaicon|ALG}} Abbes Zerhouni
+* {{fbaicon|ALG}} Mokrane Gourari
+* {{fbaicon|EGY}} Ahmed Ibrahim
+* {{fbaicon|EGY}} Mahmoud Abouregal
+* {{fbaicon|MAR}} Azgaou Lahsen
+* {{fbaicon|MAR}} Mostafa Akarkad
+* {{fbaicon|ANG}} Emiliano Dos Santos
+* {{fbaicon|ANG}} Lopes Oliveira
+* {{fbaicon|SEN}} Djibril Camara
+* {{fbaicon|SEN}} Nouha Bangoura
+* {{fbaicon|CIV}} Ngoh Hermann
+* {{fbaicon|CIV}} Nouho Ouattara
+* {{fbaicon|CMR}} Carine Fomo
+* {{fbaicon|CMR}} Elvis Noupue
+* {{fbaicon|LES}} Sourou Phatsoane
+* {{fbaicon|MOZ}} Arsenio Maringule
+* {{fbaicon|SDN}} Ibrahim Mohamed
+* {{fbaicon|TUN}} Hassani Khalil
+* {{fbaicon|KEN}} Yiembe Stephen
+* {{fbaicon|KEN}} [[Gilbert Cheruiyot]]
+* {{fbaicon|LBY}} Amsaed Essa
+* {{fbaicon|BFA}} Tiama Seydou
+* {{fbaicon|DJI}} Liban Abdoulrazack
+* {{fbaicon|GAB}} Ditsoga Marlene
+* {{fbaicon|STP}} Dos Abdelmiro
+* {{fbaicon|BEN}} Ayimavo Eric
+* {{fbaicon|MAD}} Dimbiniaina Andriatianarivelo
+* {{fbaicon|TOG}} Ahonto Koffi
+* {{fbaicon|CGO}} Steven Moutsassi
+* {{fbaicon|MLI}} Modibe Samake
+* {{fbaicon|ZAM}} [[Diana Chikotesha]]<ref>{{Cite web |title=Dahane Beida to officiate 2023 TotalEnergies CAF Africa Cup of Nations final |url=https://www.cafonline.com/afcon2025/news/dahane-beida-to-officiate-2023-totalenergies-caf-africa-cup-of-nations-final/ |access-date=2026-07-07 |website=Dahane Beida to officiate 2023 TotalEnergies CAF Africa Cup of Nations final |language=en-GB}}</ref>
+{{div col end}}
+
+===Video assistant referees===
+{{div col|colwidth=22em}}
+
+* {{fbaicon|ALG}} [[Lahlou Benbraham]] 
+* {{fbaicon|EGY}} [[Mohamed Ashour]]
+* {{fbaicon|EGY}} [[Mahmoud El Banna]]
+* {{fbaicon|GHA}} [[Daniel Nii Laryea]]
+* {{fbaicon|MRI}} [[Ahmed Heerallal]]
+* {{fbaicon|MRI}} [[Maria Rivet]]
+* {{fbaicon|MAR}} [[Zakaria Brinsi]]
+* {{fbaicon|MAR}} [[Redouane Jiyed]]
+* {{fbaicon|RWA}} [[Salima Mukansanga]]
+* {{fbaicon|RSA}} [[Akhona Makalima]]
+* {{fbaicon|SDN}} [[Mohamed Ibrahim (referee)|Mohamed Ibrahim]]
+* {{fbaicon|TUN}} [[Haythem Guirat]]
+{{div col end}}
+
+==Draw==
+The final draw was held at the Parc des Expositions d'Abidjan in [[Abidjan]] on 12 October 2023.<ref>{{cite web|date=12 October 2023|title=Hosts Cote d'Ivoire face Nigeria, holders Senegal clash with Cameroon|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/hosts-cote-divoire-face-nigeria-holders-senegal-clash-with-cameroon/|publisher=Confederation of African Football|website=CAFonline.com|access-date=12 October 2023}}</ref> The event was hosted by Senegalese-American musician [[Akon]],<ref>{{cite web|title=Global Music Icon AKON to host TotalEnergies CAF Africa Cup of Nations Cote d'Ivoire 2023 Final Draw on Thursday night|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/global-music-star-akon-will-host-the-final-draw-of-the-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023-on-thursday-12-october-2023/|publisher=Confederation of African Football|website=CAFonline.com |date=11 October 2023 |access-date=11 October 2023}}</ref> whilst the draw was conducted by former African footballers [[Didier Drogba]] and [[Mikel John Obi]], alongside current internationals [[Sadio Mané]] and [[Achraf Hakimi]].<ref>{{cite web|date=12 October 2023|title=Drogba, Mikel, Mane and Hakimi named as star-studded Draw Assistants for the TotalEnergies CAF Africa Cup of Nations Cote d'Ivoire 2023 Final Draw|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/drogba-mikel-mane-and-hakimi-named-as-star-studded-draw-assistants-for-the-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023-final-draw/|publisher=Confederation of African Football|website=CAFonline.com|access-date=12 October 2023}}</ref> The 24 teams were divided into six groups of four each, with the four initial pots determined based on the September 2023 [[FIFA Men's World Ranking|FIFA World Rankings]] (shown in parentheses), listed below. Ivory Coast were automatically given the top seed and assigned to position A1 in the draw as hosts.<ref>{{cite web|date=22 September 2023|title=CAF Confirms TotalEnergies Africa Cup of Nations Cote d'Ivoire 2023 Pot Seeding Ahead of 12 October Official Draw |url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-confirms-totalenergies-africa-cup-of-nations-cote-d-ivoire-2023-pot-seeding-ahead-of-12-october-official-draw/|publisher=Confederation of African Football|website=CAFonline.com|access-date=22 September 2023}}</ref>
+ 
+{| class=wikitable
+|-
+!width=25%|Pot 1
+!width=25%|Pot 2
+!width=25%|Pot 3
+!width=25%|Pot 4
+|- valign=top
+|{{fb|CIV}} (50) ''(hosts)''<br>{{fb|MAR}} (13)<br>{{fb|SEN}} (20) ''([[2021 Africa Cup of Nations|title holders]])''<br>{{fb|TUN}} (29)<br>{{fb|ALG}} (34)<br>{{fb|EGY}} (35)
+|{{fb|NGA}} (40)<br>{{fb|CMR}} (41)<br>{{fb|MLI}} (49)<br>{{fb|BFA}} (58)<br>{{fb|GHA}} (60)<br>{{fb|COD}} (64)
+|{{fb|RSA}} (65)<br>{{fb|CPV}} (71)<br>{{fb|GUI}} (81)<br>{{fb|ZAM}} (82)<br>{{fb|EQG}} (92)<br>{{fb|MTN}} (99)
+|{{fb|GNB}} (102)<br>{{fb|MOZ}} (108)<br>{{fb|NAM}} (114)<br>{{fb|ANG}} (117)<br>{{fb|GAM}} (118)<br>{{fb|TAN}} (122)
+|}
+
+==Group stage==
+{{Hatnote|All times are local, [[Greenwich Mean Time|GMT]] ([[UTC+00:00|UTC±0]]).}}
+
+The fixture schedule for this edition of the tournament was released on 20 October 2023, following the group stage draw.<ref>{{cite web|date=20 October 2023|title=TotalEnergies CAF AFCON Match Schedule: Full Fixtures & Kick-off Times|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/totalenergies-caf-afcon-match-schedule-full-fixtures-kick-off-times/|publisher=Confederation of African Football|website=CAFonline.com|access-date=20 October 2023}}</ref><ref>{{cite web|date=20 October 2023|title=TotalEnergies CAF Africa Cup of Nations Match Schedule 2023|url=https://www.cafonline.com/media/xltgcxmv/totalenergies_caf_africa_cup_of_nations_match_schedule_23.pdf|publisher=Confederation of African Football|website=CAFonline.com|access-date=20 October 2023}}</ref>
+
+===Tiebreakers===
+Teams were ranked according to [[three points for a win|points]] (3 points for a win, 1 point for a draw, 0 points for a loss).
+
+If two teams were tied on points, the following tiebreaking criteria were applied, in the order given, to determine the rankings (Regulations Article 74):<ref name="regulations">{{cite web|last=Nassar|first=Khaled|date=21 October 2021|title=Regulations of the Africa Cup of Nations|url=https://www.cafonline.com/media/bl2lhb3v/bm58fa2qjh76asriri5s.pdf|publisher=Confederation of African Football|website=CAFonline.com|access-date=21 January 2024}}</ref>
+
+# Points in head-to-head matches match between the two tied teams;
+# [[Goal difference]] in all group matches;
+# Goals scored in all group matches;
+# Drawing of lots.
+If more than two teams were tied, the following criteria were applied instead:
+# Points in matches between the tied teams;
+# Goal difference in matches between the tied teams;
+# Goals scored in matches between the tied teams;
+# If after applying all criteria above, two teams were still tied, the above criteria were again applied to matches played between the two teams in question. If this did not resolve the tie, the next three criteria were applied;
+# Goal difference in all group matches;
+# Goals scored in all group matches;
+# Drawing of lots.
+
+===Group A===
+{{main|2023 Africa Cup of Nations Group A}}
+{{2023 Africa Cup of Nations group tables|Group A|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group A|A1}}
+{{#lst:2023 Africa Cup of Nations Group A|A2}}
+----
+{{#lst:2023 Africa Cup of Nations Group A|A3}}
+{{#lst:2023 Africa Cup of Nations Group A|A4}}
+----
+{{#lst:2023 Africa Cup of Nations Group A|A5}}
+{{#lst:2023 Africa Cup of Nations Group A|A6}}
+
+===Group B===
+{{main|2023 Africa Cup of Nations Group B}}
+{{2023 Africa Cup of Nations group tables|Group B|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group B|B1}}
+{{#lst:2023 Africa Cup of Nations Group B|B2}}
+----
+{{#lst:2023 Africa Cup of Nations Group B|B3}}
+{{#lst:2023 Africa Cup of Nations Group B|B4}}
+----
+{{#lst:2023 Africa Cup of Nations Group B|B5}}
+{{#lst:2023 Africa Cup of Nations Group B|B6}}
+
+===Group C===
+{{main|2023 Africa Cup of Nations Group C}}
+{{2023 Africa Cup of Nations group tables|Group C|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group C|C1}}
+{{#lst:2023 Africa Cup of Nations Group C|C2}}
+----
+{{#lst:2023 Africa Cup of Nations Group C|C3}}
+{{#lst:2023 Africa Cup of Nations Group C|C4}}
+----
+{{#lst:2023 Africa Cup of Nations Group C|C5}}
+{{#lst:2023 Africa Cup of Nations Group C|C6}}
+
+===Group D===
+{{main|2023 Africa Cup of Nations Group D}}
+{{2023 Africa Cup of Nations group tables|Group D|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group D|D1}}
+{{#lst:2023 Africa Cup of Nations Group D|D2}}
+----
+{{#lst:2023 Africa Cup of Nations Group D|D3}}
+{{#lst:2023 Africa Cup of Nations Group D|D4}}
+----
+{{#lst:2023 Africa Cup of Nations Group D|D5}}
+{{#lst:2023 Africa Cup of Nations Group D|D6}}
+
+===Group E===
+{{main|2023 Africa Cup of Nations Group E}}
+{{2023 Africa Cup of Nations group tables|Group E|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group E|E1}}
+{{#lst:2023 Africa Cup of Nations Group E|E2}}
+----
+{{#lst:2023 Africa Cup of Nations Group E|E3}}
+{{#lst:2023 Africa Cup of Nations Group E|E4}}
+----
+{{#lst:2023 Africa Cup of Nations Group E|E5}}
+{{#lst:2023 Africa Cup of Nations Group E|E6}}
+
+===Group F===
+{{main|2023 Africa Cup of Nations Group F}}
+{{2023 Africa Cup of Nations group tables|Group F|only_pld_pts=no_hide_class_rules}}
+
+{{#lst:2023 Africa Cup of Nations Group F|F1}}
+{{#lst:2023 Africa Cup of Nations Group F|F2}}
+----
+{{#lst:2023 Africa Cup of Nations Group F|F3}}
+{{#lst:2023 Africa Cup of Nations Group F|F4}}
+----
+{{#lst:2023 Africa Cup of Nations Group F|F5}}
+{{#lst:2023 Africa Cup of Nations Group F|F6}}
+
+===Ranking of third-placed teams===
+{{2023 Africa Cup of Nations group tables|3rd place}}
+
+==Knockout stage==
+{{Main|2023 Africa Cup of Nations knockout stage}}
+
+===Bracket===
+{{#lst:2023 Africa Cup of Nations knockout stage|Bracket}}
+
+===Round of 16===
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M1}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M2}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M3}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M4}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M5}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M6}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M7}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|R16-M8}}
+
+===Quarter-finals===
+{{#lst:2023 Africa Cup of Nations knockout stage|QFA}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|QFB}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|QFC}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|QFD}}
+
+===Semi-finals===
+{{#lst:2023 Africa Cup of Nations knockout stage|SF1}}
+----
+{{#lst:2023 Africa Cup of Nations knockout stage|SF2}}
+
+===Third place play-off===
+{{#lst:2023 Africa Cup of Nations knockout stage|3rd}}
+
+===Final===
+{{Main|2023 Africa Cup of Nations final}}
+{{#lst:2023 Africa Cup of Nations final|Final}}
+
+==Statistics==
+===Goalscorers===
+{{Goalscorers
+|goals=119 |matches=52
+|source=[https://www.cafonline.com/caf-africa-cup-of-nations/schedule-results/ CAF]
+
+|5 goals=
+*{{fbicon|EQG}} [[Emilio Nsue]]
+
+|4 goals=
+*{{fbicon|ANG}} [[Gelson Dala]]
+*{{fbicon|EGY}} [[Mostafa Mohamed (footballer)|Mostafa Mohamed]]
+
+|3 goals=
+*{{fbicon|ALG}} [[Baghdad Bounedjah]]
+*{{fbicon|ANG}} [[Mabululu]]
+*{{fbicon|BFA}} [[Bertrand Traoré]]
+*{{fbicon|GUI}} [[Mohamed Bayo]]
+*{{fbicon|MLI}} [[Lassine Sinayoko]]
+*{{fbicon|NGA}} [[Ademola Lookman]]
+*{{fbicon|NGA}} [[William Troost-Ekong]]
+
+|2 goals=
+*{{fbicon|CPV}} [[Ryan Mendes]]
+*{{fbicon|COD}} [[Yoane Wissa]]
+*{{fbicon|GHA}} [[Jordan Ayew]]
+*{{fbicon|GHA}} [[Mohammed Kudus]]
+*{{fbicon|CIV}} [[Sébastien Haller]]
+*{{fbicon|CIV}} [[Franck Kessié]]
+*{{fbicon|SEN}} [[Lamine Camara]]
+*{{fbicon|SEN}} [[Habib Diallo]]
+*{{fbicon|RSA}} [[Teboho Mokoena (soccer, born 1997)|Teboho Mokoena]]
+*{{fbicon|RSA}} [[Themba Zwane]]
+
+|1 goal=
+*{{fbicon|ANG}} [[Gilberto (footballer, born 2001)|Gilberto]]
+*{{fbicon|ANG}} [[Zini (footballer)|Zini]]
+*{{fbicon|BFA}} [[Mohamed Konaté (footballer, born 1997)|Mohamed Konaté]]
+*{{fbicon|CMR}} [[Jean-Charles Castelletto]]
+*{{fbicon|CMR}} [[Frank Magri]]
+*{{fbicon|CMR}} [[Karl Toko Ekambi]]
+*{{fbicon|CMR}} [[Christopher Wooh]]
+*{{fbicon|CPV}} [[Bebé]]
+*{{fbicon|CPV}} [[Jamiro Monteiro]]
+*{{fbicon|CPV}} [[Kevin Pina (footballer)|Kevin Pina]]
+*{{fbicon|CPV}} [[Garry Rodrigues]]
+*{{fbicon|CPV}} [[Gilson Tavares]]
+*{{fbicon|CPV}} [[Bryan Teixeira]]
+*{{fbicon|COD}} [[Meschak Elia]]
+*{{fbicon|COD}} [[Arthur Masuaku]]
+*{{fbicon|COD}} [[Chancel Mbemba]]
+*{{fbicon|COD}} [[Silas Katompa Mvumpa]]
+*{{fbicon|EGY}} [[Omar Marmoush]]
+*{{fbicon|EGY}} [[Mohamed Salah]]
+*{{fbicon|EGY}} [[Trézéguet (Egyptian footballer)|Trézéguet]]
+*{{fbicon|EQG}} [[Jannick Buyla]]
+*{{fbicon|EQG}} [[Pablo Ganet]]
+*{{fbicon|EQG}} [[Josete Miranda]]
+*{{fbicon|EQG}} [[Iban Salvador]]
+*{{fbicon|GAM}} [[Ebrima Colley]]
+*{{fbicon|GAM}} [[Ablie Jallow]]
+*{{fbicon|GHA}} [[Alexander Djiku]]
+*{{fbicon|GUI}} [[Aguibou Camara]]
+*{{fbicon|GNB}} [[Zé Turbo]]
+*{{fbicon|CIV}} [[Simon Adingra]]
+*{{fbicon|CIV}} [[Oumar Diakité]]
+*{{fbicon|CIV}} [[Seko Fofana]]
+*{{fbicon|CIV}} [[Jean-Philippe Krasso]]
+*{{fbicon|MLI}} [[Dorgeles Nene]]
+*{{fbicon|MLI}} [[Hamari Traoré]]
+*{{fbicon|MTN}} [[Sidi Bouna Amar]]
+*{{fbicon|MTN}} [[Mohamed Dellahi Yali]]
+*{{fbicon|MTN}} [[Aboubakary Koita]]
+*{{fbicon|MAR}} [[Youssef En-Nesyri]]
+*{{fbicon|MAR}} [[Achraf Hakimi]]
+*{{fbicon|MAR}} [[Azzedine Ounahi]]
+*{{fbicon|MAR}} [[Romain Saïss]]
+*{{fbicon|MAR}} [[Hakim Ziyech]]
+*{{fbicon|MOZ}} [[Geny Catamo]]
+*{{fbicon|MOZ}} [[Clésio]]
+*{{fbicon|MOZ}} [[Reinildo Mandava]]
+*{{fbicon|MOZ}} [[Witi]]
+*{{fbicon|NAM}} [[Deon Hotto]]
+*{{fbicon|NGA}} [[Victor Osimhen]]
+*{{fbicon|SEN}} [[Pape Gueye]]
+*{{fbicon|SEN}} [[Sadio Mané]]
+*{{fbicon|SEN}} [[Iliman Ndiaye]]
+*{{fbicon|SEN}} [[Ismaïla Sarr]]
+*{{fbicon|SEN}} [[Abdoulaye Seck (footballer, born 1992)|Abdoulaye Seck]]
+*{{fbicon|RSA}} [[Evidence Makgopa]]
+*{{fbicon|RSA}} [[Thapelo Maseko]]
+*{{fbicon|RSA}} [[Percy Tau]]
+*{{fbicon|TAN}} [[Simon Msuva]]
+*{{fbicon|TUN}} [[Hamza Rafia]]
+*{{fbicon|ZAM}} [[Patson Daka]]
+*{{fbicon|ZAM}} [[Kings Kangwa]]
+
+|1 own goal =
+*{{fbicon|BFA}} [[Edmond Tapsoba]] (against Mali)
+*{{fbicon|EQG}} [[Esteban Obiang]] (against Guinea-Bissau)
+*{{fbicon|GAM}} [[James Gomez (footballer)|James Gomez]] (against Cameroon)
+*{{fbicon|GNB}} [[Opa Sanganté]] (against Nigeria)
+}}
+
+===Discipline===
+A player was automatically suspended for the next match for the following offences:
+* Receiving a red card (red card suspensions could be extended for serious offences)
+* Receiving two yellow cards in two matches
+The suspensions are canceled after group stage round<br>
+The following suspensions occurred during the tournament:
+
+{| class="wikitable sortable plainrowheaders"
+|-
+! Player(s)/Official(s)
+! Offence(s)
+! Suspension(s)
+|-
+!colspan=3|Qualification suspensions
+|-
+| {{fbicon|ALG}} [[Mohamed Amoura]]<ref>{{cite news |url=https://www.dzfoot.com/equipes-nationales/can-2023-amoura-suspendu-face-a-langola-252138.html#:~:text=Ayant%20re%C3%A7u%20deux%20cartons%20jaunes,du%20r%C3%A8glement%20de%20la%20comp%C3%A9tition. |title=CAN 2023 : Amoura suspendu face à l'Angola ? |language=fr |work=dzfoot.com |publisher=Salim D. |date=1 January 2024 }}</ref>
+| {{yel}} in [[2023 Africa Cup of Nations qualification Group F|2023 Afcon qualification Group F]] vs [[Tanzania national football team|Tanzania]] (matchday 2; 8 June 2022)<br>{{yel}} in [[2023 Africa Cup of Nations qualification Group F|2023 Afcon qualification Group F]] vs [[Tanzania national football team|Tanzania]] (matchday 6; 7 September 2023)
+| [[2023 Africa Cup of Nations Group D#Algeria vs Angola|Group D]] vs [[Angola national football team|Angola]] (matchday 1; 15 January 2024)
+|-
+!colspan=3|Group stage suspensions
+|-
+| {{fbicon|GUI}} [[François Kamano]]
+| {{sent off}} in [[2023 Africa Cup of Nations Group C#Cameroon vs Guinea|Group C]] vs [[Cameroon national football team|Cameroon]] (matchday 1; 15 January 2024)
+| [[2023 Africa Cup of Nations Group C#Guinea vs Gambia|Group C]] vs [[Gambia national football team|Gambia]] (matchday 2; 19 January 2024)
+|-
+| {{fbicon|TAN}} [[Novatus Dismas]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations Group F#Morocco vs Tanzania|Group F]] vs [[Morocco national football team|Morocco]] (matchday 1; 17 January 2024)
+| [[2023 Africa Cup of Nations Group D#Zambia vs Tanzania|Group F]] vs [[Zambia national football team|Zambia]] (matchday 2; 21 January 2024)
+|-
+| {{fbicon|SEN}} [[Abdou Diallo]]
+| {{yel}} in [[2023 Africa Cup of Nations Group C#Senegal vs Gambia|Group C]] vs [[Gambia national football team|Gambia]] (matchday 1; 15 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group D#Senegal vs Cameroon|Group C]] vs [[Cameroon national football team|Cameroon]] (matchday 2; 19 January 2024)
+| [[2023 Africa Cup of Nations Group D#Guinea vs Senegal|Group C]] vs [[Guinea national football team|Guinea]] (matchday 3; 23 January 2024)
+|-
+| {{fbicon|ALG}} [[Ramy Bensebaini]]
+| {{yel}} in [[2023 Africa Cup of Nations Group D#Algeria vs Angola|Group D]] vs [[Angola national football team|Angola]] (matchday 1; 15 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group D#Algeria vs Burkina Faso|Group D]] vs [[Burkina Faso national football team|Burkina Faso]] (matchday 2; 20 January 2024)
+| [[2023 Africa Cup of Nations Group D#Mauritania vs Algeria|Group D]] vs [[Mauritania national football team|Mauritania]] (matchday 3; 23 January 2024)
+|-
+| {{fbicon|ANG}} [[Núrio Fortuna]]
+| {{yel}} in [[2023 Africa Cup of Nations Group D#Algeria vs Angola|Group D]] vs [[Algeria national football team|Algeria]] (matchday 1; 15 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group D#Mauritania vs Angola|Group D]] vs [[Mauritania national football team|Mauritania]] (matchday 2; 20 January 2024)
+| [[2023 Africa Cup of Nations Group D#Angola vs Burkina Faso|Group D]] vs [[Burkina Faso national football team|Burkina Faso]] (matchday 3; 23 January 2024)
+|-
+| {{fbicon|BFA}} [[Mohamed Konaté (footballer, born 1997)|Mohamed Konaté]]
+| {{yel}} in [[2023 Africa Cup of Nations Group D#Burkina Faso vs Mauritania|Group D]] vs [[Mauritania national football team|Mauritania]] (matchday 1; 16 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group D#Algeria vs Burkina Faso|Group D]] vs [[Algeria national football team|Algeria]] (matchday 2; 20 January 2024)
+| [[2023 Africa Cup of Nations Group D#Angola vs Burkina Faso|Group D]] vs [[Angola national football team|Angola]] (matchday 3; 23 January 2024)
+|-
+| {{fbicon|BFA}} [[Blati Touré]]
+| {{yel}} in [[2023 Africa Cup of Nations Group D#Burkina Faso vs Mauritania|Group D]] vs [[Mauritania national football team|Mauritania]] (matchday 1; 16 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group D#Algeria vs Burkina Faso|Group D]] vs [[Algeria national football team|Algeria]] (matchday 2; 20 January 2024)
+| [[2023 Africa Cup of Nations Group D#Angola vs Burkina Faso|Group D]] vs [[Angola national football team|Angola]] (matchday 3; 23 January 2024)
+|-
+| {{fbicon|ZAM}} [[Rodrick Kabwe]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations Group F#Zambia vs Tanzania|Group F]] vs [[Tanzania national football team|Tanzania]] (matchday 2; 21 January 2024)
+| [[2023 Africa Cup of Nations Group F#Zambia vs Morocco|Group F]] vs [[Morocco national football team|Morocco]] (matchday 3; 24 January 2024)
+|-
+| {{fbicon|GHA}} [[Alexander Djiku]]
+| {{yel}} in [[2023 Africa Cup of Nations Group B#Ghana vs Cape Verde|Group B]] vs [[Cape Verde national football team|Cape Verde]] (matchday 1; 14 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group A#Mozambique vs Ghana|Group A]] vs [[Mozambique national football team|Mozambique]] (matchday 3; 22 January 2024)
+| ''Suspension canceled after first round''
+|-
+| {{fbicon|GHA}} [[Iddrisu Baba]]
+| {{yel}} in [[2023 Africa Cup of Nations Group B#Ghana vs Cape Verde|Group B]] vs [[Cape Verde national football team|Cape Verde]] (matchday 1; 14 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations Group A#Mozambique vs Ghana|Group A]] vs [[Mozambique national football team|Mozambique]] (matchday 3; 22 January 2024)
+| ''Suspension canceled after first round''
+|-
+!colspan=3|Knock-out stage suspensions
+|-
+| {{fbicon|NAM}} [[Lubeni Haukongo]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations knockout stage#Angola vs Namibia|Round of 16]] vs [[Angola national football team|Angola]] (27 January 2024)
+| ''Suspension to be served outside the tournament''
+|-
+| {{fbicon|EQG}} [[Federico Bikoro]]
+| {{yel}} in [[2023 Africa Cup of Nations Group A#Nigeria vs Equatorial Guinea|Group A]] vs [[Nigeria national football team|Nigeria]] (matchday 1; 14 January 2024)<br>{{Sent off}} in [[2023 Africa Cup of Nations knockout stage#Equatorial Guinea vs Guinea|Round of 16]] vs [[Guinea national football team|Guinea]] (28 January 2024)
+| ''Suspension to be served outside the tournament''
+|-
+| {{fbicon|EGY}} [[Mohamed Hamdy (footballer, born 1995)|Mohamed Hamdy]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations knockout stage#Egypt vs DR Congo|Round of 16]] vs [[DR Congo national football team|DR Congo]] (28 January 2024)
+| ''Suspension to be served outside the tournament''
+|-
+| {{fbicon|MAR}} [[Sofyan Amrabat]]
+| {{yel}} {{Sent off}} in [[2023 Africa Cup of Nations knockout stage#Morocco vs South Africa|Round of 16]] vs [[South Africa national football team|South Africa]] (30 January 2024)
+| ''Suspension to be served outside the tournament''
+|-
+| {{fbicon|CIV}} [[Odilon Kossounou]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations knockout stage#Mali vs Ivory Coast|Quarter-final]] vs [[Mali national football team|Mali]] (3 February 2024)
+| [[2023 Africa Cup of Nations knockout stage#Ivory Coast vs DR Congo|Semi-final]] vs [[DR Congo national football team|DR Congo]] (7 February 2024)
+|-
+| {{fbicon|CIV}} [[Christian Kouamé]]
+| {{yel}} in [[2023 Africa Cup of Nations knockout stage#Senegal vs Ivory Coast|Round of 16]] vs [[Senegal national football team|Senegal]] (29 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations knockout stage#Mali vs Ivory Coast|Quarter-final]] vs [[Mali national football team|Mali]] (3 February 2024)
+| [[2023 Africa Cup of Nations knockout stage#Ivory Coast vs DR Congo|Semi-final]] vs [[DR Congo national football team|DR Congo]] (7 February 2024)
+|-
+| {{fbicon|CIV}} [[Serge Aurier]]
+| {{yel}} in [[2023 Africa Cup of Nations knockout stage#Senegal vs Ivory Coast|Round of 16]] vs [[Senegal national football team|Senegal]] (29 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations knockout stage#Mali vs Ivory Coast|Quarter-final]] vs [[Mali national football team|Mali]] (3 February 2024)
+| [[2023 Africa Cup of Nations knockout stage#Ivory Coast vs DR Congo|Semi-final]] vs [[DR Congo national football team|DR Congo]] (7 February 2024)
+|-
+| {{fbicon|CIV}} [[Oumar Diakité]]
+| {{Sent off|2}} in [[2023 Africa Cup of Nations knockout stage#Mali vs Ivory Coast|Quarter-final]] vs [[Mali national football team|Mali]] (3 February 2024)
+| [[2023 Africa Cup of Nations knockout stage#Ivory Coast vs DR Congo|Semi-final]] vs [[DR Congo national football team|DR Congo]] (7 February 2024)
+|-
+| {{fbicon|MLI}} [[Hamari Traoré]]
+| {{Sent off}} in [[2023 Africa Cup of Nations knockout stage#Mali vs Ivory Coast|Quarter-final]] vs [[Ivory Coast national football team|Ivory Coast]] (3 February 2024)
+| ''Suspension to be served outside the tournament''
+|-
+| {{fbicon|NGR}} [[Ola Aina]]
+| {{yel}} in [[2023 Africa Cup of Nations knockout stage#Nigeria vs Cameroon|Round of 16]] vs [[Cameroon national football team|Cameroon]] (27 January 2024)<br>{{yel}} in [[2023 Africa Cup of Nations final|Final]] vs [[Ivory Coast national football team|Ivory Coast]] (11 February 2024)
+| ''Suspension to be served outside the tournament''
+|}
+{{notelist}}
+
+==Awards==
+The following awards were given at the conclusion of the tournament:
+
+{| class="wikitable"
+|Man of the Competition||{{fbicon|NGA}} [[William Troost-Ekong]]||<ref name="awards">{{cite web|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/totalenergies-caf-afcon-cote-d-ivoire-2023-awards/|title=TotalEnergies CAF AFCON Cote d'Ivoire 2023 Awards|publisher=CAFOnline.com|access-date=11 February 2024|date=11 February 2024}}</ref>
+|-
+|Golden Boot||{{fbicon|EQG}} [[Emilio Nsue]] (5 goals)||<ref name="awards"/>
+|-
+|Best Goalkeeper||{{fbicon|RSA}} [[Ronwen Williams]]||<ref name="awards"/>
+|-
+|Best Young Player||{{fbicon|CIV}} [[Simon Adingra]]||
+|-
+|Fair Play Award||{{fb|RSA}}||<ref name="awards"/>
+|}
+===Best XI===
+{|class="wikitable"
+|-
+!Goalkeeper
+!Defenders
+!Midfielders
+!Forwards
+!Coach
+|- style="vertical-align:top"
+| {{fbicon|RSA}} [[Ronwen Williams]]
+| {{fbicon|NGA}} [[Ola Aina]]<br />{{fbicon|CIV}} [[Ghislain Konan]]<br />{{fbicon|NGA}} [[William Troost-Ekong]]<br />{{fbicon|COD}} [[Chancel Mbemba]]
+| {{fbicon|RSA}} [[Teboho Mokoena (soccer, born 1997)|Teboho Mokoena]]<br />{{fbicon|CIV}} [[Jean Michaël Seri]]<br />{{fbicon|CIV}} [[Franck Kessié]]
+| {{fbicon|COD}} [[Yoane Wissa]]<br />{{fbicon|NGA}} [[Ademola Lookman]]<br />{{fbicon|EQG}} [[Emilio Nsue]]
+|{{flagicon|CIV}} [[Emerse Faé]]
+|}
+<small>Source:<ref>{{cite web |date=14 February 2024 |title=CAF TSG Group releases TotalEnergies CAF Africa Cup of Nation Cote d'Ivoire 2023 Best XI |url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-tsg-group-releases-totalenergies-caf-africa-cup-of-nation-cote-d-ivoire-2023-best-xi/ |url-status=live |archive-url=https://web.archive.org/web/20240214121627/https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-tsg-group-releases-totalenergies-caf-africa-cup-of-nation-cote-d-ivoire-2023-best-xi/ |archive-date=14 February 2024 |access-date=14 February 2024 |website=Confederation of African Football |publisher=CAF}}</ref></small>
+
+=== Final ranking ===
+Matches that ended in [[Overtime (sports)#Association football|extra time]] were counted as wins and defeats, while matches that ended in a [[Penalty shoot-out (association football)|penalty shoot-out]] were counted as draws.<ref>{{cite news |url=https://foot-africa.com/fr/afrique/cote-divoire/can-2024-classement-definitif |title=CAN 2024: le classement définitif de la 1ère à la 24e place ! |language=Fr |work=Foot Africa |publisher=A. Jomni |date=12 February 2024 }}</ref>
+[[File:2023 Afcon results map.png|thumb|320px|Result of teams participating in 2023 Africa Cup of Nations
+{{col-begin}} {{col-3}}{{Legend|#2b42a3|Champion}} {{Legend|#34c0be|Runner-up}} {{Legend|#269c5a|Third place}}{{col-3}}{{Legend|#81c846|Fourth place}} {{Legend|#E4E454|Quarter-finals}}{{Legend|#ff8c00|Round of 16}}{{col-3}} {{Legend|#a9203e|Group stage}}{{col-end}}]]
+
+{{Fb cl3 header navbar|p=yes|group=yes|no-extras=yes|fs=95}}
+{{Fb cl3 team|p=1|t={{fb|CIV}}|gr=A|no-extras=yes|bc=gold  |w=4|d=1|l=2|gf=8|ga=8}}
+{{Fb cl3 team|p=2|t={{fb|NGR}}|gr=A|no-extras=yes|bc=silver|w=4|d=2|l=1|gf=8|ga=4}}
+{{Fb cl3 team|p=3|t={{fb|RSA}}|gr=E|no-extras=yes|bc=#c96  |w=2|d=4|l=1|gf=7|ga=3}}
+{{Fb cl3 team|p=4|t={{fb|COD}}|gr=F|no-extras=yes|bc=      |w=1|d=5|l=1|gf=6|ga=5}}
+|-
+| colspan="11"| '''Eliminated in the quarter-finals'''
+|-
+{{Fb cl3 team|p=5|t={{fb|CPV}}|gr=B|no-extras=yes|w=3|d=2|l=0|gf=8|ga=3}}
+{{Fb cl3 team|p=6|t={{fb|ANG}}|gr=D|no-extras=yes|w=3|d=1|l=1|gf=9|ga=4}}
+{{Fb cl3 team|p=7|t={{fb|MLI}}|gr=E|no-extras=yes|w=2|d=2|l=1|gf=6|ga=4}}
+{{Fb cl3 team|p=8|t={{fb|GUI}}|gr=C|no-extras=yes|w=2|d=1|l=2|gf=4|ga=6}}
+|-
+| colspan="11"| '''Eliminated in the round of 16'''
+|-
+{{Fb cl3 team|p=9 |t={{fb|SEN}}|gr=C|no-extras=yes|w=3|d=1|l=0|gf=9|ga=2}}
+{{Fb cl3 team|p=10|t={{fb|EQG}}|gr=A|no-extras=yes|w=2|d=1|l=1|gf=9|ga=4}}
+{{Fb cl3 team|p=11|t={{fb|MAR}}|gr=F|no-extras=yes|w=2|d=1|l=1|gf=5|ga=3}}
+{{Fb cl3 team|p=12|t={{fb|EGY}}|gr=B|no-extras=yes|w=0|d=4|l=0|gf=7|ga=7}}
+|-
+{{Fb cl3 team|p=13|t={{fb|BFA}}|gr=D|no-extras=yes|w=1|d=1|l=2|gf=4|ga=6}}
+{{Fb cl3 team|p=14|t={{fb|CMR}}|gr=C|no-extras=yes|w=1|d=1|l=2|gf=5|ga=8}}
+{{Fb cl3 team|p=15|t={{fb|NAM}}|gr=E|no-extras=yes|w=1|d=1|l=2|gf=1|ga=7}}
+{{Fb cl3 team|p=16|t={{fb|MTN}}|gr=D|no-extras=yes|w=1|d=0|l=3|gf=3|ga=5}}
+|-
+| colspan="11"| '''Eliminated in the group stage'''
+|-
+{{Fb cl3 team|p=17|t={{fb|GHA}}|gr=B|no-extras=yes|w=0|d=2|l=1|gf=5|ga=6}}
+{{Fb cl3 team|p=18|t={{fb|ALG}}|gr=D|no-extras=yes|w=0|d=2|l=1|gf=3|ga=4}}
+{{Fb cl3 team|p=19|t={{fb|ZAM}}|gr=F|no-extras=yes|w=0|d=2|l=1|gf=2|ga=3}}
+{{Fb cl3 team|p=20|t={{fb|TUN}}|gr=E|no-extras=yes|w=0|d=2|l=1|gf=1|ga=2}}
+{{Fb cl3 team|p=21|t={{fb|MOZ}}|gr=B|no-extras=yes|w=0|d=2|l=1|gf=4|ga=7}}
+{{Fb cl3 team|p=22|t={{fb|TAN}}|gr=F|no-extras=yes|w=0|d=2|l=1|gf=1|ga=4}}
+{{Fb cl3 team|p=23|t={{fb|GNB}}|gr=A|no-extras=yes|w=0|d=0|l=3|gf=2|ga=7}}
+{{Fb cl3 team|p=24|t={{fb|GAM}}|gr=C|no-extras=yes|w=0|d=0|l=3|gf=2|ga=7}}
+|}
+
+==Broadcasting==
+[[BBC Radio]] and [[Radio France Internationale|RFi]] acquired audio broadcasting rights to this edition of the tournament.<ref name=":II4">{{Cite web|date=10 January 2024|title=CAF concludes extensive global TV-Broadcast agreements ahead of the kick-off of the TotalEnergies Africa Cup of Nations Côte d'Ivoire 2023|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/caf-concludes-extensive-global-tv-broadcast-agreements-ahead-of-the-kick-off-of-the-totalenergies-africa-cup-of-nations-cote-d-ivoire-2023/|publisher=Confederation of African Football|access-date=13 January 2024|language=en-GB}}</ref><ref name="CAFB0">{{Cite web|date=13 January 2024|title=Africa's biggest event kicks-off today: Where to watch TotalEnergies CAF Africa Cup of Nations Cote d'Ivoire 2023|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/africa-s-biggest-event-kicks-off-today-where-to-watch-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023/|publisher=Confederation of African Football|website=CAFonline.com|access-date=13 January 2024|language=en-GB}}</ref>
+
+Below is the list of the 2023 AFCON broadcasting rights holders:
+
+=== CAF ===
+{| class="wikitable"
+!Territory
+!Rights holder(s)
+!Ref.
+|-
+|{{flagicon|Algeria}} Algeria
+|[[Public Establishment of Television|EPTV]]
+|<ref>{{cite web|last=Langlois|first=Emmanuel|date=30 December 2023|title=La télévision algérienne acquiert les droits de la CAN 2023 et des JO 2024|trans-title=Algerian television acquires the rights to CAN 2023 and the 2024 Olympics|url=https://www.telesatellite.com/actu/63930-la-television-algerienne-acquiert-les-droits-de-la-can-2023-et.html|website=Tele Satellite Numerique|access-date=12 January 2024}}</ref>
+|-
+|{{flagicon|Angola}} Angola
+|[[Televisão Pública de Angola|TPA]]
+|<ref>{{cite web |date=10 January 2024 |title=TPA transmite todos jogos do CAN na Côte d'Ivoire |trans-title=TPA transmite todos jogos do CAN na Côte d'Ivoire |url=https://www.jornaldeangola.ao/ao/noticias/tpa-transmite-todos-jogos-do-can-na-cote-d-ivoire/ |access-date=10 January 2024 |website=Jornal de Angola |language=pt-PT}}</ref>
+|-
+|{{flagicon|BFA}} Burkina Faso
+|[[Radio Télévision du Burkina|RTB]]
+|<ref>{{cite instagram|author=[[Radio Télévision du Burkina]]|user=rtburkina|date=17 October 2023|title=Avec le foot, boostez vos affaires ! La CAN COTE D'IVOIRE 2023, c'est pour bientôt, et la RTB vous offre le maximum de visibilité sur...|postid=CygHviQKAHZ|trans-title=La RTB au cœur de la CAN 2023! {{!}} With football, boost your business! The CAN COTE D'IVOIRE 2023 is coming soon, and the RTB offers you maximum visibility on...|access-date=19 December 2023|language=fr-FR}}</ref>
+|-
+|{{flagicon|CMR}} Cameroon
+|[[Cameroon Radio Television|CRTV]], Canal 2
+|<ref name="AFR">{{cite web|last=Foute|first=Franck|date=22 December 2023|title=Droits TV de la CAN : dernière ligne droite dans la course pour la retransmission|trans-title=CAN TV rights: final stretch in the race for retransmission|url=https://www.jeuneafrique.com/1518341/societe/droits-tv-de-la-can-derniere-ligne-droite-dans-la-course-pour-la-retransmission/|website=Jeune Afrique|access-date=13 January 2024|language=fr}}</ref>
+|-
+|{{flagicon|CPV}} Cape Verde
+|[[RTC (Cape Verde)|RTC]]
+|<ref>{{cite instagram|author=[[RTC (Cape Verde)|RTC]]|user=rtc.caboverde|postid=C15IEZkgESV|date=9 January 2024|title=A Grande Festa do Futebol Africano acontece na TCV|trans-title=Great African Football Festival takes place at TCV|access-date=13 January 2024|language=pt-CV}}</ref>
+|-
+|{{flagicon|CHA}} Chad
+|[[Télé Tchad]]
+|<ref name="AFR" />
+|-
+|{{flagicon|COD}} Democratic Republic of Congo
+|[[Radio-Télévision nationale congolaise|RTNC]]
+|<ref name="AFR" />
+|-
+|{{flagicon|EGY}} Egypt
+|[[Ontime Sports]]
+|
+|-
+|{{flagicon|GAB}} Gabon
+|[[Radio Télévision Gabonaise|Gabon TV]]
+|<ref name="AFR" />
+|-
+|{{flagicon|GAM}} Gambia
+|[[Gambia Radio & Television Service|GRTS]]
+|<ref name="AFR" />
+|-
+|{{flagicon|GHA}} Ghana
+|[[Ghana Broadcasting Corporation|GBC]]
+|<ref>{{cite web|last=Bediako|first=Nana Kwame|date=4 January 2024|title=GTV Sports+ headlines coverage of 2023 AFCON in Ghana|url=https://www.gbcghanaonline.com/news/gtv-sports-to-broadcast-headlines-coverage-of-2023-afcon-ghana/2024/|website=[[Ghana Broadcasting Corporation]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|GUI}} Guinea
+|[[Radio Télévision Guinéenne|RTG]]
+|<ref name="AFR" />
+|-
+|{{flagicon|GNB}} Guinea Bissau
+|[[Guinea-Bissau Television|TGB]]
+|<ref name="AFR" />
+|-
+|{{flagicon|CIV}} Ivory Coast
+|[[Radiodiffusion Television Ivoirienne|RTI]], NCI
+|<ref name="AFR" />
+|-
+|{{flagicon|KEN}} Kenya
+|[[Kenya Broadcasting Corporation|KBC]]
+|<ref name="AFR" />
+|-
+|{{flagicon|MWI}} Malawi
+|[[Malawi Broadcasting Corporation|MBC]]
+|<ref>{{cite web|last=Ndovi|first=Joy|date=5 January 2024|title=MBC to beam Afcon finals|url=https://mwnation.com/mbc-to-beam-afcon-finals/|website=MWNation|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|MLI}} Mali
+|[[ORTM]]
+|<ref name="AFR" />
+|-
+|{{flagicon|MAR}} Morocco
+|[[SNRT]]
+|<ref>{{cite tweet|date=10 January 2024|author=[[Arryadia TV]]|user=arryadiatv|number=1745138038777299398|title=مباشرة على الرياضية بث أرضي، مباريات المنتخب الوطني المغربي كأس الأمم الإفريقية – كوت ديفوار 2023.|trans-title=Live on sports terrestrial broadcast, Moroccan national team matches Africa Cup of Nations – Côte d'Ivoire 2023.|access-date=13 January 2024|language=ar-MA}}</ref>
+|-
+|{{flagicon|MOZ}} Mozambique
+|[[Televisão de Moçambique|TVM]], [[TV Miramar]]
+|<ref>{{cite press release|date=11 January 2024|title=Campeonato Africano Das Nações: Adeptos satisfeitos por a TVM poder transmitir os jogos do CAN|trans-title=African Cup of Nations: Fans happy that TVM can broadcast CAN games|url=https://www.tvm.co.mz/index.php/desporto/futebol/item/12037-campeonato-africano-das-nacoes-adeptos-satisfeitos-por-a-tvm-poder-transmitir-os-jogos-do-can|website=[[Televisão de Moçambique|TVM]]|access-date=13 January 2024|language=pt-MZ}}</ref><ref>{{cite press release|date=9 January 2024|title=Confirmado!!! CAN 2024 é na MIRAMAR|trans-title=Confirmed!!! CAN 2024 is at MIRAMAR – MIRAMAR|url=https://miramar.co.mz/noticias/desporto/confirmado-can-2024-e-na-miramar-09-01-2024-36337|website=[[TV Miramar]]|access-date=12 January 2024|language=pt-MZ}}</ref>
+|-
+|{{flagicon|NAM}} Namibia
+|[[Namibia Broadcasting Corporation|NBC]]
+|<ref>{{cite web|date=9 January 2024|title=NBC secures rights to broadcast AFCON|url=https://nbcnews.na/index.php/node/104087|website=[[Namibia Broadcasting Corporation]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|NGR}} Nigeria
+|[[Nigerian Television Authority|NTA]]
+|<ref>{{cite web|last=Etukudo|first=Itoro|date=10 January 2024|title=NTA secures right to air all 2023 AFCON matches|url=https://www.icirnigeria.org/nta-secures-right-to-air-all-2023-afcon-matches/|website=ICIR Nigeria|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|SEN}} Senegal
+|[[Radiodiffusion Télévision Sénégalaise|RTS]]
+|<ref name="AFR" />
+|-
+|{{flagicon|RSA}} South Africa
+|[[SABC Sport]]
+|<ref>{{cite news|date=5 January 2024|title=SABC Sport secures rights to broadcast the Africa Cup of Nations 2023 in Ivory Coast|url=https://www.sabcsport.com/soccer/news/sabc-sport-secures-rights-to-broadcast-the-africa-cup-of-nations-2023-in-ivory-coast-and-the-rest-of-caf-events|work=[[SABC Sport]]|publisher=[[SABC]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon| }} [[Sub-Saharan Africa]] 
+|New World TV, [[Canal+ (French TV channel)|Canal+]], [[StarTimes]], [[SuperSport (South African broadcaster)|SuperSport]]
+|<ref name="NWT">{{cite press release|date=10 November 2023|title=New World TV et la CAF signent un partenariat de 3 ans|trans-title=New World TV and CAF sign a 3-year partnership|url=https://www.newworldtv.com/new-world-tv-et-la-caf-signent-un-partenariat-de-3-ans/|publisher=New World TV|access-date=13 January 2024|language=fr-FR|location=[[Lomé]], [[Togo]]}}</ref><ref>{{cite press release|url=https://starsat.co.za/starsat-secures-broadcasting-rights-for-afcon-2023/|title=StarSat Secures Broadcasting Rights for AFCON 2023|work=[[StarSat]]|publisher=[[StarTimes]]|access-date=13 January 2024}}</ref><ref>{{cite web|date=10 January 2024|title=SuperSport to broadcast all Afcon games live after MultiChoice secures broadcast rights|url=https://supersport.com/generic-sport/general/news/3002275d-50da-471b-abb4-2625d2d892e3/supersport-to-broadcast-all-afcon-games-live-after-multichoice-secures-broadcast-rights|website=[[SuperSport (South African broadcaster)|SuperSport]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|TAN}} Tanzania
+|[[Tanzania Broadcasting Corporation|TBC]], [[Azam TV]]
+|<ref>{{cite web|date=10 January 2024|title=TBC to broadcast live AFCON matches|url=https://dailynews.co.tz/tbc-to-broadcast-live-afcon-matches/|website=[[Daily News (Tanzania)|Daily News]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|TOG}} Togo
+|[[Togolese Television|TVT]], {{ill|New World TV|fr|New World TV}}
+|<ref name="NWT" />
+|-
+|{{flagicon|UGA}} Uganda
+|[[Uganda Broadcasting Corporation|UBC]], [[Sanyuka TV Uganda|Sanyuka TV]]
+|<ref>{{cite web|date=12 January 2024|title=AFCON 2023: Three easy ways Ugandans can watch the Africa Cup of Nations|url=https://www.pulsesports.ug/football/story/afcon-2023-three-easy-ways-ugandans-can-watch-the-africa-cup-of-nations-2024011211091658719|website=Pulse Sports Uganda|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|ZAM}} Zambia
+|[[Zambia National Broadcasting Corporation|ZNBC]], Diamond TV
+|<ref name="AFR" /><ref>{{cite web|last=Tutu|first=Arnold|date=3 January 2024|title=ZNBC To Televise All AFCON Games|url=https://www.znbc.co.zm/news/znbc-to-televise-all-afcon-games/|website=[[ZNBC]]|access-date=10 January 2024}}</ref>
+|-
+|{{flagicon|ZIM}} Zimbabwe
+|[[Zimbabwe Broadcasting Corporation|ZBC]]
+|<ref name="AFR" />
+|}
+
+=== Rest of the world ===
+{| class="wikitable"
+!Territory
+!Rights holder(s)
+!Ref.
+|-
+|{{flagicon|Andorra}} Andorra
+|[[LaLiga+]]
+|<ref name="ESP">{{cite web|last=Romanos|first=Justo|date=7 January 2024|title=Así puedes ver la competición de fútbol que vaciará LaLiga EA Sports|trans-title=This is how you can see the football competition that will empty LaLiga EA Sports|url=https://www.adslzone.net/noticias/streaming-tv/ver-competicion-futbol-vaciara-laliga-ea-sports/|website=ADSL Zone|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|AUS}} Australia
+|[[beIN Sports (Australian TV channel)|beIN Sports]]
+|<ref name="AUS">{{cite web|last=Ross-Murray|first=Ewan|date=9 January 2024|title=How to watch AFCON 2023 on TV and live stream|url=https://www.90min.com/posts/how-to-watch-afcon-2023-tv-live-stream|website=90Min|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|Austria}} Austria
+|[[Sportdigital]]
+|<ref name="DACH">{{cite web|title=AFCON 23 Opening Ceremony|url=https://start.sportdigital.de/mediathek/27280/AFCON+23+Opener|website=[[Sportdigital]]|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|BEL}} Belgium
+|[[RTBF]]
+|<ref>{{cite web|date=11 January 2024|title=La rtbf diffusera les matches du maroc et de la rdc|trans-title=RTBF will broadcast the matches of Morocco and the DRC|url=https://www.rtbf.be/article/coupe-d-afrique-des-nations-la-rtbf-diffusera-les-matches-du-maroc-et-de-la-rdc-11304819|website=[[RTBF]]|access-date=13 January 2024|language=fr-BE}}</ref>
+|-
+|{{flagicon|Bosnia and Herzegovina}} Bosnia and Herzegovina
+|[[Sport Klub]]
+|<ref name=":II4" />
+|-
+|{{flagicon|BRA}} Brazil
+|[[Rede Bandeirantes|Band]]
+|<ref>{{cite web|date=28 December 2023|title=Seleção do Marrocos divulga convocados para a Copa Africana de Nações 2023|trans-title=Morocco national team announces squad for 2023 African Cup of Nations|url=https://www.band.uol.com.br/noticias/selecao-do-marrocos-divulga-convocados-para-a-copa-africana-de-nacoes-2023-16657016|quote=The African Cup of Nations will be broadcast in full by Grupo Bandeirantes, starting on January 13th, on open TV, on Bandsports and on digital platforms, such as Bandplay, Band.com.br and YouTube.|website=[[Rede Bandeirantes|Band]]|access-date=13 January 2024|language=pt-BR}}</ref><ref name=":II4" />
+|-
+|{{flagicon|BUL}} Bulgaria
+|[[Max Sport]]
+|<ref>{{cite web|date=8 January 2024|title=Купата на африканските нации на живо по MAX Sport|trans-title=African Cup of Nations live on MAX Sport|url=https://gong.bg/football-sviat/kupata-na-afrikanskite-nacii-na-zhivo-po-max-sport-771439|website=Gong Bulgaria|access-date=13 January 2024|language=bg-BG}}</ref><ref name=":II4" />
+|-
+|{{flagicon|CAN}} Canada
+|[[beIN Sports (Canadian TV channel)|beIN Sports]]
+|<ref name="US" />
+|-
+|{{flagicon|CRO}} Croatia
+|[[Sport Klub]]
+|<ref name=":II4" />
+|-
+|{{flagicon|DEN}} Denmark
+|[[Viaplay]]
+|<ref name=":II4" />
+|-
+|{{flagicon|Fiji}} Fiji
+|[[Mai TV]]
+|<ref name=":II4" />
+|-
+|{{flagicon|FIN}} Finland
+|[[Viaplay]]
+|<ref name=":II4" />
+|-
+|{{flagicon|FRA}} France
+|[[beIN Sports (French TV channel)|beIN Sports]]
+|<ref name="Asia"/>
+|-
+|{{flagicon|GER}} Germany
+|[[Sportdigital]]
+|<ref name="DACH" /><ref name=":II4" />
+|-
+|{{flagicon|Iceland}} Iceland
+|[[Viaplay]]
+|<ref name=":II4" />
+|-
+|{{flagicon|IND}} India
+|[[FanCode]]
+|<ref>{{cite news|date=4 January 2024|title=FanCode secures exclusive broadcast rights for Africa Cup of Nations 2024, Copa del Rey, & Supercopa de Espana|url=https://economictimes.indiatimes.com/news/sports/fancode-secures-exclusive-broadcast-rights-for-africa-cup-of-nations-2024-copa-del-rey-supercopa-de-espana/articleshow/106540609.cms|work=[[The Economic Times]]|access-date=13 January 2024}}</ref><ref name=":II4" />
+|-
+|{{flagicon|IRN}} Iran
+|[[Persiana Sports]], [[Poker TV]]
+|{{cn|date=July 2024}}
+|-
+|{{flagicon|IRL}} Ireland
+|[[Sky Sports]]
+|<ref name="SKY">{{Cite web|title=Live African Cup of Nations on TV|url=https://www.soccersat.com/competitions/330/africa-cup-of-nations?t=2024-01-13&continent=3|website=Soccersat|access-date=9 January 2024}}</ref>
+|-
+|{{flagicon|ISR}} Israel
+|[[Sports Channel (Israel)|Sports Channel]]
+|<ref>{{cite web|url=https://www.sport5.co.il/liga.aspx?FolderID=7687|title=אליפות אפריקה 2023|trans-title=African Championship 2023 – schedule of matches, updates, news and broadcasts|website=[[Sports Channel (Israel)|Sport 5]]|language=is-IS|access-date=13 January 2024}}</ref><ref name=":II4" />
+|-
+|{{flagicon|ITA}} Italy
+|[[Sportitalia]]
+|<ref name="ITA">{{cite web|date=12 December 2023|title=Coppa d'Africa in esclusiva su Sportitalia: acquisti i diritti per 2023 e 2025|trans-title=Africa Cup of Nations exclusively on Sportitalia: purchases the rights for 2023 and 2025|url=https://www.sportitalia.com/primo-piano/coppa-d-africa-in-esclusiva-su-sportitalia-acquisti-i-diritti-per-2023-e-2025-55143|website=[[Sportitalia]]|access-date=13 January 2024|language=it-IT}}</ref><ref name=":II4" />
+|-
+|{{flagicon|KAZ}} Kazakhstan
+|[[MEGOGO]]
+|<ref name=":II4" />
+|-
+|{{flagicon|LIE}} Liechtenstein
+|rowspan="2"|[[Sportdigital]]
+|rowspan="2"|<ref name="DACH" />
+|-
+|{{flagicon|LUX}} Luxembourg
+|-
+|{{flagicon|Arab League}} MENA
+|[[BeIN Sports (MENA)|beIN Sports]]
+|<ref>{{cite web|date=12 January 2024|title=beIN Sports reveals exclusive AFCON 2023 coverage plans|url=https://thepeninsulaqatar.com/article/12/01/2024/bein-sports-reveals-exclusive-afcon-2023-coverage-plans|website=The Peninsula Qatar|access-date=13 January 2024}}</ref>
+|-
+|{{flagicon|Montenegro}} Montenegro
+|[[Sport Klub]]
+|<ref name=":II4" />
+|-
+|{{flagicon|NED}} Netherlands
+|[[Ziggo Sport]]
+|<ref>{{cite press release|date=20 December 2023|title=2024 and 2025 Africa Cup of Nations to be broadcast on Ziggo Sport|url=https://www.vodafoneziggo.nl/en/nieuws/2024-and-2025-africa-cup-of-nations-to-be-broadcast-on-ziggo-sport/|publisher=[[Vodafone]] [[Ziggo]]|access-date=13 January 2024}}</ref><ref name=":II4" />
+|-
+|{{flagicon|NZL}} New Zealand
+|[[beIN Sports (Australian TV channel)|beIN Sports]]
+|<ref name="AUS" />
+|-
+|{{flagicon|North Macedonia}} North Macedonia
+|[[Sport Klub]]
+|<ref name=":II4" />
+|-
+|{{flagicon|NOR}} Norway
+|[[Viaplay]]
+|<ref name=":II4" />
+|-
+|{{flagicon| }} [[List of islands in the Pacific Ocean|Pacific Islands]]
+|[[Digicel]]
+|{{fact|date=June 2024}}
+|-
+||{{Flagicon|Papua New Guinea}} Papua New Guinea
+|[[TVWan|TV Wan]]
+|<ref>{{Cite web |date=2024-02-04 |title=AFC Asian Cup 2023 Where to Watch |url=https://www.the-afc.com/en/national/afc_asian_cup/afc_asian_cup_-_where_to_watch.html |access-date=2024-03-07 |archive-url=https://web.archive.org/web/20240204065537/https://www.the-afc.com/en/national/afc_asian_cup/afc_asian_cup_-_where_to_watch.html |archive-date=4 February 2024 }}</ref>
+|-
+|{{flagicon|POL}} Poland
+|[[MEGOGO]]
+|<ref>{{cite web|title=Megogo has become the official broadcaster of the 2023 African Football Cup of Nations in Poland|url=https://realnews.pl/en/megogo-became-the-official-broadcaster-of-the-2023-African-Cup-of-Nations-in-Poland/|website=RealNews Poland|date=19 December 2023 |access-date=19 December 2023}}</ref><ref name=":II4" />
+|-
+|{{flagicon|POR}} Portugal
+|[[Sport TV]]
+|<ref name=":II4" />
+|-
+|{{flagicon|RUS}} Russia
+|Okko Sport
+|<ref>{{cite web|last=Kruglov|first=Vladislav|date=23 December 2023|title=Okko эксклюзивно покажет Кубок африканских наций — 2023|trans-title=Okko will exclusively show the African Cup of Nations 2023 – Championship|url=https://www.championat.com/football/news-5370130-okko-eksklyuzivno-pokazhet-kubok-afrikanskih-nacij-2023.html|website=Championat.com|access-date=13 January 2024|language=ru-RU}}</ref>
+|-
+|{{flagicon|San Marino}} San Marino
+|[[Sportitalia]]
+|<ref name="ITA" />
+|-
+|{{flagicon|SER}} Serbia
+|rowspan="2"|[[Sport Klub]]
+|rowspan="2"|<ref name=":II4" />
+|-
+|{{flagicon|SLO}} Slovenia
+|-
+|{{flagicon| }} [[Southeast Asia]]
+|[[BeIN Sports (Asian TV channel)|BeIN Sports]]
+|<ref name="Asia">{{cite news|url=https://www.sportspromedia.com/news/caf-bein-sports-tv-broadcast-deal-africa-cup-of-nations-champions-league/|title=CAF recommits to BeIN Sports broadcast partnership after cancellation|first=Arif|last=Islam|website=SportsPro|date=10 November 2023|access-date=15 July 2024|quote=Agreement covers 40 countries in the Middle East and North Africa (MENA) and Asia-Pacific (APAC) regions, as well as France and the US}}</ref>
+|-
+|{{flagicon|ESP}} Spain
+|[[LaLiga+]]
+|<ref name="ESP" /><ref name=":II4" />
+|-
+|{{flagicon|SUI}} Switzerland
+|[[Sportdigital]]
+|<ref name="DACH" /><ref name=":II4" />
+|-
+|{{flagicon|SWE}} Sweden
+|[[Viaplay]]
+|<ref name=":II4" />
+|-
+|{{flagicon|TUR}} Turkey
+|[[TV8 (Turkish TV channel)|TV8.5]], S Sport, [[Exxen]]
+|<ref>{{Cite tweet|author=[[Exxen Sport]]|user=exxensport|number=1736825581008761067|date=18 December 2023|title=Afrika'nın en büyük yıldızları, en iyi milli takımları 🌍 Afrika Uluslar Kupası, 13 Ocak-11 Şubat tarihlerinde canlı yayınlarla EXXEN'de olacak!|trans-title=Africa's biggest stars, best national teams 🌍 Africa Cup of Nations will be on EXXEN with live broadcasts between January 13 – February 11!|language=tr}}</ref>
+|-
+|{{flagicon|UKR}} Ukraine
+|[[MEGOGO]]
+|<ref>{{cite news|date=28 December 2023|title=MEGOGO покаже в Україні Кубок африканських націй: наживо та в записі|trans-title=MEGOGO will show the Cup of African Nations in Ukraine: live and recorded|url=https://mediasat.info/uk/2023/12/28/megogo-pokazhe-kubok-afryky-2023-v-ukrayini-nazhyvo-ta-v-zapysi/|website=Mediasat|access-date=12 January 2024|language=uk-UK}}</ref><ref name=":II4" />
+|-
+|{{flagicon|UK}} United Kingdom
+|[[BBC Three]], [[Sky Sports]]
+|<ref name=":II4" /><ref>{{Cite web|date=11 January 2024|title=BBC confirm rights deal for Africa Cup of Nations – watch live matches including the opening game and final on BBC Three and iPlayer|url=https://www.bbc.co.uk/mediacentre/2024/bbc-rights-deal-africa-cup-of-nations|website=[[BBC]]|access-date=13 January 2024|language=en}}</ref>
+|-
+|{{flagicon|USA}} United States
+|[[beIN Sports (American TV channel)|beIN Sports]]
+|<ref name="US">{{cite news|date=6 January 2024|title=The Stars of Soccer Are Ready for the Africa Cup of Nations|url=https://www.beinsports.com/en-us/soccer/africa-cup-of-nations/articles-video/the-stars-of-soccer-are-ready-for-the-africa-cup-of-nations-2024-01-06|work=[[BeIN Sports]]|publisher=[[BeIN Media Group]]|access-date=10 January 2024}}</ref>
+|-
+|}
+
+==See also==
+*[[2023 AFC Asian Cup]] - simultaneous tournament
+
+==References==
+{{Reflist}}
+
+=== Reports ===
+{{reflist|group=Report}}
+
+==External links==
+{{commons category}}
+*{{official website|https://www.cafonline.com/caf-africa-cup-of-nations/}}
+*[https://cafe.daum.net/stade/L3oI/174 Stadiums Photos] at cafe.daum.net
+
+{{2023 Africa Cup of Nations}}
+{{2023 Africa Cup of Nations finalists}}
+{{2023 Africa Cup of Nations stadiums}}
+{{African Nations Cup}}
+{{2023–24 in African football (CAF)}}
+
+{{DEFAULTSORT:Africa Cup Of Nations}}
+[[Category:2023 Africa Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|2023]]
+[[Category:2024 in African men's continental football|Cup of Nations]]
+[[Category:2024 in African men's international football|Cup of Nations]]
+[[Category:2024 in Ivorian sport]]
+[[Category:Men's international association football competitions hosted by Ivory Coast]]
+[[Category:Football competitions in Abidjan]]
+[[Category:Sport in Vallée du Bandama District]]
+[[Category:Sport in Savanes District]]
+[[Category:Sport in Yamoussoukro]]
+[[Category:Bouaké]]
+[[Category:Korhogo]]
+[[Category:January 2024 sports events in Africa]]
+[[Category:February 2024 sports events in Africa]]
+[[Category:January 2024 in Ivory Coast]]
+[[Category:February 2024 in Ivory Coast]]

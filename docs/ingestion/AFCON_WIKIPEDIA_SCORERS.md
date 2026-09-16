@@ -5,9 +5,24 @@ at all for 1996 and 1998, and a handful of gaps in 1980 and 1994. Wikipedia
 names them, and this pipeline moves them across.
 
 Across all 35 AFCON tournaments, goals with a named scorer went from **91% to
-99.90%** — 2,005 of 2,007. **Two** goals are still unnamed, both in matches whose
-source is missing the goal *event* itself, which no amount of naming fixes:
-Tunisia 1-1 Angola (2019) and Zambia 1-1 Tanzania (2023).
+100%** — all 2,007 — and every one of the 787 matches with events reproduces its
+own score.
+
+The last two were a different problem and needed a third pass. Tunisia 1-1
+Angola (2019) and Zambia 1-1 Tanzania (2023) were each missing the goal *event*,
+not just its name, so there was nothing to attribute. Wikipedia has both, and
+crucially agrees with the goal each match already held — Msakni's 34th-minute
+penalty exactly, Msuva within a minute — which is what justified trusting it for
+the goal the vault lacked. Angola gained Djalma Campos 73', Zambia gained Patson
+Daka 88'. Daka already existed in the vault and the event attached to him;
+creating a second Patson Daka would have re-made the defect this whole exercise
+was undoing. Applied as
+`docs/reconciliation/fixes/2026-09-16_two_missing_afcon_goals.sql`.
+
+**Those two are also why the fetcher takes an exact page title.** The modern
+articles keep their match reports on group subpages, so
+`fetch_wikipedia_afcon.py "2023 Africa Cup of Nations Group F"` fetches one
+page; a bare year still fetches a whole tournament.
 
 Five players on the published all-time scoring list were short only because of
 this gap, and four now match it exactly: **Hossam Hassan 11**, **Kalusha Bwalya

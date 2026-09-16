@@ -1,0 +1,993 @@
+{{Short description|Football tournament group stage}}
+{{refimprove|date=January 2024}}
+{{Use dmy dates|date=October 2023}}
+'''Group F of the [[2023 Africa Cup of Nations]]''' took place from 17 to 24 January 2024.<ref>{{Cite news|url=https://punchng.com/full-list-2023-afcon-group-draw/|title=FULL LIST: 2023 AFCON group draw|first=Damilola|last=Olufemi|date=12 October 2023|newspaper=[[The Punch]]}}</ref> The group consisted of [[Morocco national football team|Morocco]], [[DR Congo national football team|DR Congo]], [[Zambia national soccer team|Zambia]], and [[Tanzania national football team|Tanzania]].<ref>{{cite news|url=https://www.cafonline.com/caf-africa-cup-of-nations/news/watch-live-totalenergies-caf-africa-cup-of-nations-cote-d-ivoire-2023-official-draw/|title=WATCH LIVE: TotalEnergies CAF Africa Cup of Nations, Cote d’Ivoire 2023 Official Draw|date=10 December 2023|publisher=Confederation of African Football}}</ref>
+
+Morocco and DR Congo as the top two teams advanced to the [[2023 Africa Cup of Nations knockout stage#Round of 16|round of 16]].
+
+==Teams==
+{| class="wikitable sortable"
+|-
+!rowspan=2| Draw position
+!rowspan=2| Team
+!rowspan=2| Zone
+!rowspan=2| Method of<br />qualification
+!rowspan=2| Date of<br />qualification
+!rowspan=2| Finals<br />appearance
+!rowspan=2| Last<br />appearance
+!rowspan=2| Previous best<br />performance
+!colspan=2| [[FIFA World Rankings|FIFA Rankings]]
+|-
+! October 2023{{refn|group=nb|The rankings of October 2023 were used for [[2022 Africa Cup of Nations#Draw|seeding for the final draw]].}}
+! December 2023
+|-
+| F1 || style=white-space:nowrap | {{fb|MAR}} || [[Union of North African Football|UNAF]] || data-sort-value="F1" | [[2023 Africa Cup of Nations qualification Group K|Group K]] winners || data-sort-value="2" | 28 March 2023 || 19th || [[2021 Africa Cup of Nations|2021]] || data-sort-value="6.1" | '''Winners''' ([[1976 Africa Cup of Nations|1976]]) || 13 || 13
+|-
+| F2 || style=white-space:nowrap | {{fb|COD}} || [[UNIFFAC]] || data-sort-value="F2" | [[2023 Africa Cup of Nations qualification Group I|Group I]] winners || data-sort-value="20" | 9 September 2023 || 20th || [[2019 Africa Cup of Nations|2019]] || data-sort-value="6.2" | '''Winners''' ([[1968 Africa Cup of Nations|1968]], [[1974 Africa Cup of Nations|1974]]) || 64 || 67
+|-
+| F3 || style=white-space:nowrap | {{fb|ZAM}} || [[COSAFA]] || data-sort-value="F3" | [[2023 Africa Cup of Nations qualification Group H|Group H]] winners || data-sort-value="8" | 17 June 2023 || 18th || [[2015 Africa Cup of Nations|2015]] || data-sort-value="6.3" | '''Winners''' ([[2012 Africa Cup of Nations|2012]]) || 82 || 84
+|-
+| F4 || style=white-space:nowrap | {{fb|TAN}} || [[CECAFA]] || data-sort-value="F4" | [[2023 Africa Cup of Nations qualification Group F|Group F]] runners-up || data-sort-value="18" | 7 September 2023 || 4th || [[2019 Africa Cup of Nations|2019]] || data-sort-value="6.4" | Group stage ([[1980 Africa Cup of Nations|1980]], [[2019 Africa Cup of Nations|2019]]) || 122 || 121
+|}
+'''Notes'''
+{{reflist|group=nb}}
+
+==Standings==
+{{2023 Africa Cup of Nations group tables|Group F}}
+
+==Matches==
+''All times are local, [[Greenwich Mean Time|GMT]] ([[UTC±00:00|UTC±0]]).''
+
+===Morocco vs Tanzania===
+Morocco and Tanzania met for the sixth time, with the previous five being qualification matches for both the Africa Cup of Nations and the World Cup. The first meeting occurred on 9 October 2010, with Morocco winning 1–0 in Dar es Salaam, Tanzania, and would win again exactly one year later on 9 October 2011, a 3–1 victory in Marrakech which secured Morocco's qualification for the 2012 Africa Cup of Nations. The nation split the two meetings during qualification for the 2014 FIFA World Cup, with Tanzania pulling off a 3–1 victory in Dar es Salaam on 24 March 2013, before Morocco won 2–1 in Marrakech on 8 June 2013. Ultimately, neither nation qualified for the tournament. The most recent meeting occurred on 21 November 2023, with Morocco winning 2–0 in Dar es Salaam to start off its road to qualification for the 2026 FIFA World Cup.
+
+For the first 30 minutes Morocco struggled to break down a cohesive Tanzanian side, however, [[Hakim Ziyech]] finally struck a fierce free kick that was parried by [[Aishi Manula]] and fell for [[Romain Saïss]] to score the opener. Morocco struggled to break through the Tanzanian defence again until [[Novatus Dismas]] got dismissed in the 70th minute after a foul on [[Azzedine Ounahi]]. Ounahi then struck the second seven minutes later, before [[Youssef En-Nesyri]] secured Morocco's win just three minutes later from a clinical [[Achraf Hakimi]] pass.
+
+<section begin=F1 />{{Football box
+| date = {{Start date|2024|1|17|df=y}}
+| time = 17:00
+| team1 = {{fb-rt|MAR}}
+| score = {{score link|2023 Africa Cup of Nations Group F#Morocco vs Tanzania|3–0}}
+| team2 = {{fb|TAN}}
+| goals1 = 
+*[[Romain Saïss|Saïss]] {{goal|30}}
+*[[Azzedine Ounahi|Ounahi]] {{goal|77}}
+*[[Youssef En-Nesyri|En-Nesyri]] {{goal|80}}
+| goals2 = 
+| stadium = [[Laurent Pokou Stadium]], [[San-Pédro, Ivory Coast|San-Pédro]]
+| attendance = 15,478<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-17/morocco-vs-tanzania/3196949/|title=Morocco vs Tanzania match Report|website=globalsportsarchive.com|access-date=22 January 2024}}</ref>
+| referee = [[Alhadj Allaou Mahamat]] ([[Chadian Football Federation|Chad]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411935
+}}<section end=F1 />
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la  = _mar22h
+ |pattern_b   = _mar22h
+ |pattern_ra  = _mar22h
+ |pattern_sh  = _mar22h
+ |pattern_so  = _mar22hl
+ |leftarm     = FF0000
+ |body        = FF0000
+ |rightarm    = FF0000
+ |shorts      = FFFFFF
+ |socks       = FF0000
+ |title       = Morocco
+}}
+|{{Football kit
+ |pattern_la = _yellowborder
+ |pattern_b  = _tan24a
+ |pattern_ra = _yellowborder
+ |pattern_sh =_shorts 
+ |pattern_so =_tan24h
+ |leftarm    = 0000ff
+ |body       = FFFF00
+ |rightarm   = 0000ff
+ |shorts     = 0000ff
+ |socks      = 0000ff
+ |title      = Tanzania
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Yassine Bounou]]
+|-
+|RB ||'''2''' ||[[Achraf Hakimi]]
+|-
+|CB ||'''5''' ||[[Nayef Aguerd]]
+|-
+|CB ||'''6''' ||[[Romain Saïss]] ([[Captain (association football)|c]]) || {{yel|52}}
+|-
+|LB ||'''27'''||[[Mohamed Chibi]] || {{yel|61}}
+|-
+|CM ||'''4''' ||[[Sofyan Amrabat]]
+|-
+|CM ||'''15'''||[[Selim Amallah]] || || {{suboff|72}}
+|-
+|RW ||'''7''' ||[[Hakim Ziyech]] || || {{suboff|81}}
+|-
+|AM ||'''8''' ||[[Azzedine Ounahi]] || || {{suboff|81}}
+|- 
+|LW ||'''16'''||[[Abdessamad Ezzalzouli]] || || {{suboff|71}}
+|-
+|CF ||'''19'''||[[Youssef En-Nesyri]] || || {{suboff|81}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''21'''||[[Amine Adli]] || || {{subon|71}}
+|-
+|MF ||'''23'''||[[Bilal El Khannous]] || || {{subon|72}}
+|-
+|FW ||'''20'''||[[Ayoub El Kaabi]] || || {{subon|81}}
+|-
+|FW ||'''17'''||[[Sofiane Boufal]] || || {{subon|81}}
+|-
+|MF ||'''10'''||[[Amine Harit]] || || {{subon|81}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|[[Walid Regragui]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''18'''||[[Aishi Manula]]
+|-
+|RB ||'''2''' ||[[Haji Mnoga]]
+|-
+|CB ||'''14'''||[[Bakari Mwamnyeto]]
+|-
+|CB ||'''4''' ||[[Ibrahim Hamad]]
+|-
+|LB ||'''15'''||[[Mohammed Husseini]] || {{yel|90+6}}
+|-
+|CM ||'''3''' ||[[Mudathir Yahya]] || || {{suboff|46}}
+|-
+|CM ||'''7''' ||[[Himid Mao]] || {{yel|22}}
+|-
+|CM ||'''20'''||[[Novatus Dismas]] || {{sent off|2|31|70}}
+|-
+|RW ||'''10'''||[[Mbwana Samatta]] || || {{suboff|69}}
+|- 
+|CF ||'''21'''||[[Charles M'Mombwa]] || {{yel|61}}
+|-
+|LW ||'''11'''||[[Tarryn Allarakhia]] || || {{suboff|38}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''12'''||[[Simon Msuva]] || || {{subon|38}}
+|-
+|MF ||'''8''' ||[[Morice Abraham]] || || {{subon|46}}
+|-
+|MF ||'''6''' ||[[Feisal Salum]] || || {{subon|69}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|ALG}} [[Adel Amrouche]]
+|}
+|}
+
+{| style="width:100%; font-size:90%;"
+|
+'''Man of the Match:'''
+<br />[[Azzedine Ounahi]] (Morocco)
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Jerson dos Santos ([[Angolan Football Federation|Angola]])
+<br />Seydou Tiama ([[Burkinabé Football Federation|Burkina Faso]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Boubou Traoré ([[Malian Football Federation|Mali]])
+<br />'''[[Video assistant referee]]:'''
+<br />[[Mohamed Ashour]] ([[Egyptian Football Association|Egypt]])
+<br />'''[[Video assistant referee#Assistant video assistant referee|Assistant video assistant referees]]:'''
+<br />Maria Rivet ([[Mauritius Football Association|Mauritius]])
+|}
+
+===DR Congo vs Zambia===
+DR Congo and Zambia met for the 14th time, with the previous notable meetings including matches during qualification for the 1972 Africa Cup of Nations, the 1998 World Cup, and the 2000 Africa Cup of Nations. Note that some of the meetings included matches that DR Congo played as Zaire, and the 2-2 draw on Apr. 9, 1997, was notable because it would be the penultimate match Zaire played before being renamed to DR Congo. Both nations also finished in the top two of the qualification group for the 2000 Africa Cup of Nations to advance. 
+
+The match started brightly for the Congolese, but despite their domination, it was Zambia who struck first when a throw-in from [[Patson Daka]] fell to [[Kings Kangwa]] after clumsy efforts to clear by the DRC players. Nonetheless, DR Congo equalized just four minutes later when [[Cédric Bakambu]] unleashed his speed to overcome the Zambian defense before sending the ball through to [[Yoane Wissa]] to score. The final result was a 1–1 draw, the same as their previous competitive meeting in [[2015 Africa Cup of Nations|the 2015 AFCON]].
+
+This also meant Zambia had not won a competitive AFCON match since [[2012 Africa Cup of Nations|2012]], when they had been crowned champions.
+
+<section begin=F2 />{{Football box
+| date = {{Start date|2024|1|17|df=y}}
+| time = 20:00
+| team1 = {{fb-rt|COD}}
+| score = {{score link|2023 Africa Cup of Nations Group F#DR Congo vs Zambia|1–1}}
+| team2 = {{fb|ZAM}}
+| goals1 =
+*[[Yoane Wissa|Wissa]] {{goal|27}}
+| goals2 =
+*[[Kings Kangwa|Kangwa]] {{goal|23}}
+| stadium = [[Laurent Pokou Stadium]], [[San-Pédro, Ivory Coast|San-Pédro]]
+| attendance = 15,478<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-17/dr-congo-vs-zambia/3196950/|title=DR Congo vs Zambia match Report|website=globalsportsarchive.com|access-date=18 January 2024}}</ref>
+| referee = [[Bamlak Tessema Weyesa]] ([[Ethiopian Football Federation|Ethiopia]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411936
+}}<section end=F2 />
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la  = _cod24h
+ |pattern_b   = _cod24h
+ |pattern_ra  = _cod24h
+ |pattern_sh  = _cod24h
+ |pattern_so  = 
+ |leftarm     = 007FFF
+ |body        = 007FFF
+ |rightarm    = 007FFF
+ |shorts      = 007FFF
+ |socks       = 007FFF
+ |title       = DR Congo
+}}
+|{{Football kit
+ |pattern_la = _zam24a
+ |pattern_b  = _zam24a
+ |pattern_ra = _zam24a
+ |pattern_sh = _zam23H
+ |pattern_so =
+ |leftarm    = FF9900
+ |body       = FF9900
+ |rightarm   = FF9900
+ |shorts     = 000000
+ |socks      = FFFFFF
+ |title      = Zambia
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Lionel Mpasi]]
+|-
+|RB ||'''24'''||[[Gédéon Kalulu]] || {{yel|90}}
+|-
+|CB ||'''22'''||[[Chancel Mbemba]] ([[Captain (association football)|c]])
+|-
+|CB ||'''2''' ||[[Henoc Inonga Baka]]
+|-
+|LB ||'''26'''||[[Arthur Masuaku]]
+|-
+|DM ||'''8''' ||[[Samuel Moutoussamy]]
+|-
+|RM ||'''10'''||[[Théo Bongonda]]
+|-
+|CM ||'''14'''||[[Gaël Kakuta]] || || {{suboff|71}}
+|-
+|CM ||'''18'''||[[Charles Pickel]]
+|- 
+|LM ||'''20'''||[[Yoane Wissa]] || || {{suboff|90+3}}
+|-
+|CF ||'''17'''||[[Cédric Bakambu]] || || {{suboff|82}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''13'''||[[Meschak Elia]] || || {{subon|71}}
+|-
+|FW ||'''23'''||[[Simon Banza]] || || {{subon|82}}
+|-
+|FW ||'''11'''||[[Silas Katompa Mvumpa]] || || {{subon|90+3}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Sébastien Desabre]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Lawrence Mulenga]]
+|-
+|RB ||'''26'''||[[Tandi Mwape]]
+|-
+|CB ||'''13'''||[[Stoppila Sunzu]]
+|-
+|CB ||'''4''' ||[[Frankie Musonda]]
+|-
+|LB ||'''23'''||[[Rodrick Kabwe]]
+|-
+|DM ||'''15'''||[[Kelvin Kapumbu]]
+|-
+|RM ||'''8''' ||[[Lubambo Musonda]] || || {{suboff|76}}
+|-
+|CM ||'''22'''||[[Kings Kangwa]] || || {{suboff|90+4}}
+|-
+|CM ||'''12'''||[[Emmanuel Banda]] || {{yel|55}}
+|- 
+|LM ||'''10'''||[[Fashion Sakala]]
+|-
+|CF ||'''20'''||[[Patson Daka]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''9''' ||[[Lameck Banda]] || || {{subon|76}}
+|-
+|MF ||'''11'''||[[Larry Bwalya]] || || {{subon|90+4}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|ISR}} [[Avram Grant]]
+|}
+|}
+
+{| style="width:100%; font-size:90%;"
+|
+'''Man of the Match:'''
+<br />[[Yoane Wissa]] (DR Congo)
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Liban Abdourazak ([[Djiboutian Football Federation|Djibouti]])
+<br />Nouho Ouattara ([[Ivorian Football Federation|Ivory Coast]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Pacifique Ndabihawenimana ([[Football Federation of Burundi|Burundi]])
+<br />'''[[Video assistant referee]]:'''
+<br />[[Dahane Beida]] ([[Football Federation of the Islamic Republic of Mauritania|Mauritania]])
+<br />'''[[Video assistant referee#Assistant video assistant referee|Assistant video assistant referees]]:'''
+<br />Modibo Samaké ([[Malian Football Federation|Mali]])
+|}
+
+===Morocco vs DR Congo===
+Morocco and DR Congo met for the sixth time in the 21st century, and the first time since the [[2017 Africa Cup of Nations]], where DR Congo won 1–0. However, their most recent meetings was at the [[2022 FIFA World Cup qualification (CAF)|2022 FIFA World Cup qualification]], in which Morocco advanced to the [[2022 FIFA World Cup]] after winning 5-2 on aggregate.
+
+The match started well for the Moroccans when a corner by [[Hakim Ziyech]], was volleyed in by [[Achraf Hakimi]] to give Morocco the lead in the sixth minute. However, the Congolese ramped up pressure later on despite Moroccan domination. They got a penalty from [[Selim Amallah]]'s handball in the 36th minute, but [[Cédric Bakambu]] wasted this golden opportunity by putting his penalty wide. However, as the Moroccans started losing momentum in the second half, they were made to pay in the 76th minute when [[Meschak Elia]]'s low cross was met by [[Silas Katompa Mvumpa]] to hit the equalizer.
+
+<section begin=F3 />{{Football box
+| date = {{Start date|2024|1|21|df=y}}
+| time = 14:00
+| team1 = {{fb-rt|MAR}}
+| score = {{score link|2023 Africa Cup of Nations Group F#Morocco vs DR Congo|1–1}}
+| team2 = {{fb|COD}}
+| goals1 = 
+*[[Achraf Hakimi|Hakimi]] {{goal|6}}
+| goals2 = 
+*[[Silas Katompa Mvumpa|Silas]] {{goal|76}}
+| stadium = [[Laurent Pokou Stadium]], [[San-Pédro, Ivory Coast|San-Pédro]]
+| attendance = 13,342<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-21/morocco-vs-dr-congo/3196951/|title=Morocco vs DR Congo match Report|website=globalsportsarchive.com|access-date=22 January 2024}}</ref>
+| referee = [[Peter Waweru]] ([[Football Kenya Federation|Kenya]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411937
+}}<section end=F3 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la  = _mar22h
+ |pattern_b   = _mar22h
+ |pattern_ra  = _mar22h
+ |pattern_sh  = _mar22h
+ |pattern_so  = _mar22hl
+ |leftarm     = FF0000
+ |body        = FF0000
+ |rightarm    = FF0000
+ |shorts      = FFFFFF
+ |socks       = FF0000
+ |title       = Morocco
+}}
+|{{Football kit
+ |pattern_la  = _cod24a
+ |pattern_b   = _cod24a
+ |pattern_ra  = _cod24a
+ |pattern_sh  = _cod24a
+ |pattern_so  = 
+ |leftarm     = FFFFFF
+ |body        = FFFFFF
+ |rightarm    = FFFFFF
+ |shorts      = FFFFFF
+ |socks       = FFFFFF
+ |title      = DR Congo
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Yassine Bounou]]
+|-
+|RB ||'''2''' ||[[Achraf Hakimi]]
+|-
+|CB ||'''5''' ||[[Nayef Aguerd]]
+|-
+|CB ||'''6''' ||[[Romain Saïss]] ([[Captain (association football)|c]])
+|-
+|LB ||'''27'''||[[Mohamed Chibi]] 
+|-
+|DM ||'''4''' ||[[Sofyan Amrabat]]
+|-
+|RM ||'''7''' ||[[Hakim Ziyech]] || {{yel|44}} || {{suboff|73}}
+|-
+|CM ||'''8''' ||[[Azzedine Ounahi]] || || {{suboff|80}}
+|-
+|CM ||'''15'''||[[Selim Amallah]] || {{yel|40}} || {{suboff|64}}
+|- 
+|LW ||'''17'''||[[Sofiane Boufal]] || || {{suboff|64}}
+|-
+|CF ||'''19'''||[[Youssef En-Nesyri]] || || {{suboff|80}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''16'''||[[Abde Ezzalzouli]] || || {{subon|64}}
+|-
+|MF ||'''23'''||[[Bilal El Khannous]] || || {{subon|64}}
+|-
+|FW ||'''21'''||[[Amine Adli]] || {{yel|87}} || {{subon|73}}
+|-
+|FW ||'''20'''||[[Ayoub El Kaabi]] || || {{subon|80}}
+|-
+|MF ||'''10'''||[[Amine Harit]] || || {{subon|80}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|[[Walid Regragui]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Lionel Mpasi]]
+|-
+|RB ||'''24'''||[[Gédéon Kalulu]]
+|-
+|CB ||'''22'''||[[Chancel Mbemba]] ([[Captain (association football)|c]]) || {{yel|90+8}}
+|-
+|CB ||'''2''' ||[[Henoc Inonga Baka]] || || {{suboff|46}}
+|-
+|LB ||'''26'''||[[Arthur Masuaku]] 
+|-
+|DM ||'''8''' ||[[Samuel Moutoussamy]]
+|-
+|RM ||'''10'''||[[Théo Bongonda]] || || {{suboff|52}}
+|-
+|CM ||'''14'''||[[Gaël Kakuta]] || || {{suboff|64}}
+|-
+|CM ||'''18'''||[[Charles Pickel]] || || {{suboff|89}}
+|- 
+|LM ||'''20'''||[[Yoane Wissa]]  
+|-
+|CF ||'''17'''||[[Cédric Bakambu]] || || {{suboff|52}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|DF ||'''5''' ||[[Dylan Batubinsika]] || || {{subon|46}}
+|-
+|FW ||'''13'''||[[Meschak Elia]] || || {{subon|52}}
+|-
+|FW ||'''19'''||[[Fiston Mayele]] || || {{subon|52}}
+|-
+|FW ||'''11'''||[[Silas Katompa Mvumpa]] || || {{subon|64}}
+|-
+|MF ||'''6''' ||[[Aaron Tshibola]] || || {{subon|89}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Sébastien Desabre]]
+|}
+|}
+
+'''Man of the Match:'''
+<br />[[Silas Katompa Mvumpa]] (DR Congo)
+
+===Zambia vs Tanzania===
+This was the teams’ first meeting at an AFCON tournament, with their most recent competitive meeting being in the [[2020 African Nations Championship]].
+
+In the 11th minute [[Simon Msuva]] capitalised from teammate [[Mbwana Samatta]]'s wicked cross to give Tanzania the lead, and things appeared to get even better for the Tanzanians when Zambia's captain [[Rodrick Kabwe]] committed a brutal foul against Samatta in the midfield at the 44th minute, resulting in his dismissal after two yellow cards. However, Tanzania failed to capitalise from that advantage and they were undone in the 88th minute when [[Patson Daka]], from [[Clatous Chama]]'s corner, struck late with a header to kill off Tanzania's hopes for a maiden AFCON victory.
+
+<section begin=F4 />{{Football box
+| date = {{Start date|2024|1|21|df=y}}
+| time = 17:00
+| team1 = {{fb-rt|ZAM}}
+| score = {{score link|2023 Africa Cup of Nations Group F#Zambia vs Tanzania|1–1}}
+| team2 = {{fb|TAN}}
+| goals1 = 
+*[[Patson Daka|Daka]] {{goal|88}}
+| goals2 = 
+*[[Simon Msuva|Msuva]] {{goal|11}}
+| stadium = [[Laurent Pokou Stadium]], [[San-Pédro, Ivory Coast|San-Pédro]]
+| attendance = 13,342<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-21/zambia-vs-tanzania/3196952/|title=Zambia vs Tanzania match Report|website=globalsportsarchive.com|access-date=22 January 2024}}</ref>
+| referee = [[Djindo Louis Houngnandande]] ([[Benin Football Federation|Benin]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411938
+}}<section end=F4 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la  = _zam24t
+ |pattern_b   = _zam24t
+ |pattern_ra  = _zam24t
+ |pattern_sh  = _zam23T
+ |pattern_so  = 
+ |leftarm     = FFFFFF
+ |body        = FFFFFF
+ |rightarm    = FFFFFF
+ |shorts      = FFFFFF
+ |socks       = FFFFFF
+ |title       = Zambia
+}}
+|{{Football kit
+ |pattern_la  = _tan24h
+ |pattern_b   = _tan24h
+ |pattern_ra  = _tan24h
+ |leftarm     = 0000FF
+ |body        = 0000FF
+ |rightarm    = 0000FF
+ |shorts      = 0000FF
+ |socks       = 0000FF
+ |title       = Tanzania
+|pattern_so=_tan24h}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Lawrence Mulenga]]
+|-
+|RB ||'''3''' ||[[Benedict Chepeshi]] || || {{suboff|87}}
+|-
+|CB ||'''13'''||[[Stoppila Sunzu]]
+|-
+|CB ||'''4''' ||[[Frankie Musonda]]
+|-
+|LB ||'''23'''||[[Rodrick Kabwe]] ([[Captain (association football)|c]]) || {{sent off|2|33|44}}
+|-
+|RM ||'''10'''||[[Fashion Sakala]] || || {{suboff|76}}
+|-
+|CM ||'''22'''||[[Kings Kangwa]] || || {{suboff|76}}
+|-
+|CM ||'''15'''||[[Kelvin Kapumbu]] || || {{suboff|46}}
+|-
+|CM ||'''12'''||[[Emmanuel Banda]]
+|- 
+|LM ||'''9''' ||[[Lameck Banda]] || {{yel|45}} || {{suboff|86}}
+|-
+|CF ||'''20'''||[[Patson Daka]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''8''' ||[[Lubambo Musonda]] || || {{subon|46}}
+|-
+|FW ||'''25'''||[[Kennedy Musonda]] || || {{subon|76}}
+|-
+|MF ||'''17'''||[[Clatous Chama]] || || {{subon|76}}
+|-
+|MF ||'''14'''||[[Edward Chilufya]] || || {{subon|86}}
+|-
+|DF ||'''5''' ||[[Miguel Chaiwa]] || || {{subon|87}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|ISR}} [[Avram Grant]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''18'''||[[Aishi Manula]]
+|-
+|RB ||'''2''' ||[[Haji Mnoga]] || || {{suboff|46}}
+|-
+|CB ||'''14'''||[[Bakari Mwamnyeto]]
+|-
+|CB ||'''4''' ||[[Ibrahim Hamad]]
+|-
+|LB ||'''15'''||[[Mohamed Husseini]] 
+|-
+|CM ||'''7''' ||[[Himid Mao]] || || {{suboff|70}}
+|-
+|CM ||'''19'''||[[Mzamiru Yassin]]
+|-
+|RW ||'''12'''||[[Simon Msuva]]
+|-
+|AM ||'''6''' ||[[Feisal Salum]] || || {{suboff|59}}
+|- 
+|LW ||'''22'''||[[Kibu Denis]] || || {{suboff|70}}
+|-
+|CF ||'''10'''||[[Mbwana Samatta]] ([[Captain (association football)|c]])
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|DF ||'''16'''||[[Lusajo Mwaikenda]] || || {{subon|46}}
+|-
+|MF ||'''8''' ||[[Morice Abraham]] || || {{subon|59}}
+|-
+|FW ||'''21'''||[[Charles M'Mombwa]] || || {{subon|70}}
+|-
+|MF ||'''3''' ||[[Mudathir Yahya]] || || {{subon|70}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|ALG}} [[Adel Amrouche]]
+|}
+|}
+
+'''Man of the Match:'''
+<br />[[Patson Daka]] (Zambia)
+
+===Tanzania vs DR Congo===
+It was the two countries' first ever AFCON meeting.
+
+In a match mostly dominated by dull displays from both sides, [[Gaël Kakuta]] tried his luck with a set-piece, while [[Feisal Salum]] and [[Mbwana Samatta]] attempted to get to the scoresheet to no avail. Other attempts by [[Fiston Mayele]] and [[Simon Msuva]] also didn't produce results, as Tanzania and DR Congo were forced to settle for a draw.
+
+The draw meant that Tanzania failed to register a single win in all three AFCON tournaments in which they had played, while DR Congo unimpressively advanced to the knockout stage to face Egypt, who had, like the Congolese, progressed despite remaining winless in their group.
+
+<section begin=F5 />{{Football box
+| date = {{Start date|2024|1|24|df=y}}
+| time = 20:00
+| team1 = {{fb-rt|TAN}}
+| score = {{score link|2023 Africa Cup of Nations Group F#Tanzania vs DR Congo|0–0}}
+| team2 = {{fb|COD}}
+| goals1 = 
+| goals2 = 
+| stadium = [[Amadou Gon Coulibaly Stadium]], [[Korhogo]]
+| attendance = 12,847<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-24/tanzania-vs-dr-congo/3196953/ |title=Tanzania vs DR Congo match Report|website=globalsportsarchive.com|access-date=26 January 2024}}</ref>
+| referee = [[Amin Omar]] ([[Egyptian Football Association|Egypt]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411939
+}}<section end=F5 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la  =_tan24t 
+ |pattern_b   =_tan24t 
+ |pattern_ra  =_tan24t 
+ |pattern_sh  = 
+ |pattern_so  =_tan24t 
+ |leftarm     = 000000
+ |body        = 000000
+ |rightarm    = 000000
+ |shorts      = 000000
+ |socks       = 000000
+ |title       = Tanzania
+}}
+|{{Football kit
+ |pattern_la  = _cod24a
+ |pattern_b   = _cod24a
+ |pattern_ra  = _cod24a
+ |pattern_sh  = _cod24a
+ |pattern_so  = 
+ |leftarm     = FFFFFF
+ |body        = FFFFFF
+ |rightarm    = FFFFFF
+ |shorts      = FFFFFF
+ |socks       = FFFFFF
+ |title       = DR Congo
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''18'''||[[Aishi Manula]]
+|-
+|RB ||'''16'''||[[Lusajo Mwaikenda]]
+|-
+|CB ||'''14'''||[[Bakari Mwamnyeto]]
+|-
+|CB ||'''4''' ||[[Ibrahim Hamad]]
+|-
+|LB ||'''15'''||[[Mohammed Husseini]] 
+|-
+|DM ||'''20'''||[[Novatus Dismas]]  
+|-
+|RM ||'''2''' ||[[Haji Mnoga]]
+|-
+|CM ||'''7''' ||[[Himid Mao]] || || {{suboff|71}}  
+|-
+|CM ||'''6''' ||[[Feisal Salum]] || || {{suboff|79}}
+|- 
+|LM ||'''12'''||[[Simon Msuva]] || || {{suboff|86}}  
+|-
+|CF ||'''10'''||[[Mbwana Samatta]] ([[Captain (association football)|c]]) || || {{suboff|86}} 
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''19'''||[[Mzamiru Yassin]] || || {{subon|71}}
+|-
+|FW ||'''22'''||[[Kibu Denis]] || || {{subon|79}}
+|-
+|MF ||'''8''' ||[[Morice Abraham]] || || {{subon|86}}
+|-
+|MF ||'''21'''||[[Charles M'Mombwa]] || || {{subon|86}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|[[Hemed Suleiman Ali]]{{refn|group=note|Tanzania manager [[Adel Amrouche]] was suspended for eight matches due to his offensive comments.<ref>https://www.cafonline.com/inside-caf/news/caf-disciplinary-board-outcomes-on-tanzania-fa-and-coach-adel-amrouche/</ref> Assistant manager [[Hemed Suleiman Ali]] filled in as manager.}}
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Lionel Mpasi]]
+|-
+|RB ||'''24'''||[[Gédéon Kalulu]]
+|-
+|CB ||'''22'''||[[Chancel Mbemba]] ([[Captain (association football)|c]]) 
+|-
+|CB ||'''5''' ||[[Dylan Batubinsika]]
+|-
+|LB ||'''26'''||[[Arthur Masuaku]]
+|-
+|CM ||'''18'''||[[Charles Pickel]] || {{yel|9}} || {{suboff|68}}
+|-
+|CM ||'''8''' ||[[Samuel Moutoussamy]]
+|-
+|RW ||'''11'''||[[Silas Katompa Mvumpa]] || || {{suboff|53}}
+|-
+|AM ||'''14'''||[[Gaël Kakuta]] || || {{suboff|87}}
+|- 
+|LW ||'''20'''||[[Yoane Wissa]] 
+|-
+|CF ||'''19'''||[[Fiston Mayele]] || || {{suboff|68}} 
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''13'''||[[Meschak Elia]] || || {{subon|53}}
+|-
+|MF ||'''6''' ||[[Aaron Tshibola]] || || {{subon|68}}
+|-
+|FW ||'''17'''||[[Cédric Bakambu]] || || {{subon|68}}
+|-
+|MF ||'''25'''||[[Omenuke Mfulu]] || || {{subon|87}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|FRA}} [[Sébastien Desabre]]
+|}
+|}
+
+{| style="width:100%; font-size:90%;"
+|
+'''Man of the Match:'''
+<br />[[Gaël Kakuta]] (DR Congo)
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Attia Amsaaed Attia ([[Libyan Football Federation|Libya]])
+<br />Khalil Hassani ([[Tunisian Football Federation|Tunisia]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Mahmoud El-Banna ([[Egyptian Football Association|Egypt]])
+<br />'''[[Video assistant referee]]:'''
+<br />[[Mahmoud Ashour]] ([[Egyptian Football Association|Egypt]])
+<br />'''[[Video assistant referee#Assistant video assistant referee|Assistant video assistant referees]]:'''
+<br />Mohamed Adel ([[Egyptian Football Association|Egypt]])
+|}
+
+===Zambia vs Morocco===
+The two teams had never met at an AFCON tournament, with the most recent competitive meeting coming in the [[2020 African Nations Championship]], where Morocco had eliminated Zambia 3–1 in the knockout stage. 
+
+A draw would have sufficed for Zambia to have progressed ahead of Ivory Coast as one of the top four third-placed teams, but [[Hakim Ziyech]] scored the only goal to eliminate Zambia from the tournament.
+<section begin=F6 />{{Football box
+| date = {{Start date|2024|1|24|df=y}}
+| time = 20:00
+| team1 = {{fb-rt|ZAM}}
+| score = {{score link|2023 Africa Cup of Nations Group F#Zambia vs Morocco|0–1}}
+| team2 = {{fb|MAR}}
+| goals1 = 
+| goals2 = 
+*[[Hakim Ziyech|Ziyech]] {{goal|37}}
+| stadium = [[Laurent Pokou Stadium]], [[San-Pédro, Ivory Coast|San-Pédro]]
+| attendance = 15,231<ref>{{cite web |url=https://globalsportsarchive.com/match/soccer/2024-01-24/zambia-vs-morocco/3196954/ |title=Zambia vs Morocco match Report|website=globalsportsarchive.com|access-date=26 January 2024}}</ref>
+| referee = [[Patrice Tanguy]] ([[Gabonese Football Federation|Gabon]])
+| report = https://www.cafonline.com/caf-africa-cup-of-nations/match-centre?competition=190&season=2023&match=2411940
+}}<section end=F6 />
+
+{| width=92%
+|-
+|{{Football kit
+ |pattern_la = _zam24a
+ |pattern_b  = _zam24a
+ |pattern_ra = _zam24a
+ |pattern_sh = _zam23H
+ |pattern_so =
+ |leftarm    = FF9900
+ |body       = FF9900
+ |rightarm   = FF9900
+ |shorts     = 000000
+ |socks      = FFFFFF
+ |title      = Zambia
+}}
+|{{Football kit
+ |pattern_la  = _mar22a
+ |pattern_b   = _mar22a
+ |pattern_ra  = _mar22a
+ |pattern_sh  = _mar22a
+ |pattern_so  = _mar22hl
+ |leftarm     = FFFFFF
+ |body        = FFFFFF
+ |rightarm    = FFFFFF
+ |shorts      = FFFFFF
+ |socks       = FF0000
+ |title       = Morocco
+}}
+|}
+
+{| width="100%"
+|valign="top" width="40%"|
+{| style="font-size:90%" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''16'''||[[Lawrence Mulenga]]
+|-
+|RB ||'''26'''||[[Tandi Mwape]] || || {{suboff|83}}
+|-
+|CB ||'''13'''||[[Stoppila Sunzu]]
+|-
+|CB ||'''4''' ||[[Frankie Musonda]]
+|-
+|LB ||'''8''' ||[[Lubambo Musonda]] ([[Captain (association football)|c]]) 
+|-
+|CM ||'''5''' ||[[Fashion Sakala]]  
+|-
+|CM ||'''12'''||[[Emmanuel Banda]]
+|- 
+|RW ||'''14'''||[[Edward Chilufya]] || || {{suboff|71}}
+|-
+|AM ||'''25'''||[[Kennedy Musonda]] || || {{suboff|71}} 
+|-
+|LW ||'''9''' ||[[Lameck Banda]] 
+|-
+|CF ||'''20'''||[[Patson Daka]]
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''22'''||[[Kings Kangwa]] || || {{subon|71}}
+|-
+|FW ||'''10'''||[[Fashion Sakala]] || || {{subon|71}}
+|-
+|MF ||'''17'''||[[Clatous Chama]] || || {{subon|83}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|{{flagicon|ISR}} [[Avram Grant]]
+|}
+|valign="top"|
+|valign="top" width="50%"|
+{| style="font-size:90%; margin:auto" cellspacing="0" cellpadding="0"
+|-
+!width=25| !!width=25|
+|-
+|GK ||'''1''' ||[[Yassine Bounou]]
+|-
+|RB ||'''2''' ||[[Achraf Hakimi]] || {{yel|81}}
+|-
+|CB ||'''5''' ||[[Nayef Aguerd]]
+|-
+|CB ||'''13'''||[[Yunis Abdelhamid]]
+|-
+|LB ||'''25'''||[[Yahia Attiyat Allah]]
+|-
+|DM ||'''4''' ||[[Sofyan Amrabat]]
+|-
+|RM ||'''7''' ||[[Hakim Ziyech]] ([[Captain (association football)|c]]) || || {{suboff|45}} 
+|-
+|CM ||'''8''' ||[[Azzedine Ounahi]] || || {{suboff|84}}
+|-
+|CM ||'''11'''||[[Ismael Saibari]] || || {{suboff|68}}
+|- 
+|LM ||'''17'''||[[Sofiane Boufal]] || || {{suboff|68}} 
+|-
+|CF ||'''20'''||[[Ayoub El Kaabi]] || || {{suboff|73}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|FW ||'''21'''||[[Amine Adli]] || || {{subon|45}}
+|-
+|MF ||'''24'''||[[Amir Richardson]] || || {{subon|68}}
+|-
+|FW ||'''16'''||[[Abde Ezzalzouli]] || || {{subon|68}}
+|-
+|FW ||'''9''' ||[[Tarik Tissoudali]] || || {{subon|73}}
+|-
+|MF ||'''23'''||[[Bilal El Khannous]] || || {{subon|84}}
+|-
+|colspan=3|'''Coach:'''
+|-
+|colspan=3|[[Walid Regragui]]
+|}
+|}
+
+{| style="width:100%; font-size:90%;"
+|
+'''Man of the Match:'''
+<br />[[Sofyan Amrabat]] (Morocco)
+
+'''[[Assistant referee (association football)|Assistant referees]]:'''
+<br />Dimbiniaina Andriatianarivelo ([[Malagasy Football Federation|Madagascar]])
+<br />Koffi Ahonto ([[Togolese Football Federation|Togo]])
+<br />'''[[Assistant referee (association football)#Fourth official|Fourth official]]:'''
+<br />Abdel Aziz Bouh ([[Football Federation of the Islamic Republic of Mauritania|Mauritania]])
+<br />'''[[Video assistant referee]]:'''
+<br />[[Abongile Tom]] ([[South African Football Association|South Africa]])
+<br />'''[[Video assistant referee#Assistant video assistant referee|Assistant video assistant referees]]:'''
+<br />Carine Atezambong ([[Cameroonian Football Federation|Cameroon]])
+|}
+
+==Discipline==
+Fair play points would have been used as tiebreakers if the overall and head-to-head records of teams were tied. These were calculated based on yellow and red cards received in all group matches as follows:
+
+Only one of the above deductions was applied to a player in a single match.
+
+{| class="wikitable sortable" style="text-align:center;"
+|-
+!rowspan=2|Team
+!colspan=4 style="border-left:3px solid gray"|Match 1
+!colspan=4 style="border-left:3px solid gray"|Match 2
+!colspan=4 style="border-left:3px solid gray"|Match 3
+!rowspan=2 style="border-left:3px solid gray"|Points
+|-
+!style="border-left:3px solid gray"|{{yel}}
+!{{sent off|2}}
+!{{sent off|0}}
+!{{sent off|1}}
+!style="border-left:3px solid gray"|{{yel}}
+!{{sent off|2}}
+!{{sent off|0}}
+!{{sent off|1}}
+!style="border-left:3px solid gray"|{{yel}}
+!{{sent off|2}}
+!{{sent off|0}}
+!{{sent off|1}}
+|-
+|align=left|{{fb|MAR}}
+|style="border-left:3px solid gray"| 2 ||  ||  || 
+|style="border-left:3px solid gray"| 3 ||  ||  || 
+|style="border-left:3px solid gray"| 1 ||  ||  || 
+!style="border-left:3px solid gray"| –6
+|-
+|align=left|{{fb|COD}}
+|style="border-left:3px solid gray"| 1 ||  ||  || 
+|style="border-left:3px solid gray"| 1 ||  ||  ||  
+|style="border-left:3px solid gray"| 1 ||  ||  || 
+!style="border-left:3px solid gray"| –3
+|-
+|align=left|{{fb|ZAM}}
+|style="border-left:3px solid gray"| 1 ||  ||  || 
+|style="border-left:3px solid gray"| 1 || 1 ||  || 
+|style="border-left:3px solid gray"|  ||  ||  || 
+!style="border-left:3px solid gray"| –5
+|-
+|align=left|{{fb|TAN}}
+|style="border-left:3px solid gray"| 3 || 1 ||  || 
+|style="border-left:3px solid gray"|  ||  ||  || 
+|style="border-left:3px solid gray"|  ||  ||  || 
+!style="border-left:3px solid gray"| –6
+|}
+
+==Notes==
+{{reflist|group=note}}
+
+==References==
+{{reflist}}
+
+==External links==
+* {{Official website|https://www.cafonline.com/caf-africa-cup-of-nations/}}
+
+{{2023 Africa Cup of Nations}}
+
+{{DEFAULTSORT:Group F}}
+[[Category:2023 Africa Cup of Nations]]

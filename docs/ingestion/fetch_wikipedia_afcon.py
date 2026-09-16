@@ -1,6 +1,7 @@
 """Fetch the Wikipedia article wikitext for a set of AFCON tournaments.
 
     python3 fetch_wikipedia_afcon.py 1996 1998
+    python3 fetch_wikipedia_afcon.py "2023 Africa Cup of Nations Group F"
 
 Wikitext, not rendered HTML, because the match data lives in `{{football box}}`
 templates whose arguments are exactly the fields we want -- date, teams, score
@@ -29,6 +30,23 @@ def fetch(url):
         return r.read().decode("utf-8", "replace")
 
 
+def page(title):
+    """Fetch one article by its exact title, for pages that are not a whole
+    tournament -- the modern articles keep their match reports on group
+    subpages, e.g. "2023 Africa Cup of Nations Group F"."""
+    out = OUT / (title.replace("/", "_") + ".wikitext")
+    if out.exists() and out.stat().st_size > 2000:
+        print(f"  {title}: already have {out.name} ({out.stat().st_size} bytes)")
+        return
+    url = "https://en.wikipedia.org/w/index.php?" + urllib.parse.urlencode(
+        {"title": title.replace(" ", "_"), "action": "raw"})
+    text = fetch(url)
+    if len(text) < 500 or text.lstrip().upper().startswith("#REDIRECT"):
+        raise SystemExit(f"{title}: redirect or stub ({len(text)} bytes)")
+    out.write_text(text)
+    print(f"  {title}: wrote {out.name} ({len(text)} bytes)")
+
+
 def tournament(year):
     out = OUT / f"{year}.wikitext"
     if out.exists() and out.stat().st_size > 5000:
@@ -55,10 +73,14 @@ def tournament(year):
 
 def main(years):
     OUT.mkdir(parents=True, exist_ok=True)
-    for i, year in enumerate(years):
+    for i, arg in enumerate(years):
         if i:
             time.sleep(1)                     # be a good citizen
-        tournament(year)
+        # A bare year means a whole tournament; anything else is an exact title.
+        if arg.isdigit():
+            tournament(arg)
+        else:
+            page(arg)
 
 
 if __name__ == "__main__":
