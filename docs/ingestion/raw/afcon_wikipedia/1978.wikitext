@@ -1,0 +1,487 @@
+{{Short description|11th edition of the Africa Cup of Nations}}
+{{Use dmy dates|date=September 2021}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year = 1978
+| other_titles = 
+| image =
+| size =
+| caption =
+| country = Ghana
+| dates = 5–16 March
+| num_teams = 8
+| venues = 2
+| cities = 2
+| champion = Ghana
+| count = 3
+| second = Uganda
+| third = Nigeria
+| fourth = Tunisia
+| fourth-flagvar = 1959
+| matches = 16
+| goals = 38
+| attendance =
+| top_scorer = {{flagicon|GHA}} [[Opoku Afriyie]] <br> {{flagicon|NGA}} [[Segun Odegbami]] <br> {{flagicon|UGA}} [[Phillip Omondi]] <br> (3 goals each)
+| player = {{flagicon|GHA}} [[Karim Abdul Razak]]
+| prevseason = [[1976 African Cup of Nations|1976]]
+| nextseason = [[1980 African Cup of Nations|1980]]
+| updated =
+}}
+The '''1978 African Cup of Nations''' was the eleventh edition of the [[Africa Cup of Nations]], the [[Association football|football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by [[Accra]] and [[Kumasi]], Ghana. The format of the [[competition]] changed from [[1976 African Cup of Nations|1976]]: the field of eight teams was still split into two groups of four, but the final group stage was eliminated in favor of the knockout semifinals used in tournaments prior to 1976 (except 1959). [[Ghana national football team|Ghana]] won its third championship, beating [[Uganda national football team|Uganda]] in the final 2−0.
+
+[[Ivory Coast national football team|Ivory Coast]] and [[Mali national football team|Mali]] were both disqualified in the second round of qualification: Ivory Coast for using an ineligible player in the second leg, and Mali after stadium security and police assaulted match officials during the first leg.
+
+Since Mali had received a first round walkover after Niger failed to appear, [[Burkina Faso national football team|Upper Volta]], who had been beaten by the Ivory Coast in the first round, were given their place in the final tournament.
+
+== Qualified teams ==
+{{main|1978 African Cup of Nations qualification}}
+
+The 8 qualified teams are:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|GHA}} || Hosts ||  || {{sort|01|4}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]])
+|-
+| {{fb|MAR}} || Holders || {{dts|14 March 1976}} || {{sort|05|2}} ([[1972 African Cup of Nations|1972]], '''[[1976 African Cup of Nations|1976]]''')
+|-
+| {{fb|NGR}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|26 June 1977}} || {{sort|05|2}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]])
+|-
+| {{fb|UGA}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|26 June 1977}} || {{sort|03|4}} ([[1962 African Cup of Nations|1962]], [[1968 African Cup of Nations|1968]], [[1974 African Cup of Nations|1974]], [[1976 African Cup of Nations|1976]])
+|-
+| {{fb|ZAM|1964}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|26 June 1977}} || {{sort|05|1}} ([[1974 African Cup of Nations|1974]])
+|-
+| {{fb|Upper Volta}}{{efn|Ivory Coast originally qualified by beating Mali 2–1 on aggregate, but both teams were disqualified: Ivory Coast for fielding an ineligible player in the second leg, and Mali due to police and stadium security assaulting the match officials during the first leg. Upper Volta, who had lost to Ivory Coast in the previous round, were given their place in the finals<ref name=":0">{{Cite web|url=https://www.rsssf.org/tables/78a.html|title=African Nations Cup 1978|website=[[RSSSF]]|access-date=2018-06-04}}</ref>.}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|17 July 1977}} || {{sort|06|0}} (debut)
+|-
+| {{fb|CGO|1970}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|31 July 1977}} || {{sort|03|3}} ([[1968 African Cup of Nations|1968]] '''[[1972 African Cup of Nations|1972]]''', [[1974 African Cup of Nations|1974]])
+|-
+| {{fb|TUN|1959}} || [[1978 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|16 October 1977}} || {{sort|04|3}} ([[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], ''[[1965 African Cup of Nations|1965]]'')
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{Main|1978 African Cup of Nations squads}}
+
+== Venues ==
+The competition was played in two venues in [[Accra]] and [[Kumasi]].
+
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Accra]]
+| rowspan="8" | {{location map+|Ghana|float=center|width=270|caption=|places=
+{{location map~|Ghana|lat=5.55|long= -0.2|label='''[[Accra]]'''|position=bottom}}
+{{location map~|Ghana|lat=6.666667|long=-1.616667|label='''[[Kumasi]]'''|position=bottom}}
+}}
+|-
+| [[Accra Sports Stadium]]
+|-
+| Capacity: '''40,000'''
+|-
+| [[File:Ohene Djan Sports Stadium, Accra.jpg|150px]]
+|-
+![[Kumasi]]
+|-
+|[[Kumasi Sports Stadium]]
+|-
+|Capacity: '''40,500'''
+|-
+|[[File:Baba Yara Sports Stadium in Kumasi.jpg|150px]]
+|}
+</div>
+
+== Group stage ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Goal difference in all group matches
+# Greater number of goals scored in all group matches
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1978 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =GHA, NGA, ZAM, UVO
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_GHA=2 |draw_GHA=1 |loss_GHA=0 |gf_GHA=6 |ga_GHA=2 |status_GHA=H
+|win_NGA=1 |draw_NGA=2 |loss_NGA=0 |gf_NGA=5 |ga_NGA=3
+|win_ZAM=1 |draw_ZAM=1 |loss_ZAM=1 |gf_ZAM=3 |ga_ZAM=2
+|win_UVO=0 |draw_UVO=0 |loss_UVO=3 |gf_UVO=2 |ga_UVO=9
+
+<!--Team definitions-->
+|name_GHA={{fb|GHA}}
+|name_NGA={{fb|NGA}}
+|name_ZAM={{fb|ZAM|1964}}
+|name_UVO={{fb|Upper Volta}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1978 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 5 March 1978
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 2–1
+| team2 = {{fb|ZAM|1964}}
+| goals1 = [[Opoku Afriyie|Afriyie]] {{goal|21}} <br> [[Karim Abdul Razak|Abdul Razak]] {{goal|55}}
+| goals2 = [[Obby Kapita|Kapita]] {{goal|8}}
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:50000}}
+| referee = [[Suleiman El Naim]] ([[Sudan Football Association|Sudan]])
+| report = [http://www.11v11.com/matches/ghana-v-zambia-05-march-1978-234626 Report]
+}}
+----
+{{football box
+| date = 5 March 1978
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 4–2
+| team2 = {{fb|Upper Volta}}
+| goals1 = [[Christian Chukwu|Chukwu]] {{goal|17}} <br> [[Adokiye Amiesimaka|Amiesimaka]] {{goal|31}} <br> [[Segun Odegbami|Odegbami]] {{goal|44||82}}
+| goals2 = [[Hubert Hien|Hien]] {{goal|50}} <br> [[Mamadaou Koïta|Koïta]] {{goal|52}}
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:50000}}
+| referee = ... Sylla
+| report = [http://www.11v11.com/matches/upper-volta-v-nigeria-05-march-1978-234625 Report]
+}}
+----
+{{football box
+| date = 8 March 1978
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 2–0
+| team2 = {{fb|Upper Volta}}
+| goals1 = [[Patrick Phiri|P. Phiri]] {{goal|20}} <br> [[Bizwell Phiri|B. Phiri]] {{goal|88}}
+| goals2 =
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:60000}}
+| referee = C. Monty
+| report = [http://www.11v11.com/matches/zambia-v-upper-volta-08-march-1978-234634 Report]
+}}
+----
+{{football box
+| date = 8 March 1978
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 1–1
+| team2 = {{fb|GHA}}
+| goals1 = [[Segun Odegbami|Odegbami]] {{goal|33}}
+| goals2 = [[Willie Klutse|Klutse]] {{goal|76}}
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:60000}}
+| referee = 
+| report = [http://www.11v11.com/matches/ghana-v-nigeria-08-march-1978-234633 Report]
+}}
+----
+{{football box
+| date = 10 March 1978
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 0–0
+| team2 = {{fb|NGA}}
+| goals1 =
+| goals2 =
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:25000}}
+| referee = 
+| report = [http://www.11v11.com/matches/zambia-v-nigeria-10-march-1978-234637 Report]
+}}
+----
+{{football box
+| date = 10 March 1978
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 3–0
+| team2 = {{fb|Upper Volta}}
+| goals1 = [[George Alhassan|Alhassan]] {{goal|3||59}} <br> [[Mohammed Ahmed (Polo)|Polo]] {{goal|52}}
+| goals2 =
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:25000}}
+| referee = [[Pierre Mutombo]] ([[Congolese Association Football Federation|Zaïre]])
+| report = [http://www.11v11.com/matches/ghana-v-upper-volta-10-march-1978-234638 Report]
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1978 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =UGA, TUN, MAR, CGO
+|hth_UGA=Tied on overall points. Overall goal difference: Uganda +3, Tunisia +2.
+|hth_TUN=UGA
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_UGA=2 |draw_UGA=0 |loss_UGA=1 |gf_UGA=7 |ga_UGA=4
+|win_TUN=1 |draw_TUN=2 |loss_TUN=0 |gf_TUN=4 |ga_TUN=2
+|win_MAR=1 |draw_MAR=1 |loss_MAR=1 |gf_MAR=2 |ga_MAR=4
+|win_CGO=0 |draw_CGO=1 |loss_CGO=2 |gf_CGO=1 |ga_CGO=4
+
+<!--Team definitions-->
+|name_UGA={{fb|UGA}}
+|name_TUN={{fb|TUN|1959}}
+|name_MAR={{fb|MAR}}
+|name_CGO={{fb|CGO|1970}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1978 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 6 March 1978
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 1–1
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Hassan Amcharrat|Acila]] {{goal|29}}
+| goals2 = [[Ali Kaabi|Kaabi]] {{goal|63}}
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = 
+| referee = [[Gebreyesus Tesfaye]] ([[Ethiopian Football Federation|Ethiopia]])
+| report = [http://www.11v11.com/matches/tunisia-v-morocco-06-march-1978-234628 Report]
+}}
+----
+{{football box
+| date = 6 March 1978
+| time = 
+| team1 = {{fb-rt|UGA}}
+| score = 3–1
+| team2 = {{fb|CGO|1970}}
+| goals1 = [[Phillip Omondi|Omondi]] {{goal|1}} <br> [[Edward Semwanga|Semwanga]] {{goal|31}} <br> [[Godfrey Kisitu|Kisitu]] {{goal|81}}
+| goals2 = [[Jacques Mamounoubala|Mamounoubala]] {{goal|80}}
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = 
+| referee = [[Hussein Fahmy]] ([[Egyptian Football Association|Egypt]])
+| report = [http://www.11v11.com/matches/uganda-v-congo-06-march-1978-234627 Report]
+}}
+----
+{{football box
+| date = 9 March 1978
+| time = 
+| team1 = {{fb-rt|TUN|1959}}
+| score = 3–1
+| team2 = {{fb|UGA}}
+| goals1 = [[Mohsen Labidi|Labidi]] {{goal|36}} <br> [[Abderraouf Ben Aziza|Ben Aziza]] {{goal|38||83}}
+| goals2 = [[Samuel Musenze|Musenze]] {{goal|71}}
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = {{formatnum:50000}}
+| referee = [[Abdelkader Aouissi]] ([[Algerian Football Federation|Algeria]])
+| report = [http://www.11v11.com/matches/uganda-v-tunisia-09-march-1978-234636 Report]
+}}
+----
+{{football box
+| date = 9 March 1978
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 1–0
+| team2 = {{fb|CGO|1970}}
+| goals1 = [[Hassan Amcharrat|Acila]] {{goal|28}}
+| goals2 =
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = {{formatnum:50000}}
+| referee = [[Youssou N'Diaye]] ([[Senegal Football Association|Senegal]])
+| report = [http://www.11v11.com/matches/morocco-v-congo-09-march-1978-234635 Report]
+}}
+----
+{{football box
+| date = 11 March 1978
+| time = 
+| team1 = {{fb-rt|CGO|1970}}
+| score = 0–0
+| team2 = {{fb|TUN|1959}}
+| goals1 =
+| goals2 =
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = {{formatnum:20000}}
+| referee = [[Salem Mohamed Adal]] ([[Libyan Football Federation|Libya]])
+| report = [http://www.11v11.com/matches/tunisia-v-congo-11-march-1978-234640 Report]
+}}
+----
+{{football box
+| date = 11 March 1978
+| time = 
+| team1 = {{fb-rt|UGA}}
+| score = 3–0
+| team2 = {{fb|MAR}}
+| goals1 = [[Godfrey Kisitu|Kisitu]] {{goal|13}} <br> [[Moses Msereko|Nsereko]] {{goal|32}} <br> [[Phillip Omondi|Omondi]] {{goal|36}}
+| goals2 =
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = {{formatnum:20000}}
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = [http://www.11v11.com/matches/uganda-v-morocco-11-march-1978-234639 Report]
+}}
+
+== Knockout stage ==
+{{Round4-with third
+<!--Date-Place|Team 1|Score 1|Team 2|Score 2-->
+<!--semi-finals-->
+| 14 March – [[Accra]] | '''{{fb|GHA}}''' | '''1''' | {{fb|TUN|1959}} | 0
+| 14 March – [[Kumasi]] | '''{{fb|UGA}}''' | '''2''' | {{fb|NGR}} | 1
+<!--final-->
+| 16 March – [[Accra]] | '''{{fb|GHA}}''' | '''2''' | {{fb|UGA}} | 0
+<!--third place-->
+| 16 March – [[Accra]] | {{fb|TUN|1959}} | 1 | '''{{fb|NGR}}''' | '''1'''<sup>1</sup>
+}}
+
+=== Semi-finals ===
+{{football box
+| date = 14 March 1978
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Karim Abdul Razak|Abdul Razak]] {{goal|57}}
+| goals2 =
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:10000}}
+| referee = [[Yousef Alghoul|Youssef El Ghoul]] ([[Libyan Football Federation|Libya]])
+| report = [http://www.11v11.com/matches/ghana-v-tunisia-14-march-1978-234643 Report]
+}}
+----
+{{football box
+| date = 14 March 1978
+| time = 
+| team1 = {{fb-rt|UGA}}
+| score = 2–1
+| team2 = {{fb|NGA}}
+| goals1 = [[Abdulla Nasur|Nasur]] {{goal|11}} <br> [[Phillip Omondi|Omondi]] {{goal|58}}
+| goals2 = [[Martins Eyo|Eyo]] {{goal|54}}
+| stadium = [[Kumasi Sports Stadium]], [[Kumasi]]
+| attendance = {{formatnum:10000}}
+| referee = [[Abdelkader Aouissi]] ([[Algerian Football Federation|Algeria]])
+| report = [http://www.11v11.com/matches/uganda-v-nigeria-14-march-1978-234642 Report]
+}}
+
+=== Third place match ===
+{{football box
+| date = 16 March 1978
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 2–0<br>(Awarded)
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Baba Otu Mohammed|Mohammed]] {{goal|42}}
+| goals2 = [[Mohamed Akid|Akid]] {{goal|19}}
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = 
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = [http://www.11v11.com/matches/tunisia-v-nigeria-16-march-1978-234644 Report]
+| event = 
+| round = 
+| score1 = 
+| score2 = 
+}}
+
+<sup>1</sup> The match was abandoned after Tunisia walked off in the 42nd minute with the score tied at 1–1 to protest the officiating. Nigeria were awarded a 2–0 win, and Tunisia were suspended for two years (also banning them from the next tournament).<ref>{{cite web|title=16 March 1978 – The Eagles Of Carthage Get Grounded|url=http://tdifh.blogspot.com.au/2013/03/16-march-1978-eagles-of-carthage-get.html|work=thisdayinfootballhistory.blogspot.com|date=16 March 2013 |access-date=30 March 2013}}</ref>
+
+=== Final ===
+{{main|1978 African Cup of Nations Final}}
+{{football box
+| date = 16 March 1978
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 2–0
+| team2 = {{fb|UGA}}
+| goals1 = [[Opoku Afriyie|Afriyie]] {{goal|38||64}}
+| goals2 =
+| stadium = [[Accra Sports Stadium]], [[Accra]]
+| attendance = {{formatnum:40000}}
+| referee = [[Yousef Alghoul|Youssef El Ghoul]] ([[Libyan Football Federation|Libya]])
+| report = [http://www.11v11.com/matches/ghana-v-uganda-18-march-1978-234645 Report]
+}}
+
+== Goalscorers ==
+{{Hatnote|The two scorers in the third place match were not added.}}
+{{Goalscorers
+|goals=38 |matches=16
+
+|3 goals=
+*{{fbicon|Ghana}} [[Opoku Afriyie]]
+*{{fbicon|Nigeria}} [[Segun Odegbami]]
+*{{fbicon|Uganda}} [[Phillip Omondi]]
+
+|2 goals=
+*{{fbicon|Ghana}} [[Karim Abdul Razak]]
+*{{fbicon|Ghana}} [[George Alhassan]]
+*{{fbicon|Morocco}} [[Hassan Amcharrat|Hassan "Acila" Amcharrat]]
+*{{fbicon|Tunisia|1959}} [[Abderraouf Ben Aziza]]
+*{{fbicon|Uganda}} [[Godfrey Kisitu]]
+
+|1 goal=
+*{{fbicon|Congo|1970}} [[Jacques Mamounoubala]]
+*{{fbicon|Ghana}} [[Willie Klutse]]
+*{{fbicon|Tunisia|1959}} [[Mohamed Akid|Akid]]
+*{{fbicon|Ghana}} [[Mohammed Ahmed (Polo)|Mohammed "Polo" Ahmed]]
+*{{fbicon|Nigeria}} [[Adokiye Amiesimaka]]
+*{{fbicon|Nigeria}} [[Christian Chukwu]]
+*{{fbicon|Nigeria}} [[Martins Eyo]]
+*{{fbicon|Tunisia|1959}} [[Ali Kaabi]]
+*{{fbicon|Tunisia|1959}} [[Mohsen Labidi]]
+*{{fbicon|Uganda}} [[Sam Musenze|Samuel Musenze]]
+*{{fbicon|Uganda}} [[Abdulla Nasur]]
+*{{fbicon|Uganda}} [[Moses Nsereko]]
+*{{fbicon|Uganda}} [[Edward Semwanga]]
+*{{fbicon|Upper Volta}} [[Hubert Hien]]
+*{{fbicon|Upper Volta}} [[Mamadaou Koïta]]
+*{{fbicon|Zambia|1964}} [[Obby Kapita]]
+*{{fbicon|Zambia|1964}} [[Bizwell Phiri]]
+*{{fbicon|Zambia|1964}} [[Patrick Phiri]]
+*{{fbicon|Nigeria}} [[Baba Otu Mohammed]]
+}}
+
+== CAF Team of the Tournament ==
+<ref name=":0" />
+
+'''Goalkeeper'''
+* {{flagicon|Morocco}} [[Mohammed Hazzaz|Mohammed Al-Hazaz]]
+
+'''Defenders'''
+* {{flagicon|Tunisia|1959}} [[Mokhtar Dhouieb]]
+* {{flagicon|Ghana}} [[James Kuuku Dadzie]]
+* {{flagicon|Tunisia|1959}} [[Khaled Gasmi]]
+* {{flagicon|Morocco}} [[Larbi Ihardane]]
+
+'''Midfielders'''
+* {{flagicon|Uganda}} [[Moses Nsereko]]
+* {{flagicon|Ghana}} [[Karim Abdul Razak]]
+* {{flagicon|Ghana}} [[Adolf Armah]]
+* {{flagicon|Uganda}} [[Phillip Omondi]]
+
+'''Forwards'''
+* {{flagicon|Nigeria}} [[Segun Odegbami]]
+* {{flagicon|Ghana}} [[Mohammed Ahmed Polo|Mohammed Polo]]
+
+== References ==
+{{reflist}}
+
+== External links ==
+* [https://www.rsssf.org/tables/78a.html Rec.Sport.Soccer Statistics Foundation (RSSSF)]
+* [http://footballmundial.tripod.com/caf/caf_1976_78.htm#1978 footballmundial.tripod.com] {{Webarchive|url=https://web.archive.org/web/20160310082535/http://footballmundial.tripod.com/caf/caf_1976_78.htm#1978 |date=10 March 2016 }}
+
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:African Cup of Nations}}
+[[Category:1978 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1978]]
+[[Category:1978 in African men's continental football|Cup of Nations]]
+[[Category:1978 in African men's international football|Cup of Nations]]
+[[Category:1978 in Ghanaian sport]]
+[[Category:Men's international association football competitions hosted by Ghana]]
+[[Category:Football competitions in Accra]]
+[[Category:Sport in Kumasi]]
+[[Category:March 1978 sports events in Africa]]

@@ -467,9 +467,14 @@ explicitly out of scope — see "Non-goals" below).
     **Garba Lawal** (3 goals, 2002-2006), born a generation apart. Egypt's
     Khalil turned out the opposite way: Wikipedia names the 1976 goal for
     *Osama* Khalil, so the 1974 "A.Khalil" is someone else and the pair stays
-    split. **Nigeria's Odegbami is the obvious next one** — the 1980 harvest
-    already names Segun Odegbami for the bare record's 1980 goal; its three
-    1978 goals would need that year's page.
+    split. **Nigeria's Odegbami went the same way as Lawal** on 2026-09-16
+    (`2026-09-16_segun_odegbami_records.sql`): the 1978 and 1980 reports name
+    Segun Odegbami for all six goals, no other Odegbami appears in either
+    article, and the 1980 page's own top-scorer line of 3 goals is reproduced
+    only once the two records are merged — separately they give a false 1 and a
+    false 2. **That arithmetic check is the pattern to look for**: a source that
+    states a per-tournament or all-time total lets a merge be proved rather than
+    argued. 47 candidates remain open.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`
