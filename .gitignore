@@ -29,3 +29,8 @@ __pycache__/
 
 # Local python venv for the ingestion scripts
 .venv/
+
+# Regenerable source harvests. `fetch_ligikuu.py` reproduces this in a minute
+# and it is 26MB of JSON; the AFCON harvests are committed because they are
+# small and their sources are pages that can change or vanish.
+docs/ingestion/raw/ligikuu/

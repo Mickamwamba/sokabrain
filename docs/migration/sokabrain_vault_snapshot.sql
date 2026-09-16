@@ -15247,6 +15247,8 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 62939	player	7960	16	124287	https://www.whoscored.com/players/124287/show	1.00	2026-09-12 00:38:55.999912-05
 62941	player	7961	16	335692	https://www.whoscored.com/players/335692/show	1.00	2026-09-12 00:38:55.999912-05
 62943	player	7962	16	244795	https://www.whoscored.com/players/244795/show	1.00	2026-09-12 00:38:55.999912-05
+77682	match_event	26217	15	17356-g1	\N	1.00	2026-09-16 17:53:01.351766-05
+77683	match_event	26218	15	17356-g2	\N	1.00	2026-09-16 17:53:01.351766-05
 62947	player	7963	16	366116	https://www.whoscored.com/players/366116/show	1.00	2026-09-12 00:38:55.999912-05
 62949	match	19787	16	1783945	https://www.whoscored.com/matches/1783945/live	1.00	2026-09-12 00:38:55.999912-05
 62952	player	7964	16	421983	https://www.whoscored.com/players/421983/show	1.00	2026-09-12 00:38:55.999912-05
@@ -27824,6 +27826,8 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 26211	936	43	11322	\N	73	\N	GOAL	\N
 26212	19807	37	2510	\N	88	\N	GOAL	\N
 18490	19430	58	7190	\N	40	\N	GOAL	\N
+26217	18323	1	5105	\N	27	\N	GOAL	\N
+26218	18323	1	4640	\N	90	\N	GOAL	\N
 18623	19476	50	7331	\N	45	\N	GOAL	\N
 25120	22018	27	10730	\N	21	\N	PENALTY_GOAL	{"source": "rsssf"}
 25121	22018	27	10731	\N	72	\N	GOAL	{"source": "rsssf"}
@@ -42818,6 +42822,7 @@ COPY public.reconciliation_runs (id, entity_type, data_source_a_id, data_source_
 87	player	6	5	2026-09-16 17:22:05.095505-05	Nigeria's "Odegbami" (10919, 4 goals) and "Segun Odegbami" (10959, 2 goals) are one player. Wikipedia's 1978 and 1980 match reports name Segun Odegbami for all six, with minutes agreeing, and the 1980 article's own top-scorer line of 3 goals is only reproduced once they are merged. Raised by the audit check SCORER_NAME_ABBREVIATED and twice left alone for want of evidence.
 89	player	6	5	2026-09-16 17:25:02.320144-05	Three surname pairs merged on Wikipedia match reports: Ivory Coast's Guel (11085 into 11106), Ghana's Polley (11091 into 11073) and Cameroon's Ebongué (11071 into 11007). All six goals are named in the source, five to the exact minute; Polley's 1994 goal is the same fixture with a 46-minute timing disagreement, and the vault's minute stands. Raised by the audit check SCORER_NAME_ABBREVIATED.
 91	match_event	1	5	2026-09-16 17:36:36.127585-05	The two AFCON matches whose event log was a goal short of a 1-1: Tunisia v Angola 2019 (match 936) gains Djalma Campos 73', Zambia v Tanzania 2024 (match 19807) gains Patson Daka 88'. Both from Wikipedia group-stage articles, which agree with the vault on each match's other goal. Patson Daka already existed (2510) and is reused; Djalma Campos is created.
+94	match_event	1	15	2026-09-16 17:53:01.351766-05	Premier League goal logs repaired from a fresh ligikuu harvest: only matches whose log was short of, contradicted, or unnamed against their stored score, and only where the official site's own log reconciles exactly.
 \.
 
 
@@ -43281,14 +43286,14 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 16, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 77677, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 77683, true);
 
 
 --
 -- Name: match_events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.match_events_id_seq', 26212, true);
+SELECT pg_catalog.setval('public.match_events_id_seq', 26218, true);
 
 
 --
@@ -43330,7 +43335,7 @@ SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 680, true);
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 91, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 94, true);
 
 
 --

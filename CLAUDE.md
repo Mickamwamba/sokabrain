@@ -207,8 +207,36 @@ explicitly out of scope — see "Non-goals" below).
     alone for 2008/09–2016/17, where there is no second source.
   - **The 16 new editions are all unpublished.** Nothing reaches the public site
     until someone publishes it in the dashboard.
-  - Early seasons have no event log because neither source has one — not
-    because anything was dropped.
+  - Early seasons have no event log because **neither of those two sources** has
+    one — not because anything was dropped. But see the next entry: a third
+    source does have them, back to 2010/11.
+- **The Premier League is 36.5% attributed and the ceiling is not where it was
+  thought to be** (measured 2026-09-16). 5,568 of 8,778 goals name no scorer.
+  What was established, in order of usefulness:
+  - **The vault is already at ligikuu's ceiling.** `topup_ligikuu_scorers.py`
+    re-harvested the official site and tried to repair every Premier League
+    match whose goal log is short of, contradicts, or is unnamed against its
+    stored score. Of 475 such matches it could fix **one**. The rest break down
+    as: 456 where **ligikuu holds no goals at all** (including the whole of
+    2020/21-2022/23, 1,687 goals — the site has results but no scorers for those
+    three seasons, so CLAUDE.md's old "complete" for them meant fixtures), 10
+    where ligikuu names a player **it has since deleted**, which is exactly why
+    those events are unnamed, and 9 where **ligikuu's own log does not
+    reconcile** either. Re-running the harvest will not help; the source does
+    not have it.
+  - **Flashscore does have per-match scorers with minutes, back to 2010/11.**
+    Verified in a browser: Azam 8-0 Polisi Tanzania (9 June 2023) lists all
+    eight with minutes. Its archive is `football/tanzania/ligi-kuu-bara/archive/`
+    and runs 2010/11 to date, so **4,944 of the missing goals are reachable** and
+    **624 are not** — 2008/09 and 2009/10 predate the archive. The league
+    therefore cannot reach AFCON's 100%, whatever effort goes in.
+  - **What that harvest would cost, before anyone starts it:** roughly 2,400
+    match pages, which needs a real browser (plain HTTP gets 403, as does
+    Sofascore's API and worldfootball.net). Flashscore abbreviates scorers
+    ("Dube P."), so every name needs resolving against the vault — the identity
+    problem this project has already been bitten by twice, at a scale of
+    thousands rather than dozens. Do not start it as a side quest; it is its own
+    piece of work, and the volume is worth agreeing with the site's terms first.
 - **The public site suppresses stats it cannot support, rather than showing 0.**
   `appearances`, `yellowCards` and `redCards` come back as **null** whenever
   team-sheet coverage for the scope is under 50% — which is everywhere, at 80 of
