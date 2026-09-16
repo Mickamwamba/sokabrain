@@ -377,7 +377,7 @@ export type PlayerHit = { id: number; name: string; club: string };
 
 export type AuditSeverity = 'INFO' | 'WARNING' | 'CRITICAL';
 export type FindingStatus = 'OPEN' | 'FIXED' | 'ACCEPTED' | 'RESOLVED';
-export type AuditArea = 'Scores' | 'Events' | 'Fixtures' | 'Seasons' | 'Careers';
+export type AuditArea = 'Scores' | 'Events' | 'Fixtures' | 'Seasons' | 'Careers' | 'Identity';
 
 export type AuditCheck = { key: string; label: string; area: AuditArea; severity: AuditSeverity; describes: string };
 

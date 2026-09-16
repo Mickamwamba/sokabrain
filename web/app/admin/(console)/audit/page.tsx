@@ -33,7 +33,7 @@ const STATUS_BADGE: Record<string, { label: string; tone: Tone }> = {
   RESOLVED: { label: 'Resolved', tone: 'green' },
 };
 
-const AREAS = ['Scores', 'Events', 'Fixtures', 'Seasons', 'Careers'] as const;
+const AREAS = ['Scores', 'Events', 'Fixtures', 'Seasons', 'Careers', 'Identity'] as const;
 
 function CheckItem({ check: c, count, href }: { check: AuditCheck; count: number | undefined; href: string }) {
   return (
@@ -147,7 +147,7 @@ export default async function DataAuditPage(props: PageProps<'/admin/audit'>) {
               <Field label="Check" className="min-w-52 flex-1">
                 <select name="checkKey" defaultValue={checkKey} className={input}>
                   <option value="">Any check</option>
-                  {(['Scores', 'Events', 'Fixtures', 'Seasons', 'Careers'] as const).map((a) => (
+                  {(['Scores', 'Events', 'Fixtures', 'Seasons', 'Careers', 'Identity'] as const).map((a) => (
                     <optgroup key={a} label={a}>
                       {checks.filter((c) => c.area === a).map((c) => (
                         <option key={c.key} value={c.key}>{c.label}{data.counts.check[c.key] ? ` (${data.counts.check[c.key]})` : ''}</option>

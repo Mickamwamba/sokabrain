@@ -19,7 +19,7 @@ import type { Detection, Severity } from './reconcile.js';
 export type CheckDef = {
   key: string;
   label: string;
-  area: 'Scores' | 'Events' | 'Fixtures' | 'Seasons' | 'Careers';
+  area: 'Scores' | 'Events' | 'Fixtures' | 'Seasons' | 'Careers' | 'Identity';
   severity: Severity;
   describes: string;
 };
@@ -48,6 +48,9 @@ export const CHECKS: CheckDef[] = [
   { key: 'TEAM_COUNT_MISMATCH', area: 'Seasons', severity: 'INFO', label: 'Team count mismatch', describes: 'The season’s declared number of teams differs from the teams actually playing.' },
   { key: 'OVERLAPPING_SPELLS', area: 'Careers', severity: 'WARNING', label: 'Overlapping club spells', describes: 'A player is contracted to two clubs at once (loans excepted).' },
   { key: 'STALE_OPEN_SPELL', area: 'Careers', severity: 'WARNING', label: 'Open spell contradicted', describes: 'A spell still running although a later club spell began.' },
+  { key: 'SCORER_NAME_SHARED', area: 'Identity', severity: 'WARNING', label: 'Two scorers, one name and team', describes: 'Two player records with the same name both scored for the same team — usually one career split in two by a spelling.' },
+  { key: 'SCORER_NAME_ABBREVIATED', area: 'Identity', severity: 'INFO', label: 'Short name beside a full one', describes: 'One scorer’s name is the other’s surname or initialled form, on the same team — the shape a source’s short names leave behind.' },
+  { key: 'SCORER_TWO_NATIONS', area: 'Identity', severity: 'CRITICAL', label: 'Scoring for two nations', describes: 'One player is credited with goals for two different national teams, which means a misattributed goal or two teams recorded for one country.' },
 ];
 
 const SEVERITY = Object.fromEntries(CHECKS.map((c) => [c.key, c.severity])) as Record<string, Severity>;
@@ -352,11 +355,119 @@ async function careerChecks(): Promise<Detection[]> {
   return out;
 }
 
+/* -------------------------------------------------------------- identity -- */
+
+/**
+ * One person, recorded as two players.
+ *
+ * This is how a scorer's total goes quietly wrong: no goal is missing, but it
+ * is filed under a second copy of the man who scored it. André Ayew read 9
+ * against an official 10 for exactly that reason, and the Africa Cup of Nations
+ * held 45 such records in September 2026.
+ *
+ * Two shapes produce it. A source that keys players by name rather than id
+ * writes "Mboma" in one match and "Patrick Mboma" in the next. And two sources
+ * describing the same tournament disagree about how much of a name to print,
+ * so the legacy dump's "André Morgan Rami Ayew Dede Ayew" never meets
+ * WhoScored's "André Ayew".
+ *
+ * Both are reported as candidates, never merged: a shared surname is as likely
+ * to be two careers as one, and Luciano and Italo Vassalo really were brothers
+ * who both scored for Ethiopia.
+ */
+type ScorerRow = { player_id: number; full_name: string; team_id: number; team: string; team_type: string; goals: bigint };
+
+const fold = (s: string) =>
+  s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/['’.]/g, ' ').replace(/-/g, ' ');
+const words = (s: string) => fold(s).split(/\s+/).filter(Boolean);
+
+async function identityChecks(): Promise<Detection[]> {
+  const rows = await prisma.$queryRaw<ScorerRow[]>(Prisma.sql`
+    SELECT e.player_id, p.full_name, t.id AS team_id, t.name AS team, t.type AS team_type,
+           count(*) AS goals
+      FROM match_events e
+      JOIN players p ON p.id = e.player_id
+      JOIN teams t ON t.id = e.team_id
+     WHERE e.type IN ('GOAL', 'PENALTY_GOAL')
+     GROUP BY e.player_id, p.full_name, t.id, t.name, t.type
+  `);
+
+  const out: Detection[] = [];
+  const seen = new Set<string>();
+  // One finding per pair, filed against the lower player id so the entity and
+  // the facts stay the same run to run.
+  const pair = (key: string, a: ScorerRow, b: ScorerRow, detail: string) => {
+    const [lo, hi] = a.player_id < b.player_id ? [a, b] : [b, a];
+    const id = `${key}:${lo.player_id}-${hi.player_id}:${a.team_id}`;
+    if (seen.has(id)) return;
+    seen.add(id);
+    out.push(detect(key, 'player', lo.player_id, null, detail, {
+      players: [lo.player_id, hi.player_id],
+      names: [lo.full_name, hi.full_name],
+      team: a.team_id,
+    }));
+  };
+
+  const byTeam = new Map<number, ScorerRow[]>();
+  for (const r of rows) {
+    const list = byTeam.get(r.team_id) ?? [];
+    list.push(r);
+    byTeam.set(r.team_id, list);
+  }
+
+  for (const list of byTeam.values()) {
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        const a = list[i]!, b = list[j]!;
+        if (a.player_id === b.player_id) continue;
+        const wa = words(a.full_name), wb = words(b.full_name);
+        if (!wa.length || !wb.length) continue;
+
+        if (fold(a.full_name).trim() === fold(b.full_name).trim()) {
+          pair('SCORER_NAME_SHARED', a, b,
+            `${a.full_name} is two records at ${a.team}, with ${a.goals} and ${b.goals} goals`);
+          continue;
+        }
+        // A bare surname, or an initialled one, beside the full name: "Mboma"
+        // and "Patrick Mboma", "K.Bwalya" and "Kalusha Bwalya".
+        const [short, long] = wa.length <= wb.length ? [wa, wb] : [wb, wa];
+        const shortRow = wa.length <= wb.length ? a : b;
+        const longRow = wa.length <= wb.length ? b : a;
+        const initialled = short.length === 2 && short[0]!.length === 1 && short[1] === long[long.length - 1];
+        if ((short.length === 1 && short[0] === long[long.length - 1]) || initialled) {
+          pair('SCORER_NAME_ABBREVIATED', a, b,
+            `“${shortRow.full_name}” (${shortRow.goals}) and “${longRow.full_name}” (${longRow.goals}) both scored for ${a.team}`);
+        }
+      }
+    }
+  }
+
+  // A player scoring for two countries. Either a goal sits on the wrong team,
+  // or one country is held as two team records.
+  const nations = new Map<number, ScorerRow[]>();
+  for (const r of rows.filter((r) => r.team_type === 'NATIONAL')) {
+    const list = nations.get(r.player_id) ?? [];
+    list.push(r);
+    nations.set(r.player_id, list);
+  }
+  for (const [playerId, list] of nations) {
+    const teams = [...new Set(list.map((r) => r.team_id))];
+    if (teams.length < 2) continue;
+    out.push(detect('SCORER_TWO_NATIONS', 'player', playerId, null,
+      `${list[0]!.full_name} is credited with goals for ${list.map((r) => `${r.team} (${r.goals})`).join(' and ')}`,
+      { teams: teams.sort((x, y) => x - y) }));
+  }
+  return out;
+}
+
 export async function runChecks(editionIds: number[], includeCareers: boolean): Promise<Detection[]> {
-  const [matches, editions, careers] = await Promise.all([
+  const [matches, editions, careers, identity] = await Promise.all([
     matchChecks(editionIds),
     editionChecks(editionIds),
+    // Both of these are vault-wide rather than per-season, and both report
+    // against a player, which is what reconcile.ts scopes on includeCareers.
     includeCareers ? careerChecks() : Promise.resolve([]),
+    includeCareers ? identityChecks() : Promise.resolve([]),
   ]);
-  return [...matches, ...editions, ...careers];
+  return [...matches, ...editions, ...careers, ...identity];
 }

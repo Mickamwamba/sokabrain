@@ -83,7 +83,7 @@ admins add each other under Access management.
 | `/admin/teams` | clubs and national teams, searchable and paged · `/new` · `/[id]` shows the current squad and former players, and edits or deletes |
 | `/admin/players` | players with their current club (or free agent), searchable and paged · `/new` registers with a club and join date, or as a free agent |
 | `/admin/players/[id]` | career history (club and international, overlaps flagged with one-click fixes), record a transfer/loan/release, details, delete |
-| `/admin/audit` | **data audit**: run the 23 checks over the vault or chosen competitions/seasons; review findings (fixed, accepted, reopen, escalate to a blocker flag), singly or in bulk; run history. `/admin/issues` redirects here |
+| `/admin/audit` | **data audit**: run the 26 checks over the vault or chosen competitions/seasons; review findings (fixed, accepted, reopen, escalate to a blocker flag), singly or in bulk; run history. `/admin/issues` redirects here |
 | `/admin/flags` | open and resolved flags |
 | `/admin/access` | admin accounts: add, rename, reset password, revoke or restore access |
 | `/admin/account` | your own details and password |

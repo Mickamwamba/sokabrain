@@ -127,8 +127,10 @@ export function AuditScopeForm({ competitions, action }: { competitions: ScopeCo
         <input type="checkbox" name="includeCareers" checked={careers} onChange={(e) => setCareers(e.target.checked)}
           className="mt-0.5 h-4 w-4 accent-[var(--ink)]" />
         <span>
-          <span className="font-medium">Include player careers</span>
-          <span className="block text-xs text-muted">Overlapping and contradicted club spells. Not tied to a season.</span>
+          <span className="font-medium">Include player checks</span>
+          <span className="block text-xs text-muted">
+            Club spells that overlap or contradict, and scorers who look like one person held as two. Not tied to a season.
+          </span>
         </span>
       </label>
     </ConfirmForm>

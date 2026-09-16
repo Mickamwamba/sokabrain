@@ -282,10 +282,14 @@ explicitly out of scope — see "Non-goals" below).
     them off the spells, so the centre and each player's page share one rule.
     Of the vault's moves, 351 are transfers and 835 are departures with no
     recorded destination; there are no loans on record yet.
-  - **Data audit (`/admin/audit`) replaced the Issues page.** 23 checks
-    (`services/audit/checks.ts`) over scores, events, fixtures, seasons and
-    careers, run on demand over the vault or a union of competitions and
-    seasons; a full run takes well under a second. Findings persist in the new
+  - **Data audit (`/admin/audit`) replaced the Issues page.** 26 checks
+    (`services/audit/checks.ts`) over scores, events, fixtures, seasons,
+    careers and identity, run on demand over the vault or a union of
+    competitions and seasons; a full run takes well under a second.
+    The three **Identity** checks catch one person recorded as two — the defect
+    that made André Ayew read 9 goals instead of 10 — and are gated by the same
+    `includeCareers` flag, both being player-scoped rather than per-season.
+    They report candidates and never merge. Findings persist in the new
     `audit_runs`/`audit_findings` tables and reconcile on every run
     (`services/audit/reconcile.ts`, unit tested): undetected → RESOLVED by the
     run; FIXED but still detected → reopened; ACCEPTED stays closed until its
@@ -348,8 +352,9 @@ explicitly out of scope — see "Non-goals" below).
   judgement calls. **All 35 editions are published** (2026-09-15,
   `docs/reconciliation/fixes/2026-09-15_publish_afcon_pre2002.sql`, which also
   carries the statement that reverses it). The public AFCON scorer list is 90%
-  attributed: Eto'o 17, Pokou 14, Yekini 12 — each a goal or so short of the
-  real record, which the site's own coverage note states.
+  attributed. After the identity merges described below, its top eleven matches
+  the published all-time record exactly: Eto'o 18, Pokou 14, Yekini 13,
+  El-Shazly 12, then Drogba, Salah, Mboma and Mané on 11.
   - RSSSF, not Flashscore: it carries dates, scorers with minutes, attendances
     and the final group tables as plain text, and every printed group table
     recomputes exactly from the parsed fixtures. Wikipedia independently
@@ -380,9 +385,48 @@ explicitly out of scope — see "Non-goals" below).
   (`docs/reconciliation/fixes/2026-09-15_merge_duplicate_etoo.sql`); the legacy
   provenance row moved with the events. The public list now reads Eto'o 18,
   Pokou 14, Yekini 13, Drogba 11 — each matching the real record.
-  **12 more pairs of players still share a name and a team**, among them
-  Simon Msuva, Baghdad Bounedjah and Themba Zwane in the TPL data. Each needs
-  the same judgement; none is merged.
+  Eto'o was not the only one — see the next entry, which settled the rest.
+- **The Africa Cup of Nations held 45 player records for 39 people, and one
+  match had all four goals on the wrong side.** Found 2026-09-15 by comparing
+  the vault against Wikipedia's all-time AFCON scoring list, after André Ayew
+  read 9 goals against an official 10. Applied in
+  `docs/reconciliation/fixes/2026-09-15_afcon_scorer_identities.sql`, then
+  `2026-09-16_taifa_stars_and_remaining_duplicates.sql`. **No goal was missing
+  in any of it**; the goals were filed under second copies of the scorer.
+  - Two mechanisms, both worth knowing before trusting any scorer total.
+    WhoScored editions loaded before the source exposed player ids were keyed
+    `name:{team}:{name}`, so "Mboma" and "Patrick Mboma" became two men. And
+    AFCON 2019 came from the legacy dump, which prints names in full
+    ("André Morgan Rami Ayew Dede Ayew"), while 2021 onward came from WhoScored
+    ("André Ayew") — one career, two rows, in **any** competition the two
+    sources share.
+  - **Ten merges were confirmed arithmetically**, the merged total equalling the
+    published all-time figure exactly: Mboma 11, Kanouté 7, Francileudo Santos
+    10, Flávio 7, Okocha 7, Abouzeid 7, El-Shazly 12, Mané 11, Ayew 10 and
+    Abdoulaye Traoré 9 — that last one four records, including a "Troaré" typo.
+    The public top eleven now matches the real record from Eto'o's 18 down.
+  - **Zambia 2-2 Senegal, AFCON 2000, had its scorers swapped**: RSSSF wrote
+    that one line's brackets in the opposite order to the fixture. It survived
+    the load because the loader checks each side's goals against that side's
+    score, which a swap cannot break when the scores are level — so **only a
+    drawn match can hide one**. All 61 pre-2002 score draws were re-checked
+    against the source and their scorers' nationalities; this was the only one.
+  - **"Taifa Stars" and "Tanzania" were two records for one national side**, now
+    merged into Tanzania (91). Simon Msuva was the giveaway: the only player in
+    the vault scoring for two different countries, both his own.
+  - **What is still short is absent source data, not a defect.** 1996 and 1998
+    name a scorer for 4 of their 171 goals, which is the whole of Hossam
+    Hassan's missing 7, Benni McCarthy's 7, Kalusha Bwalya's 6, Joel Tiéhi's 5
+    and Abedi Pele's 4. Mengistu Worku (8 against an official 10) and Ali
+    Abugreisha (4 against 7) fall in fully-attributed tournaments — RSSSF simply
+    credits those goals to other named players. Do not "fix" these by inventing
+    goals.
+  - **Seven surname pairs are deliberately unmerged**: Egypt's Khalil, Abdou and
+    Abdelhamid, Cameroon's Ebongué, Nigeria's Odegbami and Lawal, and Mali's
+    bare Touré and Coulibaly. A surname alone never merges two players — Luciano
+    and Italo Vassalo were brothers who both scored for Ethiopia, and Kwame
+    Ayew, André Ayew and Abedi Pele (Abedi Ayew) are three different people.
+    The audit raises them; a human decides.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`

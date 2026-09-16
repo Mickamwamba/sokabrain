@@ -28,11 +28,13 @@ ALIASES = {
     "Swaziland":          ["Eswatini"],
 }
 
-# Tanzania exists TWICE in the vault: "Taifa Stars" (id 23) and "Tanzania"
-# (id 91), both NATIONAL, both pointing at Tanzania. They are the same team.
-# The legacy AFCON 2019 edition uses 91, so 91 is canonical here and 23 is
-# left alone rather than merged -- merging is a data fix, not an ingest
-# decision, and is recorded as an open item in the ingestion README.
+# Tanzania once existed TWICE in the vault: "Taifa Stars" (id 23) and
+# "Tanzania" (id 91), both NATIONAL, both pointing at Tanzania. They were the
+# same team, and 23 was merged into 91 on 2026-09-16
+# (docs/reconciliation/fixes/2026-09-16_taifa_stars_and_remaining_duplicates.sql),
+# after the data audit found Simon Msuva scoring for both "countries".
+# The mapping stays: a source that still calls the side Taifa Stars must land
+# on 91, or the split comes straight back.
 CANONICAL_DUPLICATE = {"Taifa Stars": "Tanzania"}
 
 # Age-group sides share a country with the senior team and must never absorb a

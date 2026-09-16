@@ -175,13 +175,13 @@ accounts, in `src/routes/adminManage.ts`. Every create and update records
 | PATCH | `/api/admin/transfers` | `kind`, `spellId`, and `date`/`type`/`fee`/`shirtNumber`; a transfer's date moves the old spell's end with it when they touch |
 | POST | `/api/admin/transfers/undo` | `kind`, `spellId`; removes the arrival and reopens the old spell when nothing later depends on it |
 | GET | `/api/admin/teams/:id/squad` | spells running today, newest signing first, plus former players |
-| POST | `/api/admin/audit/runs` | `competitionIds`, `editionIds` (a union; neither = whole vault), `includeCareers`; runs synchronously, 409 if one is running |
+| POST | `/api/admin/audit/runs` | `competitionIds`, `editionIds` (a union; neither = whole vault), `includeCareers` (career **and** identity checks, both player-scoped); runs synchronously, 409 if one is running |
 | GET | `/api/admin/audit/runs` | recent runs with named scope and new/reopened/resolved counts |
 | GET | `/api/admin/audit/findings` | `status=ACTIVE\|OPEN\|FIXED\|ACCEPTED\|RESOLVED\|ALL`, `severity`, `checkKey`, `area`, `competitionId`, `editionId`, paging; counts per status, severity and check |
 | POST | `/api/admin/audit/findings/:id/review` | `decision` FIXED / ACCEPTED (note required) / OPEN |
 | POST | `/api/admin/audit/findings/review-bulk` | same filter + `decision` + `expectedCount`; open findings only, 409 if the count moved |
 | POST | `/api/admin/audit/findings/:id/escalate` | raises a BLOCKER `data_flags` row for the finding's record |
-| GET | `/api/admin/audit/checks` | the 23 checks, with area, severity and description |
+| GET | `/api/admin/audit/checks` | the 26 checks, with area, severity and description |
 | GET | `/api/admin/lookups` | countries, seasons, stadiums, competitions, types, formats |
 | GET | `/api/admin/team-options` | every team, name only, `?type=` |
 
@@ -210,6 +210,16 @@ Rules worth knowing before calling these:
   `POST /players` takes an optional `club` (`teamId`, `startDate`, `type`,
   `shirtNumber`) — omit it for a free agent. Deleting a player takes their
   spells with them; only match history blocks it.
+- **The Identity checks find one person recorded as two**, which is how a
+  scorer's total goes quietly wrong without a single goal going missing: André
+  Ayew read 9 against an official 10 because one goal sat on a second copy of
+  him. `SCORER_NAME_SHARED` (two records, one name, one team),
+  `SCORER_NAME_ABBREVIATED` ("Mboma" beside "Patrick Mboma") and
+  `SCORER_TWO_NATIONS` (a player scoring for two countries, which means a
+  misattributed goal or one country held as two teams). They report candidates
+  and never merge: a shared surname is as likely to be two careers as one, and
+  Luciano and Italo Vassalo both really scored for Ethiopia. Merges are applied
+  by hand as a dated file under `docs/reconciliation/fixes/`.
 - Unique-constraint clashes (a duplicate season label, a team already in an
   edition, an email already registered) come back as 409 with a readable
   message, not a 500.
