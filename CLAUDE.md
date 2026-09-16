@@ -379,6 +379,31 @@ explicitly out of scope — see "Non-goals" below).
     patched. Player provenance is keyed on name **and team**: keyed on the name
     alone, two players called Diallo shared one key and the second had no
     provenance at all.
+- **1996 and 1998 have their scorers, from Wikipedia** (2026-09-16). RSSSF
+  names a scorer for 4 of those two tournaments' 171 goals; Wikipedia names
+  them all, and `docs/ingestion/AFCON_1996_1998_SCORERS.md` has the pipeline.
+  **AFCON scorer coverage went from 91% to 99.6%** (1,999 of 2,007 goals), and
+  the public top fourteen now matches the published all-time list exactly.
+  Hossam Hassan 11, Kalusha Bwalya 10, Joel Tiéhi 10 and Benni McCarthy 7 were
+  all short only because of this gap.
+  - **Wikitext, not the rendered page**: the data is in `{{football box}}`
+    templates whose arguments are the fields wanted. `?action=raw` returns it.
+  - **Two subtleties that each cost a goal.** A goal template preceded by only
+    punctuation belongs to the *previous* scorer (McCarthy's golden goal), and
+    names come from the link target, not the display text — which is the whole
+    value of this source, since the vault holds these men as surnames.
+  - **18 of the 61 fixtures are oriented the other way round** from the vault.
+    The score agrees once flipped, so the goals are mapped onto the vault's
+    sides; the fixture is never rewritten.
+  - **`playermatch.py` (doctested) decides identity, and is deliberately
+    reluctant.** Refusing a true match costs a duplicate the audit will raise;
+    accepting a false one silently moves goals onto the wrong man. Matching on
+    surname alone immediately produced two wrong answers — Johnson Bwalya onto
+    Kalusha Bwalya, and both Malitolis onto one record. A bare surname now
+    needs to be the vault's only such record *and* the only incoming player
+    with it. 24 of 107 names attached to existing players; 82 were created.
+  - **Both finals already had their scorers and were left alone**, which makes
+    them a cross-source check: Wikipedia names the same men.
 - **Samuel Eto'o was two players, and is now one.** The legacy data spells him
   "Etoo" (one goal, 2002 v Togo); everything else was under "Samuel Eto'o". His
   AFCON record read 17 when the vault in fact held all 18. Merged 2026-09-15

@@ -1,0 +1,1806 @@
+[
+ {
+  "year": 1996,
+  "date": "13 January 1996",
+  "home": "South Africa",
+  "away": "Cameroon",
+  "homeScore": 3,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Phil Masinga",
+    "minute": 15,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mark Williams",
+    "minute": 37,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "John Moshoeu",
+    "minute": 55,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "15 January 1996",
+  "home": "Egypt",
+  "away": "Angola",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ahmed El-Kass",
+    "minute": 30,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ahmed El-Kass",
+    "minute": 33,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Quinzinho",
+    "minute": 77,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "18 January 1996",
+  "home": "Cameroon",
+  "away": "Egypt",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "François Omam-Biyik",
+    "minute": 36,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Alphonse Tchami",
+    "minute": 59,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ali Maher",
+    "minute": 48,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "20 January 1996",
+  "home": "South Africa",
+  "away": "Angola",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mark Williams",
+    "minute": 57,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "24 January 1996",
+  "home": "South Africa",
+  "away": "Egypt",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Ahmed El-Kass",
+    "minute": 7,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "24 January 1996",
+  "home": "Angola",
+  "away": "Cameroon",
+  "homeScore": 3,
+  "awayScore": 3,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Joni",
+    "minute": 38,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Paulão",
+    "minute": 57,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Quinzinho",
+    "minute": 80,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "François Omam-Biyik",
+    "minute": 25,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "George Mouyémé",
+    "minute": 82,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Hélder Vicente",
+    "minute": 90,
+    "type": "OWN_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "14 January 1996",
+  "home": "Zambia",
+  "away": "Algeria",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1996,
+  "date": "15 January 1996",
+  "home": "Sierra Leon",
+  "away": "Burkina Faso",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Gbassay Sessay",
+    "minute": 11,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mohamed Kallon",
+    "minute": 89,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Aboubakari Ouédraogo",
+    "minute": 74,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "18 January 1996",
+  "home": "Algeria",
+  "away": "Sierra Leon",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ali Meçabih",
+    "minute": 41,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ali Meçabih",
+    "minute": 63,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "20 January 1996",
+  "home": "Zambia",
+  "away": "Burkina Faso",
+  "homeScore": 5,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Kenneth Malitoli",
+    "minute": 18,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 24,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 35,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Dennis Lota",
+    "minute": 44,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Johnson Bwalya",
+    "minute": 45,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Y. Traoré",
+    "minute": 53,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "24 January 1996",
+  "home": "Algeria",
+  "away": "Burkina Faso",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Khaled Lounici",
+    "minute": 2,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Billel Dziri",
+    "minute": 75,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Boureima Zongo",
+    "minute": 83,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "24 January 1996",
+  "home": "Zambia",
+  "away": "Sierra Leon",
+  "homeScore": 4,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 2,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 9,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 84,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mordon Malitoli",
+    "minute": 87,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "16 January 1996",
+  "home": "Gabon",
+  "away": "Liberia",
+  "homeScore": 1,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Guy-Roger Nzeng",
+    "minute": 59,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Kelvin Sebwe",
+    "minute": 5,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Mass Sarr Jr.",
+    "minute": 54,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "19 January 1996",
+  "home": "Gabon",
+  "away": "DR Congo",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Brice Mackaya",
+    "minute": 21,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Aurélien Bekogo",
+    "minute": 34,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "25 January 1996",
+  "home": "DR Congo",
+  "away": "Liberia",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Roger Lukaku",
+    "minute": 5,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Essende",
+    "minute": 72,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "14 January 1996",
+  "home": "Ghana",
+  "away": "Ivory Coast",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Tony Yeboah",
+    "minute": 20,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Abedi Pele",
+    "minute": 70,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "16 January 1996",
+  "home": "Tunisia",
+  "away": "Mozambique",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Hédi Berkhissa",
+    "minute": 24,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Tico-Tico",
+    "minute": 4,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "19 January 1996",
+  "home": "Ghana",
+  "away": "Tunisia",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Abedi Pele",
+    "minute": 50,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Charles Akonnor",
+    "minute": 77,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Imed Ben Younes",
+    "minute": 72,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "21 January 1996",
+  "home": "Ivory Coast",
+  "away": "Mozambique",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 32,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "25 January 1996",
+  "home": "Tunisia",
+  "away": "Ivory Coast",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Imed Ben Younes",
+    "minute": 32,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Imed Ben Younes",
+    "minute": 38,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Abdelkader Ben Hassen",
+    "minute": 48,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Moussa Traoré",
+    "minute": 84,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "25 January 1996",
+  "home": "Ghana",
+  "away": "Mozambique",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Abedi Pele",
+    "minute": 42,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Felix Aboagye",
+    "minute": 68,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "27 January 1996",
+  "home": "South Africa",
+  "away": "Algeria",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mark Fish",
+    "minute": 72,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "John Moshoeu",
+    "minute": 85,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Tarek Lazizi",
+    "minute": 84,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "27 January 1996",
+  "home": "Zambia",
+  "away": "Egypt",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Elijah Litana",
+    "minute": 58,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Vincent Mutale",
+    "minute": 65,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Dennis Lota",
+    "minute": 76,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Samir Kamouna",
+    "minute": 43,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "28 January 1996",
+  "home": "Gabon",
+  "away": "Tunisia",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Brice Mackaya",
+    "minute": 16,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Zoubeir Baya",
+    "minute": 10,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "28 January 1996",
+  "home": "Ghana",
+  "away": "DR Congo",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Tony Yeboah",
+    "minute": 22,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "31 January 1996",
+  "home": "South Africa",
+  "away": "Ghana",
+  "homeScore": 3,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "John Moshoeu",
+    "minute": 22,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "John Moshoeu",
+    "minute": 87,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Shaun Bartlett",
+    "minute": 46,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "31 January 1996",
+  "home": "Zambia",
+  "away": "Tunisia",
+  "homeScore": 2,
+  "awayScore": 4,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Dennis Lota",
+    "minute": 68,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hillary Makasa",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Adel Sellimi",
+    "minute": 16,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Adel Sellimi",
+    "minute": 85,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Zoubeir Baya",
+    "minute": 20,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Kaies Ghodhbane",
+    "minute": 47,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "3 February 1996",
+  "home": "Ghana",
+  "away": "Zambia",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Johnson Bwalya",
+    "minute": 51,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1996,
+  "date": "3 February 1996",
+  "home": "South Africa",
+  "away": "Tunisia",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mark Williams",
+    "minute": 73,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mark Williams",
+    "minute": 75,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "7 February 1998",
+  "home": "Burkina Faso",
+  "away": "Cameroon",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Alphonse Tchami",
+    "minute": 20,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "8 February 1998",
+  "home": "Algeria",
+  "away": "Guinea",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Souleymane Oularé",
+    "minute": 19,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "11 February 1998",
+  "home": "Cameroon",
+  "away": "Guinea",
+  "homeScore": 2,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Alphonse Tchami",
+    "minute": 9,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Pierre Womé",
+    "minute": 44,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Souleymane Oularé",
+    "minute": 46,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Souleymane Oularé",
+    "minute": 77,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "11 February 1998",
+  "home": "Burkina Faso",
+  "away": "Algeria",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Kassoum Ouédraogo",
+    "minute": 65,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Seydou Traoré",
+    "minute": 77,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Moussa Saïb",
+    "minute": 82,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "15 February 1998",
+  "home": "Burkina Faso",
+  "away": "Guinea",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Romeo Kambou",
+    "minute": 85,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "15 February 1998",
+  "home": "Cameroon",
+  "away": "Algeria",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Joseph-Désiré Job",
+    "minute": 47,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Alphonse Tchami",
+    "minute": 65,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Billel Dziri",
+    "minute": 40,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "9 February 1998",
+  "home": "DR Congo",
+  "away": "Togo",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Jerry Tondelua",
+    "minute": 57,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Jerry Tondelua",
+    "minute": 73,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Massamasso Tchangai",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "9 February 1998",
+  "home": "Ghana",
+  "away": "Tunisia",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Alex Nyarko",
+    "minute": 8,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mohammed Gargo",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "12 February 1998",
+  "home": "Tunisia",
+  "away": "DR Congo",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mehdi Ben Slimane",
+    "minute": 31,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ziad Tlemçani",
+    "minute": 76,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Papi Kimoto",
+    "minute": 36,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "12 February 1998",
+  "home": "Togo",
+  "away": "Ghana",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Franck Doté",
+    "minute": 26,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mohamed Kader",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Samuel Johnson",
+    "minute": 83,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "16 February 1998",
+  "home": "DR Congo",
+  "away": "Ghana",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Bijou Kisombe Mundaba",
+    "minute": 77,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "16 February 1998",
+  "home": "Tunisia",
+  "away": "Togo",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ziad Tlemçani",
+    "minute": 9,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mehdi Ben Slimane",
+    "minute": 12,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hassen Gabsi",
+    "minute": 80,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Komlan Assignon",
+    "minute": 4,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "8 February 1998",
+  "home": "South Africa",
+  "away": "Angola",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1998,
+  "date": "8 February 1998",
+  "home": "Ivory Coast",
+  "away": "Namibia",
+  "homeScore": 4,
+  "awayScore": 3,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 2,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 39,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ibrahima Bakayoko",
+    "minute": 34,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Lassina Diabaté",
+    "minute": 83,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Eliphas Shivute",
+    "minute": 46,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Eliphas Shivute",
+    "minute": 73,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ricardo Mannetti",
+    "minute": 70,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "11 February 1998",
+  "home": "Ivory Coast",
+  "away": "South Africa",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ahmed Ouattara",
+    "minute": 88,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Helman Mkhalele",
+    "minute": 8,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "12 February 1998",
+  "home": "Angola",
+  "away": "Namibia",
+  "homeScore": 3,
+  "awayScore": 3,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Lázaro Oliveira",
+    "minute": 46,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Paulo Jorge Da Silva",
+    "minute": 67,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Miguel Pereira",
+    "minute": 86,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Gervatius Uri Khob",
+    "minute": 20,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Gervatius Uri Khob",
+    "minute": 51,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Robert Nauseb",
+    "minute": 33,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "16 February 1998",
+  "home": "Ivory Coast",
+  "away": "Angola",
+  "homeScore": 5,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Tchiressoua Guel",
+    "minute": 8,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Tchiressoua Guel",
+    "minute": 23,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 43,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 81,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ibrahima Bakayoko",
+    "minute": 56,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Paulo Jorge Da Silva",
+    "minute": 27,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Quinzinho",
+    "minute": 52,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "16 February 1998",
+  "home": "South Africa",
+  "away": "Namibia",
+  "homeScore": 4,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Benni McCarthy",
+    "minute": 8,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Benni McCarthy",
+    "minute": 11,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Benni McCarthy",
+    "minute": 19,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Benni McCarthy",
+    "minute": 21,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Simon Uutoni",
+    "minute": 68,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "9 February 1998",
+  "home": "Morroco",
+  "away": "Zambia",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ahmed Bahja",
+    "minute": 37,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Tenant Chilumba",
+    "minute": 87,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "10 February 1998",
+  "home": "Egypt",
+  "away": "Mozambique",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Hossam Hassan",
+    "minute": 14,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hossam Hassan",
+    "minute": 44,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "13 February 1998",
+  "home": "Egypt",
+  "away": "Zambia",
+  "homeScore": 4,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Hossam Hassan",
+    "minute": 34,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hossam Hassan",
+    "minute": 57,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hossam Hassan",
+    "minute": 71,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Yasser Radwan",
+    "minute": 80,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "13 February 1998",
+  "home": "Morroco",
+  "away": "Mozambique",
+  "homeScore": 3,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Saïd Chiba",
+    "minute": 39,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ali Elkhattabi",
+    "minute": 40,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Youssef Fertout",
+    "minute": 82,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "17 February 1998",
+  "home": "Zambia",
+  "away": "Mozambique",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Rotson Kilambe",
+    "minute": 16,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 43,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Masauso Tembo",
+    "minute": 73,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Avelino Salvador Maluana",
+    "minute": 57,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "17 February 1998",
+  "home": "Morroco",
+  "away": "Egypt",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mustapha Hadji",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "20 February 1998",
+  "home": "Cameroon",
+  "away": "DR Congo",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Jerry Tondelua",
+    "minute": 30,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "21 February 1998",
+  "home": "Tunisia",
+  "away": "Burkina Faso",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Hassen Gabsi",
+    "minute": 89,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Kassoum Ouédraogo",
+    "minute": 45,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "21 February 1998",
+  "home": "Ivory Coast",
+  "away": "Egypt",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1998,
+  "date": "22 February 1998",
+  "home": "Morroco",
+  "away": "South Africa",
+  "homeScore": 1,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Saïd Chiba",
+    "minute": 36,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Benni McCarthy",
+    "minute": 22,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "David Nyathi",
+    "minute": 79,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "25 February 1998",
+  "home": "DR Congo",
+  "away": "South Africa",
+  "homeScore": 1,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Eddy Bembuana-Keve",
+    "minute": 48,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Benni McCarthy",
+    "minute": 60,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Benni McCarthy",
+    "minute": 112,
+    "type": "GOAL",
+    "golden": true
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "25 February 1998",
+  "home": "Burkina Faso",
+  "away": "Egypt",
+  "homeScore": 0,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Hossam Hassan",
+    "minute": 40,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Hossam Hassan",
+    "minute": 71,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "27 February 1998",
+  "home": "DR Congo",
+  "away": "Burkina Faso",
+  "homeScore": 4,
+  "awayScore": 4,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Lokenge Mungongo",
+    "minute": 76,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Lokenge Mungongo",
+    "minute": 90,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Jean-Kasongo Banza",
+    "minute": 88,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Jerry Tondelua",
+    "minute": 89,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Alassane Ouédraogo",
+    "minute": 6,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Oumar Barro",
+    "minute": 52,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Sidi Napon",
+    "minute": 56,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ibrahima Tallé",
+    "minute": 86,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1998,
+  "date": "28 February 1998",
+  "home": "South Africa",
+  "away": "Egypt",
+  "homeScore": 0,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Ahmed Hassan",
+    "minute": 5,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Tarek Mostafa",
+    "minute": 13,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ }
+]

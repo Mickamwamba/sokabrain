@@ -1,8 +1,10 @@
 # Ingestion: the Tanzania Premier League, 2008/09 to 2026/27
 
 > For the Africa Cup of Nations see [AFCON.md](AFCON.md) (13 tournaments,
-> 2002-2025, from WhoScored) and [AFCON_PRE2002.md](AFCON_PRE2002.md)
-> (22 tournaments, 1957-2000, from RSSSF). It uses the same WhoScored browser harvest but a
+> 2002-2025, from WhoScored), [AFCON_PRE2002.md](AFCON_PRE2002.md)
+> (22 tournaments, 1957-2000, from RSSSF) and
+> [AFCON_1996_1998_SCORERS.md](AFCON_1996_1998_SCORERS.md) (the scorers for the
+> two tournaments RSSSF gives none for, from Wikipedia). It uses the same WhoScored browser harvest but a
 > separate pipeline, because the source changes page format halfway
 > through and files own goals under opposite teams either side of that
 > split.

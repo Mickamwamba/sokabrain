@@ -1,0 +1,734 @@
+{{Short description|20th edition of the Africa Cup of Nations}}
+{{Use South African English|date=August 2026}}
+{{Use dmy dates|date=September 2021}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year = 1996
+| other_titles = 
+| image = CAN 1996 logo.jpg
+| size = 150px
+| caption = African Cup of Nations 1996 official logo
+| country = South Africa
+| dates = 13 January – 3 February
+| num_teams = 15
+| venues = 4
+| cities = 4
+| champion = South Africa
+| count = 1
+| second = Tunisia
+| second-flagvar = 1959
+| third = Zambia
+| third-flagvar = 1964
+| fourth = Ghana
+| matches = 29
+| goals = 78
+| attendance = {{#expr:80000 + 6000 + 4000 + 78000 + 80000 + 6000 + 9000 + 1500 + 1500 + 2000 + 180 + 200 + 5000 + 4000 + 3000 + 8000 + 1000 + 1000 + 500 + 1000 + 3500 + 80000 + 8500 + 4000 + 8000 + 80000 + 5000 + 80000 + 80000}}
+| top_scorer = {{flagicon|ZAM|1964}} [[Kalusha Bwalya]] <br> (5 goals)
+| player = {{flagicon|ZAM|1964}} [[Kalusha Bwalya]]
+| prevseason = [[1994 African Cup of Nations|1994]]
+| nextseason = [[1998 African Cup of Nations|1998]]
+}}
+
+The '''1996 African Cup of Nations''', also known as the [[Coca-Cola]] 1996 Africa Cup of Nations for sponsorship reasons, was the 20th edition of the [[Africa Cup of Nations]], the [[association football|football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by South Africa, who replaced original hosts Kenya. The field expanded for the first time to 16 teams, split into four groups of four; the top two teams in each group advancing to the quarterfinals. However, [[Nigeria national football team|Nigeria]] withdrew from the tournament at the final moment under pressure from then-dictator [[Sani Abacha]], reducing the field to 15.<ref>{{Cite web|url=https://www.independent.co.uk/sport/nigerian-players-back-boycott-of-finals-1323344.html |archive-url=https://ghostarchive.org/archive/20220501/https://www.independent.co.uk/sport/nigerian-players-back-boycott-of-finals-1323344.html |archive-date=1 May 2022 |url-access=subscription |url-status=live|title = Nigerian players back boycott of finals|website = [[Independent.co.uk]]|date = 10 January 1996}}{{cbignore}}</ref> [[South Africa national soccer team|South Africa]] won its first championship, beating [[Tunisia national football team|Tunisia]] in the final 2–0.<ref>{{Cite news|url=https://www.bbc.com/sport/football/60083320|title='South Africa's Rugby World Cup win was big – but this was even bigger'|work=BBC Sport |date=3 February 2022 }}</ref> The tournament was covered in the 2026 documentary series “Class of ‘96: Rise of a Nation”.<ref>{{Cite news|url=https://www.etv.co.za/scoop/introducing-class-96-rise-nation|title='Introducing Class Of 96: Rise Of A Nation'|work=e.tv |date=7 January 2026 }}</ref>
+
+== Qualified teams ==
+[[File:African Cup of Nations 1996.png|thumb|300px|Participating nations]]
+
+''For full qualification see: [[1996 African Cup of Nations qualification]]''
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|RSA}} || Hosts ||  || {{sort|16|0}} (debut)
+|-
+| <s>{{fb|NGR}}</s>{{efn|[[Nigeria national football team|Nigeria]] withdrew prior to the start of the finals. [[Guinea national football team|Guinea]], as the best side to not qualify, was offered Nigeria's spot in the finals, but declined due to a lack of preparation time.}} || Holders || {{dts|10 April 1994}} || {{sort|03|10}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]], [[1978 African Cup of Nations|1978]], '''''[[1980 African Cup of Nations|1980]]''''', [[1982 African Cup of Nations|1982]], [[1984 African Cup of Nations|1984]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]], '''[[1994 African Cup of Nations|1994]]''')
+|-
+| {{fb|GAB}} || [[1996 African Cup of Nations qualification#Group 5|Group 5]] winners || {{dts|4 June 1995}} || {{sort|14|1}} ([[1994 African Cup of Nations|1994]])
+|-
+| {{fb|ZAI}} || [[1996 African Cup of Nations qualification#Group 1|Group 1]] winners || {{dts|4 June 1995}} || {{sort|04|9}} ([[1965 African Cup of Nations|1965]], '''[[1968 African Cup of Nations|1968]]''', [[1970 African Cup of Nations|1970]], [[1972 African Cup of Nations|1972]], '''[[1974 African Cup of Nations|1974]]''', [[1976 African Cup of Nations|1976]], [[1988 African Cup of Nations|1988]], [[1992 African Cup of Nations|1992]], [[1994 African Cup of Nations|1994]])
+|-
+| {{fb|ZAM|1964}} || [[1996 African Cup of Nations qualification#Group 5|Group 5]] runners-up || {{dts|15 July 1995}} || {{sort|04|7}} ([[1974 African Cup of Nations|1974]], [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]], [[1986 African Cup of Nations|1986]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]], [[1994 African Cup of Nations|1994]])
+|-
+| {{fb|ALG}} || [[1996 African Cup of Nations qualification#Group 4|Group 4]] runners-up || {{dts|30 July 1995}} || {{sort|04|8}} ([[1968 African Cup of Nations|1968]], [[1980 African Cup of Nations|1980]], [[1982 African Cup of Nations|1982]], [[1984 African Cup of Nations|1984]], [[1986 African Cup of Nations|1986]], [[1988 African Cup of Nations|1988]], '''''[[1990 African Cup of Nations|1990]]''''', [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|ANG}} || [[1996 African Cup of Nations qualification#Group 6|Group 6]] winners || {{dts|30 July 1995}} || {{sort|15|0}} (debut)
+|-
+| {{fb|BFA}} || [[1996 African Cup of Nations qualification#Group 7|Group 7]] winners || {{dts|30 July 1995}} || {{sort|14|1}} ([[1978 African Cup of Nations|1978]])
+|-
+| {{fb|CMR}} || [[1996 African Cup of Nations qualification#Group 1|Group 1]] runners-up || {{dts|30 July 1995}} || {{sort|04|8}} ([[1970 African Cup of Nations|1970]], ''[[1972 African Cup of Nations|1972]]'', [[1982 African Cup of Nations|1982]], '''[[1984 African Cup of Nations|1984]]''', [[1986 African Cup of Nations|1986]], '''[[1988 African Cup of Nations|1988]]''', [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|EGY}} || [[1996 African Cup of Nations qualification#Group 4|Group 4]] winners || {{dts|30 July 1995}} || {{sort|01|14}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'', [[1976 African Cup of Nations|1976]], [[1980 African Cup of Nations|1980]], [[1984 African Cup of Nations|1984]], '''''[[1986 African Cup of Nations|1986]]''''',<br>[[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]], [[1994 African Cup of Nations|1994]])
+|-
+| {{fb|GHA}} || [[1996 African Cup of Nations qualification#Group 3|Group 3]] winners || {{dts|30 July 1995}} || {{sort|03|10}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], '''''[[1978 African Cup of Nations|1978]]''''', [[1980 African Cup of Nations|1980]], '''[[1982 African Cup of Nations|1982]]''', [[1984 African Cup of Nations|1984]], [[1992 African Cup of Nations|1992]], [[1994 African Cup of Nations|1994]])
+|-
+| {{fb|CIV}} || [[1996 African Cup of Nations qualification#Group 7|Group 7]] runners-up || {{dts|30 July 1995}} || {{sort|02|11}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1980 African Cup of Nations|1980]], ''[[1984 African Cup of Nations|1984]]'', [[1986 African Cup of Nations|1986]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], '''[[1992 African Cup of Nations|1992]]''',<br>[[1994 African Cup of Nations|1994]])
+|-
+| {{fb|LBR}} || [[1996 African Cup of Nations qualification#Group 2|Group 2]] runners-up || {{dts|30 July 1995}} || {{sort|15|0}} (debut)
+|-
+| {{fb|MOZ}} || [[1996 African Cup of Nations qualification#Group 6|Group 6]] runners-up || {{dts|30 July 1995}} || {{sort|14|1}} ([[1986 African Cup of Nations|1986]])
+|-
+| {{fb|SLE}} || [[1996 African Cup of Nations qualification#Group 3|Group 3]] runners-up || {{dts|30 July 1995}} || {{sort|14|1}} ([[1994 African Cup of Nations|1994]])
+|-
+| {{fb|TUN|1959}} || [[1996 African Cup of Nations qualification#Group 2|Group 2]] winners || {{dts|30 July 1995}} || {{sort|05|6}} ([[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], ''[[1965 African Cup of Nations|1965]]'', [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]], ''[[1994 African Cup of Nations|1994]]'')
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{main|1996 African Cup of Nations squads}}
+
+== Venues ==
+<div style="text-align: center;">
+{| class=wikitable style="text-align:center"
+|-
+! width=160 | [[Johannesburg]] !! rowspan=8 |
+{{location map+|South Africa|float=right|width=430|caption=|places=
+{{location map~|South Africa|lat=-26.234797|long=27.982353|label=[[Johannesburg]]|position=left}}
+{{location map~|South Africa|lat=-29.829444|long=31.030278|label=[[Durban]]|position=bottom}}
+{{location map~|South Africa|lat=-29.1|long=26.216667|label=[[Bloemfontein]]|position=left}}
+{{location map~|South Africa|lat=-33.937778|long=25.598889|label=[[Port Elizabeth]]|position=bottom}}
+}}
+! width=160 | [[Durban]]
+|-
+| [[FNB Stadium]] || [[Kings Park Stadium]]
+|-
+| [[File:FIFA World Cup 2010 Argentina South Korea.jpg|150px]] || [[File:King's Park Stadium, Durban.jpg|150px]]
+|-
+| Capacity: '''80,000''' || Capacity: '''52,000'''
+|-
+! width=160 | [[Bloemfontein]] || [[Port Elizabeth]]
+|-
+| [[Free State Stadium]] || [[EPRU Stadium]]
+|-
+| [[File:Free State Stadium1.jpg|150px]] || [[File:Boet Erasmus Stadium.jpg|150px]]
+|-
+| Capacity: '''40,000''' || Capacity: '''33,852'''
+|}
+</div>
+
+== First round ==
+Teams highlighted in green progress to the Quarter Finals.
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=Group A
+
+|team1=RSA|name_RSA={{fb|RSA}}
+|team2=EGY|name_EGY={{fb|EGY}}
+|team3=CMR|name_CMR={{fb|CMR}}
+|team4=ANG|name_ANG={{fb|ANG}}
+|win_RSA=2|draw_RSA=0|loss_RSA=1|gf_RSA=4|ga_RSA=1|status_RSA=H
+|win_EGY=2|draw_EGY=0|loss_EGY=1|gf_EGY=4|ga_EGY=3
+|win_CMR=1|draw_CMR=1|loss_CMR=1|gf_CMR=5|ga_CMR=7
+|win_ANG=0|draw_ANG=1|loss_ANG=2|gf_ANG=4|ga_ANG=6
+
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1996 Africa Cup of Nations#knockout stage|knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 13 January 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 3–0
+| report =
+| team2 = {{fb|CMR}}
+| goals1 = [[Phil Masinga|Masinga]] {{goal|15}} <br> [[Mark Williams (South African footballer)|Williams]] {{goal|37}} <br> [[John Moshoeu|Moshoeu]] {{goal|55}}
+| goals2 =
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 75,000
+| referee = [[Said Belqola]] ([[Royal Moroccan Football Federation|Morocco]])
+}}
+----
+{{football box
+| date = 15 January 1996
+| time = 
+| team1 = {{fb-rt|EGY}}
+| score = 2–1
+| report =
+| team2 = {{fb|ANG}}
+| goals1 = [[Ahmed El-Kass|El-Kass]] {{goal|30||33}}
+| goals2 = [[Quinzinho]] {{goal|77}}
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 6,000
+| referee = Sidi Bekaye Magassa ([[Malian Football Federation|Mali]])
+}}
+----
+{{football box
+| date = 18 January 1996
+| time = 
+| team1 = {{fb-rt|CMR}}
+| score = 2–1
+| report =
+| team2 = {{fb|EGY}}
+| goals1 = [[François Omam-Biyik|Omam-Biyik]] {{goal|36|pen.}} <br> [[Alphonse Tchami|Tchami]] {{goal|59}}
+| goals2 = [[Ali Maher (footballer)|Maher]] {{goal|48}}
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 4,000
+| referee = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+----
+{{football box
+| date = 20 January 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 1–0
+| report =
+| team2 = {{fb|ANG}}
+| goals1 = [[Mark Williams (South African footballer)|Williams]] {{goal|57}}
+| goals2 =
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 28,000
+| referee = Fethi Boucetta ([[Tunisian Football Federation|Tunisia]])
+}}
+----
+{{football box
+| date = 24 January 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 0–1
+| report =
+| team2 = {{fb|EGY}}
+| goals1 =
+| goals2 = [[Ahmed El-Kass|El-Kass]] {{goal|7}}
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 20,000
+| referee = [[Lucien Bouchardeau]] ([[Nigerien Football Federation|Niger]])
+}}
+----
+{{football box
+| date = 24 January 1996
+| time = 
+| team1 = {{fb-rt|ANG}}
+| score = 3–3
+| report =
+| team2 = {{fb|CMR}}
+| goals1 = [[Joni (footballer, born 1970)|Joni]] {{goal|38|pen.}} <br> [[Paulão (footballer, born 1969)|Paulão]] {{goal|57}} <br> [[Quinzinho]] {{goal|80}}
+| goals2 = [[François Omam-Biyik|Omam-Biyik]] {{goal|25}} <br> [[George Mouyémé|Mouyeme]] {{goal|82}} <br> [[Hélder Vicente|Vicente]] {{goal|90|o.g.}}
+| stadium = [[Kings Park Stadium]], [[Durban]]
+| attendance = 6,000
+| referee = Mohamed Kouradji ([[Algerian Football Federation|Algeria]])
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=Group B
+
+|team1=ZAM|name_ZAM={{fb|ZAM|1964}}
+|team2=ALG|name_ALG={{fb|ALG}}
+|team3=SLE|name_SLE={{fb|SLE}}
+|team4=BFA|name_BFA={{fb|BFA}}
+|win_ZAM=2|draw_ZAM=1|loss_ZAM=0|gf_ZAM=9|ga_ZAM=1
+|win_ALG=2|draw_ALG=1|loss_ALG=0|gf_ALG=4|ga_ALG=1
+|win_SLE=1|draw_SLE=0|loss_SLE=2|gf_SLE=2|ga_SLE=7
+|win_BFA=0|draw_BFA=0|loss_BFA=3|gf_BFA=3|ga_BFA=9
+
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1996 Africa Cup of Nations#knockout stage|knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 14 January 1996
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 0–0
+| report =
+| team2 = {{fb|ALG}}
+| goals1 =
+| goals2 =
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 9,000
+| referee = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+----
+{{football box
+| date = 15 January 1996
+| time = 
+| team1 = {{fb-rt|SLE}}
+| score = 2–1
+| report =
+| team2 = {{fb|BFA}}
+| goals1 = [[Gbassay Sessay|Sessay]] {{goal|11}} <br> [[Mohamed Kallon|Kallon]] {{goal|89}}
+| goals2 = [[Aboubakari Ouédraogo|Ouédraogo]] {{goal|74}}
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 1,500
+| referee = Okoampa ([[Ghana Football Association|Ghana]])
+}}
+----
+{{football box
+| date = 18 January 1996
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 2–0
+| report =
+| team2 = {{fb|SLE}}
+| goals1 = [[Ali Meçabih|Meçabih]] {{goal|41||63}}
+| goals2 =
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 1,500
+| referee = [[Ian McLeod (referee)|Ian McLeod]] ([[South African Football Association|South Africa]])
+}}
+----
+{{football box
+| date = 20 January 1996
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 5–1
+| report =
+| team2 = {{fb|BFA}}
+| goals1 = [[Kenneth Malitoli|Malitoli]] {{goal|18}} <br> [[Kalusha Bwalya|K. Bwalya]] {{goal|24||35}} <br> [[Dennis Lota|Lota]] {{goal|44}} <br> [[Johnson Bwalya|J. Bwalya]] {{goal|45}}
+| goals2 = Y. Traoré {{goal|53}}
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 2,000
+| referee = [[Masayoshi Okada]] ([[Japan Football Association|Japan]])
+}}
+----
+{{football box
+| date = 24 January 1996
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 2–1
+| report =
+| team2 = {{fb|BFA}}
+| goals1 = [[Khaled Lounici|Lounici]] {{goal|2}} <br> [[Billel Dziri|Dziri]] {{goal|75}}
+| goals2 = [[Boureima Zongo|Zongo]] {{goal|83}}
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 180
+| referee = Charles Masembe ([[Federation of Uganda Football Associations|Uganda]])
+}}
+----
+{{football box
+| date = 24 January 1996
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 4–0
+| report =
+| team2 = {{fb|SLE}}
+| goals1 = [[Kalusha Bwalya|K. Bwalya]] {{goal|2||9||84}} <br> [[Mordon Malitoli|Malitoli]] {{goal|87}}
+| goals2 =
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 200
+| referee = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+
+=== Group C ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=Group C
+
+|team1=GAB|name_GAB={{fb|GAB}}
+|team2=ZAI|name_ZAI={{fb|ZAI}}
+|team3=LBR|name_LBR={{fb|LBR}}
+|win_GAB=1|draw_GAB=0|loss_GAB=1|gf_GAB=3|ga_GAB=2
+|win_ZAI=1|draw_ZAI=0|loss_ZAI=1|gf_ZAI=2|ga_ZAI=2
+|win_LBR=1|draw_LBR=0|loss_LBR=1|gf_LBR=2|ga_LBR=3
+
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1996 Africa Cup of Nations#knockout stage|knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 16 January 1996
+| time = 
+| team1 = {{fb-rt|GAB}}
+| score = 1–2
+| report =
+| team2 = {{fb|LBR}}
+| goals1 = [[Guy-Roger Nzeng|Nzeng]] {{goal|59}}
+| goals2 = [[Kelvin Sebwe|Sebwe]] {{goal|5|pen.}} <br> [[Mass Sarr Jr.|Sarr]] {{goal|54}}
+| stadium = [[Kings Park Stadium]], [[Durban]]
+| attendance = 5,000
+| referee = [[Gamal Al-Ghandour]] ([[Egyptian Football Association|Egypt]])
+}}
+----
+{{football box
+| date = 19 January 1996
+| time = 
+| team1 = {{fb-rt|GAB}}
+| score = 2–0
+| report =
+| team2 = {{fb|ZAI}}
+| goals1 = [[Brice Mackaya|Mackaya]] {{goal|21|pen.}} <br> [[Aurélien Bekogo|Bekogo]] {{goal|34}}
+| goals2 =
+| stadium = [[Kings Park Stadium]], [[Durban]]
+| attendance = 4,000
+| referee = [[Omer Yengo]] ([[Congolese Football Federation|Congo]])
+}}
+----
+{{football box
+| date = 25 January 1996
+| time = 
+| team1 = {{fb-rt|ZAI}}
+| score = 2–0
+| report =
+| team2 = {{fb|LBR}}
+| goals1 = [[Roger Lukaku|Lukaku]] {{goal|5|pen.}} <br> Essende {{goal|72}}
+| goals2 =
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 3,000
+| referee = [[Said Belqola]] ([[Royal Moroccan Football Federation|Morocco]])
+}}
+----
+<small>{{fb|NGA}} withdrew, so their three matches were canceled.</small>
+* <small>vs. {{fb|ZAI}}, 16 January 1996</small>
+* <small>vs. {{fb|LBR}}, 19 January 1996</small>
+* <small>vs. {{fb|GAB}}, 25 January 1996</small>
+
+=== Group D ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=Group D
+
+|team1=GHA|name_GHA={{fb|GHA}}
+|team2=TUN|name_TUN={{fb|TUN|1959}}
+|team3=CIV|name_CIV={{fb|CIV}}
+|team4=MOZ|name_MOZ={{fb|MOZ}}
+|win_GHA=3|draw_GHA=0|loss_GHA=0|gf_GHA=6|ga_GHA=1
+|win_TUN=1|draw_TUN=1|loss_TUN=1|gf_TUN=5|ga_TUN=4
+|win_CIV=1|draw_CIV=0|loss_CIV=2|gf_CIV=2|ga_CIV=5
+|win_MOZ=0|draw_MOZ=1|loss_MOZ=2|gf_MOZ=1|ga_MOZ=4
+
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1996 Africa Cup of Nations#knockout stage|knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 14 January 1996
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 2–0
+| report =
+| team2 = {{fb|CIV}}
+| goals1 = [[Tony Yeboah|Yeboah]] {{goal|20}} <br> [[Abedi Pele|Pelé]] {{goal|70}}
+| goals2 =
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 8,000
+| referee = [[Masayoshi Okada]] ([[Japan Football Association|Japan]])
+}}
+----
+{{football box
+| date = 16 January 1996
+| time = 
+| team1 = {{fb-rt|TUN|1959}}
+| score = 1–1
+| report =
+| team2 = {{fb|MOZ}}
+| goals1 = [[Hédi Berkhissa|Berkhissa]] {{goal|24}}
+| goals2 = [[Tico-Tico]] {{goal|4}}
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 1,000
+| referee = Charles Masembe ([[Federation of Uganda Football Associations|Uganda]])
+}}
+----
+{{football box
+| date = 19 January 1996
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 2–1
+| report =
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Abedi Pele|Pelé]] {{goal|50}} <br> [[Charles Akonnor|Akonnor]] {{goal|77}}
+| goals2 = [[Imed Ben Younes|Ben Younes]] {{goal|72}}
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 1,000
+| referee = Petros Mathabela ([[South African Football Association|South Africa]])
+}}
+----
+{{football box
+| date = 21 January 1996
+| time = 
+| team1 = {{fb-rt|CIV}}
+| score = 1–0
+| report =
+| team2 = {{fb|MOZ}}
+| goals1 = [[Joël Tiéhi|Tiéhi]] {{goal|32}}
+| goals2 =
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 500
+| referee = [[Gamal Al-Ghandour]] ([[Egyptian Football Association|Egypt]])
+}}
+----
+{{football box
+| date = 25 January 1996
+| time = 
+| team1 = {{fb-rt|TUN|1959}}
+| score = 3–1
+| report =
+| team2 = {{fb|CIV}}
+| goals1 = [[Imed Ben Younes|Ben Younes]] {{goal|32||38}} <br> [[Abdelkader Ben Hassen|Ben Hassen]] {{goal|48}}
+| goals2 = [[Moussa Traoré (footballer, born 1971)|M. Traoré]] {{goal|84}}
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 1,000
+| referee = Sidi Bekaye Magassa ([[Malian Football Federation|Mali]])
+}}
+----
+{{football box
+| date = 25 January 1996
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 2–0
+| report =
+| team2 = {{fb|MOZ}}
+| goals1 = [[Abedi Pele|Pelé]] {{goal|42}} <br> [[Felix Aboagye|Aboagye]] {{goal|68}}
+| goals2 =
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 3,500
+| referee = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+
+== Knockout stage ==
+{{#invoke:RoundN|N8
+|style=white-space:nowrap|3rdplace=yes|bold_winner=high|widescore=yes
+<!--quarter finals-->
+| 27 January – [[Johannesburg]] | '''{{fb|RSA}}''' | '''2''' | {{fb|ALG}} | 1
+| 28 January – [[Port Elizabeth]] | '''{{fb|GHA}}''' | '''1''' | {{fb|ZAI}} | 0
+| 27 January – [[Bloemfontein]] | '''{{fb|ZAM|1964}}''' | '''3''' | {{fb|EGY}} | 1
+| 28 January – [[Durban]] | {{fb|GAB}} | 1 (1) | '''{{fb|TUN|1959}} {{pso}}''' | '''1 (4)'''
+<!--semi finals-->
+| 31 January – [[Johannesburg]] | '''{{fb|RSA}}''' | '''3''' | {{fb|GHA}} | 0
+| 31 January – [[Durban]] | {{fb|ZAM|1964}} | 2 | '''{{fb|TUN|1959}}''' | '''4'''
+<!--final-->
+| 3 February – [[Johannesburg]] | '''{{fb|RSA}}''' | '''2''' | {{fb|TUN|1959}} | 0
+<!--third place-->
+| 3 February – [[Johannesburg]] | {{fb|GHA}} | 0 | '''{{fb|ZAM|1964}}''' | '''1'''
+}}
+
+=== Quarterfinals ===
+{{football box
+| date = 27 January 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 2–1
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1996-in-suedafrika-viertelfinale-suedafrika-algerien Report]
+| team2 = {{fb|ALG}}
+| goals1 = [[Mark Fish|Fish]] {{goal|72}} <br> [[John Moshoeu|Moshoeu]] {{goal|85}}
+| goals2 = [[Tarek Lazizi|Lazizi]] {{goal|84}}
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 80,000
+| referee = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+----
+{{football box
+| date = 27 January 1996
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 3–1
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1996-in-suedafrika-viertelfinale-aegypten-sambia Report]
+| team2 = {{fb|EGY}}
+| goals1 = [[Elijah Litana|Litana]] {{goal|58}} <br> [[Vincent Mutale|Mutale]] {{goal|65}} <br> [[Dennis Lota|Lota]] {{goal|76}}
+| goals2 = [[Samir Kamouna|S. Kamouna]] {{goal|43}}
+| stadium = [[Free State Stadium]], [[Bloemfontein]]
+| attendance = 8,500
+| referee = Charles Masembe ([[Federation of Uganda Football Associations|Uganda]])
+}}
+----
+{{football box
+| date = 28 January 1996
+| time = 
+| team1 = {{fb-rt|GAB}}
+| score = 1–1|aet=yes
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1996-in-suedafrika-viertelfinale-ghana-dr-kongo Report]
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Brice Mackaya|Mackaya]] {{goal|16}}
+| goals2 = [[Zoubeir Baya|Baya]] {{goal|10}}
+| stadium = [[Kings Park Stadium]], [[Durban]]
+| attendance = 4,000
+| referee = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+| penalties1 = [[Brice Mackaya|Mackaya]] {{penmiss}} <br> [[Etienne Kassa-Ngoma|Ngoma]] {{penmiss}} <br> [[Aurélien Bekogo|Bekogo]] {{pengoal}}
+| penaltyscore = 1–4
+| penalties2 = {{pengoal}} [[Adel Sellimi|Sellimi]] <br> {{pengoal}} [[Sofiane Fekhi|Fekhi]] <br> {{pengoal}} [[Mehdi Ben Slimane|Ben Slimane]] <br> {{pengoal}} [[Chokri El Ouaer|El Ouaer]]
+}}
+----
+{{football box
+| date = 28 January 1996
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1996-in-suedafrika-viertelfinale-ghana-dr-kongo Report]
+| team2 = {{fb|ZAI}}
+| goals1 = [[Tony Yeboah|Yeboah]] {{goal|22}}
+| goals2 =
+| stadium = [[EPRU Stadium]], [[Port Elizabeth]]
+| attendance = 8,000
+| referee = Sidi Bekaye Magassa ([[Malian Football Federation|Mali]])
+}}
+
+=== Semifinals ===
+{{football box
+| date = 31 January 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 3–0
+| report =
+| team2 = {{fb|GHA}}
+| goals1 = [[John Moshoeu|Moshoeu]] {{goal|22||87}} <br> [[Shaun Bartlett|Bartlett]] {{goal|46}}
+| goals2 =
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 75,000
+| referee = [[Gamal Al-Ghandour]] ([[Egyptian Football Association|Egypt]])
+}}
+----
+{{football box
+| date = 31 January 1996
+| time = 
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 2–4
+| report =
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Dennis Lota|Lota]] {{goal|68}} <br> [[Hillary Makasa|Makasa]] {{goal|90}}
+| goals2 = [[Adel Sellimi|Sellimi]] {{goal|16||85|pen.}} <br> [[Zoubeir Baya|Baya]] {{goal|20}} <br> [[Kaies Ghodhbane|Ghodhbane]] {{goal|47}}
+| stadium = [[Kings Park Stadium]], [[Durban]]
+| attendance = 5,000
+| referee = [[Lucien Bouchardeau]] ([[Nigerien Football Federation|Niger]])
+}}
+
+=== Third place match ===
+{{football box
+| date = 3 February 1996
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 0–1
+| report =
+| team2 = {{fb|ZAM|1964}}
+| goals1 =
+| goals2 = [[Johnson Bwalya|J. Bwalya]] {{goal|51}}
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 80,000
+| referee = [[Omer Yengo]] ([[Congolese Football Federation|Republic of the Congo]])
+}}
+
+=== Final ===
+{{main|1996 African Cup of Nations Final}}
+{{football box
+| date = 3 February 1996
+| time = 
+| team1 = {{fb-rt|RSA}}
+| score = 2–0
+| report =
+| team2 = {{fb|TUN|1959}}
+| goals1 = [[Mark Williams (South African footballer)|Williams]] {{goal|73||75}}
+| goals2 =
+| stadium = [[FNB Stadium]], [[Johannesburg]]
+| attendance = 80,000
+| referee = Charles Masembe ([[Federation of Uganda Football Associations|Uganda]])
+}}
+
+==Goalscorers==
+{{Goalscorers
+|goals=78 |matches=29
+
+|5 goals=
+*{{fbicon|ZAM|1964}} [[Kalusha Bwalya]]
+
+|4 goals=
+*{{fbicon|RSA}} [[John Moshoeu]]
+*{{fbicon|RSA}} [[Mark Williams (South African footballer)|Mark Williams]]
+
+|3 goals=
+*{{fbicon|GHA}} [[Abedi Pele]]
+*{{fbicon|EGY}} [[Ahmed El-Kass]]
+*{{fbicon|TUN|1959}} [[Imed Ben Younes]]
+*{{fbicon|ZAM|1964}} [[Dennis Lota]]
+
+|2 goals=
+*{{fbicon|ALG}} [[Ali Meçabih]]
+*{{fbicon|ANG}} [[Quinzinho]]
+*{{fbicon|CMR}} [[François Omam-Biyik]]
+*{{fbicon|GAB}} [[Brice Mackaya]]
+*{{fbicon|GHA}} [[Tony Yeboah]]
+*{{fbicon|TUN|1959}} [[Zoubeir Baya]]
+*{{fbicon|TUN|1959}} [[Adel Sellimi]]
+*{{fbicon|ZAM|1964}} [[Johnson Bwalya]]
+*{{fbicon|ZAM|1964}} [[Kenneth Malitoli]]
+
+|1 goal=
+*{{fbicon|ALG}} [[Billel Dziri]]
+*{{fbicon|ALG}} [[Tarek Lazizi]]
+*{{fbicon|ALG}} [[Khaled Lounici]]
+*{{fbicon|ANG}} [[Joni (footballer, born 1970)|Joni]]
+*{{fbicon|ANG}} [[Paulão (footballer, born 1969)|Paulão]]
+*{{fbicon|BFA}} [[Aboubakari Ouédraogo]]
+*{{fbicon|BFA}} Youssouf Traoré
+*{{fbicon|BFA}} [[Boureima Zongo]]
+*{{fbicon|CMR}} [[Georges Mouyémé]]
+*{{fbicon|CMR}} [[Alphonse Tchami]]
+*{{fbicon|CIV}} [[Joël Tiéhi]]
+*{{fbicon|CIV}} [[Moussa Traoré (footballer, born 1971)|Moussa Traoré]]
+*{{fbicon|EGY}} [[Samir Kamouna|Samir Ibrahim]]
+*{{fbicon|EGY}} [[Ali Maher (footballer)|Ali Maher]]
+*{{fbicon|GAB}} [[Aurélien Bekogo]]
+*{{fbicon|GAB}} [[Guy-Roger Nzeng|Guy Nzeng]]
+*{{fbicon|GHA}} [[Felix Aboagye]]
+*{{fbicon|GHA}} [[Charles Akonnor]]
+*{{fbicon|GHA}} [[Kwame Ayew]]
+*{{fbicon|LBR}} [[Mass Sarr Jr.]]
+*{{fbicon|LBR}} [[Kelvin Sebwe]]
+*{{fbicon|MOZ}} [[Tico-Tico]]
+*{{fbicon|SLE}} [[Mohamed Kallon]]
+*{{fbicon|SLE}} [[Gbassay Sessay]]
+*{{fbicon|RSA}} [[Shaun Bartlett]]
+*{{fbicon|RSA}} [[Mark Fish]]
+*{{fbicon|RSA}} [[Phil Masinga]]
+*{{fbicon|TUN|1959}} [[Abdelkader Ben Hassen]]
+*{{fbicon|TUN|1959}} [[Hédi Berkhissa]]
+*{{fbicon|TUN|1959}} [[Kaies Ghodhbane]]
+*{{fbicon|ZAI}} Liombi Essende
+*{{fbicon|ZAI}} [[Roger Lukaku]]
+*{{fbicon|ZAM|1964}} [[Elijah Litana]]
+*{{fbicon|ZAM|1964}} [[Hillary Makasa]]
+*{{fbicon|ZAM|1964}} [[Vincent Mutale]]
+
+|1 own goal=
+*{{fbicon|ANG}} [[Hélder Vicente]] (for Cameroon)
+}}
+
+== CAF Team of the Tournament ==
+'''Goalkeeper'''
+* {{flagicon|TUN|1959}} [[Chokri El Ouaer]]
+
+'''Defenders'''
+* {{flagicon|Egypt}} [[Yasser Radwan]]
+* {{flagicon|South Africa}} [[Mark Fish]]
+* {{flagicon|ZAM|1964}} [[Elijah Litana]]
+* {{flagicon|Ghana}} [[Isaac Asare]]
+
+'''Midfielders'''
+* {{flagicon|TUN|1959}} [[Zoubeir Baya]]
+* {{flagicon|Egypt}} [[Hazem Emam]]
+* {{flagicon|Ghana}} [[Abedi Pele]]
+* {{flagicon|South Africa}} [[Mark Williams (South African footballer)|Mark Williams]]
+
+'''Forwards'''
+* {{flagicon|ZAM|1964}} [[Kalusha Bwalya]]
+* {{flagicon|Ghana}} [[Tony Yeboah]]
+
+== References ==
+{{Reflist}}
+
+== External links ==
+{{commons category}}
+* [https://web.archive.org/web/20100125034552/http://www.rsssf.com/tables/96a-det.html Details at RSSSF]
+* [https://www.angelfire.com/ak/EgyptianSports/AfricanCup96.html Details at www.angelfire.com]
+
+{{1996 African Cup of Nations finalists}}
+{{1996 African Cup of Nations Venues}}
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:African Cup of Nations}}
+[[Category:1996 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1996]]
+[[Category:1996 in African men's continental football|Cup of Nations]]
+[[Category:1996 in African men's international football|Cup of Nations]]
+[[Category:1995–96 in South African soccer]]
+[[Category:Men's international association football competitions hosted by South Africa]]
+[[Category:Sports competitions in Johannesburg]]
+[[Category:Sports competitions in Durban]]
+[[Category:Sports competitions in Gqeberha]]
+[[Category:Sport in Bloemfontein]]
+[[Category:January 1996 sports events in Africa]]
+[[Category:February 1996 sports events in Africa]]
