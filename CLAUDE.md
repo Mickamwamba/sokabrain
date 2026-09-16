@@ -342,6 +342,26 @@ explicitly out of scope — see "Non-goals" below).
     loser, so Tunisia 1-2 Equatorial Guinea reads `0 : 2`).
   - Substitutions were deliberately not loaded, though 2,666 are in the raw
     harvest at `docs/ingestion/raw/afcon/events.json`.
+- **The Africa Cup of Nations now runs 1957-2025: 35 editions, 850 matches.**
+  The 22 tournaments before 2002 were loaded 2026-09-15 from RSSSF — see
+  `docs/ingestion/AFCON_PRE2002.md` for the pipeline, the checks and the
+  judgement calls. **All 22 are unpublished.**
+  - RSSSF, not Flashscore: it carries dates, scorers with minutes, attendances
+    and the final group tables as plain text, and every printed group table
+    recomputes exactly from the parsed fixtures. Wikipedia independently
+    confirms 1974, 1988, 1996 and 2000.
+  - **Scorers were loaded only where they add up to the score** (264 of 352
+    played matches, 735 goals). The rest are results only: 31 goalless draws
+    and 57 matches RSSSF gives no scorers for, nearly all in 1996 and 1998.
+  - **RSSSF lists an own goal under the side it counts FOR**, so the loader
+    flips it to the scorer's own team (principle 5) — the same trap as ligikuu.
+  - Extra time (28 matches): RSSSF gives only the after-extra-time score, so it
+    is stored in both the score and the `*_score_et` columns; the 90 minutes
+    are unknown. Two matches were never played (1957 apartheid disqualification,
+    1978 walk-off) and are CANCELLED with no score. 1959 and 1976 were decided
+    by a final round-robin, loaded as a group named "Final".
+  - **A surname alone never merges two players**: "Touré" in 1992 and in 2006
+    is as likely two careers as one.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`

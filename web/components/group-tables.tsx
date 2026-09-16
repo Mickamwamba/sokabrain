@@ -34,7 +34,9 @@ export function GroupTables({ groups }: { groups: GroupTable[] }) {
     <div className="grid gap-5 md:grid-cols-2">
       {groups.map((g) => (
         <Card key={g.groupId} className="overflow-hidden">
-          <CardHead title={`Group ${g.name}`} />
+          {/* A single letter is a group ("Group A"); anything else is already a
+                name, as the 1959 and 1976 final round-robins are. */}
+          <CardHead title={/^[A-Za-z0-9]$/.test(g.name) ? `Group ${g.name}` : g.name} />
           <div className="overflow-x-auto">
             <table className="w-full min-w-[420px] border-collapse text-sm">
               <thead>
