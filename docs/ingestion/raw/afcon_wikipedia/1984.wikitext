@@ -1,0 +1,489 @@
+{{Short description|14th edition of the Africa Cup of Nations}}
+{{Use dmy dates|date=January 2024}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year = 1984
+| other_titles = Coupe d'Afrique des Nations 1984
+| image = CAN 1984 (logo).png
+| size = 200px
+| caption = Afcon 1984 official logo
+| country = Ivory Coast
+| dates = 4–18 March
+| num_teams = 8
+| venues = 2
+| cities = 2
+| champion = Cameroon
+| count = 1
+| second = Nigeria
+| third = Algeria
+| fourth = Egypt
+| fourth-flagvar = 1972
+| matches = 16
+| goals = 39
+| attendance = 
+| top_scorer = {{flagicon|EGY|1972}} [[Taher Abouzaid]] <br /> (4 goals)
+| player = {{flagicon|CMR}} [[Théophile Abega]]
+| goalkeeper = {{flagicon|CMR}} [[Joseph-Antoine Bell]]
+| prevseason = [[1982 African Cup of Nations|1982]]
+| nextseason = [[1986 African Cup of Nations|1986]]
+| updated = 
+}}
+
+The '''1984 African Cup of Nations''' was the 14th edition of the [[Africa Cup of Nations]], the [[association football|football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by Ivory Coast. Just like in [[1982 African Cup of Nations|1982]], the field of eight teams was split into two groups of four. [[Cameroon national football team|Cameroon]] won its first championship, beating [[Nigeria national football team|Nigeria]] in the final 3−1.
+
+== Qualified teams ==
+{{Main|1984 African Cup of Nations qualification}}
+
+The 8 qualified teams are:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|CIV}} || Hosts ||  || {{sort|03|5}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1980 African Cup of Nations|1980]])
+|-
+| {{fb|GHA}} || Holders || {{dts|19 March 1982}} || {{sort|02|7}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], '''''[[1978 African Cup of Nations|1978]]''''', [[1980 African Cup of Nations|1980]], '''[[1982 African Cup of Nations|1982]]''')
+|-
+| {{fb|ALG}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|05|3}} ([[1968 African Cup of Nations|1968]], [[1980 African Cup of Nations|1980]], [[1982 African Cup of Nations|1982]])
+|-
+| {{fb|CMR}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|05|3}} ([[1970 African Cup of Nations|1970]], ''[[1972 African Cup of Nations|1972]]'', [[1982 African Cup of Nations|1982]])
+|-
+| {{fb|EGY|1972}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|01|8}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'', [[1976 African Cup of Nations|1976]], [[1980 African Cup of Nations|1980]])
+|-
+| {{fb|MWI}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|06|0}} (debut)
+|-
+| {{fb|NGR}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|03|5}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]], [[1978 African Cup of Nations|1978]], '''''[[1980 African Cup of Nations|1980]]''''', [[1982 African Cup of Nations|1982]])
+|-
+| {{fb|TOG}} || [[1984 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|28 August 1983}} || {{sort|05|1}} ([[1972 African Cup of Nations|1972]])
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{Main|1984 African Cup of Nations squads}}
+
+== Venues ==
+The competition was played in two venues in [[Abidjan]] and [[Bouaké]].
+
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Abidjan]]
+| rowspan="8" | {{location map+|Côte d'Ivoire|float=center|width=400|caption=|places=
+{{location map~|Côte d'Ivoire|lat=5.316667|long=-4.033333|label='''[[Abidjan]]'''|position=bottom}}
+{{location map~|Côte d'Ivoire|lat=7.683333|long=-5.016667|label='''[[Bouaké]]'''|position=top}}
+}}
+|-
+| [[Stade Félix Houphouët-Boigny]]
+|-
+| Capacity: '''40,000'''
+|-
+| [[File:StadeFHB.jpg|150px]]
+|-
+![[Bouaké]]
+|-
+|[[Stade Bouaké]]
+|-
+|Capacity: '''35,000'''
+|-
+|[[File:Stade de la paix en reconstruction.PNG|150px]]
+|}
+</div>
+
+== Group stage ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Goal difference in all group matches
+# Greater number of goals scored in all group matches
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1984 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =EGY, CMR, CIV, TOG
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_EGY=2 |draw_EGY=1 |loss_EGY=0 |gf_EGY=3 |ga_EGY=1
+|win_CMR=2 |draw_CMR=0 |loss_CMR=1 |gf_CMR=6 |ga_CMR=2
+|win_CIV=1 |draw_CIV=0 |loss_CIV=2 |gf_CIV=4 |ga_CIV=4 |status_CIV=H
+|win_TOG=0 |draw_TOG=1 |loss_TOG=2 |gf_TOG=1 |ga_TOG=7
+
+<!--Team definitions-->
+|name_EGY={{fb|EGY|1972}}
+|name_CMR={{fb|CMR}}
+|name_CIV={{fb|CIV}}
+|name_TOG={{fb|TOG}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1984 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 4 March 1984
+| time = 
+| team1 = {{fb-rt|CIV}}
+| score = 3–0
+| team2 = {{fb|TOG}}
+| goals1 = [[Tia Koffi|Koffi]] {{goal|27}} <br /> [[Youssouf Falikou Fofana|Fofana]] {{goal|62}} <br /> [[Michel Goba|Goba]] {{goal|75}}
+| goals2 =
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:50000}}
+| referee = [[Ali Bennaceur]] ([[Tunisian Football Federation|Tunisia]])
+| report = [http://www.11v11.com/matches/ivory-coast-v-togo-04-march-1984-238333 Report]
+}}
+----
+{{football box
+| date = 4 March 1984
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 1–0
+| team2 = {{fb|CMR}}
+| goals1 = [[Taher Abouzaid|Abouzaid]] {{goal|78}}
+| goals2 =
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:50000}}
+| referee = [[Gebreyesus Tesfaye]] ([[Ethiopian Football Federation|Ethiopia]])
+| report = [http://www.11v11.com/matches/cameroon-v-egypt-04-march-1984-238332 Report]
+}}
+----
+{{football box
+| date = 7 March 1984
+| time = 
+| team1 = {{fb-rt|CMR}}
+| score = 4–1
+| team2 = {{fb|TOG}}
+| goals1 = [[Bonaventure Djonkep|Djonkep]] {{goal|7}} <br /> [[Théophile Abega|Abega]] {{goal|21||61}} <br /> [[Ibrahim Aoudou|Aoudou]] {{goal|45}}
+| goals2 = [[Rafiou Moutairou|Moutairou]] {{goal|56}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:15000}}
+| referee = [[Mulenga Rezzin]] ([[Football Association of Zambia|Zambia]])
+| report = [http://www.11v11.com/matches/cameroon-v-togo-07-march-1984-238338 Report]
+}}
+----
+{{football box
+| date = 7 March 1984
+| time = 
+| team1 = {{fb-rt|CIV}}
+| score = 1–2
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Pascal Miézan|Miézan]] {{goal|53}}
+| goals2 = [[Taher Abouzaid|Abouzaid]] {{goal|66||72}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:40000}}
+| referee = [[Edwin Picon-Ackong]] ([[Mauritius Football Association|Mauritius]])
+| report = [http://www.11v11.com/matches/ivory-coast-v-egypt-07-march-1984-238337 Report]
+}}
+----
+{{football box
+| date = 10 March 1984
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 0–0
+| team2 = {{fb|TOG}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:40000}}
+| referee = [[Frank Valdemarca]] ([[Zimbabwe Football Association|Zimbabwe]])
+| report = [http://www.11v11.com/matches/egypt-v-togo-10-march-1984-238345 Report]
+}}
+----
+{{football box
+| date = 10 March 1984
+| time = 
+| team1 = {{fb-rt|CIV}}
+| score = 0–2
+| team2 = {{fb|CMR}}
+| goals1 =
+| goals2 = [[Roger Milla|Milla]] {{goal|42}} <br /> [[Bonaventure Djonkep|Djonkep]] {{goal|61}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:40000}}
+| referee = [[Mohamed Larache]] ([[Royal Moroccan Football Federation|Morocco]])
+| report = [http://www.11v11.com/matches/ivory-coast-v-cameroon-10-march-1984-238344 Report]
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1984 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =ALG, NGR, GHA, MWI
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_ALG=2 |draw_ALG=1 |loss_ALG=0 |gf_ALG=5 |ga_ALG=0
+|win_NGR=1 |draw_NGR=2 |loss_NGR=0 |gf_NGR=4 |ga_NGR=3
+|win_GHA=1 |draw_GHA=0 |loss_GHA=2 |gf_GHA=2 |ga_GHA=4
+|win_MWI=0 |draw_MWI=1 |loss_MWI=2 |gf_MWI=2 |ga_MWI=6
+
+<!--Team definitions-->
+|name_ALG={{fb|ALG}}
+|name_NGR={{fb|NGR}}
+|name_GHA={{fb|GHA}}
+|name_MWI={{fb|MWI}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1984 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = 5 March 1984
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 1–2
+| team2 = {{fb|NGR}}
+| goals1 = [[Samuel Opoku N'ti|Opoku N'ti]] {{goal|19}}
+| goals2 = [[Henry Nwosu|Nwosu]] {{goal|13}} <br /> [[Shibuzor Ehilegbu|Ehilegbu]] {{goal|31}}
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:10000}}
+| referee = [[Dodou N'Jie]] ([[Gambia Football Association|Gambia]])
+| report = [http://www.11v11.com/matches/ghana-v-nigeria-05-march-1984-238335 Report]
+}}
+----
+{{football box
+| date = 5 March 1984
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 3–0
+| team2 = {{fb|MWI}}
+| goals1 = [[Nasser Bouiche|Bouiche]] {{goal|29}} <br /> [[Lakhdar Belloumi|Belloumi]] {{goal|36}} <br /> [[Ali Fergani|Fergani]] {{goal|38}}
+| goals2 =
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:10000}}
+| referee = [[Bakary Sarr]] ([[Senegal Football Association|Senegal]])
+| report = [http://www.11v11.com/matches/malawi-v-algeria-05-march-1984-238334 Report]
+}}
+----
+{{football box
+| date = 8 March 1984
+| time = 
+| team1 = {{fb-rt|MWI}}
+| score = 2–2
+| team2 = {{fb|NGR}}
+| goals1 = [[Harry Waya|Waya]] {{goal|7|pen.}} <br /> [[Clifton Msiya|Msiya]] {{goal|35}}
+| goals2 = [[Clement Temile|Temile]] {{goal|39||41}}
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:15000}}
+| referee = [[Hassan Abdel Hafiz]] ([[Sudan Football Association|Sudan]])
+| report = [http://www.11v11.com/matches/malawi-v-nigeria-08-march-1984-238340 Report]
+}}
+----
+{{football box
+| date = 8 March 1984
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 2–0
+| team2 = {{fb|GHA}}
+| goals1 = [[Djamel Menad|Menad]] {{goal|75}} <br /> [[Tedj Bensaoula|Bensaoula]] {{goal|85}}
+| goals2 =
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:15000}}
+| referee = [[Mohamed Bahhou]] ([[Royal Moroccan Football Federation|Morocco]])
+| report = [http://www.11v11.com/matches/ghana-v-algeria-08-march-1984-238339 Report]
+}}
+----
+{{football box
+| date = 11 March 1984
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 0–0
+| team2 = {{fb|NGR}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:3000}}
+| referee = [[Karim Camara (referee)|Karim Camara]] ([[Guinean Football Federation|Guinea]])
+| report = [http://www.11v11.com/matches/nigeria-v-algeria-11-march-1984-238349 Report]
+}}
+----
+{{football box
+| date = 11 March 1984
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| team2 = {{fb|MWI}}
+| goals1 = [[Seth Amphadu|Amphadu]] {{goal|32}}
+| goals2 =
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:3000}}
+| referee = [[Salem Mohamed Adal]] ([[Libyan Football Federation|Libya]])
+| report = [http://www.11v11.com/matches/malawi-v-ghana-11-march-1984-238350 Report]
+}}
+
+== Knockout stage ==
+{{Round4-with third
+<!--Date-Place|Team 1|Score 1|Team 2|Score 2-->
+<!--semi-finals-->
+| 14 March – [[Abidjan]] | {{fb|EGY|1972}} | 2 (7) | '''{{fb|NGA}} ([[Penalty shoot-out (association football)|pen.]])''' | '''2 (8)'''
+| 14 March – [[Bouaké]] | {{fb|ALG}} | 0 (4) | '''{{fb|CMR}} ([[Penalty shoot-out (association football)|pen.]])''' | '''0 (5)'''
+<!--final-->
+| 18 March – [[Abidjan]] | {{fb|NGA}} | 1 | '''{{fb|CMR}}''' | '''3'''
+<!--third place-->
+| 17 March – [[Abidjan]] | {{fb|EGY|1972}} | 1 | '''{{fb|ALG}}''' | '''3'''
+}}
+
+=== Semifinals ===
+{{football box
+| date = 14 March 1984
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 2–2
+| aet = yes
+| team2 = {{fb|NGR}}
+| goals1 = [[Emad Soliman|Sulaiman]] {{goal|25}} <br /> [[Taher Abouzaid|Abouzaid]] {{goal|38}}
+| goals2 = [[Stephen Keshi|Keshi]] {{goal|43|pen.}} <br /> [[Ali Bala|Bala]] {{goal|75}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:15000}}
+| referee = [[Dodou N'Jie]] ([[Gambia Football Association|Gambia]])
+| report = [http://www.11v11.com/matches/nigeria-v-egypt-14-march-1984-238356 Report]
+| penalties1 = [[Magdi Abdelghani|Abdelghani]] {{pengoal}}<br />[[Ali Shehata|Shehata]] {{pengoal}}<br />[[Shawky Ghareeb|Ghareeb]] {{pengoal}}<br />[[Mahmoud El Khatib|El Khatib]] {{pengoal}}<br />[[Taher Abouzeid|Abouzeid]] {{pengoal}}<br />[[Zakaria Nassef|Nassef]] {{pengoal}}<br />[[Rabie Yassin|Yassin]] {{pengoal}}<br />[[Mahmoud Hassan Saleh|Hassan]] {{penmiss}}<br />[[Ibrahim Youssef|Youssef]] {{penmiss}}
+| penaltyscore = 7–8
+| penalties2 = {{pengoal}} [[Paul Kingsley|Kingsley]]<br />{{pengoal}} [[Humphrey Edobor|Edobor]]<br />{{pengoal}} [[Yisa Shofoluwe|Shofoluwe]]<br />{{pengoal}} [[Bala Ali|Ali]]<br />{{pengoal}} [[Stephen Keshi|Keshi]]<br />{{pengoal}} [[Rashidi Yekini|Yekini]]<br />{{pengoal}} [[Clement Temile|Temile]]<br />{{penmiss}} [[Ademola Adeshina|Adeshina]]<br />{{pengoal}} [[Mudashiru Lawal|Lawal]]
+}}
+----
+{{football box
+| date = 14 March 1984
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 0–0
+| aet = yes
+| team2 = {{fb|CMR}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Bouaké]], [[Bouaké]]
+| attendance = {{formatnum:15000}}
+| referee = [[Edwin Picon-Ackong]] ([[Mauritius Football Association|Mauritius]])
+| report = [http://www.11v11.com/matches/cameroon-v-algeria-14-march-1984-238355 Report]
+| penalties1 = [[Lakhdar Belloumi|Belloumi]] {{pengoal}}<br />[[Hocine Yahi|Yahi]] {{pengoal}}<br />[[Mohamed Kaci-Saïd|Kaci-Saïd]] {{pengoal}}<br />[[Mahmoud Guendouz|Guendouz]] {{penmiss}}<br />[[Rabah Madjer|Madjer]] {{pengoal}}
+| penaltyscore = 4–5
+| penalties2 = {{pengoal}} [[Emmanuel Kundé|Kundé]]<br />{{pengoal}} [[Ernest Ebongué|Ebongué]]<br />{{pengoal}} [[Ibrahim Aoudou|Aoudou]]<br />{{pengoal}} [[Joseph-Antoine Bell|Bell]]<br />{{pengoal}} [[François Ndoumbé|Ndoumbé]]
+}}
+
+=== Third place match ===
+{{football box
+| date = 17 March 1984
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 3–1
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Rabah Madjer|Madjer]] {{goal|68}} <br /> [[Lakhdar Belloumi|Belloumi]] {{goal|71}} <br /> [[Hocine Yahi|Yahi]] {{goal|90}}
+| goals2 = [[Magdi Abdelghani|Abdelghani]] {{goal|76|pen.}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:500}}
+| referee = [[Mohammed Larache]] ([[Royal Moroccan Football Federation|Morocco]])
+| report = [http://www.11v11.com/matches/algeria-v-egypt-17-march-1984-238361 Report]
+}}
+
+=== Final ===
+{{main|1984 African Cup of Nations Final}}
+{{football box
+| date = 18 March 1984
+| time = 
+| team1 = {{fb-rt|CMR}}
+| score = 3–1
+| team2 = {{fb|NGR}}
+| goals1 = [[Rene N'Djeya|N'Djeya]] {{goal|32}} <br /> [[Théophile Abega|Abega]] {{goal|79}} <br /> [[Ernest Ebongué|Ebongué]] {{goal|84}}
+| goals2 = [[Muda Lawal|Lawal]] {{goal|10}}
+| stadium = [[Stade Félix Houphouët-Boigny]], [[Abidjan]]
+| attendance = {{formatnum:27456}}
+| referee = [[Ali Bennaceur]] ([[Tunisian Football Federation|Tunisia]])
+| report = [http://www.11v11.com/matches/cameroon-v-nigeria-18-march-1984-238364 Report]
+}}
+
+==Goalscorers==
+{{Goalscorers
+|goals=39 |matches=16
+
+|4 goals=
+*{{fbicon|EGY|1972}} [[Taher Abouzeid]]
+
+|3 goals=
+*{{fbicon|CMR}} [[Théophile Abega|Théophile Abéga]]
+
+|2 goals=
+*{{fbicon|ALG}} [[Lakhdar Belloumi]]
+*{{fbicon|CMR}} [[Bonaventure Djonkep]]
+*{{fbicon|NGR}} [[Clement Temile]]
+
+|1 goal=
+*{{fbicon|ALG}} [[Tedj Bensaoula]]
+*{{fbicon|ALG}} [[Nasser Bouiche]]
+*{{fbicon|ALG}} [[Ali Fergani]]
+*{{fbicon|ALG}} [[Rabah Madjer]]
+*{{fbicon|ALG}} [[Djamel Menad]]
+*{{fbicon|ALG}} [[Hocine Yahi]]
+*{{fbicon|CMR}} [[Ibrahim Aoudou]]
+*{{fbicon|CMR}} [[Ernest Ebongué]]
+*{{fbicon|CMR}} [[René Ndjeya]]
+*{{fbicon|CMR}} [[Roger Milla]]
+*{{fbicon|EGY|1972}} [[Magdi Abdelghani]]
+*{{fbicon|EGY|1972}} [[Emad Soliman]]
+*{{fbicon|GHA}} [[Seth Ampadu]]
+*{{fbicon|GHA}} [[Opoku Nti]]
+*{{fbicon|CIV}} [[Youssouf Falikou Fofana|Youssouf Fofana]]
+*{{fbicon|CIV}} [[Michel Goba]]
+*{{fbicon|CIV}} Tia Koffi
+*{{fbicon|CIV}} [[Pascal Miezan]]
+*{{fbicon|Malawi|1964}} [[Clifton Msiya]]
+*{{fbicon|Malawi|1964}} [[Harry Waya]]
+*{{fbicon|NGR}} Ali Bala
+*{{fbicon|NGR}} Chibuzor Ehilegbu
+*{{fbicon|NGR}} [[Stephen Keshi]]
+*{{fbicon|NGR}} [[Muda Lawal]]
+*{{fbicon|NGR}} [[Henry Nwosu]]
+*{{fbicon|TOG}} [[Rafiou Moutairou]]
+}}
+
+== CAF Team of the Tournament ==
+{| class="wikitable" style="margin:0 auto"
+|-
+! Goalkeepers
+! Defenders
+! Midfielders
+! Forwards
+|-
+| align=left valign=top |
+{{flagicon|Cameroon}} [[Joseph-Antoine Bell]]
+| align=left valign=top |
+{{flagicon|Cameroon}} [[Isaac Sinkot]] <br />
+{{flagicon|Egypt|1972}} [[Ali Shehata]] <br />
+{{flagicon|Egypt|1972}} [[Ibrahim Youssef]] <br />
+{{flagicon|Nigeria}} [[Stephen Keshi]]
+| align=left valign=top |
+{{flagicon|Algeria}} [[Lakhdar Belloumi]] <br />
+{{flagicon|Cameroon}} [[Théophile Abega]] <br />
+{{flagicon|Egypt|1972}} [[Taher Abouzeid]] <br />
+{{flagicon|Nigeria}} [[Clement Temile]]
+| align=left valign=top |
+{{flagicon|Algeria}} [[Djamel Menad]] <br />
+{{flagicon|Malawi|1964}} [[Clifton Msiya]]
+|}
+
+== External links ==
+* [https://www.rsssf.org/tables/84a.html Details at RSSSF]
+
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:Africa Cup Of Nations}}
+[[Category:1984 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1984]]
+[[Category:1984 in African men's continental football|Cup of Nations]]
+[[Category:1984 in African men's international football|Cup of Nations]]
+[[Category:1984 in Ivorian sport]]
+[[Category:International association football competitions hosted by Ivory Coast]]
+[[Category:Football competitions in Abidjan]]
+[[Category:Bouaké]]
+[[Category:March 1984 sports events in Africa]]

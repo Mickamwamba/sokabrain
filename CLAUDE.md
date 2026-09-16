@@ -474,7 +474,17 @@ explicitly out of scope — see "Non-goals" below).
     only once the two records are merged — separately they give a false 1 and a
     false 2. **That arithmetic check is the pattern to look for**: a source that
     states a per-tournament or all-time total lets a merge be proved rather than
-    argued. 47 candidates remain open.
+    argued. **Ivory Coast's Guel, Ghana's Polley and Cameroon's Ebongué went
+    the same way** on 2026-09-16 (`2026-09-16_guel_polley_ebongue_records.sql`),
+    all six goals named in the source. Ebongué had looked the least safe, eight
+    years separating his two goals, and the source is what closed it — which is
+    the argument for holding these back rather than guessing. Polley's 1994 goal
+    also showed the limit of the method: the two sources agree it is his and
+    disagree by 46 minutes on when, so the identity merged and the vault's
+    minute stood. **44 candidates remain open**, now mostly modern Senegalese
+    and Malian surnames (Gueye, Diallo, Diarra, Camara, Touré) where several
+    real players share one, so a bare record cannot be assigned without a source
+    naming that specific goal.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`

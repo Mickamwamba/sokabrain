@@ -1,0 +1,582 @@
+{{Short description|18th edition of the Africa Cup of Nations}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year         = 1992
+| other_titles = Coupe d'Afrique des Nations 1992
+| image        =
+| size         = 150px
+| caption      =
+| country      = Senegal
+| dates        = 12–26 January
+| num_teams    = 12
+| venues       = 2
+| cities       = 2
+| champion     = Ivory Coast
+| count        = 1
+| second       = Ghana
+| third        = Nigeria
+| fourth       = Cameroon
+| matches      = 20
+| goals        = 34
+| attendance   = 385500
+| top_scorer   = {{flagicon|Nigeria}} [[Rashidi Yekini]] (4 goals)
+| player       = {{flagicon|Ghana}} [[Abedi Pele]]
+| goalkeeper   = {{flagicon|CIV}} [[Alain Gouaméné]]
+| prevseason   = [[1990 African Cup of Nations|1990]]
+| nextseason   = [[1994 African Cup of Nations|1994]]
+}}
+
+The '''1992 African Cup of Nations''' was the 18th edition of the [[Africa Cup of Nations]], the [[association football|football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by [[Senegal]]. The field expanded to twelve teams, split into four groups of three; the top two teams in each group advanced to the quarterfinals. [[Ivory Coast national football team|Ivory Coast]] won its first championship, beating [[Ghana national football team|Ghana]] on [[penalty shootout (football)|penalty kicks]] 11–10 after a goalless draw.<ref>{{cite news|url=http://www.spiegel.de/international/zeitgeist/they-ll-put-a-spell-on-you-the-witchdoctors-of-african-football-a-699704.html|title=They'll Put a Spell on You: The Witchdoctors of African Football - SPIEGEL ONLINE - International|first=SPIEGEL ONLINE, Hamburg|last=Germany|newspaper=Der Spiegel|date=11 June 2010 |access-date=10 June 2017}}</ref>
+
+== Qualified teams ==
+[[Image:African Cup of Nations 1992.png|thumb|300px|Participating nations]]
+{{Main|1992 African Cup of Nations qualification}}
+
+The 12 qualified teams are:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|SEN}} || Hosts ||  || {{sort|05|4}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1986 African Cup of Nations|1986]], [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|ALG}} || Holders || {{dts|16 March 1990}} || {{sort|04|7}} ([[1968 African Cup of Nations|1968]], [[1980 African Cup of Nations|1980]], [[1982 African Cup of Nations|1982]], [[1984 African Cup of Nations|1984]], [[1986 African Cup of Nations|1986]], [[1988 African Cup of Nations|1988]], '''''[[1990 African Cup of Nations|1990]]''''')
+|-
+| {{fb|CMR}} || [[1992 African Cup of Nations qualification#Group 1|Group 1]] winners || {{dts|28 July 1991}} || {{sort|04|7}} ([[1970 African Cup of Nations|1970]], ''[[1972 African Cup of Nations|1972]]'', [[1982 African Cup of Nations|1982]], '''[[1984 African Cup of Nations|1984]]''', [[1986 African Cup of Nations|1986]], '''[[1988 African Cup of Nations|1988]]''', [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|CGO}} || [[1992 African Cup of Nations qualification#Group 7|Group 7]] winners || {{dts|14 July 1991}} || {{sort|06|4}} ([[1968 African Cup of Nations|1968]], '''[[1972 African Cup of Nations|1972]]''', [[1974 African Cup of Nations|1974]], [[1978 African Cup of Nations|1978]])
+|-
+| {{fb|EGY}} || [[1992 African Cup of Nations qualification#Group 2|Group 2]] winners || {{dts|26 July 1991}} || {{sort|01|12}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'', [[1976 African Cup of Nations|1976]], [[1980 African Cup of Nations|1980]], [[1984 African Cup of Nations|1984]], '''''[[1986 African Cup of Nations|1986]]''''',<br>[[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|GHA}} || [[1992 African Cup of Nations qualification#Group 4|Group 4]] winners || {{dts|28 July 1991}} || {{sort|03|8}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], '''''[[1978 African Cup of Nations|1978]]''''', [[1980 African Cup of Nations|1980]], '''[[1982 African Cup of Nations|1982]]''', [[1984 African Cup of Nations|1984]])
+|-
+| {{fb|CIV}} || [[1992 African Cup of Nations qualification#Group 3|Group 3]] winners || {{dts|28 July 1991}} || {{sort|02|9}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1980 African Cup of Nations|1980]], ''[[1984 African Cup of Nations|1984]]'', [[1986 African Cup of Nations|1986]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|KEN}} || [[1992 African Cup of Nations qualification#Group 6|Group 6]] winners || {{dts|28 July 1991}} || {{sort|05|3}} ([[1972 African Cup of Nations|1972]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|MAR}} || [[1992 African Cup of Nations qualification#Group 3|Group 3]] runners-up || {{dts|28 July 1991}} || {{sort|05|6}} ([[1972 African Cup of Nations|1972]], '''[[1976 African Cup of Nations|1976]]''', [[1978 African Cup of Nations|1978]], [[1980 African Cup of Nations|1980]], [[1986 African Cup of Nations|1986]], ''[[1988 African Cup of Nations|1988]]'')
+|-
+| {{fb|NGR}} || [[1992 African Cup of Nations qualification#Group 4|Group 4]] runners-up || {{dts|28 July 1991}} || {{sort|03|8}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]], [[1978 African Cup of Nations|1978]], '''''[[1980 African Cup of Nations|1980]]''''', [[1982 African Cup of Nations|1982]], [[1984 African Cup of Nations|1984]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]])
+|-
+| {{fb|ZAI}} || [[1992 African Cup of Nations qualification#Group 8|Group 8]] winners || {{dts|28 July 1991}} || {{sort|04|7}} ([[1965 African Cup of Nations|1965]], '''[[1968 African Cup of Nations|1968]]''', [[1970 African Cup of Nations|1970]], [[1972 African Cup of Nations|1972]], '''[[1974 African Cup of Nations|1974]]''', [[1976 African Cup of Nations|1976]], [[1988 African Cup of Nations|1988]])
+|-
+| {{fb|ZAM|1964}} || [[1992 African Cup of Nations qualification#Group 5|Group 5]] winners || {{dts|28 July 1991}} || {{sort|04|5}} ([[1974 African Cup of Nations|1974]], [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]], [[1986 African Cup of Nations|1986]], [[1990 African Cup of Nations|1990]])
+|}
+;Notes
+{{notelist}}
+
+== Venues ==
+The competition was played in two venues in [[Dakar]] and [[Ziguinchor]].
+
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Dakar]]
+| rowspan="8" | {{location map+|Senegal|float=center|width=500|caption=|places=
+{{location map~|Senegal|lat=14.746694|long=-17.452014|label='''[[Dakar]]'''|position=top}}
+{{location map~|Senegal|lat=12.58|long=-16.2588|label='''[[Ziguinchor]]'''|position=top}}
+}}
+|-
+| [[Stade Léopold Sédar Senghor|Stade de l'Amitié]]
+|-
+| Capacity: '''60,000'''
+|-
+| [[File:Senegal 1 - Cameroon 0 - Stade Léopold Sédar Senghor.jpg|150px]]
+|-
+![[Ziguinchor]]
+|-
+|[[Stade Aline Sitoe Diatta]]
+|-
+|Capacity: '''10,000'''
+|-
+|[[File:ZiguinchorCathédrale.JPG|150px]]
+|}
+</div>
+
+== Squads ==
+{{Main|1992 African Cup of Nations squads}}
+
+== Group stage ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Greatest total goal difference in the three group matches
+# Greatest number of goals scored in the three group matches
+# Most points earned in matches against other teams in the tie
+# Greatest goal difference in matches against other teams in the tie
+# Greatest number of goals scored in matches against other teams in the tie
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1992 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =NGA, SEN, KEN
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_NGA=2 |draw_NGA=0 |loss_NGA=0 |gf_NGA=4 |ga_NGA=2 
+|win_SEN=1 |draw_SEN=0 |loss_SEN=1 |gf_SEN=4 |ga_SEN=2 |status_SEN=H
+|win_KEN=0 |draw_KEN=0 |loss_KEN=2 |gf_KEN=1 |ga_KEN=5
+
+<!--Team definitions-->
+|name_NGA={{fb|NGA}}
+|name_SEN={{fb|SEN}}
+|name_KEN={{fb|KEN}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1992 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box 
+| date = January 12, 1992
+| team1 = {{fb-rt|NGA}}
+| score = 2–1
+| report =
+| team2 = {{fb|SEN}}
+| goals1 = [[Samson Siasia|Siasia]] {{goal|13}} <br> [[Stephen Keshi|Keshi]] {{goal|89}}
+| goals2 = [[Jules Bocandé|Bocandé]] {{goal|36}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 60,000
+| referee = [[Nizar Watti]] ([[Syrian Arab Federation for Football|Syria]])
+}}
+----
+{{football box
+| date = January 14, 1992
+| team1 = {{fb-rt|NGA}}
+| score = 2–1
+| report =
+| team2 = {{fb|KEN}}
+| goals1 = [[Rashidi Yekini|Yekini]] {{goal|7||15}}
+| goals2 = [[Mickey Weche|Weche]] {{goal|89|pen.}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 5,000
+| referee = [[Kadry Abdelazim]] ([[Egyptian Football Association|Egypt]])
+}}
+----
+{{football box
+| date = January 16, 1992
+| team1 = {{fb-rt|SEN}}
+| score = 3–0
+| report =
+| team2 = {{fb|KEN}}
+| goals1 = [[Souleymane Sané|Sané]] {{goal|46}} <br> [[Jules Bocandé|Bocandé]] {{goal|68}} <br> [[Victor Diagne|Diagne]] {{goal|89}}
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 50,000
+| referee = [[Omer Yengo]] ([[Congolese Football Federation|Congo]])
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1992 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =CMR, ZAI, MAR
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_CMR=1 |draw_CMR=1 |loss_CMR=0 |gf_CMR=2 |ga_CMR=1
+|win_ZAI=0 |draw_ZAI=2 |loss_ZAI=0 |gf_ZAI=2 |ga_ZAI=2
+|win_MAR=0 |draw_MAR=1 |loss_MAR=1 |gf_MAR=1 |ga_MAR=2
+
+<!--Team definitions-->
+|name_CMR={{fb|CMR}}
+|name_ZAI={{fb|ZAI}}
+|name_MAR={{fb|MAR}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1992 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = January 12, 1992
+| team1 = {{fb-rt|CMR}}
+| score = 1–0
+| report =
+| team2 = {{fb|MAR}}
+| goals1 = [[André Kana-Biyik|Kana-Biyik]] {{goal|23}}
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 60,000
+| referee = 
+}}
+----
+{{football box
+| date = January 14, 1992
+| team1 = {{fb-rt|MAR}}
+| score = 1–1
+| report =
+| team2 = {{fb|ZAI}}
+| goals1 = [[Said Rokbi|Rokbi]] {{goal|89}}
+| goals2 = [[Andre Kona N'Gole|Kona]] {{goal|90}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 5,000
+| referee = 
+}}
+----
+{{football box
+| date = January 16, 1992
+| team1 = {{fb-rt|CMR}}
+| score = 1–1
+| report =
+| team2 = {{fb|ZAI}}
+| goals1 = [[François Omam-Biyik|Omam-Biyik]] {{goal|15}}
+| goals2 = [[Tueba Menayane|Tueba]] {{goal|1}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 10,000
+| referee = 
+}}
+
+=== Group C ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1992 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =CIV, CGO, ALG
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_CIV=1 |draw_CIV=1 |loss_CIV=0 |gf_CIV=3 |ga_CIV=0
+|win_CGO=0 |draw_CGO=2 |loss_CGO=0 |gf_CGO=1 |ga_CGO=1
+|win_ALG=0 |draw_ALG=1 |loss_ALG=1 |gf_ALG=1 |ga_ALG=4
+
+<!--Team definitions-->
+|name_CIV={{fb|CIV}}
+|name_CGO={{fb|CGO}}
+|name_ALG={{fb|ALG}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1992 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = January 13, 1992
+| team1 = {{fb-rt|CIV}}
+| score = 3–0
+| report = [https://web.archive.org/web/20120923233736/http://www.dzfoot.com/fiche-1136.php Report]
+| team2 = {{fb|ALG}}
+| goals1 = [[Ben Badi|A. Traoré]] {{goal|14}} <br> [[Youssouf Falikou Fofana|Fofana]] {{goal|25}} <br> [[Joël Tiéhi|Tiéhi]] {{goal|89}}
+| goals2 = 
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = [[Mohamed Hounnake-Kouassi]] ([[Togolese Football Federation|Togo]])
+}}
+----
+{{football box
+| date = January 15, 1992
+| team1 = {{fb-rt|CIV}}
+| score = 0–0
+| report =
+| team2 = {{fb|CGO}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = [[Rafhidi Ali]] ([[Tanzania Football Federation|Tanzania]])
+}}
+----
+{{football box
+| date = January 17, 1992
+| team1 = {{fb-rt|ALG}}
+| score = 1–1
+| report = [https://web.archive.org/web/20120923233742/http://www.dzfoot.com/fiche-1137.php Report]
+| team2 = {{fb|CGO}}
+| goals1 = [[Nacer Bouiche|Bouiche]] {{goal|44}}
+| goals2 = [[Pierre Tchibota|Tchibota]] {{goal|6}}
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = [[Christopher Musaabi]] ([[Federation of Uganda Football Associations|Uganda]])
+}}
+
+=== Group D ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1992 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =GHA, ZAM, EGY
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_GHA=2 |draw_GHA=0 |loss_GHA=0 |gf_GHA=2 |ga_GHA=0
+|win_ZAM=1 |draw_ZAM=0 |loss_ZAM=1 |gf_ZAM=1 |ga_ZAM=1
+|win_EGY=0 |draw_EGY=0 |loss_EGY=2 |gf_EGY=0 |ga_EGY=2
+
+<!--Team definitions-->
+|name_GHA={{fb|GHA}}
+|name_ZAM={{fb|ZAM|1964}}
+|name_EGY={{fb|EGY}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1992 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{football box
+| date = January 13, 1992
+| team1 = {{fb-rt|ZAM|1964}}
+| score = 1–0
+| report =
+| team2 = {{fb|EGY}}
+| goals1 = [[Kalusha Bwalya|Kalusha]] {{goal|61}}
+| goals2 =
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = 
+}}
+----
+{{football box
+| date = January 15, 1992
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| report =
+| team2 = {{fb|ZAM|1964}}
+| goals1 = [[Abedi Pele]] {{goal|64}}
+| goals2 =
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = 
+}}
+----
+{{football box
+| date = January 17, 1992
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| report =
+| team2 = {{fb|EGY}}
+| goals1 = [[Tony Yeboah|Yeboah]] {{goal|89}}
+| goals2 =
+| stadium = [[Stade Aline Sitoe Diatta]], [[Ziguinchor]]
+| attendance = 5,000
+| referee = 
+}}
+
+== Knockout stage ==
+{{#invoke:RoundN|N8
+|style=white-space:nowrap|3rdplace=yes|bold_winner=high|widescore=yes
+<!--quarter-finals-->
+| January 19 – [[Dakar]] | '''{{fb|NGA}}''' | '''1''' | {{fb|ZAI}} | 0
+| January 20 – [[Dakar]] | '''{{fb|GHA}}''' | '''2''' | {{fb|CGO}} | 1
+| January 19 – [[Dakar]] | '''{{fb|CMR}}''' | '''1''' | {{fb|SEN}} | 0
+| January 20 – [[Dakar]] | '''{{fb|CIV}} {{aet}}''' | '''1''' | {{fb|ZAM|1964}} | 0
+<!--semi-finals-->
+| January 23 – [[Dakar]] | {{fb|NGA}} | 1 | '''{{fb|GHA}}''' | '''2'''
+| January 23 – [[Dakar]] | {{fb|CMR}} | 0 (1) | '''{{fb|CIV}} {{pso}}'''| '''0 (3)'''
+<!--final-->
+| January 26 – [[Dakar]] | {{fb|GHA}} | 0 (10) | '''{{fb|CIV}} {{pso}}''' | '''0 (11)'''
+<!--third place-->
+| January 25 – [[Dakar]] | '''{{fb|NGA}}''' | '''2''' | {{fb|CMR}} | 1
+}}
+
+=== Quarter-finals ===
+{{football box
+| date = January 19, 1992
+| team1 = {{fb-rt|NGA}}
+| score = 1–0
+| report =
+| team2 = {{fb|ZAI}}
+| goals1 = [[Rashidi Yekini|Yekini]] {{goal|22}}
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 10,000
+| referee = [[Idrissa Sarr]] ([[Football Federation of the Islamic Republic of Mauritania|Mauritania]])
+}}
+----
+{{football box
+| date = January 19, 1992
+| team1 = {{fb-rt|CMR}}
+| score = 1–0
+| report =
+| team2 = {{fb|SEN}}
+| goals1 = [[Ernest Ebongué|Ebongué]] {{goal|89}}
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 35,000
+| referee = [[Kiichiro Tachi]] ([[Japan Football Association|Japan]])
+}}
+----
+{{football box
+| date = January 20, 1992
+| team1 = {{fb-rt|CIV}}
+| score = 1–0|aet=yes
+| report =
+| team2 = {{fb|ZAM|1964}}
+| goals1 = [[Donald-Olivier Sié|Sié]] {{goal|94}}
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 3,000
+| referee = [[Pierre Mounguegui]] ([[Gabonese Football Federation|Gabon]])
+}}
+----
+{{football box
+| date = January 20, 1992
+| team1 = {{fb-rt|GHA}}
+| score = 2–1
+| report =
+| team2 = {{fb|CGO}}
+| goals1 = [[Tony Yeboah|Yeboah]] {{goal|29}} <br> [[Abedi Pele]] {{goal|57}}
+| goals2 = [[Pierre Tchibota|Tchibota]] {{goal|52}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 7,500
+| referee = [[Ibrahim Faye]] ([[Gambia Football Association|Gambia]])
+}}
+
+=== Semi-finals ===
+{{football box
+| date = January 23, 1992
+| team1 = {{fb-rt|GHA}}
+| score = 2–1
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1992-im-senegal-halbfinale-ghana-nigeria/ Report]
+| team2 = {{fb|NGA}}
+| goals1 = [[Abedi Pele]] {{goal|43}} <br> [[Prince Polley]] {{goal|54}}
+| goals2 = [[Mutiu Adepoju|Adepoju]] {{goal|11}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 25,000
+| referee = [[Neji Jouini]] ([[Tunisian Football Federation|Tunisia]])
+}}
+----
+{{football box
+| date = January 23, 1992
+| team1 = {{fb-rt|CMR}}
+| score = 0–0|aet=yes
+| penaltyscore = 1–3
+| penalties1 = [[Cyril Makanaky|Makanaky]] {{penmiss}} <br> [[Bertin Ebwelle|Ebwelle]] {{pengoal}} <br> [[François Omam-Biyik|Omam-Biyik]] {{penmiss}} <br>  [[Joseph-Antoine Bell|Bell]] {{penmiss}}
+| penalties2 = {{pengoal}} [[Sékana Diaby|Diaby]] <br> {{pengoal}} [[Moussa Traoré (footballer, born 1971)|M. Traoré]]<br> {{penmiss}} [[Eugène Beugré Yago|Yago]] <br> {{pengoal}} [[Abdoulaye Traoré (footballer, born 1967)|A. Traoré]]
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1992-im-senegal-halbfinale-elfenbeinkueste-kamerun/ Report]
+| team2 = {{fb|CIV}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 35,000
+| referee = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+
+=== Third place match ===
+{{football box
+| date = January 25, 1992
+| team1 = {{fb-rt|NGA}}
+| score = 2–1
+| report =
+| team2 = {{fb|CMR}}
+| goals1 = [[Friday Ekpo|Ekpo]] {{goal|75}} <br> [[Rashidi Yekini|Yekini]] {{goal|88}}
+| goals2 = [[Emmanuel Maboang|Maboang]] {{goal|85}}
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 2,500
+| referee = Sinko Zeli ([[Ivorian Football Federation|Ivory Coast]])
+}}
+
+=== Final ===
+{{main|1992 African Cup of Nations Final}}
+{{football box
+| date = January 26, 1992
+| team1 = {{fb-rt|CIV}}
+| score = 0–0|aet=yes
+| penaltyscore = 11–10
+| penalties1 = Aka {{pengoal}} <br> Hobou {{pengoal}} <br> Sekana {{pengoal}} <br> M. Traoré {{pengoal}} <br> Tiéhi {{penmiss}} <br> Gadji-Celi {{pengoal}} <br> Kouadio {{pengoal}} <br> Abouo {{pengoal}} <br> Maguy {{pengoal}} <br> Sie {{pengoal}} <br> Gouamené {{pengoal}} <br> Aka {{pengoal}}
+| penalties2 = {{pengoal}} Baffoe <br> {{pengoal}} Lamptey <br> {{pengoal}} Naawu <br> {{penmiss}} Asare <br> {{pengoal}} Yeboah <br> {{pengoal}} Manso <br> {{pengoal}} Armah <br> {{pengoal}} Abroah <br> {{pengoal}} Ampeah <br> {{pengoal}} Opoku <br> {{pengoal}} Ansah <br> {{penmiss}} Baffoe
+| report = [https://www.weltfussball.de/spielbericht/afrika-cup-1992-im-senegal-finale-elfenbeinkueste-ghana Report]
+| team2 = {{fb|GHA}}
+| goals1 =
+| goals2 =
+| stadium = [[Stade Léopold Sédar Senghor|Stade de l'Amitié]], [[Dakar]]
+| attendance = 47,500
+| referee = [[Badara Sène (referee)|Badara Sène]] ([[Senegalese Football Federation|Senegal]])
+}}
+The penalty shootout was significant in that it was the first in the final of a major international tournament that every player on the pitch took a penalty.
+
+==Goalscorers==
+{{Goalscorers
+|goals=34 |matches=20
+
+|4 goals=
+*{{fbicon|Nigeria}} [[Rashidi Yekini]]
+
+|3 goals=
+*{{fbicon|GHA}} [[Abedi Pele]]
+
+|2 goals=
+*{{fbicon|Congo}} [[Pierre Tchibota]]
+*{{fbicon|GHA}} [[Tony Yeboah]]
+*{{fbicon|SEN}} [[Jules Bocandé]]
+
+|1 goal=
+*{{fbicon|ALG}} [[Nacer Bouiche]]
+*{{fbicon|CMR}} [[Érnest Ebongué]]
+*{{fbicon|CMR}} [[André Kana-Biyik]]
+*{{fbicon|CMR}} [[François Omam-Biyik]]
+*{{fbicon|CMR}} [[Emmanuel Maboang]]
+*{{fbicon|GHA}} [[Prince Polley]]
+*{{fbicon|CIV}} [[Youssouf Falikou Fofana|Youssouf Fofana]]
+*{{fbicon|CIV}} [[Donald Olivier Sié]]
+*{{fbicon|CIV}} [[Joël Tiehi]]
+*{{fbicon|CIV}} [[Abdoulaye Traoré (footballer, born 1967)|Abdoulaye Traoré]]
+*{{fbicon|KEN}} [[Micky Weche]]
+*{{fbicon|MAR}} [[Said Rokbi]]
+*{{fbicon|NGR}} [[Mutiu Adepoju]]
+*{{fbicon|NGR}} [[Friday Ekpo]]
+*{{fbicon|NGR}} [[Stephen Keshi]]
+*{{fbicon|NGR}} [[Samson Siasia]]
+*{{fbicon|SEN}} [[Victor Diagne]]
+*{{fbicon|SEN}} [[Souleymane Sané]]
+*{{fbicon|Zaire}} [[Andre Kona N'Gole]]
+*{{fbicon|Zaire}} [[Tueba Menayane]]
+*{{fbicon|ZAM|1964}} [[Kalusha Bwalya]]
+}}
+
+== CAF Team of the Tournament ==
+'''Goalkeeper'''
+* {{flagicon|Ivory Coast}} [[Alain Gouaméné]]
+
+'''Defenders'''
+* {{flagicon|Ivory Coast}} [[Basile Aka Kouame]]
+* {{flagicon|Egypt}} [[Hany Ramzy]]
+* {{flagicon|Nigeria}} [[Stephen Keshi]]
+* {{flagicon|Senegal}} [[Adolphe Mendy]]
+
+'''Midfielders'''
+* {{flagicon|Zaire}} [[Jacques Kinkomba Kingambo]]
+* {{flagicon|Ghana}} [[Abedi Pele]]
+* {{flagicon|Cameroon}} [[Jean-Claude Pagal]]
+* {{flagicon|Ivory Coast}} [[Serge-Alain Maguy]]
+
+'''Forwards'''
+* {{flagicon|Nigeria}} [[Rashidi Yekini]]
+* {{flagicon|Ghana}} [[Tony Yeboah]]
+
+== References ==
+{{Reflist}}
+
+== External links ==
+{{commons category}}
+* [https://www.rsssf.org/tables/92a.html Details at RSSSF]
+
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:African Cup Of Nations}}
+[[Category:1992 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1992]]
+[[Category:1992 in African men's continental football|Cup of Nations]]
+[[Category:1992 in African men's international football|Cup of Nations]]
+[[Category:1992 in Senegalese sport]]
+[[Category:Men's football in Senegal]]
+[[Category:International association football competitions hosted by Senegal]]
+[[Category:Sports competitions in Dakar]]
+[[Category:Ziguinchor]]
+[[Category:January 1992 sports events in Africa]]
