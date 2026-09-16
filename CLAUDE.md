@@ -444,6 +444,30 @@ explicitly out of scope — see "Non-goals" below).
   reproduced exactly by their own event log.** The 2 exceptions are a missing
   *event*, not a wrong score: Zambia 1-1 Tanzania (2023) and Tunisia 1-1 Angola
   (2019) are each one goal event short in their source.
+- **28 legacy events sat on matches their team never played in, and are now
+  resolved** (2026-09-16,
+  `docs/reconciliation/fixes/2026-09-16_orphan_events_afcon_2019.sql`). These
+  were the audit's 14 open `ORPHAN_EVENT` findings, and the reason ten AFCON
+  2019 matches held more goal events than their score allowed. **No match in
+  the vault does any more.** Three separate things, treated differently:
+  - **Four goals gained the scorer we already had.** For two ties the legacy
+    data holds the event set twice — once on the right match with no scorer,
+    once on a wrong match *with* the scorer named, minutes agreeing. So
+    DR Congo 0-2 Uganda is now Kaddu 14' and Okwi 48', and Guinea 2-2
+    Madagascar is Sory Kaba 34' and Kamano 66' (a penalty; the type was wrong
+    too). **Before assuming an unnamed goal is unknowable, check whether a
+    misfiled copy names it.**
+  - **Two goals wore the wrong team**, each the only goal event on a match
+    needing exactly one, so the score itself settled it: Simba SC's winner at
+    UD Songo, and South Sudan's equaliser against Malawi.
+  - **26 surplus events were deleted**: 12 exact duplicates of events already
+    on the right match, and 14 fragments credited to twelve Tanzanian clubs
+    that play no match anywhere in the vault. The clubs are **not** deleted —
+    three hold player registrations, so they are real clubs whose matches the
+    migration never brought over.
+  - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
+    short. That is correct: the stray event had been padding the count over a
+    gap that was always there.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.
