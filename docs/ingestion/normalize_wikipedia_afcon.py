@@ -18,6 +18,7 @@ The goal grammar, all of it observed in these two articles:
     {{goal|57|pen.|73|pen.}}    two penalties
     {{goal|16||85|pen.}}        one ordinary goal and one penalty
     {{golden goal|105}}         the 1996 quarter-final winner
+    {{goal|90+3}}               stoppage time, kept apart in `added`
 
 So: a numeric argument opens a goal, and a following non-numeric argument
 qualifies the goal just opened. Anything else is reported rather than dropped.
@@ -46,8 +47,10 @@ CODES = {
     "ALG": "Algeria", "ANG": "Angola", "BFA": "Burkina Faso", "BUR": "Burkina Faso",
     "CIV": "Ivory Coast", "CMR": "Cameroon", "COD": "DR Congo", "ZAI": "DR Congo",
     "EGY": "Egypt", "GAB": "Gabon", "GHA": "Ghana", "GUI": "Guinea", "LBR": "Liberia",
-    "MAR": "Morroco", "MOZ": "Mozambique", "NAM": "Namibia", "RSA": "South Africa",
-    "SLE": "Sierra Leon", "TOG": "Togo", "TUN": "Tunisia", "ZAM": "Zambia",
+    "MAR": "Morroco", "MLI": "Mali", "MOZ": "Mozambique", "NAM": "Namibia",
+    "NGA": "Nigeria", "NGR": "Nigeria", "RSA": "South Africa", "SEN": "Senegal",
+    "SLE": "Sierra Leon", "TAN": "Tanzania", "TOG": "Togo", "TUN": "Tunisia",
+    "ZAM": "Zambia",
 }
 
 BOX = re.compile(r"\{\{football ?box.*?\n\}\}", re.S | re.I)
@@ -60,6 +63,8 @@ LINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
 
 PEN = re.compile(r"^pen", re.I)
 OWN = re.compile(r"^o\.?\s*g", re.I)
+# "90+3" is stoppage time, which the vault stores separately in added_time.
+MINUTE = re.compile(r"^(\d{1,3})(?:\s*\+\s*(\d{1,2}))?$")
 
 
 def field(block, name):
@@ -113,8 +118,10 @@ def parse_goals(text, side, problems, where):
         for arg in args:
             if not arg:
                 continue                                   # the || separator
-            if arg.isdigit():
-                opened = {"side": side, "player": who, "minute": int(arg),
+            clock = MINUTE.match(arg)
+            if clock:
+                opened = {"side": side, "player": who, "minute": int(clock.group(1)),
+                          "added": int(clock.group(2)) if clock.group(2) else None,
                           "type": "GOAL", "golden": golden}
                 out.append(opened)
             elif opened is None:

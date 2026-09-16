@@ -1,0 +1,469 @@
+{{Short description|12th edition of the Africa Cup of Nations}}
+{{Use Nigerian English|date=June 2026}}
+{{Use dmy dates|date=June 2026}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year = 1980
+| other_titles = 
+| image = 1980 Afcon (logo).png
+| size = 
+| caption = 
+| country = Nigeria
+| dates = 8−22 March
+| num_teams = 8
+| venues = 2
+| cities = 2
+| champion = Nigeria
+| count = 1
+| second = Algeria
+| third = Morocco
+| fourth = Egypt
+| fourth-flagvar = 1972
+| matches = 16
+| goals = 33
+| attendance = 
+| top_scorer = {{flagicon|MAR}} [[Khalid Labied]] <br> {{flagicon|NGA}} [[Segun Odegbami]] <br> (3 goals each)
+| player = {{flagicon|NGA}} [[Christian Chukwu]]
+| prevseason = [[1978 African Cup of Nations|1978]]
+| nextseason = [[1982 African Cup of Nations|1982]]
+| updated = 
+}}
+
+The '''1980 African Cup of Nations''' was the 12th edition of the [[Africa Cup of Nations]], the [[Association football|football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by Nigeria. Just like in [[1978 African Cup of Nations|1978]], the field of eight teams was split into two groups of four. [[Nigeria national football team|Nigeria]] won its first championship, beating [[Algeria national football team|Algeria]] in the final 3−0.
+
+== Qualified teams ==
+{{Main|1980 African Cup of Nations qualification}}
+[[File:1980 Afcon teams.png|thumb|Participating nations]]
+
+The 8 qualified teams are:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|NGR}} || Hosts ||  || {{sort|04|3}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]], [[1978 African Cup of Nations|1978]])
+|-
+| {{fb|GHA}} || Holders || {{dts|16 March 1978}} || {{sort|02|5}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], '''''[[1978 African Cup of Nations|1978]]''''')
+|-
+| {{fb|CIV}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|6 July 1979}} || {{sort|03|4}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]])
+|-
+| {{fb|MAR}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|6 July 1979}} || {{sort|04|3}} ([[1972 African Cup of Nations|1972]], '''[[1976 African Cup of Nations|1976]]''', [[1978 African Cup of Nations|1978]])
+|-
+| {{fb|ALG}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|8 July 1979}} || {{sort|05|1}} ([[1968 African Cup of Nations|1968]])
+|-
+| {{fb|EGY|1972}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|13 July 1979}} || {{sort|01|7}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'', [[1976 African Cup of Nations|1976]])
+|-
+| {{fb|GUI}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|19 August 1979}} || {{sort|04|3}} ([[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1976 African Cup of Nations|1976]])
+|-
+| {{fb|TAN}} || [[1980 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|26 August 1979}} || {{sort|06|0}} (debut)
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{Main|1980 African Cup of Nations squads}}
+
+== Venues ==
+The competition was played in two venues in [[Lagos]] and [[Ibadan]].
+
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Lagos]]
+| rowspan="8" | {{location map+|Nigeria|float=center|width=500|caption=|places=
+{{location map~|Nigeria|lat=6.453056|long=3.395833|label='''[[Lagos]]'''|position=bottom}}
+{{location map~|Nigeria|lat=7.396389|long=3.916667|label='''[[Ibadan]]'''|position=top}}
+}}
+|-
+| [[Lagos National Stadium|Surulere Stadium]]
+|-
+| Capacity: '''80,000'''
+|-
+| [[File:Main-bowl-national-stadium-surulere-lagos.jpg|150px]]
+|-
+![[Ibadan]]
+|-
+|[[Obafemi Awolowo Stadium|Liberty Stadium]]
+|-
+|Capacity: '''35,000'''
+|-
+|[[File:Ibadan stadium, Ibadan2.jpg|150px]]
+|}
+</div>
+
+== Group stage ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Goal difference in all group matches
+# Greater number of goals scored in all group matches
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1980 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =NGA, EGY, CIV, TAN
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_NGA=2 |draw_NGA=1 |loss_NGA=0 |gf_NGA=4 |ga_NGA=1 |status_NGA=H
+|win_EGY=2 |draw_EGY=0 |loss_EGY=1 |gf_EGY=4 |ga_EGY=3
+|win_CIV=0 |draw_CIV=2 |loss_CIV=1 |gf_CIV=2 |ga_CIV=3
+|win_TAN=0 |draw_TAN=1 |loss_TAN=2 |gf_TAN=3 |ga_TAN=6
+
+<!--Team definitions-->
+|name_NGA={{fb|NGA}}
+|name_EGY={{fb|EGY|1972}}
+|name_CIV={{fb|CIV}}
+|name_TAN={{fb|TAN}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1980 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date = 8 March 1980
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 3–1
+| team2 = {{fb|TAN}}
+| goals1 = [[Muda Lawal|Lawal]] {{goal|11}} <br> [[Ifeanyi Onyedika|Onyedika]] {{goal|35}} <br> [[Segun Odegbami|Odegbami]] {{goal|85}}
+| goals2 = [[Juma Mkambi|Mkambi]] {{goal|54}}
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:80000}}
+| referee = [[Suleiman El Naim]] ([[Sudan Football Association|Sudan]])
+| report = [http://www.11v11.com/matches/nigeria-v-tanzania-08-march-1980-235759 Report]
+}}
+{{footballbox
+| date = 8 March 1980
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 2–1
+| team2 = {{fb|CIV}}
+| goals1 = [[Maher Hammam|Hammam]] {{goal|8}} <br> [[Mokhtar Mokhtar|Mokhtar]] {{goal|20}}
+| goals2 = [[Ani Gome|Gome]] {{goal|7}}
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:80000}}
+| referee = [[Joel Mondoka]] ([[Football Association of Zambia|Zambia]])
+| report = [http://www.11v11.com/matches/ivory-coast-v-egypt-08-march-1980-235758 Report]
+}}
+----
+{{footballbox
+| date = 12 March 1980
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 2–1
+| team2 = {{fb|TAN}}
+| goals1 = [[Hassan Shehata|Shehata]] {{goal|32}} <br> [[Mussad Nur|Nour]] {{goal|38}}
+| goals2 = [[Thuwein Waziri|Waziri]] {{goal|86}}
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:55000}}
+| referee = [[Sohan Ramlochun]] ([[Mauritius Football Association|Mauritius]])
+| report = [http://www.11v11.com/matches/egypt-v-tanzania-12-march-1980-235767 Report]
+}}
+{{footballbox
+| date = 12 March 1980
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 0–0
+| team2 = {{fb|CIV}}
+| goals1 =
+| goals2 =
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:55000}}
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = [http://www.11v11.com/matches/nigeria-v-ivory-coast-12-march-1980-235766 Report]
+}}
+----
+{{footballbox
+| date = 15 March 1980
+| time = 
+| team1 = {{fb-rt|CIV}}
+| score = 1–1
+| team2 = {{fb|TAN}}
+| goals1 = [[Kobenan Koma|Koma]] {{goal|7}}
+| goals2 = [[Thuwein Waziri|Waziri]] {{goal|59}}
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:70000}}
+| referee = [[Diallo Bakaï]] ([[Cameroonian Football Federation|Cameroon]])
+| report = [http://www.11v11.com/matches/tanzania-v-ivory-coast-15-march-1980-235775 Report]
+}}
+{{footballbox
+| date = 15 March 1980
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 1–0
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Okey Isima|Isima]] {{goal|15}}
+| goals2 =
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:70000}}
+| referee = [[Tesfaye Gebreyesus]] ([[Ethiopian Football Federation|Ethiopia]])
+| report = [http://www.11v11.com/matches/nigeria-v-egypt-15-march-1980-235774 Report]
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1980 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =ALG, MAR, GHA, GUI
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_ALG=2 |draw_ALG=1 |loss_ALG=0 |gf_ALG=4 |ga_ALG=2
+|win_MAR=1 |draw_MAR=1 |loss_MAR=1 |gf_MAR=2 |ga_MAR=2
+|win_GHA=1 |draw_GHA=1 |loss_GHA=1 |gf_GHA=1 |ga_GHA=1
+|win_GUI=0 |draw_GUI=1 |loss_GUI=2 |gf_GUI=3 |ga_GUI=5
+
+<!--Team definitions-->
+|name_ALG={{fb|ALG}}
+|name_MAR={{fb|MAR}}
+|name_GHA={{fb|GHA}}
+|name_GUI={{fb|GUI}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1980 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date = 9 March 1980
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 0–0
+| team2 = {{fb|ALG}}
+| goals1 =
+| goals2 =
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:40000}}
+| referee = [[Yousef Alghoul|Youssef El Ghoul]] ([[Libyan Football Federation|Libya]])
+| report = [http://www.11v11.com/matches/ghana-v-algeria-09-march-1980-235762 Report]
+}}
+{{footballbox
+| date = 9 March 1980
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 1–1
+| team2 = {{fb|GUI}}
+| goals1 = [[Mustapha Tahiri|Tahiri]] {{goal|7}}
+| goals2 = [[Moussa Camara (defender)|M. Camara]] {{goal|8}}
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:40000}}
+| referee = [[Paul Preira]] ([[Senegalese Football Federation|Senegal]])
+| report = [http://www.11v11.com/matches/morocco-v-guinea-09-march-1980-235763 Report]
+| event = 
+| round = 
+| score1 = 
+| score2 = 
+}}
+----
+{{footballbox
+| date = 13 March 1980
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 1–0
+| team2 = {{fb|MAR}}
+| goals1 = [[Lakhdar Belloumi|Belloumi]] {{goal|90+3}}
+| goals2 =
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:20000}}
+| referee = [[Ali Dridi]] ([[Tunisian Football Federation|Tunisia]])
+| report = [http://www.11v11.com/matches/algeria-v-morocco-13-march-1980-235771 Report]
+}}
+{{footballbox
+| date = 13 March 1980
+| time = 
+| team1 = {{fb-rt|GHA}}
+| score = 1–0
+| team2 = {{fb|GUI}}
+| goals1 = [[Willie Klutse|Klutse]] {{goal|69}}
+| goals2 =
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:20000}}
+| referee = [[Ngesa Gabriel Odengo]] ([[Kenya Football Federation|Kenya]])
+| report = [http://www.11v11.com/matches/ghana-v-guinea-13-march-1980-235770 Report]
+}}
+----
+{{footballbox
+| date = 16 March 1980
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 3–2
+| team2 = {{fb|GUI}}
+| goals1 = [[Tedj Bensaoula|Bensaoula]] {{goal|12||49}} <br> [[Lakhdar Belloumi|Belloumi]] {{goal|37}}
+| goals2 = [[Ibrahima Diawara|Diawara]] {{goal|82}} <br> [[Sidouba Bangoura|Bangoura]] {{goal|90+1}}
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:20000}}
+| referee = [[Idrissa Traoré (referee)|Idrissa Traoré]] ([[Malian Football Federation|Mali]])
+| report = [http://www.11v11.com/matches/algeria-v-guinea-16-march-1980-235778 Report]
+}}
+{{footballbox
+| date = 16 March 1980
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 1–0
+| team2 = {{fb|GHA}}
+| goals1 = [[Khalid Labied|Labied]] {{goal|44}}
+| goals2 =
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:20000}}
+| referee = [[Dodou N'Jie]] ([[Gambia Football Association|Gambia]])
+| report = [http://www.11v11.com/matches/morocco-v-ghana-16-march-1980-235777 Report]
+}}
+
+== Knockout stage ==
+{{Round4-with third
+<!--Date-Place|Team 1|Score 1|Team 2|Score 2-->
+<!--semi-finals-->
+| 19 March – [[Lagos]] | '''{{fb|NGR}}''' | '''1''' | {{fb|MAR}} | 0
+| 19 March – [[Ibadan]] | '''{{fb|ALG}} ([[Penalty shootout (association football)|pen.]])''' | '''2 (4)''' | {{fb|EGY|1972}} | 2 (2)
+<!--final-->
+|22 March – [[Lagos]] | '''{{fb|NGR}}''' | '''3''' | {{fb|ALG}} | 0
+<!--third place-->
+| 21 March – [[Lagos]] | '''{{fb|MAR}}''' | '''2''' | {{fb|EGY|1972}} | 0
+}}
+
+=== Semi-finals ===
+{{footballbox
+| date = 19 March 1980
+| time = 
+| team1 = {{fb-rt|NGA}}
+| score = 1–0
+| team2 = {{fb|MAR}}
+| goals1 = [[Felix Owolabi|Owolabi]] {{goal|9}}
+| goals2 =
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:70000}}
+| referee = [[Suleiman El Naim]] ([[Sudan Football Association|Sudan]])
+| report = [http://www.11v11.com/matches/nigeria-v-morocco-19-march-1980-235785 Report]
+}}
+----
+{{footballbox
+| date = 19 March 1980
+| time = 
+| team1 = {{fb-rt|ALG}}
+| score = 2–2
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Salah Assad|Assad]] {{goal|55|pen.}} <br> [[Hocine Benmiloudi|Benmiloudi]] {{goal|62}}
+| goals2 = [[Mahmoud El Khatib|El Khatib]] {{goal|32}} <br> [[Ramadan El Sayed|El Sayed]] {{goal|47}}
+| stadium = [[Obafemi Awolowo Stadium|Liberty Stadium]], [[Ibadan]]
+| attendance = {{formatnum:5000}}
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = [http://www.11v11.com/matches/algeria-v-egypt-19-march-1980-235784 Report]
+| penalties1 = [[Lakhdar Belloumi|Belloumi]] {{pengoal}} <br> [[Ali Fergani|Fergani]] {{pengoal}} <br> [[Mohamed Khedis|Khedis]] {{pengoal}} <br> [[Salah Larbès|Larbès]] {{penmiss}} <br> [[Salah Assad|Assad]] {{pengoal}}
+| penaltyscore = 4–2
+| penalties2 = {{pengoal}} [[Hassan Shehata|Shehata]] <br> {{pengoal}} [[Mokhtar Mokhtar|Mokhtar]]<br> {{penmiss}} [[Mahmoud El Khatib|El Khatib]] <br> {{penmiss}} [[Mohamed Amer (footballer)|Amer]]
+}}
+
+=== Third place match ===
+{{footballbox
+| date = 21 March 1980
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 2–0
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Khalid Labied|Labied]] {{goal|9||78}}
+| goals2 =
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:5000}}
+| referee = [[Ngesa Gabriel Odengo]] ([[Kenya Football Federation|Kenya]])
+| report = [http://www.11v11.com/matches/egypt-v-morocco-21-march-1980-235790 Report]
+}}
+
+=== Final ===
+{{Main|1980 African Cup of Nations Final}}
+
+{{footballbox
+| date = 22 March 1980
+| time = 
+| team1 = {{fb-rt|NGR}}
+| score = 3–0
+| team2 = {{fb|ALG}}
+| goals1 = [[Segun Odegbami|Odegbami]] {{goal|2||42}} <br> [[Muda Lawal|Lawal]] {{goal|50}}
+| goals2 =
+| stadium = [[Lagos National Stadium|Surulere Stadium]], [[Lagos]]
+| attendance = {{formatnum:85000}}
+| referee = [[Tesfaye Gebreyesus]] ([[Ethiopian Football Federation|Ethiopia]])
+| report = [http://www.11v11.com/matches/nigeria-v-algeria-22-march-1980-235793 Report]
+}}
+
+== CAF Team of the Tournament ==
+{| class="wikitable" style="margin:0 auto"
+|-
+! Goalkeepers
+! Defenders
+! Midfielders
+! Forwards
+|-
+| align=left valign=top |
+{{flagicon|Nigeria}} [[Best Ogedegbe]]
+| align=left valign=top |
+{{flagicon|Algeria}} [[Mustapha Kouici]] <br>{{flagicon|Egypt}} [[Mohamed Salah (coach)|Mohamed Salah El-Din]] <br>{{flagicon|Guinea}} [[Moussa Camara (defender)|Moussa Camara]] <br>{{flagicon|Nigeria}} [[Christian Chukwu]]
+| align=left valign=top |
+{{flagicon|Algeria}} [[Lakhdar Belloumi]] <br>{{flagicon|Algeria}} [[Ali Fergani]] <br>{{flagicon|Egypt}} [[Mahmoud El Khatib]] <br>{{flagicon|Egypt}} [[Shawky Gharieb]]
+| align=left valign=top |
+{{flagicon|Algeria}} [[Salah Assad]] <br>{{flagicon|Nigeria}} [[Segun Odegbami]]
+|}
+
+== Goalscorers ==
+{{Goalscorers
+|goals=33 |matches=16
+
+|3 goals=
+*{{fbicon|MAR}} [[Khalid Labied]]
+*{{fbicon|NGR}} [[Segun Odegbami]]
+
+|2 goals=
+*{{fbicon|ALG}} [[Lakhdar Belloumi]]
+*{{fbicon|ALG}} [[Tedj Bensaoula]]
+*{{fbicon|NGR}} [[Muda Lawal]]
+*{{fbicon|TAN}} [[Thuwein Waziri]]
+
+|1 goal=
+*{{fbicon|ALG}} [[Salah Assad]]
+*{{fbicon|ALG}} [[Hocine Benmiloudi]]
+*{{fbicon|EGY}} [[Mahmoud El Khatib]]
+*{{fbicon|EGY}} [[Ramadan El Sayed]]
+*{{fbicon|EGY}} [[Maher Hammam]]
+*{{fbicon|EGY}} [[Mokhtar Mokhtar]]
+*{{fbicon|EGY}} [[Mussad Nur|Mosaad Nour]]
+*{{fbicon|EGY}} [[Hassan Shehata]]
+*{{fbicon|GHA}} [[Willie Klutse]]
+*{{fbicon|GUI}} [[Moussa Camara (defender)|Moussa Camara]]
+*{{fbicon|GUI}} [[Ibrahima Diawara]]
+*{{fbicon|GUI}} [[Sidouba Bangoura]].
+*{{fbicon|CIV}} [[Ani Gome]]
+*{{fbicon|CIV}} [[Kouman Kobenan]]
+*{{fbicon|MAR}} [[Mustapha Tahiri]]
+*{{fbicon|NGR}} [[Okey Isima]]
+*{{fbicon|NGR}} [[Ifeanyi Onyedika]]
+*{{fbicon|NGR}} [[Felix Owolabi]]
+*{{fbicon|TAN}} [[Juma Mkambi]]
+}}
+
+== External links ==
+* [https://www.rsssf.org/tables/80a.html Details at RSSSF]
+
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:African Cup Of Nations}}
+[[Category:1980 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1980]]
+[[Category:1980 in African men's continental football|Cup of Nations]]
+[[Category:1980 in African men's international football|Cup of Nations]]
+[[Category:1979–80 in Nigerian football]]
+[[Category:Men's international association football competitions hosted by Nigeria]]
+[[Category:Football competitions in Lagos]]
+[[Category:Sport in Ibadan]]
+[[Category:March 1980 sports events in Africa]]

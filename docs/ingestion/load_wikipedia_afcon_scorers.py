@@ -1,28 +1,34 @@
-"""Attach Wikipedia's 1996 and 1998 AFCON scorers to matches the vault already has.
+"""Attach Wikipedia's AFCON scorers to matches the vault already has.
 
     python3 load_wikipedia_afcon_scorers.py raw/afcon_wikipedia/canon.json           # dry run
     python3 load_wikipedia_afcon_scorers.py raw/afcon_wikipedia/canon.json --commit
 
+Used for 1980, 1994, 1996 and 1998 -- the tournaments RSSSF leaves without all
+their scorers. See AFCON_WIKIPEDIA_SCORERS.md.
+
 Without --commit everything runs in a transaction that is rolled back, and the
 summary printed is exactly what committing would do.
 
-This loader creates **no matches and no scores**. The vault already holds all 61
-of these fixtures from RSSSF; what it lacks is who scored, because RSSSF names a
-scorer for 4 of the 171 goals. So every match here must already exist, and its
-stored score must agree with Wikipedia's, or that match is skipped.
+This loader creates **no matches and no scores**. The vault already holds every
+one of these fixtures from RSSSF; what it lacks is who scored. So every match
+here must already exist, and its stored score must agree with Wikipedia's, or
+that match is skipped.
 
 Decisions this encodes:
 
 * **The vault's own orientation wins.** The two sources disagree about which
-  side was home in 18 of the 61 matches. Where the score agrees once flipped,
+  side was home in 18 of 1996-98's 61 matches and 2 of 1980/94's 36. Where the score agrees once flipped,
   the goals are mapped onto the vault's sides; the fixture is never rewritten.
 * **Own goals** are stored under the scorer's OWN team (design principle 5).
   Wikipedia lists them under the side they count for, which is the same trap
   RSSSF and ligikuu set.
-* **A match that already has goal events is skipped, never added to.** Both
-  finals have their scorers from RSSSF already. They are reported with whether
-  Wikipedia agrees, which is a cross-source check worth seeing, but nothing is
-  written over them.
+* **A match that already has goal events is skipped, never added to.** Both 1996
+  and 1998 finals have their scorers from RSSSF, as does nearly every match in
+  1980 and 1994. Each is reported with what Wikipedia says about it, which is a
+  cross-source check worth reading, but nothing is written over them. A match
+  needing only ONE existing event named is therefore out of this loader's reach
+  on purpose -- adding an event would overcount the score -- and is done as a
+  dated reconciliation fix instead.
 * **Scorers load only where the goal list reconciles with the stored score**,
   the same gate as load_afcon_pre2002.py.
 * **Player identity is decided by playermatch.py**, which refuses a match it
@@ -129,9 +135,9 @@ class Loader:
             pid = self.player(g["player"], g["team_id"])
             detail = json.dumps({"goldenGoal": True}) if g.get("golden") else None
             self.c.execute(
-                """INSERT INTO match_events (match_id, team_id, player_id, minute, type, detail)
-                   VALUES (%s, %s, %s, %s, %s, %s) RETURNING id""",
-                (vault["id"], g["team_id"], pid, g["minute"], g["type"], detail))
+                """INSERT INTO match_events (match_id, team_id, player_id, minute, added_time, type, detail)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id""",
+                (vault["id"], g["team_id"], pid, g["minute"], g.get("added"), g["type"], detail))
             self.provenance("match_event", self.c.fetchone()[0], f"wikipedia-afcon-{vault['id']}-g{n}")
             self.stats[f"events written ({g['type']})"] += 1
         self.stats["matches given scorers"] += 1

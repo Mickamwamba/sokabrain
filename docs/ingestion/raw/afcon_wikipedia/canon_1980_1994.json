@@ -1,0 +1,974 @@
+[
+ {
+  "year": 1980,
+  "date": "8 March 1980",
+  "home": "Nigeria",
+  "away": "Tanzania",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Muda Lawal",
+    "minute": 11,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ifeanyi Onyedika",
+    "minute": 35,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Segun Odegbami",
+    "minute": 85,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Juma Mkambi",
+    "minute": 54,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "8 March 1980",
+  "home": "Egypt",
+  "away": "Ivory Coast",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Maher Hammam",
+    "minute": 8,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mokhtar Mokhtar",
+    "minute": 20,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ani Gome",
+    "minute": 7,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "12 March 1980",
+  "home": "Egypt",
+  "away": "Tanzania",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Hassan Shehata",
+    "minute": 32,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mussad Nur",
+    "minute": 38,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Thuwein Waziri",
+    "minute": 86,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "12 March 1980",
+  "home": "Nigeria",
+  "away": "Ivory Coast",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1980,
+  "date": "15 March 1980",
+  "home": "Ivory Coast",
+  "away": "Tanzania",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Kobenan Koma",
+    "minute": 7,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Thuwein Waziri",
+    "minute": 59,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "15 March 1980",
+  "home": "Nigeria",
+  "away": "Egypt",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Okey Isima",
+    "minute": 15,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "9 March 1980",
+  "home": "Ghana",
+  "away": "Algeria",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1980,
+  "date": "9 March 1980",
+  "home": "Morroco",
+  "away": "Guinea",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Mustapha Tahiri",
+    "minute": 7,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Moussa Camara",
+    "minute": 8,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "13 March 1980",
+  "home": "Algeria",
+  "away": "Morroco",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Lakhdar Belloumi",
+    "minute": 90,
+    "added": 3,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "13 March 1980",
+  "home": "Ghana",
+  "away": "Guinea",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Willie Klutse",
+    "minute": 69,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "16 March 1980",
+  "home": "Algeria",
+  "away": "Guinea",
+  "homeScore": 3,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Tedj Bensaoula",
+    "minute": 12,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Tedj Bensaoula",
+    "minute": 49,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Lakhdar Belloumi",
+    "minute": 37,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ibrahima Diawara",
+    "minute": 82,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Sidouba Bangoura",
+    "minute": 90,
+    "added": 1,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "16 March 1980",
+  "home": "Morroco",
+  "away": "Ghana",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Khalid Labied",
+    "minute": 44,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "19 March 1980",
+  "home": "Nigeria",
+  "away": "Morroco",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Felix Owolabi",
+    "minute": 9,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "19 March 1980",
+  "home": "Algeria",
+  "away": "Egypt",
+  "homeScore": 2,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Salah Assad",
+    "minute": 55,
+    "added": null,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hocine Benmiloudi",
+    "minute": 62,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Mahmoud El Khatib",
+    "minute": 32,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Ramadan El Sayed",
+    "minute": 47,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "21 March 1980",
+  "home": "Morroco",
+  "away": "Egypt",
+  "homeScore": 2,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Khalid Labied",
+    "minute": 9,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Khalid Labied",
+    "minute": 78,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1980,
+  "date": "22 March 1980",
+  "home": "Nigeria",
+  "away": "Algeria",
+  "homeScore": 3,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Segun Odegbami",
+    "minute": 2,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Segun Odegbami",
+    "minute": 42,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Muda Lawal",
+    "minute": 50,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "26 March 1994",
+  "home": "Tunisia",
+  "away": "Mali",
+  "homeScore": 0,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Fernand Coulibaly",
+    "minute": 25,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Mobido Sidibé",
+    "minute": 34,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "28 March 1994",
+  "home": "Mali",
+  "away": "DR Congo",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Basaula Lemba",
+    "minute": 48,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "30 March 1994",
+  "home": "Tunisia",
+  "away": "DR Congo",
+  "homeScore": 1,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Faouzi Rouissi",
+    "minute": 43,
+    "added": null,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Nsumbu Ngoy",
+    "minute": 55,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "26 March 1994",
+  "home": "Nigeria",
+  "away": "Gabon",
+  "homeScore": 3,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Rashidi Yekini",
+    "minute": 18,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Rashidi Yekini",
+    "minute": 88,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Mutiu Adepoju",
+    "minute": 72,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "28 March 1994",
+  "home": "Egypt",
+  "away": "Gabon",
+  "homeScore": 4,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ayman Mansour",
+    "minute": 1,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Hamza El-Gamal",
+    "minute": 22,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Bashir Abdel Samad",
+    "minute": 55,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Bashir Abdel Samad",
+    "minute": 59,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "30 March 1994",
+  "home": "Nigeria",
+  "away": "Egypt",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1994,
+  "date": "27 March 1994",
+  "home": "Ivory Coast",
+  "away": "Sierra Leon",
+  "homeScore": 4,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 19,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 63,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Joël Tiéhi",
+    "minute": 70,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Tchiressoua Guel",
+    "minute": 35,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "29 March 1994",
+  "home": "Zambia",
+  "away": "Sierra Leon",
+  "homeScore": 0,
+  "awayScore": 0,
+  "goals": []
+ },
+ {
+  "year": 1994,
+  "date": "31 March 1994",
+  "home": "Zambia",
+  "away": "Ivory Coast",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Kenneth Malitoli",
+    "minute": 79,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "27 March 1994",
+  "home": "Ghana",
+  "away": "Guinea",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Charles Akunnor",
+    "minute": 87,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "29 March 1994",
+  "home": "Senegal",
+  "away": "Guinea",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Momath Gueye",
+    "minute": 46,
+    "added": null,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Athanas Tendeng",
+    "minute": 50,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Aboubacar Titi Camara",
+    "minute": 44,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "31 March 1994",
+  "home": "Ghana",
+  "away": "Senegal",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Prince Polley",
+    "minute": 42,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "2 April 1994",
+  "home": "DR Congo",
+  "away": "Nigeria",
+  "homeScore": 0,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Rashidi Yekini",
+    "minute": 51,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Rashidi Yekini",
+    "minute": 71,
+    "added": null,
+    "type": "PENALTY_GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "2 April 1994",
+  "home": "Egypt",
+  "away": "Mali",
+  "homeScore": 0,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "away",
+    "player": "Soumaila Traoré",
+    "minute": 64,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "3 April 1994",
+  "home": "Zambia",
+  "away": "Senegal",
+  "homeScore": 1,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Evans Sakala",
+    "minute": 38,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "3 April 1994",
+  "home": "Ghana",
+  "away": "Ivory Coast",
+  "homeScore": 1,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Charles Akonnor",
+    "minute": 77,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Joël Tiéhi",
+    "minute": 30,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Abdoulaye Traoré",
+    "minute": 81,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "6 April 1994",
+  "home": "Nigeria",
+  "away": "Ivory Coast",
+  "homeScore": 2,
+  "awayScore": 2,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Ben Iroha",
+    "minute": 26,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Rashidi Yekini",
+    "minute": 40,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Michel Bassolé",
+    "minute": 19,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Michel Bassolé",
+    "minute": 31,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "6 April 1994",
+  "home": "Zambia",
+  "away": "Mali",
+  "homeScore": 4,
+  "awayScore": 0,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Elijah Litana",
+    "minute": 8,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Zeddy Saileti",
+    "minute": 30,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kalusha Bwalya",
+    "minute": 47,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Kenneth Malitoli",
+    "minute": 73,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "10 April 1994",
+  "home": "Ivory Coast",
+  "away": "Mali",
+  "homeScore": 3,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Adama Koné Clofie",
+    "minute": 2,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Ahmed Ouattara",
+    "minute": 67,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Donald-Olivier Sie",
+    "minute": 70,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Amadou Pathé Diallo",
+    "minute": 46,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ },
+ {
+  "year": 1994,
+  "date": "10 April 1994",
+  "home": "Nigeria",
+  "away": "Zambia",
+  "homeScore": 2,
+  "awayScore": 1,
+  "goals": [
+   {
+    "side": "home",
+    "player": "Emmanuel Amuneke",
+    "minute": 5,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "home",
+    "player": "Emmanuel Amuneke",
+    "minute": 47,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   },
+   {
+    "side": "away",
+    "player": "Elijah Litana",
+    "minute": 3,
+    "added": null,
+    "type": "GOAL",
+    "golden": false
+   }
+  ]
+ }
+]

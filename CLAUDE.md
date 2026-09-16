@@ -379,13 +379,21 @@ explicitly out of scope — see "Non-goals" below).
     patched. Player provenance is keyed on name **and team**: keyed on the name
     alone, two players called Diallo shared one key and the second had no
     provenance at all.
-- **1996 and 1998 have their scorers, from Wikipedia** (2026-09-16). RSSSF
-  names a scorer for 4 of those two tournaments' 171 goals; Wikipedia names
-  them all, and `docs/ingestion/AFCON_1996_1998_SCORERS.md` has the pipeline.
-  **AFCON scorer coverage went from 91% to 99.6%** (1,999 of 2,007 goals), and
-  the public top fourteen now matches the published all-time list exactly.
-  Hossam Hassan 11, Kalusha Bwalya 10, Joel Tiéhi 10 and Benni McCarthy 7 were
-  all short only because of this gap.
+- **Every AFCON goal but two now names its scorer** (2026-09-16). RSSSF leaves
+  four tournaments short of scorers -- all of 1996 and 1998, and gaps in 1980
+  and 1994 -- and Wikipedia names them. Pipeline and judgement calls in
+  `docs/ingestion/AFCON_WIKIPEDIA_SCORERS.md`. **Coverage went from 91% to
+  99.90%: 2,005 of 2,007 goals**, and the public top fourteen now matches the
+  published all-time list exactly. Hossam Hassan 11, Kalusha Bwalya 10, Joel
+  Tiéhi 10 and Benni McCarthy 7 were all short only because of this gap.
+  - **The last 2 are not a naming problem.** Tunisia 1-1 Angola (2019) and
+    Zambia 1-1 Tanzania (2023) are each missing the goal *event* itself in their
+    source, which is a long-standing known gap. Nothing to name.
+  - **A match that already has goal events is never added to**, so the 1980/94
+    pass wrote only 5 events, for the one match that had none. The single
+    remaining unnamed event, Ghana's in the 1994 quarter-final, was named as a
+    fix (`2026-09-16_akonnor_1994_quarter_final.sql`) rather than loaded --
+    inserting an event would have given that match four goals for a 1-2.
   - **Wikitext, not the rendered page**: the data is in `{{football box}}`
     templates whose arguments are the fields wanted. `?action=raw` returns it.
   - **Two subtleties that each cost a goal.** A goal template preceded by only

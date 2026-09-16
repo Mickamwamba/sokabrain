@@ -1,0 +1,614 @@
+{{Short description|19th edition of the Africa Cup of Nations}}
+{{Infobox international football competition
+| tourney_name   = African Cup of Nations
+| year           = 1994
+| other_titles   = {{lang|ar|كأس الأمم الإفريقية 1994}}<br>{{lang|fr|Coupe d'Afrique des Nations 1994}}
+| image          = 1994 African Cup of Nations logo.jpg
+| size           = 
+| caption        = The official tournament poster.
+| country        = Tunisia
+| dates          = 26 March – 10 April
+| num_teams      = 12
+| venues         = 3
+| cities         = 2
+| champion       = Nigeria
+| count          = 2
+| second         = Zambia
+| second-flagvar = 1964
+| third          = Ivory Coast
+| fourth         = Mali
+| matches        = 20
+| goals          = 44
+| attendance     = 267400
+| top_scorer     = {{flagicon|Nigeria}} [[Rashidi Yekini]] (5 goals)
+| player         = {{flagicon|Nigeria}} [[Rashidi Yekini]]
+| prevseason     = [[1992 African Cup of Nations|1992]]
+| nextseason     = [[1996 African Cup of Nations|1996]]
+}}
+
+The '''1994 African Cup of Nations''', known as the '''[[Nescafé]] 1994 Africa Cup of Nations''' for sponsorship purposes, was the 19th edition of the [[Africa Cup of Nations|African Cup of Nations]], the biennial international men's football championship of Africa organised by the [[Confederation of African Football]] (CAF). The tournament was played between 26 March and 10 April 1994 in Tunisia, taking place in the country for the second time following the [[1965 African Cup of Nations|1965 editions]]. Tunisia host the tournament, who replaced original hosts Zaire. The [[Zambia national football team|Zambian team]] was recently formed, following an [[1993 Zambia national football team plane crash|air disaster]] in which eighteen players and several staff members of the previous team had been killed.
+
+The defending champions were [[Ivory Coast national football team|Ivory Coast]] from the [[1992 African Cup of Nations|1992 edition]]. A total of 20 matches were played, in which 44 goals were scored, at an average of 2.2 goals per match. Attendance at all stages of the tournament reached 267,400, averaging 13,370 viewers per match. Qualification took place from 14 June 1992 to 24 October 1993. Ivory Coast as title holder and Tunisia as host country automatically qualified for the final phase of the tournament. As in the 1992 edition, twelve teams, divided into four groups each comprising tree teams, took part in the competition. Host Tunisia were eliminated from the group stage, which became the biggest failure in the history of the team. The defending champions Ivory Coast were eliminated in the semi-finals after losing in penalties against [[Nigeria national football team|Nigeria]].
+
+Nigeria won the title for the second time in their history, after beating [[Zambia national football team|Zambia]] in [[1994 African Cup of Nations final|the final]] match with a score of 2–1. Ivory Coast secured third place after beating [[Mali national football team|Mali]] in the third place match, which placed them fourth. Nigerian [[Rashidi Yekini]] scored 5 goals at the end of the tournament, so he won the top scorer award, also he won the best player award. As champions, Nigeria qualified for the [[1995 King Fahd Cup]] in Saudi Arabia, as a representative of African continent.
+
+== Teams ==
+{{Main|1994 African Cup of Nations qualification}}Ten tickets are to be distributed to the 37 countries participating in these qualifications. [[Tunisia national football team|Tunisia]], the tournament organizer, and the [[Ivory Coast national football team|Ivory Coast]], the defending champion, are exempt from these games. After a preliminary round played in two-way matches involving four teams (two qualified for the main round), the teams are divided into eight groups of four. The first in each group as well as the second in groups of 5 or 6 obtain their ticket for the final tournament in Tunisia. In addition to the withdrawals during the competition of [[Togo national football team|Togo]], [[Chad national football team|Chad]], [[Tanzania national football team|Tanzania]] and [[Burkina Faso national football team|Burkina Faso]], the selections of [[Mauritania national football team|Mauritania]] and [[Libya national football team|Libya]], initially registered, withdraw before the start of the qualifications.
+
+Note for these qualifiers the debut in official international competition of the selection of [[Cape Verde national football team|Cape Verde]], eliminated in the preliminary round, and the first participation of [[South Africa national soccer team|South Africa]], banned from world football since the establishment of apartheid. The end of South Africa's segregationist policy allows the reintegration of Bafana Bafana into the CAF.
+
+=== Qualified teams ===
+[[Image:African Cup of Nations 1994.png|thumb|Participating nations]]
+
+The 12 qualified teams are:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|TUN|1959}} || Hosts ||  || {{sort|05|5}} ([[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], ''[[1965 African Cup of Nations|1965]]'', [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]])
+|-
+| {{fb|CIV}} || Holders || {{dts|26 January 1992}} || {{sort|02|10}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1980 African Cup of Nations|1980]], ''[[1984 African Cup of Nations|1984]]'', [[1986 African Cup of Nations|1986]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], '''[[1992 African Cup of Nations|1992]]''')
+|-
+| {{fb|NGR}} || [[1994 African Cup of Nations qualification#Group 2|Group 2]] winners || {{dts|24 July 1993}} || {{sort|03|9}} ([[1963 African Cup of Nations|1963]], [[1976 African Cup of Nations|1976]], [[1978 African Cup of Nations|1978]], '''''[[1980 African Cup of Nations|1980]]''''', [[1982 African Cup of Nations|1982]], [[1984 African Cup of Nations|1984]], [[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|EGY}} || [[1994 African Cup of Nations qualification#Group 8|Group 8]] runners-up || {{dts|25 July 1993}} || {{sort|01|13}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'', [[1976 African Cup of Nations|1976]], [[1980 African Cup of Nations|1980]], [[1984 African Cup of Nations|1984]], '''''[[1986 African Cup of Nations|1986]]''''',<br>[[1988 African Cup of Nations|1988]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|GAB}} || [[1994 African Cup of Nations qualification#Group 1|Group 1]] winners || {{dts|25 July 1993}} || {{sort|09|0}} (debut)
+|-
+| {{fb|GHA}} || [[1994 African Cup of Nations qualification#Group 7|Group 7]] winners || {{dts|25 July 1993}} || {{sort|03|9}} ('''''[[1963 African Cup of Nations|1963]]''''', '''[[1965 African Cup of Nations|1965]]''', [[1968 African Cup of Nations|1968]], [[1970 African Cup of Nations|1970]], '''''[[1978 African Cup of Nations|1978]]''''', [[1980 African Cup of Nations|1980]], '''[[1982 African Cup of Nations|1982]]''', [[1984 African Cup of Nations|1984]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|MLI}} || [[1994 African Cup of Nations qualification#Group 8|Group 8]] winners || {{dts|25 July 1993}} || {{sort|08|1}} ([[1972 African Cup of Nations|1972]])
+|-
+| {{fb|SEN}}{{efn|[[Senegal national football team|Senegal]] replaced [[Algeria national football team|Algeria]] (disqualified).}} || [[1994 African Cup of Nations qualification#Group 3|Group 3]] third place || {{dts|25 July 1993}} || {{sort|05|5}} ([[1965 African Cup of Nations|1965]], [[1968 African Cup of Nations|1968]], [[1986 African Cup of Nations|1986]], [[1990 African Cup of Nations|1990]], ''[[1992 African Cup of Nations|1992]]'')
+|-
+| {{fb|ZAI}} || [[1994 African Cup of Nations qualification#Group 4|Group 4]] winners || {{dts|25 July 1993}} || {{sort|04|8}} ([[1965 African Cup of Nations|1965]], '''[[1968 African Cup of Nations|1968]]''', [[1970 African Cup of Nations|1970]], [[1972 African Cup of Nations|1972]], '''[[1974 African Cup of Nations|1974]]''', [[1976 African Cup of Nations|1976]], [[1988 African Cup of Nations|1988]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|ZAM|1964}} || [[1994 African Cup of Nations qualification#Group 5|Group 5]] winners || {{dts|25 July 1993}} || {{sort|04|6}} ([[1974 African Cup of Nations|1974]], [[1978 African Cup of Nations|1978]], [[1982 African Cup of Nations|1982]], [[1986 African Cup of Nations|1986]], [[1990 African Cup of Nations|1990]], [[1992 African Cup of Nations|1992]])
+|-
+| {{fb|SLE}} || [[1994 African Cup of Nations qualification#Group 3|Group 3]] winners || {{dts|26 July 1993}} || {{sort|09|0}} (debut)
+|-
+| {{fb|GUI}} || [[1994 African Cup of Nations qualification#Group 6|Group 6]] winners || {{dts|24 October 1993}} || {{sort|06|4}} ([[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]], [[1976 African Cup of Nations|1976]], [[1980 African Cup of Nations|1980]])
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{main|1994 African Cup of Nations squads}}
+
+== Venues ==
+
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Tunis]]
+! rowspan="12" |{{location map+|Tunisia|float=center|width=310|caption=|places=
+{{location map~|Tunisia|lat=36.8|long=10.183333|label=[[Tunis]]|position=right}}
+{{location map~|Tunisia|lat=35.833333|long=10.633333|label=[[Sousse]]|position=right}}
+}}
+|-
+| [[El Menzah Stadium]]
+|-
+| Capacity: '''45,000'''
+|-
+| [[Image:Stade Olympique d'El Menzah.jpg|150px]]
+|-
+![[Tunis]]
+|-
+|[[Chedly Zouiten Stadium]]
+|-
+|Capacity: '''18,000'''
+|-
+|[[Image:Tnplaces 12.jpg|150px]]
+|-
+! width="160" | [[Sousse]] 
+|-
+| [[Sousse Olympic Stadium]]
+|-
+| Capacity: '''21,000'''
+|-
+| [[Image:Stade olympique de Sousse.jpg|150px]]
+|}
+</div>
+
+== Group stage ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Greatest total goal difference in the three group matches
+# Greatest number of goals scored in the three group matches
+# Most points earned in matches against other teams in the tie
+# Greatest goal difference in matches against other teams in the tie
+# Greatest number of goals scored in matches against other teams in the tie
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|class_rules=[[1994 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =ZAI, MLI, TUN
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_ZAI=1 |draw_ZAI=1 |loss_ZAI=0 |gf_ZAI=2 |ga_ZAI=1
+|win_MLI=1 |draw_MLI=0 |loss_MLI=1 |gf_MLI=2 |ga_MLI=1
+|win_TUN=0 |draw_TUN=1 |loss_TUN=1 |gf_TUN=1 |ga_TUN=3 |status_TUN=H
+
+<!--Team definitions-->
+|name_ZAI={{fb|ZAI}}
+|name_MLI={{fb|MLI}}
+|name_TUN={{fb|TUN|1959}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1994 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date       = 26 March 1994
+| time       = 
+| team1      = {{fb-rt|TUN|1959}}
+| score      = 0–2
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-26/tunisia-vs-mali/328101/
+| team2      = {{fb|MLI}}
+| goals1     =
+| goals2     = [[Fernand Coulibaly|Coulibaly]] {{goal|25}} <br> [[Mobido Sidibé|Sidibé]] {{goal|34}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = {{formatnum:45000}}
+| referee    = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+----
+{{footballbox
+| date       = 28 March 1994
+| time       = 
+| team1      = {{fb-rt|MLI}}
+| score      = 0–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-27/dr-congo-vs-mali/328100/
+| team2      = {{fb|ZAI}}
+| goals1     =
+| goals2     = [[Basaula Lemba|Basaula]] {{goal|48}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = {{formatnum:8000}}
+| referee    = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+----
+{{footballbox
+| date       = 30 March 1994
+| time       = 
+| team1      = {{fb-rt|TUN|1959}}
+| score      = 1–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-29/tunisia-vs-dr-congo/328099/
+| team2      = {{fb|ZAI}}
+| goals1     = [[Faouzi Rouissi|Rouissi]] {{goal|43|pen.}}
+| goals2     = [[Nsumbu Ngoy|Ngoy]] {{goal|55}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = {{formatnum:45000}}
+| referee    = [[Jamal Al-Sharif]] ([[Syrian Arab Federation for Football|Syria]])
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|class_rules=[[1994 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =EGY, NGA, GAB
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_EGY=1 |draw_EGY=1 |loss_EGY=0 |gf_EGY=4 |ga_EGY=0
+|win_NGA=1 |draw_NGA=1 |loss_NGA=0 |gf_NGA=3 |ga_NGA=0
+|win_GAB=0 |draw_GAB=0 |loss_GAB=2 |gf_GAB=0 |ga_GAB=7
+
+<!--Team definitions-->
+|name_EGY={{fb|EGY}}
+|name_NGA={{fb|NGA}}
+|name_GAB={{fb|GAB}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1994 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date       = 26 March 1994
+| time       = 
+| team1      = {{fb-rt|NGA}}
+| score      = 3–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-26/nigeria-vs-gabon/328104/
+| team2      = {{fb|GAB}}
+| goals1     = [[Rashidi Yekini|Yekini]] {{goal|18||88}} <br> [[Mutiu Adepoju|Adepoju]] {{goal|72}}
+| goals2     =
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = {{formatnum:30000}}
+| referee    = [[Mohamed Bahar]] ([[Royal Moroccan Football Federation|Morocco]])
+}}
+----
+{{footballbox
+| date       = 28 March 1994
+| time       = 
+| team1      = {{fb-rt|EGY}}
+| score      = 4–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-27/egypt-vs-gabon/328103/
+| team2      = {{fb|GAB}}
+| goals1     = [[Ayman Mansour|Mansour]] {{goal|1}} <br> [[Hamza El-Gamal|El-Gamal]] {{goal|22}} <br> [[Bashir Abdel Samad|Abdel Samad]] {{goal|55||59}}
+| goals2     =
+| stadium    = [[Chedly Zouiten Stadium]], [[Tunis]]
+| attendance = {{formatnum:6000}}
+| referee    = [[Charles Masembe]] ([[Federation of Uganda Football Associations|Uganda]])
+}}
+----
+{{footballbox
+| date       = 30 March 1994
+| time       = 
+| team1      = {{fb-rt|NGA}}
+| score      = 0–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-29/nigeria-vs-egypt/328102/
+| team2      = {{fb|EGY}}
+| goals1     =
+| goals2     =
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = {{formatnum:30000}}
+| referee    = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+
+=== Group C ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|class_rules=[[1994 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =ZAM, CIV, SLE
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_ZAM=1 |draw_ZAM=1 |loss_ZAM=0 |gf_ZAM=1 |ga_ZAM=0
+|win_CIV=1 |draw_CIV=0 |loss_CIV=1 |gf_CIV=4 |ga_CIV=1
+|win_SLE=0 |draw_SLE=1 |loss_SLE=1 |gf_SLE=0 |ga_SLE=4
+
+<!--Team definitions-->
+|name_ZAM={{fb|ZAM|1964}}
+|name_CIV={{fb|CIV}}
+|name_SLE={{fb|SLE}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1994 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date       = 27 March 1994
+| time       = 
+| team1      = {{fb-rt|CIV}}
+| score      = 4–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-27/cote-divoire-vs-sierra-leone/328107/
+| team2      = {{fb|SLE}}
+| goals1     = [[Joël Tiéhi|Tiéhi]] {{goal|19||63||70}} <br> [[Tchiressoua Guel|Guel]] {{goal|35}}
+| goals2     = 
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:10000}}
+| referee    = [[Jamal Al-Sharif]] ([[Syrian Arab Federation for Football|Syria]])
+}}
+----
+{{footballbox
+| date       = 29 March 1994
+| time       = 
+| team1      = {{fb-rt|ZAM|1964}}
+| score      = 0–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-28/zambia-vs-sierra-leone/328106/
+| team2      = {{fb|SLE}}
+| goals1     =
+| goals2     =
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:6000}}
+| referee    = [[Omer Yengo]] ([[Congolese Football Federation|Congo]])
+}}
+----
+{{footballbox
+| date       = 31 March 1994
+| time       = 
+| team1      = {{fb-rt|ZAM|1964}}
+| score      = 1–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-30/cote-divoire-vs-zambia/328105/
+| team2      = {{fb|CIV}}
+| goals1     = [[Kenneth Malitoli|Malitoli]] {{goal|79}}
+| goals2     =
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:6000}}
+| referee    = [[Petros Mathabela]] ([[South African Football Association|South Africa]])
+}}
+
+=== Group D ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|class_rules=[[1994 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =GHA, SEN, GUI
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_GHA=2 |draw_GHA=0 |loss_GHA=0 |gf_GHA=2 |ga_GHA=0
+|win_SEN=1 |draw_SEN=0 |loss_SEN=1 |gf_SEN=2 |ga_SEN=2
+|win_GUI=0 |draw_GUI=0 |loss_GUI=2 |gf_GUI=1 |ga_GUI=3
+
+<!--Team definitions-->
+|name_GHA={{fb|GHA}}
+|name_SEN={{fb|SEN}}
+|name_GUI={{fb|GUI}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1994 African Cup of Nations#Knockout stage|Knockout stage]]
+}}</onlyinclude>
+
+{{footballbox
+| date       = 27 March 1994
+| time       = 
+| team1      = {{fb-rt|GHA}}
+| score      = 1–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-27/ghana-vs-guinea/328110/
+| team2      = {{fb|GUI}}
+| goals1     = [[Charles Akunnor|Akunnor]] {{goal|87}}
+| goals2     =
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:10000}}
+| referee    = [[Petros Mathabela]] ([[South African Football Association|South Africa]])
+}}
+----
+{{footballbox
+| date       = 29 March 1994
+| time       = 
+| team1      = {{fb-rt|SEN}}
+| score      = 2–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-28/senegal-vs-guinea/328109/
+| team2      = {{fb|GUI}}
+| goals1     = [[Momath Gueye|Gueye]] {{goal|46|pen.}} <br> [[Athanas Tendeng|Tendeng]] {{goal|50}}
+| goals2     = [[Aboubacar Titi Camara|A. Camara]] {{goal|44}}
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:6000}}
+| referee    = [[Hussein Ali Moussa]] ([[Egyptian Football Association|Egypt]])
+}}
+----
+{{footballbox
+| date       = 31 March 1994
+| time       = 
+| team1      = {{fb-rt|GHA}}
+| score      = 1–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-03-30/ghana-vs-senegal/328108/
+| team2      = {{fb|SEN}}
+| goals1     = [[Prince Polley|Polley]] {{goal|42}}
+| goals2     =
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = {{formatnum:6000}}
+| referee    = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+
+== Knockout stage ==
+{{#invoke:RoundN|N8
+|style=white-space:nowrap|3rdplace=yes|bold_winner=high|widescore=yes
+<!--quarter finals-->
+| April 2 – [[Tunis]] | {{fb|ZAI}} | 0 | {{fb|NGA}} | 2
+| April 3 – [[Sousse]] | {{fb|GHA}} | 1 | {{fb|CIV}} | 2
+| April 2 – [[Tunis]] | {{fb|EGY}} | 0 | {{fb|MLI}} | 1
+| April 3 – [[Sousse]] | {{fb|ZAM|1964}} | 1 | {{fb|SEN}} | 0
+<!--semi finals-->
+| April 6 – [[Tunis]] | {{fb|NGA}} {{pso}} | 2 (4) | {{fb|CIV}} | 2 (2)
+| April 6 – [[Tunis]] | {{fb|MLI}} | 0 | {{fb|ZAM|1964}} | 4
+<!--final-->
+| April 10 – [[Tunis]] | {{fb|NGA}} | 2 | {{fb|ZAM|1964}} | 1
+<!--third place-->
+| April 10 – [[Tunis]] | {{fb|CIV}} | 3 | {{fb|MLI}} | 1
+}}
+
+=== Quarterfinals ===
+{{footballbox
+| date       = 2 April 1994
+| time       = 
+| team1      = {{fb-rt|ZAI}}
+| score      = 0–2
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-01/dr-congo-vs-nigeria/328098/
+| team2      = {{fb|NGA}}
+| goals1     =
+| goals2     = [[Rashidi Yekini|Yekini]] {{goal|51||71|pen.}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 1,000
+| referee    = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+----
+{{footballbox
+| date       = 2 April 1994
+| time       = 
+| team1      = {{fb-rt|EGY}}
+| score      = 0–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-01/egypt-vs-mali/328097/
+| team2      = {{fb|MLI}}
+| goals1     =
+| goals2     = [[Soumaila Traoré|S. Traoré]] {{goal|64}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 1,400
+| referee    = [[Charles Masembe]] ([[Federation of Uganda Football Associations|Uganda]])
+}}
+----
+{{footballbox
+| date       = 3 April 1994
+| time       = 
+| team1      = {{fb-rt|ZAM|1964}}
+| score      = 1–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-02/zambia-vs-senegal/328096/
+| team2      = {{fb|SEN}}
+| goals1     = [[Evans Sakala|Sakala]] {{goal|38}}
+| goals2     =
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = 4,000
+| referee    = [[Jamal Al-Sharif]] ([[Syrian Arab Federation for Football|Syria]])
+}}
+----
+{{footballbox
+| date       = 3 April 1994
+| time       = 
+| team1      = {{fb-rt|GHA}}
+| score      = 1–2
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-02/ghana-vs-cote-divoire/328095/
+| team2      = {{fb|CIV}}
+| goals1     = [[Charles Akonnor|Akonnor]] {{goal|77}}
+| goals2     = [[Joël Tiéhi|Tiéhi]] {{goal|30}} <br> [[Abdoulaye Traoré (footballer, born 1967)|A. Traoré]] {{goal|81}}
+| stadium    = [[Sousse Olympic Stadium]], [[Sousse]]
+| attendance = 8,000
+| referee    = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+}}
+
+=== Semifinals ===
+{{footballbox
+| date       = 6 April 1994
+| time       = 
+| team1      = {{fb-rt|NGA}}
+| score      = 2–2
+| aet        = yes
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-05/nigeria-vs-cote-divoire/328093/
+| team2      = {{fb|CIV}}
+| goals1     = [[Ben Iroha|Iroha]] {{goal|26}} <br> [[Rashidi Yekini|Yekini]] {{goal|40}}
+| goals2     = [[Michel Bassolé|Bassolé]] {{goal|19||31}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 3,000
+| referee    = [[Ali Bujsaim]] ([[United Arab Emirates Football Association|United Arab Emirates]])
+| penalties1 = [[Finidi George|Finidi]] {{pengoal}} <br> [[Samson Siasia|Siasia]] {{penmiss}} <br> [[Daniel Amokachi|Amokachi]] {{pengoal}} <br> [[Benedict Iroha|Iroha]] {{pengoal}} <br> [[Rashidi Yekini|Yekini]] {{pengoal}}
+| penaltyscore = 4–2
+| penalties2 = {{pengoal}} [[Basile Aka Kouamé|Kouamé]] <br> {{pengoal}} [[Vilasco Fallet|Fallet]] <br> {{penmiss}} [[Michel Bassolé|Bassolé]] <br> {{penmiss}} [[Yao Lambert Amani|Amani]]
+}}
+----
+{{footballbox
+| date       = 6 April 1994
+| time       = 
+| team1      = {{fb-rt|ZAM|1964}}
+| score      = 4–0
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-05/zambia-vs-mali/328094/
+| team2      = {{fb|MLI}}
+| goals1     = [[Elijah Litana|Litana]] {{goal|8}} <br> [[Zeddy Saileti|Saileti]] {{goal|30}} <br> [[Kalusha Bwalya|K. Bwalya]] {{goal|47}} <br> [[Kenneth Malitoli|Malitoli]] {{goal|73}}
+| goals2     =
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 2,000
+| referee    = [[Charles Masembe]] ([[Federation of Uganda Football Associations|Uganda]])
+}}
+
+=== Third place match ===
+{{footballbox
+| date       = 10 April 1994
+| time       = 
+| team1      = {{fb-rt|CIV}}
+| score      = 3–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-09/mali-vs-cote-divoire/328092/
+| team2      = {{fb|MLI}}
+| goals1     = [[Adama Koné Clofie|Koné]] {{goal|2}} <br> [[Ahmed Ouattara (footballer)|Ouattara]] {{goal|67}} <br> [[Donald-Olivier Sie|Sie]] {{goal|70}}
+| goals2     = [[Amadou Pathé Diallo|Diallo]] {{goal|46}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 15,000
+| referee    = [[Petros Mathabela]] ([[South African Football Association|South Africa]])
+}}
+
+=== Final ===
+{{Main|1994 African Cup of Nations final}}
+{{footballbox
+| date       = 10 April 1994
+| time       = 
+| team1      = {{fb-rt|NGA}}
+| score      = 2–1
+| report     = https://globalsportsarchive.com/match/soccer/1994-04-09/nigeria-vs-zambia/328091/
+| team2      = {{fb|ZAM|1964}}
+| goals1     = [[Emmanuel Amuneke|Amuneke]] {{goal|5||47}}
+| goals2     = [[Elijah Litana|Litana]] {{goal|3}}
+| stadium    = [[El Menzah Stadium]], [[Tunis]]
+| attendance = 25,000
+| referee    = [[Lim Kee Chong]] ([[Mauritius Football Association|Mauritius]])
+}}
+
+==Goalscorers==
+{{Goalscorers
+|goals=44 |matches=20
+
+|5 goals=
+*{{fbicon|NGA}} [[Rashidi Yekini]]
+
+|4 goals=
+*{{fbicon|CIV}} [[Joël Tiéhi]]
+
+|2 goals=
+*{{fbicon|EGY}} [[Bashir Abdel Samad]]
+*{{fbicon|GHA}} [[Charles Akonnor]]
+*{{fbicon|CIV}} [[Michel Bassolé]]
+*{{fbicon|NGA}} [[Emmanuel Amuneke]]
+*{{fbicon|ZAM|1964}} [[Elijah Litana]]
+*{{fbicon|ZAM|1964}} [[Kenneth Malitoli]]
+
+|1 goal=
+*{{fbicon|EGY}} [[Hamza El-Gamal]]
+*{{fbicon|EGY}} [[Ayman Mansour]]
+*{{fbicon|GHA}} [[Prince Polley]]
+*{{fbicon|GUI}} [[Aboubacar Titi Camara]]
+*{{fbicon|CIV}} [[Tchiressoua Guel]]
+*{{fbicon|CIV}} [[Adama Koné Clofie]]
+*{{fbicon|CIV}} [[Ahmed Ouattara (footballer)|Ahmed Ouattara]]
+*{{fbicon|CIV}} [[Donald-Olivier Sie]]
+*{{fbicon|CIV}} [[Abdoulaye Traoré (footballer, born 1967)|Abdoulaye Traoré]]
+*{{fbicon|MLI}} [[Fernand Coulibaly]]
+*{{fbicon|MLI}} [[Amadou Pathé Diallo|Amadou Diallo]]
+*{{fbicon|MLI}} [[Mobido Sidibé]]
+*{{fbicon|MLI}} [[Soumaila Traoré]]
+*{{fbicon|NGA}} [[Mutiu Adepoju]]
+*{{fbicon|NGA}} [[Ben Iroha]]
+*{{fbicon|SEN}} [[Momath Gueye]]
+*{{fbicon|SEN}} [[Athanas Tendeng]]
+*{{fbicon|TUN|1959}} [[Faouzi Rouissi]]
+*{{fbicon|ZAI}} [[Basaula Lemba|Lemba Basaula]]
+*{{fbicon|ZAI}} [[Nsumbu Ngoy]]
+*{{fbicon|ZAM|1964}} [[Kalusha Bwalya]]
+*{{fbicon|ZAM|1964}} [[Zeddy Saileti]]
+*{{fbicon|ZAM|1964}} [[Evans Sakala]]
+}}
+
+== CAF Team of the Tournament ==
+'''Goalkeeper'''
+* {{flagicon|Egypt}} [[Ahmed Shobair]]
+
+'''Defenders'''
+* {{flagicon|Ghana}} [[Frank Amankwah]]
+* {{flagicon|Zambia|1964}} [[Harrison Chongo]]
+* {{flagicon|Zambia|1964}} [[Elijah Litana]]
+* {{flagicon|Nigeria}} [[Benedict Iroha]]
+
+'''Midfielders'''
+* {{flagicon|Ivory Coast}} [[Serge-Alain Maguy]]
+* {{flagicon|Nigeria}} [[Jay-Jay Okocha]]
+* {{flagicon|Nigeria}} [[Daniel Amokachi]]
+* {{flagicon|Ghana}} [[Abedi Pele]]
+
+'''Forwards'''
+* {{flagicon|Ivory Coast}} [[Joël Tiéhi]]
+* {{flagicon|Nigeria}} [[Rashidi Yekini]]
+
+== External links ==
+{{commons category}}
+* [https://www.rsssf.org/tables/94a.html Details at RSSSF]
+* [https://www.angelfire.com/ak/EgyptianSports/AfricanCup94.html Details at www.angelfire.com]
+
+{{Africa Cup of Nations}}
+{{1994 in African football (CAF)}}
+
+{{DEFAULTSORT:African Cup Of Nations}}
+[[Category:1994 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1994]]
+[[Category:1994 in African men's continental football|Cup of Nations]]
+[[Category:1994 in African men's international football|Cup of Nations]]
+[[Category:1994 in Tunisian sport]]
+[[Category:Men's international association football competitions hosted by Tunisia]]
+[[Category:20th century in Tunis]]
+[[Category:Sports competitions in Tunis]]
+[[Category:March 1994 sports events in Africa]]
+[[Category:April 1994 sports events in Africa]]
