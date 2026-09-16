@@ -134,7 +134,10 @@ class Loader:
         else:
             self.c.execute("INSERT INTO players (full_name) VALUES (%s) RETURNING id", (name,))
             pid = self.c.fetchone()[0]
-            self.provenance("player", pid, f"afcon-{name}")
+            # Keyed on country too: "Diallo" scoring for Guinea and for Mali
+            # are two players, and a shared key would leave the second with no
+            # provenance row at all (the upsert would update the first's).
+            self.provenance("player", pid, f"afcon-{team_id}-{name}")
             self.stats["players created"] += 1
         self.players[key] = pid
         return pid

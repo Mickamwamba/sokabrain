@@ -366,6 +366,23 @@ explicitly out of scope — see "Non-goals" below).
     by a final round-robin, loaded as a group named "Final".
   - **A surname alone never merges two players**: "Touré" in 1992 and in 2006
     is as likely two careers as one.
+  - **Scorer markers hang off the minute** in these pages: `5pen`, `3og`,
+    `(pen)`, and one line prefixes the running score. The first load missed
+    them, recording five penalties as ordinary goals and one own goal for the
+    wrong side, and left 22 junk names (`Emmanuel Kundé 55pen`, `Assad ( )`).
+    Fixed in `parse_side`, and the load was reverted and redone rather than
+    patched. Player provenance is keyed on name **and team**: keyed on the name
+    alone, two players called Diallo shared one key and the second had no
+    provenance at all.
+- **Samuel Eto'o was two players, and is now one.** The legacy data spells him
+  "Etoo" (one goal, 2002 v Togo); everything else was under "Samuel Eto'o". His
+  AFCON record read 17 when the vault in fact held all 18. Merged 2026-09-15
+  (`docs/reconciliation/fixes/2026-09-15_merge_duplicate_etoo.sql`); the legacy
+  provenance row moved with the events. The public list now reads Eto'o 18,
+  Pokou 14, Yekini 13, Drogba 11 — each matching the real record.
+  **12 more pairs of players still share a name and a team**, among them
+  Simon Msuva, Baghdad Bounedjah and Themba Zwane in the TPL data. Each needs
+  the same judgement; none is merged.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`

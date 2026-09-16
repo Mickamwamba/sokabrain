@@ -14,8 +14,9 @@ load_afcon_pre2002.py     -> the vault (a dry run that rolls back unless --commi
 
 ## What went in
 
-22 editions, 354 matches (352 played, 2 never played), 735 goal events, 428 new
-players, 22 seasons, 50 groups, 190 participant entries. A first audit over the
+22 editions, 354 matches (352 played, 2 never played), 735 goal events (40
+penalties, 8 own goals), 419 new players, 22 seasons, 50 groups, 190
+participant entries. A first audit over the
 competition opened 8 findings on the new editions, none critical: five goals
 whose scorer is unknown even to RSSSF, and three seasons with scored matches
 that have no event log at all.
@@ -91,6 +92,24 @@ which is true.
    careers genuinely span both eras.
 7. **Kickoff times are unknown.** These pages give dates only, so every match is
    stored at 00:00 UTC. Every AFCON match from 2002 on has a real time.
+
+## The scorer annotations that had to be loosened
+
+The first load put 22 malformed names into the vault — `Assad ( )`,
+`Emmanuel Kundé 55pen`, `Isima 44og`, `0 94' Sié` — and two of those forms were
+worse than cosmetic: `55pen` left five penalties recorded as ordinary goals, and
+`44og` left an own goal credited to the wrong side. RSSSF hangs these markers
+straight off the minute (`5pen`, `3og`), wraps them (`(pen)`), and in one 1992
+line prefixes the running score (`1-0 94' Sié`). `parse_side` now normalises all
+four before reading anything off a token, and strips any remaining bracketed
+aside — a running score `(1-3)`, an `(other sources: Aluka)` — from a name.
+
+The load was reverted and redone rather than patched in place, so what is in the
+vault is what the current parser produces. Reverting also exposed a second bug:
+player provenance was keyed on the name alone, so "Diallo" for Guinea and
+"Diallo" for Mali shared one key and the second player ended up with no
+provenance row — and therefore survived the revert. The key now includes the
+team.
 
 ## Left on the table
 

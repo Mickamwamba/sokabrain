@@ -123,10 +123,18 @@ def parse_side(text):
         token = raw.strip().rstrip(".;")
         if not token:
             continue
-        own = bool(re.search(r"\(\s*o\.?g\.?\s*\)|\bo\.?g\.?\b", token, re.I))
-        pen = bool(re.search(r"\bpen\b|\bpen\.|\d\s*pen", token, re.I))
-        token = re.sub(r"\(\s*o\.?g\.?\s*\)|\bo\.?g\.?\b", " ", token, flags=re.I)
-        token = re.sub(r"\bpen\.?\b", " ", token, flags=re.I).strip()
+        # Loosen the forms these pages use before reading anything off the
+        # token: "55pen" and "3og" hang the marker straight off the minute,
+        # "(pen)" wraps it, and one 1992 line prefixes the running score.
+        token = re.sub(r"\(\s*(pen|o\.?g)\.?\s*\)", r" \1 ", token, flags=re.I)
+        token = re.sub(r"(\d)\s*(pen|og)\b", r"\1 \2 ", token, flags=re.I)
+        token = re.sub(r"^\s*\d{1,2}\s*-\s*\d{1,2}\s+", "", token)
+
+        own = bool(re.search(r"\bo\.?g\.?\b", token, re.I))
+        pen = bool(re.search(r"\bpen\b|\bpen\.", token, re.I))
+        token = re.sub(r"\bo\.?g\.?\b", " ", token, flags=re.I)
+        token = re.sub(r"\bpen\.?\b", " ", token, flags=re.I)
+        token = re.sub(r"\(\s*\)", " ", token).strip()
 
         # "Williams 72, 74" -- a bare number is another goal for the last scorer.
         if re.fullmatch(r"\d{1,3}\s*'?", token) and last:
@@ -136,6 +144,11 @@ def parse_side(text):
         count = re.search(r"\((\d)\)\s*$|\bx\s*(\d)\s*$", token)
         repeat = int(count.group(1) or count.group(2)) if count else 1
         token = re.sub(r"\((\d)\)\s*$|\bx\s*\d\s*$", "", token).strip()
+        # Any remaining bracketed aside is an annotation, not part of a name:
+        # a running score "(1-3)", or "(other sources: Aluka)". Counts like
+        # "(2)" are digits only and were taken above.
+        token = re.sub(r"\([^)]*[^\d)][^)]*\)", " ", token)
+        token = re.sub(r"\s{2,}", " ", token).strip()
 
         minutes, name = [], token
         m = MINUTE_FIRST.match(token)
@@ -151,7 +164,7 @@ def parse_side(text):
                 m2 = MINUTE_LAST.match(token)
                 if m2 and re.search(r"[A-Za-z?]", m2.group(1)):
                     name, minutes = m2.group(1).strip(), [int(m2.group(2))]
-        name = name.strip(" '.-")
+        name = re.sub(r"^[\d'\s.-]+", "", name).strip(" '.-")
         unknown = name in ("", "?") or not re.search(r"[A-Za-z]", name)
         entry = {"name": None if unknown else name, "penalty": pen, "own": own}
         for i in range(max(repeat, len(minutes) or 1)):
