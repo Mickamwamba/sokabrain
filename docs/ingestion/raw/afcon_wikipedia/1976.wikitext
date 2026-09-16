@@ -1,0 +1,531 @@
+{{Short description|10th edition of the Africa Cup of Nations}}
+{{Use dmy dates|date=November 2020}}
+{{Infobox international football competition
+| tourney_name = African Cup of Nations
+| year = 1976
+| other_titles = 1976 የአፍሪካ ዋንጫ
+| image = 1976 Afcon - logo.png
+| size =
+| caption =
+| country = Ethiopia
+| dates = 29 February – 14 March
+| num_teams = 8
+| venues = 2
+| cities = 2
+| champion = Morocco
+| count = 1
+| second = Guinea
+| third = Nigeria
+| fourth = Egypt
+| fourth-flagvar = 1972
+| matches = 18
+| goals = 54
+| attendance =
+| top_scorer = {{flagicon|GUI}} [[Mamadou Aliou Keïta]]<br />(4 goals)
+| player = {{flagicon|MAR}} [[Ahmed Faras]]
+| prevseason = [[1974 Africa Cup of Nations|1974]]
+| nextseason = [[1978 Africa Cup of Nations|1978]]
+| updated =
+}}
+
+The '''1976 African Cup of Nations''' was the tenth edition of the [[Africa Cup of Nations]], the [[association football]] championship of Africa ([[Confederation of African Football|CAF]]). It was hosted by Ethiopia. The format of competition changed from [[1974 Africa Cup of Nations|1974]]: the field of eight teams was still split into two groups of four, but a final stage was introduced with the top two finishers of each of the first stage groups, in the form of a semi-final and a final. This is the same approach that was followed in the 1974 and 1978 World Cups. [[Morocco national football team|Morocco]] won its first championship by topping the final group. [[Guinea national football team|Guinea]] finished second.
+
+Until Kenya, Tanzania and Uganda won a joint bid to host the 2027 edition of the tournament, it was the last one to be held in East Africa.<ref>{{cite news|url=https://www.bbc.co.uk/sport/football/articles/clyg0j1l4dqo|title=Afcon 2027: When is the next Africa Cup of Nations tournament?|last=Chowdhury|first=Tasnim|date=20 January 2026|website=BBC Sport|access-date=19 March 2026}}</ref>
+
+== Qualified teams ==
+{{main|1976 African Cup of Nations qualification}}
+
+The 8 qualified teams were:
+{| class="wikitable sortable" style="text-align:left;"
+|-
+! Team
+! Qualified as
+! Qualified on
+! Previous appearances in tournament{{efn|'''Bold''' indicates champion for that year, ''Italic'' indicates host.}}
+|-
+| {{fb|ETH|1975}} || Hosts ||  || {{sort|01|7}} ([[1957 African Cup of Nations|1957]], [[1959 African Cup of Nations|1959]], '''''[[1962 African Cup of Nations|1962]]''''', [[1963 African Cup of Nations|1963]], [[1965 African Cup of Nations|1965]], ''[[1968 African Cup of Nations|1968]]'', [[1970 African Cup of Nations|1970]])
+|-
+| {{fb|ZAI}} || Holders || {{dts|14 March 1974}} || {{sort|03|5}} ([[1965 African Cup of Nations|1965]], '''[[1968 African Cup of Nations|1968]]''', [[1970 African Cup of Nations|1970]], [[1972 African Cup of Nations|1972]], '''[[1974 African Cup of Nations|1974]]''')
+|-
+| {{fb|MAR}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|13 July 1975}} || {{sort|07|1}} ([[1972 African Cup of Nations|1972]])
+|-
+| {{fb|GUI}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|17 July 1975}} || {{sort|06|2}} ([[1970 African Cup of Nations|1970]], [[1974 African Cup of Nations|1974]])
+|-
+| {{fb|NGR}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|27 July 1975}} || {{sort|07|1}} ([[1963 African Cup of Nations|1963]])
+|-
+| {{fb|EGY|1972}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|1 August 1975}} || {{sort|02|6}} ('''[[1957 African Cup of Nations|1957]]''', '''''[[1959 African Cup of Nations|1959]]''''', [[1962 African Cup of Nations|1962]], [[1963 African Cup of Nations|1963]], [[1970 African Cup of Nations|1970]], ''[[1974 African Cup of Nations|1974]]'')
+|-
+| {{fb|SUD}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|15 August 1975}} || {{sort|03|5}} (''[[1957 African Cup of Nations|1957]]'', [[1959 African Cup of Nations|1959]], [[1963 African Cup of Nations|1963]], '''''[[1970 African Cup of Nations|1970]]''''', [[1972 African Cup of Nations|1972]])
+|-
+| {{fb|UGA}} || [[1976 African Cup of Nations qualification#Second round|2nd round]] winners || {{dts|15 August 1975}} || {{sort|05|3}} ([[1962 African Cup of Nations|1962]], [[1968 African Cup of Nations|1968]], [[1974 African Cup of Nations|1974]])
+|}
+;Notes
+{{notelist}}
+
+== Squads ==
+{{Main|1976 African Cup of Nations squads}}
+
+== Venues ==
+<div style="text-align: center;">
+{| class="wikitable" style="text-align:center"
+|-
+! [[Addis Ababa]]
+| rowspan="8" | {{Image label begin|image=Ethiopia (1941–1987) location map.svg|width=350|float=center}}
+{{Image label small|x=0.3|y=0.60|scale=350|text={{center|[[File:Red pog.svg|8px]]}} <big>'''[[Addis Ababa]]'''</big>}}
+{{Image label small|x=0.52|y=0.55|scale=350|text={{center|[[File:Red pog.svg|8px]]}} <big>'''[[Dire Dawa]]'''</big>}}
+{{Image label end}}
+|-
+| [[Addis Ababa Stadium]]
+|-
+| Capacity: '''30,000''' 
+|-
+| [[File:Addis Ababa Stadium.jpg|150px]] 
+|-
+![[Dire Dawa]]
+|-
+|[[Dire Dawa Stadium]]
+|-
+|Capacity: '''18,000'''
+|-
+|[[File:ET-Dire Dawa, Ethiopia (13).JPG|150px]]
+|}
+</div>
+
+== First round ==
+===Tiebreakers===
+If two or more teams finished level on points after completion of the group matches, the following tie-breakers were used to determine the final ranking:
+# Goal difference in all group matches
+# Greater number of goals scored in all group matches
+# Drawing of lots
+
+=== Group A ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1976 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =GUI, EGY, ETH, UGA
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_GUI=2 |draw_GUI=1 |loss_GUI=0 |gf_GUI=5 |ga_GUI=3
+|win_EGY=1 |draw_EGY=2 |loss_EGY=0 |gf_EGY=4 |ga_EGY=3
+|win_ETH=1 |draw_ETH=1 |loss_ETH=1 |gf_ETH=4 |ga_ETH=3 |status_ETH=H
+|win_UGA=0 |draw_UGA=0 |loss_UGA=3 |gf_UGA=2 |ga_UGA=6
+
+<!--Team definitions-->
+|name_GUI={{fb|GUI}}
+|name_EGY={{fb|EGY|1972}}
+|name_ETH={{fb|ETH|1975}}
+|name_UGA={{fb|UGA}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1976 African Cup of Nations#Final round|Final round]]
+}}</onlyinclude>
+
+{{footballbox
+| date = 29 February 1976
+| time = 
+| team1 = {{fb-rt|ETH|1975}}
+| score = 2–0
+| team2 = {{fb|UGA}}
+| goals1 = [[Solomon Sheferahu|Sheferahu]] {{goal|2}} <br> [[Tesfaye Seyoum|Seyoum]] {{goal|83}}
+| goals2 =
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 30,000
+| referee = [[Abdelkader Aouissi]] ([[Algerian Football Federation|Algeria]])
+| report = 
+}}
+{{footballbox
+| date = 29 February 1976
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 1–1
+| team2 = {{fb|GUI}}
+| goals1 = [[Taha Basri|Basri]] {{goal|43}}
+| goals2 = [[Bengally Sylla|B. Sylla]] {{goal|44|pen.}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 30,000
+| referee = [[Youssou N'Diaye]] ([[Senegal Football Association|Senegal]])
+| report = 
+}}
+----
+{{footballbox
+| date = 3 March 1976
+| time = 
+| team1 = {{fb-rt|EGY|1972}}
+| score = 2–1
+| team2 = {{fb|UGA}}
+| goals1 = [[Mustafa Abdou|Abdou]] {{goal|26}} <br> [[Taha Basri|Basri]] {{goal|32}}
+| goals2 = [[Denis Obua (footballer)|Obua]] {{goal|21}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = 
+}}
+{{footballbox
+| date = 3 March 1976
+| time = 
+| team1 = {{fb-rt|ETH|1975}}
+| score = 1–2
+| team2 = {{fb|GUI}}
+| goals1 = [[Solomon Sheferahu|Sheferahu]] {{goal|40}}
+| goals2 = [[Mamadou Aliou Keita|N'Jo Léa]] {{goal|15}} <br> [[Petit Sory]] {{goal|85}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 
+| referee = [[Saad Gamar]] ([[Libyan Football Federation|Libya]])
+| report = 
+}}
+----
+{{footballbox
+| date = 5 March 1976
+| time = 
+| team1 = {{fb-rt|GUI}}
+| score = 2–1
+| team2 = {{fb|UGA}}
+| goals1 = [[Mamadou Aliou Keita|N'Jo Léa]] {{goal|2}} <br> [[Bengally Sylla|Sylla]] {{goal|20}}
+| goals2 = [[Jimmy Muguwa|Muguwa]] {{goal|85}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 
+| referee = [[John Amenghor]] ([[Ghana Football Association|Ghana]])
+| report = 
+}}
+{{footballbox
+| date = 5 March 1976
+| time = 
+| team1 = {{fb-rt|ETH|1975}}
+| score = 1–1
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Mohamed Ali (Ethiopian footballer)|Ali]] {{goal|46}}
+| goals2 = [[Hassan Shehata|Shehata]] {{goal|26}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 25,000
+| referee = [[Abdelkader Aouissi]] ([[Algerian Football Federation|Algeria]])
+| report = 
+}}
+
+=== Group B ===
+<onlyinclude>{{#invoke:Sports table|main|style=WDL
+|section=standings
+|winpoints=2
+|class_rules=[[1976 African Cup of Nations#Tiebreakers|Group stage tiebreakers]]
+|source=
+
+<!--Update team positions below (check tiebreakers)-->
+|team_order =MAR, NGR, SUD, ZAI
+
+<!--Update team results below (including date)-->
+|update=complete
+|win_MAR=2 |draw_MAR=1 |loss_MAR=0 |gf_MAR=6 |ga_MAR=3
+|win_NGR=2 |draw_NGR=0 |loss_NGR=1 |gf_NGR=6 |ga_NGR=5
+|win_SUD=0 |draw_SUD=2 |loss_SUD=1 |gf_SUD=3 |ga_SUD=4
+|win_ZAI=0 |draw_ZAI=1 |loss_ZAI=2 |gf_ZAI=3 |ga_ZAI=6
+
+<!--Team definitions-->
+|name_MAR={{fb|MAR}}
+|name_NGR={{fb|NGR|1972}}
+|name_SUD={{fb|SUD|1975}}
+|name_ZAI={{fb|ZAI}}
+<!--Qualification column definitions-->
+|res_col_header=Q
+|result1=KO |result2=KO
+|col_KO=green1 |text_KO=Advance to [[1976 African Cup of Nations#Final round|Final round]]
+}}</onlyinclude>
+
+{{footballbox
+| date = 1 March 1976
+| time = 
+| team1 = {{fb-rt|NGR}}
+| score = 4–2
+| team2 = {{fb|ZAI}}
+| goals1 = [[Baba Otu Mohammed|Mohammed]] {{goal|28||44}} <br> [[Sam Ojebode|Ojebode]] {{goal|37|pen.}} <br> [[Thompson Usiyan|Usiyan]] {{goal|90}}
+| goals2 = [[Kabasu Babo|Kabasu]] {{goal|51}} <br> [[Mbungu Ekofa|Ekofa]] {{goal|58}}
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 
+| referee = [[Hédi Seoudi]] ([[Tunisian Football Federation|Tunisia]])
+| report = 
+}}
+{{footballbox
+| date = 1 March 1976
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 2–2
+| team2 = {{fb|SUD}}
+| goals1 = [[Chérif Fetoui|Chérif]] {{goal|1}} <br> [[Ahmed Abouali|Abouali]] {{goal|58}}
+| goals2 = [[Ali Gagarin|Gagarin]] {{goal|9||79|pen.}}
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 
+| referee = [[Gratian Matovu]] ([[Tanzania Football Federation|Tanzania]])
+| report = 
+}}
+----
+{{footballbox
+| date = 4 March 1976
+| time = 
+| team1 = {{fb-rt|NGR}}
+| score = 1–0
+| team2 = {{fb|SUD}}
+| goals1 = [[Thompson Usiyan|Usiyan]] {{goal|8}}
+| goals2 =
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 
+| referee = [[Nyirenda Chayu]] ([[Football Association of Zambia|Zambia]])
+| report = 
+}}
+{{footballbox
+| date = 4 March 1976
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 1–0
+| team2 = {{fb|ZAI}}
+| goals1 = [[Abdelâali Zahraoui|Zahraoui]] {{goal|80}}
+| goals2 =
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 
+| referee = [[Yousef Alghoul]] ([[Libyan Football Federation|Libya]])
+| report = 
+}}
+----
+{{footballbox
+| date = 6 March 1976
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 3–1
+| team2 = {{fb|NGR}}
+| goals1 = [[Ahmed Faras|Faras]] {{goal|8}} <br> [[Abdellah Tazi|Tazi]] {{goal|19}} <br> [[Larbi Chebbak|Chebbak]] {{goal|81}}
+| goals2 = [[Sam Ojebode|Ojebode]] {{goal|81}}
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 4,000
+| referee = [[Bernard Grah]] ([[Ivorian Football Federation|Ivory Coast]])
+| report = 
+}}
+{{footballbox
+| date = 6 March 1976
+| time = 
+| team1 = {{fb-rt|ZAI}}
+| score = 1–1
+| team2 = {{fb|SUD}}
+| goals1 = [[Ndaye Mulamba|Mulamba]] {{goal|41}}
+| goals2 = [[Ali Gagarin|Gagarin]] {{goal|14}}
+| stadium = [[Dire Dawa Stadium]], [[Dire Dawa]]
+| attendance = 4,000
+| referee = [[Robert Foiret]] ([[Mauritius Football Association|Mauritius]])
+| report = 
+}}
+
+== Final round ==
+{{:Guinea v Morocco (1976 African Cup of Nations)|transcludesection=standings|only_pld_pts=no_hide_class_rules}}
+
+{{footballbox
+| date = 9 March 1976
+| time = 
+| team1 = {{fb-rt|GUI}}
+| score = 1–1
+| team2 = {{fb|NGR}}
+| goals1 = [[Papa Camara|Camara]] {{goal|88}}
+| goals2 = [[Mudashiru Lawal|Lawal]] {{goal|55}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 10,000
+| referee = [[Hédi Seoudi]] ([[Tunisian Football Federation|Tunisia]])
+| report = 
+}}
+{{footballbox
+| date = 9 March 1976
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 2–1
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Ahmed Faras|Faras]] {{goal|23}} <br> [[Abdelâali Zahraoui|Zahraoui]] {{goal|88}}
+| goals2 = [[Ahmed Abou Rehab|Abou Rehab]] {{goal|34}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 10,000
+| referee = [[Yousef Alghoul]] ([[Libyan Football Federation|Libya]])
+| report = 
+}}
+----
+{{footballbox
+| date = 11 March 1976
+| time = 
+| team1 = {{fb-rt|MAR}}
+| score = 2–1
+| team2 = {{fb|NGR}}
+| goals1 = [[Ahmed Faras|Faras]] {{goal|82}} <br> [[Redouane Guezzar|Guezzar]] {{goal|87}}
+| goals2 = [[Baba Otu Mohammed|Mohammed]] {{goal|57}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 
+| referee = [[Youssou N'Diaye]] ([[Senegal Football Association|Senegal]])
+| report = 
+}}
+{{footballbox
+| date = 11 March 1976
+| time = 
+| team1 = {{fb-rt|GUI}}
+| score = 4–2
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Mamadou Aliou Keita|N'Jo Léa]] {{goal|24||65}} <br> [[Ghanem Sultan|Sultan]] {{goal|53|o.g.}} <br> [[Morciré Sylla|M. Sylla]] {{goal|62}}
+| goals2 = [[Mustafa Abdou|Abdou]] {{goal|33}} <br> [[Mohamed El-Seyagui|El-Seyagui]] {{goal|86}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 10,000
+| referee = [[Théophile Lawson-Hétchéli]] ([[Togolese Football Federation|Togo]])
+| report = 
+}}
+----
+{{footballbox
+| date = 14 March 1976
+| time = 
+| team1 = {{fb-rt|NGR}}
+| score = 3–2
+| team2 = {{fb|EGY|1972}}
+| goals1 = [[Haruna Ilerika|Ilerika]] {{goal|35||62}} <br> [[Mudashiru Lawal|Lawal]] {{goal|82}}
+| goals2 = [[Mahmoud El Khatib|El Khatib]] {{goal|7}} <br> [[Osama Khalil|Khalil]] {{goal|86}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 25,000
+| referee = [[Bernard Grah]] ([[Ivorian Football Federation|Ivory Coast]])
+| report = 
+}}
+{{main|Guinea v Morocco (1976 African Cup of Nations)}}
+{{footballbox
+| date = 14 March 1976
+| time = 
+| team1 = {{fb-rt|GUI}}
+| score = 1–1
+| team2 = {{fb|MAR}}
+| goals1 = [[Chérif Souleymane|Souleymane]] {{goal|33}}
+| goals2 = [[Ahmed Makrouh|Baba]] {{goal|86}}
+| stadium = [[Addis Ababa Stadium]], [[Addis Ababa]]
+| attendance = 30,000
+| referee = [[Nyirenda Chayu]] ([[Football Association of Zambia|Zambia]])
+| report = [https://www.11v11.com/matches/guinea-v-morocco-14-march-1976-233688/ Report]
+}}
+
+==Goalscorers==
+{{Goalscorers
+|goals=54 |matches=18
+
+|4 goals=
+*{{fbicon|GUI}} [[Mamadou Aliou Keïta]]
+
+|3 goals=
+*{{fbicon|MAR}} [[Ahmed Faras]]
+*{{fbicon|NGA}} [[Baba Otu Mohammed]]
+*{{fbicon|SDN}} [[Ali Gagarin]]
+
+|2 goals=
+*{{fbicon|EGY|1972}} [[Mustafa Abdou]]
+*{{fbicon|EGY|1972}} [[Taha Basri]]
+*{{fbicon|ETH|1975}} [[Solomon Sheferahu]]
+*{{fbicon|MAR}} [[Abdelâali Zahraoui]]
+*{{fbicon|NGA}} [[Haruna Ilerika]]
+*{{fbicon|NGA}} [[Mudashiru Lawal|Muda Lawal]]
+*{{fbicon|NGA}} [[Sam Ojebode]]
+*{{fbicon|NGA}} [[Thompson Usiyan]]
+*{{fbicon|GUI}} [[Bengally Sylla]]
+
+|1 goal=
+*{{fbicon|EGY|1972}} [[Ahmed Abou Rehab]]
+*{{fbicon|EGY|1972}} [[Hassan Shehata]]
+*{{fbicon|EGY|1972}} [[Mahmoud El Khatib]]
+*{{fbicon|EGY|1972}} [[Mohamed El-Seyagui]]
+*{{fbicon|EGY|1972}} [[Osama Khalil]]
+*{{fbicon|ETH|1975}} [[Mohamed Ali (Ethiopian footballer)|Mohamed Ali]]
+*{{fbicon|ETH|1975}} [[Tesfaye Seyoum]]
+*{{fbicon|GUI}} [[Papa Camara]]
+*{{fbicon|GUI}} [[Chérif Souleymane]]
+*{{fbicon|GUI}} [[Petit Sory]]
+*{{fbicon|GUI}} [[Morciré Sylla]]
+*{{fbicon|MAR}} [[Ahmed Abouali]]
+*{{fbicon|MAR}} [[Chérif Fetoui|Mustapha "Chérif" Fetoui]]
+*{{fbicon|MAR}} [[Redouane Guezzar]]
+*{{fbicon|MAR}} [[Larbi Chebbak]]
+*{{fbicon|MAR}} [[Ahmed Makrouh|Ahmed "Baba" Makrouh]]
+*{{fbicon|MAR}} [[Abdallah Tazi]]
+*{{fbicon|UGA}} [[Denis Obua (footballer)|Denis Obua]]
+*{{fbicon|UGA}} [[Jimmy Muguwa]]
+*{{fbicon|ZAI}} [[Kabasu Babo]]
+*{{fbicon|ZAI}} [[Mbungu Ekofa]]
+*{{fbicon|ZAI}} [[Ndaye Mulamba]]
+
+|1 own goal=
+*{{fbicon|EGY|1972}} [[Ghanem Sultan]] (against [[1976 African Cup of Nations#Final round|Guinea]])
+}}
+
+== Awards ==
+=== CAF Team of the tournament ===
+{|class="wikitable"
+|-
+!Goalkeeper
+!Defenders
+!Midfielders
+!Forwards
+|- style="vertical-align:top"
+| {{fbicon|MAR}} [[Mohammed Hazzaz|Mohammed Al-Hazaz]]
+| {{fbicon|MAR}} [[Chérif Fetoui|Mustapha "Chérif" Fetoui]] <br /> {{flagicon|EGY|1972}} [[Mustafa Younis]] <br /> {{fbicon|GUI}} [[Chérif Souleymane]] <br /> {{fbicon|GUI}} [[Djibril Diara]]
+| {{fbicon|ETH|1975}} [[Tolde (Ethiopian footballer)|Tolde]] <br /> {{fbicon|EGY|1972}} [[Farouk Gaafar]] <br/> {{fbicon|NGA}} [[Haruna Ilerika]] <br /> {{fbicon|NGA}} [[Kunle Awesu]]
+| {{fbicon|GUI}} [[Petit Sory]] <br /> {{fbicon|MAR}} [[Ahmed Faras]]
+|}
+<small>Source:{{citation needed|date=April 2026}}</small>
+
+=== Final Ranking ===
+[[File:Results AFCON 1976.svg|thumb|Results of countries participating in AFCON 1976
+{{Legend|#0404fe|Champion}}
+{{Legend|#04fefe|Runner-up}}
+{{Legend|#048104|Third place}}
+{{Legend|#04fe04|Fourth place}}
+{{Legend|#aa0000|First round}}]]
+Team shown in ''italics'' represent the host nation. The competition's winning team is rendered in '''bold'''. 
+
+{{#invoke:sports table|main|style=WDL
+|show_groups=y
+|res_col_header=Result
+|winpoints=2
+
+|team1=MAR|group_MAR=[[#Group B|B]]|name_MAR={{fb|MAR}}
+|team2=GUI|group_GUI=[[#Group A|A]]|name_GUI={{fb|GUI}}
+|team3=NGA|group_NGA=[[#Group B|B]]|name_NGA={{fb|NGA}}
+|team4=EGY|group_EGY=[[#Group A|A]]|name_EGY={{fb|EGY|1972}}
+|team5=ETH|group_ETH=[[#Group A|A]]|name_ETH={{fb|ETH|1975}}
+|team6=SUD|group_SUD=[[#Group B|B]]|name_SUD={{fb|SUD}}
+|team7=ZAI|group_ZAI=[[#Group B|B]]|name_ZAI={{fb|ZAI}}
+|team8=UGA|group_UGA=[[#Group A|A]]|name_UGA={{fb|UGA}}
+|win_MAR=4|draw_MAR=2|loss_MAR=0|gf_MAR=11|ga_MAR=6
+|win_GUI=3|draw_GUI=3|loss_GUI=0|gf_GUI=11|ga_GUI=7
+|win_NGA=3|draw_NGA=1|loss_NGA=2|gf_NGA=11|ga_NGA=10
+|win_EGY=1|draw_EGY=2|loss_EGY=3|gf_EGY=9|ga_EGY=12
+|win_ETH=1|draw_ETH=1|loss_ETH=1|gf_ETH=4|ga_ETH=3
+|win_SUD=0|draw_SUD=2|loss_SUD=1|gf_SUD=3|ga_SUD=4
+|win_ZAI=0|draw_ZAI=1|loss_ZAI=2|gf_ZAI=3|ga_ZAI=6
+|win_UGA=0|draw_UGA=0|loss_UGA=3|gf_UGA=2|ga_UGA=6
+|col_1ST=gold|result1=1ST|text_1ST=1st
+|col_2ND=silver|result2=2ND|text_2ND=2nd
+|col_3RD=#c96|result3=3RD|text_3RD=3rd
+|result4=4TH|text_4TH=4th
+|text_FR=Eliminated in the first round|
+result5=FR|result6=FR|result7=FR|result8=FR
+|update=complete|source=
+}}
+
+== References ==
+{{reflist}}
+
+== External links ==
+* [http://www.11v11.com/matches/guinea-v-morocco-14-march-1976-233688 Guinea vs Morocco Final 11v11.com]
+* [https://www.rsssf.org/tables/76a.html Details at RSSSF]
+* [https://www.angelfire.com/ak/EgyptianSports/AfricanCup76.html Details at www.angelfire.com]
+* [http://footballmundial.tripod.com/caf/caf_1976_78.htm#1976 footballmundial.tripod.com] {{Webarchive|url=https://web.archive.org/web/20160310082535/http://footballmundial.tripod.com/caf/caf_1976_78.htm#1976 |date=10 March 2016 }}
+
+{{Africa Cup of Nations}}
+
+{{DEFAULTSORT:African Cup Of Nations}}
+[[Category:1976 African Cup of Nations| ]]
+[[Category:Africa Cup of Nations tournaments|1976]]
+[[Category:1976 in African men's continental football|Cup of Nations]]
+[[Category:1976 in African men's international football|Cup of Nations]]
+[[Category:1976 in Ethiopian sport]]
+[[Category:International association football competitions hosted by Ethiopia]]
+[[Category:Football competitions in Addis Ababa]]
+[[Category:Sport in Dire Dawa]]
+[[Category:February 1976 sports events in Africa]]
+[[Category:March 1976 sports events in Africa]]

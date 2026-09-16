@@ -454,12 +454,22 @@ explicitly out of scope — see "Non-goals" below).
     Abugreisha (4 against 7) fall in fully-attributed tournaments — RSSSF simply
     credits those goals to other named players. Do not "fix" these by inventing
     goals.
-  - **Seven surname pairs are deliberately unmerged**: Egypt's Khalil, Abdou and
-    Abdelhamid, Cameroon's Ebongué, Nigeria's Odegbami and Lawal, and Mali's
-    bare Touré and Coulibaly. A surname alone never merges two players — Luciano
-    and Italo Vassalo were brothers who both scored for Ethiopia, and Kwame
-    Ayew, André Ayew and Abedi Pele (Abedi Ayew) are three different people.
-    The audit raises them; a human decides.
+  - **Surname pairs are left unmerged until a source names the scorer.** A
+    surname alone never merges two players — Luciano and Italo Vassalo were
+    brothers who both scored for Ethiopia, and Kwame Ayew, André Ayew and Abedi
+    Pele (Abedi Ayew) are three different people. The audit raises them as
+    `SCORER_NAME_ABBREVIATED` candidates (48 open) and a human decides.
+    **Nigeria's four Lawal records were settled this way** on 2026-09-16
+    (`2026-09-16_nigeria_lawal_records.sql`): Wikipedia's 1976, 1980 and 2002
+    match reports name the scorer of every one of those goals, with the minutes
+    agreeing, so they are two men — **Mudashiru "Muda" Lawal** (5 goals,
+    1976-1984, renamed from the nickname that made the record ambiguous) and
+    **Garba Lawal** (3 goals, 2002-2006), born a generation apart. Egypt's
+    Khalil turned out the opposite way: Wikipedia names the 1976 goal for
+    *Osama* Khalil, so the 1974 "A.Khalil" is someone else and the pair stays
+    split. **Nigeria's Odegbami is the obvious next one** — the 1980 harvest
+    already names Segun Odegbami for the bare record's 1980 goal; its three
+    1978 goals would need that year's page.
 - **AFCON 2019 (edition 14) had three score defects; all are now fixed.**
   Reconciliation run 38 recorded 24 diffs across 19 matches and they were
   applied via `docs/reconciliation/fixes/2026-09-12_afcon_2019_corrections.sql`
