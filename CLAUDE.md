@@ -210,8 +210,35 @@ explicitly out of scope — see "Non-goals" below).
   - Early seasons have no event log because **neither of those two sources** has
     one — not because anything was dropped. But see the next entry: a third
     source does have them, back to 2010/11.
-- **The Premier League is 36.5% attributed and the ceiling is not where it was
-  thought to be** (measured 2026-09-16). 5,568 of 8,778 goals name no scorer.
+- **RSSSF supplies Premier League scorers, and the league is now 41.5%
+  attributed** (2026-09-16, `docs/ingestion/TPL_RSSSF_SCORERS.md`). RSSSF has a
+  page per Tanzanian season with round-by-round results and, for some matches,
+  scorers with minutes and **full names** — the one thing ligikuu (nothing before
+  2023/24) and WhoScored (nothing ever) do not have. 435 events across 198
+  matches; **six seasons went from flat zero to real data** (2008/09 22%,
+  2009/10 35%, 2010/11 20%, 2020/21 24%, 2021/22 3%, 2022/23 5%). No match's log
+  contradicts its score; the nine that already did were untouched.
+  - **RSSSF beat Flashscore on every axis**: plain HTTP against a 403, 19 pages
+    against ~2,400, full names against "Dube P.", and it reaches 2007/08 where
+    Flashscore starts at 2010/11.
+  - **2011/12 to 2016/17 and 2025/26 have results but no scorers at all** —
+    2,496 goals with nothing in the page to parse. **2,410 of the remaining
+    5,134 unnamed goals have no known source anywhere**, so the league cannot
+    reach AFCON's 100%.
+  - **Only matches whose scorers account for the whole score are loaded.** 8 were
+    refused for naming just some goals — padding the rest with invented events
+    would break the one invariant this league's data still holds. 63 were refused
+    on a score that disagrees with the vault (principle 2).
+  - **Two parser bugs worth not repeating**, both caught by reconciliation rather
+    than by reading the code: `[Sep 6]` date headers were read as scorer lines,
+    inventing a player called "Oct" and over-counting 434 matches; and every
+    semicolon-less bracket went to the home team, when
+    `Toto African 0-1 Mtibwa Sugar [Mecky Mexime 2]` is the away goal. Together
+    they inflated the apparent haul from 503 to 1,944, which is why the estimate
+    given before the parser existed was over twice the truth. **Date headers and
+    scorer brackets cannot be separated by indentation** — most pages put both
+    flush left; a date header is exactly `[Mon D]`.
+- **How the Premier League's ceiling was established** (2026-09-16), before RSSSF was found. 5,568 of 8,778 goals name no scorer.
   What was established, in order of usefulness:
   - **The vault is already at ligikuu's ceiling.** `topup_ligikuu_scorers.py`
     re-harvested the official site and tried to repair every Premier League
