@@ -664,6 +664,33 @@ explicitly out of scope — see "Non-goals" below).
   - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
     short. That is correct: the stray event had been padding the count over a
     gap that was always there.
+- **The Premier League's 2022/23 season is complete: 240 of 240 matches
+  reconcile with their score, and 97% of its 561 goals name a scorer.** Loaded
+  2026-09-18 from FotMob — see `docs/ingestion/FOTMOB_TPL.md` for the harvest,
+  the loader and the traps. The vault previously held an event log for 10 of
+  those 240 matches.
+  - The 17 goals with no scorer are FotMob's own `<TBD>`: it has the goal and
+    not the man. They are stored as events with a NULL `player_id`, which is
+    the truth. Do not go looking for names FotMob never had.
+  - **A club pool alone does not recognise a player, because players transfer.**
+    The vault learns a club from the events it holds, so for a season with no
+    event log it knows nothing, and a first pass proposed 68 new records for
+    players already in the vault. `match_fotmob_players.py` adds a stricter
+    vault-wide pass — exact name tokens, exactly one hit — which matched 48 of
+    them. The rest are created on purpose: a duplicate is raised by the audit's
+    Identity checks, a wrong match silently moves goals onto another man.
+  - Fiston Mayele's 18 goals match the published Golden Boot exactly, which is
+    the check that the sides and own-goal flips came out right.
+  - Two scorers were held twice and were merged first
+    (`docs/reconciliation/fixes/2026-09-18_tpl_2022_23_duplicate_scorers.sql`):
+    Feisal Salum at Yanga and Erick Mwijage at Kagera Sugar, each one man
+    recorded by two sources in seasons that do not overlap. **Seven more names
+    the vault still holds twice** were not merged and their 2022/23 goals went
+    to new records — Saidi Ntibazonkiza, Vitalis Mayanga, Kelvin Sabato,
+    Japhary Kibaya, Tariq Seif, Haruna Shamte, Salum Abubakar. So was a third
+    "Feisal Salum" (player 2069, Azam and Tanzania), who may be the same man as
+    the Yanga one but has 2018/19 events at a different club, and nothing in the
+    vault settles it.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

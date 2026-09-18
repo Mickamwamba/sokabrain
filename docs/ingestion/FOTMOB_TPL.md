@@ -86,3 +86,59 @@ WhoScored skips. And for 2016/17 and earlier the fixture lists exist but every
 match page 404s, so the six seasons with no scorers anywhere (2011/12 to
 2016/17) stay that way. Three independent sources now agree they cannot be
 filled.
+
+## Loading a harvested season
+
+    python3 normalize_fotmob_tpl.py raw/fotmob_tpl/2022-2023.tsv > staged.json
+    python3 load_fotmob_tpl.py staged.json 2022/2023            # dry run
+    python3 load_fotmob_tpl.py staged.json 2022/2023 --commit
+
+The harvest is one line per match, `<fotmob id>^^<date>|<home>|<away>|<score>^^
+<minute>~<side>~<type>~<scorer>;...`, with stoppage time in a companion
+`added.txt`. `load_fotmob_tpl.py` is `load_flashscore_tpl.py` with a different
+source and a different way of recognising a player, and it keeps that loader's
+rule: **it does not replace the vault's goal log, it completes it**, and it
+touches a match only when the source's goals add up to the score the vault
+already holds.
+
+**A fixture is identified by its two clubs, not its date.** An ordered pair meets
+once in a double round-robin, which is a stronger key than a kickoff date two
+sources can legitimately disagree about — and one did, by four days, in 2022/23.
+The score still has to agree exactly; that is what stops a wrong pairing.
+
+### `<TBD>` is a real goal with an unknown scorer
+
+FotMob renders `<TBD>` in the scorer slot, with no player link, where it has the
+goal but not the man. 18 of 2022/23's 561 goals read that way. They load as
+events with a NULL `player_id`, which is the truth — not as a player called TBD.
+
+### The club pool is not enough on its own, because players transfer
+
+Narrowing candidate players to the club is what makes name matching safe, but
+the vault learns a player's club from the events and squads it holds, so for a
+season it has no event log for it knows nothing. A man who scored for Geita Gold
+in 2022/23 and Simba in 2023/24 is absent from Geita Gold's pool entirely. A
+first pass over the season therefore proposed **68 new records for players the
+vault already had**.
+
+`match_fotmob_players.py` answers this with a second pass over the whole vault
+that is deliberately stricter than the first: only an **exact set of name
+tokens**, matching exactly one player, counts. Order does not matter ("Amza
+Moubarack" is "Moubarack Amza"), but containment does not carry across clubs —
+"Hassan Maulid" sits inside "Hassan Nassor Maulid" while the vault separately
+holds a "Hassan Nassor", and no rule can separate those three. That pass matched
+48 of the 68 and cut the creations from 143 to 95.
+
+Where neither pass decides, a player is created. That is the cheaper error on
+purpose, and it is the same trade `playermatch.py` documents: a duplicate record
+is raised by the audit's Identity checks for a human to merge, whereas a wrong
+match silently moves goals onto another man. The exception is two players **at
+the same club** whose names both contain the scorer's — there a wrong pick is
+both likely and damaging, so the goal keeps its minute and side and loses only
+its scorer.
+
+Seven scorers in 2022/23 were created despite already being in the vault,
+because the vault holds each of their names **twice** (Saidi Ntibazonkiza,
+Vitalis Mayanga, Kelvin Sabato, Japhary Kibaya, Tariq Seif, Haruna Shamte, Salum
+Abubakar). Those are pre-existing duplicates, not new ones; merging them is a
+separate identity job.
