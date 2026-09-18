@@ -210,6 +210,29 @@ explicitly out of scope — see "Non-goals" below).
   - Early seasons have no event log because **neither of those two sources** has
     one — not because anything was dropped. But see the next entry: a third
     source does have them, back to 2010/11.
+- **FotMob is the best league source for the seasons it covers**
+  (`docs/ingestion/FOTMOB_TPL.md`, league id 9066). Full scorer names where
+  Flashscore abbreviates, a whole season's fixture list in one call, and it
+  settled a match Flashscore could not — Namungo 3-2 TRA United, where
+  Flashscore's own log reads 2-2 and so had no name to give. Three traps, each
+  of which gave a wrong answer first:
+  - **On a match page the embedded `__NEXT_DATA__` is a DIFFERENT match.** The
+    fragment in `/matches/{slug}/{code}#{matchId}` selects the game client-side;
+    the server renders the most recent meeting of those two clubs. On Azam v
+    Polisi `#3999832` the DOM showed the 8-0 while the JSON held `matchId
+    5998275`. **Read the DOM on a match page**; the embedded JSON is only
+    trustworthy on a LEAGUE page, where `fixtures.allMatches` is the full season.
+  - **Away events are mirrored**, time first, so testing only the first
+    `.sr-only` label reads "Minute 84" instead of "Goal." and silently drops
+    every away goal. Search all the labels.
+  - **Take the minute from the accessible label**, not the visible text:
+    collapsing whitespace runs "Minute 15" into the clock "15’" and yields 1515.
+    And take the SIDE from the running score's movement, which survives the
+    mirroring and puts an own goal on the side it counts for.
+  - It does not reach further back than the others: 2017/18 is absent from its
+    season list entirely, and 2016/17 and earlier have fixture lists but every
+    match page 404s. **Three independent sources now agree 2011/12 to 2016/17
+    cannot be filled.**
 - **2024/25 is complete: 240 of 240 matches reconcile, every goal has an event
   and every event a scorer** (2026-09-17). Flashscore filled 19 goals across 7
   matches that ligikuu had no record of; `docs/ingestion/load_flashscore_tpl.py`
