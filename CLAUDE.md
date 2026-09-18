@@ -758,6 +758,43 @@ explicitly out of scope — see "Non-goals" below).
   Four duplicate scorers went in the same fix; **Daniel Lyanga and Kelvin
   Sabato stay ambiguous** (Sabato has five records, two of them legacy junk like
   "Kelvin Sabato Sabato sabato"), so their 2020/21 goals stay unattributed.
+- **FotMob's match detail does not reach back past 2020/21, so 2019/20 and
+  2018/19 cannot be filled from it** (established 2026-09-18 by probing match
+  pages across both seasons, not by assumption — `FOTMOB_TPL.md` has the table).
+  Four of six 2019/20 probes render a normal match page with an empty timeline
+  and the other two 404; all three 2018/19 probes 404. **The 346 unattributed
+  goals in 2019/20 and the 63 in 2018/19 are out of FotMob's reach.**
+  The old claim in that doc that it reached ~2018/19 was wrong.
+  - The scores are still worth having as a cross-check: FotMob's 2019/20 has all
+    380 fixtures and **767 goals, agreeing with the vault exactly**, and 2018/19
+    agrees at 746. Zero score conflicts in either.
+  - **Flashscore is the remaining candidate** for these two seasons — its
+    archive runs 2010/11 to date and it does carry per-match scorers — but
+    reaching an old season needs the head-to-head route, since its results page
+    stops paging back.
+- **A side whose goals are ALL unattributed can be named as a set.** 275 of
+  2019/20's 346 unnamed events carry no minute, so the minute rule can never
+  reach them. But where every goal event on one side of a match is unnamed those
+  events carry nothing that tells them apart, so pairing them with the source's
+  goals for that side is a bijection between interchangeable slots and named
+  goals, and every bijection gives the same facts. Types must match as a
+  multiset and pairing happens within a type; a minute is filled only where the
+  vault has none. **This is the exception to "never pair by position"** — 17991
+  is the case where position would have scrambled the scorers, and the
+  difference is that there the events were distinguishable.
+  - It has no season to run against until a source for 2019/20 exists, so
+    `docs/ingestion/test_name_whole_side.py` exercises it against real data:
+    it strips the scorers from twelve 2022/23 match-sides, re-runs the loader,
+    checks the same scorers come back, and rolls back. **The first version of
+    that test failed for the right reason** — it included events named by RSSSF,
+    where FotMob spells the same man differently ("Dejan Georgejivec" against
+    "Dejan Georgijevic"), so it was measuring the sources' disagreement rather
+    than the step.
+  - That comparison also turned up **"Bakari Nondo" (12531, from FotMob) and
+    "Bakari Mwamnyeto" (1444), both Yanga SC** — very likely one man under two
+    surnames. Not merged: two different surnames are not something the vault can
+    settle, and **the audit's Identity checks will not raise this pair either,
+    because they key on a shared name.** That is a gap in those checks.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

@@ -1,0 +1,380 @@
+3161945|2019-08-24|Biashara Mara United|Kagera Sugar|0-2
+3161931|2019-08-24|Mbao|Alliance FC|1-1
+3161942|2019-08-24|Mbeya City|Tanzania Prisons|0-0
+3161943|2019-08-24|Namungo FC|Ndanda FC|2-1
+3161944|2019-08-24|Polisi Tanzania FC|Coastal Union|1-0
+3161947|2019-08-25|Lipuli|Mtibwa Sugar|3-1
+3161946|2019-08-25|Mwadui|Singida United|1-0
+3161948|2019-08-27|Kinondoni MC|Azam FC|0-1
+3161949|2019-08-28|Young Africans|Ruvu Shooting|0-1
+3161941|2019-08-29|JKT Tanzania|Simba SC|1-3
+3161950|2019-09-13|Coastal Union|Kinondoni MC|2-0
+3161937|2019-09-13|Simba SC|Mtibwa Sugar|2-1
+3161932|2019-09-14|JKT Tanzania|Lipuli|0-1
+3161933|2019-09-14|Mbao|Biashara Mara United|1-0
+3161940|2019-09-14|Namungo FC|Singida United|2-0
+3161936|2019-09-15|Alliance FC|Kagera Sugar|1-2
+3161934|2019-09-15|Ndanda FC|Mwadui|0-0
+3161935|2019-09-15|Tanzania Prisons|Ruvu Shooting|2-1
+3187558|2019-09-21|Alliance FC|Biashara Mara United|1-1
+3187557|2019-09-21|JKT Tanzania|Mtibwa Sugar|0-0
+3187564|2019-09-21|Mbao|Kagera Sugar|0-1
+3187562|2019-09-21|Mbeya City|Ruvu Shooting|1-1
+3187543|2019-09-21|Namungo FC|Mwadui|0-0
+3187561|2019-09-21|Ndanda FC|Singida United|1-1
+3187544|2019-09-25|Biashara Mara United|JKT Tanzania|0-1
+3187566|2019-09-25|Kinondoni MC|Namungo FC|1-0
+3187553|2019-09-25|Mtibwa Sugar|Tanzania Prisons|1-3
+3187554|2019-09-25|Mwadui|Alliance FC|1-1
+3191252|2019-09-25|Ruvu Shooting|Coastal Union|1-1
+3187555|2019-09-25|Singida United|Mbao|0-0
+3187567|2019-09-26|Kagera Sugar|Simba SC|0-3
+3187545|2019-09-26|Lipuli|Mbeya City|2-2
+3187547|2019-09-28|Mwadui|Mbao|1-1
+3187548|2019-09-28|Ruvu Shooting|Polisi Tanzania FC|1-0
+3187546|2019-09-28|Singida United|Alliance FC|0-1
+3187581|2019-09-29|Biashara Mara United|Simba SC|0-2
+3187551|2019-09-29|Kagera Sugar|JKT Tanzania|0-1
+3187582|2019-09-29|Kinondoni MC|Ndanda FC|1-1
+3187549|2019-09-29|Lipuli|Tanzania Prisons|2-2
+3187550|2019-09-29|Mtibwa Sugar|Mbeya City|1-1
+3187565|2019-10-02|Azam FC|Ndanda FC|2-0
+3187552|2019-10-03|Young Africans|Polisi Tanzania FC|3-3
+3187580|2019-10-05|Azam FC|Namungo FC|2-1
+3187568|2019-10-06|Young Africans|Coastal Union|1-0
+3187586|2019-10-19|Mbao|Ruvu Shooting|1-1
+3187587|2019-10-19|Namungo FC|Lipuli|1-0
+3187579|2019-10-19|Ndanda FC|Mtibwa Sugar|0-1
+3187585|2019-10-19|Tanzania Prisons|Kagera Sugar|1-1
+3187583|2019-10-20|Coastal Union|Mwadui|2-1
+3187569|2019-10-20|Mbeya City|Biashara Mara United|0-2
+3187584|2019-10-20|Polisi Tanzania FC|Singida United|2-1
+3187576|2019-10-22|JKT Tanzania|Kinondoni MC|0-0
+3187591|2019-10-22|Mbao|Young Africans|0-1
+3187574|2019-10-23|Alliance FC|Ruvu Shooting|1-0
+3187571|2019-10-23|Coastal Union|Singida United|0-0
+3187575|2019-10-23|Namungo FC|Mtibwa Sugar|1-0
+3187589|2019-10-23|Ndanda FC|Lipuli|1-1
+3187572|2019-10-23|Polisi Tanzania FC|Mwadui|1-0
+3187573|2019-10-23|Tanzania Prisons|Biashara Mara United|0-0
+3187588|2019-10-23|Simba SC|Azam FC|1-0
+3187590|2019-10-24|Mbeya City|Kagera Sugar|1-4
+3187593|2019-10-26|Mtibwa Sugar|Polisi Tanzania FC|2-0
+3187592|2019-10-27|Biashara Mara United|Namungo FC|1-0
+3187594|2019-10-27|Lipuli|Coastal Union|0-1
+3187595|2019-10-27|Mwadui|JKT Tanzania|2-2
+3187621|2019-10-27|Ruvu Shooting|Azam FC|1-0
+3187613|2019-10-27|Singida United|Simba SC|0-1
+3187609|2019-10-28|Alliance FC|Tanzania Prisons|1-1
+3187610|2019-10-28|Mbao|Mbeya City|1-2
+3187606|2019-10-30|Kagera Sugar|Namungo FC|2-0
+3187604|2019-10-30|Lipuli|Polisi Tanzania FC|2-1
+3187605|2019-10-30|Mtibwa Sugar|Coastal Union|2-1
+3187640|2019-10-30|Mwadui|Simba SC|1-0
+3187638|2019-10-30|Ruvu Shooting|Kinondoni MC|1-0
+3187657|2019-10-30|Singida United|JKT Tanzania|1-2
+3187603|2019-10-31|Alliance FC|Mbeya City|0-0
+3187608|2019-10-31|Mbao|Tanzania Prisons|1-1
+3187602|2019-11-02|Coastal Union|Mbao|1-2
+3187601|2019-11-02|JKT Tanzania|Tanzania Prisons|0-1
+3187600|2019-11-02|Lipuli|Mwadui|2-0
+3187598|2019-11-02|Mtibwa Sugar|Singida United|0-0
+3187599|2019-11-02|Ndanda FC|Ruvu Shooting|2-0
+3187597|2019-11-03|Polisi Tanzania FC|Alliance FC|1-0
+3187644|2019-11-03|Simba SC|Mbeya City|4-0
+3187641|2019-11-04|Kinondoni MC|Biashara Mara United|2-1
+3187643|2019-11-04|Azam FC|Kagera Sugar|0-0
+3187612|2019-11-06|Coastal Union|Alliance FC|0-1
+3187624|2019-11-06|JKT Tanzania|Mbeya City|1-0
+3187626|2019-11-06|Lipuli|Singida United|5-1
+3187625|2019-11-06|Mtibwa Sugar|Mwadui|1-0
+3187611|2019-11-06|Namungo FC|Ruvu Shooting|2-1
+3187623|2019-11-06|Polisi Tanzania FC|Mbao|0-1
+3187627|2019-11-07|Simba SC|Tanzania Prisons|0-0
+3187630|2019-11-08|Kinondoni MC|Kagera Sugar|1-2
+3187629|2019-11-08|Ndanda FC|Young Africans|0-1
+3187628|2019-11-08|Azam FC|Biashara Mara United|2-1
+3187632|2019-11-22|Alliance FC|Kinondoni MC|2-1
+3187618|2019-11-22|Kagera Sugar|Lipuli|2-1
+3187633|2019-11-22|Namungo FC|Coastal Union|1-3
+3187617|2019-11-22|Ndanda FC|Polisi Tanzania FC|0-2
+3187614|2019-11-22|Tanzania Prisons|Mwadui|1-1
+3187615|2019-11-22|Young Africans|JKT Tanzania|3-2
+3187619|2019-11-23|Biashara Mara United|Mtibwa Sugar|0-0
+3187616|2019-11-23|Mbao|Azam FC|0-1
+3187620|2019-11-23|Mbeya City|Singida United|0-1
+3187631|2019-11-23|Ruvu Shooting|Simba SC|0-3
+3187650|2019-11-25|Namungo FC|Polisi Tanzania FC|1-0
+3187651|2019-11-25|Ndanda FC|Coastal Union|0-1
+3187648|2019-11-25|Tanzania Prisons|Singida United|1-0
+3187654|2019-11-26|Alliance FC|Azam FC|0-5
+3187653|2019-11-26|Biashara Mara United|Lipuli|1-0
+3187649|2019-11-26|JKT Tanzania|Ruvu Shooting|2-1
+3187652|2019-11-26|Kagera Sugar|Mtibwa Sugar|1-3
+3187635|2019-11-26|Mbao|Kinondoni MC|2-0
+3187634|2019-11-26|Mbeya City|Mwadui|1-2
+3187570|2019-11-29|Alliance FC|Young Africans|1-2
+3187596|2019-11-29|Kagera Sugar|Ndanda FC|0-0
+3187577|2019-12-01|Azam FC|JKT Tanzania|2-2
+3187607|2019-12-02|Biashara Mara United|Ndanda FC|1-0
+3187622|2019-12-02|Young Africans|Kinondoni MC|1-1
+3161938|2019-12-24|Mbeya City|Young Africans|0-0
+3187559|2019-12-25|Polisi Tanzania FC|Kinondoni MC|2-1
+3187563|2019-12-25|Simba SC|Lipuli|4-0
+3187560|2019-12-26|Coastal Union|Azam FC|1-0
+3187556|2019-12-27|Tanzania Prisons|Young Africans|0-1
+3245416|2019-12-28|Kinondoni MC|Simba SC|0-2
+3187655|2019-12-29|JKT Tanzania|Namungo FC|0-1
+3161939|2019-12-29|Polisi Tanzania FC|Azam FC|0-1
+3187646|2019-12-30|Coastal Union|Mbeya City|2-0
+3187647|2019-12-30|Lipuli|Mbao|3-0
+3187656|2019-12-30|Mtibwa Sugar|Alliance FC|0-1
+3187636|2019-12-30|Ruvu Shooting|Kagera Sugar|2-1
+3246483|2019-12-30|Young Africans|Biashara Mara United|1-0
+3246541|2019-12-31|Mwadui|Kinondoni MC|1-1
+3246540|2019-12-31|Simba SC|Ndanda FC|2-0
+3246316|2020-01-01|Singida United|Azam FC|1-2
+3247431|2020-01-03|Coastal Union|Tanzania Prisons|1-0
+3246588|2020-01-03|JKT Tanzania|Ndanda FC|1-0
+3247430|2020-01-03|Lipuli|Alliance FC|2-0
+3246933|2020-01-03|Mtibwa Sugar|Mbao|1-0
+3247432|2020-01-03|Polisi Tanzania FC|Mbeya City|0-0
+3247433|2020-01-03|Ruvu Shooting|Biashara Mara United|0-0
+3187637|2020-01-04|Simba SC|Young Africans|2-2
+3247509|2020-01-05|Singida United|Kinondoni MC|0-2
+3250585|2020-01-08|Alliance FC|JKT Tanzania|0-1
+3250586|2020-01-08|Coastal Union|Kagera Sugar|1-0
+3250588|2020-01-08|Kinondoni MC|Lipuli|1-1
+3250584|2020-01-08|Mbeya City|Namungo FC|2-3
+3250587|2020-01-08|Mwadui|Ruvu Shooting|1-1
+3250583|2020-01-08|Polisi Tanzania FC|Biashara Mara United|1-1
+3251605|2020-01-09|Tanzania Prisons|Ndanda FC|0-0
+3253697|2020-01-11|Coastal Union|Biashara Mara United|1-1
+3253699|2020-01-11|Mbao|JKT Tanzania|2-2
+3253695|2020-01-11|Mbeya City|Ndanda FC|1-0
+3253698|2020-01-11|Polisi Tanzania FC|Kagera Sugar|2-1
+3253696|2020-01-11|Singida United|Ruvu Shooting|1-0
+3254423|2020-01-12|Tanzania Prisons|Namungo FC|2-3
+3257361|2020-01-15|Young Africans|Kagera Sugar|0-3
+3257362|2020-01-15|Azam FC|Lipuli|2-0
+3257451|2020-01-16|Mbao|Simba SC|1-2
+3259813|2020-01-17|Kinondoni MC|Mtibwa Sugar|2-0
+3187639|2020-01-18|Azam FC|Young Africans|1-0
+3259971|2020-01-19|Alliance FC|Simba SC|1-4
+3263118|2020-01-22|Mwadui|Azam FC|0-1
+3259970|2020-01-22|Singida United|Young Africans|1-3
+3187645|2020-01-29|Polisi Tanzania FC|Tanzania Prisons|1-0
+3268068|2020-01-29|Simba SC|Namungo FC|3-2
+3268148|2020-01-30|Azam FC|Mtibwa Sugar|1-1
+3269913|2020-02-01|Biashara Mara United|Mwadui|2-1
+3269685|2020-02-01|Kagera Sugar|Singida United|3-0
+3269684|2020-02-01|Namungo FC|Mbao|3-0
+3325812|2020-02-01|Ndanda FC|Alliance FC|1-0
+3269912|2020-02-01|Ruvu Shooting|Lipuli|3-1
+3269683|2020-02-01|Simba SC|Coastal Union|2-0
+3270175|2020-02-02|JKT Tanzania|Polisi Tanzania FC|0-1
+3270034|2020-02-02|Mbeya City|Azam FC|1-1
+3269911|2020-02-02|Tanzania Prisons|Kinondoni MC|1-0
+3259968|2020-02-02|Young Africans|Mtibwa Sugar|1-0
+3270933|2020-02-04|JKT Tanzania|Coastal Union|1-1
+3270934|2020-02-04|Simba SC|Polisi Tanzania FC|2-1
+3271608|2020-02-05|Azam FC|Tanzania Prisons|1-1
+3271604|2020-02-05|Biashara Mara United|Singida United|2-1
+3269686|2020-02-05|Kagera Sugar|Mwadui|2-1
+3271605|2020-02-05|Mbeya City|Kinondoni MC|0-1
+3271607|2020-02-05|Namungo FC|Alliance FC|1-1
+3271606|2020-02-05|Ndanda FC|Mbao|3-0
+3271609|2020-02-05|Ruvu Shooting|Mtibwa Sugar|1-0
+3259972|2020-02-05|Young Africans|Lipuli|2-1
+3272713|2020-02-07|Simba SC|JKT Tanzania|0-1
+3273201|2020-02-08|Alliance FC|Mbao|1-1
+3273206|2020-02-08|Azam FC|Kinondoni MC|3-1
+3273207|2020-02-08|Coastal Union|Polisi Tanzania FC|2-0
+3273204|2020-02-08|Kagera Sugar|Biashara Mara United|0-0
+3273202|2020-02-08|Mtibwa Sugar|Lipuli|0-1
+3273208|2020-02-08|Ndanda FC|Namungo FC|0-0
+3273209|2020-02-08|Ruvu Shooting|Young Africans|0-1
+3273205|2020-02-08|Singida United|Mwadui|2-2
+3273203|2020-02-08|Tanzania Prisons|Mbeya City|0-1
+3274797|2020-02-11|Azam FC|Polisi Tanzania FC|1-0
+3274773|2020-02-11|Biashara Mara United|Mbao|1-0
+3275000|2020-02-11|Kagera Sugar|Alliance FC|1-2
+3274999|2020-02-11|Lipuli|JKT Tanzania|1-1
+3274774|2020-02-11|Mtibwa Sugar|Simba SC|0-3
+3274775|2020-02-11|Mwadui|Ndanda FC|0-2
+3274776|2020-02-11|Ruvu Shooting|Tanzania Prisons|0-3
+3274777|2020-02-11|Singida United|Namungo FC|0-1
+3275001|2020-02-11|Young Africans|Mbeya City|1-1
+3275688|2020-02-12|Kinondoni MC|Coastal Union|0-0
+3277105|2020-02-15|Kinondoni MC|Polisi Tanzania FC|2-3
+3276703|2020-02-15|Azam FC|Coastal Union|1-2
+3277646|2020-02-15|Biashara Mara United|Alliance FC|1-0
+3279556|2020-02-15|Kagera Sugar|Mbao|2-0
+3276702|2020-02-15|Lipuli|Simba SC|0-1
+3277647|2020-02-15|Mtibwa Sugar|JKT Tanzania|0-1
+3276693|2020-02-15|Mwadui|Namungo FC|1-1
+3277655|2020-02-15|Ruvu Shooting|Mbeya City|1-0
+3277656|2020-02-15|Singida United|Ndanda FC|0-1
+3276701|2020-02-15|Young Africans|Tanzania Prisons|0-0
+3278599|2020-02-18|Coastal Union|Ruvu Shooting|1-2
+3278600|2020-02-18|JKT Tanzania|Biashara Mara United|0-0
+3278601|2020-02-18|Mbao|Singida United|3-1
+3278602|2020-02-18|Mbeya City|Lipuli|2-1
+3278603|2020-02-18|Namungo FC|Kinondoni MC|2-1
+3278604|2020-02-18|Polisi Tanzania FC|Young Africans|1-1
+3278605|2020-02-18|Simba SC|Kagera Sugar|1-0
+3279503|2020-02-19|Alliance FC|Mwadui|4-1
+3279504|2020-02-19|Ndanda FC|Azam FC|1-1
+3279505|2020-02-19|Tanzania Prisons|Mtibwa Sugar|0-0
+3281760|2020-02-22|JKT Tanzania|Kagera Sugar|1-0
+3281759|2020-02-22|Mbao|Mwadui|1-2
+3281761|2020-02-22|Mbeya City|Mtibwa Sugar|1-0
+3281762|2020-02-22|Namungo FC|Azam FC|1-0
+3284265|2020-02-22|Ndanda FC|Kinondoni MC|2-1
+3281763|2020-02-22|Polisi Tanzania FC|Ruvu Shooting|3-1
+3281711|2020-02-22|Simba SC|Biashara Mara United|3-1
+3282124|2020-02-23|Alliance FC|Singida United|1-1
+3281773|2020-02-23|Coastal Union|Young Africans|0-0
+3282125|2020-02-23|Tanzania Prisons|Lipuli|2-0
+3285239|2020-02-29|Biashara Mara United|Mbeya City|1-0
+3285241|2020-02-29|JKT Tanzania|Azam FC|0-1
+3285236|2020-02-29|Kagera Sugar|Tanzania Prisons|1-1
+3285238|2020-02-29|Lipuli|Namungo FC|1-2
+3285240|2020-02-29|Mtibwa Sugar|Ndanda FC|2-0
+3285234|2020-02-29|Mwadui|Coastal Union|2-0
+3285237|2020-02-29|Ruvu Shooting|Mbao|2-0
+3285235|2020-02-29|Singida United|Polisi Tanzania FC|0-1
+3285242|2020-02-29|Young Africans|Alliance FC|2-0
+3285863|2020-03-01|Simba SC|Kinondoni MC|2-0
+3286051|2020-03-03|Young Africans|Mbao|2-0
+3287140|2020-03-04|Biashara Mara United|Tanzania Prisons|1-0
+3287143|2020-03-04|Kagera Sugar|Mbeya City|2-3
+3287144|2020-03-04|Lipuli|Ndanda FC|3-3
+3287142|2020-03-04|Mtibwa Sugar|Namungo FC|1-1
+3287139|2020-03-04|Mwadui|Polisi Tanzania FC|2-1
+3287141|2020-03-04|Ruvu Shooting|Alliance FC|1-0
+3287145|2020-03-04|Singida United|Coastal Union|0-1
+3287146|2020-03-04|Azam FC|Simba SC|2-3
+3287138|2020-03-05|Kinondoni MC|JKT Tanzania|1-0
+3289581|2020-03-07|Azam FC|Alliance FC|1-0
+3289576|2020-03-07|Coastal Union|Ndanda FC|0-0
+3289580|2020-03-07|Kinondoni MC|Mbao|2-0
+3289578|2020-03-07|Lipuli|Biashara Mara United|1-0
+3289577|2020-03-07|Mtibwa Sugar|Kagera Sugar|3-1
+3289579|2020-03-07|Mwadui|Mbeya City|1-0
+3289575|2020-03-07|Polisi Tanzania FC|Namungo FC|0-0
+3289574|2020-03-07|Ruvu Shooting|JKT Tanzania|1-1
+3289573|2020-03-07|Singida United|Tanzania Prisons|1-2
+3289970|2020-03-08|Young Africans|Simba SC|1-0
+3290947|2020-03-10|Azam FC|Ruvu Shooting|2-1
+3290949|2020-03-10|Coastal Union|Lipuli|2-0
+3290950|2020-03-10|JKT Tanzania|Mwadui|1-0
+3290948|2020-03-10|Mbeya City|Mbao|1-0
+3290951|2020-03-10|Namungo FC|Biashara Mara United|1-1
+3290952|2020-03-10|Ndanda FC|Kagera Sugar|2-1
+3290953|2020-03-11|Polisi Tanzania FC|Mtibwa Sugar|0-0
+3291629|2020-03-11|Simba SC|Singida United|8-0
+3291630|2020-03-11|Tanzania Prisons|Alliance FC|1-0
+3291632|2020-03-12|Kinondoni MC|Young Africans|1-0
+3292653|2020-03-14|Lipuli|Kagera Sugar|0-1
+3292654|2020-03-14|Mtibwa Sugar|Biashara Mara United|1-1
+3325811|2020-03-14|Mwadui|Tanzania Prisons|2-1
+3292655|2020-03-14|Polisi Tanzania FC|Ndanda FC|1-0
+3292656|2020-03-14|Singida United|Mbeya City|2-1
+3292927|2020-03-15|Kinondoni MC|Alliance FC|2-1
+3187642|2020-03-15|Namungo FC|Young Africans|1-1
+3293303|2020-03-17|Tanzania Prisons|Mbao|0-0
+3331927|2020-06-13|Coastal Union|Namungo FC|2-2
+3331914|2020-06-13|Mwadui|Young Africans|0-1
+3331926|2020-06-14|Simba SC|Ruvu Shooting|1-1
+3331925|2020-06-14|Azam FC|Mbao|2-0
+3331924|2020-06-17|JKT Tanzania|Young Africans|1-1
+3293304|2020-06-20|Coastal Union|Mtibwa Sugar|0-0
+3293305|2020-06-20|JKT Tanzania|Singida United|2-0
+3350218|2020-06-20|Kinondoni MC|Ruvu Shooting|2-1
+3293306|2020-06-20|Mbeya City|Alliance FC|0-1
+3293307|2020-06-20|Namungo FC|Kagera Sugar|2-0
+3293308|2020-06-20|Ndanda FC|Biashara Mara United|1-0
+3293309|2020-06-20|Polisi Tanzania FC|Lipuli|1-1
+3348548|2020-06-20|Simba SC|Mwadui|3-0
+3348549|2020-06-21|Young Africans|Azam FC|0-0
+3351570|2020-06-23|Mbao|Coastal Union|1-0
+3351578|2020-06-23|Mwadui|Lipuli|3-0
+3351577|2020-06-23|Ruvu Shooting|Ndanda FC|0-0
+3351576|2020-06-23|Singida United|Mtibwa Sugar|1-3
+3351575|2020-06-23|Tanzania Prisons|JKT Tanzania|2-2
+3351574|2020-06-24|Alliance FC|Polisi Tanzania FC|1-1
+3351573|2020-06-24|Biashara Mara United|Kinondoni MC|4-0
+3351572|2020-06-24|Kagera Sugar|Azam FC|1-0
+3351571|2020-06-24|Mbeya City|Simba SC|0-2
+3351579|2020-06-24|Young Africans|Namungo FC|2-2
+3333650|2020-06-27|Alliance FC|Coastal Union|1-0
+3333652|2020-06-27|Biashara Mara United|Azam FC|1-1
+3333657|2020-06-27|Kagera Sugar|Kinondoni MC|1-1
+3333653|2020-06-27|Mbeya City|JKT Tanzania|2-0
+3333651|2020-06-27|Mwadui|Mtibwa Sugar|1-0
+3333648|2020-06-27|Ruvu Shooting|Namungo FC|1-1
+3333656|2020-06-27|Singida United|Lipuli|2-3
+3333649|2020-06-27|Young Africans|Ndanda FC|3-2
+3333655|2020-06-28|Mbao|Polisi Tanzania FC|1-0
+3333654|2020-06-28|Tanzania Prisons|Simba SC|0-0
+3351615|2020-07-04|Kagera Sugar|Ruvu Shooting|1-1
+3351614|2020-07-04|Kinondoni MC|Mwadui|3-2
+3351613|2020-07-04|Mbao|Lipuli|2-0
+3351602|2020-07-04|Namungo FC|JKT Tanzania|1-0
+3351612|2020-07-04|Tanzania Prisons|Polisi Tanzania FC|0-0
+3351608|2020-07-05|Alliance FC|Mtibwa Sugar|1-1
+3351610|2020-07-05|Biashara Mara United|Young Africans|0-0
+3351611|2020-07-05|Ndanda FC|Simba SC|0-0
+3351609|2020-07-05|Azam FC|Singida United|7-0
+3351607|2020-07-06|Mbeya City|Coastal Union|3-1
+3351604|2020-07-08|Namungo FC|Simba SC|0-0
+3351630|2020-07-08|Azam FC|Mwadui|1-0
+3351616|2020-07-08|Biashara Mara United|Ruvu Shooting|0-0
+3351629|2020-07-08|Kagera Sugar|Young Africans|0-1
+3351617|2020-07-08|Kinondoni MC|Singida United|2-0
+3351606|2020-07-08|Mbao|Mtibwa Sugar|1-0
+3351605|2020-07-08|Ndanda FC|JKT Tanzania|0-0
+3351628|2020-07-09|Alliance FC|Lipuli|2-0
+3351627|2020-07-09|Tanzania Prisons|Coastal Union|1-2
+3351603|2020-07-10|Mbeya City|Polisi Tanzania FC|2-1
+3351625|2020-07-14|Biashara Mara United|Polisi Tanzania FC|0-1
+3351624|2020-07-14|Lipuli|Kinondoni MC|2-0
+3351626|2020-07-14|Ruvu Shooting|Mwadui|3-2
+3351619|2020-07-15|JKT Tanzania|Alliance FC|1-1
+3351618|2020-07-15|Kagera Sugar|Coastal Union|1-0
+3351621|2020-07-15|Mtibwa Sugar|Azam FC|1-0
+3351622|2020-07-15|Namungo FC|Mbeya City|1-0
+3351620|2020-07-15|Ndanda FC|Tanzania Prisons|2-1
+3351623|2020-07-15|Young Africans|Singida United|3-1
+3351631|2020-07-16|Simba SC|Mbao|2-3
+3351643|2020-07-18|Biashara Mara United|Coastal Union|1-1
+3351642|2020-07-18|Kagera Sugar|Polisi Tanzania FC|1-2
+3351641|2020-07-18|Mtibwa Sugar|Kinondoni MC|0-1
+3351632|2020-07-18|Namungo FC|Tanzania Prisons|1-1
+3351645|2020-07-18|Ndanda FC|Mbeya City|0-1
+3351644|2020-07-18|Ruvu Shooting|Singida United|0-2
+3351640|2020-07-18|Young Africans|Mwadui|1-1
+3351637|2020-07-19|JKT Tanzania|Mbao|1-1
+3351638|2020-07-19|Lipuli|Azam FC|1-1
+3351639|2020-07-19|Simba SC|Alliance FC|5-1
+3351633|2020-07-22|Kinondoni MC|Tanzania Prisons|0-1
+3351646|2020-07-22|Mbao|Namungo FC|3-0
+3351634|2020-07-22|Mtibwa Sugar|Young Africans|1-1
+3351635|2020-07-22|Mwadui|Biashara Mara United|1-0
+3351636|2020-07-22|Singida United|Kagera Sugar|1-2
+3351649|2020-07-23|Alliance FC|Ndanda FC|2-2
+3351650|2020-07-23|Coastal Union|Simba SC|0-0
+3351651|2020-07-23|Lipuli|Ruvu Shooting|1-0
+3351648|2020-07-23|Polisi Tanzania FC|JKT Tanzania|1-1
+3351647|2020-07-23|Azam FC|Mbeya City|1-0
+3382338|2020-07-26|Alliance FC|Namungo FC|3-2
+3382344|2020-07-26|Coastal Union|JKT Tanzania|0-1
+3382340|2020-07-26|Kinondoni MC|Mbeya City|0-3
+3382347|2020-07-26|Lipuli|Young Africans|0-1
+3382339|2020-07-26|Mbao|Ndanda FC|2-0
+3382345|2020-07-26|Mtibwa Sugar|Ruvu Shooting|2-1
+3382342|2020-07-26|Mwadui|Kagera Sugar|2-1
+3382343|2020-07-26|Polisi Tanzania FC|Simba SC|1-2
+3382341|2020-07-26|Singida United|Biashara Mara United|0-2
+3382346|2020-07-26|Tanzania Prisons|Azam FC|2-2

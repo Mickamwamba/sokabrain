@@ -186,3 +186,52 @@ and each goal really was a penalty), and two undecoded ligikuu HTML entities
 ("Ally Ng&#8217;anzi"). Worth a periodic sweep:
 
     SELECT id, full_name FROM players WHERE full_name ~ '\(|&#|[0-9]';
+
+## How far back FotMob actually reaches: 2020/21, not 2018/19
+
+The table at the top of this file said "earliest match detail ~2018/19". That
+was wrong, and it was tested properly on 2026-09-18 by probing match pages
+across two seasons:
+
+| Season | Fixture list | Scores | Goal timeline |
+|---|---|---|---|
+| 2020/21 | yes | yes | mostly (5 of 203 matches had none) |
+| **2019/20** | yes, all 380 | **all 767 goals agree with the vault** | **none, in six probes across the season** |
+| **2018/19** | yes, 384 | **all 746 goals agree** | **none; every probe 404s** |
+
+Four of the six 2019/20 probes render a normal match page with an empty
+timeline; the other two, and all three 2018/19 probes, return FotMob's "We could
+not find what you were looking for". **So FotMob cannot name a single goal in
+either season**, and the 346 unattributed goals in 2019/20 and 63 in 2018/19 are
+out of its reach. Their scores are still worth having as a cross-check: both
+seasons agree with the vault exactly, 767 and 746.
+
+Flashscore is the remaining candidate — its archive runs 2010/11 to date and it
+does carry per-match scorers — but reaching an old season there needs the
+head-to-head route, because its results page stops paging back.
+
+## Naming a side whose goals are all unattributed
+
+2019/20 and 2018/19 need something the other seasons did not: their event logs
+are already complete and it is the *scorers* that are missing, and **275 of
+2019/20's 346 unnamed events carry no minute**, so the minute rule can never
+reach them.
+
+`load_fotmob_tpl.py` therefore has a step for it. When **every** goal event on
+one side of a match is unnamed, those events carry nothing that tells them
+apart, so if the source lists exactly that many goals for that side, pairing
+them is a bijection between interchangeable slots and named goals — and every
+bijection gives the same set of facts. That is why this is safe where positional
+pairing generally is not (see 17991, where it would have scrambled the scorers).
+
+Two conditions keep it honest: the goal **types** must match as a multiset and
+pairing happens within a type (a vault GOAL against a source OWN_GOAL is a
+different fact, since the own goal is stored under the other team), and a minute
+is only filled where the vault has none.
+
+**It has no season to run against yet**, so `test_name_whole_side.py` exercises
+it instead: it strips the scorers from twelve 2022/23 match-sides, runs the
+loader over the harvest that named them, checks the same scorers come back, and
+rolls the whole thing back. It restricts itself to events FotMob itself named —
+mixing sources would measure their disagreement over spelling rather than this
+step, which is exactly what the first version of the test did.

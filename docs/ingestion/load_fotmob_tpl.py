@@ -181,6 +181,88 @@ class Loader:
             else:
                 have_away += 1
 
+        # 0. Name a side whose goals are ALL unattributed.
+        #
+        #    2019/20 and 2018/19 have complete event logs and no scorers, and
+        #    275 of 2019/20's 346 unnamed events carry no minute either, so the
+        #    minute rule below can never reach them. But when every goal event
+        #    on one side of a match is unnamed, those events carry nothing that
+        #    tells them apart -- same side, and within a type, nothing else. If
+        #    the source lists exactly that many goals for that side, pairing
+        #    them is a bijection between interchangeable slots and named goals,
+        #    and every bijection produces the same set of facts. That is why
+        #    this is safe where positional pairing generally is not.
+        #
+        #    The types must match as a multiset, and pairing happens within a
+        #    type. A vault GOAL against a source OWN_GOAL is a different fact,
+        #    not a missing name: the own goal is stored under the other team,
+        #    so naming it here would attach an opponent to this team's event.
+        for side, side_team in (("home", home_id), ("away", away_id)):
+            mine = [g for g in incoming if g["side"] == side]
+            on_side = [ev for ev in existing
+                       if credited_in_vault(ev[4], "home" if ev[1] == home_id else "away") == side]
+            if not on_side or len(on_side) != len(mine):
+                continue
+            if any(ev[2] is not None for ev in on_side):
+                continue          # partly named; the minute rule below handles it
+            if sorted(ev[4] for ev in on_side) != sorted(g["type"] for g in mine):
+                self.stats["sides left alone, the vault and FotMob disagree on the goal types"] += 1
+                self.notes.append(
+                    f"match {mid}: {side} has {len(on_side)} unnamed goals typed "
+                    f"{sorted(ev[4] for ev in on_side)} against FotMob's "
+                    f"{sorted(g['type'] for g in mine)} -- not named")
+                continue
+            by_type = defaultdict(list)
+            for g in mine:
+                by_type[g["type"]].append(g)
+            for ev_id, tid, _pid, minute, typ in sorted(on_side, key=lambda e: (e[3] is None, e[3] or 0)):
+                g = by_type[typ].pop(0)
+                team_for_player = home_id if scorer_side(g) == "home" else away_id
+                name = g.get("name")
+                if name and typ == "OWN_GOAL" and self.own_goal_name_is_impossible(
+                        name, team_for_player, side_team):
+                    self.stats["own goals whose scorer plays for the other side"] += 1
+                    self.notes.append(
+                        f"match {mid}: own goal names {name}, who plays for the side it "
+                        f"counts for; left unattributed")
+                    name = None
+                new_pid = self.player(name, team_for_player)
+                if new_pid is None:
+                    continue
+                self.c.execute("""
+                    INSERT INTO reconciliation_diffs
+                      (reconciliation_run_id, entity_id_a, entity_id_b, field_name,
+                       value_a, value_b, resolution, resolved_value, resolved_at)
+                    VALUES (%s, %s, %s, 'match_events.player_id', %s, %s, 'ACCEPT_B', %s, now())
+                """, (run_id, ev_id, mid,
+                      f"no scorer, {typ} for {side}" + ("" if minute is None else f" at {minute}'"),
+                      f"{g['name']} at {g['minute']}' (FotMob)", str(new_pid)))
+                # The minute is filled only where the vault has none: this names
+                # goals, it does not restate what the vault already says.
+                if minute is None and g.get("minute") is not None:
+                    self.c.execute(
+                        "UPDATE match_events SET player_id = %s, minute = %s, added_time = %s WHERE id = %s",
+                        (new_pid, g["minute"], g.get("added"), ev_id))
+                    self.stats["goals given a scorer and a minute"] += 1
+                else:
+                    self.c.execute("UPDATE match_events SET player_id = %s WHERE id = %s",
+                                   (new_pid, ev_id))
+                    self.stats["goals given a scorer"] += 1
+                self.c.execute("""
+                    INSERT INTO entity_source_map (entity_type, entity_id, data_source_id, external_id, confidence)
+                    VALUES ('match_event', %s, %s, %s, 1.0)
+                    ON CONFLICT (entity_type, data_source_id, external_id) DO NOTHING
+                """, (ev_id, self.source_id,
+                      f"fotmob-{rec.get('fotmob', mid)}-name-{g['side']}-{g.get('minute')}-{g['type']}"))
+
+        # Re-read: the step above may have named events the next one would
+        # otherwise try to name again.
+        self.c.execute("""
+            SELECT id, team_id, player_id, minute, type FROM match_events
+             WHERE match_id = %s AND type = ANY(%s) ORDER BY minute NULLS LAST, id
+        """, (mid, list(GOALS)))
+        existing = self.c.fetchall()
+
         # 1. Name what the vault holds but could not attribute. Done first, so a
         #    match that later proves unalignable still gets its names.
         for ev_id, tid, pid, minute, typ in existing:
