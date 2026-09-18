@@ -7,9 +7,11 @@ The harvest is one line per match, read off the rendered match page:
 
     <fotmob id>^^<date>|<home>|<away>|<score>^^<goal>;<goal>;...
 
-with each goal `minute~side~type~scorer`. Stoppage time lives in a companion
-`added.txt` as `<fotmob id>:<goal index>:<minute>+<added>`, because the first
-extraction pass dropped it.
+with each goal `minute~side~type~scorer`, and stoppage time written onto the
+minute as `90+5`. The 2022/23 harvest predates that and keeps its stoppage time
+in a companion `added.txt` (`<fotmob id>:<goal index>:<minute>+<added>`), because
+the first extraction pass dropped it; both forms are read, and the ids never
+collide.
 
 **A fixture is identified by its two clubs, not its date.** In a double
 round-robin an ordered pair (home, away) meets exactly once a season, which is a
@@ -47,6 +49,12 @@ def parse_goal(tok):
     ...     'added': None, 'name': 'Clatous Chama'}
     True
 
+    Stoppage time is written onto the minute, `90+5`:
+
+    >>> g = parse_goal("90+5~H~G~Meddie Kagere")
+    >>> g['minute'], g['added']
+    (90, 5)
+
     An away own goal keeps the side it counts for -- the away team here:
 
     >>> parse_goal("12~A~OG~Oscar Masai")['side'], parse_goal("12~A~OG~Oscar Masai")['type']
@@ -59,11 +67,12 @@ def parse_goal(tok):
     """
     minute, side, typ, name = tok.split("~", 3)
     name = name.strip()
+    base, _, extra = minute.partition("+")
     return {
-        "minute": int(minute),
+        "minute": int(base),
         "side": "home" if side == "H" else "away",
         "type": TYPES[typ],
-        "added": None,
+        "added": int(extra) if extra else None,
         "name": None if not name or name == "<TBD>" else name,
     }
 

@@ -691,6 +691,38 @@ explicitly out of scope — see "Non-goals" below).
     "Feisal Salum" (player 2069, Azam and Tanzania), who may be the same man as
     the Yanga one but has 2018/19 events at a different club, and nothing in the
     vault settles it.
+- **2021/22 is complete too: 239 of 240 matches reconcile and 99.6% of its 468
+  goals name a scorer** (2026-09-18, FotMob). The vault held an event log for 10
+  of those 240 matches before this; 453 goal events were added.
+  - **The 240th match is the second awarded result in the vault.** Namungo 3-0
+    Mbeya Kwanza (17249, 13 May 2022) was never played out -- FotMob flags it
+    `awarded` and its match page has no events at all. It carries an INFO flag
+    saying so (`2026-09-18_tpl_2021_22_duplicates_and_awarded.sql`), like Dodoma
+    Jiji 0-3 Pamba Jiji in 2025/26. **Check for an awarded result before hunting
+    for goals** -- that is now twice.
+  - Two more duplicate players were merged first, in the same file and to the
+    same pattern: Augustino Nsata at Dodoma Jiji and Haji Ugando at Coastal
+    Union, each one man under two records in seasons that do not overlap. The
+    loader had refused to name their goals, which is the right refusal.
+  - **FotMob's fixture list agreed with the vault on all 471 goals before a
+    single match page was opened**, and on all 240 scores. Comparing the season
+    total first is a cheap check worth doing before any harvest.
+- **The harvest is a browser queue, and it must verify the page it reads.** GO
+  navigates, GRAB reads -- and a dropped extension connection left `cur` pointing
+  at one match while the page showed another. GRAB now refuses unless the URL
+  fragment equals the id it means to store AND the page title names both clubs,
+  on top of checking the goal count, the final running score and the per-side
+  split against the fixture list. It caught the one mismatched read.
+  - Navigating between two matches that share a slug changes only the fragment
+    and **does not re-render**, so GO appends a throwaway query parameter to
+    force a real load.
+  - Goalless draws are skipped: there is nothing to harvest, and 35 of 2021/22's
+    240 matches were 0-0.
+  - Getting the result out of the browser is the awkward part. A local HTTP sink
+    is blocked by the page's CSP, `navigator.clipboard` needs focus the tab does
+    not have, and base64 is refused by the tool layer. What works is plain text
+    in ~950-character chunks, chunked on row boundaries, then a SHA-1 of the
+    whole compared against the browser's own -- both seasons matched exactly.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.
