@@ -124,13 +124,15 @@ class Loader:
         home_id, away_id, hs, as_ = row
 
         incoming = [g for g in rec["goals"] if g["type"] in GOALS]
-        want = defaultdict(int)
-        for g in incoming:
-            want[g["side"]] += 1        # Flashscore's side is already the crediting one
-        if want["home"] != hs or want["away"] != as_:
+        # Plain ints, not a defaultdict: reading a missing key off a defaultdict
+        # inserts it, which silently made "have != want" true for every match
+        # one side failed to score in.
+        want_home = sum(1 for g in incoming if g["side"] == "home")
+        want_away = len(incoming) - want_home
+        if want_home != hs or want_away != as_:
             self.stats["skipped, source does not reconcile"] += 1
             self.notes.append(
-                f"match {mid}: Flashscore reads {want['home']}-{want['away']} for a {hs}-{as_}")
+                f"match {mid}: Flashscore reads {want_home}-{want_away} for a {hs}-{as_}")
             return
 
         self.c.execute("""
@@ -138,21 +140,62 @@ class Loader:
              WHERE match_id = %s AND type = ANY(%s) ORDER BY minute NULLS LAST, id
         """, (mid, list(GOALS)))
         existing = self.c.fetchall()
-        have = defaultdict(int)
+        have_home = have_away = 0
         for _id, tid, _pid, _min, typ in existing:
             side = "home" if tid == home_id else "away" if tid == away_id else None
-            if side:
-                have[credited_in_vault(typ, side)] += 1
+            if side is None:
+                continue
+            if credited_in_vault(typ, side) == "home":
+                have_home += 1
+            else:
+                have_away += 1
 
-        # Same number of goals but on the wrong sides. Re-siding them needs the
-        # two lists to line up, and they only do when the vault's events carry
-        # minutes to line up BY. Where they do not -- match 17991 holds three
-        # goals with no minute at all, which sort last while Flashscore's are
-        # chronological -- pairing by position would scramble the scorers.
-        # Report it for a human rather than guess.
-        if len(existing) == len(incoming) and have != want:
-            by_minute = {}
+        # 1. Name what the vault holds but could not attribute. ligikuu leaves a
+        #    scorer blank when the site has since deleted that player's record;
+        #    Flashscore still names the goal. Done FIRST, so a match that later
+        #    proves unalignable still gets its names.
+        for ev_id, tid, pid, minute, typ in existing:
+            if pid is not None or minute is None:
+                continue
+            side = "home" if tid == home_id else "away" if tid == away_id else None
+            if side is None:
+                continue
+            want_side = credited_in_vault(typ, side)
+            # Sources routinely differ by a minute on the same goal, so an exact
+            # match is too strict; two apart is still one goal. The TYPE must
+            # agree though -- Flashscore calling it an own goal where the vault
+            # has a plain goal is a different fact, not a missing name.
+            hits = [g for g in incoming
+                    if g["side"] == want_side and g.get("slug") and g["type"] == typ
+                    and g.get("minute") is not None and abs(g["minute"] - minute) <= 2]
+            if len(hits) != 1:
+                self.stats["unnamed events Flashscore could not settle"] += 1
+                self.notes.append(
+                    f"match {mid}: {typ} credited to {want_side} at {minute}' -- "
+                    f"{len(hits)} Flashscore goals match it")
+                continue
+            g = hits[0]
+            team_for_player = home_id if scorer_side(g) == "home" else away_id
+            new_pid = self.player(g["slug"], g.get("display"), team_for_player)
+            if new_pid is None:
+                continue
+            self.c.execute("""
+                INSERT INTO reconciliation_diffs
+                  (reconciliation_run_id, entity_id_a, entity_id_b, field_name,
+                   value_a, value_b, resolution, resolved_value, resolved_at)
+                VALUES (%s, %s, %s, 'match_events.player_id', 'no scorer', %s, 'ACCEPT_B', %s, now())
+            """, (run_id, ev_id, mid, f"{g['slug']} at {g['minute']}' (Flashscore)", str(new_pid)))
+            self.c.execute("UPDATE match_events SET player_id = %s WHERE id = %s", (new_pid, ev_id))
+            self.stats["unnamed goals given a scorer"] += 1
+
+        # 2. Same number of goals, wrong sides. Re-siding needs the two lists to
+        #    line up, and they only do when the vault's events carry minutes to
+        #    line up BY: match 17991 held three goals with no minute at all,
+        #    which sort last while Flashscore's are chronological, so pairing by
+        #    position would have scrambled the scorers. Report, do not guess.
+        if len(existing) == len(incoming) and (have_home, have_away) != (want_home, want_away):
             ok = all(minute is not None for _i, _t, _p, minute, _ty in existing)
+            by_minute = {}
             if ok:
                 for ev in existing:
                     by_minute.setdefault(ev[3], []).append(ev)
@@ -180,11 +223,11 @@ class Loader:
             self.stats["matches corrected"] += 1
             return
 
-        # Otherwise fill the shortfall, per side, taking Flashscore's goals for
-        # that side in order and skipping as many as the vault already holds.
+        # 3. Fill the shortfall, per side, taking Flashscore's goals for that
+        #    side in order and skipping as many as the vault already holds.
         added = 0
-        for side in ("home", "away"):
-            short = want[side] - have[side]
+        for side, want_n, have_n in (("home", want_home, have_home), ("away", want_away, have_away)):
+            short = want_n - have_n
             if short <= 0:
                 continue
             mine = [g for g in incoming if g["side"] == side]
@@ -200,15 +243,13 @@ class Loader:
                     INSERT INTO entity_source_map (entity_type, entity_id, data_source_id, external_id, confidence)
                     VALUES ('match_event', %s, %s, %s, 1.0)
                     ON CONFLICT (entity_type, data_source_id, external_id) DO NOTHING
-                """, (ev_id, self.source_id, f"flashscore-{mid}-{g['side']}-{g.get('minute')}-{g.get('added') or 0}"))
+                """, (ev_id, self.source_id,
+                      f"flashscore-{mid}-{g['side']}-{g.get('minute')}-{g.get('added') or 0}"))
                 self.stats[f"goals added ({g['type']})"] += 1
                 if pid is None:
                     self.stats["goals added with no scorer named"] += 1
                 added += 1
-        if added:
-            self.stats["matches completed"] += 1
-        else:
-            self.stats["matches already complete"] += 1
+        self.stats["matches completed" if added else "matches already complete"] += 1
 
 
 def verify(cur, season):
