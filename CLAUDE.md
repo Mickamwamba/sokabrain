@@ -210,6 +210,32 @@ explicitly out of scope — see "Non-goals" below).
   - Early seasons have no event log because **neither of those two sources** has
     one — not because anything was dropped. But see the next entry: a third
     source does have them, back to 2010/11.
+- **2025/26 is the first Premier League season worked to completion**
+  (2026-09-17). All 522 goals in its scores are accounted for: 518 have a named
+  scorer, 239 of 240 matches reconcile, and the 240th is explained rather than
+  missing. Done season-by-season from three sources, which is the pattern to
+  repeat.
+  - **Dodoma Jiji 0-3 Pamba Jiji (match 18059) was never a gap.** Flashscore
+    marks it **AWARDED** -- forfeited, with only a 6th-minute Dodoma goal that
+    the award annulled. Its empty event log is correct and its 0-3 will never
+    reconcile. It carries an INFO `data_flags` row saying so, because every
+    audit and coverage report would otherwise keep reporting three missing
+    goals forever. **Check for an awarded result before hunting for goals.**
+  - **The one goal both ligikuu and Flashscore omitted was an own goal** --
+    Himid Mkami's, for Pamba against Azam. ligikuu keeps own goals in a separate
+    field it had left empty, and the vault's other three events all named a
+    scorer, so nothing pointed at it. An own goal is the shape a missing goal
+    most often takes.
+  - **Flashscore's season results page stops paging back** after a few "Show
+    more matches" clicks. Its **head-to-head tab reaches any older fixture**: a
+    match's H2H lists every previous meeting of the two clubs with a link to
+    each, so the reverse fixture is a reliable way in.
+  - **Take scorer names from Flashscore's player links, never its timeline.**
+    The timeline abbreviates ("Nassor M."); the link carries the whole name
+    (`/player/nassor-mudathir/`). Planting abbreviations would rebuild the
+    identity problem this project spent days undoing.
+  - One goal in the season has no scorer anywhere: KMC FC's 82nd minute against
+    Namungo, which Flashscore records without attributing.
 - **RSSSF supplies Premier League scorers, and the league is now 41.5%
   attributed** (2026-09-16, `docs/ingestion/TPL_RSSSF_SCORERS.md`). RSSSF has a
   page per Tanzanian season with round-by-round results and, for some matches,
