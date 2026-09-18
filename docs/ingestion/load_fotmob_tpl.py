@@ -87,6 +87,26 @@ class Loader:
         self.everyone = self.c.fetchall()
         self.resolved = {}
 
+    def own_goal_name_is_impossible(self, name, scorer_team, credited_team):
+        """Does this own goal name a player of the side it COUNTS FOR?
+
+        An own goal is scored by a player of the side it counts against, so a
+        name that belongs to the benefiting club is a contradiction, not a
+        scorer. FotMob credits Azam's third goal against Dodoma Jiji (5 Nov
+        2020) as an own goal by Prince Dube -- Azam's own striker.
+
+        Attributing it would move a forward's goal onto the opposing club, and
+        would register him there. The event is still loaded, as the own goal
+        FotMob says it is; only the name is dropped.
+        """
+        cand = [pid for pid, nm in self.by_team.get(credited_team, [])
+                if resolve_wide(name, [(pid, nm)])[0] is not None]
+        if not cand:
+            return False
+        # Only a contradiction if he is NOT also on the scoring side.
+        return not any(resolve_wide(name, [(pid, nm)])[0] is not None
+                       for pid, nm in self.by_team.get(scorer_team, []))
+
     def player(self, name, team_id):
         if not name:
             return None
@@ -241,7 +261,17 @@ class Loader:
             mine = [g for g in incoming if g["side"] == side]
             for g in mine[len(mine) - short:]:
                 team_id = home_id if scorer_side(g) == "home" else away_id
-                pid = self.player(g.get("name"), team_id)
+                name = g.get("name")
+                if name and g["type"] == "OWN_GOAL":
+                    credited = home_id if g["side"] == "home" else away_id
+                    if self.own_goal_name_is_impossible(name, team_id, credited):
+                        self.stats["own goals whose scorer plays for the other side"] += 1
+                        self.notes.append(
+                            f"match {mid}: own goal at {g.get('minute')}' names {name}, "
+                            f"who plays for team {credited} -- the side it counts for; "
+                            f"loaded without a scorer")
+                        name = None
+                pid = self.player(name, team_id)
                 self.c.execute("""
                     INSERT INTO match_events (match_id, team_id, player_id, minute, added_time, type)
                     VALUES (%s, %s, %s, %s, %s, %s) RETURNING id

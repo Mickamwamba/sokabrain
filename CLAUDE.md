@@ -723,6 +723,41 @@ explicitly out of scope — see "Non-goals" below).
     not have, and base64 is refused by the tool layer. What works is plain text
     in ~950-character chunks, chunked on row boundaries, then a SHA-1 of the
     whole compared against the browser's own -- both seasons matched exactly.
+- **2020/21 went from 159 goal events to 609, and 95.7% of them name a
+  scorer** (2026-09-18, FotMob). 269 of its 325 played matches now have an event
+  log, against 107 before. **This season's ceiling is the source, not the
+  effort**: the 46 goals still without an event are 39 in Ihefu FC and BIGMAN FC
+  fixtures that FotMob's 2020/21 does not contain at all, and 7 in five matches
+  FotMob has a result for but no timeline.
+  - **FotMob's 2020/21 is a clean 18-team league (306 fixtures); the vault's
+    edition has 20 clubs and 337.** All 306 matched a vault fixture and **all
+    306 scores agreed exactly**, so the overlap is sound. The surplus 31 are
+    Ihefu FC and BIGMAN FC, who appear only from February 2021 with 16 matches
+    each and 6 unscored each — which is where the 12 long-standing SCHEDULED
+    fixtures live. **What those 31 fixtures actually are is still an open
+    question** and a data call for an editor; this load did not touch them.
+  - **A club's name on a FotMob match page can differ from its name in that
+    season's fixture list.** Team 1171766 renders as "Ihefu FC" on match pages
+    and as "Singida Black Stars" in the 2020/21 list, which made the harvest's
+    page-identity guard reject all 34 of those matches until it was relaxed to
+    need only one of the two clubs in the title.
+- **An own goal is never attributed to a player of the side it counts for.**
+  FotMob credits Azam's third goal against Dodoma Jiji (5 Nov 2020) to an own
+  goal by Prince Dube, Azam's own striker. `load_fotmob_tpl.py` now refuses a
+  name in that position and loads the event unattributed, because accepting it
+  would move a forward's goal onto the opposing club and register him there.
+- **Four player records held parser output instead of a name, and are fixed**
+  (`docs/reconciliation/fixes/2026-09-18_parser_artifacts_and_2020_21_duplicates.sql`).
+  Two were RSSSF minute markers kept as part of the name — "Michael Sarpong
+  (pen)" and "Themi Felix (pen)", **the same defect fixed for the pre-2002 AFCON
+  load and missed for the Premier League pages**; each merged into the clean
+  record and each goal became the PENALTY_GOAL the marker had been saying all
+  along. Two were undecoded ligikuu HTML entities ("Ally Ng&#8217;anzi",
+  "Richardson Ng&#8217;ondya"). Sweep for more with
+  `SELECT id, full_name FROM players WHERE full_name ~ '\(|&#|[0-9]';`
+  Four duplicate scorers went in the same fix; **Daniel Lyanga and Kelvin
+  Sabato stay ambiguous** (Sabato has five records, two of them legacy junk like
+  "Kelvin Sabato Sabato sabato"), so their 2020/21 goals stay unattributed.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

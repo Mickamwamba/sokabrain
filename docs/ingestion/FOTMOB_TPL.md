@@ -142,3 +142,47 @@ because the vault holds each of their names **twice** (Saidi Ntibazonkiza,
 Vitalis Mayanga, Kelvin Sabato, Japhary Kibaya, Tariq Seif, Haruna Shamte, Salum
 Abubakar). Those are pre-existing duplicates, not new ones; merging them is a
 separate identity job.
+
+## When the source is patchy: 2020/21
+
+2022/23 and 2021/22 matched the vault goal-for-goal before a page was opened.
+2020/21 did not, and the differences are worth knowing before trusting a season.
+
+**FotMob's 2020/21 is a clean 18-team league — 306 fixtures, 18 clubs, 34 games
+each. The vault's edition has 20 clubs and 337 fixtures.** The extra 31 belong to
+Ihefu FC and BIGMAN FC, who appear only from February 2021, play 16 each, and
+have 6 unscored each (those are the 12 fixtures long listed as still SCHEDULED).
+Every one of FotMob's 306 matched a vault fixture and **every one of the 306
+scores agreed exactly**, so the overlap is solid and the surplus is a separate
+question about what those 31 fixtures are — not something this load touches.
+
+**FotMob has the result but no timeline for some matches.** Five of 2020/21's
+had no event items at all on a fully-rendered page. The harvest retries once and
+then records the match as having nothing at the source, rather than blocking.
+That never happened in 2022/23 or 2021/22.
+
+**A club's name on a match page can differ from its name in the fixture list.**
+FotMob renders team 1171766 as "Ihefu FC" on match pages while the 2020/21
+fixture list calls it "Singida Black Stars". The page identity guard was
+rejecting every one of those 34 matches until it was relaxed to require only
+**one** of the two clubs to appear in the title. The pairing is not in doubt: the
+vault's Singida Black Stars played 34 matches over the same span and all 34
+scores agree, while its Ihefu FC has 16 from February.
+
+## Two ways a scorer name can be wrong
+
+**An own goal must not be attributed to a player of the side it counts for.**
+FotMob credits Azam's third against Dodoma Jiji (5 Nov 2020) as an own goal by
+Prince Dube — Azam's own striker. Loading it would have moved a forward's goal
+to the opposing club and registered him there. `load_fotmob_tpl.py` refuses a
+name in that position and loads the event unattributed.
+
+**Some player names in the vault were parser output, not names.** Chasing the
+2020/21 ambiguities turned up four, fixed in
+`docs/reconciliation/fixes/2026-09-18_parser_artifacts_and_2020_21_duplicates.sql`:
+two RSSSF minute markers kept as part of a name ("Michael Sarpong (pen)",
+"Themi Felix (pen)" — the same defect fixed for AFCON and missed for the league,
+and each goal really was a penalty), and two undecoded ligikuu HTML entities
+("Ally Ng&#8217;anzi"). Worth a periodic sweep:
+
+    SELECT id, full_name FROM players WHERE full_name ~ '\(|&#|[0-9]';
