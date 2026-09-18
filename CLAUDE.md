@@ -210,6 +210,29 @@ explicitly out of scope — see "Non-goals" below).
   - Early seasons have no event log because **neither of those two sources** has
     one — not because anything was dropped. But see the next entry: a third
     source does have them, back to 2010/11.
+- **2024/25 is complete: 240 of 240 matches reconcile, every goal has an event
+  and every event a scorer** (2026-09-17). Flashscore filled 19 goals across 7
+  matches that ligikuu had no record of; `docs/ingestion/load_flashscore_tpl.py`
+  and `match_flashscore_players.py` (both doctested) are the reusable pair.
+  - **The loader completes a log, it never replaces one.** The vault's ligikuu
+    events carry full names and Flashscore's timeline does not, so overwriting
+    would be a downgrade. Only the per-side shortfall is written, and 7 of the
+    17 scorers resolved to players the vault already held.
+  - **Flashscore lists a goal on the side it COUNTS FOR, own goals included**,
+    while the vault stores an own goal under the scorer's own team. Applying the
+    flip to both readings made two matches look unreconcilable; the harvest's
+    side needs no flip, only the storage team does.
+  - **Tanzania Prisons 3-2 JKT Tanzania (17991) read 4-1, and ligikuu was the
+    cause**: it recorded the 41st-minute goal twice, once as an ordinary goal by
+    Kichuya and once as Elfadhil's own goal, and three events landed on the
+    wrong team. Fixed by re-siding three events and giving them their minutes
+    (`2026-09-17_prisons_jkt_2025_sides.sql`) — nothing deleted, no name changed.
+    This was one of the two matches long listed here as holding more goal events
+    than the score allows.
+  - **A same-count, wrong-sides match is only re-sided when the minutes line
+    up.** 17991's vault events had no minutes at all, so they sorted last while
+    Flashscore's were chronological; pairing by position would have scrambled
+    the scorers. The loader reports that case instead of guessing.
 - **2025/26 is the first Premier League season worked to completion**
   (2026-09-17). All 522 goals in its scores are accounted for: 518 have a named
   scorer, 239 of 240 matches reconcile, and the 240th is explained rather than

@@ -1,0 +1,45 @@
+[
+ {"match":17821,"goals":[
+   {"side":"home","minute":5,"added":null,"type":"GOAL","slug":"mwalimu-seleman","display":"Mwalimu S."},
+   {"side":"home","minute":11,"added":null,"type":"GOAL","slug":"kihimbwa-salum","display":"Kihimbwa S."},
+   {"side":"away","minute":50,"added":null,"type":"GOAL","slug":"chirwa-obrey","display":"Chirwa O."},
+   {"side":"home","minute":90,"added":2,"type":"GOAL","slug":"mokono-elie","display":"Mokono E."}]},
+ {"match":17911,"goals":[
+   {"side":"home","minute":16,"added":null,"type":"GOAL","slug":"zouzoua-peodoh-pacome","display":"Zouzoua P."},
+   {"side":"home","minute":40,"added":null,"type":"GOAL","slug":"abbas-mudathiri","display":"Yahya M."},
+   {"side":"home","minute":45,"added":null,"type":"GOAL","slug":"zouzoua-peodoh-pacome","display":"Zouzoua P."},
+   {"side":"home","minute":54,"added":null,"type":"GOAL","slug":"zouzoua-peodoh-pacome","display":"Zouzoua P."},
+   {"side":"home","minute":88,"added":null,"type":"GOAL","slug":"mzize-cement","display":"Mzize C."}]},
+ {"match":17969,"goals":[
+   {"side":"away","minute":22,"added":null,"type":"GOAL","slug":"masawe-jacob","display":"Masawe J."},
+   {"side":"home","minute":37,"added":null,"type":"GOAL","slug":"yonta-camara-abdoulaye","display":"Yonta Camara A."}]},
+ {"match":17987,"goals":[
+   {"side":"home","minute":9,"added":null,"type":"GOAL","slug":"vuai-mundhir","display":"Vuai M."},
+   {"side":"home","minute":45,"added":3,"type":"GOAL","slug":"kibaya-japhary","display":"Kibaya J."},
+   {"side":"home","minute":88,"added":null,"type":"GOAL","slug":"richard-david","display":"Richard D."}]},
+ {"match":17991,"goals":[
+   {"side":"away","minute":11,"added":null,"type":"GOAL","slug":"bakari-mohamed","display":"Bakari M."},
+   {"side":"away","minute":42,"added":null,"type":"OWN_GOAL","slug":"elifadhili-jumanne","display":"Elifadhili J."},
+   {"side":"home","minute":50,"added":null,"type":"GOAL","slug":"mwansanga-oscar","display":"Mwansanga O."},
+   {"side":"home","minute":77,"added":null,"type":"GOAL","slug":"juma-jeremiah","display":"Juma J."},
+   {"side":"home","minute":89,"added":null,"type":"GOAL","slug":"mkomola-oscar","display":"Mkomola O."}]},
+ {"match":17993,"goals":[
+   {"side":"home","minute":26,"added":null,"type":"GOAL","slug":"lidah-hijjah-shamte","display":"Lidah H."},
+   {"side":"away","minute":42,"added":null,"type":"GOAL","slug":"mwaikenda-lusajo","display":"Mwaikenda L."},
+   {"side":"away","minute":57,"added":null,"type":"GOAL","slug":"seleman-iddi","display":"Nado I."},
+   {"side":"home","minute":60,"added":null,"type":"GOAL","slug":"feka-kassim","display":"Feka K."},
+   {"side":"away","minute":82,"added":null,"type":"GOAL","slug":"mwaikenda-lusajo","display":"Mwaikenda L."},
+   {"side":"away","minute":87,"added":null,"type":"GOAL","slug":"blanco-jhonier","display":"Blanco J."}]},
+ {"match":18022,"goals":[
+   {"side":"home","minute":1,"added":null,"type":"GOAL","slug":"chama-cletus","display":"Chama C."},
+   {"side":"home","minute":55,"added":null,"type":"GOAL","slug":"abuya-duke","display":"Abuya D."},
+   {"side":"home","minute":69,"added":null,"type":"GOAL","slug":"bacca-ibrahim","display":"Hamad I."},
+   {"side":"home","minute":90,"added":6,"type":"OWN_GOAL","slug":null,"display":null},
+   {"side":"home","minute":90,"added":11,"type":"GOAL","slug":"mpia-nzengeli-maxi","display":"Nzengeli M."}]},
+ {"match":18024,"goals":[
+   {"side":"away","minute":18,"added":null,"type":"GOAL","slug":"sereri-zidane","display":"Sereri Z."},
+   {"side":"away","minute":45,"added":2,"type":"GOAL","slug":"kibeku-ashrafu","display":"Kibeku A."},
+   {"side":"home","minute":45,"added":3,"type":"GOAL","slug":"mokono-elie","display":"Mokono E."},
+   {"side":"home","minute":72,"added":null,"type":"GOAL","slug":"kindemile-hashimu","display":"Kindemile H."},
+   {"side":"away","minute":90,"added":5,"type":"GOAL","slug":"sopu-abdul","display":"Suleiman A."}]}
+]
