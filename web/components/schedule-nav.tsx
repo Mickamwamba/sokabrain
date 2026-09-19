@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { type DayCount, type RoundSummary } from "@/lib/api";
 
@@ -10,21 +13,68 @@ function formatDay(iso: string) {
   };
 }
 
+export type DayItem = DayCount & { href: string };
+
 export function DateStrip({
   days,
   active,
-  hrefFor,
 }: {
-  days: DayCount[];
+  days: DayItem[];
   active: string | null;
-  hrefFor: (date: string) => string;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+
+  // Smoothly center the active date in the strip
+  useEffect(() => {
+    if (!active || !containerRef.current) return;
+    const target = containerRef.current.querySelector(
+      `[data-date="${active}"]`
+    ) as HTMLElement | null;
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: isFirstRender.current ? "auto" : "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+      isFirstRender.current = false;
+    }
+  }, [active]);
+
+  const handlePillClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  };
+
+  const scrollSide = (direction: "left" | "right") => {
+    if (!containerRef.current) return;
+    const offset = direction === "left" ? -220 : 220;
+    containerRef.current.scrollBy({ left: offset, behavior: "smooth" });
+  };
+
   if (days.length === 0) return null;
   const todayIso = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Dar_es_Salaam" });
 
   return (
-    <div className="relative">
-      <div className="-mx-4 overflow-x-auto px-4 pb-1 pt-0.5 scrollbar-none">
+    <div className="relative group/strip">
+      {/* Left Scroll Button (visible on hover / desktop) */}
+      <button
+        onClick={() => scrollSide("left")}
+        aria-label="Scroll dates left"
+        className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
+      >
+        ‹
+      </button>
+
+      {/* Date Strip Container */}
+      <div
+        ref={containerRef}
+        className="-mx-4 overflow-x-auto px-4 pb-1 pt-0.5 scrollbar-none scroll-smooth"
+      >
         <div className="flex min-w-max gap-1.5 py-0.5 items-center">
           {days.map((d) => {
             const { dow, dayNum } = formatDay(d.date);
@@ -35,19 +85,22 @@ export function DateStrip({
             return (
               <Link
                 key={d.date}
-                href={hrefFor(d.date)}
+                href={d.href}
+                scroll={false}
+                data-date={d.date}
+                onClick={handlePillClick}
                 aria-current={isActive ? "date" : undefined}
-                className={`relative flex min-w-[56px] sm:min-w-[62px] flex-col items-center justify-center rounded-xl px-2 py-1.5 transition-all text-center ${
+                className={`relative flex min-w-[56px] sm:min-w-[62px] flex-col items-center justify-center rounded-xl px-2 py-1.5 transition-all duration-200 text-center select-none ${
                   isActive
-                    ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold"
+                    ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
                     : isToday
-                    ? "border border-brand/50 bg-brand/5 text-ink hover:bg-brand/10"
+                    ? "border border-brand/50 bg-brand/5 text-ink hover:bg-brand/10 hover:border-brand"
                     : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
                 }`}
               >
                 {/* Day of week */}
                 <span
-                  className={`text-[10px] font-bold uppercase tracking-wider leading-none ${
+                  className={`text-[10px] font-bold uppercase tracking-wider leading-none transition-colors ${
                     isActive
                       ? "text-white/80"
                       : isToday
@@ -67,7 +120,7 @@ export function DateStrip({
                 <div className="mt-0.5 flex items-center justify-center h-2">
                   {hasMatches ? (
                     <span
-                      className={`h-1.5 w-1.5 rounded-full ${
+                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
                         isActive
                           ? "bg-brand-light"
                           : isToday
@@ -85,22 +138,49 @@ export function DateStrip({
           })}
         </div>
       </div>
+
+      {/* Right Scroll Button (visible on hover / desktop) */}
+      <button
+        onClick={() => scrollSide("right")}
+        aria-label="Scroll dates right"
+        className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
+      >
+        ›
+      </button>
     </div>
   );
 }
 
+export type RoundItem = RoundSummary & { href: string };
+
 export function RoundStrip({
   rounds,
   active,
-  hrefFor,
 }: {
-  rounds: RoundSummary[];
+  rounds: RoundItem[];
   active: string | null;
-  hrefFor: (round: string) => string;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!active || !containerRef.current) return;
+    const target = containerRef.current.querySelector(
+      `[data-round="${active}"]`
+    ) as HTMLElement | null;
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [active]);
+
   if (rounds.length === 0) return null;
+
   return (
-    <div className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-none">
+    <div className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-none scroll-smooth" ref={containerRef}>
       <div className="flex min-w-max gap-1.5 py-0.5">
         {rounds.map((r) => {
           const isActive = r.round === active;
@@ -108,11 +188,13 @@ export function RoundStrip({
           return (
             <Link
               key={r.round}
-              href={hrefFor(r.round)}
+              href={r.href}
+              scroll={false}
+              data-round={r.round}
               aria-current={isActive ? "true" : undefined}
               className={`flex min-w-[70px] sm:min-w-[76px] flex-col items-center rounded-xl px-2 py-1.5 transition-all text-center ${
                 isActive
-                  ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold"
+                  ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
                   : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
               }`}
             >
@@ -159,6 +241,7 @@ export function ModeTabs({
       <div className="inline-flex rounded-xl border border-line bg-paper p-0.5 text-xs font-semibold shadow-2xs">
         <Link
           href={byDateHref}
+          scroll={false}
           className={`rounded-lg px-3 py-1 transition-all ${
             mode === "date"
               ? "bg-ink text-white shadow-xs"
@@ -170,6 +253,7 @@ export function ModeTabs({
         {roundsAvailable ? (
           <Link
             href={byRoundHref}
+            scroll={false}
             className={`rounded-lg px-3 py-1 transition-all ${
               mode === "round"
                 ? "bg-ink text-white shadow-xs"
@@ -191,6 +275,7 @@ export function ModeTabs({
       {todayHref && mode === "date" && (
         <Link
           href={todayHref}
+          scroll={false}
           className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-paper px-2.5 py-1 text-xs font-bold text-ink hover:bg-wash transition-colors shadow-2xs"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-brand" />

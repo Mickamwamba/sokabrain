@@ -232,11 +232,18 @@ export default async function MatchesHub(props: PageProps<"/">) {
 
   const today = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Dar_es_Salaam" });
 
+  // Stable date window: anchor around today so clicking adjacent dates does not shift the array
+  const anchorDate = (() => {
+    if (!dateParam) return today;
+    const diffDays = Math.abs(new Date(dateParam).getTime() - new Date(today).getTime()) / (1000 * 3600 * 24);
+    return diffDays > 10 ? dateParam : today;
+  })();
+
   // Parallelize data fetching for rounds, days, standings, scorers, and next marquee match
   const [rounds, dayData, standingsData, scorersData, upcoming] = await Promise.all([
     api.rounds(editionId),
     mode === "date"
-      ? api.days({ editionId, around: dateParam ?? today, before: 6, after: 6 })
+      ? api.days({ editionId, around: anchorDate, before: 12, after: 12 })
       : Promise.resolve({ days: [], nearest: null }),
     api.standings(editionId).catch(() => null),
     api.topScorers(editionId, 4).catch(() => null),
@@ -315,9 +322,15 @@ export default async function MatchesHub(props: PageProps<"/">) {
 
           {/* Compact 7-day Strip or Round Strip */}
           {mode === "date" ? (
-            <DateStrip days={dayData.days} active={date} hrefFor={(d) => href({ date: d })} />
+            <DateStrip
+              days={dayData.days.map((d) => ({ ...d, href: href({ date: d.date }) }))}
+              active={date}
+            />
           ) : (
-            <RoundStrip rounds={rounds.rounds} active={round} hrefFor={(r) => href({ round: r })} />
+            <RoundStrip
+              rounds={rounds.rounds.map((r) => ({ ...r, href: href({ round: r.round }) }))}
+              active={round}
+            />
           )}
 
           {/* Matches Container (Adaptive Layout based on match count) */}
