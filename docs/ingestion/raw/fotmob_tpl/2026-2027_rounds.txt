@@ -1,0 +1,240 @@
+1|Pamba Jiji|Dodoma Jiji FC
+1|Mbeya City|Geita Gold FC
+1|Singida Black Stars|Fountain Gate FC
+1|Polisi Tanzania FC|Azam FC
+1|Coastal Union|Mashujaa
+1|Namungo FC|Young Africans
+1|Kagera Sugar|Simba SC
+1|JKT Tanzania|TRA United
+2|Fountain Gate FC|Mashujaa
+2|Namungo FC|Geita Gold FC
+2|Mbeya City|Dodoma Jiji FC
+2|Pamba Jiji|Simba SC
+2|Kagera Sugar|Singida Black Stars
+2|Polisi Tanzania FC|JKT Tanzania
+2|Young Africans|Coastal Union
+2|Azam FC|TRA United
+3|Singida Black Stars|Simba SC
+3|Geita Gold FC|Kagera Sugar
+3|Mbeya City|Mashujaa
+3|Azam FC|Pamba Jiji
+3|Young Africans|JKT Tanzania
+3|Coastal Union|TRA United
+3|Namungo FC|Fountain Gate FC
+3|Dodoma Jiji FC|Polisi Tanzania FC
+4|Mashujaa|Kagera Sugar
+4|Simba SC|Coastal Union
+4|Fountain Gate FC|Mbeya City
+4|Geita Gold FC|Azam FC
+4|Young Africans|Pamba Jiji
+4|TRA United|Dodoma Jiji FC
+4|Singida Black Stars|Polisi Tanzania FC
+4|JKT Tanzania|Namungo FC
+5|Fountain Gate FC|Young Africans
+5|Simba SC|Geita Gold FC
+5|Kagera Sugar|Azam FC
+5|Singida Black Stars|Namungo FC
+5|TRA United|Mbeya City
+5|Dodoma Jiji FC|Mashujaa
+5|JKT Tanzania|Pamba Jiji
+5|Polisi Tanzania FC|Coastal Union
+6|Mashujaa|Singida Black Stars
+6|Dodoma Jiji FC|Namungo FC
+6|Polisi Tanzania FC|Mbeya City
+6|Coastal Union|JKT Tanzania
+6|Pamba Jiji|TRA United
+6|Kagera Sugar|Fountain Gate FC
+6|Young Africans|Geita Gold FC
+6|Azam FC|Simba SC
+7|Mashujaa|Polisi Tanzania FC
+7|Pamba Jiji|Geita Gold FC
+7|Namungo FC|TRA United
+7|Coastal Union|Azam FC
+7|Fountain Gate FC|JKT Tanzania
+7|Mbeya City|Kagera Sugar
+7|Dodoma Jiji FC|Singida Black Stars
+7|Simba SC|Young Africans
+8|Coastal Union|Singida Black Stars
+8|Azam FC|Namungo FC
+8|TRA United|Young Africans
+8|Simba SC|Mashujaa
+8|Fountain Gate FC|Pamba Jiji
+8|Geita Gold FC|Dodoma Jiji FC
+8|Kagera Sugar|Polisi Tanzania FC
+8|JKT Tanzania|Mbeya City
+9|Polisi Tanzania FC|Pamba Jiji
+9|Azam FC|Mashujaa
+9|Dodoma Jiji FC|Young Africans
+9|Simba SC|Mbeya City
+9|Singida Black Stars|TRA United
+9|JKT Tanzania|Kagera Sugar
+9|Namungo FC|Coastal Union
+9|Geita Gold FC|Fountain Gate FC
+10|Pamba Jiji|Singida Black Stars
+10|Young Africans|Mashujaa
+10|Dodoma Jiji FC|JKT Tanzania
+10|Fountain Gate FC|Simba SC
+10|Azam FC|Mbeya City
+10|Coastal Union|Kagera Sugar
+10|TRA United|Geita Gold FC
+10|Namungo FC|Polisi Tanzania FC
+11|Mbeya City|Singida Black Stars
+11|JKT Tanzania|Azam FC
+11|Coastal Union|Dodoma Jiji FC
+11|Polisi Tanzania FC|Geita Gold FC
+11|Young Africans|Kagera Sugar
+11|TRA United|Fountain Gate FC
+11|Mashujaa|Pamba Jiji
+11|Simba SC|Namungo FC
+12|Polisi Tanzania FC|Young Africans
+12|Namungo FC|Mbeya City
+12|Azam FC|Singida Black Stars
+12|Pamba Jiji|Coastal Union
+12|JKT Tanzania|Simba SC
+12|Dodoma Jiji FC|Fountain Gate FC
+12|Kagera Sugar|TRA United
+12|Geita Gold FC|Mashujaa
+13|Pamba Jiji|Namungo FC
+13|Kagera Sugar|Dodoma Jiji FC
+13|Fountain Gate FC|Azam FC
+13|Mashujaa|TRA United
+13|Mbeya City|Young Africans
+13|Simba SC|Polisi Tanzania FC
+13|Singida Black Stars|JKT Tanzania
+13|Geita Gold FC|Coastal Union
+14|TRA United|Polisi Tanzania FC
+14|Mbeya City|Pamba Jiji
+14|Simba SC|Dodoma Jiji FC
+14|Singida Black Stars|Geita Gold FC
+14|Young Africans|Azam FC
+14|Coastal Union|Fountain Gate FC
+14|Mashujaa|JKT Tanzania
+14|Kagera Sugar|Namungo FC
+15|Pamba Jiji|Kagera Sugar
+15|Mbeya City|Coastal Union
+15|TRA United|Simba SC
+15|Fountain Gate FC|Polisi Tanzania FC
+15|Singida Black Stars|Young Africans
+15|Azam FC|Dodoma Jiji FC
+15|Mashujaa|Namungo FC
+15|Geita Gold FC|JKT Tanzania
+16|Namungo FC|Singida Black Stars
+16|Kagera Sugar|Pamba Jiji
+16|Dodoma Jiji FC|TRA United
+16|Fountain Gate FC|Geita Gold FC
+16|Azam FC|Young Africans
+16|Polisi Tanzania FC|Simba SC
+16|JKT Tanzania|Mashujaa
+16|Coastal Union|Mbeya City
+17|JKT Tanzania|Dodoma Jiji FC
+17|Namungo FC|Azam FC
+17|Polisi Tanzania FC|Singida Black Stars
+17|Simba SC|Kagera Sugar
+17|TRA United|Coastal Union
+17|Young Africans|Fountain Gate FC
+17|Geita Gold FC|Pamba Jiji
+17|Mashujaa|Mbeya City
+18|Dodoma Jiji FC|Mbeya City
+18|Azam FC|Polisi Tanzania FC
+18|Coastal Union|Young Africans
+18|Geita Gold FC|Singida Black Stars
+18|Simba SC|Fountain Gate FC
+18|Namungo FC|Kagera Sugar
+18|Pamba Jiji|Mashujaa
+18|TRA United|JKT Tanzania
+19|Mashujaa|Geita Gold FC
+19|TRA United|Pamba Jiji
+19|Coastal Union|Simba SC
+19|Mbeya City|Namungo FC
+19|Singida Black Stars|Kagera Sugar
+19|Young Africans|Polisi Tanzania FC
+19|JKT Tanzania|Fountain Gate FC
+19|Dodoma Jiji FC|Azam FC
+20|Young Africans|Simba SC
+20|Polisi Tanzania FC|TRA United
+20|Kagera Sugar|Mbeya City
+20|Dodoma Jiji FC|Pamba Jiji
+20|Fountain Gate FC|Coastal Union
+20|Geita Gold FC|Namungo FC
+20|Singida Black Stars|Mashujaa
+20|Azam FC|JKT Tanzania
+21|TRA United|Singida Black Stars
+21|Mashujaa|Young Africans
+21|Azam FC|Coastal Union
+21|Fountain Gate FC|Namungo FC
+21|Pamba Jiji|Mbeya City
+21|Kagera Sugar|Geita Gold FC
+21|Polisi Tanzania FC|Dodoma Jiji FC
+21|Simba SC|JKT Tanzania
+22|TRA United|Azam FC
+22|Geita Gold FC|Mbeya City
+22|Singida Black Stars|Coastal Union
+22|Mashujaa|Fountain Gate FC
+22|Namungo FC|JKT Tanzania
+22|Dodoma Jiji FC|Simba SC
+22|Pamba Jiji|Polisi Tanzania FC
+22|Kagera Sugar|Young Africans
+23|JKT Tanzania|Singida Black Stars
+23|Simba SC|Pamba Jiji
+23|Young Africans|Dodoma Jiji FC
+23|Azam FC|Geita Gold FC
+23|Mbeya City|Fountain Gate FC
+23|TRA United|Mashujaa
+23|Polisi Tanzania FC|Kagera Sugar
+23|Coastal Union|Namungo FC
+24|Polisi Tanzania FC|Mashujaa
+24|Namungo FC|Pamba Jiji
+24|Mbeya City|JKT Tanzania
+24|Coastal Union|Geita Gold FC
+24|Dodoma Jiji FC|Kagera Sugar
+25|Polisi Tanzania FC|Fountain Gate FC
+25|Young Africans|Mbeya City
+24|Fountain Gate FC|Singida Black Stars
+25|Namungo FC|Mashujaa
+24|Simba SC|Azam FC
+24|Young Africans|TRA United
+25|Simba SC|TRA United
+25|Azam FC|Kagera Sugar
+25|Singida Black Stars|Dodoma Jiji FC
+25|JKT Tanzania|Geita Gold FC
+25|Coastal Union|Pamba Jiji
+26|Pamba Jiji|Young Africans
+26|Mbeya City|Simba SC
+26|Singida Black Stars|Azam FC
+26|Mashujaa|Coastal Union
+26|Kagera Sugar|JKT Tanzania
+26|TRA United|Namungo FC
+26|Geita Gold FC|Polisi Tanzania FC
+26|Fountain Gate FC|Dodoma Jiji FC
+27|Pamba Jiji|JKT Tanzania
+27|Mashujaa|Dodoma Jiji FC
+27|Fountain Gate FC|TRA United
+27|Geita Gold FC|Young Africans
+27|Mbeya City|Azam FC
+27|Simba SC|Singida Black Stars
+27|Polisi Tanzania FC|Namungo FC
+27|Kagera Sugar|Coastal Union
+28|Azam FC|Fountain Gate FC
+28|Coastal Union|Polisi Tanzania FC
+28|Dodoma Jiji FC|Geita Gold FC
+28|JKT Tanzania|Young Africans
+28|Kagera Sugar|Mashujaa
+28|Mbeya City|TRA United
+28|Namungo FC|Simba SC
+28|Singida Black Stars|Pamba Jiji
+29|Dodoma Jiji FC|Coastal Union
+29|Geita Gold FC|Simba SC
+29|JKT Tanzania|Polisi Tanzania FC
+29|Mashujaa|Azam FC
+29|Pamba Jiji|Fountain Gate FC
+29|Singida Black Stars|Mbeya City
+29|TRA United|Kagera Sugar
+29|Young Africans|Namungo FC
+30|Fountain Gate FC|Kagera Sugar
+30|Geita Gold FC|TRA United
+30|JKT Tanzania|Coastal Union
+30|Mashujaa|Simba SC
+30|Mbeya City|Polisi Tanzania FC
+30|Namungo FC|Dodoma Jiji FC
+30|Pamba Jiji|Azam FC
+30|Young Africans|Singida Black Stars

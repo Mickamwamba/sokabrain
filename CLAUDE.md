@@ -867,6 +867,19 @@ explicitly out of scope — see "Non-goals" below).
   - **All eight scores and all three date corrections were confirmed against
     FotMob before committing.** One page load, and it is the whole safety net
     for a write that changes what the public site shows.
+- **2026/27 has its round numbers: all 240 fixtures, 30 rounds of 8.** The
+  official site cannot supply them — SportsPress's `day` field is empty on all
+  215 of its events — so they come from FotMob's fixture list via
+  `load_rounds_fotmob.py`, which writes a round only where the vault has none.
+  - It refuses the whole load rather than writing part of it unless the source
+    is a coherent fixture list (every round the same size, no club pair twice,
+    the total matching a double round-robin) and every fixture matches exactly
+    one vault fixture. **That check earned its place immediately**: the transfer
+    out of the browser dropped two lines at a chunk boundary and left round 17
+    with six fixtures, and the shape check named it before anything was written.
+  - **A round is not a date.** Azam v Namungo is a round 8 fixture played on
+    7 September, five weeks before the rest of round 8. Ordering by round and
+    ordering by date are different things and the vault holds both.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

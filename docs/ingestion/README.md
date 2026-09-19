@@ -179,3 +179,26 @@ then filled from FotMob through the normal harvest, which completed them.
 corrected dates were confirmed against FotMob's 2026/27 fixture list before the
 commit. That is one page load and it is the whole safety net for a write that
 changes what the site shows.
+
+### Round numbers for the current season
+
+**The official site's export does not carry them**: the SportsPress `day` field
+is empty on all 215 of 2026/27's events, so `normalize_ligikuu.py` has no round
+to give. FotMob's league page does — every entry in `fixtures.allMatches` has a
+`round` — and `load_rounds_fotmob.py` loads them:
+
+    python3 load_rounds_fotmob.py raw/fotmob_tpl/2026-2027_rounds.txt 2026/2027 --commit
+
+It writes a round **only where the vault has none**, and refuses the whole load
+rather than writing part of it if either check fails: the source must be a
+coherent fixture list (every round the same size, no pair twice, and the count
+matching a double round-robin for the number of clubs), and every fixture must
+match exactly one vault fixture on its two clubs.
+
+That first check earned its place immediately — the transfer out of the browser
+dropped two lines at a chunk boundary, leaving round 17 with six fixtures, and
+the shape check named it before anything was written.
+
+**A round is not a date.** Azam v Namungo is a round 8 fixture played on
+7 September, five weeks before the rest of round 8. Ordering a season by round
+and ordering it by date are different things, and the vault now holds both.
