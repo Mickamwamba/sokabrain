@@ -161,6 +161,7 @@ export function RoundStrip({
   active: string | null;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (!active || !containerRef.current) return;
@@ -170,55 +171,87 @@ export function RoundStrip({
 
     if (target) {
       target.scrollIntoView({
-        behavior: "smooth",
+        behavior: isFirstRender.current ? "auto" : "smooth",
         inline: "center",
         block: "nearest",
       });
+      isFirstRender.current = false;
     }
   }, [active]);
+
+  const handlePillClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  };
+
+  const scrollSide = (direction: "left" | "right") => {
+    if (!containerRef.current) return;
+    const offset = direction === "left" ? -220 : 220;
+    containerRef.current.scrollBy({ left: offset, behavior: "smooth" });
+  };
 
   if (rounds.length === 0) return null;
 
   return (
-    <div className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-none scroll-smooth" ref={containerRef}>
-      <div className="flex min-w-max gap-1.5 py-0.5">
-        {rounds.map((r) => {
-          const isActive = r.round === active;
-          const complete = r.played === r.matches;
-          return (
-            <Link
-              key={r.round}
-              href={r.href}
-              scroll={false}
-              data-round={r.round}
-              aria-current={isActive ? "true" : undefined}
-              className={`flex min-w-[70px] sm:min-w-[76px] flex-col items-center rounded-xl px-2 py-1.5 transition-all text-center ${
-                isActive
-                  ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
-                  : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
-              }`}
-            >
-              <span
-                className={`text-[9px] font-bold uppercase tracking-wider leading-none ${
-                  isActive ? "text-white/80" : "text-muted"
+    <div className="relative group/round-strip">
+      {/* Left Scroll Button (desktop) */}
+      <button
+        onClick={() => scrollSide("left")}
+        aria-label="Scroll rounds left"
+        className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/round-strip:opacity-100 cursor-pointer"
+      >
+        ‹
+      </button>
+
+      {/* Round Strip Container */}
+      <div
+        ref={containerRef}
+        className="-mx-4 overflow-x-auto px-4 pb-1 scrollbar-none scroll-smooth"
+      >
+        <div className="flex min-w-max gap-1.5 py-0.5 items-center">
+          {rounds.map((r) => {
+            const isActive = r.round === active;
+            return (
+              <Link
+                key={r.round}
+                href={r.href}
+                scroll={false}
+                data-round={r.round}
+                onClick={handlePillClick}
+                aria-current={isActive ? "true" : undefined}
+                className={`relative flex min-w-[54px] sm:min-w-[58px] flex-col items-center justify-center rounded-xl px-2 py-1.5 transition-all duration-200 text-center select-none ${
+                  isActive
+                    ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
+                    : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
                 }`}
               >
-                Round
-              </span>
-              <span className="nums text-base font-black leading-tight mt-0.5">
-                {r.round}
-              </span>
-              <span
-                className={`text-[9px] font-medium leading-none mt-0.5 ${
-                  isActive ? "text-white/70" : "text-muted"
-                }`}
-              >
-                {complete ? `${r.matches} pl` : `${r.played}/${r.matches}`}
-              </span>
-            </Link>
-          );
-        })}
+                <span
+                  className={`text-[9px] font-bold uppercase tracking-wider leading-none transition-colors ${
+                    isActive ? "text-white/80" : "text-muted"
+                  }`}
+                >
+                  Round
+                </span>
+                <span className="nums text-base font-black leading-tight mt-0.5">
+                  {r.round}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
+
+      {/* Right Scroll Button (desktop) */}
+      <button
+        onClick={() => scrollSide("right")}
+        aria-label="Scroll rounds right"
+        className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/round-strip:opacity-100 cursor-pointer"
+      >
+        ›
+      </button>
     </div>
   );
 }
