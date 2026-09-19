@@ -821,6 +821,34 @@ explicitly out of scope — see "Non-goals" below).
     `fotmob`. `normalize_flashscore_names.py` emits the same staged shape, and
     turns Flashscore's player-link slug into a name with the already-doctested
     `name_from`.
+- **Six sources were surveyed for the last two unnamed seasons, and only
+  Flashscore is usable** (2026-09-18, `docs/ingestion/TPL_SOURCE_SURVEY.md`).
+  2018/19 is now **95.4% attributed** (63 unnamed goals down to 34); 2019/20
+  stands at 72.6%. **Every claim in that survey was tested by reading the page's
+  DOM** — twice a page summariser reported scorers the page does not contain.
+  - **Soccerway, Livesport and Flashscore are one platform.** Soccerway
+    redirects to a Flashscore-style URL and lists the identical 106 matches.
+    Checking it as a separate source is wasted effort.
+  - **Flashscore's per-season results page has no "show more" at all** and
+    reaches back only about four months: 106 of 380 matches for 2019/20 (from
+    14 Mar 2020), 104 of 380 for 2018/19 (from 10 Mar 2019). That still covered
+    206 of 2019/20's unattributed goals and 54 of 2018/19's, because they are
+    not spread evenly.
+  - **footballdatabase.eu has the whole fixture list and virtually no scorers**
+    — 19 of 20 sampled match pages say "No key stat for this match". Its value
+    was as a check: **all 279 of its fixtures matched a vault fixture with the
+    score agreeing exactly**, which also confirmed that its oddly-labelled
+    "DT Bank" is the vault's Singida Black Stars.
+  - **BeSoccer has the early season and was rejected on accuracy.** It is the
+    only source with named scorers for August 2019, but on four matches it also
+    covers it disagrees with Flashscore on roughly a third of goals — a
+    different scorer in two, and a different own-goal scorer and minutes in a
+    third — and nothing available adjudicates. It also abbreviates to an initial
+    and surname, in its slugs too. **Use it as a third opinion where two sources
+    already disagree, never as a primary source.**
+  - Transfermarkt and worldfootball.net have no Tanzanian league at all.
+  - **140 of 2019/20's unattributed goals and 9 of 2018/19's are out of reach**
+    of every source surveyed.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

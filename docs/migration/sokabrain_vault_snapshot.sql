@@ -16343,7 +16343,6 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 88554	player	13037	18	flashscore-player-101-Ramadhan Chombo	\N	1.00	2026-09-18 20:51:45.302921-05
 63734	player	8150	16	444725	https://www.whoscored.com/players/444725/show	1.00	2026-09-12 00:38:55.999912-05
 88555	match_event	3282	18	flashscore-UcutTgE4-name-home-7-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
-88556	player	12571	18	flashscore-player-100-Ayubu Lyanga	\N	1.00	2026-09-18 20:51:45.302921-05
 88557	match_event	3283	18	flashscore-UcutTgE4-name-away-90-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
 88558	player	13038	18	flashscore-player-102-Ramadhan Kapera	\N	1.00	2026-09-18 20:51:45.302921-05
 88559	match_event	3296	18	flashscore-xOrlRXrH-name-away-56-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
@@ -18778,7 +18777,6 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 88715	match_event	3341	18	flashscore-K8aUtFa0-name-home-90-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
 88716	player	1031	18	flashscore-player-11-Shiza Kichuya	\N	1.00	2026-09-18 20:51:45.302921-05
 88717	match_event	3342	18	flashscore-UJ6HqHFs-name-home-11-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
-88718	player	1216	18	flashscore-player-15-Fully Maganga	\N	1.00	2026-09-18 20:51:45.302921-05
 88719	match_event	3343	18	flashscore-UJ6HqHFs-name-away-37-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
 88720	player	13055	18	flashscore-player-100-Abshehe Issa	\N	1.00	2026-09-18 20:51:45.302921-05
 88721	match_event	3270	18	flashscore-SAKklc7Q-name-home-53-GOAL	\N	1.00	2026-09-18 20:51:45.302921-05
@@ -19514,6 +19512,57 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 79117	match_event	27093	18	flashscore-vwW3MBpI-g1	\N	1.00	2026-09-17 21:32:57.50563-05
 79118	player	11796	18	flashscore-player-2eaJqfnn	\N	1.00	2026-09-17 21:32:57.50563-05
 79119	match_event	27094	18	flashscore-C49pZlUN-g5	\N	1.00	2026-09-17 21:32:57.50563-05
+88788	player	1447	18	flashscore-player-13-Benjamin Asukile	\N	1.00	2026-09-18 22:13:00.389995-05
+88789	match_event	1863	18	flashscore-2Tdi5pqM-name-home-27-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88790	player	12592	18	flashscore-player-13-Omar Adam	\N	1.00	2026-09-18 22:13:00.389995-05
+88791	match_event	1864	18	flashscore-2Tdi5pqM-name-home-47-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88792	match_event	1865	18	flashscore-2Tdi5pqM-name-home-85-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88793	player	13067	18	flashscore-player-87-Seif Karie	\N	1.00	2026-09-18 22:13:00.389995-05
+88794	match_event	1866	18	flashscore-2Tdi5pqM-name-away-46-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88795	player	13068	18	flashscore-player-11-Cletus Chama	\N	1.00	2026-09-18 22:13:00.389995-05
+88796	match_event	1851	18	flashscore-M7jX0Aes-name-home-17-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88797	player	1619	18	flashscore-player-101-Edwin Innocent	\N	1.00	2026-09-18 22:13:00.389995-05
+88798	match_event	1850	18	flashscore-M7jX0Aes-name-away-14-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88799	player	13069	18	flashscore-player-12-William Kimanzi	\N	1.00	2026-09-18 22:13:00.389995-05
+88800	player	13045	18	flashscore-player-8-Yussuf Mhilu	\N	1.00	2026-09-18 22:13:00.389995-05
+88801	match_event	1825	18	flashscore-lpF0dk0i-name-home-50-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88802	player	13070	18	flashscore-player-101-Tariq Seif	\N	1.00	2026-09-18 22:13:00.389995-05
+88803	match_event	1793	18	flashscore-ClmUNZA8-name-home-22-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88804	player	11834	18	flashscore-player-5-Iddi Seleman	\N	1.00	2026-09-18 22:13:00.389995-05
+88805	match_event	3224	18	flashscore-junYMgQE-name-home-90-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88806	player	13071	18	flashscore-player-8-B Majogoru	\N	1.00	2026-09-18 22:13:00.389995-05
+88807	match_event	1783	18	flashscore-v33A35Pg-name-away-72-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88556	player	12571	18	flashscore-player-100-Ayubu Lyanga	\N	1.00	2026-09-18 22:13:00.389995-05
+88809	match_event	1784	18	flashscore-h67E2Pv0-name-home-74-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88810	player	4661	18	flashscore-player-5-Frank Ikobela	\N	1.00	2026-09-18 22:13:00.389995-05
+88811	player	975	18	flashscore-player-15-Emmanuel Martin	\N	1.00	2026-09-18 22:13:00.389995-05
+88812	player	1304	18	flashscore-player-2-Said Khamis	\N	1.00	2026-09-18 22:13:00.389995-05
+88813	match_event	1734	18	flashscore-EHXFMeCQ-name-home-57-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88814	player	1462	18	flashscore-player-15-Mussa Said	\N	1.00	2026-09-18 22:13:00.389995-05
+88815	match_event	1726	18	flashscore-dMnH1fz1-name-home-48-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88816	match_event	1727	18	flashscore-dMnH1fz1-name-home-59-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88718	player	1216	18	flashscore-player-15-Fully Maganga	\N	1.00	2026-09-18 22:13:00.389995-05
+88818	match_event	1728	18	flashscore-dMnH1fz1-name-home-79-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88819	player	13072	18	flashscore-player-3-Al Daoud Bilal	\N	1.00	2026-09-18 22:13:00.389995-05
+88820	match_event	1722	18	flashscore-dMnH1fz1-name-away-44-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88821	player	1114	18	flashscore-player-7-Japhary Kibaya	\N	1.00	2026-09-18 22:13:00.389995-05
+88822	match_event	1605	18	flashscore-Sp5jYPuf-name-home-18-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88823	player	1404	18	flashscore-player-87-Mauya Zawadi	\N	1.00	2026-09-18 22:13:00.389995-05
+88824	match_event	1582	18	flashscore-x8OzkhaS-name-home-60-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88825	player	12766	18	flashscore-player-87-Miraji Athuman	\N	1.00	2026-09-18 22:13:00.389995-05
+88826	match_event	1583	18	flashscore-x8OzkhaS-name-home-90-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88827	player	1733	18	flashscore-player-101-Daniel Manyenye	\N	1.00	2026-09-18 22:13:00.389995-05
+88828	match_event	1509	18	flashscore-djYhA9is-name-home-15-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88829	player	13038	18	flashscore-player-4-Ramadhan Kapera	\N	1.00	2026-09-18 22:13:00.389995-05
+88830	match_event	1504	18	flashscore-zsXd9T6m-name-home-55-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88831	player	13073	18	flashscore-player-4-Ally Oviedo	\N	1.00	2026-09-18 22:13:00.389995-05
+88832	match_event	1505	18	flashscore-zsXd9T6m-name-home-60-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88833	match_event	1506	18	flashscore-zsXd9T6m-name-away-7-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88834	player	1169	18	flashscore-player-5-Erick Kyaruzi	\N	1.00	2026-09-18 22:13:00.389995-05
+88835	match_event	1507	18	flashscore-W8Q577y0-name-home-55-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88836	player	1175	18	flashscore-player-5-Mohamed Hamidu	\N	1.00	2026-09-18 22:13:00.389995-05
+88837	match_event	1508	18	flashscore-W8Q577y0-name-home-66-GOAL	\N	1.00	2026-09-18 22:13:00.389995-05
+88838	player	1552	18	flashscore-player-102-Ahmed Ally	\N	1.00	2026-09-18 22:13:00.389995-05
 85128	player	12736	19	fotmob-player-100-Jacobs Mwamlangara Benedicto	\N	1.00	2026-09-18 15:03:29.994119-05
 85129	match_event	31339	19	fotmob-3725892-away-46-0-GOAL	\N	1.00	2026-09-18 15:03:29.994119-05
 85130	player	12590	19	fotmob-player-15-Elias Maguli	\N	1.00	2026-09-18 15:03:29.994119-05
@@ -23794,12 +23843,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1501	603	1	979	\N	77	\N	GOAL	\N
 1502	603	1	979	\N	90	\N	GOAL	\N
 1503	606	87	1165	\N	24	\N	GOAL	\N
-1504	605	4	\N	\N	\N	\N	GOAL	\N
-1505	605	4	\N	\N	\N	\N	GOAL	\N
-1506	605	7	\N	\N	\N	\N	GOAL	\N
-1507	607	5	\N	\N	\N	\N	GOAL	\N
-1508	607	5	\N	\N	\N	\N	GOAL	\N
-1509	604	101	\N	\N	\N	\N	GOAL	\N
 1510	872	118	\N	\N	\N	\N	GOAL	\N
 1511	872	115	\N	\N	\N	\N	GOAL	\N
 1512	872	115	\N	\N	\N	\N	GOAL	\N
@@ -23872,8 +23915,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1579	613	5	1179	\N	81	\N	GOAL	\N
 1580	615	13	1336	\N	35	\N	GOAL	\N
 1581	615	13	1415	\N	45	\N	GOAL	\N
-1582	617	87	\N	\N	\N	\N	GOAL	\N
-1583	617	87	\N	\N	\N	\N	GOAL	\N
 1584	614	15	1216	\N	23	\N	GOAL	\N
 1585	614	7	1098	\N	7	\N	GOAL	\N
 18509	19442	39	7181	\N	35	\N	YELLOW_CARD	\N
@@ -23894,7 +23935,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1601	621	17	1637	\N	\N	\N	GOAL	\N
 18511	19443	58	7183	\N	59	\N	YELLOW_CARD	\N
 1604	624	4	\N	\N	\N	\N	GOAL	\N
-1605	622	7	\N	\N	\N	\N	GOAL	\N
 1606	623	3	\N	\N	\N	\N	GOAL	\N
 1607	620	8	1381	\N	46	\N	GOAL	\N
 1608	626	12	1290	\N	70	\N	GOAL	\N
@@ -24011,19 +24051,14 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1719	508	5	1179	\N	22	\N	GOAL	\N
 1720	635	99	\N	\N	\N	\N	GOAL	\N
 26040	22286	71	11243	\N	89	\N	GOAL	\N
-1722	630	3	\N	\N	\N	\N	GOAL	\N
 1723	631	7	\N	\N	\N	\N	GOAL	\N
 1724	508	11	1029	\N	67	\N	GOAL	\N
 1725	508	11	1413	\N	83	\N	GOAL	\N
-1726	630	15	\N	\N	\N	\N	GOAL	\N
-1727	630	15	\N	\N	\N	\N	GOAL	\N
-1728	630	15	\N	\N	\N	\N	GOAL	\N
 1729	635	4	\N	\N	\N	\N	GOAL	\N
 1730	635	99	\N	\N	\N	\N	GOAL	\N
 1731	635	4	\N	\N	\N	\N	GOAL	\N
 18513	19443	52	7184	\N	92	\N	YELLOW_CARD	\N
 1733	924	1	979	\N	74	\N	GOAL	\N
-1734	637	2	\N	\N	\N	\N	GOAL	\N
 1735	618	11	1032	\N	11	\N	GOAL	\N
 1736	927	87	1219	\N	27	\N	GOAL	\N
 1737	927	87	1205	\N	38	\N	GOAL	\N
@@ -24053,7 +24088,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1761	642	99	1365	\N	40	\N	GOAL	\N
 1762	642	99	1764	\N	43	\N	GOAL	\N
 1763	642	17	1620	\N	58	\N	GOAL	\N
-1764	646	15	\N	\N	35	\N	GOAL	\N
 1765	646	15	1053	\N	38	\N	GOAL	\N
 1766	640	12	1669	\N	37	\N	GOAL	\N
 1767	640	12	1232	\N	59	\N	GOAL	\N
@@ -24071,9 +24105,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1779	650	3	\N	\N	\N	\N	GOAL	\N
 1780	650	3	1888	\N	78	\N	GOAL	\N
 1781	652	5	1245	\N	88	\N	GOAL	\N
-1782	652	5	\N	\N	81	\N	GOAL	\N
-1783	649	8	\N	\N	\N	\N	GOAL	\N
-1784	653	100	\N	\N	\N	\N	GOAL	\N
 1785	658	102	1182	\N	61	\N	GOAL	\N
 1786	655	76	972	\N	16	\N	GOAL	\N
 1787	654	2	1297	\N	35	\N	GOAL	\N
@@ -24082,7 +24113,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1790	654	17	1259	\N	56	\N	GOAL	\N
 1791	654	17	1627	\N	69	\N	GOAL	\N
 1792	654	2	1069	\N	86	\N	GOAL	\N
-1793	657	101	\N	\N	22	\N	GOAL	\N
 1794	657	99	1096	\N	7	\N	GOAL	\N
 26047	22288	37	11126	\N	44	\N	GOAL	\N
 26048	22288	37	11246	\N	45	\N	GOAL	\N
@@ -24114,7 +24144,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1822	663	11	1035	\N	60	\N	GOAL	\N
 1823	662	76	1451	\N	26	\N	GOAL	\N
 1824	659	87	1219	\N	23	\N	GOAL	\N
-1825	659	8	\N	\N	50	\N	GOAL	\N
 1826	660	17	1615	\N	75	\N	GOAL	\N
 1827	660	17	1637	\N	89	\N	GOAL	\N
 1828	660	17	1210	\N	91	\N	GOAL	\N
@@ -24124,7 +24153,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1832	664	99	1759	\N	2	\N	GOAL	\N
 1833	664	99	1759	\N	19	\N	GOAL	\N
 1834	664	99	1754	\N	47	\N	GOAL	\N
-1835	664	12	\N	\N	44	\N	GOAL	\N
 1836	664	12	1292	\N	53	\N	GOAL	\N
 1837	941	11	1035	\N	9	\N	GOAL	\N
 1838	941	11	1413	\N	16	\N	GOAL	\N
@@ -24139,8 +24167,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1847	925	114	\N	\N	79	\N	GOAL	\N
 1848	666	3	1544	\N	26	\N	GOAL	\N
 1849	666	3	1544	\N	90	\N	GOAL	\N
-1850	362	101	\N	\N	\N	\N	GOAL	\N
-1851	362	11	\N	\N	\N	\N	GOAL	\N
 1852	676	4	1106	\N	20	\N	GOAL	\N
 1853	670	1	1058	\N	47	\N	GOAL	\N
 1854	670	1	997	\N	50	\N	GOAL	\N
@@ -24152,10 +24178,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 1860	672	17	\N	\N	\N	\N	GOAL	\N
 1861	672	8	\N	\N	\N	\N	GOAL	\N
 1862	674	15	\N	\N	\N	\N	GOAL	\N
-1863	677	13	\N	\N	\N	\N	GOAL	\N
-1864	677	13	\N	\N	\N	\N	GOAL	\N
-1865	677	13	\N	\N	\N	\N	GOAL	\N
-1866	677	87	\N	\N	\N	\N	GOAL	\N
 1867	678	102	\N	\N	\N	\N	GOAL	\N
 1868	678	102	\N	\N	\N	\N	GOAL	\N
 1869	926	115	\N	\N	41	\N	GOAL	\N
@@ -25241,7 +25263,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 2958	580	6	\N	\N	90	\N	OWN_GOAL	\N
 2959	830	121	1893	\N	\N	\N	OWN_GOAL	\N
 2960	848	121	1894	\N	\N	\N	OWN_GOAL	\N
-2961	597	102	\N	\N	67	\N	OWN_GOAL	\N
 2962	645	11	1016	\N	42	\N	OWN_GOAL	\N
 2963	667	2	1600	\N	2	\N	OWN_GOAL	\N
 26078	22300	32	11263	\N	72	\N	GOAL	\N
@@ -25268,6 +25289,7 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 2985	1415	176	2562	\N	64	\N	OWN_GOAL	\N
 2986	1436	183	\N	\N	30	\N	OWN_GOAL	\N
 2987	1436	127	\N	\N	44	\N	OWN_GOAL	\N
+2961	597	102	1552	\N	67	\N	OWN_GOAL	\N
 2988	1212	11	1016	\N	53	\N	OWN_GOAL	\N
 2989	1214	2	\N	\N	76	\N	OWN_GOAL	\N
 2990	1262	4	1115	\N	45	\N	OWN_GOAL	\N
@@ -25506,7 +25528,6 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 26096	22304	105	11269	\N	47	\N	GOAL	\N
 537	253	76	\N	\N	\N	\N	GOAL	\N
 1365	554	13	\N	\N	\N	\N	GOAL	\N
-3224	643	5	\N	\N	\N	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3225	1035	99	\N	\N	\N	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3226	1035	99	\N	\N	\N	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3227	1035	99	\N	\N	\N	\N	GOAL	{"scorer": "unknown", "derived": "score"}
@@ -31535,7 +31556,35 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 33096	17030	11	1035	\N	90	\N	PENALTY_GOAL	\N
 33097	17032	13	12886	\N	77	\N	GOAL	\N
 33098	17032	346	12917	\N	81	\N	GOAL	\N
+1863	677	13	1447	\N	27	\N	GOAL	\N
 10565	17734	3	2592	\N	7	\N	GOAL	{"source": "ligikuu"}
+1864	677	13	12592	\N	47	\N	GOAL	\N
+1865	677	13	12592	\N	85	\N	GOAL	\N
+1866	677	87	13067	\N	46	\N	GOAL	\N
+1851	362	11	13068	\N	17	\N	GOAL	\N
+1850	362	101	1619	\N	14	\N	GOAL	\N
+1835	664	12	13069	\N	44	\N	GOAL	\N
+1825	659	8	13045	\N	50	\N	GOAL	\N
+1793	657	101	13070	\N	22	\N	GOAL	\N
+3224	643	5	11834	\N	90	2	GOAL	{"scorer": "unknown", "derived": "score"}
+1783	649	8	13071	\N	72	\N	GOAL	\N
+1784	653	100	12571	\N	74	\N	GOAL	\N
+1782	652	5	4661	\N	81	\N	GOAL	\N
+1764	646	15	975	\N	35	\N	GOAL	\N
+1734	637	2	1304	\N	57	\N	GOAL	\N
+1726	630	15	1462	\N	48	\N	GOAL	\N
+1727	630	15	975	\N	59	\N	GOAL	\N
+1728	630	15	1216	\N	79	\N	GOAL	\N
+1722	630	3	13072	\N	44	\N	GOAL	\N
+1605	622	7	1114	\N	18	\N	GOAL	\N
+1582	617	87	1404	\N	60	\N	GOAL	\N
+1583	617	87	12766	\N	90	\N	GOAL	\N
+1509	604	101	1733	\N	15	\N	GOAL	\N
+1504	605	4	13038	\N	55	\N	GOAL	\N
+1505	605	4	13073	\N	60	\N	GOAL	\N
+1506	605	7	1114	\N	7	\N	GOAL	\N
+1507	607	5	1169	\N	55	\N	GOAL	\N
+1508	607	5	1175	\N	66	\N	GOAL	\N
 25486	22128	39	10959	\N	44	\N	GOAL	{"source": "rsssf"}
 27096	18138	1	11798	\N	45	\N	OWN_GOAL	\N
 10478	17687	3	1553	\N	22	\N	GOAL	{"source": "ligikuu"}
@@ -47657,6 +47706,13 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 12934	Madenge Ramadhani	\N	\N	\N	\N	\N	\N	\N	\N
 12935	Amri Msenda	\N	\N	\N	\N	\N	\N	\N	\N
 12936	Shaban Mgandila	\N	\N	\N	\N	\N	\N	\N	\N
+13067	Seif Karie	\N	\N	\N	\N	\N	\N	\N	\N
+13068	Cletus Chama	\N	\N	\N	\N	\N	\N	\N	\N
+13069	William Kimanzi	\N	\N	\N	\N	\N	\N	\N	\N
+13070	Tariq Seif	\N	\N	\N	\N	\N	\N	\N	\N
+13071	B Majogoru	\N	\N	\N	\N	\N	\N	\N	\N
+13072	Al Daoud Bilal	\N	\N	\N	\N	\N	\N	\N	\N
+13073	Ally Oviedo	\N	\N	\N	\N	\N	\N	\N	\N
 11231	Phil Masinga	\N	\N	\N	\N	\N	\N	\N	\N
 11232	John Moshoeu	\N	\N	\N	\N	\N	\N	\N	\N
 11233	Ahmed El-Kass	\N	\N	\N	\N	\N	\N	\N	\N
@@ -48153,10 +48209,16 @@ COPY public.reconciliation_diffs (id, reconciliation_run_id, entity_id_a, entity
 657	81	1801	939	match_events.deleted	GOAL for Sinza United with no minute	Sinza United fragment, no minute	MANUAL	deleted	2026-09-16 16:43:29.990143-05
 658	81	1802	932	match_events.deleted	GOAL for Ubungo Kombaini with no minute	Ubungo Kombaini fragment, no minute	MANUAL	deleted	2026-09-16 16:43:29.990143-05
 659	81	1803	933	match_events.deleted	GOAL for Magomeni Kombaini with no minute	Magomeni Kombaini fragment, no minute	MANUAL	deleted	2026-09-16 16:43:29.990143-05
+1414	139	1863	677	match_events.player_id	no scorer, GOAL for home	Benjamin Asukile at 27' (FotMob)	ACCEPT_B	1447	2026-09-18 22:13:00.389995-05
+1415	139	1864	677	match_events.player_id	no scorer, GOAL for home	Omar Adam at 47' (FotMob)	ACCEPT_B	12592	2026-09-18 22:13:00.389995-05
 662	83	25760	22274	match_events.player_id	no scorer, no minute	Charles Akonnor, 77', from Wikipedia	MANUAL	11087	2026-09-16 17:05:21.824609-05
+1416	139	1865	677	match_events.player_id	no scorer, GOAL for home	Omar Adam at 85' (FotMob)	ACCEPT_B	12592	2026-09-18 22:13:00.389995-05
+1417	139	1866	677	match_events.player_id	no scorer, GOAL for away	Seif Karie at 46' (FotMob)	ACCEPT_B	13067	2026-09-18 22:13:00.389995-05
+1418	139	1851	362	match_events.player_id	no scorer, GOAL for home	Cletus Chama at 17' (FotMob)	ACCEPT_B	13068	2026-09-18 22:13:00.389995-05
 666	85	10904	10960	players.id	Lawal (10904), 3 events	Muda Lawal (10960)	MANUAL	10960	2026-09-16 17:14:44.039805-05
 667	85	7189	7252	players.id	Lawal (7189), 1 events	Garba Lawal (7252)	MANUAL	7252	2026-09-16 17:14:44.039805-05
 668	85	10960	10960	players.full_name	Muda Lawal	Mudashiru Lawal	MANUAL	Mudashiru Lawal	2026-09-16 17:14:44.039805-05
+1419	139	1850	362	match_events.player_id	no scorer, GOAL for away	Edwin Innocent at 14' (FotMob)	ACCEPT_B	1619	2026-09-18 22:13:00.389995-05
 670	87	10919	10959	players.id	Odegbami (10919), 4 events	Segun Odegbami (10959)	MANUAL	10959	2026-09-16 17:22:05.095505-05
 674	89	11085	11106	players.id	Guel (11085), 1 events	Tchiresso Guel (11106)	MANUAL	11106	2026-09-16 17:25:02.320144-05
 675	89	11091	11073	players.id	Polley (11091), 1 events	Prince Polley (11073)	MANUAL	11073	2026-09-16 17:25:02.320144-05
@@ -48168,13 +48230,25 @@ COPY public.reconciliation_diffs (id, reconciliation_run_id, entity_id_a, entity
 686	98	18244	102	match_events.missing_goal	KMC FC score 2, one goal event	82nd minute, scorer unattributed by Flashscore too	MANUAL	added	2026-09-17 21:32:57.50563-05
 689	100	18138	1	match_events.missing_goal	Pamba Jiji score 2, one goal event	own goal by Himid Mkami (Azam FC) 45', from Flashscore	MANUAL	added	2026-09-17 21:36:09.383166-05
 690	100	18059	\N	matches.awarded	stored 0-3 with no event log, read as 3 missing goals	awarded result, never played out; no goals exist to record	MANUAL	flagged INFO	2026-09-17 21:36:09.383166-05
+1420	139	1835	664	match_events.player_id	no scorer	William Kimanzi at 44' (FotMob)	ACCEPT_B	13069	2026-09-18 22:13:00.389995-05
+1421	139	1825	659	match_events.player_id	no scorer, GOAL for home at 50'	Yussuf Mhilu at 50' (FotMob)	ACCEPT_B	13045	2026-09-18 22:13:00.389995-05
+1422	139	1793	657	match_events.player_id	no scorer, GOAL for home at 22'	Tariq Seif at 22' (FotMob)	ACCEPT_B	13070	2026-09-18 22:13:00.389995-05
+1423	139	3224	643	match_events.player_id	no scorer, GOAL for home	Iddi Seleman at 90' (FotMob)	ACCEPT_B	11834	2026-09-18 22:13:00.389995-05
 695	105	20706	17991	match_events.team_id	Jeremiah Juma under JKT Tanzania, no minute	Tanzania Prisons, 77' (Flashscore)	ACCEPT_B	13	2026-09-17 22:31:26.309504-05
 696	105	20708	17991	match_events.team_id	Mohamed Bakari under Tanzania Prisons, no minute	JKT Tanzania, 11' (Flashscore)	ACCEPT_B	3	2026-09-17 22:31:26.309504-05
 697	105	20709	17991	match_events.team_id	Jumanne Elfadhil own goal under JKT Tanzania, no minute	Tanzania Prisons, 42' -- the scorer's own team, counting for JKT (Flashscore)	ACCEPT_B	13	2026-09-17 22:31:26.309504-05
+1424	139	1783	649	match_events.player_id	no scorer, GOAL for away	B Majogoru at 72' (FotMob)	ACCEPT_B	13071	2026-09-18 22:13:00.389995-05
+1425	139	1784	653	match_events.player_id	no scorer, GOAL for home	Ayubu Lyanga at 74' (FotMob)	ACCEPT_B	12571	2026-09-18 22:13:00.389995-05
+1426	139	1782	652	match_events.player_id	no scorer	Frank Ikobela at 81' (FotMob)	ACCEPT_B	4661	2026-09-18 22:13:00.389995-05
+1427	139	1764	646	match_events.player_id	no scorer	Emmanuel Martin at 35' (FotMob)	ACCEPT_B	975	2026-09-18 22:13:00.389995-05
+1428	139	1734	637	match_events.player_id	no scorer, GOAL for home	Said Khamis at 57' (FotMob)	ACCEPT_B	1304	2026-09-18 22:13:00.389995-05
+1429	139	1726	630	match_events.player_id	no scorer, GOAL for home	Mussa Said at 48' (FotMob)	ACCEPT_B	1462	2026-09-18 22:13:00.389995-05
 704	108	10188	17553	match_events.player_id	no scorer	chambo-rashid at 68' (Flashscore)	ACCEPT_B	4698	2026-09-17 22:43:17.68172-05
 705	108	10218	17566	match_events.player_id	no scorer	galiwango-disan at 90' (Flashscore)	ACCEPT_B	11844	2026-09-17 22:43:17.68172-05
 706	108	10347	17625	match_events.player_id	no scorer	mulumba-felly at 52' (Flashscore)	ACCEPT_B	4721	2026-09-17 22:43:17.68172-05
 707	108	10372	17635	match_events.player_id	no scorer	zunon-kipre at 43' (Flashscore)	ACCEPT_B	11845	2026-09-17 22:43:17.68172-05
+1430	139	1727	630	match_events.player_id	no scorer, GOAL for home	Emmanuel Martin at 59' (FotMob)	ACCEPT_B	975	2026-09-18 22:13:00.389995-05
+1431	139	1728	630	match_events.player_id	no scorer, GOAL for home	Fully Maganga at 79' (FotMob)	ACCEPT_B	1216	2026-09-18 22:13:00.389995-05
 710	110	10223	17569	match_events.player_id	no scorer	sidibe-cheikh-tidiane at 10' (Flashscore)	ACCEPT_B	11849	2026-09-17 22:45:42.160068-05
 711	110	10565	17734	match_events.player_id	no scorer	katanga-edson at 6' (Flashscore)	ACCEPT_B	2592	2026-09-17 22:45:42.160068-05
 712	111	4650	1553	players.id	Edward Songo (4650), 14 events	Edward Joseph Songo (1553)	MANUAL	1553	2026-09-17 22:47:38.861754-05
@@ -48197,6 +48271,17 @@ COPY public.reconciliation_diffs (id, reconciliation_run_id, entity_id_a, entity
 729	125	11700	4627	players.id	Luis Miquissone (11700), Simba 2020/21	Luis Miquissone (4627), Simba 2023/24	MANUAL	4627	2026-09-18 16:25:55.820841-05
 730	125	1701	1700	players.id	Derick Derick Musa (1701), no events	Derick Derick Musa (1700)	MANUAL	1700	2026-09-18 16:25:55.820841-05
 731	125	11759	975	players.id	Emmanuel Martin (11759), Ruvu Shooting 2020/21	Emmanuel Martin (975), whose Ruvu Shooting spell has been open since 2019-01-01	MANUAL	975	2026-09-18 16:25:55.820841-05
+1432	139	1722	630	match_events.player_id	no scorer, GOAL for away	Al Daoud Bilal at 44' (FotMob)	ACCEPT_B	13072	2026-09-18 22:13:00.389995-05
+1433	139	1605	622	match_events.player_id	no scorer, GOAL for home	Japhary Kibaya at 18' (FotMob)	ACCEPT_B	1114	2026-09-18 22:13:00.389995-05
+1434	139	1582	617	match_events.player_id	no scorer, GOAL for home	Mauya Zawadi at 60' (FotMob)	ACCEPT_B	1404	2026-09-18 22:13:00.389995-05
+1435	139	1583	617	match_events.player_id	no scorer, GOAL for home	Miraji Athuman at 90' (FotMob)	ACCEPT_B	12766	2026-09-18 22:13:00.389995-05
+1436	139	1509	604	match_events.player_id	no scorer, GOAL for home	Daniel Manyenye at 15' (FotMob)	ACCEPT_B	1733	2026-09-18 22:13:00.389995-05
+1437	139	1504	605	match_events.player_id	no scorer, GOAL for home	Ramadhan Kapera at 55' (FotMob)	ACCEPT_B	13038	2026-09-18 22:13:00.389995-05
+1438	139	1505	605	match_events.player_id	no scorer, GOAL for home	Ally Oviedo at 60' (FotMob)	ACCEPT_B	13073	2026-09-18 22:13:00.389995-05
+1439	139	1506	605	match_events.player_id	no scorer, GOAL for away	Japhary Kibaya at 7' (FotMob)	ACCEPT_B	1114	2026-09-18 22:13:00.389995-05
+1440	139	1507	607	match_events.player_id	no scorer, GOAL for home	Erick Kyaruzi at 55' (FotMob)	ACCEPT_B	1169	2026-09-18 22:13:00.389995-05
+1441	139	1508	607	match_events.player_id	no scorer, GOAL for home	Mohamed Hamidu at 66' (FotMob)	ACCEPT_B	1175	2026-09-18 22:13:00.389995-05
+1442	139	2961	597	match_events.player_id	no scorer	Ahmed Ally at 67' (FotMob)	ACCEPT_B	1552	2026-09-18 22:13:00.389995-05
 1249	137	3232	1037	match_events.player_id	no scorer, GOAL for away	Rehani Kibingu at 68' (FotMob)	ACCEPT_B	1560	2026-09-18 20:51:45.302921-05
 1250	137	3233	1037	match_events.player_id	no scorer, GOAL for away	Abasalim Chidiebere at 88' (FotMob)	ACCEPT_B	13030	2026-09-18 20:51:45.302921-05
 1251	137	3234	1037	match_events.player_id	no scorer, GOAL for away	Abasalim Chidiebere at 90' (FotMob)	ACCEPT_B	13030	2026-09-18 20:51:45.302921-05
@@ -48376,6 +48461,7 @@ COPY public.reconciliation_runs (id, entity_type, data_source_a_id, data_source_
 125	player	6	19	2026-09-18 16:25:55.820841-05	Four player names that were parser output rather than names -- two RSSSF "(pen)" minute markers and two undecoded ligikuu HTML entities -- plus four duplicate scorers blocking the 2020/21 FotMob load.
 127	match_event	15	19	2026-09-18 16:26:09.32048-05	Premier League 2020/2021: goal logs completed from FotMob, for matches the vault held short of or wrongly against their stored score.
 137	match_event	15	18	2026-09-18 20:51:45.302921-05	Premier League 2019/2020: goal logs completed and scorers named from flashscore, for matches the vault held short of, unattributed against, or wrongly against their stored score.
+139	match_event	15	18	2026-09-18 22:13:00.389995-05	Premier League 2018/2019: goal logs completed and scorers named from flashscore, for matches the vault held short of, unattributed against, or wrongly against their stored score.
 \.
 
 
@@ -48839,7 +48925,7 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 19, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 88736, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 88838, true);
 
 
 --
@@ -48874,21 +48960,21 @@ SELECT pg_catalog.setval('public.player_team_stints_id_seq', 4050, true);
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.players_id_seq', 13059, true);
+SELECT pg_catalog.setval('public.players_id_seq', 13073, true);
 
 
 --
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 1384, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 1442, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 137, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 139, true);
 
 
 --

@@ -1,0 +1,279 @@
+1900788|2019-08-24|Polisi Tanzania|Coastal Union|1-0
+1900789|2019-08-24|Mbao Mwanza|Alliance Mwanza|1-1
+1900790|2019-08-24|Biashara United|Kagera Sugar|0-2
+1900791|2019-08-24|Namungo FC|Ndanda SC|2-1
+1900792|2019-08-25|Mwadui|DT Bank|1-0
+1900793|2019-08-25|Lipuli FC|Mtibwa Sugar|3-1
+1900794|2019-08-27|KMC|Azam|0-1
+1900795|2019-08-28|Young Africans|Ruvu Shooting|0-1
+1900796|2019-08-29|JKT Tanzania|Simba SC|1-3
+1900803|2019-09-13|Simba SC|Mtibwa Sugar|2-1
+1900806|2019-09-13|Coastal Union|KMC|2-0
+1900797|2019-09-14|JKT Tanzania|Lipuli FC|0-1
+1900798|2019-09-14|Mbao Mwanza|Biashara United|1-0
+1900799|2019-09-14|Namungo FC|DT Bank|2-0
+1900800|2019-09-15|Prisons Mbeya|Ruvu Shooting|2-1
+1900802|2019-09-15|Alliance Mwanza|Kagera Sugar|1-2
+1900805|2019-12-29|Polisi Tanzania|Azam|0-1
+1900812|2019-09-20|Alliance Mwanza|Biashara United|1-1
+1900811|2019-09-21|Ndanda SC|DT Bank|1-1
+1900814|2019-09-21|Mbeya City|Ruvu Shooting|1-1
+1900816|2019-09-21|Mbao Mwanza|Kagera Sugar|0-1
+1900807|2019-12-25|Polisi Tanzania|KMC|2-1
+1900815|2019-12-25|Simba SC|Lipuli FC|4-0
+1900808|2019-12-26|Coastal Union|Azam|1-0
+1900810|2019-12-27|Prisons Mbeya|Young Africans|0-1
+1917382|2019-09-25|KMC|Namungo FC|1-0
+1917383|2019-09-25|Biashara United|JKT Tanzania|0-1
+1917384|2019-09-25|Mtibwa Sugar|Prisons Mbeya|1-3
+1917385|2019-09-25|Ruvu Shooting|Coastal Union|1-1
+1917386|2019-09-25|Mwadui|Alliance Mwanza|1-1
+1917388|2019-09-26|Lipuli FC|Mbeya City|2-2
+1917389|2019-09-26|Kagera Sugar|Simba SC|0-3
+1917398|2019-10-02|Azam|Ndanda SC|2-0
+1917399|2019-10-03|Young Africans|Polisi Tanzania|3-3
+1917390|2019-09-28|Ruvu Shooting|Polisi Tanzania|1-0
+1917391|2019-09-28|Mwadui|Mbao Mwanza|1-1
+1917392|2019-09-28|DT Bank|Alliance Mwanza|0-1
+1917393|2019-09-29|KMC|Ndanda SC|1-1
+1917394|2019-09-29|Biashara United|Simba SC|0-2
+1917395|2019-09-29|Kagera Sugar|JKT Tanzania|0-1
+1917396|2019-09-29|Mtibwa Sugar|Mbeya City|1-1
+1917397|2019-09-29|Lipuli FC|Prisons Mbeya|2-2
+1917400|2019-10-05|Azam|Namungo FC|2-1
+1917401|2019-10-06|Young Africans|Coastal Union|1-0
+1917402|2019-10-19|Ndanda SC|Mtibwa Sugar|0-1
+1917403|2019-10-19|Namungo FC|Lipuli FC|1-0
+1917404|2019-10-19|Mbao Mwanza|Ruvu Shooting|1-1
+1917405|2019-10-19|Prisons Mbeya|Kagera Sugar|1-1
+1917406|2019-10-19|Coastal Union|Mwadui|2-1
+1917407|2019-10-20|Mbeya City|Biashara United|0-2
+1917408|2019-10-20|Polisi Tanzania|DT Bank|2-1
+1926080|2019-11-29|Alliance Mwanza|Young Africans|1-2
+1926082|2019-12-01|Azam|JKT Tanzania|2-2
+1926081|2019-12-28|KMC|Simba SC|0-2
+1917409|2019-10-22|Mbao Mwanza|Young Africans|0-1
+1917412|2019-10-23|Polisi Tanzania|Mwadui|1-0
+1917414|2019-10-23|Namungo FC|Mtibwa Sugar|1-0
+1917415|2019-10-23|Alliance Mwanza|Ruvu Shooting|1-0
+1917416|2019-10-23|Ndanda SC|Lipuli FC|1-1
+1917417|2019-10-23|Simba SC|Azam|1-0
+1917418|2019-10-24|Mbeya City|Kagera Sugar|1-4
+1917419|2019-10-26|Mtibwa Sugar|Polisi Tanzania|2-0
+1917420|2019-10-27|Biashara United|Namungo FC|1-0
+1917421|2019-10-27|Lipuli FC|Coastal Union|0-1
+1917422|2019-10-27|Mwadui|JKT Tanzania|2-2
+1917423|2019-10-27|Ruvu Shooting|Azam|1-0
+1917424|2019-10-27|DT Bank|Simba SC|0-1
+1917425|2019-10-28|Alliance Mwanza|Prisons Mbeya|1-1
+1917426|2019-10-28|Mbao Mwanza|Mbeya City|1-2
+1926113|2019-12-02|Young Africans|KMC|1-1
+1917427|2019-10-30|Mtibwa Sugar|Coastal Union|2-1
+1917428|2019-10-30|Kagera Sugar|Namungo FC|2-0
+1917429|2019-10-30|Lipuli FC|Polisi Tanzania|2-1
+1917430|2019-10-30|Ruvu Shooting|KMC|1-0
+1917431|2019-10-30|DT Bank|JKT Tanzania|1-2
+1917432|2019-10-30|Mwadui|Simba SC|1-0
+1917433|2019-10-31|Mbao Mwanza|Prisons Mbeya|1-1
+1926122|2019-12-02|Biashara United|Ndanda SC|1-0
+1926115|2020-01-18|Azam|Young Africans|1-0
+1917435|2019-11-02|Lipuli FC|Mwadui|2-0
+1917436|2019-11-02|JKT Tanzania|Prisons Mbeya|0-1
+1917438|2019-11-03|Ndanda SC|Ruvu Shooting|2-0
+1917439|2019-11-03|Polisi Tanzania|Alliance Mwanza|1-0
+1917440|2019-11-03|Simba SC|Mbeya City|4-0
+1917441|2019-11-03|Coastal Union|Mbao Mwanza|1-2
+1917442|2019-11-04|KMC|Biashara United|2-1
+1926090|2020-03-15|Namungo FC|Young Africans|1-1
+1917444|2019-11-06|Mtibwa Sugar|Mwadui|1-0
+1917445|2019-11-07|Namungo FC|Ruvu Shooting|2-1
+1917446|2019-11-07|Polisi Tanzania|Mbao Mwanza|0-1
+1917447|2019-11-07|Lipuli FC|DT Bank|5-1
+1917448|2019-11-07|Coastal Union|Alliance Mwanza|0-1
+1917449|2019-11-07|JKT Tanzania|Mbeya City|1-0
+1917451|2019-11-08|Ndanda SC|Young Africans|0-1
+1917452|2019-11-08|KMC|Kagera Sugar|1-2
+1917453|2019-11-08|Azam|Biashara United|2-1
+1960667|2020-03-14|Lipuli FC|Kagera Sugar|0-1
+1960668|2020-03-14|Mtibwa Sugar|Biashara United|1-1
+1960669|2020-03-14|Polisi Tanzania|Ndanda SC|1-0
+1960670|2020-03-14|DT Bank|Mbeya City|2-1
+2003126|2020-03-14|Mwadui|Prisons Mbeya|2-1
+1960672|2020-03-15|KMC|Alliance Mwanza|2-1
+2003062|2020-06-13|Coastal Union|Namungo FC|2-2
+2003059|2020-06-14|Simba SC|Ruvu Shooting|1-1
+2003060|2020-06-14|Azam|Mbao Mwanza|2-0
+2003061|2020-06-17|JKT Tanzania|Young Africans|1-1
+1960647|2020-03-07|Azam|Alliance Mwanza|1-0
+1960648|2020-03-07|DT Bank|Prisons Mbeya|1-2
+1960649|2020-03-07|Ruvu Shooting|JKT Tanzania|1-1
+1960651|2020-03-07|Mwadui|Mbeya City|1-0
+1960652|2020-03-07|Mtibwa Sugar|Kagera Sugar|3-1
+1960654|2020-03-07|KMC|Mbao Mwanza|2-0
+1960653|2020-03-08|Lipuli FC|Biashara United|1-0
+1960656|2020-03-08|Young Africans|Simba SC|1-0
+1926005|2019-11-22|Kagera Sugar|Lipuli FC|2-1
+1926006|2019-11-22|Namungo FC|Coastal Union|1-3
+1926007|2019-11-22|Alliance Mwanza|KMC|2-1
+1926008|2019-11-22|Ndanda SC|Polisi Tanzania|0-2
+1926009|2019-11-22|Prisons Mbeya|Mwadui|1-1
+1926010|2019-11-22|Young Africans|JKT Tanzania|3-2
+1926011|2019-11-23|Ruvu Shooting|Simba SC|0-3
+1926012|2019-11-23|Mbeya City|DT Bank|0-1
+1926014|2019-11-23|Mbao Mwanza|Azam|0-1
+1926058|2019-11-25|Namungo FC|Polisi Tanzania|1-0
+1926059|2019-11-25|Prisons Mbeya|DT Bank|1-0
+1926060|2019-11-25|Ndanda SC|Coastal Union|0-1
+1926061|2019-11-26|Mbeya City|Mwadui|1-2
+1926062|2019-11-26|Mbao Mwanza|KMC|2-0
+1926063|2019-11-26|Kagera Sugar|Mtibwa Sugar|1-3
+1926064|2019-11-26|Alliance Mwanza|Azam|0-5
+1926065|2019-11-26|Biashara United|Lipuli FC|1-0
+1926066|2019-11-26|JKT Tanzania|Ruvu Shooting|2-1
+1926089|2020-01-04|Simba SC|Young Africans|2-2
+1942863|2019-12-29|JKT Tanzania|Namungo FC|0-1
+1942864|2019-12-30|Young Africans|Biashara United|1-0
+1942865|2019-12-30|Coastal Union|Mbeya City|2-0
+1942866|2019-12-30|Lipuli FC|Mbao Mwanza|3-0
+1942867|2019-12-30|Mtibwa Sugar|Alliance Mwanza|0-1
+1942868|2019-12-30|Ruvu Shooting|Kagera Sugar|2-1
+1942869|2019-12-31|Simba SC|Ndanda SC|2-0
+1942870|2019-12-31|Mwadui|KMC|1-1
+1942871|2020-01-01|DT Bank|Azam|1-2
+1942872|2020-01-29|Polisi Tanzania|Prisons Mbeya|1-0
+1942873|2020-01-03|JKT Tanzania|Ndanda SC|1-0
+1942874|2020-01-03|Mtibwa Sugar|Mbao Mwanza|1-0
+1942875|2020-01-03|Lipuli FC|Alliance Mwanza|2-0
+1942876|2020-01-03|Coastal Union|Prisons Mbeya|1-0
+1942881|2020-01-05|DT Bank|KMC|0-2
+1942882|2020-01-15|Young Africans|Kagera Sugar|0-3
+1942879|2020-01-22|Mwadui|Azam|0-1
+1942880|2020-01-29|Simba SC|Namungo FC|3-2
+1942883|2020-01-08|Mbeya City|Namungo FC|2-3
+1942884|2020-01-08|Alliance Mwanza|JKT Tanzania|0-1
+1942885|2020-01-08|KMC|Lipuli FC|1-1
+1942889|2020-01-08|Polisi Tanzania|Biashara United|1-1
+1942890|2020-01-08|Mwadui|Ruvu Shooting|1-1
+1942891|2020-01-08|Coastal Union|Kagera Sugar|1-0
+1942892|2020-01-16|Mbao Mwanza|Simba SC|1-2
+1942887|2020-01-22|DT Bank|Young Africans|1-3
+1942886|2020-01-30|Azam|Mtibwa Sugar|1-1
+1960657|2020-03-10|Ndanda SC|Kagera Sugar|2-1
+1960658|2020-03-10|Namungo FC|Biashara United|1-1
+1960659|2020-03-10|Mbeya City|Mbao Mwanza|1-0
+1960660|2020-03-10|JKT Tanzania|Mwadui|1-0
+1960661|2020-03-10|Coastal Union|Lipuli FC|2-0
+1960662|2020-03-10|Azam|Ruvu Shooting|2-1
+1960664|2020-03-11|Prisons Mbeya|Alliance Mwanza|1-0
+1960665|2020-03-11|Simba SC|DT Bank|8-0
+1960666|2020-03-12|KMC|Young Africans|1-0
+2003117|2020-06-20|Polisi Tanzania|Lipuli FC|1-1
+2003118|2020-06-20|Namungo FC|Kagera Sugar|2-0
+2003119|2020-06-20|JKT Tanzania|DT Bank|2-0
+2003120|2020-06-20|Mbeya City|Alliance Mwanza|0-1
+2003121|2020-06-20|Ndanda SC|Biashara United|1-0
+2003122|2020-06-20|Simba SC|Mwadui|3-0
+2003123|2020-06-20|KMC|Ruvu Shooting|2-1
+1944953|2020-01-11|Mbeya City|Ndanda SC|1-0
+1944954|2020-01-11|DT Bank|Ruvu Shooting|1-0
+1944955|2020-01-11|Coastal Union|Biashara United|1-1
+1944956|2020-01-11|Polisi Tanzania|Kagera Sugar|2-1
+1944957|2020-01-11|Mbao Mwanza|JKT Tanzania|2-2
+1944959|2020-01-12|Prisons Mbeya|Namungo FC|2-3
+1944960|2020-01-15|Azam|Lipuli FC|2-0
+1944961|2020-01-17|KMC|Mtibwa Sugar|2-0
+1944962|2020-01-19|Alliance Mwanza|Simba SC|1-4
+1944958|2020-06-13|Mwadui|Young Africans|0-1
+1950791|2020-02-04|Simba SC|Polisi Tanzania|2-1
+1950792|2020-02-04|JKT Tanzania|Coastal Union|1-1
+1950840|2020-02-05|Ndanda SC|Mbao Mwanza|3-0
+1950841|2020-02-05|Namungo FC|Alliance Mwanza|1-1
+1950842|2020-02-05|Mbeya City|KMC|0-1
+1950843|2020-02-05|Kagera Sugar|Mwadui|2-1
+1950844|2020-02-05|Biashara United|DT Bank|2-1
+1950845|2020-02-05|Young Africans|Lipuli FC|2-1
+1951037|2020-02-05|Azam|Prisons Mbeya|1-1
+1951038|2020-02-05|Ruvu Shooting|Mtibwa Sugar|1-0
+1951039|2020-02-01|Simba SC|Coastal Union|2-0
+1951040|2020-02-01|Ruvu Shooting|Lipuli FC|3-1
+1951041|2020-02-01|Biashara United|Mwadui|2-1
+1951042|2020-02-01|Kagera Sugar|DT Bank|3-0
+1951043|2020-02-01|Ndanda SC|Alliance Mwanza|1-0
+1951044|2020-02-01|Namungo FC|Mbao Mwanza|3-0
+1951045|2020-02-01|JKT Tanzania|Polisi Tanzania|0-1
+1951046|2020-02-02|Young Africans|Mtibwa Sugar|1-0
+1951047|2020-02-02|Mbeya City|Azam|1-1
+1951048|2020-02-02|Prisons Mbeya|KMC|1-0
+1951049|2020-02-07|Simba SC|JKT Tanzania|0-1
+1951050|2020-02-08|Mtibwa Sugar|Lipuli FC|0-1
+1951051|2020-02-08|DT Bank|Mwadui|2-2
+1951053|2020-02-08|Coastal Union|Polisi Tanzania|2-0
+1951055|2020-02-08|Prisons Mbeya|Mbeya City|0-1
+1951056|2020-02-08|Alliance Mwanza|Mbao Mwanza|1-1
+1951057|2020-02-08|Ruvu Shooting|Young Africans|0-1
+1951058|2020-02-08|Azam|KMC|3-1
+1951059|2020-02-11|Mtibwa Sugar|Simba SC|0-3
+1951061|2020-02-11|Biashara United|Mbao Mwanza|1-0
+1951062|2020-02-11|Ruvu Shooting|Prisons Mbeya|0-3
+1951063|2020-02-11|Kagera Sugar|Alliance Mwanza|1-2
+1951064|2020-02-11|Lipuli FC|JKT Tanzania|1-1
+1951065|2020-02-11|DT Bank|Namungo FC|0-1
+1951066|2020-02-11|Mwadui|Ndanda SC|0-2
+1953030|2020-02-11|Young Africans|Mbeya City|1-1
+1953031|2020-02-11|Azam|Polisi Tanzania|1-0
+1953952|2020-02-15|KMC|Polisi Tanzania|2-3
+1953953|2020-02-15|Azam|Coastal Union|1-2
+1953954|2020-02-15|Biashara United|Alliance Mwanza|1-0
+1953955|2020-02-15|Lipuli FC|Simba SC|0-1
+1953956|2020-02-15|Mtibwa Sugar|JKT Tanzania|0-1
+1953957|2020-02-15|Mwadui|Namungo FC|1-1
+1953958|2020-02-15|Ruvu Shooting|Mbeya City|1-0
+1953959|2020-02-15|DT Bank|Ndanda SC|0-1
+1955181|2020-02-15|Kagera Sugar|Mbao Mwanza|2-0
+1955182|2020-02-18|Polisi Tanzania|Young Africans|1-1
+1955183|2020-02-18|Namungo FC|KMC|2-1
+1955184|2020-02-18|Mbeya City|Lipuli FC|2-1
+1955185|2020-02-18|Mbao Mwanza|DT Bank|3-1
+1955186|2020-02-18|Coastal Union|Ruvu Shooting|1-2
+1955187|2020-02-18|Simba SC|Kagera Sugar|1-0
+1955190|2020-02-19|Ndanda SC|Azam|1-1
+1955191|2020-02-19|Alliance Mwanza|Mwadui|4-1
+2003106|2020-02-22|Mbeya City|Mtibwa Sugar|1-0
+2003107|2020-02-22|Polisi Tanzania|Ruvu Shooting|3-1
+2003108|2020-02-22|Namungo FC|Azam|1-0
+2003109|2020-02-22|Ndanda SC|KMC|2-1
+2003110|2020-02-22|Mbao Mwanza|Mwadui|1-2
+2003111|2020-02-22|JKT Tanzania|Kagera Sugar|1-0
+2003112|2020-02-22|Simba SC|Biashara United|3-1
+2003113|2020-02-23|Alliance Mwanza|DT Bank|1-1
+2003114|2020-02-23|Prisons Mbeya|Lipuli FC|2-0
+1960627|2020-02-29|Ruvu Shooting|Mbao Mwanza|2-0
+1960628|2020-02-29|Mwadui|Coastal Union|2-0
+1960629|2020-02-29|Mtibwa Sugar|Ndanda SC|2-0
+1960630|2020-02-29|Lipuli FC|Namungo FC|1-2
+1960631|2020-02-29|Kagera Sugar|Prisons Mbeya|1-1
+1960632|2020-02-29|JKT Tanzania|Azam|0-1
+1960633|2020-02-29|Biashara United|Mbeya City|1-0
+1960634|2020-02-29|Young Africans|Alliance Mwanza|2-0
+1960636|2020-02-29|DT Bank|Polisi Tanzania|0-1
+1960635|2020-03-01|Simba SC|KMC|2-0
+1960637|2020-03-03|Young Africans|Mbao Mwanza|2-0
+1960638|2020-03-04|DT Bank|Coastal Union|0-1
+1960639|2020-03-04|Ruvu Shooting|Alliance Mwanza|1-0
+1960641|2020-03-04|Mtibwa Sugar|Namungo FC|1-1
+1960643|2020-03-04|Kagera Sugar|Mbeya City|2-3
+1960644|2020-03-04|Biashara United|Prisons Mbeya|1-0
+1960645|2020-03-04|Azam|Simba SC|2-3
+1960640|2020-03-05|Mwadui|Polisi Tanzania|2-1
+1960642|2020-03-05|Lipuli FC|Ndanda SC|3-3
+1960646|2020-03-05|KMC|JKT Tanzania|1-0
+2046117|2020-07-26|Coastal Union|JKT Tanzania|0-1
+2046118|2020-07-26|Polisi Tanzania|Simba SC|1-2
+2046119|2020-07-26|Prisons Mbeya|Azam|2-2
+2046120|2020-07-26|Mwadui|Kagera Sugar|2-1
+2046121|2020-07-26|Mbao Mwanza|Ndanda SC|2-0
+2046122|2020-07-26|KMC|Mbeya City|0-3
+2046123|2020-07-26|Mtibwa Sugar|Ruvu Shooting|2-1
+2046124|2020-07-26|DT Bank|Biashara United|0-2
+2046125|2020-07-26|Alliance Mwanza|Namungo FC|3-2
+2046126|2020-07-26|Lipuli FC|Young Africans|0-1

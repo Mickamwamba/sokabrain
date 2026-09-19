@@ -37,12 +37,20 @@ ALIASES = {
     "Dodoma Jiji FC":     ["Dodoma", "Dodoma Jiji", "Dodoma Mji", "Dodoma City"],
     "Ihefu FC":           ["Ihefu", "Ihefu SC"],
     "Manyema":            ["Manyema Rangers"],
-    "Tanzania Prisons":   ["Prisons"],
     "AFC Arusha":         ["AFC", "Arusha AFC"],
     "TRA United":         ["TRA", "Tra United", "Tabora United", "Kitayosce"],
     "Ashanti United FC":  ["Ashanti United", "Ashanti"],
     "Njombe Mji FC":      ["Njombe Mji", "Njombe"],
-    "Singida Black Stars":["Singida BS", "Singida Big Stars", "Singida United", "Singida Utd"],
+    "Singida Black Stars":["Singida BS", "Singida Big Stars", "Singida United", "Singida Utd",
+                          # footballdatabase.eu labels this club "DT Bank"; its 2019/20
+                          # fixtures match the vault's Singida Black Stars exactly.
+                          "DT Bank", "Diamond Trust Bank", "Singida Fountain Gate"],
+    # Flashscore abbreviates this one in its fixture list.
+    "Stand United":       ["Stand U.", "Stand Utd"],
+    # footballdatabase.eu's renderings of clubs the vault names differently.
+    "Tanzania Prisons":   ["Prisons", "Prisons Mbeya"],
+    "Mbao FC":            ["Mbao", "Mbao Mwanza"],
+    "Alliance FC":        ["Alliance", "Alliance Mwanza"],
 }
 
 # Suffixes that carry no identity, stripped before comparing.
