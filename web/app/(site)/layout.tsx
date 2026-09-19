@@ -24,21 +24,29 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
               <p className="font-bold text-ink text-sm">
                 soka<span className="text-brand">brain</span>
               </p>
-              <p className="mt-1 max-w-2xl text-xs text-muted leading-relaxed">
-                The Tanzania Premier League (2008/09 to 2026/27) and Africa Cup of
-                Nations (2002 to 2025) — built from the SokaFC archive and reconciled against
-                official league records, RSSSF and verified match data.
+              <p className="mt-1 max-w-xl text-xs text-muted leading-relaxed">
+                The premier football statistics and records platform for East Africa.
+                Covering the NBC Premier League, regional derbies, and continental tournaments.
+              </p>
+              <p className="mt-2 text-[11px] text-muted/70">
+                &copy; {new Date().getFullYear()} SokaBrain. All rights reserved.
               </p>
             </div>
-            <div className="flex items-center gap-4 text-xs font-medium">
+            <div className="flex flex-wrap items-center gap-4 text-xs font-medium">
+              <Link href="/" className="text-muted hover:text-ink transition-colors">
+                Matches
+              </Link>
               <Link href="/table" className="text-muted hover:text-ink transition-colors">
                 Standings
               </Link>
               <Link href="/stats" className="text-muted hover:text-ink transition-colors">
-                Stats
+                Statistics
               </Link>
-              <Link href="/admin" className="text-muted hover:text-ink transition-colors">
-                Admin Console
+              <Link href="/stats/head-to-head" className="text-muted hover:text-ink transition-colors">
+                Head to Head
+              </Link>
+              <Link href="/stats/players" className="text-muted hover:text-ink transition-colors">
+                Top Scorers
               </Link>
             </div>
           </div>

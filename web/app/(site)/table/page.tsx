@@ -1,22 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError, type Edition } from "@/lib/api";
-import { Card, CardHead, Crest, DataNote, Empty, PageTitle, Rank, TeamLink } from "@/components/ui";
+import { Card, CardHead, Crest, Empty, PageTitle, Rank, TeamLink } from "@/components/ui";
 import { ScopeSelect } from "@/components/scope-select";
 import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { GroupTables, KnockoutBracket } from "@/components/group-tables";
 
 export const dynamic = "force-dynamic";
-
-const KIND: Record<string, string> = {
-  DOMESTIC_CUP: "a knockout cup",
-  SUPER_CUP: "a one-off super cup",
-  CONTINENTAL_CLUB: "a continental club competition",
-  CONTINENTAL_NATIONAL: "a continental national-team tournament",
-  WORLD_CUP: "a World Cup tournament",
-  QUALIFIER: "a qualifying campaign",
-  FRIENDLY: "a set of friendlies",
-};
 
 function getZoneClass(pos: number, total: number, isLeague: boolean) {
   if (!isLeague) return "border-l-4 border-l-transparent";
@@ -319,35 +309,13 @@ export default async function TablePage(props: PageProps<"/table">) {
         </div>
       )}
 
-      {/* Data Fidelity Notes */}
-      <div className="mt-6 space-y-2.5">
-        {!isLeagueTable ? (
-          <DataNote>
-            {isTournament
-              ? `This is ${KIND[edition.competitionType] ?? "not a league"}. Each group is its own round robin, so those are shown as tables; the knockout rounds are ties, decided on the day and by penalties where level.`
-              : `This is ${KIND[edition.competitionType] ?? "not a league"}, not a round-robin league — the standings above summarise results across the edition but are not an official table.`}
-          </DataNote>
-        ) : null}
-        {coverage.isProvisional ? (
-          <DataNote>
-            <strong>This table is not a final standing.</strong> {coverage.missingFixtures} of the {coverage.fixturesExpected} fixtures this
-            season implies are missing from every source we have, not merely unscored, so
-            clubs here have played between {coverage.minPlayed} and {coverage.maxPlayed} matches.
-          </DataNote>
-        ) : null}
-        {coverage.matchesMissingScore > 0 ? (
-          <DataNote>
-            Built from {coverage.matchesCounted} of {coverage.matchesFullTime} completed matches. {coverage.matchesMissingScore}{" "}
-            {coverage.matchesMissingScore === 1 ? "match has" : "matches have"} no score in
-            the source data.
-          </DataNote>
-        ) : null}
-        {scorers.coverage.unattributedGoals > 0 ? (
-          <DataNote>
-            {scorers.coverage.attributedGoals} goals have a verified named scorer; {scorers.coverage.unattributedGoals} do not.
-          </DataNote>
-        ) : null}
-      </div>
+      {!isLeagueTable ? (
+        <div className="mt-6">
+          <p className="text-xs text-muted">
+            Group stage standings. Top teams advance to the knockout rounds.
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

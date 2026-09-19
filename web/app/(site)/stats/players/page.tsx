@@ -8,7 +8,7 @@ import {
 } from "@/lib/api";
 import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { AllTimeBadge, ScopeSelect } from "@/components/scope-select";
-import { Card, ChipRow, Crest, DataNote, Empty, Rank, TeamLink } from "@/components/ui";
+import { Card, ChipRow, Crest, Empty, Rank, TeamLink } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -80,9 +80,6 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
       (s.value !== "redCards" || coverage.cardsReliable),
   );
   const sortLabel = availableSorts.find((s) => s.value === sort)?.label ?? "Goals";
-
-  const pct = (n: number) => Math.round(n * 100);
-  const goalsAreAFloor = coverage.goalAttributionRate < 0.995;
 
   return (
     <div>
@@ -170,26 +167,10 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
         </Card>
       )}
 
-      <div className="mt-5 space-y-2">
-        <DataNote>
-          {goalsAreAFloor ? (
-            <>
-              These are <strong>minimum verified totals</strong>, not career totals. A scorer is
-              recorded for {pct(coverage.goalAttributionRate)}% of the{" "}
-              {coverage.goalsInScope.toLocaleString()} goals in view across{" "}
-              {coverage.seasonsWithScorers} of {coverage.seasonsInScope} seasons naming scorers.{" "}
-            </>
-          ) : (
-            <>A scorer is verified for every goal in this view. </>
-          )}
-          {coverage.assistsRecorded > 0 ? (
-            <>
-              Assists are recorded from {coverage.seasonsWithAssists} of{" "}
-              {coverage.seasonsInScope} seasons in view.{" "}
-            </>
-          ) : null}
-          Own goals are never credited to the scorer.
-        </DataNote>
+      <div className="mt-4">
+        <p className="text-xs text-muted">
+          Official goal and assist totals from verified match records. Own goals are not credited to individual scorers.
+        </p>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError, type MatchDetail, type MatchEventRow } from "@/lib/api";
-import { Card, CardHead, Crest, DataNote, Empty, TeamLink } from "@/components/ui";
+import { Card, CardHead, Crest, Empty, TeamLink } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -147,7 +147,6 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
     : null;
 
   const played = match.home.score !== null && match.away.score !== null;
-  const c = match.coverage;
   const h = match.headToHead;
 
   const homeScore = match.home.score ?? 0;
@@ -231,25 +230,6 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
               <ChronoTimeline events={match.events} />
             )}
           </Card>
-
-          <div className="mt-4 space-y-2.5">
-            {played && c.noEventLog ? (
-              <DataNote>
-                The score is verified, but detailed event timestamps were not published for{" "}
-                {match.competition.season}. This is missing archive data, not a goalless account.
-              </DataNote>
-            ) : null}
-            {played && !c.noEventLog && !c.eventLogComplete ? (
-              <DataNote>
-                The event log names {c.goalEventsRecorded} of the {c.goalsInScore} goals recorded in the final score.
-              </DataNote>
-            ) : null}
-            {c.unnamedScorers > 0 ? (
-              <DataNote>
-                {c.unnamedScorers} {c.unnamedScorers === 1 ? "goal is" : "goals are"} recorded without a named scorer.
-              </DataNote>
-            ) : null}
-          </div>
         </div>
 
         {/* Head-to-Head & Form Sidebars */}
@@ -310,7 +290,7 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
                   <div key={side}>
                     <p className="mb-2 truncate text-xs font-bold text-ink">{name}</p>
                     {form.length === 0 ? (
-                      <p className="text-xs text-muted">No prior matches recorded in season.</p>
+                      <p className="text-xs text-muted">No prior matches this season.</p>
                     ) : (
                       <div className="flex flex-wrap gap-1.5">
                         {form.map((f, i) => (

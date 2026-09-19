@@ -95,11 +95,11 @@ export default async function StatsHome(props: PageProps<"/stats">) {
             East African Football Vault
           </div>
           <h1 className="display max-w-2xl text-3xl font-black leading-tight sm:text-4xl text-white">
-            East African football, counted properly.
+            East African Football Statistics & Records
           </h1>
           <p className="mt-2 max-w-xl text-sm text-white/70 leading-relaxed">
-            Every goal, table and derby from the Tanzanian and Kenyan leagues — the
-            statistical depth global platforms keep for Europe.
+            The authoritative statistics, records, and history of East African football —
+            comprehensive data for every club, player, and competition.
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-6 border-t border-white/10 pt-6">
@@ -232,9 +232,9 @@ export default async function StatsHome(props: PageProps<"/stats">) {
         </ul>
       </Card>
 
-      {/* Competitions in Archive */}
+      {/* Competitions */}
       <div>
-        <h2 className="display mb-3 text-lg font-black text-ink">Competitions in Archive</h2>
+        <h2 className="display mb-3 text-lg font-black text-ink">Competitions</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {competitions.map((c) => (
             <Link key={c.id} href={competitionHref(c.id)} className="block group">
@@ -243,7 +243,7 @@ export default async function StatsHome(props: PageProps<"/stats">) {
                   {c.name}
                 </p>
                 <p className="mt-1 text-xs text-muted font-medium">
-                  {c.seasons} {c.seasons === 1 ? "season" : "seasons"} · {c.matches.toLocaleString()} matches recorded
+                  {c.seasons} {c.seasons === 1 ? "season" : "seasons"} · {c.matches.toLocaleString()} matches
                 </p>
                 <p className="mt-2 text-[11px] text-muted/70 font-semibold">
                   {c.span}

@@ -7,7 +7,7 @@ import {
   type Match,
   type StandingsRow,
 } from "@/lib/api";
-import { Crest, DataNote, Empty, PageTitle } from "@/components/ui";
+import { Crest, Empty, PageTitle } from "@/components/ui";
 import { ScopeSelect } from "@/components/scope-select";
 import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
 import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
@@ -355,22 +355,6 @@ export default async function MatchesHub(props: PageProps<"/">) {
                 <MatchRows matches={list.matches} />
               </div>
             )}
-          </div>
-
-          {/* Data notes */}
-          <div className="space-y-2 pt-2">
-            {mode === "round" && rounds.withoutRound > 0 ? (
-              <DataNote>
-                {rounds.withoutRound} of this season&rsquo;s matches carry no round number in any
-                source, so the rounds above are missing some fixtures. Every match is reachable by date.
-              </DataNote>
-            ) : null}
-            {!rounds.hasRounds ? (
-              <DataNote>
-                No source publishes round numbers for {edition?.season}, so this season is browsed by
-                date.
-              </DataNote>
-            ) : null}
           </div>
         </div>
 

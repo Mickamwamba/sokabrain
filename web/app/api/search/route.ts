@@ -249,7 +249,7 @@ export async function GET(request: Request) {
         type: "edition",
         id: e.editionId,
         title: `${e.competition} (${e.season})`,
-        subtitle: `${e.country || "East Africa"} · ${e.matchCount} matches recorded`,
+        subtitle: `${e.country || "East Africa"} · ${e.matchCount} matches`,
         href: `/table?editionId=${e.editionId}`,
       }));
 

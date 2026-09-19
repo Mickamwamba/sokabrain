@@ -14,7 +14,6 @@ import {
   Card,
   CardHead,
   Crest,
-  DataNote,
   Empty,
   FormDots,
   Rank,
@@ -187,7 +186,7 @@ export default async function TeamPage(props: PageProps<"/teams/[id]">) {
     throw err;
   }
 
-  const { team, record, competitions, seasons, form, players, coverage } = profile;
+  const { team, record, competitions, seasons, form, players } = profile;
   const isNational = team.type === "NATIONAL";
   const titles = competitions.reduce((n, c) => n + c.titles, 0);
 
@@ -244,7 +243,6 @@ export default async function TeamPage(props: PageProps<"/teams/[id]">) {
     );
   }
 
-  const goalsAreAFloor = coverage.goalAttributionRate < 0.995;
   const showAssists = players.coverage.assistsRecorded > 0;
   const span = (() => {
     const labels = seasons.map((s) => s.season).sort();
@@ -342,20 +340,12 @@ export default async function TeamPage(props: PageProps<"/teams/[id]">) {
               No goal in this team&rsquo;s published matches names its scorer.
             </p>
           )}
-          {goalsAreAFloor ? (
-            <div className="border-t border-line/80 p-4">
-              <DataNote>
-                Scorers are verified for {Math.round(coverage.goalAttributionRate * 100)}% of{" "}
-                {team.name}&rsquo;s {coverage.goalsScored.toLocaleString()} goals.
-              </DataNote>
-            </div>
-          ) : null}
         </Card>
       </div>
 
       {/* Season by season historical record */}
       <Card className="overflow-hidden">
-        <CardHead title="Season by Season Archive" />
+        <CardHead title="Season-by-Season Record" />
         <div className="overflow-x-auto">
           <table className="w-full min-w-[580px] border-collapse text-sm">
             <thead>
