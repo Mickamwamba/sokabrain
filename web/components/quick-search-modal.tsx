@@ -1,23 +1,66 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Crest } from "@/components/ui";
 
-type SearchItem = {
+type TeamResult = {
+  type: "team";
   id: number;
-  name: string;
-  country?: string | null;
-  type?: string;
+  title: string;
+  subtitle: string | null;
+  badge?: string;
+  href: string;
 };
 
-const QUICK_SHORTCUTS = [
-  { href: "/", label: "Today's Matches" },
-  { href: "/table", label: "League Standings" },
-  { href: "/stats", label: "All-Time Statistics" },
-  { href: "/stats/players", label: "Top Scorers & Player Stats" },
-  { href: "/stats/head-to-head", label: "Head to Head Comparison" },
-];
+type PlayerResult = {
+  type: "player";
+  id: number;
+  title: string;
+  subtitle: string | null;
+  badge?: string;
+  teamId: number | null;
+  href: string;
+};
+
+type H2HResult = {
+  type: "h2h";
+  id: string;
+  title: string;
+  subtitle: string;
+  href: string;
+};
+
+type EditionResult = {
+  type: "edition";
+  id: number;
+  title: string;
+  subtitle: string;
+  href: string;
+};
+
+type NavResult = {
+  type: "nav";
+  id: string;
+  title: string;
+  subtitle: string;
+  href: string;
+};
+
+type SearchResultItem =
+  | TeamResult
+  | PlayerResult
+  | H2HResult
+  | EditionResult
+  | NavResult;
+
+type SearchResponse = {
+  teams: TeamResult[];
+  players: PlayerResult[];
+  derbies: H2HResult[];
+  editions: EditionResult[];
+  shortcuts: NavResult[];
+};
 
 export function QuickSearchModal({
   isOpen,
@@ -28,90 +71,129 @@ export function QuickSearchModal({
 }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const [teams, setTeams] = useState<SearchItem[]>([]);
+  const [data, setData] = useState<SearchResponse>({
+    teams: [],
+    players: [],
+    derbies: [],
+    editions: [],
+    shortcuts: [],
+  });
   const [loading, setLoading] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [, startTransition] = useTransition();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setQuery("");
+    setSelectedIndex(0);
     onClose();
-  };
+  }, [onClose]);
 
+  // Fetch search results on query change (with debouncing)
   useEffect(() => {
-    let ignore = false;
-    if (!isOpen || teams.length > 0) return;
+    if (!isOpen) return;
 
-    fetch("/api/vault/teams")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed");
-        return res.json();
+    const controller = new AbortController();
+
+    const timer = setTimeout(() => {
+      setLoading(true);
+      fetch(`/api/search?q=${encodeURIComponent(query.trim())}`, {
+        signal: controller.signal,
       })
-      .then((data) => {
-        if (!ignore && data && Array.isArray(data.teams)) {
-          setTeams(data.teams);
+        .then((res) => {
+          if (!res.ok) throw new Error("Search failed");
+          return res.json();
+        })
+        .then((json: SearchResponse) => {
+          setData(json);
           setLoading(false);
-        }
-      })
-      .catch(() => {
-        if (!ignore) {
-          setTeams([
-            { id: 1, name: "Simba SC", country: "Tanzania", type: "CLUB" },
-            { id: 2, name: "Yanga SC", country: "Tanzania", type: "CLUB" },
-            { id: 3, name: "Azam FC", country: "Tanzania", type: "CLUB" },
-            { id: 4, name: "Singida Black Stars", country: "Tanzania", type: "CLUB" },
-            { id: 5, name: "Coastal Union", country: "Tanzania", type: "CLUB" },
-            { id: 6, name: "Namungo FC", country: "Tanzania", type: "CLUB" },
-            { id: 7, name: "Geita Gold FC", country: "Tanzania", type: "CLUB" },
-            { id: 8, name: "Pamba Jiji", country: "Tanzania", type: "CLUB" },
-          ]);
-          setLoading(false);
-        }
-      });
+          setSelectedIndex(0);
+        })
+        .catch((err) => {
+          if (err.name !== "AbortError") {
+            setLoading(false);
+          }
+        });
+    }, 100);
 
     return () => {
-      ignore = true;
+      clearTimeout(timer);
+      controller.abort();
     };
-  }, [isOpen, teams.length]);
+  }, [isOpen, query]);
 
+  // Focus input on open
   useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") handleClose();
-    }
     if (isOpen) {
-      window.addEventListener("keydown", onKeyDown);
-      return () => window.removeEventListener("keydown", onKeyDown);
+      setTimeout(() => inputRef.current?.focus(), 50);
     }
-  });
+  }, [isOpen]);
 
-  if (!isOpen) return null;
+  // Flatten items for keyboard arrow-key navigation
+  const allItems: SearchResultItem[] = useMemo(
+    () => [
+      ...data.derbies,
+      ...data.teams,
+      ...data.players,
+      ...data.editions,
+      ...data.shortcuts,
+    ],
+    [data]
+  );
 
-  const cleanQ = query.trim().toLowerCase();
-  const filteredTeams = cleanQ
-    ? teams.filter((t) => t.name.toLowerCase().includes(cleanQ)).slice(0, 8)
-    : teams.slice(0, 6);
-
-  const filteredShortcuts = cleanQ
-    ? QUICK_SHORTCUTS.filter((s) => s.label.toLowerCase().includes(cleanQ))
-    : QUICK_SHORTCUTS;
-
-  const navigateTo = (href: string) => {
+  const navigateTo = useCallback((href: string) => {
     handleClose();
     startTransition(() => {
       router.push(href);
     });
-  };
+  }, [handleClose, router]);
+
+  // Keyboard navigation: Escape, ArrowDown, ArrowUp, Enter
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (!isOpen) return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        handleClose();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((prev) =>
+          allItems.length > 0 ? (prev + 1) % allItems.length : 0
+        );
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((prev) =>
+          allItems.length > 0 ? (prev - 1 + allItems.length) % allItems.length : 0
+        );
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (allItems[selectedIndex]) {
+          navigateTo(allItems[selectedIndex].href);
+        }
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, selectedIndex, allItems, handleClose, navigateTo]);
+
+  if (!isOpen) return null;
+
+  let currentCounter = -1;
+  const hasAnyResults = allItems.length > 0;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center p-4 sm:pt-20 bg-ink/50 backdrop-blur-xs animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 sm:pt-20 bg-ink/50 backdrop-blur-xs animate-in fade-in duration-150"
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-paper shadow-2xl animate-in zoom-in-95 duration-150"
+        className="w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-paper shadow-2xl animate-in zoom-in-95 duration-150 flex flex-col max-h-[82vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center border-b border-line px-4 py-3">
+        <div className="flex items-center border-b border-line px-4 py-3 bg-paper shrink-0">
           <svg
             className="h-5 w-5 text-muted mr-3 shrink-0"
             fill="none"
@@ -126,76 +208,236 @@ export function QuickSearchModal({
             />
           </svg>
           <input
+            ref={inputRef}
             type="text"
-            placeholder="Search clubs, national teams, or pages..."
+            placeholder="Search clubs, players, head-to-heads (e.g. Simba vs Yanga)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            autoFocus
             className="w-full bg-transparent text-base font-medium text-ink placeholder:text-muted focus:outline-hidden"
           />
+          {query ? (
+            <button
+              onClick={() => setQuery("")}
+              className="mr-2 text-xs text-muted hover:text-ink cursor-pointer p-1 rounded-sm"
+              title="Clear search"
+            >
+              ✕
+            </button>
+          ) : null}
           <kbd className="hidden sm:inline-block rounded border border-line bg-wash px-1.5 py-0.5 text-[10px] font-semibold text-muted">
             ESC
           </kbd>
         </div>
 
-        {/* Search Results */}
-        <div className="max-h-[60vh] overflow-y-auto p-2 divide-y divide-line/40">
-          {/* Teams / Clubs Section */}
-          <div className="py-2">
-            <p className="px-3 pb-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
-              Clubs & Teams
-            </p>
-            {loading ? (
-              <p className="px-3 py-2 text-xs text-muted">Loading teams...</p>
-            ) : filteredTeams.length > 0 ? (
+        {/* Search Results / Content */}
+        <div className="overflow-y-auto p-2 divide-y divide-line/40 space-y-1">
+          {loading && allItems.length === 0 ? (
+            <div className="py-8 text-center text-sm text-muted">
+              Searching football vault...
+            </div>
+          ) : !hasAnyResults ? (
+            <div className="py-8 text-center">
+              <p className="text-sm font-semibold text-ink">No results found for &ldquo;{query}&rdquo;</p>
+              <p className="text-xs text-muted mt-1">Try searching club names, top players, or derbies</p>
+            </div>
+          ) : null}
+
+          {/* Derbies / Head-to-Head Section */}
+          {data.derbies.length > 0 && (
+            <div className="py-1">
+              <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-muted">
+                Head to Head Matchups
+              </p>
               <div className="space-y-0.5">
-                {filteredTeams.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => navigateTo(`/teams/${t.id}`)}
-                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium hover:bg-wash transition-colors group cursor-pointer"
-                  >
-                    <Crest name={t.name} size={26} />
-                    <span className="flex-1 font-semibold text-ink group-hover:text-brand transition-colors">
-                      {t.name}
-                    </span>
-                    {t.country ? (
-                      <span className="text-xs text-muted font-normal">{t.country}</span>
-                    ) : null}
-                  </button>
-                ))}
+                {data.derbies.map((item) => {
+                  currentCounter++;
+                  const itemIndex = currentCounter;
+                  const isSelected = itemIndex === selectedIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => navigateTo(item.href)}
+                      onMouseEnter={() => setSelectedIndex(itemIndex)}
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors cursor-pointer ${
+                        isSelected ? "bg-wash text-brand border border-line/60" : "hover:bg-wash/70 text-ink"
+                      }`}
+                    >
+                      <div className="h-7 w-7 rounded-full bg-amber-500/15 text-amber-700 flex items-center justify-center shrink-0 text-sm">
+                        🔥
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-ink truncate">{item.title}</div>
+                        <div className="text-xs text-muted truncate">{item.subtitle}</div>
+                      </div>
+                      <span className="text-xs text-brand font-medium shrink-0">View H2H →</span>
+                    </button>
+                  );
+                })}
               </div>
-            ) : (
-              <p className="px-3 py-2 text-xs text-muted">No matching clubs found.</p>
-            )}
-          </div>
+            </div>
+          )}
+
+          {/* Clubs & Teams Section */}
+          {data.teams.length > 0 && (
+            <div className="py-1">
+              <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-muted">
+                Clubs & Teams
+              </p>
+              <div className="space-y-0.5">
+                {data.teams.map((item) => {
+                  currentCounter++;
+                  const itemIndex = currentCounter;
+                  const isSelected = itemIndex === selectedIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => navigateTo(item.href)}
+                      onMouseEnter={() => setSelectedIndex(itemIndex)}
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors cursor-pointer ${
+                        isSelected ? "bg-wash text-brand border border-line/60" : "hover:bg-wash/70 text-ink"
+                      }`}
+                    >
+                      <Crest name={item.title} size={28} />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-ink truncate">{item.title}</div>
+                        {item.subtitle ? (
+                          <div className="text-xs text-muted truncate">{item.subtitle}</div>
+                        ) : null}
+                      </div>
+                      {item.badge ? (
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-line text-muted">
+                          {item.badge}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-muted font-normal">Team Profile →</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Players Section */}
+          {data.players.length > 0 && (
+            <div className="py-1">
+              <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-muted">
+                Players & Top Scorers
+              </p>
+              <div className="space-y-0.5">
+                {data.players.map((item) => {
+                  currentCounter++;
+                  const itemIndex = currentCounter;
+                  const isSelected = itemIndex === selectedIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => navigateTo(item.href)}
+                      onMouseEnter={() => setSelectedIndex(itemIndex)}
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors cursor-pointer ${
+                        isSelected ? "bg-wash text-brand border border-line/60" : "hover:bg-wash/70 text-ink"
+                      }`}
+                    >
+                      <div className="h-7 w-7 rounded-full bg-emerald-500/15 text-emerald-700 flex items-center justify-center shrink-0 text-xs font-bold">
+                        ⚽
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-ink truncate">{item.title}</div>
+                        <div className="text-xs text-muted truncate">{item.subtitle}</div>
+                      </div>
+                      {item.badge ? (
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-wash border border-line text-ink">
+                          {item.badge}
+                        </span>
+                      ) : null}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Competitions / Editions */}
+          {data.editions.length > 0 && (
+            <div className="py-1">
+              <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-muted">
+                Competitions & Editions
+              </p>
+              <div className="space-y-0.5">
+                {data.editions.map((item) => {
+                  currentCounter++;
+                  const itemIndex = currentCounter;
+                  const isSelected = itemIndex === selectedIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => navigateTo(item.href)}
+                      onMouseEnter={() => setSelectedIndex(itemIndex)}
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors cursor-pointer ${
+                        isSelected ? "bg-wash text-brand border border-line/60" : "hover:bg-wash/70 text-ink"
+                      }`}
+                    >
+                      <div className="h-7 w-7 rounded-full bg-amber-500/15 text-amber-700 flex items-center justify-center shrink-0 text-xs font-bold">
+                        🏆
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-ink truncate">{item.title}</div>
+                        <div className="text-xs text-muted truncate">{item.subtitle}</div>
+                      </div>
+                      <span className="text-xs text-muted">View Standings →</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Quick Shortcuts */}
-          {filteredShortcuts.length > 0 && (
-            <div className="py-2">
-              <p className="px-3 pb-1.5 text-[11px] font-bold uppercase tracking-wider text-muted">
+          {data.shortcuts.length > 0 && (
+            <div className="py-1">
+              <p className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-muted">
                 Quick Navigation
               </p>
               <div className="space-y-0.5">
-                {filteredShortcuts.map((s) => (
-                  <button
-                    key={s.href}
-                    onClick={() => navigateTo(s.href)}
-                    className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium hover:bg-wash transition-colors text-ink group cursor-pointer"
-                  >
-                    <span className="group-hover:text-brand transition-colors">{s.label}</span>
-                    <span className="text-xs text-muted">Go →</span>
-                  </button>
-                ))}
+                {data.shortcuts.map((item) => {
+                  currentCounter++;
+                  const itemIndex = currentCounter;
+                  const isSelected = itemIndex === selectedIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => navigateTo(item.href)}
+                      onMouseEnter={() => setSelectedIndex(itemIndex)}
+                      className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors cursor-pointer ${
+                        isSelected ? "bg-wash text-brand border border-line/60" : "hover:bg-wash/70 text-ink"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm">📌</span>
+                        <div>
+                          <span className="font-semibold text-ink">{item.title}</span>
+                          <p className="text-xs text-muted">{item.subtitle}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs text-muted">Go →</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
         </div>
 
         {/* Modal Footer */}
-        <div className="flex items-center justify-between border-t border-line bg-wash/60 px-4 py-2 text-[11px] text-muted">
-          <span>Search the SokaBrain football vault</span>
-          <span>Tip: Press ESC to close</span>
+        <div className="flex items-center justify-between border-t border-line bg-wash/60 px-4 py-2.5 text-[11px] text-muted shrink-0">
+          <span className="flex items-center gap-2">
+            <kbd className="rounded border border-line bg-paper px-1.5 py-0.5 text-[10px] font-semibold text-muted">↑</kbd>
+            <kbd className="rounded border border-line bg-paper px-1.5 py-0.5 text-[10px] font-semibold text-muted">↓</kbd>
+            <span>to navigate</span>
+            <kbd className="rounded border border-line bg-paper px-1.5 py-0.5 text-[10px] font-semibold text-muted">↵</kbd>
+            <span>to select</span>
+          </span>
+          <span>SokaBrain Football Vault</span>
         </div>
       </div>
     </div>
