@@ -849,6 +849,24 @@ explicitly out of scope — see "Non-goals" below).
   - Transfermarkt and worldfootball.net have no Tanzanian league at all.
   - **140 of 2019/20's unattributed goals and 9 of 2018/19's are out of reach**
     of every source surveyed.
+- **The season in play is kept current with `update_season_results.py`**, not
+  `load.py` — which skips a season the vault already has, by design. As of
+  2026-09-19 the 2026/27 Premier League holds **49 of 240 fixtures played, all
+  49 reconciling with their score and every goal naming a scorer**, and nothing
+  is past its kickoff without a result.
+  - It writes a score **only where there is none**; a result the vault already
+    has is never overwritten, and a disagreement becomes a diff (principle 2).
+  - **It corrects a kickoff when the fixture moved.** Three of the eight results
+    added were played later than scheduled — Azam v Simba a week late — and a
+    stale scheduled date is the defect that once left 82 COVID-restart fixtures
+    inside the suspension.
+  - **ligikuu's goal list is not always complete, and the score decides.** Three
+    of the eight had a list that did not add up (1-1 for an Azam 0-2 Simba); the
+    lists were refused, the scores written, and the four affected matches then
+    completed from FotMob. **A wrong goal log is worse than none.**
+  - **All eight scores and all three date corrections were confirmed against
+    FotMob before committing.** One page load, and it is the whole safety net
+    for a write that changes what the public site shows.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

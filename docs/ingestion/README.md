@@ -147,3 +147,35 @@ in both sources rather than in one.
 
 **Every new edition is unpublished.** They are in the vault and visible in the
 admin dashboard; none of them reaches the public site until someone publishes it.
+
+## Keeping the season in play up to date
+
+`load.py` **skips a season the vault already has**, deliberately, so a bulk
+re-run can never trample existing data. That makes it the wrong tool for the
+current season, whose 240 fixtures are already loaded and are waiting for their
+results. `update_season_results.py` does that job and only that job:
+
+    python3 fetch_ligikuu.py raw/ligikuu
+    python3 normalize_ligikuu.py raw/ligikuu canon_ligikuu.json
+    python3 update_season_results.py canon_ligikuu.json 2026/2027            # dry run
+    python3 update_season_results.py canon_ligikuu.json 2026/2027 --commit
+
+It writes a score **only where there is none**. Where the vault already has a
+result and the source disagrees, it records a `reconciliation_diffs` row and
+changes nothing (principle 2).
+
+**It corrects the kickoff when the fixture moved.** Three of the eight results
+added on 2026-09-19 had been played later than scheduled — Azam v Simba a week
+late — and a stale scheduled date is a defect the vault has been bitten by
+before, with 82 COVID-restart fixtures. Each change is recorded as a diff.
+
+**ligikuu's scorer list is not always complete, and the score is what decides.**
+Of the eight, three had a goal list that did not add up to the result (it gave
+1-1 for Azam 0-2 Simba). Those goal lists were refused and the score written
+anyway — a wrong goal log is worse than none. The four affected matches were
+then filled from FotMob through the normal harvest, which completed them.
+
+**Cross-check before committing a result.** All eight scores and all three
+corrected dates were confirmed against FotMob's 2026/27 fixture list before the
+commit. That is one page load and it is the whole safety net for a write that
+changes what the site shows.
