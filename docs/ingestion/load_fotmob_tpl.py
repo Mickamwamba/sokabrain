@@ -53,14 +53,18 @@ def scorer_side(g):
 
 
 class Loader:
-    def __init__(self, conn):
+    def __init__(self, conn, source="fotmob"):
         self.c = conn.cursor()
         self.stats = defaultdict(int)
         self.notes = []
-        self.c.execute("SELECT id FROM data_sources WHERE name = 'fotmob'")
+        # The source is a parameter because the same loader serves Flashscore,
+        # whose harvest has the same shape. Provenance must name the source the
+        # rows actually came from (principle 1), so it can never be hardcoded.
+        self.source = source
+        self.c.execute("SELECT id FROM data_sources WHERE name = %s", (source,))
         row = self.c.fetchone()
         if not row:
-            raise SystemExit("no data_sources row for fotmob -- add one first")
+            raise SystemExit(f"no data_sources row for {source} -- add one first")
         self.source_id = row[0]
 
         # A club's candidate pool: everyone who has scored for it, plus its
@@ -143,7 +147,7 @@ class Loader:
             INSERT INTO entity_source_map (entity_type, entity_id, data_source_id, external_id, confidence)
             VALUES ('player', %s, %s, %s, 1.0)
             ON CONFLICT (entity_type, data_source_id, external_id) DO UPDATE SET last_synced_at = now()
-        """, (pid, self.source_id, f"fotmob-player-{team_id}-{display(name)}"))
+        """, (pid, self.source_id, f"{self.source}-player-{team_id}-{display(name)}"))
         self.resolved[key] = pid
         return pid
 
@@ -206,10 +210,11 @@ class Loader:
             if any(ev[2] is not None for ev in on_side):
                 continue          # partly named; the minute rule below handles it
             if sorted(ev[4] for ev in on_side) != sorted(g["type"] for g in mine):
-                self.stats["sides left alone, the vault and FotMob disagree on the goal types"] += 1
+                self.stats[f"sides left alone, the vault and {self.source} disagree "
+                           f"on the goal types"] += 1
                 self.notes.append(
                     f"match {mid}: {side} has {len(on_side)} unnamed goals typed "
-                    f"{sorted(ev[4] for ev in on_side)} against FotMob's "
+                    f"{sorted(ev[4] for ev in on_side)} against {self.source}'s "
                     f"{sorted(g['type'] for g in mine)} -- not named")
                 continue
             by_type = defaultdict(list)
@@ -253,7 +258,7 @@ class Loader:
                     VALUES ('match_event', %s, %s, %s, 1.0)
                     ON CONFLICT (entity_type, data_source_id, external_id) DO NOTHING
                 """, (ev_id, self.source_id,
-                      f"fotmob-{rec.get('fotmob', mid)}-name-{g['side']}-{g.get('minute')}-{g['type']}"))
+                      f"{self.source}-{rec.get('ext') or rec.get('fotmob') or mid}-name-{g['side']}-{g.get('minute')}-{g['type']}"))
 
         # Re-read: the step above may have named events the next one would
         # otherwise try to name again.
@@ -364,7 +369,7 @@ class Loader:
                     VALUES ('match_event', %s, %s, %s, 1.0)
                     ON CONFLICT (entity_type, data_source_id, external_id) DO NOTHING
                 """, (ev_id, self.source_id,
-                      f"fotmob-{rec.get('fotmob', mid)}-{g['side']}-{g.get('minute')}-"
+                      f"{self.source}-{rec.get('ext') or rec.get('fotmob') or mid}-{g['side']}-{g.get('minute')}-"
                       f"{g.get('added') or 0}-{g['type']}"))
                 self.stats[f"goals added ({g['type']})"] += 1
                 if pid is None:
@@ -402,7 +407,7 @@ def verify(cur, season):
           f"{missing} goals still have no event; {unnamed} events name no scorer")
 
 
-def main(path, season, commit):
+def main(path, season, commit, source="fotmob"):
     staged = json.load(open(path))
     conn = psycopg2.connect(DSN)
     conn.autocommit = False
@@ -412,13 +417,14 @@ def main(path, season, commit):
         INSERT INTO reconciliation_runs (entity_type, data_source_a_id, data_source_b_id, notes)
         VALUES ('match_event',
                 (SELECT id FROM data_sources WHERE name='ligikuu'),
-                (SELECT id FROM data_sources WHERE name='fotmob'),
+                (SELECT id FROM data_sources WHERE name=%s),
                 %s) RETURNING id
-    """, (f"Premier League {season}: goal logs completed from FotMob, for matches the vault "
-          f"held short of or wrongly against their stored score.",))
+    """, (source, f"Premier League {season}: goal logs completed and scorers named from "
+                  f"{source}, for matches the vault held short of, unattributed against, or "
+                  f"wrongly against their stored score."))
     run_id = cur.fetchone()[0]
 
-    loader = Loader(conn)
+    loader = Loader(conn, source)
     for rec in staged:
         loader.do_match(rec, run_id)
 
@@ -443,4 +449,8 @@ def main(path, season, commit):
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         raise SystemExit(__doc__)
-    main(sys.argv[1], sys.argv[2], "--commit" in sys.argv)
+    src = "fotmob"
+    for a in sys.argv[3:]:
+        if a.startswith("--source="):
+            src = a.split("=", 1)[1]
+    main(sys.argv[1], sys.argv[2], "--commit" in sys.argv, src)

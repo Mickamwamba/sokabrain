@@ -1,0 +1,106 @@
+dScqHZTC|2020-08-01|Mbao|Singida Black Stars|4-2
+l2fyJea0|2020-08-01|Mbeya City|Geita Gold|1-0
+6w5WJypf|2020-07-29|Geita Gold|Mbeya City|1-1
+ShguIFE6|2020-07-29|Singida Black Stars|Mbao|2-0
+fXWiO5eB|2020-07-26|Alliance|Namungo|3-2
+nL8IvRuh|2020-07-26|Coastal Union|JKT Tanzania|0-1
+zsu0MqQN|2020-07-26|Kinondoni MC|Mbeya City|0-3
+xA1VyPPA|2020-07-26|Lipuli|Young Africans|0-1
+xdMdNPAH|2020-07-26|Mbao|Ndanda|2-0
+tr8Mwoeb|2020-07-26|Mtibwa Sugar|Ruvu Shooting|2-1
+WCQVGNmo|2020-07-26|Mwadui|Kagera Sugar|2-1
+8U9Eu7Qo|2020-07-26|Polisi Tanzania|Simba|1-2
+U3v4L3uU|2020-07-26|Singida United|Biashara Mara United|0-2
+foCQx5A4|2020-07-26|Tanzania Prisons|Azam|2-2
+E9qUNJgM|2020-07-23|Azam|Mbeya City|1-0
+phz0IcHq|2020-07-23|Alliance|Ndanda|2-2
+SGP4HHWk|2020-07-23|Coastal Union|Simba|0-0
+67O8Gynd|2020-07-23|Lipuli|Ruvu Shooting|1-0
+8WrYMw9S|2020-07-23|Polisi Tanzania|JKT Tanzania|1-1
+IsjLPuP9|2020-07-22|Kinondoni MC|Tanzania Prisons|0-1
+zJpQOavG|2020-07-22|Mbao|Namungo|3-0
+viiHQL93|2020-07-22|Mtibwa Sugar|Young Africans|1-1
+pUiDR1fc|2020-07-22|Mwadui|Biashara Mara United|1-0
+Ygl9Ssui|2020-07-22|Singida United|Kagera Sugar|1-2
+ULNSJkyi|2020-07-19|JKT Tanzania|Mbao|1-1
+jVOOKVLp|2020-07-19|Lipuli|Azam|1-1
+bwXdPBDT|2020-07-19|Simba|Alliance|5-1
+KnYhQibN|2020-07-18|Young Africans|Mwadui|1-1
+UcutTgE4|2020-07-18|Biashara Mara United|Coastal Union|1-1
+OKvpSDTA|2020-07-18|Kagera Sugar|Polisi Tanzania|1-2
+xOrlRXrH|2020-07-18|Mtibwa Sugar|Kinondoni MC|0-1
+W4QzWeUo|2020-07-18|Namungo|Tanzania Prisons|1-1
+AePvVFqh|2020-07-18|Ndanda|Mbeya City|0-1
+j7txUZbb|2020-07-18|Ruvu Shooting|Singida United|0-2
+I1xg7Cio|2020-07-16|Simba|Mbao|2-3
+fLS3T28m|2020-07-15|Young Africans|Singida United|3-1
+O0KKPK7C|2020-07-15|JKT Tanzania|Alliance|1-1
+6P9POvNI|2020-07-15|Kagera Sugar|Coastal Union|1-0
+GzHCRtw0|2020-07-15|Mtibwa Sugar|Azam|1-0
+xpI8SMNg|2020-07-15|Namungo|Mbeya City|1-0
+pALGQ0h6|2020-07-15|Ndanda|Tanzania Prisons|2-1
+veNYYOpQ|2020-07-14|Biashara Mara United|Polisi Tanzania|0-1
+dzA0Urgs|2020-07-14|Lipuli|Kinondoni MC|2-0
+04OUZ4VJ|2020-07-14|Ruvu Shooting|Mwadui|3-2
+8jkNGPOs|2020-07-10|Mbeya City|Polisi Tanzania|2-1
+pdtrC1wD|2020-07-09|Alliance|Lipuli|2-0
+OnunBLhJ|2020-07-09|Tanzania Prisons|Coastal Union|1-2
+xWxzEN80|2020-07-08|Azam|Mwadui|1-0
+GGlRFqvl|2020-07-08|Biashara Mara United|Ruvu Shooting|0-0
+jZtvDsO6|2020-07-08|Kagera Sugar|Young Africans|0-1
+f7mVE3gf|2020-07-08|Kinondoni MC|Singida United|2-0
+AF9nNRoE|2020-07-08|Mbao|Mtibwa Sugar|1-0
+OIDjMo1K|2020-07-08|Ndanda|JKT Tanzania|0-0
+6s3eL5GQ|2020-07-08|Namungo|Simba|0-0
+dCL4br9D|2020-07-06|Mbeya City|Coastal Union|3-1
+0pSe04v1|2020-07-05|Azam|Singida United|7-0
+ILM0aOg7|2020-07-05|Alliance|Mtibwa Sugar|1-1
+MgTi1pPf|2020-07-05|Biashara Mara United|Young Africans|0-0
+SWTm2Q9l|2020-07-05|Ndanda|Simba|0-0
+2kp998HE|2020-07-04|Kagera Sugar|Ruvu Shooting|1-1
+WOlD8SWK|2020-07-04|Kinondoni MC|Mwadui|3-2
+AFmH7nnR|2020-07-04|Mbao|Lipuli|2-0
+Obo5Al28|2020-07-04|Namungo|JKT Tanzania|1-0
+GdQq36fr|2020-07-04|Tanzania Prisons|Polisi Tanzania|0-0
+f1lbYlfA|2020-06-28|Mbao|Polisi Tanzania|1-0
+rRpfZUv4|2020-06-28|Tanzania Prisons|Simba|0-0
+f54aDmIp|2020-06-27|Alliance|Coastal Union|1-0
+MBdoyiAi|2020-06-27|Biashara Mara United|Azam|1-1
+SEn6WSOM|2020-06-27|Kagera Sugar|Kinondoni MC|1-1
+02ekzBPc|2020-06-27|Mbeya City|JKT Tanzania|2-0
+Ye33C7Xj|2020-06-27|Mwadui|Mtibwa Sugar|1-0
+zLNSI9fN|2020-06-27|Ruvu Shooting|Namungo|1-1
+lOm2X89G|2020-06-27|Singida United|Lipuli|2-3
+lORWHT9T|2020-06-27|Young Africans|Ndanda|3-2
+MFvtlceE|2020-06-24|Young Africans|Namungo|2-2
+WQBmr77e|2020-06-24|Alliance|Polisi Tanzania|1-1
+QmBisRM1|2020-06-24|Biashara Mara United|Kinondoni MC|4-0
+viFetox8|2020-06-24|Kagera Sugar|Azam|1-0
+rPuxkwt8|2020-06-24|Mbeya City|Simba|0-2
+W4zDVTNk|2020-06-23|Mbao|Coastal Union|1-0
+ETPHUmwd|2020-06-23|Mwadui|Lipuli|3-0
+hKOLT7h2|2020-06-23|Ruvu Shooting|Ndanda|0-0
+KQG7iBp9|2020-06-23|Singida United|Mtibwa Sugar|1-3
+2k6CjVaF|2020-06-23|Tanzania Prisons|JKT Tanzania|2-2
+dn063c1C|2020-06-21|Young Africans|Azam|0-0
+8x4lDORS|2020-06-20|Coastal Union|Mtibwa Sugar|0-0
+UuAF8rzp|2020-06-20|JKT Tanzania|Singida United|2-0
+n9pZcHkr|2020-06-20|Kinondoni MC|Ruvu Shooting|2-1
+C4aK72kj|2020-06-20|Mbeya City|Alliance|0-1
+jebO6M4d|2020-06-20|Namungo|Kagera Sugar|2-0
+vBi6V5sc|2020-06-20|Ndanda|Biashara Mara United|1-0
+I1jAUPd3|2020-06-20|Polisi Tanzania|Lipuli|1-1
+Ie124wn6|2020-06-20|Simba|Mwadui|3-0
+WQBuvDqJ|2020-06-17|JKT Tanzania|Young Africans|1-1
+K8aUtFa0|2020-06-14|Azam|Mbao|2-0
+UJ6HqHFs|2020-06-14|Simba|Ruvu Shooting|1-1
+SAKklc7Q|2020-06-13|Coastal Union|Namungo|2-2
+WrRtjJxE|2020-06-13|Mwadui|Young Africans|0-1
+EF4pE4CM|2020-03-17|Tanzania Prisons|Mbao|0-0
+SffGfw5A|2020-03-15|Kinondoni MC|Alliance|2-1
+Yyako9Zd|2020-03-15|Namungo|Young Africans|1-1
+vqs0Rq0p|2020-03-14|Lipuli|Kagera Sugar|0-1
+IZu4Q3Fj|2020-03-14|Mtibwa Sugar|Biashara Mara United|1-1
+nFm4IAoS|2020-03-14|Mwadui|Tanzania Prisons|2-1
+fiPnkmhi|2020-03-14|Polisi Tanzania|Ndanda|1-0
+YsOjl77c|2020-03-14|Singida United|Mbeya City|2-1

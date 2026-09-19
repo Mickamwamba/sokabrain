@@ -178,7 +178,7 @@ def main(path, season):
                     raise SystemExit(f"stoppage row {r['fotmob']}:{i} is not on minute {g['minute']}")
                 g["added"] = hit[1]
             goals.append(g)
-        staged.append({"match": mid, "fotmob": r["fotmob"], "goals": goals})
+        staged.append({"match": mid, "ext": r["fotmob"], "goals": goals})
 
     print(f"{len(rows)} harvested, {len(staged)} matched to vault fixtures", file=sys.stderr)
     for p in problems:

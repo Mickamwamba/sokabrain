@@ -795,6 +795,32 @@ explicitly out of scope — see "Non-goals" below).
     surnames. Not merged: two different surnames are not something the vault can
     settle, and **the audit's Identity checks will not raise this pair either,
     because they key on a shared name.** That is a gap in those checks.
+- **Flashscore reaches 2019/20 where FotMob does not, and named 136 of its
+  goals** (2026-09-18). 2019/20 went from 55% attributed to 73%: 346 unnamed
+  goals down to 207, with all 380 matches still reconciling. Meddie Kagere's 20
+  leads the season.
+  - **Flashscore's season results page reaches back only so far.** For 2019/20
+    it lists 106 of 380 matches — 14 March to 1 August 2020, the COVID restart
+    and the play-offs — with no "show more" button at all. That still covered
+    206 of the 346 unattributed goals. **The other 140 need the head-to-head or
+    team-page route**, which is the documented way to older fixtures and has not
+    been done yet.
+  - **102 of the 106 matched a vault fixture with the score agreeing exactly.**
+    The 4 refusals are play-off ties whose clubs also met in the league, so the
+    ordered pair is no longer unique that season — the score check caught them.
+  - 160 of the 169 harvested goals name a scorer; only 136 were written, and the
+    gap is the type guard working. **7 sides hold a plain GOAL in the vault where
+    Flashscore says OWN_GOAL** — the familiar pattern of legacy data filing an
+    own goal as an ordinary goal for the side it counted for. Correcting those
+    means changing a type *and* moving the event to the scorer's own team, which
+    is a fix file's job, not a loader's. They are still unnamed.
+  - 11 of the 86 matches visited were skipped because Flashscore's own timeline
+    is short of the score.
+  - **`load_fotmob_tpl.py` now takes `--source`**, because provenance must name
+    the source the rows came from (principle 1) and it was hardcoded to
+    `fotmob`. `normalize_flashscore_names.py` emits the same staged shape, and
+    turns Flashscore's player-link slug into a name with the already-doctested
+    `name_from`.
 - **The legacy source is exhausted for goalscorers.** Four earlier SokaFC
   snapshots (Jul-Dec 2018) were diffed against the migrated one: no match,
   lineup or event was ever lost, and **not one event ever lost its scorer**.

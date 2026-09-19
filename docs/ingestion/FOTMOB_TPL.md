@@ -235,3 +235,43 @@ loader over the harvest that named them, checks the same scorers come back, and
 rolls the whole thing back. It restricts itself to events FotMob itself named —
 mixing sources would measure their disagreement over spelling rather than this
 step, which is exactly what the first version of the test did.
+
+## Flashscore reaches 2019/20 where FotMob does not — for part of it
+
+FotMob has no goal timeline before 2020/21, but **Flashscore does**, with the
+minute, the side, the running score, the type, and a player link carrying the
+whole name. `normalize_flashscore_names.py` turns a harvest into the same shape
+the loader already takes, and the loader is told which source it is:
+
+    python3 normalize_flashscore_names.py raw/flashscore_tpl/2019-2020.tsv 2019/2020 > staged.json
+    python3 load_fotmob_tpl.py staged.json 2019/2020 --source=flashscore --commit
+
+`--source` exists because provenance has to name the source the rows actually
+came from (principle 1); it was hardcoded to `fotmob` before.
+
+**Its season results page only reaches back so far.** For 2019/20 it lists 106
+of 380 matches — 14 March to 1 August 2020, the COVID restart and the play-offs
+— with no "show more" button at all. That still covered 206 of the season's 346
+unattributed goals, which is why it was worth doing before finding a route to
+the rest.
+
+Of the 106: **102 matched a vault fixture with the score agreeing exactly.** The
+4 refusals are play-off ties whose two clubs also met in the league, so the pair
+is no longer unique in the season — the score check caught every one.
+
+### What the harvest is worth
+
+| | |
+|---|---|
+| matches visited | 86 (those with an unattributed goal) |
+| stored | 75 |
+| skipped | 11, where Flashscore's own timeline is short of the score |
+| goals | 169, of which **160 name a scorer** |
+| goals actually named in the vault | **136** |
+
+The gap between 160 and 136 is the type guard doing its job: **7 sides hold a
+plain GOAL in the vault where Flashscore says OWN_GOAL.** That is the pattern
+this project has hit before — an own goal is the one kind a scorer list has no
+natural place to record, so the legacy data filed it as an ordinary goal for the
+side it counted for. Correcting those means changing a type AND moving the event
+to the scorer's own team, which is a fix file's job, not a loader's.
