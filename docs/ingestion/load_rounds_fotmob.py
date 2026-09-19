@@ -38,12 +38,35 @@ DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
 
 
 def read(path):
+    """Either one `round|home|away` line per fixture, or the compact form.
+
+    The compact form exists because getting a season out of the browser costs a
+    call per ~950 characters, and naming both clubs on every line spends most of
+    those characters repeating twenty club names. Indexing the clubs once turns
+    a season from eight chunks into two:
+
+        SEASON|2026/2027
+        CLUBS|Pamba Jiji|Mbeya City|...
+        1|0>5,1>6,...
+    """
+    lines = [l.rstrip("\n") for l in open(path, encoding="utf-8") if l.strip()]
+    clubs = None
+    for l in lines:
+        if l.startswith("CLUBS|"):
+            clubs = l.split("|")[1:]
+    if clubs is None:
+        return [tuple(x.strip() for x in l.split("|")) for l in lines]
+
     rows = []
-    for line in open(path, encoding="utf-8"):
-        if not line.strip():
+    for l in lines:
+        if l.startswith(("CLUBS|", "SEASON|")):
             continue
-        rnd, home, away = line.rstrip("\n").split("|")
-        rows.append((rnd.strip(), home.strip(), away.strip()))
+        rnd, _, pairs = l.partition("|")
+        for pair in pairs.split(","):
+            if not pair:
+                continue
+            h, _, a = pair.partition(">")
+            rows.append((rnd.strip(), clubs[int(h)], clubs[int(a)]))
     return rows
 
 
@@ -63,6 +86,22 @@ def check_source(rows):
     if len(rows) != expected:
         problems.append(
             f"{len(rows)} fixtures for {len(clubs)} clubs; a double round-robin is {expected}")
+
+    # A club plays once per round. FotMob's `round` is trustworthy for the
+    # seasons it has match pages for, but on the older fixture-list-only seasons
+    # it buckets fixtures rather than reading a real matchday, and puts the same
+    # club in one round twice. That is the signature of a derived round number,
+    # and it disqualifies the whole season -- the rounds that look clean were
+    # produced by the same guess as the ones that do not.
+    twice = defaultdict(list)
+    for r, h, a in rows:
+        for c in (team_key(h), team_key(a)):
+            twice[(r, c)].append(c)
+    clashes = sorted({r for (r, _), got in twice.items() if len(got) > 1})
+    if clashes:
+        problems.append(
+            f"{len(clashes)} rounds put a club in two fixtures at once: "
+            f"{', '.join(clashes[:8])}")
     return problems
 
 
@@ -99,7 +138,7 @@ def main():
     for mid, hn, an, rnd in cur.fetchall():
         by_pair[(team_key(hn), team_key(an))].append((mid, rnd))
 
-    plan, unmatched, disagree, already = [], [], [], 0
+    plan, unmatched, disagree, disagree_rows, already = [], [], [], [], 0
     for rnd, home, away in rows:
         cands = by_pair.get((team_key(home), team_key(away)), [])
         if len(cands) != 1:
@@ -110,6 +149,7 @@ def main():
             plan.append((mid, rnd))
         elif str(have) != rnd:
             disagree.append(f"match {mid} {home} v {away}: vault round {have}, FotMob {rnd}")
+            disagree_rows.append((mid, have, rnd))
         else:
             already += 1
 
@@ -139,6 +179,17 @@ def main():
             VALUES (%s,%s,NULL,'matches.round','no round',%s,'ACCEPT_B',%s,now())
         """, (run_id, mid, f"round {rnd} (fotmob)", rnd))
         cur.execute("UPDATE matches SET round=%s WHERE id=%s", (rnd, mid))
+
+    # A round the vault already has is kept (principle 2), but the disagreement
+    # is recorded rather than left in terminal output -- these are the rows a
+    # human needs in order to decide which source numbered the season right.
+    for mid, have, rnd in disagree_rows:
+        cur.execute("""
+            INSERT INTO reconciliation_diffs
+              (reconciliation_run_id, entity_id_a, entity_id_b, field_name,
+               value_a, value_b, resolution)
+            VALUES (%s,%s,NULL,'matches.round',%s,%s,'PENDING')
+        """, (run_id, mid, f"round {have} (vault)", f"round {rnd} (fotmob)"))
 
     cur.execute("""
         SELECT count(*) , count(round), count(DISTINCT round)

@@ -147,8 +147,8 @@ explicitly out of scope — see "Non-goals" below).
   with its event timeline, head-to-head and form; `/table` is the league table
   with a season picker; `/stats` holds Overview / Players / Clubs / Head to head
   as tabs. Date is the primary axis everywhere because kickoff dates are
-  complete; round browsing appears only where real rounds exist (2,577 of 4,380
-  matches, from RSSSF).
+  complete; round browsing appears only where real rounds exist — now **4,035 of
+  4,380 matches**, from RSSSF and FotMob together.
 - **Fixed: every kickoff the API served was shifted by the server's UTC offset.**
   `@prisma/adapter-pg` decodes a TIMESTAMPTZ by taking the wall-clock Postgres
   renders and dropping the offset, so on a machine in America/Chicago a 13:00Z
@@ -664,6 +664,50 @@ explicitly out of scope — see "Non-goals" below).
   - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
     short. That is correct: the stray event had been padding the count over a
     gap that was always there.
+- **The Premier League's fixtures now know their round: 4,035 of 4,380, up from
+  3,437** (2026-09-19). Thirteen seasons had gaps; ten are now complete. Loaded
+  from FotMob's fixture list, whose every entry carries a `round` the official
+  site's export does not — `docs/ingestion/load_rounds_fotmob.py`, written up in
+  `FOTMOB_TPL.md`. A season's rounds travel out of the browser as two ~950-char
+  chunks (clubs indexed once, then `round|hIdx>aIdx` pairs), each verified by
+  SHA-1 before loading.
+  - **`check_source` refuses a whole season rather than writing part of one**,
+    and two of its three checks fired. A duplicated fixture refused **2016/17**
+    (FotMob lists Kagera Sugar v Stand United in rounds 2 *and* 17; the reverse
+    fixture is in neither source, which is why that season holds 239 fixtures).
+    A new check — **no club in two fixtures in one round** — refused **2011/12**.
+  - **2011/12's rounds are unrecoverable, not merely unloaded.** Its rounds 19-22
+    hold 28 fixtures scrambled across each other, and the decomposition into four
+    perfect matchings is **not unique** — a search finds more than one, and even a
+    unique one would not say which block is round 19. RSSSF's page for that
+    season has only the final table, and WhoScored has no rounds at all. Do not
+    reconstruct them; that would be inventing data.
+  - **FotMob's rounds agree with the rounds the vault already held on 1,097 of
+    1,097 fixtures** across the seven seasons that disagreed nowhere (2010/11,
+    2012/13, 2013/14, 2014/15, 2015/16, 2020/21, 2021/22). That is what
+    justifies trusting FotMob where the vault was blank, and what makes 2011/12
+    read as one season's defect rather than FotMob deriving old rounds generally.
+  - **A round the vault already has is never overwritten** — it is kept and the
+    disagreement written as a PENDING `reconciliation_diffs` row (principle 2).
+    Nine such rows were then resolved by hand:
+    **2023/24 had four fixtures under the wrong round and 2022/23 five, every
+    one a Singida Black Stars match**, each settled by its own kickoff date and
+    proved by the round sizes — before the fixes three rounds a season held nine
+    fixtures and three held seven; afterwards all thirty hold eight
+    (`2026-09-19_tpl_2023_24_singida_rounds.sql`,
+    `2026-09-19_tpl_2022_23_singida_rounds.sql`). 2016/17's single roundless
+    fixture was applied the same way
+    (`2026-09-19_tpl_2016_17_toto_prisons_round.sql`).
+  - **2025/26's rounds 18 and 19 are swapped between the sources and were left
+    alone.** Chronology cannot settle it: both sources number out of playing
+    order elsewhere in that season, both calling the 30 April set round 22 ahead
+    of rounds 20 and 21. Sixteen diffs stay PENDING for a human.
+  - **Check round sizes before reading a disagreement as a defect.** In both
+    Singida seasons one round held eight all along, because its intruder and its
+    absentee cancelled out.
+  - Still roundless: **2008/09** (132, before FotMob's season list), **2011/12**
+    (182, above) and **31 of 2020/21** — the Ihefu FC and BIGMAN FC surplus that
+    FotMob's 306 fixtures do not include.
 - **The Premier League's 2022/23 season is complete: 240 of 240 matches
   reconcile with their score, and 97% of its 561 goals name a scorer.** Loaded
   2026-09-18 from FotMob — see `docs/ingestion/FOTMOB_TPL.md` for the harvest,

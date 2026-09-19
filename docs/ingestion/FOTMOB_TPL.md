@@ -275,3 +275,94 @@ this project has hit before — an own goal is the one kind a scorer list has no
 natural place to record, so the legacy data filed it as an ordinary goal for the
 side it counted for. Correcting those means changing a type AND moving the event
 to the scorer's own team, which is a fix file's job, not a loader's.
+
+## Round numbers: seventeen seasons, from one field in the fixture list
+
+Every entry in a league page's `fixtures.allMatches` carries a `round`, and the
+official site's SportsPress export does not. `load_rounds_fotmob.py` loads them.
+After this pass **4,035 of the league's 4,380 fixtures have a round**, up from
+3,437, and thirteen seasons that had gaps have none.
+
+### Getting a season out of the browser in two calls, not eight
+
+Data leaves the browser as plain text in ~950-character chunks (the CSP blocks a
+local sink, the clipboard needs focus the tab lacks, and base64 is blocked at the
+tool layer). Naming both clubs on every line spends most of those characters
+repeating sixteen club names. Indexing the clubs once turns a season from eight
+chunks into two, and `read()` takes either form:
+
+    SEASON|2020/2021
+    CLUBS|Namungo FC|Coastal Union|...
+    1|0>1,2>3,4>5,...
+
+Every transfer was verified by SHA-1 against the browser before loading — a
+chunk boundary silently dropped two lines once, in an earlier season.
+
+### Three checks, and each one caught something
+
+`check_source` refuses a whole season rather than writing part of one:
+
+* **no fixture listed twice** — this refused **2016/17**, where FotMob lists
+  Kagera Sugar v Stand United in round 2 *and* round 17. The reverse fixture
+  exists in neither source, which is why the vault holds 239 fixtures for that
+  season and why its round 17 holds seven.
+* **every round the same size, and `len(rows) == clubs*(clubs-1)`**.
+* **no club in two fixtures in one round** — added during this pass, and it
+  refused **2011/12**. Its rounds 19-22 hold 28 fixtures that scramble across
+  each other: round 20 has Dodoma Mji twice, round 21 has three clubs twice.
+
+**2011/12's rounds are not recoverable by reasoning.** The 28 fixtures must
+decompose into four perfect matchings of the fourteen clubs, and that
+decomposition is **not unique** — a search finds more than one, and even a
+unique one would not say which block is round 19 and which round 20. RSSSF's
+page for that season carries only the final table, no round-by-round results,
+and WhoScored has no rounds at all. It is left with none.
+
+### What corroborates FotMob's rounds
+
+Where the vault already had RSSSF's rounds, the two agree essentially perfectly,
+which is what justifies trusting FotMob for the fixtures RSSSF left blank:
+
+| Season | agreed | disagreed |
+|---|---|---|
+| 2014/15 | 156 | 0 |
+| 2013/14 | 176 | 0 |
+| 2012/13 | 154 | 0 |
+| 2015/16 | 238 | 0 |
+| 2010/11 | 94 | 0 |
+| 2021/22 | 191 | 0 |
+| 2020/21 | 88 | 0 |
+
+That is also why 2011/12's clashes read as a defect in that one season rather
+than as FotMob deriving round numbers for old seasons generally.
+
+### A round the vault already has is never overwritten
+
+It is kept and the disagreement is written as a **PENDING** `reconciliation_diffs`
+row (principle 2), so it survives the terminal. Three came out of this pass:
+
+* **2023/24, four fixtures; 2022/23, five** — every one a Singida Black Stars
+  match, and every one settled against the vault by its own kickoff date. The
+  round sizes prove it arithmetically: before the fix 2023/24's rounds 1, 17 and
+  27 held nine fixtures and 5, 11 and 12 held seven; afterwards all thirty hold
+  eight. Same shape in 2022/23. Applied as
+  `2026-09-19_tpl_2023_24_singida_rounds.sql` and
+  `2026-09-19_tpl_2022_23_singida_rounds.sql`.
+* **2025/26, sixteen fixtures — rounds 18 and 19 swapped, and left alone.**
+  Chronology cannot adjudicate this one: both sources number out of playing
+  order elsewhere in the season (both call the 30 April set round 22, ahead of
+  rounds 20 and 21), so neither is simply "the order they were played". The
+  sixteen diffs stay PENDING for a human.
+
+**Do not read a disagreement as a defect without checking the round sizes.** In
+2023/24 and 2022/23 one round gained an intruder and another lost a fixture, and
+in each season one round held eight all along because its intruder and its
+absentee cancelled out.
+
+### What still has no round
+
+| Season | fixtures | why |
+|---|---|---|
+| 2008/09 | 132 | before FotMob's season list, which starts at 2010/11 |
+| 2011/12 | 182 | FotMob's rounds contradict themselves; no other source has any |
+| 2020/21 | 31 | the Ihefu FC and BIGMAN FC surplus, which FotMob's 306 do not include |
