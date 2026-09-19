@@ -1,42 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError, type MatchDetail, type MatchEventRow } from "@/lib/api";
-import { Card, CardHead, Crest, DataNote, Empty, FormDots, TeamLink } from "@/components/ui";
+import { Card, CardHead, Crest, DataNote, Empty, TeamLink } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
-/**
- * One match, in full.
- *
- * The timeline is the point of the page, so it is built to be honest about a
- * vault whose event coverage changes by era: seasons before 2023/24 mostly have
- * a correct score and no event log at all. An empty timeline with no
- * explanation would read as "nothing happened in this match".
- */
-
 const GOAL_TYPES = ["GOAL", "PENALTY_GOAL", "OWN_GOAL"];
 
-const LABEL: Record<string, string> = {
-  GOAL: "Goal",
-  PENALTY_GOAL: "Penalty",
-  OWN_GOAL: "Own goal",
-  YELLOW_CARD: "Yellow card",
-  SECOND_YELLOW: "Second yellow",
-  RED_CARD: "Red card",
-  ASSIST: "Assist",
-  SUBSTITUTION: "Substitution",
-  PENALTY_MISS: "Penalty missed",
-  VAR_REVIEW: "VAR review",
-};
-
-function Mark({ type }: { type: string }) {
-  if (type === "YELLOW_CARD" || type === "SECOND_YELLOW")
-    return <span className="inline-block h-3 w-[9px] rounded-[1px] bg-[#e0b400]" aria-hidden />;
-  if (type === "RED_CARD")
-    return <span className="inline-block h-3 w-[9px] rounded-[1px] bg-[#d33]" aria-hidden />;
-  if (type === "ASSIST") return <span className="text-muted" aria-hidden>➜</span>;
-  if (GOAL_TYPES.includes(type)) return <span aria-hidden>⚽</span>;
-  return <span className="text-muted" aria-hidden>·</span>;
+function EventIcon({ type }: { type: string }) {
+  if (type === "YELLOW_CARD" || type === "SECOND_YELLOW") {
+    return <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-amber-400 shadow-2xs" title="Yellow Card" />;
+  }
+  if (type === "RED_CARD") {
+    return <span className="inline-block h-3.5 w-2.5 rounded-[2px] bg-rose-600 shadow-2xs" title="Red Card" />;
+  }
+  if (type === "ASSIST") {
+    return <span className="text-muted font-bold text-xs" title="Assist">👟</span>;
+  }
+  if (GOAL_TYPES.includes(type)) {
+    return <span className="text-sm select-none" title="Goal">⚽</span>;
+  }
+  return <span className="text-muted text-xs select-none">·</span>;
 }
 
 function minuteOf(e: MatchEventRow) {
@@ -44,51 +28,95 @@ function minuteOf(e: MatchEventRow) {
   return e.addedTime ? `${e.minute}+${e.addedTime}'` : `${e.minute}'`;
 }
 
-function EventLine({ e, align }: { e: MatchEventRow; align: "left" | "right" }) {
-  const min = minuteOf(e);
-  const body = (
-    <>
-      <Mark type={e.type} />
-      <span className="truncate">
-        {e.playerName ?? <span className="text-muted italic">scorer not recorded</span>}
-        {e.type === "OWN_GOAL" ? <span className="ml-1 text-xs text-muted">(o.g.)</span> : null}
-        {e.type === "PENALTY_GOAL" ? <span className="ml-1 text-xs text-muted">(pen)</span> : null}
-        {e.type === "ASSIST" ? <span className="ml-1 text-xs text-muted">assist</span> : null}
-      </span>
-    </>
-  );
-  return (
-    <li className={`flex items-center gap-2 py-1.5 text-sm ${align === "right" ? "flex-row-reverse text-right" : ""}`}>
-      <span className="nums w-10 shrink-0 text-xs text-muted">{min ?? "—"}</span>
-      <span className={`flex min-w-0 items-center gap-2 ${align === "right" ? "flex-row-reverse" : ""}`}>
-        {body}
-      </span>
-    </li>
-  );
-}
+function ChronoTimeline({ events }: { events: MatchEventRow[] }) {
+  // Sort events by minute (events without minute go at the end)
+  const sorted = [...events].sort((a, b) => {
+    if (a.minute === null && b.minute === null) return a.id - b.id;
+    if (a.minute === null) return 1;
+    if (b.minute === null) return -1;
+    const minA = a.minute + (a.addedTime ?? 0) * 0.1;
+    const minB = b.minute + (b.addedTime ?? 0) * 0.1;
+    return minA - minB;
+  });
 
-function Timeline({ match }: { match: MatchDetail }) {
-  // An own goal belongs, visually, to the side that conceded it — that is where
-  // a fan looks for it — even though the goal counts for the other side.
-  const home = match.events.filter((e) => e.side === "home");
-  const away = match.events.filter((e) => e.side === "away");
   return (
-    <div className="grid grid-cols-2 gap-x-6 px-5 py-4">
-      <ul className="min-w-0">{home.map((e) => <EventLine key={e.id} e={e} align="left" />)}</ul>
-      <ul className="min-w-0">{away.map((e) => <EventLine key={e.id} e={e} align="right" />)}</ul>
+    <div className="relative py-4 px-4 sm:px-6">
+      {/* Central timeline line */}
+      <div className="absolute left-1/2 top-4 bottom-4 w-px -translate-x-1/2 bg-line/80" />
+
+      <div className="space-y-4 relative z-10">
+        {sorted.map((e) => {
+          const isHome = e.side === "home";
+          const min = minuteOf(e);
+
+          return (
+            <div key={e.id} className="flex items-center gap-3">
+              {/* Left Side (Home) */}
+              <div className={`flex-1 flex items-center gap-2 ${isHome ? "justify-end text-right" : "opacity-0 invisible"}`}>
+                {isHome && (
+                  <>
+                    <span className="truncate text-sm font-semibold text-ink">
+                      {e.playerName ?? <span className="text-muted italic font-normal">Scorer not recorded</span>}
+                      {e.type === "OWN_GOAL" ? <span className="ml-1 text-xs text-rose-600 font-bold">(o.g.)</span> : null}
+                      {e.type === "PENALTY_GOAL" ? <span className="ml-1 text-xs text-brand font-bold">(pen)</span> : null}
+                      {e.type === "ASSIST" ? <span className="ml-1 text-xs text-muted font-normal">assist</span> : null}
+                    </span>
+                    <EventIcon type={e.type} />
+                  </>
+                )}
+              </div>
+
+              {/* Center Minute Pill */}
+              <div className="w-14 shrink-0 text-center">
+                <span className="nums inline-block rounded-full bg-wash border border-line px-2 py-0.5 text-[11px] font-extrabold text-ink shadow-2xs">
+                  {min ?? "—"}
+                </span>
+              </div>
+
+              {/* Right Side (Away) */}
+              <div className={`flex-1 flex items-center gap-2 ${!isHome ? "justify-start text-left" : "opacity-0 invisible"}`}>
+                {!isHome && (
+                  <>
+                    <EventIcon type={e.type} />
+                    <span className="truncate text-sm font-semibold text-ink">
+                      {e.playerName ?? <span className="text-muted italic font-normal">Scorer not recorded</span>}
+                      {e.type === "OWN_GOAL" ? <span className="ml-1 text-xs text-rose-600 font-bold">(o.g.)</span> : null}
+                      {e.type === "PENALTY_GOAL" ? <span className="ml-1 text-xs text-brand font-bold">(pen)</span> : null}
+                      {e.type === "ASSIST" ? <span className="ml-1 text-xs text-muted font-normal">assist</span> : null}
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
-function Side({ team, align }: {
+function Side({
+  team,
+  align,
+}: {
   team: { id: number; name: string };
   align: "left" | "right";
 }) {
   return (
-    <div className={`flex min-w-0 flex-1 flex-col items-center gap-2 ${align === "left" ? "sm:items-end" : "sm:items-start"}`}>
-      <TeamLink id={team.id} name={team.name} className="flex flex-col items-center gap-2">
-        <Crest name={team.name} size={52} />
-        <span className="display text-center text-base font-bold leading-tight sm:text-lg">{team.name}</span>
+    <div
+      className={`flex min-w-0 flex-1 flex-col items-center gap-2.5 ${
+        align === "left" ? "sm:items-end sm:text-right" : "sm:items-start sm:text-left"
+      }`}
+    >
+      <TeamLink id={team.id} name={team.name} className="flex flex-col items-center gap-2.5 group">
+        <Crest
+          name={team.name}
+          size={56}
+          className="shadow-md ring-4 ring-wash transition-transform group-hover:scale-105"
+        />
+        <span className="display text-center text-base font-extrabold leading-tight text-ink group-hover:text-brand transition-colors sm:text-lg">
+          {team.name}
+        </span>
       </TeamLink>
     </div>
   );
@@ -108,121 +136,196 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
 
   const kickoff = match.kickoffAt
     ? new Date(match.kickoffAt).toLocaleString("en-GB", {
-        weekday: "long", day: "numeric", month: "long", year: "numeric",
-        hour: "2-digit", minute: "2-digit", timeZone: "Africa/Dar_es_Salaam",
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Africa/Dar_es_Salaam",
       })
     : null;
 
-  const played = match.home.score !== null;
+  const played = match.home.score !== null && match.away.score !== null;
   const c = match.coverage;
   const h = match.headToHead;
 
+  const homeScore = match.home.score ?? 0;
+  const awayScore = match.away.score ?? 0;
+  const homeWon = played && homeScore > awayScore;
+  const awayWon = played && awayScore > homeScore;
+
+  // H2H distribution percentages
+  const totalH2H = Math.max(1, h.played);
+  const homeWinPct = Math.round((h.homeWins / totalH2H) * 100);
+  const drawPct = Math.round((h.draws / totalH2H) * 100);
+  const awayWinPct = 100 - homeWinPct - drawPct;
+
   return (
     <div>
-      <p className="mb-3 text-xs text-muted">
-        <Link href={`/?editionId=${match.competition.editionId}`} className="hover:text-ink">
+      {/* Breadcrumb Context */}
+      <div className="mb-4 flex items-center gap-2 text-xs font-medium text-muted">
+        <Link
+          href={`/?editionId=${match.competition.editionId}`}
+          className="hover:text-brand transition-colors"
+        >
           {match.competition.name} {match.competition.season}
         </Link>
-        {match.round ? <> · Round {match.round}</> : null}
-      </p>
+        {match.round ? <span>· Round {match.round}</span> : null}
+      </div>
 
-      <Card className="overflow-hidden">
-        <div className="flex items-center gap-4 px-5 py-6">
+      {/* Hero Scoreboard Header */}
+      <Card className="overflow-hidden shadow-sm border-line">
+        <div className="flex items-center justify-between gap-4 p-6 sm:p-8 bg-gradient-to-b from-paper via-wash/30 to-paper">
           <Side team={match.home} align="left" />
-          <div className="shrink-0 text-center">
+
+          <div className="shrink-0 text-center px-2">
             {played ? (
-              <p className="stat-figure text-3xl leading-none sm:text-4xl">
-                {match.home.score}<span className="mx-1.5 text-muted">–</span>{match.away.score}
-              </p>
+              <div>
+                <p className="stat-figure text-4xl sm:text-5xl font-black tracking-tight text-ink">
+                  <span className={homeWon ? "text-brand-dark" : awayWon ? "text-muted" : "text-ink"}>
+                    {match.home.score}
+                  </span>
+                  <span className="mx-2 text-line text-3xl font-light">–</span>
+                  <span className={awayWon ? "text-brand-dark" : homeWon ? "text-muted" : "text-ink"}>
+                    {match.away.score}
+                  </span>
+                </p>
+                <div className="mt-2.5">
+                  <span className="inline-block rounded-full bg-ink px-3 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-2xs">
+                    Full Time
+                  </span>
+                </div>
+              </div>
             ) : (
-              <p className="stat-figure text-xl leading-none text-muted">v</p>
+              <div>
+                <span className="inline-block rounded-full bg-brand/10 border border-brand/20 px-3 py-1 text-xs font-black uppercase tracking-wider text-brand">
+                  Upcoming
+                </span>
+                <p className="stat-figure text-2xl mt-2 text-muted font-light">vs</p>
+              </div>
             )}
-            <p className="mt-2 text-[11px] uppercase tracking-wide text-muted">
-              {played ? "Full time" : match.status.replace("_", " ").toLowerCase()}
-            </p>
           </div>
+
           <Side team={match.away} align="right" />
         </div>
-        <div className="border-t border-line px-5 py-2.5 text-center text-xs text-muted">
-          {kickoff ?? "Kickoff time not recorded"}
-          {match.venue ? <> · {match.venue}</> : null}
+
+        <div className="border-t border-line/80 bg-wash/60 px-5 py-3 text-center text-xs font-medium text-muted flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <span>{kickoff ?? "Kickoff time not recorded"}</span>
+          {match.venue ? <span>· Venue: {match.venue}</span> : null}
         </div>
       </Card>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1.5fr_1fr]">
+      {/* Events & Details Grid */}
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
         <div>
           <Card className="overflow-hidden">
-            <CardHead title="Match events" />
+            <CardHead title="Match Events" />
             {match.events.length === 0 ? (
-              <p className="px-5 py-8 text-center text-sm text-muted">
+              <p className="px-5 py-12 text-center text-sm text-muted">
                 {played
-                  ? "No event log for this match."
-                  : "This match has not been played yet."}
+                  ? "No event log available for this historical match."
+                  : "Match has not been played yet."}
               </p>
             ) : (
-              <Timeline match={match} />
+              <ChronoTimeline events={match.events} />
             )}
           </Card>
 
-          <div className="mt-3 space-y-2">
+          <div className="mt-4 space-y-2.5">
             {played && c.noEventLog ? (
               <DataNote>
-                The score is recorded and verified, but no event log exists for this match.
-                Goalscorers were not published for {match.competition.season} by any source we
-                have — so this is missing data, not a goalless account of a {c.goalsInScore}-goal
-                game.
+                The score is verified, but detailed event timestamps were not published for{" "}
+                {match.competition.season}. This is missing archive data, not a goalless account.
               </DataNote>
             ) : null}
             {played && !c.noEventLog && !c.eventLogComplete ? (
               <DataNote>
-                The event log names {c.goalEventsRecorded} of the {c.goalsInScore} goals in the
-                score. The score is the authority here; the timeline is incomplete.
+                The event log names {c.goalEventsRecorded} of the {c.goalsInScore} goals recorded in the final score.
               </DataNote>
             ) : null}
             {c.unnamedScorers > 0 ? (
               <DataNote>
-                {c.unnamedScorers} {c.unnamedScorers === 1 ? "goal is" : "goals are"} recorded
-                without a scorer — the goal and the team are known, the player is not.
+                {c.unnamedScorers} {c.unnamedScorers === 1 ? "goal is" : "goals are"} recorded without a named scorer.
               </DataNote>
             ) : null}
           </div>
         </div>
 
-        <div className="space-y-5">
+        {/* Head-to-Head & Form Sidebars */}
+        <div className="space-y-6">
           <Card className="overflow-hidden">
-            <CardHead title="Head to head" />
+            <CardHead title="Head to Head" />
             {h.played === 0 ? (
-              <p className="px-5 py-6 text-center text-sm text-muted">First recorded meeting.</p>
+              <p className="px-5 py-6 text-center text-sm text-muted">First recorded meeting in vault.</p>
             ) : (
-              <div className="px-5 py-4">
-                <div className="flex items-baseline justify-between text-sm">
-                  <span className="stat-figure text-xl">{h.homeWins}</span>
-                  <span className="text-xs text-muted">{h.draws} drawn</span>
-                  <span className="stat-figure text-xl">{h.awayWins}</span>
+              <div className="p-5">
+                <div className="flex items-baseline justify-between text-sm font-bold">
+                  <div className="text-left">
+                    <span className="stat-figure text-2xl text-ink">{h.homeWins}</span>
+                    <p className="text-[11px] text-muted font-normal truncate max-w-[100px]">{match.home.name}</p>
+                  </div>
+                  <div className="text-center">
+                    <span className="stat-figure text-base text-muted">{h.draws}</span>
+                    <p className="text-[11px] text-muted font-normal">Drawn</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="stat-figure text-2xl text-ink">{h.awayWins}</span>
+                    <p className="text-[11px] text-muted font-normal truncate max-w-[100px]">{match.away.name}</p>
+                  </div>
                 </div>
-                <div className="mt-1 flex items-baseline justify-between text-xs text-muted">
-                  <span className="truncate">{match.home.name}</span>
-                  <span className="truncate">{match.away.name}</span>
+
+                {/* Visual H2H distribution bar */}
+                <div className="mt-3 flex h-2 w-full overflow-hidden rounded-full bg-line">
+                  <div
+                    className="bg-brand transition-all"
+                    style={{ width: `${homeWinPct}%` }}
+                    title={`${match.home.name}: ${h.homeWins} wins (${homeWinPct}%)`}
+                  />
+                  <div
+                    className="bg-slate-300 transition-all"
+                    style={{ width: `${drawPct}%` }}
+                    title={`Draws: ${h.draws} (${drawPct}%)`}
+                  />
+                  <div
+                    className="bg-ink-soft transition-all"
+                    style={{ width: `${awayWinPct}%` }}
+                    title={`${match.away.name}: ${h.awayWins} wins (${awayWinPct}%)`}
+                  />
                 </div>
-                <p className="mt-3 text-xs text-muted">
-                  {h.played} meetings across every published season.
+
+                <p className="mt-3 text-center text-xs text-muted">
+                  {h.played} total meetings recorded across published seasons.
                 </p>
               </div>
             )}
           </Card>
 
           <Card className="overflow-hidden">
-            <CardHead title="Form before this match" />
-            <div className="space-y-3 px-5 py-4">
+            <CardHead title="Form Before This Match" />
+            <div className="space-y-4 p-5">
               {([["home", match.home.name], ["away", match.away.name]] as const).map(([side, name]) => {
                 const form = match.form[side];
                 return (
                   <div key={side}>
-                    <p className="mb-1.5 truncate text-xs font-medium">{name}</p>
+                    <p className="mb-2 truncate text-xs font-bold text-ink">{name}</p>
                     {form.length === 0 ? (
-                      <p className="text-xs text-muted">No earlier matches recorded.</p>
+                      <p className="text-xs text-muted">No prior matches recorded in season.</p>
                     ) : (
-                      <FormDots results={form.map((f) => f.result)} />
+                      <div className="flex flex-wrap gap-1.5">
+                        {form.map((f, i) => (
+                          <span
+                            key={i}
+                            title={`${f.result === "W" ? "Won" : f.result === "D" ? "Drew" : "Lost"} vs ${f.opponent} (${f.score})`}
+                            className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-bold text-white shadow-2xs ${
+                              f.result === "W" ? "bg-emerald-600" : f.result === "D" ? "bg-amber-500 text-ink" : "bg-rose-600"
+                            }`}
+                          >
+                            <span>{f.result}</span>
+                            <span className="text-[10px] font-normal opacity-90">{f.score}</span>
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
                 );

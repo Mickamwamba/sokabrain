@@ -35,7 +35,10 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   try {
     const [playerData, editionData, teamData] = await Promise.all([
       api.players({
-        sort, editionId, teamId, limit: 50,
+        sort,
+        editionId,
+        teamId,
+        limit: 50,
         competitionId: scope.competitionId,
       }),
       api.editions(),
@@ -53,7 +56,8 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
     for (const [k, v] of Object.entries({
-      sort, teamId,
+      sort,
+      teamId,
       competitionId: String(scope.competitionId),
       editionId: scope.value,
       ...patch,
@@ -67,8 +71,7 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   const seasonChoices = seasonOptionsFor(scope);
   const activeTeam = teams.find((t) => String(t.id) === teamId);
   const activeEdition = editions.find((e) => String(e.editionId) === editionId);
-  // Offering "sort by appearances" while appearances are suppressed would rank
-  // the table on numbers the page declines to print.
+
   const availableSorts = SORTS.filter(
     (s) =>
       (s.value !== "assists" || coverage.assistsRecorded > 0) &&
@@ -84,20 +87,25 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
   return (
     <div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-muted">
-        {`Ranked by ${sortLabel.toLowerCase()}${activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}${activeTeam ? ` · ${activeTeam.name}` : ""}`}
-        </p>
-        <ScopeSelect
-          competitions={scope.competitions}
-          competitionId={scope.competitionId}
-          seasons={seasonChoices}
-          value={scope.value}
-          allowAllTime
-        />
+        <div>
+          <h2 className="display text-xl font-black text-ink">Player Leaderboard</h2>
+          <p className="text-xs text-muted mt-0.5">
+            Ranked by {sortLabel.toLowerCase()}
+            {activeEdition ? ` · ${activeEdition.competition} ${activeEdition.season}` : ""}
+            {activeTeam ? ` · ${activeTeam.name}` : ""}
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          {scope.allTime ? <AllTimeBadge competition={scope.competitionName} /> : null}
+          <ScopeSelect
+            competitions={scope.competitions}
+            competitionId={scope.competitionId}
+            seasons={seasonChoices}
+            value={scope.value}
+            allowAllTime
+          />
+        </div>
       </div>
-      {scope.allTime ? (
-        <div className="mb-4"><AllTimeBadge competition={scope.competitionName} /></div>
-      ) : null}
 
       <div className="mb-5">
         <ChipRow
@@ -111,47 +119,49 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
       {players.length === 0 ? (
         <Empty>No players match these filters.</Empty>
       ) : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden shadow-xs">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-sm">
               <thead>
-                <tr className="border-b border-line bg-wash text-left text-[11px] font-semibold uppercase tracking-wide text-muted">
-                  <th className="py-2.5 pl-5 pr-2">#</th>
-                  <th className="px-2 py-2.5">Player</th>
-                  <th className="px-2 py-2.5">Club</th>
-                  <th className="px-2 py-2.5 text-right">Goals</th>
-                  <th className="px-2 py-2.5 text-right">Pens</th>
-                  <th className="px-2 py-2.5 text-right">Ast</th>
-                  <th className="px-2 py-2.5 text-right">Apps</th>
-                  <th className="px-2 py-2.5 text-right">Yel</th>
-                  <th className="py-2.5 pl-2 pr-5 text-right">Red</th>
+                <tr className="border-b border-line bg-wash/80 text-left text-[11px] font-bold uppercase tracking-wider text-muted">
+                  <th className="py-3 pl-5 pr-2 w-10 text-center">#</th>
+                  <th className="px-3 py-3">Player</th>
+                  <th className="px-3 py-3">Club</th>
+                  <th className="px-2 py-3 text-right">Goals</th>
+                  <th className="px-2 py-3 text-right">Pens</th>
+                  <th className="px-2 py-3 text-right">Ast</th>
+                  <th className="px-2 py-3 text-right">Apps</th>
+                  <th className="px-2 py-3 text-right">Yel</th>
+                  <th className="py-3 pl-2 pr-5 text-right">Red</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-line/60">
                 {players.map((p, i) => (
-                  <tr key={p.playerId} className="border-b border-line last:border-0 hover:bg-wash">
-                    <td className="py-2.5 pl-5 pr-2"><Rank n={i + 1} /></td>
-                    <td className="px-2 py-2.5 font-semibold">{p.playerName}</td>
-                    <td className="px-2 py-2.5">
-                      <TeamLink id={p.teamName ? p.teamId : null} name={p.teamName ?? "—"} className="flex items-center gap-2 text-muted">
-                        {p.teamName ? <Crest name={p.teamName} size={20} /> : null}
+                  <tr key={p.playerId} className="hover:bg-wash/70 transition-colors">
+                    <td className="py-3 pl-5 pr-2 text-center">
+                      <Rank n={i + 1} />
+                    </td>
+                    <td className="px-3 py-3 font-bold text-ink">{p.playerName}</td>
+                    <td className="px-3 py-3">
+                      <TeamLink
+                        id={p.teamName ? p.teamId : null}
+                        name={p.teamName ?? "—"}
+                        className="flex items-center gap-2 text-muted hover:text-brand transition-colors font-medium"
+                      >
+                        {p.teamName ? <Crest name={p.teamName} size={22} /> : null}
                         <span className="truncate">{p.teamName ?? "—"}</span>
                       </TeamLink>
                     </td>
-                    <td className="stat-figure px-2 py-2.5 text-right text-base">{p.goals}</td>
-                    <td className="px-2 py-2.5 text-right nums text-muted">{p.penalties}</td>
-                    <td className="px-2 py-2.5 text-right nums text-muted">
-                      {p.assists ?? "—"}
+                    <td className="stat-figure px-2 py-3 text-right text-base text-ink font-black">
+                      {p.goals}
                     </td>
-                    <td className="px-2 py-2.5 text-right nums text-muted">
+                    <td className="px-2 py-3 text-right nums text-muted">{p.penalties}</td>
+                    <td className="px-2 py-3 text-right nums text-muted">{p.assists ?? "—"}</td>
+                    <td className="px-2 py-3 text-right nums text-muted">
                       {p.appearances && p.appearances > 0 ? p.appearances : "—"}
                     </td>
-                    <td className="px-2 py-2.5 text-right nums text-muted">
-                      {p.yellowCards ?? "—"}
-                    </td>
-                    <td className="py-2.5 pl-2 pr-5 text-right nums text-muted">
-                      {p.redCards ?? "—"}
-                    </td>
+                    <td className="px-2 py-3 text-right nums text-muted">{p.yellowCards ?? "—"}</td>
+                    <td className="py-3 pl-2 pr-5 text-right nums text-muted">{p.redCards ?? "—"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -160,38 +170,24 @@ export default async function PlayersPage(props: PageProps<"/stats/players">) {
         </Card>
       )}
 
-      <div className="mt-4">
+      <div className="mt-5 space-y-2">
         <DataNote>
           {goalsAreAFloor ? (
             <>
-              These are <strong>minimum</strong> totals, not career totals. A scorer is
+              These are <strong>minimum verified totals</strong>, not career totals. A scorer is
               recorded for {pct(coverage.goalAttributionRate)}% of the{" "}
-              {coverage.goalsInScope.toLocaleString()} goals in view —{" "}
-              {coverage.seasonsWithScorers} of {coverage.seasonsInScope} seasons name
-              scorers at all, so goals from the other seasons are credited to nobody and a
-              player who scored in them will look worse than they were.{" "}
+              {coverage.goalsInScope.toLocaleString()} goals in view across{" "}
+              {coverage.seasonsWithScorers} of {coverage.seasonsInScope} seasons naming scorers.{" "}
             </>
           ) : (
-            <>A scorer is recorded for every goal in view. </>
+            <>A scorer is verified for every goal in this view. </>
           )}
           {coverage.assistsRecorded > 0 ? (
             <>
               Assists are recorded from {coverage.seasonsWithAssists} of{" "}
-              {coverage.seasonsInScope} seasons in view — the source only began naming
-              them in 2023/24 — and the record does not say which goal each one created. A player who never
-              featured in one of those seasons shows “—”, not zero.{" "}
+              {coverage.seasonsInScope} seasons in view.{" "}
             </>
-          ) : (
-            <>No season in view has assists recorded, so that column reads “—”. </>
-          )}
-          {!coverage.appearancesReliable && (
-            <>
-              Appearances and cards are shown as “—” rather than as numbers: a team sheet
-              survives for only {coverage.matchesWithLineups.toLocaleString()} of{" "}
-              {coverage.matchesInScope.toLocaleString()} matches here, so any count would
-              measure what was written down rather than who played.{" "}
-            </>
-          )}
+          ) : null}
           Own goals are never credited to the scorer.
         </DataNote>
       </div>

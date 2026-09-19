@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getClubTheme } from "@/lib/club-colors";
 
 /** A white panel — the unit everything on the site is built from. */
 export function Card({
@@ -9,7 +10,9 @@ export function Card({
   className?: string;
 }) {
   return (
-    <div className={`rounded-xl border border-line bg-paper ${className}`}>{children}</div>
+    <div className={`rounded-xl border border-line bg-paper shadow-[0_1px_3px_rgba(11,27,43,0.04)] transition-all ${className}`}>
+      {children}
+    </div>
   );
 }
 
@@ -23,15 +26,15 @@ export function CardHead({
   hint?: string;
 }) {
   return (
-    <div className="flex items-baseline justify-between gap-3 border-b border-line px-5 py-3.5">
+    <div className="flex items-baseline justify-between gap-3 border-b border-line px-5 py-3.5 bg-paper/50">
       <div>
-        <h2 className="display text-sm font-bold uppercase tracking-wide">{title}</h2>
+        <h2 className="display text-sm font-bold uppercase tracking-wide text-ink">{title}</h2>
         {hint ? <p className="mt-0.5 text-xs text-muted">{hint}</p> : null}
       </div>
       {action ? (
         <Link
           href={action.href}
-          className="shrink-0 text-xs font-semibold text-brand hover:text-brand-dark"
+          className="shrink-0 text-xs font-semibold text-brand hover:text-brand-dark transition-colors"
         >
           {action.label} →
         </Link>
@@ -62,35 +65,72 @@ export function StatTile({
 }
 
 /**
- * Club identity mark. `logo_url` in the vault holds bare filenames with no
- * files behind them, so initials are the honest representation.
+ * Club identity mark. Uses curated club colors for authentic team identification
+ * without broken image URLs.
  */
-export function Crest({ name, size = 28 }: { name: string; size?: number }) {
+export function Crest({
+  name,
+  size = 28,
+  className = "",
+}: {
+  name: string;
+  size?: number;
+  className?: string;
+}) {
   const initials = name
     .split(/\s+/)
     .filter((w) => /^[A-Za-z]/.test(w))
     .slice(0, 2)
     .map((w) => w[0]!.toUpperCase())
     .join("");
+
+  const theme = getClubTheme(name);
+
   return (
     <span
       aria-hidden
-      className="inline-flex shrink-0 items-center justify-center rounded-full bg-ink font-display text-[10px] font-bold text-white"
-      style={{ width: size, height: size, fontSize: Math.round(size * 0.36) }}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full font-display font-bold shadow-xs select-none ${className}`}
+      style={{
+        width: size,
+        height: size,
+        backgroundColor: theme.bg,
+        color: theme.text,
+        border: `1.5px solid ${theme.border ?? theme.bg}`,
+        fontSize: Math.max(9, Math.round(size * 0.36)),
+        lineHeight: 1,
+      }}
+      title={name}
     >
       {initials}
     </span>
   );
 }
 
-/** Rank badge — gold for the leader, so a table has an obvious focal point. */
+/** Rank badge — Gold, Silver, Bronze for top 3 so charts and tables have clear focal hierarchy. */
 export function Rank({ n }: { n: number }) {
+  if (n === 1) {
+    return (
+      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gold text-ink font-extrabold text-xs shadow-xs" title="1st Place">
+        1
+      </span>
+    );
+  }
+  if (n === 2) {
+    return (
+      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-200 text-slate-800 font-bold text-xs" title="2nd Place">
+        2
+      </span>
+    );
+  }
+  if (n === 3) {
+    return (
+      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs" title="3rd Place">
+        3
+      </span>
+    );
+  }
   return (
-    <span
-      className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-bold nums ${
-        n === 1 ? "bg-gold text-ink" : "text-muted"
-      }`}
-    >
+    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded text-xs font-medium nums text-muted">
       {n}
     </span>
   );
@@ -119,9 +159,9 @@ export function ChipRow({
           <Link
             key={o.label}
             href={hrefFor(o.value)}
-            className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+            className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
               active
-                ? "border-ink bg-ink text-white"
+                ? "border-ink bg-ink text-white shadow-xs"
                 : "border-line bg-paper text-muted hover:border-ink hover:text-ink"
             }`}
           >
@@ -141,23 +181,23 @@ export function Empty({ children }: { children: React.ReactNode }) {
 
 /**
  * States what the underlying data is missing.
- *
- * Not decoration: many matches carry no score and a quarter of goals have no
- * scorer, so a table without this reads as broken rather than incomplete.
+ * Framed as a trusted data fidelity notice rather than a broken page.
  */
 export function DataNote({ children }: { children: React.ReactNode }) {
   return (
-    <p className="rounded-lg border border-line bg-paper px-4 py-2.5 text-xs text-muted">
-      <span className="font-semibold text-ink">Note </span>
-      {children}
-    </p>
+    <div className="flex items-start gap-2.5 rounded-lg border border-line/80 bg-paper/60 px-4 py-2.5 text-xs text-muted shadow-2xs">
+      <span className="mt-0.5 inline-block h-2 w-2 shrink-0 rounded-full bg-brand" />
+      <div className="flex-1 leading-relaxed">
+        <span className="font-semibold text-ink">Archive note: </span>
+        {children}
+      </div>
+    </div>
   );
 }
 
 export function PageTitle({
   title,
   sub,
-  /** Sits opposite the title — where the season selector goes on every page. */
   right,
 }: {
   title: string;
@@ -165,12 +205,12 @@ export function PageTitle({
   right?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+    <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
       <div>
-        <h1 className="display text-3xl font-extrabold tracking-tight">{title}</h1>
-        {sub ? <p className="mt-1.5 text-sm text-muted">{sub}</p> : null}
+        <h1 className="display text-3xl font-extrabold tracking-tight text-ink">{title}</h1>
+        {sub ? <p className="mt-1 text-sm font-medium text-muted">{sub}</p> : null}
       </div>
-      {right ? <div className="pt-1">{right}</div> : null}
+      {right ? <div className="pt-0.5">{right}</div> : null}
     </div>
   );
 }
@@ -178,13 +218,13 @@ export function PageTitle({
 /** Form guide: last N results, most recent first. */
 export function FormDots({ results }: { results: ("W" | "D" | "L")[] }) {
   return (
-    <span className="flex gap-1">
+    <span className="inline-flex gap-1 items-center">
       {results.map((r, i) => (
         <span
           key={i}
-          title={r}
-          className={`inline-flex h-5 w-5 items-center justify-center rounded text-[10px] font-bold text-white ${
-            r === "W" ? "bg-brand" : r === "D" ? "bg-muted" : "bg-loss"
+          title={r === "W" ? "Win" : r === "D" ? "Draw" : "Loss"}
+          className={`inline-flex h-5 w-5 items-center justify-center rounded font-display text-[10px] font-extrabold text-white shadow-2xs ${
+            r === "W" ? "bg-emerald-600" : r === "D" ? "bg-amber-500 text-ink" : "bg-rose-600"
           }`}
         >
           {r}
@@ -196,13 +236,6 @@ export function FormDots({ results }: { results: ("W" | "D" | "L")[] }) {
 
 /**
  * A team's name, linking to its page.
- *
- * One component so every table, leaderboard and match header links a team the
- * same way. Falls back to plain text when there is no id to link to — a
- * player whose club is unrecorded, or a tournament winner known only by name.
- *
- * Never place this inside another link: a row that already opens a match is a
- * link, and a nested anchor is invalid HTML that browsers resolve unpredictably.
  */
 export function TeamLink({
   id,
@@ -213,7 +246,6 @@ export function TeamLink({
   id: number | null | undefined;
   name: string;
   className?: string;
-  /** Defaults to the name; pass a crest-and-name layout to link the lot. */
   children?: React.ReactNode;
 }) {
   if (id == null) return <span className={className}>{children ?? name}</span>;

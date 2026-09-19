@@ -1,24 +1,12 @@
 import Link from "next/link";
 import { resolveScope, seasonOptionsFor } from "@/lib/scope";
 import { api, ApiError, type Edition } from "@/lib/api";
-import { Card, Crest, Empty, PageTitle } from "@/components/ui";
+import { Card, Crest, DataNote, Empty, PageTitle } from "@/components/ui";
 import { ScopeSelect } from "@/components/scope-select";
 import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
 import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
 
 export const dynamic = "force-dynamic";
-
-/**
- * The fixture hub, and the site's front door.
- *
- * A fan arrives wanting one of two things: what is on now, or what is on next.
- * So the page opens on the current season and the nearest day with football,
- * rather than on an archive index.
- *
- * Date is the primary axis because kickoff dates are complete for every match
- * in the vault. Round browsing is offered only for seasons whose sources
- * actually publish round numbers — see the note under the list.
- */
 
 function one(v: string | string[] | undefined) {
   return Array.isArray(v) ? v[0] : v;
@@ -28,25 +16,41 @@ function NextUp({ match }: { match: NonNullable<Awaited<ReturnType<typeof api.ma
   const time = kickoffTime(match.kickoffAt);
   const day = match.kickoffAt
     ? new Date(match.kickoffAt).toLocaleDateString("en-GB", {
-        weekday: "long", day: "numeric", month: "long", timeZone: "Africa/Dar_es_Salaam",
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        timeZone: "Africa/Dar_es_Salaam",
       })
     : null;
+
   return (
-    <Link href={`/matches/${match.id}`} className="block">
-      <Card className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-wash">
+    <Link href={`/matches/${match.id}`} className="block group">
+      <Card className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 bg-gradient-to-r from-paper via-wash/40 to-paper hover:border-ink/40 transition-all shadow-xs">
         <div className="min-w-0 flex-1">
-          <p className="display text-[10px] font-bold uppercase tracking-wider text-muted">Next match</p>
-          <div className="mt-1.5 flex items-center gap-2.5">
-            <Crest name={match.homeTeam.name} size={26} />
-            <span className="truncate font-semibold">{match.homeTeam.name}</span>
-            <span className="text-muted">v</span>
-            <Crest name={match.awayTeam.name} size={26} />
-            <span className="truncate font-semibold">{match.awayTeam.name}</span>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 border border-brand/20 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-brand">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+              Featured Next Match
+            </span>
+            {match.stadium?.name && (
+              <span className="text-xs text-muted truncate">· {match.stadium.name}</span>
+            )}
+          </div>
+          <div className="mt-2.5 flex items-center gap-3">
+            <Crest name={match.homeTeam.name} size={32} />
+            <span className="truncate font-black text-lg text-ink group-hover:text-brand transition-colors">
+              {match.homeTeam.name}
+            </span>
+            <span className="text-sm font-bold text-muted/50 px-1">vs</span>
+            <Crest name={match.awayTeam.name} size={32} />
+            <span className="truncate font-black text-lg text-ink group-hover:text-brand transition-colors">
+              {match.awayTeam.name}
+            </span>
           </div>
         </div>
-        <div className="shrink-0 text-right">
-          <p className="stat-figure text-lg leading-none">{time ?? "—"}</p>
-          <p className="mt-1 text-xs text-muted">{day}</p>
+        <div className="shrink-0 text-left sm:text-right border-t sm:border-t-0 pt-2 sm:pt-0 border-line/60">
+          <p className="stat-figure text-2xl text-ink font-black">{time ?? "—"}</p>
+          <p className="mt-0.5 text-xs font-semibold text-muted">{day}</p>
         </div>
       </Card>
     </Link>
@@ -78,8 +82,6 @@ export default async function MatchesHub(props: PageProps<"/">) {
   if (!editionId) return <Empty>No published season to show yet.</Empty>;
 
   const rounds = await api.rounds(editionId);
-  // Opening on the round in play is what a fan wants; opening on round 1 of a
-  // finished season is not.
   const round = mode === "round" ? roundParam ?? rounds.currentRound : null;
 
   const today = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Dar_es_Salaam" });
@@ -97,7 +99,6 @@ export default async function MatchesHub(props: PageProps<"/">) {
         : { editionId, order: "desc", limit: 20 },
   );
 
-  // Shown only when the current season still has fixtures ahead of it.
   const upcoming =
     context.inSeason && context.nextMatchDate
       ? await api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
@@ -108,7 +109,9 @@ export default async function MatchesHub(props: PageProps<"/">) {
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
     const merged = {
-      mode, date, round,
+      mode,
+      date,
+      round,
       competitionId: String(scope.competitionId),
       editionId: String(editionId),
       ...patch,
@@ -135,14 +138,13 @@ export default async function MatchesHub(props: PageProps<"/">) {
             competitionId={scope.competitionId}
             seasons={seasonChoices}
             value={String(editionId)}
-            // A day or a round belongs to the season it came from.
             clears={["date", "round"]}
           />
         }
       />
 
       {upcoming.matches[0] ? (
-        <div className="mb-5">
+        <div className="mb-6">
           <NextUp match={upcoming.matches[0]} />
         </div>
       ) : null}
@@ -169,20 +171,20 @@ export default async function MatchesHub(props: PageProps<"/">) {
         <MatchRows matches={list.matches} />
       )}
 
-      {mode === "round" && rounds.withoutRound > 0 ? (
-        <p className="mt-4 text-xs text-muted">
-          {rounds.withoutRound} of this season&rsquo;s matches carry no round number in any
-          source, so the rounds above are missing some fixtures. Every match is reachable by
-          date.
-        </p>
-      ) : null}
-      {!rounds.hasRounds ? (
-        <p className="mt-4 text-xs text-muted">
-          No source publishes round numbers for {edition?.season}, so this season is browsed by
-          date. Nothing is guessed — deriving matchdays from the fixture list gets one in four
-          wrong whenever a match was postponed.
-        </p>
-      ) : null}
+      <div className="mt-6 space-y-2">
+        {mode === "round" && rounds.withoutRound > 0 ? (
+          <DataNote>
+            {rounds.withoutRound} of this season&rsquo;s matches carry no round number in any
+            source, so the rounds above are missing some fixtures. Every match is reachable by date.
+          </DataNote>
+        ) : null}
+        {!rounds.hasRounds ? (
+          <DataNote>
+            No source publishes round numbers for {edition?.season}, so this season is browsed by
+            date.
+          </DataNote>
+        ) : null}
+      </div>
     </div>
   );
 }

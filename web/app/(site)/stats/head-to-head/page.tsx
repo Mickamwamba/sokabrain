@@ -5,12 +5,21 @@ import { AllTimeBadge } from "@/components/scope-select";
 
 export const dynamic = "force-dynamic";
 
-/** Percentage width for the three-way record bar. */
 function pct(n: number, total: number) {
   return total === 0 ? 0 : Math.round((n / total) * 100);
 }
 
-/** Club picker column. Declared at module scope, not inside render. */
+function isKariakooDerby(nameA: string, nameB: string) {
+  const normA = nameA.toLowerCase();
+  const normB = nameB.toLowerCase();
+  return (
+    (normA.includes("simba") && normB.includes("yanga")) ||
+    (normA.includes("yanga") && normB.includes("simba")) ||
+    (normA.includes("young africans") && normB.includes("simba")) ||
+    (normA.includes("simba") && normB.includes("young africans"))
+  );
+}
+
 function Picker({
   side,
   selectedId,
@@ -31,33 +40,36 @@ function Picker({
 
   return (
     <Card className="overflow-hidden">
-      <CardHead title={side === "teamA" ? "Team one" : "Team two"} />
-      <div className="max-h-72 overflow-y-auto">
-        {/* Clubs and nations are listed under their own heading: they never
-            meet, so an unlabelled single list invites a pairing that can only
-            ever return no matches. */}
+      <CardHead title={side === "teamA" ? "Team One" : "Team Two"} />
+      <div className="max-h-80 overflow-y-auto divide-y divide-line/60">
         {ordered.map(([heading, list]) => (
           <div key={heading}>
             {showHeadings ? (
-              <p className="sticky top-0 border-b border-line bg-wash px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted">
+              <p className="sticky top-0 z-10 border-b border-line bg-wash/95 px-4 py-2 text-[10px] font-black uppercase tracking-wider text-muted">
                 {heading}
               </p>
             ) : null}
-            {list.map((t) => (
-          <Link
-            key={t.id}
-            href={hrefFor(side, t.id)}
-            className={`flex items-center gap-2.5 border-b border-line px-4 py-2 text-sm last:border-0 hover:bg-wash ${
-              String(t.id) === selectedId ? "bg-wash font-semibold" : ""
-            }`}
-          >
-            <Crest name={t.name} size={22} />
-            <span className="min-w-0 flex-1 truncate">{t.name}</span>
-            {t.country ? (
-              <span className="shrink-0 text-[11px] text-muted">{t.country.slice(0, 12)}</span>
-            ) : null}
-          </Link>
-            ))}
+            {list.map((t) => {
+              const isSelected = String(t.id) === selectedId;
+              return (
+                <Link
+                  key={t.id}
+                  href={hrefFor(side, t.id)}
+                  className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-wash/70 ${
+                    isSelected ? "bg-wash font-bold text-ink" : "text-ink/80"
+                  }`}
+                >
+                  <Crest name={t.name} size={24} />
+                  <span className="min-w-0 flex-1 truncate">{t.name}</span>
+                  {t.country ? (
+                    <span className="shrink-0 text-[11px] text-muted">{t.country}</span>
+                  ) : null}
+                  {isSelected && (
+                    <span className="h-2 w-2 rounded-full bg-brand shrink-0" />
+                  )}
+                </Link>
+              );
+            })}
           </div>
         ))}
       </div>
@@ -78,6 +90,11 @@ export default async function HeadToHeadPage(props: PageProps<"/stats/head-to-he
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
   }
+
+  // Find IDs for quick derby picks
+  const simba = teams.find((t) => t.name.toLowerCase().includes("simba"));
+  const yanga = teams.find((t) => t.name.toLowerCase().includes("yanga"));
+  const azam = teams.find((t) => t.name.toLowerCase().includes("azam"));
 
   let h2h: HeadToHead | null = null;
   let error: string | null = null;
@@ -101,105 +118,208 @@ export default async function HeadToHeadPage(props: PageProps<"/stats/head-to-he
     return `/stats/head-to-head?${q}`;
   };
 
+  const isDerby = h2h ? isKariakooDerby(h2h.teamA.name, h2h.teamB.name) : false;
+
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-muted">
-          Every recorded meeting between two clubs. There is no season selector here on
-          purpose — two clubs meet twice a season, so a single season is not a record.
-        </p>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 className="display text-xl font-black text-ink">Head to Head Comparison</h2>
+          <p className="text-xs text-muted mt-0.5">
+            Every recorded meeting between two clubs across all published seasons.
+          </p>
+        </div>
         <AllTimeBadge />
       </div>
 
-      {h2h ? (
-        <div className="mb-6 space-y-5">
-          {/* The record, read at a glance. */}
-          <Card className="px-6 py-6">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex min-w-0 flex-1 items-center gap-3">
-                <Crest name={h2h.teamA.name} size={40} />
-                <span className="min-w-0">
-                  <span className="display block truncate text-lg font-bold">{h2h.teamA.name}</span>
-                  <span className="block text-xs text-muted">{h2h.aGoals} goals</span>
-                </span>
-              </div>
-              <div className="shrink-0 text-center">
-                <p className="stat-figure text-3xl">
-                  {h2h.aWins}<span className="mx-1.5 text-muted">–</span>{h2h.draws}<span className="mx-1.5 text-muted">–</span>{h2h.bWins}
-                </p>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-muted">
-                  W · D · L
-                </p>
-              </div>
-              <div className="flex min-w-0 flex-1 items-center justify-end gap-3 text-right">
-                <span className="min-w-0">
-                  <span className="display block truncate text-lg font-bold">{h2h.teamB.name}</span>
-                  <span className="block text-xs text-muted">{h2h.bGoals} goals</span>
-                </span>
-                <Crest name={h2h.teamB.name} size={40} />
-              </div>
-            </div>
+      {/* Quick Derby Shortcuts */}
+      {!h2h && simba && yanga && (
+        <div className="mb-6 rounded-xl border border-line bg-paper p-4 shadow-2xs">
+          <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2.5">
+            Popular Derbies & Matchups
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href={`/stats/head-to-head?teamA=${simba.id}&teamB=${yanga.id}`}
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-wash/80 px-3.5 py-1.5 text-xs font-bold text-ink hover:border-brand hover:text-brand transition-all shadow-2xs"
+            >
+              <span>🔥 Kariakoo Derby: Simba vs Yanga</span>
+            </Link>
+            {azam && (
+              <>
+                <Link
+                  href={`/stats/head-to-head?teamA=${simba.id}&teamB=${azam.id}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-wash/80 px-3.5 py-1.5 text-xs font-bold text-ink hover:border-brand hover:text-brand transition-all shadow-2xs"
+                >
+                  <span>Simba vs Azam</span>
+                </Link>
+                <Link
+                  href={`/stats/head-to-head?teamA=${yanga.id}&teamB=${azam.id}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-wash/80 px-3.5 py-1.5 text-xs font-bold text-ink hover:border-brand hover:text-brand transition-all shadow-2xs"
+                >
+                  <span>Yanga vs Azam</span>
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
-            <div className="mt-5 flex h-2.5 overflow-hidden rounded-full bg-wash">
-              <span className="bg-brand" style={{ width: `${pct(h2h.aWins, h2h.meetings)}%` }} />
-              <span className="bg-muted" style={{ width: `${pct(h2h.draws, h2h.meetings)}%` }} />
-              <span className="bg-loss" style={{ width: `${pct(h2h.bWins, h2h.meetings)}%` }} />
+      {h2h ? (
+        <div className="mb-6 space-y-6">
+          {/* Comparison Scoreboard Card */}
+          <Card className="overflow-hidden shadow-sm">
+            {isDerby && (
+              <div className="bg-gradient-to-r from-rose-600 via-amber-500 to-emerald-600 px-4 py-1.5 text-center text-xs font-black uppercase tracking-widest text-white">
+                🔥 Official Kariakoo Derby Record
+              </div>
+            )}
+            <div className="p-6">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex min-w-0 flex-1 items-center gap-3">
+                  <Crest name={h2h.teamA.name} size={48} className="shadow-md" />
+                  <div className="min-w-0">
+                    <span className="display block truncate text-xl font-black text-ink">
+                      {h2h.teamA.name}
+                    </span>
+                    <span className="block text-xs font-semibold text-muted">
+                      {h2h.aGoals} goals scored
+                    </span>
+                  </div>
+                </div>
+
+                <div className="shrink-0 text-center px-4">
+                  <p className="stat-figure text-3xl sm:text-4xl font-black text-ink">
+                    <span className="text-brand-dark">{h2h.aWins}</span>
+                    <span className="mx-1.5 text-muted/50 font-light">–</span>
+                    <span className="text-muted">{h2h.draws}</span>
+                    <span className="mx-1.5 text-muted/50 font-light">–</span>
+                    <span className="text-brand-dark">{h2h.bWins}</span>
+                  </p>
+                  <p className="mt-1 text-[11px] font-black uppercase tracking-wider text-muted">
+                    Wins · Draws · Wins
+                  </p>
+                </div>
+
+                <div className="flex min-w-0 flex-1 items-center justify-end gap-3 text-right">
+                  <div className="min-w-0">
+                    <span className="display block truncate text-xl font-black text-ink">
+                      {h2h.teamB.name}
+                    </span>
+                    <span className="block text-xs font-semibold text-muted">
+                      {h2h.bGoals} goals scored
+                    </span>
+                  </div>
+                  <Crest name={h2h.teamB.name} size={48} className="shadow-md" />
+                </div>
+              </div>
+
+              {/* Dominance percentage bar */}
+              <div className="mt-6 flex h-3 overflow-hidden rounded-full bg-wash shadow-inner">
+                <div
+                  className="bg-brand transition-all"
+                  style={{ width: `${pct(h2h.aWins, h2h.meetings)}%` }}
+                  title={`${h2h.teamA.name}: ${h2h.aWins} wins (${pct(h2h.aWins, h2h.meetings)}%)`}
+                />
+                <div
+                  className="bg-slate-300 transition-all"
+                  style={{ width: `${pct(h2h.draws, h2h.meetings)}%` }}
+                  title={`Draws: ${h2h.draws} (${pct(h2h.draws, h2h.meetings)}%)`}
+                />
+                <div
+                  className="bg-ink-soft transition-all"
+                  style={{ width: `${pct(h2h.bWins, h2h.meetings)}%` }}
+                  title={`${h2h.teamB.name}: ${h2h.bWins} wins (${pct(h2h.bWins, h2h.meetings)}%)`}
+                />
+              </div>
+              <div className="mt-2 flex justify-between text-xs text-muted font-medium">
+                <span>{h2h.teamA.name}: {pct(h2h.aWins, h2h.meetings)}%</span>
+                <span>{h2h.meetings} total meetings</span>
+                <span>{h2h.teamB.name}: {pct(h2h.bWins, h2h.meetings)}%</span>
+              </div>
             </div>
-            <p className="mt-2 text-center text-xs text-muted">
-              {h2h.meetings} meeting{h2h.meetings === 1 ? "" : "s"} on record
-            </p>
           </Card>
 
-          <Card>
-            <CardHead title="Every meeting" />
+          {/* Matches List */}
+          <Card className="overflow-hidden">
+            <CardHead
+              title="All Recorded Encounters"
+              hint={`${h2h.matches.length} fixtures in vault`}
+            />
             {h2h.matches.length === 0 ? (
               <p className="px-5 py-10 text-center text-sm text-muted">
                 These two clubs have no recorded meeting in the published data.
               </p>
             ) : (
-              <ul>
-                {h2h.matches.map((m) => (
-                  <li
-                    key={m.id}
-                    className="flex items-center gap-3 border-b border-line px-5 py-3 text-sm last:border-0"
-                  >
-                    <span className="w-20 shrink-0 text-xs text-muted">
-                      {m.kickoffAt
-                        ? new Date(m.kickoffAt).toLocaleDateString("en-GB", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "2-digit",
-                          })
-                        : "—"}
-                    </span>
-                    <span className="min-w-0 flex-1 truncate text-right">{m.homeTeam}</span>
-                    <span className="stat-figure shrink-0 rounded bg-wash px-2.5 py-1">
-                      {m.homeScore}‑{m.awayScore}
-                    </span>
-                    <span className="min-w-0 flex-1 truncate">{m.awayTeam}</span>
-                    <span className="hidden w-40 shrink-0 truncate text-right text-xs text-muted sm:block">
-                      {m.competition} {m.season}
-                    </span>
-                  </li>
-                ))}
+              <ul className="divide-y divide-line/60">
+                {h2h.matches.map((m) => {
+                  const homeScore = m.homeScore ?? 0;
+                  const awayScore = m.awayScore ?? 0;
+                  const homeWon = m.homeScore !== null && homeScore > awayScore;
+                  const awayWon = m.awayScore !== null && awayScore > homeScore;
+
+                  return (
+                    <li key={m.id}>
+                      <Link
+                        href={`/matches/${m.id}`}
+                        className="flex items-center gap-3 px-5 py-3 text-sm hover:bg-wash/70 transition-colors group"
+                      >
+                        <span className="w-20 shrink-0 text-xs text-muted font-medium">
+                          {m.kickoffAt
+                            ? new Date(m.kickoffAt).toLocaleDateString("en-GB", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "2-digit",
+                              })
+                            : "—"}
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-right font-semibold text-ink group-hover:text-brand transition-colors">
+                          {m.homeTeam}
+                        </span>
+                        <span className="stat-figure shrink-0 rounded-md bg-ink px-2.5 py-1 text-xs font-black text-white">
+                          <span className={homeWon ? "text-gold" : ""}>{m.homeScore ?? "—"}</span>
+                          <span className="mx-1 text-white/50">‑</span>
+                          <span className={awayWon ? "text-gold" : ""}>{m.awayScore ?? "—"}</span>
+                        </span>
+                        <span className="min-w-0 flex-1 truncate font-semibold text-ink group-hover:text-brand transition-colors">
+                          {m.awayTeam}
+                        </span>
+                        <span className="hidden w-44 shrink-0 truncate text-right text-xs text-muted sm:block">
+                          {m.competition} {m.season}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </Card>
 
-          <Link href="/stats/head-to-head" className="inline-block text-sm font-semibold text-brand hover:text-brand-dark">
-            ← Pick two different clubs
-          </Link>
+          <div>
+            <Link
+              href="/stats/head-to-head"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-2 text-xs font-bold text-ink hover:border-ink transition-all shadow-2xs"
+            >
+              ← Choose different clubs
+            </Link>
+          </div>
         </div>
       ) : null}
 
-      {error ? <div className="mb-5"><Empty>{error}</Empty></div> : null}
+      {error ? (
+        <div className="mb-5">
+          <Empty>{error}</Empty>
+        </div>
+      ) : null}
 
       {!h2h ? (
         <>
           {teamA && teamB && teamA === teamB ? (
-            <div className="mb-4"><Empty>Pick two different clubs.</Empty></div>
+            <div className="mb-4">
+              <Empty>Please pick two different clubs to compare.</Empty>
+            </div>
           ) : null}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             <Picker side="teamA" selectedId={teamA} teams={teams} hrefFor={pickerHref} />
             <Picker side="teamB" selectedId={teamB} teams={teams} hrefFor={pickerHref} />
           </div>
