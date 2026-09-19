@@ -222,20 +222,20 @@ export function RoundStrip({
                 data-round={r.round}
                 onClick={handlePillClick}
                 aria-current={isActive ? "true" : undefined}
-                className={`relative flex min-w-[54px] sm:min-w-[58px] flex-col items-center justify-center rounded-xl px-2 py-1.5 transition-all duration-200 text-center select-none ${
+                className={`relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl px-3 py-1.5 transition-all duration-200 select-none text-xs ${
                   isActive
                     ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
-                    : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
+                    : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash font-semibold"
                 }`}
               >
                 <span
-                  className={`text-[9px] font-bold uppercase tracking-wider leading-none transition-colors ${
+                  className={`text-[11px] font-medium tracking-wide transition-colors ${
                     isActive ? "text-white/80" : "text-muted"
                   }`}
                 >
                   Round
                 </span>
-                <span className="nums text-base font-black leading-tight mt-0.5">
+                <span className="nums text-xs font-black">
                   {r.round}
                 </span>
               </Link>
