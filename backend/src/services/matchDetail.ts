@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { competitionDisplayName } from './competitionName.js';
 import { prisma } from '../db.js';
 
 /**
@@ -57,17 +58,20 @@ const GOAL_TYPES = ['GOAL', 'PENALTY_GOAL', 'OWN_GOAL'];
 export async function getMatchDetail(id: number): Promise<MatchDetail | null> {
   const rows = await prisma.$queryRaw<Array<{
     id: number; kickoff_at: Date | null; status: string; round: string | null;
-    venue: string | null; edition_id: number; competition: string; season: string;
+    venue: string | null; edition_id: number; competition: string;
+    competition_country: string | null; season: string;
     home_team_id: number; home_name: string; home_short: string | null; home_score: number | null;
     away_team_id: number; away_name: string; away_short: string | null; away_score: number | null;
   }>>(Prisma.sql`
     SELECT m.id, m.kickoff_at, m.status, m.round, st.name AS venue,
-           ce.id AS edition_id, c.name AS competition, s.label AS season,
+           ce.id AS edition_id, c.name AS competition, co.name AS competition_country,
+           s.label AS season,
            th.id AS home_team_id, th.name AS home_name, th.short_name AS home_short, m.home_score,
            ta.id AS away_team_id, ta.name AS away_name, ta.short_name AS away_short, m.away_score
       FROM matches m
       JOIN competition_editions ce ON ce.id = m.competition_edition_id
       JOIN competitions c ON c.id = ce.competition_id
+      LEFT JOIN countries co ON co.id = c.country_id
       JOIN seasons s ON s.id = ce.season_id
       JOIN teams th ON th.id = m.home_team_id
       JOIN teams ta ON ta.id = m.away_team_id
@@ -144,7 +148,11 @@ export async function getMatchDetail(id: number): Promise<MatchDetail | null> {
     status: m.status,
     round: m.round,
     venue: m.venue,
-    competition: { editionId: m.edition_id, name: m.competition, season: m.season },
+    competition: {
+      editionId: m.edition_id,
+      name: competitionDisplayName(m.competition, m.competition_country),
+      season: m.season,
+    },
     home: { id: m.home_team_id, name: m.home_name, shortName: m.home_short, score: m.home_score },
     away: { id: m.away_team_id, name: m.away_name, shortName: m.away_short, score: m.away_score },
     events: events.map((e) => ({

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { z } from 'zod';
 import { prisma } from '../db.js';
 import {
@@ -38,7 +39,7 @@ editorialRouter.get('/editions', async (_req, res) => {
       ]);
       return {
         editionId: e.id,
-        competition: e.competitions.name,
+        competition: competitionDisplayName(e.competitions.name, e.competitions.countries?.name),
         competitionType: e.competitions.type,
         country: e.competitions.countries?.name ?? null,
         season: e.seasons.label,

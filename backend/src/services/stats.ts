@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { competitionDisplayName } from './competitionName.js';
 import { prisma } from '../db.js';
 
 /**
@@ -419,15 +420,18 @@ export async function headToHead(
   ]);
   if (!a || !b) return null;
 
-  const matches = await prisma.$queryRaw<HeadToHead['matches']>(Prisma.sql`
+  const rows = await prisma.$queryRaw<(HeadToHead['matches'][number] & {
+    competitionCountry: string | null;
+  })[]>(Prisma.sql`
     SELECT m.id, m.kickoff_at AS "kickoffAt",
-           c.name AS competition, s.label AS season,
+           c.name AS competition, co.name AS "competitionCountry", s.label AS season,
            m.home_team_id AS "homeTeamId",
            th.name AS "homeTeam", ta.name AS "awayTeam",
            m.home_score AS "homeScore", m.away_score AS "awayScore"
     FROM matches m
     JOIN competition_editions ce ON ce.id = m.competition_edition_id
     JOIN competitions c ON c.id = ce.competition_id
+    LEFT JOIN countries co ON co.id = c.country_id
     JOIN seasons s ON s.id = ce.season_id
     JOIN teams th ON th.id = m.home_team_id
     JOIN teams ta ON ta.id = m.away_team_id
@@ -437,6 +441,11 @@ export async function headToHead(
         OR (m.home_team_id = ${teamBId} AND m.away_team_id = ${teamAId}))
     ORDER BY m.kickoff_at DESC NULLS LAST
   `);
+
+  const matches: HeadToHead['matches'] = rows.map(({ competitionCountry, ...m }) => ({
+    ...m,
+    competition: competitionDisplayName(m.competition, competitionCountry),
+  }));
 
   let aWins = 0;
   let bWins = 0;

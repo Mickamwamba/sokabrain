@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { z } from 'zod';
 import { Prisma } from '@prisma/client';
 import { prisma } from '../db.js';
@@ -63,7 +64,12 @@ adminCompetitionsRouter.get('/competitions', async (req, res) => {
   res.json({
     competitions: competitions.map((c) => ({
       id: c.id,
+      // The RAW stored name: the edit form has to round-trip what is stored.
       name: c.name,
+      // ...and the name as it should be shown, country in front. Three leagues
+      // are called plainly "Premier League", so the bare name identifies none
+      // of them.
+      displayName: competitionDisplayName(c.name, c.countries?.name),
       type: c.type,
       tier: c.tier,
       country: c.countries?.name ?? null,
@@ -204,7 +210,9 @@ adminCompetitionsRouter.get('/editions/:id/summary', async (req, res) => {
   const edition = await prisma.competition_editions.findUnique({
     where: { id: editionId },
     include: {
-      competitions: { select: { id: true, name: true, type: true } },
+      competitions: {
+        select: { id: true, name: true, type: true, countries: { select: { name: true } } },
+      },
       seasons: { select: { label: true } },
     },
   });
@@ -260,7 +268,10 @@ adminCompetitionsRouter.get('/editions/:id/summary', async (req, res) => {
     edition: {
       editionId,
       competitionId: edition.competitions.id,
-      competition: edition.competitions.name,
+      competition: competitionDisplayName(
+        edition.competitions.name,
+        edition.competitions.countries?.name,
+      ),
       competitionType: edition.competitions.type,
       season: edition.seasons.label,
       isPublished: edition.is_published,

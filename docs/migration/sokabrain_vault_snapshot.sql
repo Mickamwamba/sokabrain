@@ -3040,9 +3040,9 @@ COPY public.competitions (id, name, slug, type, country_id, confederation_id, ti
 14	SportPesa Super Cup	sportpesa-super-cup	SUPER_CUP	23	\N	\N	/images/logo-competitions/SportPesa.jpeg
 15	Afcon-U17	afcon-u17	CONTINENTAL_NATIONAL	\N	1	\N	/images/logo-competitions/AFCON-U17.jpeg
 16	Africa Cup of Nations	africa-cup-of-nations	CONTINENTAL_NATIONAL	\N	1	\N	/images/logo-competitions/AFCON2019.png
-17	Kenya premier league	kenya-premier-league	LEAGUE	23	\N	1	/images/logo-competitions/KE.png
 18	KENYA FA CUP	kenya-fa-cup	DOMESTIC_CUP	23	\N	\N	/images/logo-competitions/KFA.png
 19	CECAFA	cecafa	CONTINENTAL_NATIONAL	\N	1	\N	\N
+17	Premier League	kenya-premier-league	LEAGUE	23	\N	1	/images/logo-competitions/KE.png
 126	National Soccer League	rwanda-national-soccer-league	LEAGUE	39	\N	1	\N
 127	Premier League	south-africa-premier-league	LEAGUE	46	\N	1	\N
 128	Premier League	uganda-premier-league	LEAGUE	54	\N	1	\N
@@ -52106,7 +52106,7 @@ SELECT pg_catalog.setval('public.competition_edition_teams_id_seq', 3329, true);
 -- Name: competition_editions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competition_editions_id_seq', 411, true);
+SELECT pg_catalog.setval('public.competition_editions_id_seq', 415, true);
 
 
 --
@@ -52120,7 +52120,7 @@ SELECT pg_catalog.setval('public.competition_groups_id_seq', 518, true);
 -- Name: competitions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competitions_id_seq', 132, true);
+SELECT pg_catalog.setval('public.competitions_id_seq', 136, true);
 
 
 --
@@ -52134,14 +52134,14 @@ SELECT pg_catalog.setval('public.confederations_id_seq', 6, true);
 -- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.countries_id_seq', 167, true);
+SELECT pg_catalog.setval('public.countries_id_seq', 171, true);
 
 
 --
 -- Name: data_flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_flags_id_seq', 176, true);
+SELECT pg_catalog.setval('public.data_flags_id_seq', 182, true);
 
 
 --
@@ -52155,7 +52155,7 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 22, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 90528, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 90560, true);
 
 
 --
@@ -52176,7 +52176,7 @@ SELECT pg_catalog.setval('public.match_lineups_id_seq', 7623, true);
 -- Name: matches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.matches_id_seq', 23125, true);
+SELECT pg_catalog.setval('public.matches_id_seq', 23133, true);
 
 
 --
@@ -52197,21 +52197,21 @@ SELECT pg_catalog.setval('public.players_id_seq', 13238, true);
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3221, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3225, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 190, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 192, true);
 
 
 --
 -- Name: seasons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.seasons_id_seq', 338, true);
+SELECT pg_catalog.setval('public.seasons_id_seq', 342, true);
 
 
 --
@@ -52225,7 +52225,7 @@ SELECT pg_catalog.setval('public.stadiums_id_seq', 127, true);
 -- Name: teams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.teams_id_seq', 621, true);
+SELECT pg_catalog.setval('public.teams_id_seq', 633, true);
 
 
 --

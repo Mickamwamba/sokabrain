@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { competitionDisplayName } from './competitionName.js';
 import { prisma } from '../db.js';
 
 /**
@@ -131,20 +132,23 @@ export async function currentContext(): Promise<{
   inSeason: boolean;
 }> {
   const [row] = await prisma.$queryRaw<Array<{
-    editionId: number; season: string; competition: string;
+    editionId: number; season: string; competition: string; competitionCountry: string | null;
     nextDate: string | null; lastDate: string | null; inSeason: boolean;
   }>>(Prisma.sql`
     WITH spans AS (
       SELECT ce.id AS edition_id, s.label AS season, c.name AS competition,
+             co.name AS competition_country,
              min(m.kickoff_at) AS starts, max(m.kickoff_at) AS ends
         FROM competition_editions ce
         JOIN competitions c ON c.id = ce.competition_id
+        LEFT JOIN countries co ON co.id = c.country_id
         JOIN seasons s ON s.id = ce.season_id
         JOIN matches m ON m.competition_edition_id = ce.id
        WHERE ce.is_published = TRUE
-       GROUP BY ce.id, s.label, c.name
+       GROUP BY ce.id, s.label, c.name, co.name
     )
     SELECT edition_id AS "editionId", season, competition,
+           competition_country AS "competitionCountry",
            (SELECT to_char(min(m.kickoff_at AT TIME ZONE 'Africa/Dar_es_Salaam'), 'YYYY-MM-DD')
               FROM matches m
              WHERE m.competition_edition_id = spans.edition_id
@@ -165,7 +169,7 @@ export async function currentContext(): Promise<{
   return {
     editionId: row.editionId,
     season: row.season,
-    competition: row.competition,
+    competition: competitionDisplayName(row.competition, row.competitionCountry),
     nextMatchDate: row.nextDate,
     lastMatchDate: row.lastDate,
     inSeason: row.inSeason,

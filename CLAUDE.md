@@ -157,6 +157,32 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
+- **A competition is always named with its country in front.** Three leagues are
+  called plainly "Premier League" — Tanzania's, South Africa's and Uganda's — so
+  a bare name identifies none of them. `backend/src/services/competitionName.ts`
+  holds the rule and every API emission point applies it: the editions index and
+  detail, match detail, head-to-head, team profiles, the admin lists, audit
+  labels and the form dropdowns. The site now reads Tanzania Premier League,
+  Kenya Premier League, Rwanda National Soccer League, South Africa Premier
+  League, Uganda Premier League, and Africa Cup of Nations.
+  - **It is a display rule, not a stored name.** `competitions.country_id`
+    already carries the country; duplicating it into the name would let the two
+    drift, and a competition added later through the console gets the prefix
+    without anyone having to name it carefully.
+  - **The prefix is skipped when the name already contains the country**, case-
+    and punctuation-insensitively ("KENYA FA CUP"), and when there is no country
+    at all — a continental competition like AFCON belongs to no one country.
+  - **`countryShortName` takes the common name out of the ISO long form**, so
+    "Tanzania, United Republic of" prefixes as "Tanzania". The web app has its
+    own hand-rolled `.replace(', United Republic of', '')` in seven places for
+    its *country* columns; those are separate and were left alone.
+  - **The admin keeps BOTH**: `name` is the raw stored value an edit form must
+    round-trip, `displayName` is what the list renders. Do not collapse them.
+  - Kenya's competition was renamed from "Kenya premier league" to "Premier
+    League" in step (`2026-09-19_kenya_competition_name.sql`) — it was the one
+    record carrying its own country, so the rule had to skip it and it alone
+    read lowercase beside the others. **Its slug is unchanged**, per the
+    codebase's rule that a slug may already be in a URL.
 - **The public site now covers SIX competitions across five countries** — 59
   published editions (2026-09-19). Tanzania's Premier League (19 seasons) and
   the Africa Cup of Nations (35) were joined by the Kenyan, Rwandan, Ugandan and

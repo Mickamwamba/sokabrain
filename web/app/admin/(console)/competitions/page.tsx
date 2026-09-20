@@ -60,7 +60,7 @@ export default async function AdminCompetitionsPage(props: PageProps<'/admin/com
                   <tr key={c.id} className="hover:bg-wash/60">
                     <td className={td}>
                       <Link href={`/admin/competitions/${c.id}`} className="font-semibold hover:text-brand">
-                        {c.name}
+                        {c.displayName}
                       </Link>
                       {c.tier ? <span className="ml-2 text-xs text-muted">Tier {c.tier}</span> : null}
                     </td>

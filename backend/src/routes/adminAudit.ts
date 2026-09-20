@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { z } from 'zod';
 import { prisma } from '../db.js';
 import { CHECKS } from '../services/audit/checks.js';
@@ -37,14 +38,28 @@ auditRouter.get('/audit/runs', async (req, res) => {
   const compIds = [...new Set(runs.flatMap((r) => r.scope_competition_ids))];
   const edIds = [...new Set(runs.flatMap((r) => r.scope_edition_ids))];
   const [comps, eds] = await Promise.all([
-    prisma.competitions.findMany({ where: { id: { in: compIds } }, select: { id: true, name: true } }),
+    prisma.competitions.findMany({
+      where: { id: { in: compIds } },
+      select: { id: true, name: true, countries: { select: { name: true } } },
+    }),
     prisma.competition_editions.findMany({
       where: { id: { in: edIds } },
-      select: { id: true, competitions: { select: { name: true } }, seasons: { select: { label: true } } },
+      select: {
+        id: true,
+        competitions: { select: { name: true, countries: { select: { name: true } } } },
+        seasons: { select: { label: true } },
+      },
     }),
   ]);
-  const compName = new Map(comps.map((c) => [c.id, c.name]));
-  const edName = new Map(eds.map((e) => [e.id, `${e.competitions.name} ${e.seasons.label}`]));
+  const compName = new Map(
+    comps.map((c) => [c.id, competitionDisplayName(c.name, c.countries?.name)]),
+  );
+  const edName = new Map(
+    eds.map((e) => [
+      e.id,
+      `${competitionDisplayName(e.competitions.name, e.competitions.countries?.name)} ${e.seasons.label}`,
+    ]),
+  );
   res.json({
     runs: runs.map((r) => ({
       id: r.id,
@@ -98,7 +113,12 @@ auditRouter.get('/audit/findings', async (req, res) => {
       take: pageSize,
       include: {
         competition_editions: {
-          select: { id: true, competition_id: true, competitions: { select: { name: true } }, seasons: { select: { label: true } } },
+          select: {
+            id: true,
+            competition_id: true,
+            competitions: { select: { name: true, countries: { select: { name: true } } } },
+            seasons: { select: { label: true } },
+          },
         },
         admins: { select: { display_name: true } },
       },
@@ -140,7 +160,15 @@ auditRouter.get('/audit/findings', async (req, res) => {
     },
     findings: rows.map((r) => {
       const ed = r.competition_editions;
-      const edition = ed ? { id: ed.id, competitionId: ed.competition_id, label: `${ed.competitions.name} ${ed.seasons.label}` } : null;
+      const edition = ed
+        ? {
+            id: ed.id,
+            competitionId: ed.competition_id,
+            label:
+              `${competitionDisplayName(ed.competitions.name, ed.competitions.countries?.name)} ` +
+              `${ed.seasons.label}`,
+          }
+        : null;
       const entity =
         r.entity_type === 'match'
           ? { type: 'match', id: r.entity_id, label: matchLabel.get(r.entity_id)?.label ?? `Match #${r.entity_id} (deleted)`, date: matchLabel.get(r.entity_id)?.date ?? null }

@@ -1,4 +1,5 @@
 import { Router, type Request, type Response } from 'express';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { prisma } from '../db.js';
@@ -597,12 +598,14 @@ manageRouter.delete('/editions/:id', async (req, res) => {
     where: { id },
     select: {
       is_published: true,
-      competitions: { select: { name: true } },
+      competitions: { select: { name: true, countries: { select: { name: true } } } },
       seasons: { select: { label: true } },
     },
   });
   if (!edition) return res.status(404).json({ error: `No edition with id ${id}` });
-  const label = `${edition.competitions.name} ${edition.seasons.label}`;
+  const label =
+    `${competitionDisplayName(edition.competitions.name, edition.competitions.countries?.name)} ` +
+    `${edition.seasons.label}`;
 
   if (edition.is_published) {
     return res.status(409).json({
@@ -631,7 +634,9 @@ manageRouter.get('/editions/:id/participants', async (req, res) => {
   const edition = await prisma.competition_editions.findUnique({
     where: { id },
     include: {
-      competitions: { select: { id: true, name: true, type: true } },
+      competitions: {
+        select: { id: true, name: true, type: true, countries: { select: { name: true } } },
+      },
       seasons: { select: { label: true } },
       competition_groups: { select: { id: true, name: true }, orderBy: { name: 'asc' } },
       competition_edition_teams: {
@@ -660,7 +665,10 @@ manageRouter.get('/editions/:id/participants', async (req, res) => {
     edition: {
       id: edition.id,
       competitionId: edition.competitions.id,
-      competition: edition.competitions.name,
+      competition: competitionDisplayName(
+        edition.competitions.name,
+        edition.competitions.countries?.name,
+      ),
       competitionType: edition.competitions.type,
       season: edition.seasons.label,
       numTeams: edition.num_teams,
@@ -787,7 +795,11 @@ manageRouter.get('/seasons', async (_req, res) => {
     orderBy: { label: 'desc' },
     include: {
       competition_editions: {
-        select: { id: true, is_published: true, competitions: { select: { name: true } } },
+        select: {
+          id: true,
+          is_published: true,
+          competitions: { select: { name: true, countries: { select: { name: true } } } },
+        },
       },
     },
   });
@@ -799,7 +811,9 @@ manageRouter.get('/seasons', async (_req, res) => {
       endDate: s.end_date,
       editions: s.competition_editions.length,
       published: s.competition_editions.filter((e) => e.is_published).length,
-      competitions: s.competition_editions.map((e) => e.competitions.name).sort(),
+      competitions: s.competition_editions
+        .map((e) => competitionDisplayName(e.competitions.name, e.competitions.countries?.name))
+        .sort(),
     })),
   });
 });
@@ -998,10 +1012,20 @@ manageRouter.get('/lookups', async (_req, res) => {
     prisma.countries.findMany({ select: { id: true, name: true }, orderBy: { name: 'asc' } }),
     prisma.seasons.findMany({ select: { id: true, label: true }, orderBy: { label: 'desc' } }),
     prisma.stadiums.findMany({ select: { id: true, name: true, city: true }, orderBy: { name: 'asc' } }),
-    prisma.competitions.findMany({ select: { id: true, name: true }, orderBy: { name: 'asc' } }),
+    prisma.competitions.findMany({
+      select: { id: true, name: true, countries: { select: { name: true } } },
+      orderBy: { name: 'asc' },
+    }),
   ]);
   res.json({
-    countries, seasons, stadiums, competitions,
+    countries,
+    seasons,
+    stadiums,
+    // A dropdown picks a competition by its NAME, so three entries reading
+    // "Premier League" would be unpickable. These carry the country prefix.
+    competitions: competitions
+      .map((c) => ({ id: c.id, name: competitionDisplayName(c.name, c.countries?.name) }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
     competitionTypes: COMPETITION_TYPES,
     editionFormats: EDITION_FORMATS,
   });

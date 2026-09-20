@@ -126,7 +126,10 @@ export type Flag = {
 
 export type AdminCompetition = {
   id: number;
+  /** The raw stored name — what the edit form must round-trip. */
   name: string;
+  /** The name as it should be SHOWN: its country in front. */
+  displayName: string;
   type: string;
   tier: number | null;
   country: string | null;

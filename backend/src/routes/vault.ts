@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { prisma } from '../db.js';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { getStandings } from '../services/standings.js';
 import { getTopScorers } from '../services/topScorers.js';
 import { listMatches } from '../services/matches.js';
@@ -52,7 +53,7 @@ vaultRouter.get('/editions', async (_req, res) => {
       .map((e) => ({
         editionId: e.id,
         competitionId: e.competitions.id,
-        competition: e.competitions.name,
+        competition: competitionDisplayName(e.competitions.name, e.competitions.countries?.name),
         competitionType: e.competitions.type,
         tier: e.competitions.tier,
         country: e.competitions.countries?.name ?? null,
@@ -77,7 +78,9 @@ vaultRouter.get('/editions/:editionId/standings', async (req, res) => {
     // not something the public API should confirm.
     where: { id: editionId, is_published: true },
     include: {
-      competitions: { select: { name: true, type: true } },
+      competitions: {
+        select: { name: true, type: true, countries: { select: { name: true } } },
+      },
       seasons: { select: { label: true } },
     },
   });
@@ -88,7 +91,10 @@ vaultRouter.get('/editions/:editionId/standings', async (req, res) => {
   res.json({
     edition: {
       editionId,
-      competition: edition.competitions.name,
+      competition: competitionDisplayName(
+        edition.competitions.name,
+        edition.competitions.countries?.name,
+      ),
       competitionType: edition.competitions.type,
       season: edition.seasons.label,
     },

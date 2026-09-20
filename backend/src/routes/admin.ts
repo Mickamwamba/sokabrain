@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { competitionDisplayName } from '../services/competitionName.js';
 import { Prisma } from '@prisma/client';
 import { z } from 'zod';
 import { prisma } from '../db.js';
@@ -211,7 +212,7 @@ adminRouter.get('/matches/:id', async (req, res) => {
         select: {
           id: true,
           is_published: true,
-          competitions: { select: { name: true } },
+          competitions: { select: { name: true, countries: { select: { name: true } } } },
           seasons: { select: { label: true } },
         },
       },
@@ -249,7 +250,10 @@ adminRouter.get('/matches/:id', async (req, res) => {
       awayScore: match.away_score,
       edition: {
         id: match.competition_editions.id,
-        name: match.competition_editions.competitions.name,
+        name: competitionDisplayName(
+          match.competition_editions.competitions.name,
+          match.competition_editions.competitions.countries?.name,
+        ),
         season: match.competition_editions.seasons.label,
         isPublished: match.competition_editions.is_published,
       },

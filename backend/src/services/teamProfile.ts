@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { competitionDisplayName } from './competitionName.js';
 import { prisma } from '../db.js';
 import { playerStats, type PlayerStatsResult } from './stats.js';
 
@@ -216,6 +217,7 @@ async function seasonRows(teamId: number): Promise<TeamSeason[]> {
       se.label     AS season,
       c.id         AS "competitionId",
       c.name       AS competition,
+      co.name      AS "competitionCountry",
       c.type       AS "competitionType",
       r.played, r.won, r.drawn, r.lost,
       r."goalsFor", r."goalsAgainst", r."goalDifference", r.points,
@@ -234,6 +236,7 @@ async function seasonRows(teamId: number): Promise<TeamSeason[]> {
       JOIN competition_editions ce ON ce.id = r.edition_id
       JOIN seasons se              ON se.id = ce.season_id
       JOIN competitions c          ON c.id  = ce.competition_id
+      LEFT JOIN countries co       ON co.id = c.country_id
       JOIN edition_facts f         ON f.edition_id = r.edition_id
      WHERE r.team_id = ${teamId}
      ORDER BY se.label DESC
@@ -248,7 +251,13 @@ async function seasonRows(teamId: number): Promise<TeamSeason[]> {
         // A tournament is won in its final, so the final's result is the whole
         // answer — no table, and no need to wait for anything else to finish.
         : run?.wonFinal ?? (r.finished ? false : null);
-    return { ...r, furthestRound: run?.round ?? null, champion };
+    const { competitionCountry, ...rest } = r as typeof r & { competitionCountry: string | null };
+    return {
+      ...rest,
+      competition: competitionDisplayName(r.competition, competitionCountry),
+      furthestRound: run?.round ?? null,
+      champion,
+    };
   });
 }
 
@@ -332,6 +341,7 @@ async function teamMatches(teamId: number, limit: number, order: 'recent' | 'bes
         m.id AS "matchId",
         m.kickoff_at AS "kickoffAt",
         c.name  AS competition,
+        co.name AS "competitionCountry",
         se.label AS season,
         (m.home_team_id = ${teamId}) AS home,
         CASE WHEN m.home_team_id = ${teamId} THEN m.away_team_id ELSE m.home_team_id END AS "opponentId",
@@ -342,6 +352,7 @@ async function teamMatches(teamId: number, limit: number, order: 'recent' | 'bes
         JOIN competition_editions ce ON ce.id = m.competition_edition_id
         JOIN seasons se              ON se.id = ce.season_id
         JOIN competitions c          ON c.id  = ce.competition_id
+        LEFT JOIN countries co       ON co.id = c.country_id
         JOIN teams home              ON home.id = m.home_team_id
         JOIN teams away              ON away.id = m.away_team_id
        WHERE m.competition_edition_id IN (${PUBLISHED})
@@ -353,11 +364,13 @@ async function teamMatches(teamId: number, limit: number, order: 'recent' | 'bes
     LIMIT ${limit}
   `).then((rows) =>
     rows.map((r) => {
-      const { gf, ga } = r as unknown as { gf: number; ga: number };
+      const { gf, ga, competitionCountry } = r as unknown as {
+        gf: number; ga: number; competitionCountry: string | null;
+      };
       return {
         matchId: r.matchId,
         kickoffAt: r.kickoffAt,
-        competition: r.competition,
+        competition: competitionDisplayName(r.competition, competitionCountry),
         season: r.season,
         home: r.home,
         opponentId: r.opponentId,
