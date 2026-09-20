@@ -85,12 +85,12 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
       try {
         await navigator.share({
           title: thread.title,
-          text: `"${thread.title}" - Kijiweni SokaBrain`,
+          text: `"${thread.title}" - Kijiweni Sokabrain`,
           url,
         });
         return;
       } catch {
-        // Fallback
+        // Fall through to clipboard
       }
     }
     try {
@@ -100,12 +100,6 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
     } catch {
       // ignore
     }
-  };
-
-  const handleWhatsApp = () => {
-    const url = typeof window !== "undefined" ? window.location.href : "";
-    const msg = encodeURIComponent(`🔥 Mada Kijiweni: *${thread.title}*\n\nBisha na toa mtazamo wako hapa: ${url}`);
-    window.open(`https://api.whatsapp.com/send?text=${msg}`, "_blank");
   };
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
@@ -151,20 +145,21 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
     return new Date(dateStr).toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
+      year: "numeric",
     });
   };
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-2 text-xs font-bold text-muted">
-        <Link href="/kijiweni" className="hover:text-ink transition-colors">
+      <div className="flex items-center gap-2 text-xs text-muted">
+        <Link href="/kijiweni" className="hover:text-ink transition-colors font-semibold">
           Kijiweni
         </Link>
         <span>/</span>
         <Link
           href={`/kijiweni/${thread.kijiwe.slug}`}
-          className="hover:text-ink transition-colors flex items-center gap-1"
+          className="hover:text-ink transition-colors font-semibold flex items-center gap-1"
         >
           <span>{thread.kijiwe.icon}</span>
           <span>{spaceName}</span>
@@ -172,22 +167,22 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
       </div>
 
       {/* Main Thread Card */}
-      <div className="rounded-2xl border border-line bg-paper p-5 sm:p-7 shadow-xs space-y-4">
+      <div className="rounded-xl border border-line bg-paper p-5 sm:p-6 space-y-4">
         {/* Meta Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/50 pb-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/40 pb-3.5">
           <div className="flex items-center gap-3">
             {thread.authorTeamName ? (
-              <Crest name={thread.authorTeamName} size={36} />
+              <Crest name={thread.authorTeamName} size={32} />
             ) : (
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand/10 text-brand text-sm font-black">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-wash text-muted text-xs font-bold">
                 ⚽
               </div>
             )}
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-black text-sm text-ink">{thread.authorName}</span>
+                <span className="font-bold text-sm text-ink">{thread.authorName}</span>
                 {thread.authorTeamName && (
-                  <span className="rounded-md bg-wash px-2 py-0.5 text-[11px] font-bold text-muted border border-line/60">
+                  <span className="rounded bg-wash px-2 py-0.5 text-[11px] font-medium text-muted border border-line/50">
                     {thread.authorTeamName}
                   </span>
                 )}
@@ -197,15 +192,15 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-black uppercase tracking-wider text-brand">
+            <span className="rounded bg-wash px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-muted border border-line/50">
               {tagLabel}
             </span>
           </div>
         </div>
 
         {/* Title and Full Content */}
-        <div className="space-y-3 py-2">
-          <h1 className="text-xl sm:text-2xl font-black text-ink leading-snug">
+        <div className="space-y-3 py-1">
+          <h1 className="text-xl sm:text-2xl font-bold text-ink leading-snug">
             {thread.title}
           </h1>
           <div className="text-sm sm:text-base text-ink/90 leading-relaxed whitespace-pre-line">
@@ -214,47 +209,53 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
         </div>
 
         {/* Action Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line/50 pt-4 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line/40 pt-3 text-xs">
           <div className="flex items-center gap-2">
             {/* Like */}
             <button
               onClick={handleThreadLike}
-              className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                 hasLiked
                   ? "bg-rose-500/10 text-rose-600 border border-rose-500/30"
-                  : "border border-line bg-wash/60 text-ink hover:bg-wash hover:border-ink/40"
+                  : "border border-line/60 bg-wash/40 text-muted hover:text-ink hover:bg-wash"
               }`}
             >
-              <span className="text-sm">{hasLiked ? "❤️" : "🤍"}</span>
-              <span className="nums font-black">{likes}</span>
-              <span className="hidden sm:inline font-medium">{t.kijiweni.likesCount}</span>
+              <span>{hasLiked ? "❤️" : "🤍"}</span>
+              <span className="nums font-bold">{likes}</span>
+              <span className="hidden sm:inline text-muted font-normal">{t.kijiweni.likesCount}</span>
             </button>
 
             {/* Comment Count Anchor */}
             <a
               href="#comments"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-wash/60 px-4 py-2 text-xs font-bold text-ink hover:bg-wash hover:border-ink/40 transition-all"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-line/60 bg-wash/40 px-3 py-1.5 text-xs font-semibold text-muted hover:text-ink hover:bg-wash transition-colors"
             >
-              <span className="text-sm">💬</span>
-              <span className="nums font-black">{thread.commentsCount}</span>
-              <span className="hidden sm:inline font-medium">{t.kijiweni.commentsCount}</span>
+              <span>💬</span>
+              <span className="nums font-bold">{thread.commentsCount}</span>
+              <span className="hidden sm:inline text-muted font-normal">{t.kijiweni.commentsCount}</span>
             </a>
           </div>
 
-          {/* Social Share */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleWhatsApp}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500/10 text-emerald-700 hover:bg-emerald-500/20 px-3.5 py-2 text-xs font-bold border border-emerald-500/20 transition-all cursor-pointer"
-            >
-              <span>📲</span>
-              <span>{t.kijiweni.shareWhatsapp}</span>
-            </button>
+          {/* Single Share Button */}
+          <div>
             <button
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-wash/60 hover:bg-wash px-3.5 py-2 text-xs font-bold text-ink transition-all cursor-pointer"
+              aria-label={t.kijiweni.shareThread}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-line/60 bg-wash/40 hover:bg-wash px-3 py-1.5 text-xs font-semibold text-muted hover:text-ink transition-colors cursor-pointer"
             >
-              <span>🔗</span>
+              <svg
+                className="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                />
+              </svg>
               <span>{copied ? t.kijiweni.copiedLink : t.kijiweni.shareThread}</span>
             </button>
           </div>
@@ -264,10 +265,9 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
       {/* Discussion / Comments Stream */}
       <div id="comments" className="space-y-4 pt-2">
         <div className="flex items-center justify-between px-1">
-          <h2 className="text-base font-black text-ink flex items-center gap-2">
-            <span>💬</span>
+          <h2 className="text-base font-bold text-ink flex items-center gap-2">
             <span>{t.kijiweni.commentsTitle}</span>
-            <span className="rounded-full bg-wash px-2 py-0.5 text-xs text-muted border border-line">
+            <span className="rounded bg-wash px-2 py-0.5 text-xs text-muted border border-line/60">
               {thread.comments.length}
             </span>
           </h2>
@@ -275,9 +275,9 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
           {/* Fan Handle indicator */}
           <button
             onClick={() => setProfileModalOpen(true)}
-            className="flex items-center gap-1.5 text-xs font-bold text-brand hover:underline cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-semibold text-brand hover:underline cursor-pointer"
           >
-            <Crest name={profile.team || "Simba SC"} size={18} />
+            <Crest name={profile.team || "Simba SC"} size={16} />
             <span>{profile.name || t.kijiweni.changeProfile}</span>
           </button>
         </div>
@@ -285,12 +285,12 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
         {/* Comment Box */}
         <form
           onSubmit={handleCommentSubmit}
-          className="rounded-2xl border border-line bg-paper p-4 shadow-2xs space-y-3"
+          className="rounded-xl border border-line bg-paper p-4 space-y-3"
         >
-          <div className="flex items-center gap-2 text-xs font-bold text-muted pb-1">
+          <div className="flex items-center gap-2 text-xs text-muted pb-0.5">
             <span>Unaandika kama:</span>
-            <span className="text-ink font-black">{profile.name || "Shabiki mgeni"}</span>
-            <span className="text-muted/60">({profile.team || "Simba SC"})</span>
+            <span className="text-ink font-bold">{profile.name || "Shabiki mgeni"}</span>
+            <span className="text-muted">({profile.team || "Simba SC"})</span>
           </div>
 
           <textarea
@@ -299,21 +299,18 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
             placeholder={t.kijiweni.commentPlaceholder}
-            className="w-full rounded-xl border border-line bg-wash/40 p-3 text-sm text-ink placeholder:text-muted/60 focus:border-brand focus:bg-paper focus:outline-none transition-all"
+            className="w-full rounded-lg border border-line bg-wash/30 p-3 text-sm text-ink placeholder:text-muted focus:border-brand focus:bg-paper focus:outline-none transition-colors"
           />
 
           {commentError && (
-            <p className="text-xs text-rose-500 font-semibold">{commentError}</p>
+            <p className="text-xs text-rose-500 font-medium">{commentError}</p>
           )}
 
-          <div className="flex items-center justify-between pt-1">
-            <span className="text-[11px] text-muted">
-              💡 Chombeza kwa heshima ya kijiwe
-            </span>
+          <div className="flex items-center justify-end pt-1">
             <button
               type="submit"
               disabled={isSubmittingComment}
-              className="rounded-xl bg-brand px-5 py-2 text-xs font-black text-white hover:bg-brand/90 transition-all shadow-sm disabled:opacity-50 cursor-pointer"
+              className="rounded-lg bg-brand px-4 py-2 text-xs font-bold text-white hover:bg-brand/90 transition-colors disabled:opacity-50 cursor-pointer"
             >
               {isSubmittingComment ? "Inatuma..." : t.kijiweni.postComment}
             </button>
@@ -322,8 +319,8 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
 
         {/* Comments List */}
         {thread.comments.length === 0 ? (
-          <div className="rounded-2xl border border-line bg-wash/30 p-8 text-center space-y-1">
-            <p className="text-sm font-bold text-ink">{t.kijiweni.noComments}</p>
+          <div className="rounded-xl border border-line bg-wash/20 p-8 text-center space-y-1">
+            <p className="text-sm font-semibold text-ink">{t.kijiweni.noComments}</p>
             <p className="text-xs text-muted">{t.kijiweni.noCommentsSub}</p>
           </div>
         ) : (
@@ -331,20 +328,20 @@ export function ThreadDetailView({ initialThread }: { initialThread: ThreadDetai
             {thread.comments.map((comment) => (
               <div
                 key={comment.id}
-                className="rounded-xl border border-line bg-paper p-4 shadow-2xs space-y-2 hover:border-ink/30 transition-all"
+                className="rounded-xl border border-line bg-paper p-3.5 space-y-2"
               >
                 <div className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     {comment.authorTeamName ? (
-                      <Crest name={comment.authorTeamName} size={22} />
+                      <Crest name={comment.authorTeamName} size={20} />
                     ) : (
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand/10 text-brand text-[10px] font-black">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-wash text-muted text-[10px] font-bold">
                         ⚽
                       </span>
                     )}
-                    <span className="font-black text-ink">{comment.authorName}</span>
+                    <span className="font-bold text-ink">{comment.authorName}</span>
                     {comment.authorTeamName && (
-                      <span className="text-[11px] font-medium text-muted">
+                      <span className="text-[11px] text-muted">
                         • {comment.authorTeamName}
                       </span>
                     )}

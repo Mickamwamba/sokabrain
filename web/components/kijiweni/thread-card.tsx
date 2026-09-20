@@ -86,12 +86,12 @@ export function ThreadCard({
       try {
         await navigator.share({
           title: thread.title,
-          text: `"${thread.title}" - Kijiweni SokaBrain`,
+          text: `"${thread.title}" - Kijiweni Sokabrain`,
           url,
         });
         return;
       } catch {
-        // Fallback to clipboard
+        // user cancelled or share sheet failed, fall through to clipboard
       }
     }
 
@@ -105,28 +105,20 @@ export function ThreadCard({
     }
   };
 
-  const handleWhatsApp = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const url = typeof window !== "undefined" ? `${window.location.origin}/kijiweni/${thread.kijiwe.slug}/${thread.id}` : "";
-    const msg = encodeURIComponent(`🔥 Mada Kijiweni: *${thread.title}*\n\nFungua usome na ubishe hapa: ${url}`);
-    window.open(`https://api.whatsapp.com/send?text=${msg}`, "_blank");
-  };
-
   const formattedDate = new Date(thread.createdAt).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
   });
 
   return (
-    <div className="group rounded-2xl border border-line bg-paper p-4 sm:p-5 shadow-xs hover:border-ink/40 transition-all">
+    <div className="group rounded-xl border border-line bg-paper p-4 transition-colors hover:border-ink/30">
       {/* Top Meta: Author + Team Crest + Space Tag */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/50 pb-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/40 pb-2.5 text-xs">
         <div className="flex items-center gap-2 min-w-0">
           {thread.authorTeamName ? (
-            <Crest name={thread.authorTeamName} size={24} />
+            <Crest name={thread.authorTeamName} size={22} />
           ) : (
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand/10 text-brand text-xs font-black">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-wash text-muted text-[11px] font-bold">
               ⚽
             </span>
           )}
@@ -134,7 +126,7 @@ export function ThreadCard({
             {thread.authorName}
           </span>
           {thread.authorTeamName && (
-            <span className="hidden sm:inline-block text-[11px] font-semibold text-muted/80 truncate max-w-[120px]">
+            <span className="hidden sm:inline text-[11px] text-muted truncate max-w-[120px]">
               • {thread.authorTeamName}
             </span>
           )}
@@ -147,13 +139,13 @@ export function ThreadCard({
           {showSpaceBadge && (
             <Link
               href={`/kijiweni/${thread.kijiwe.slug}`}
-              className="inline-flex items-center gap-1 rounded-full bg-wash px-2.5 py-0.5 text-[11px] font-bold text-ink hover:bg-wash/80 border border-line/60 transition-colors"
+              className="inline-flex items-center gap-1 rounded bg-wash px-2 py-0.5 text-[11px] font-medium text-ink hover:bg-wash/80 border border-line/50 transition-colors"
             >
               <span>{thread.kijiwe.icon}</span>
               <span className="truncate max-w-[120px]">{spaceName}</span>
             </Link>
           )}
-          <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-brand">
+          <span className="rounded bg-wash px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted border border-line/50">
             {tagLabel}
           </span>
         </div>
@@ -162,65 +154,68 @@ export function ThreadCard({
       {/* Main Content (Clickable Link to Thread Detail) */}
       <Link
         href={`/kijiweni/${thread.kijiwe.slug}/${thread.id}`}
-        className="block py-3.5 space-y-2 group/body"
+        className="block py-3 space-y-1.5 group/body"
       >
-        <h3 className="text-base sm:text-lg font-black text-ink group-hover/body:text-brand transition-colors leading-snug">
+        <h3 className="text-base font-bold text-ink group-hover/body:text-brand transition-colors leading-snug">
           {thread.title}
         </h3>
-        <p className="text-xs sm:text-sm text-muted leading-relaxed line-clamp-3">
+        <p className="text-xs sm:text-sm text-muted leading-relaxed line-clamp-2">
           {thread.content}
         </p>
       </Link>
 
-      {/* Action Bar: Likes, Comments, Share */}
-      <div className="flex items-center justify-between border-t border-line/50 pt-3 text-xs">
+      {/* Action Bar: Likes, Comments, Single Share */}
+      <div className="flex items-center justify-between border-t border-line/40 pt-2.5 text-xs">
         {/* Left: Like & Comment actions */}
         <div className="flex items-center gap-2">
           {/* Like Button */}
           <button
             type="button"
             onClick={handleLike}
-            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors cursor-pointer ${
               hasLiked
                 ? "bg-rose-500/10 text-rose-600 border border-rose-500/30"
-                : "border border-line/70 bg-wash/50 text-ink hover:bg-wash hover:border-ink/30"
+                : "border border-line/60 bg-wash/40 text-muted hover:text-ink hover:bg-wash"
             }`}
           >
             <span>{hasLiked ? "❤️" : "🤍"}</span>
-            <span className="nums">{likes}</span>
+            <span className="nums font-bold">{likes}</span>
           </button>
 
           {/* Comment Count Link */}
           <Link
             href={`/kijiweni/${thread.kijiwe.slug}/${thread.id}#comments`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-line/70 bg-wash/50 px-3 py-1 text-xs font-bold text-ink hover:bg-wash hover:border-ink/30 transition-all"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-line/60 bg-wash/40 px-2.5 py-1 text-xs font-semibold text-muted hover:text-ink hover:bg-wash transition-colors"
           >
             <span>💬</span>
-            <span className="nums">{thread.commentsCount}</span>
-            <span className="hidden sm:inline font-medium text-muted">
+            <span className="nums font-bold">{thread.commentsCount}</span>
+            <span className="hidden sm:inline text-muted">
               {t.kijiweni.commentsCount}
             </span>
           </Link>
         </div>
 
-        {/* Right: Share options */}
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={handleWhatsApp}
-            title="Tuma WhatsApp"
-            className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 px-2.5 py-1 text-xs font-bold border border-emerald-500/20 transition-all cursor-pointer"
-          >
-            <span>📲</span>
-            <span className="hidden sm:inline">WhatsApp</span>
-          </button>
-
+        {/* Right: Single Share Button */}
+        <div>
           <button
             type="button"
             onClick={handleShare}
-            className="inline-flex items-center gap-1 rounded-full border border-line/70 bg-wash/50 hover:bg-wash px-2.5 py-1 text-xs font-bold text-ink transition-all cursor-pointer"
+            aria-label={t.kijiweni.shareThread}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-line/60 bg-wash/40 hover:bg-wash px-2.5 py-1 text-xs font-semibold text-muted hover:text-ink transition-colors cursor-pointer"
           >
-            <span>🔗</span>
+            <svg
+              className="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+              />
+            </svg>
             <span>{copied ? t.kijiweni.copiedLink : t.kijiweni.shareThread}</span>
           </button>
         </div>
