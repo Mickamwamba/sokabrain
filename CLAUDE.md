@@ -82,15 +82,17 @@ explicitly out of scope — see "Non-goals" below).
   `create-next-app` also initialises a nested git repo and writes an
   `AGENTS.md`; the nested `web/.git` was removed since the project root is not
   itself a repo yet.
-- **Build priority 5 is done, but NOT yet validated against the live API** —
-  there is no `API_FOOTBALL_KEY` yet. The sync job, client, entity mapping,
+- **Build priority 5 is done AND validated against a live API** — see the
+  SportMonks entry below, which superseded API-Football as the provider. The notes
+  in this bullet are the original API-Football work and still describe that path. The sync job, client, entity mapping,
   coverage checker and reconciliation logic are written and covered by
   `npm test` (7 integration tests against the real schema, synthetic fixtures).
   Everything else works without a key; the scheduler warns and no-ops.
 
-  **Before paying for API-Football, run `npm run af:coverage`** — whether it
-  covers the Tanzanian and Kenyan leagues at all is still an open question, and
-  answering it is the stated reason for starting on the free tier.
+  **That question is now settled the other way: SportMonks is the provider** (see
+  its entry below). API-Football was never bought, so whether it covers the
+  Tanzanian league at all remains unknown — `npm run af:coverage` would answer it
+  on a free key if anyone ever needs to.
 
   Two things to know: (a) nothing syncs until `npm run af:map` links vault teams
   and editions to API ids — the migrated vault knows nothing about the provider;
@@ -664,6 +666,58 @@ explicitly out of scope — see "Non-goals" below).
   - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
     short. That is correct: the stray event had been padding the count over a
     gap that was always there.
+- **The live-score provider is SportMonks, and it is wired up and validated**
+  (2026-09-19). `SPORTMONKS_TOKEN` in `backend/.env`; league #884 "Ligi kuu Bara"
+  is mapped to vault competition 1. Full detail in `backend/README.md`.
+  Commands: `npm run sm:coverage`, `sm:map`, `sm:compare`, `sm:sync`.
+  - **It was chosen because its Tanzanian event coverage could be VERIFIED before
+    paying** — its published per-league table ticks "Livescores and Events" for
+    #884. API-Football's coverage page is behind Cloudflare and its flags behind a
+    key, so its Tanzanian depth is still unknown. It stays wired as a fallback and
+    only runs when SportMonks has no token.
+  - **`syncFixtures(fixtures, source)` is provider-neutral.** Each provider
+    normalises its own payload into `ProviderFixture` (`services/providerFixture.ts`)
+    and the reconciliation rules live in exactly one place. `entityResolution` takes
+    the source as a parameter too — it used to hardcode `api_football`, which would
+    have resolved SportMonks ids to nothing.
+  - **SportMonks files an own goal under the side it counts FOR**, so
+    `normaliseEvents` flips it to the scorer's own team. Established against the
+    vault, not assumed: Kagera Sugar 1-1 Fountain Gate (13 Sep 2026) has it on
+    Fountain Gate with the score moving 1-0 to 1-1, while the vault holds the same
+    scorer at the same 34th minute under Kagera Sugar. That is the **fifth** source
+    needing this flip — ligikuu, RSSSF, WhoScored (pre-2013) and FotMob were the
+    others. A unit test asserts `reconstructScore` FAILS when the flip is removed.
+  - **`npm run sm:compare` diffs the provider against the vault and writes
+    nothing.** Run it before trusting anything. Against 2026/27: 240 of 240
+    fixtures matched, **49 of 49 scores agree, 240 of 240 rounds agree**, every
+    event log rebuilds its own score — and **scorer names agree on only 70 of 108
+    pairable goals.**
+  - **So the sync writes scores, status and kickoffs, and deliberately does NOT
+    write events.** For this league the vault's goal log is the better one; the 38
+    name differences are mostly spelling ("Anuary Jabiri" / "Anuary Jabir") but
+    some are a different man, and writing them would rebuild the identity problem.
+  - **A kickoff moves only for an UNPLAYED fixture.** A reschedule is news, not a
+    disagreement; for a played match the kickoff is canonical and stays put. The
+    first catch-up run moved 27 dates and reclassified **25 fixtures from SCHEDULED
+    to POSTPONED**, which no other source had told the vault.
+  - **SportMonks publishes AWARDED as a fixture state (17).** The vault has two
+    forfeited results and both were found by hand after an event log refused to
+    reconcile forever; from here they are recognised on sight.
+  - **The edition mapping key is `"<leagueId>:<seasonId>"`, with the numeric season
+    id, not its label.** Getting that wrong makes every fixture read as an unmapped
+    competition — it was caught before the first sync ran.
+  - **The plan's five leagues are not equally deep.** Tanzania is the only one where
+    every finished fixture carries events (49/49) and rounds (240/240). South Africa
+    has events but no rounds; Rwanda and Uganda have gaps; **Kenya is effectively
+    empty** (8 fixtures, all postponed). Only Tanzania has a vault competition, so
+    the other four are fetched, reported and skipped rather than written somewhere
+    wrong — add to `VAULT_COMPETITION_BY_PROVIDER_LEAGUE` when one gains an edition.
+  - **Neither provider covers lineups or player stats for these leagues**, so the
+    suppressed `appearances`/`yellowCards`/`redCards` on the public site stay
+    suppressed. Do not expect this to fill them.
+  - `backend/src/config/teamAliases.ts` maps "Young Africans" to the vault's
+    "Yanga SC" — two names sharing no token, so no matcher could infer it.
+    `docs/ingestion/teamnames.py` remains the source of truth for club naming.
 - **The Premier League's fixtures now know their round: 4,035 of 4,380, up from
   3,437** (2026-09-19). Thirteen seasons had gaps; ten are now complete. Loaded
   from FotMob's fixture list, whose every entry carries a `round` the official

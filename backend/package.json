@@ -15,6 +15,10 @@
     "af:coverage": "tsx src/scripts/checkCoverage.ts",
     "af:map": "tsx src/scripts/mapApiFootball.ts",
     "af:sync": "tsx src/scripts/syncOnce.ts",
+    "sm:coverage": "tsx src/scripts/checkSportmonksCoverage.ts",
+    "sm:map": "tsx src/scripts/mapSportmonks.ts",
+    "sm:compare": "tsx src/scripts/compareSportmonks.ts",
+    "sm:sync": "tsx src/scripts/syncSportmonks.ts",
     "test": "node --import tsx --test 'src/**/*.test.ts'"
   },
   "dependencies": {

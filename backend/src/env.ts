@@ -9,6 +9,7 @@ const schema = z.object({
   // Not needed until build priorities 3 and 5; optional so the read API boots without them.
   JWT_SECRET: z.string().optional(),
   API_FOOTBALL_KEY: z.string().optional(),
+  SPORTMONKS_TOKEN: z.string().optional(),
   // Every 2 minutes: frequent enough for a live score to feel live, cheap
   // enough that a free-tier quota survives a full matchday.
   LIVE_SYNC_CRON: z.string().default('*/2 * * * *'),

@@ -1,22 +1,20 @@
 import { prisma } from '../db.js';
-import {
-  apiFootball,
-  mapStatus,
-  type ApiFootballFixture,
-} from './apiFootball.js';
 import { editionKey, resolveVaultIds } from './entityResolution.js';
-import { getSourceId, recordProvenance } from './provenance.js';
+import type { ProviderFixture } from './providerFixture.js';
+import { getSourceId, recordProvenance, type SourceName } from './provenance.js';
 
 export type SyncSummary = {
   fixturesSeen: number;
   created: number;
-  /** Score/status advanced using api_football's own earlier value. */
+  /** Score/status advanced using this provider's own earlier value. */
   updated: number;
-  /** API agreed with what the vault already held. */
+  /** Provider agreed with what the vault already held. */
   agreed: number;
-  /** API disagreed with non-API data; recorded, not applied. */
+  /** Provider disagreed with non-provider data; recorded, not applied. */
   conflicts: number;
-  skipped: { fixtureId: number; reason: string }[];
+  /** Unplayed fixtures whose kickoff the provider had moved. */
+  kickoffsMoved: number;
+  skipped: { fixtureId: string; reason: string }[];
   reconciliationRunId: number | null;
 };
 
@@ -30,71 +28,90 @@ async function sourcesForMatch(matchId: number): Promise<Set<string>> {
 }
 
 /**
- * Sync a batch of API-Football fixtures into the vault.
+ * Sync a batch of a provider's fixtures into the vault.
+ *
+ * The provider is a parameter, not a constant: two providers number the same
+ * club differently and each needs its own `entity_source_map` rows, but the
+ * rules below must exist in exactly one place.
  *
  * The rules this implements, and why:
  *
- * **Score comes from `fixture.goals`, never from aggregating events.** The API
- * publishes the authoritative score directly, so there is no need to re-derive
- * it — which also means own-goal attribution (design principle 5) cannot be got
- * wrong on this path. `verifyEventsAgainstScore` exists separately to check that
- * assumption rather than trust it.
+ * **Score comes from the provider's published score, never from aggregating
+ * events.** The provider publishes the authoritative score directly, so there is
+ * no need to re-derive it — which also means own-goal attribution (design
+ * principle 5) cannot be got wrong on this path. Each provider's normaliser
+ * carries its own own-goal convention, and `reconstructScore` exists to test
+ * that convention against real fixtures rather than trust it.
+ *
+ * **Events are deliberately NOT written here.** For the Tanzanian Premier League
+ * the vault's own event log is better than the provider's: comparing the two
+ * across the current season, scores agreed on all 49 played matches and rounds on
+ * all 240, but the scorer NAMES differed on 38 of 108 pairable goals — mostly
+ * spelling ("Anuary Jabiri" / "Anuary Jabir"), sometimes a different man
+ * entirely. Writing those would rebuild the identity problem this project has
+ * spent days undoing. Scores and status are what this sync is for.
  *
  * **A conflict is only a conflict across sources.** Design principle 2 forbids
- * silently overwriting canonical data *with a new source*. api_football updating
- * a value api_football itself wrote a minute ago is not that — it is a live
- * score doing its job, and blocking it would make the feature pointless. So:
+ * silently overwriting canonical data *with a new source*. A provider updating a
+ * value it itself wrote a minute ago is not that — it is a live score doing its
+ * job, and blocking it would make the feature pointless. So:
  *
- *   - vault has no score yet            → fill it (absent is not canonical)
- *   - vault value came only from the API → update it freely
- *   - values agree                       → touch provenance, change nothing
- *   - values disagree and the vault's    → write a `reconciliation_diffs` row
- *     came from legacy or a human           and leave the vault untouched
+ *   - vault has no score yet                → fill it (absent is not canonical)
+ *   - vault value came only from this provider → update it freely
+ *   - values agree                          → touch provenance, change nothing
+ *   - values disagree and the vault's came   → write a `reconciliation_diffs` row
+ *     from legacy, another source or a human    and leave the vault untouched
  *
  * Unmapped teams or competitions are skipped and reported, never guessed at.
  */
-export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<SyncSummary> {
+export async function syncFixtures(
+  fixtures: ProviderFixture[],
+  source: SourceName,
+): Promise<SyncSummary> {
   const summary: SyncSummary = {
     fixturesSeen: fixtures.length,
     created: 0,
     updated: 0,
     agreed: 0,
     conflicts: 0,
+    kickoffsMoved: 0,
     skipped: [],
     reconciliationRunId: null,
   };
   if (fixtures.length === 0) return summary;
 
-  const apiSourceId = await getSourceId('api_football');
+  const providerSourceId = await getSourceId(source);
 
   const teamMap = await resolveVaultIds(
     'team',
-    fixtures.flatMap((f) => [f.teams.home.id, f.teams.away.id]),
+    fixtures.flatMap((f) => [f.home.id, f.away.id]),
+    source,
   );
   const editionMap = await resolveVaultIds(
     'competition_edition',
-    fixtures.map((f) => editionKey(f.league.id, f.league.season)),
+    fixtures.map((f) => editionKey(f.competition.id, f.competition.season)),
+    source,
   );
-  const matchMap = await resolveVaultIds('match', fixtures.map((f) => f.fixture.id));
+  const matchMap = await resolveVaultIds('match', fixtures.map((f) => f.id), source);
 
   /** Created lazily — a run row is only meaningful if a diff is recorded. */
   let runId: number | null = null;
   const ensureRun = async (): Promise<number> => {
     if (runId !== null) return runId;
     // `reconciliation_runs` models a comparison between exactly two sources,
-    // but the vault side of a diff can come from either the migration or a
-    // human edit. legacy_sokafc stands for "what the vault already held" since
-    // it produced nearly all of it; the notes say so, and each diff row carries
-    // the actual values regardless.
+    // but the vault side of a diff can come from the migration, an earlier
+    // ingestion or a human edit. legacy_sokafc stands for "what the vault
+    // already held"; the notes say so, and each diff row carries the actual
+    // values regardless.
     const vaultSourceId = await getSourceId('legacy_sokafc');
     const run = await prisma.reconciliation_runs.create({
       data: {
         entity_type: 'match',
-        data_source_a_id: apiSourceId,
+        data_source_a_id: providerSourceId,
         data_source_b_id: vaultSourceId,
         notes:
-          'Automatic live-score sync. Source A = api_football; source B = the value already ' +
-          'in the vault (legacy migration or manual admin edit).',
+          `Automatic live-score sync. Source A = ${source}; source B = the value already ` +
+          'in the vault (an earlier ingestion, the legacy migration, or a manual admin edit).',
       },
       select: { id: true },
     });
@@ -104,16 +121,16 @@ export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<Sync
   };
 
   for (const f of fixtures) {
-    const homeId = teamMap.get(String(f.teams.home.id));
-    const awayId = teamMap.get(String(f.teams.away.id));
-    const editionId = editionMap.get(editionKey(f.league.id, f.league.season));
+    const homeId = teamMap.get(f.home.id);
+    const awayId = teamMap.get(f.away.id);
+    const editionId = editionMap.get(editionKey(f.competition.id, f.competition.season));
 
     if (homeId === undefined || awayId === undefined) {
       summary.skipped.push({
-        fixtureId: f.fixture.id,
+        fixtureId: f.id,
         reason: `unmapped team(s): ${[
-          homeId === undefined ? f.teams.home.name : null,
-          awayId === undefined ? f.teams.away.name : null,
+          homeId === undefined ? f.home.name : null,
+          awayId === undefined ? f.away.name : null,
         ]
           .filter(Boolean)
           .join(', ')}`,
@@ -122,20 +139,19 @@ export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<Sync
     }
     if (editionId === undefined) {
       summary.skipped.push({
-        fixtureId: f.fixture.id,
-        reason: `unmapped competition: ${f.league.name} ${f.league.season}`,
+        fixtureId: f.id,
+        reason: `unmapped competition: ${f.competition.name} ${f.competition.season}`,
       });
       continue;
     }
 
-    const status = mapStatus(f.fixture.status.short);
-    const apiHome = f.goals.home;
-    const apiAway = f.goals.away;
-    const existingId = matchMap.get(String(f.fixture.id));
+    const existingId = matchMap.get(f.id);
 
     // Fall back to structural identity: the same two teams in the same edition.
-    // Legacy matches carry no API id, so this is how an API fixture first meets
-    // its existing vault row.
+    // A vault match carries no provider id until this sync gives it one, so this
+    // is how a provider fixture first meets its existing vault row. The ordered
+    // club pair meets once in a double round-robin, which makes it a safer key
+    // than a kickoff date the two sources may disagree on.
     const existing = existingId
       ? await prisma.matches.findUnique({ where: { id: existingId } })
       : await prisma.matches.findFirst({
@@ -153,29 +169,32 @@ export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<Sync
             competition_edition_id: editionId,
             home_team_id: homeId,
             away_team_id: awayId,
-            kickoff_at: new Date(f.fixture.date),
-            status,
-            home_score: apiHome,
-            away_score: apiAway,
-            home_score_pens: f.score.penalty.home,
-            away_score_pens: f.score.penalty.away,
-            round: f.league.round,
+            kickoff_at: f.kickoff,
+            status: f.status,
+            home_score: f.homeScore,
+            away_score: f.awayScore,
+            home_score_et: f.homeScoreEt,
+            away_score_et: f.awayScoreEt,
+            home_score_pens: f.homeScorePens,
+            away_score_pens: f.awayScorePens,
+            round: f.round,
           },
         });
-        await recordProvenance(tx, 'match', m.id, 'api_football', String(f.fixture.id));
+        await recordProvenance(tx, 'match', m.id, source, f.id);
         return m;
       });
       summary.created += 1;
-      matchMap.set(String(f.fixture.id), created.id);
+      matchMap.set(f.id, created.id);
       continue;
     }
 
     const sources = await sourcesForMatch(existing.id);
-    const apiOnly = sources.size === 0 || (sources.size === 1 && sources.has('api_football'));
+    const providerOnly = sources.size === 0 || (sources.size === 1 && sources.has(source));
     const vaultHasScore = existing.home_score !== null && existing.away_score !== null;
-    const scoresAgree = existing.home_score === apiHome && existing.away_score === apiAway;
+    const scoresAgree =
+      existing.home_score === f.homeScore && existing.away_score === f.awayScore;
 
-    if (vaultHasScore && !scoresAgree && !apiOnly) {
+    if (vaultHasScore && !scoresAgree && !providerOnly) {
       // Cross-source disagreement. Record it; do not touch the vault.
       const reconciliationRunId = await ensureRun();
       await prisma.reconciliation_diffs.createMany({
@@ -185,7 +204,7 @@ export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<Sync
             entity_id_a: existing.id,
             entity_id_b: existing.id,
             field_name: 'home_score',
-            value_a: String(apiHome),
+            value_a: String(f.homeScore),
             value_b: String(existing.home_score),
             resolution: 'PENDING',
           },
@@ -194,97 +213,61 @@ export async function syncFixtures(fixtures: ApiFootballFixture[]): Promise<Sync
             entity_id_a: existing.id,
             entity_id_b: existing.id,
             field_name: 'away_score',
-            value_a: String(apiAway),
+            value_a: String(f.awayScore),
             value_b: String(existing.away_score),
             resolution: 'PENDING',
           },
         ],
       });
       summary.conflicts += 1;
-      // Still record that the API saw this match, so the mapping survives.
+      // Still record that the provider saw this match, so the mapping survives.
       await prisma.$transaction((tx) =>
-        recordProvenance(tx, 'match', existing.id, 'api_football', String(f.fixture.id)),
+        recordProvenance(tx, 'match', existing.id, source, f.id),
       );
       continue;
     }
 
-    if (vaultHasScore && scoresAgree && existing.status === status) {
+    if (vaultHasScore && scoresAgree && existing.status === f.status) {
       await prisma.$transaction((tx) =>
-        recordProvenance(tx, 'match', existing.id, 'api_football', String(f.fixture.id)),
+        recordProvenance(tx, 'match', existing.id, source, f.id),
       );
       summary.agreed += 1;
       continue;
     }
 
-    // Safe to write: the vault had no score, or the only prior source is the API.
+    // Safe to write: the vault had no score, or the only prior source is this one.
+    //
+    // The kickoff moves only for a fixture that has NOT been played — neither
+    // side has a score. A rescheduled future fixture is new information, not a
+    // disagreement, and a stale scheduled date is a defect this project has
+    // already had to fix once (82 fixtures left inside a COVID suspension). For
+    // a played match the kickoff is canonical and a difference is a question for
+    // a human, so it is left alone (principle 2).
+    const unplayed = !vaultHasScore && f.homeScore === null && f.awayScore === null;
+    const kickoffMoved =
+      unplayed &&
+      existing.kickoff_at !== null &&
+      existing.kickoff_at.getTime() !== f.kickoff.getTime();
+
     await prisma.$transaction(async (tx) => {
       await tx.matches.update({
         where: { id: existing.id },
         data: {
-          status,
-          home_score: apiHome,
-          away_score: apiAway,
-          home_score_pens: f.score.penalty.home,
-          away_score_pens: f.score.penalty.away,
+          status: f.status,
+          home_score: f.homeScore,
+          away_score: f.awayScore,
+          home_score_et: f.homeScoreEt,
+          away_score_et: f.awayScoreEt,
+          home_score_pens: f.homeScorePens,
+          away_score_pens: f.awayScorePens,
+          ...(kickoffMoved ? { kickoff_at: f.kickoff } : {}),
         },
       });
-      await recordProvenance(tx, 'match', existing.id, 'api_football', String(f.fixture.id));
+      await recordProvenance(tx, 'match', existing.id, source, f.id);
     });
     summary.updated += 1;
+    if (kickoffMoved) summary.kickoffsMoved += 1;
   }
 
   return summary;
-}
-
-/**
- * Check that a fixture's event log reconstructs its published score under the
- * vault's own own-goal rule.
- *
- * This does not feed the sync — the score always comes from `fixture.goals`.
- * It exists because API-Football's own-goal team attribution is not something
- * this codebase has been able to verify against live data, and design principle
- * 5 says that assumption is exactly the one that has bitten before. A mismatch
- * here means the assumption below is wrong for that fixture, and event ingestion
- * must not be built on it until it's resolved.
- *
- * The assumption under test: an `Own Goal` event's `team` is the team of the
- * player who scored it, so the goal counts for their OPPONENT.
- */
-export async function verifyEventsAgainstScore(fixture: ApiFootballFixture): Promise<{
-  fixtureId: number;
-  publishedScore: string;
-  reconstructedScore: string;
-  ownGoals: number;
-  agrees: boolean;
-}> {
-  const events = await apiFootball.events(fixture.fixture.id);
-  const homeApiId = fixture.teams.home.id;
-
-  let home = 0;
-  let away = 0;
-  let ownGoals = 0;
-
-  for (const e of events) {
-    if (e.type !== 'Goal') continue;
-    if (e.detail === 'Missed Penalty') continue;
-
-    const isOwnGoal = e.detail === 'Own Goal';
-    if (isOwnGoal) ownGoals += 1;
-
-    const scoredByHome = e.team.id === homeApiId;
-    // An own goal counts for the opposing side.
-    const countsForHome = isOwnGoal ? !scoredByHome : scoredByHome;
-    if (countsForHome) home += 1;
-    else away += 1;
-  }
-
-  const published = `${fixture.goals.home ?? '-'}-${fixture.goals.away ?? '-'}`;
-  const reconstructed = `${home}-${away}`;
-  return {
-    fixtureId: fixture.fixture.id,
-    publishedScore: published,
-    reconstructedScore: reconstructed,
-    ownGoals,
-    agrees: published === reconstructed,
-  };
 }

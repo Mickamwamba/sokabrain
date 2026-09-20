@@ -18,7 +18,7 @@ export type ProvenanceEntity =
   | 'player_team_stint';
 
 /** Names of the `data_sources` rows this codebase writes provenance for. */
-export type SourceName = 'legacy_sokafc' | 'manual_admin' | 'api_football';
+export type SourceName = 'legacy_sokafc' | 'manual_admin' | 'api_football' | 'sportmonks';
 
 const sourceIds = new Map<SourceName, number>();
 
@@ -44,7 +44,7 @@ export const getManualSourceId = () => getSourceId('manual_admin');
 /**
  * Record that an entity came from, or was confirmed by, an external source.
  *
- * `externalId` is that source's own identifier for the entity (an API-Football
+ * `externalId` is that source's own identifier for the entity (a provider's
  * fixture or team id), which is what makes the mapping reusable on the next
  * sync. The unique key (entity_type, data_source_id, external_id) means a
  * repeat sync refreshes `last_synced_at` instead of duplicating rows.

@@ -9,6 +9,7 @@ import { prisma } from '../db.js';
 const SOURCES = [
   { name: 'manual_admin', type: 'MANUAL', base_url: null },
   { name: 'api_football', type: 'API', base_url: 'https://v3.football.api-sports.io' },
+  { name: 'sportmonks', type: 'API', base_url: 'https://api.sportmonks.com/v3/football' },
 ] as const;
 
 for (const s of SOURCES) {

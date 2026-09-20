@@ -95,55 +95,136 @@ curl -X PATCH localhost:4010/api/admin/matches/300 \
 
 ## Live-score sync (priority 5)
 
-Not usable until `API_FOOTBALL_KEY` is set — everything else works without it.
+**SportMonks is the live provider.** Not usable until `SPORTMONKS_TOKEN` is set —
+everything else works without it. API-Football stays wired as a fallback and wins
+only when SportMonks has no token; it has never been validated against live data.
 
 ```bash
-npm run seed:sources          # one-off: ensure data_sources rows exist
-npm run af:coverage           # what does API-Football actually cover?
-npm run af:map -- --league <apiLeagueId> --season 2025 --edition <vaultEditionId>
-npm run af:map -- ... --apply # write the mappings
-npm run af:sync               # one sync pass, prints a summary
+npm run seed:sources             # one-off: ensure data_sources rows exist
+npm run sm:coverage              # what does the subscription actually grant?
+npm run sm:map -- --league 884   # propose team + edition mappings (dry run)
+npm run sm:map -- --league 884 --apply
+npm run sm:compare -- --league 884   # diff the provider against the vault, writes nothing
+npm run sm:sync                  # one pass over whatever is in play right now
+npm run sm:sync -- --league 884   # catch-up: walk a whole season
 ```
 
-Once editions are mapped, the server runs the sync on `LIVE_SYNC_CRON`
-(default every 2 minutes), asking only for fixtures currently in play.
+Once editions are mapped, the server runs the sync on `LIVE_SYNC_CRON` (default
+every 2 minutes). SportMonks' in-play feed answers in **one request** no matter
+how many leagues the plan covers, against a 2000/hour limit — so the cost is
+flat, not proportional to coverage.
+
+### Why SportMonks
+
+It is the only provider whose Tanzanian Premier League **event** coverage could
+be verified before paying: its published per-league table ticks "Livescores and
+Events" for Ligi kuu Bara (#884). API-Football's equivalent page is behind
+Cloudflare and its coverage flags are behind a key, so its Tanzanian depth is
+still unknown.
+
+The subscription grants five top tiers, and they are not equally deep — checked
+with `sm:coverage` on 2026/27:
+
+| League | id | Fixtures | Finished | With events | With rounds |
+|---|---|---|---|---|---|
+| Tanzania, Ligi kuu Bara | 884 | 240 | 49 | **49** | **240** |
+| South Africa, Premier League | 806 | 240 | 53 | 53 | 0 |
+| Rwanda, National Soccer League | 872 | 306 | 18 | 17 | 306 |
+| Uganda, Premier League | 1423 | 153 | 32 | 26 | 153 |
+| Kenya, Premier League | 848 | 8 | 4 | 0 | 0 |
+
+Tanzania is the only one where every finished fixture carries events. **Kenya is
+effectively empty right now** — eight fixtures, all postponed. Only Tanzania has a
+vault competition (`VAULT_COMPETITION_BY_PROVIDER_LEAGUE` in `config/leagues.ts`);
+the rest are fetched, reported and skipped rather than written somewhere wrong.
+
+### What the provider is trusted for, and what it is not
+
+`sm:compare` diffs the whole season against the vault and writes nothing. Against
+the 2026/27 season, whose 49 played matches the vault already holds fully
+attributed from three sources:
+
+| | |
+|---|---|
+| fixtures matched to a vault fixture | **240 of 240** |
+| scores agreeing | **49 of 49**, zero conflicts |
+| rounds agreeing | **240 of 240**, zero conflicts |
+| goal-event counts agreeing | 240 of 240 |
+| event logs that rebuild their own score | 48 of 48 with goals |
+| **scorer names agreeing** | **70 of 108 pairable goals** |
+
+So **scores, status and rounds are trustworthy and events are not written.** The
+38 scorer disagreements are mostly spelling ("Anuary Jabiri" / "Anuary Jabir",
+"Ismail Toure" / "Ismaël Olivier Toure"), some are a different surname for the
+same given name, and a few are a different man entirely. Writing those would
+rebuild the identity problem this project has spent days undoing. `sm:compare` is
+the tool for revisiting that decision, not a code change.
 
 ### The rules the sync implements, and why
 
 Design principle 2 forbids silently overwriting canonical data **with a new
-source**. That is not the same as forbidding the API from updating a value it
+source**. That is not the same as forbidding a provider from updating a value it
 wrote itself a minute ago — which is the entire point of a live score. So:
 
-| Vault state | API says | Result |
+| Vault state | Provider says | Result |
 |---|---|---|
 | no match | anything | create it, with provenance |
 | no score yet | 2–1 | fill it — absent is not canonical |
-| 2–1, only source is the API | 3–1 | update it — same source advancing |
+| 2–1, only source is this provider | 3–1 | update it — same source advancing |
 | 2–1 from any source | 2–1 | agree; touch `last_synced_at` only |
-| 2–1 from legacy or a human | 1–1 | **`reconciliation_diffs` row; vault untouched** |
+| 2–1 from legacy, another source or a human | 1–1 | **`reconciliation_diffs` row; vault untouched** |
+| unplayed fixture, kickoff differs | new date | move it — a reschedule is news, not a conflict |
+| played match, kickoff differs | new date | leave it; the kickoff is canonical |
 | unmapped team or competition | anything | skip and report — never guess |
 
 `npm test` covers every row of that table against the real schema, using
-synthetic fixtures, so no API key is needed to verify the logic.
+synthetic fixtures, so no token is needed to verify the logic. The provider is a
+parameter (`syncFixtures(fixtures, source)`), so both providers share one rule
+set — each normalises its own payload into `ProviderFixture` first.
 
-### Own goals
+The kickoff rule earned its place: `sm:compare` found 27 fixtures the league had
+moved, and a stale scheduled date is the defect that once left 82 fixtures inside
+a COVID suspension. The catch-up run also reclassified **25 fixtures from
+SCHEDULED to POSTPONED**, which the vault had no way to know.
 
-The score is read from the API's published `fixture.goals`, never reconstructed
-from the event log — so own-goal attribution (principle 5) cannot be got wrong
-on the sync path. `verifyEventsAgainstScore()` exists to *test* the assumption
-that an `Own Goal` event's `team` is the scoring player's own team; it is not
-wired into the sync. **Run it against real fixtures before building any event
-ingestion on top of that assumption** — it is unverified, and it is the exact
-bug that bit the legacy migration.
+### Own goals: verified, not assumed
+
+The score is read from the provider's published score, never reconstructed from
+the event log — so own-goal attribution (principle 5) cannot be got wrong on the
+sync path.
+
+**SportMonks files an own goal under the side the goal counts FOR**, so
+`normaliseEvents` flips it to the scoring player's own team. That was established
+against the vault, not read from a doc: Kagera Sugar 1-1 Fountain Gate
+(13 Sep 2026) carries the own goal on Fountain Gate with the running score moving
+1-0 to 1-1, while the vault holds the same scorer at the same 34th minute under
+Kagera Sugar. `reconstructScore()` re-derives the score from the flipped log and
+agrees with the published score on every fixture with goals; a unit test asserts
+it *disagrees* when the flip is removed, so the check has teeth.
+
+Note that API-Football is documented to do the **opposite**, which is why
+`verifyEventsAgainstScore()` lives beside it and remains unverified. Own-goal
+convention has to be checked per source; four sources have now needed it.
 
 ### Mapping is a prerequisite
 
-The migrated vault knows nothing about API-Football, so nothing syncs until
-`af:map` links vault teams and editions to API ids (stored in
-`entity_source_map`, so the mapping doubles as provenance). Team matching only
-ever proposes exact post-normalisation name matches; ambiguous ones are listed
-for a human rather than guessed, because a wrong team mapping corrupts scores on
-every subsequent sync.
+The migrated vault knows nothing about any provider, so nothing syncs until
+`sm:map` links vault teams and editions to provider ids (stored in
+`entity_source_map`, so the mapping doubles as provenance). Team matching
+proposes only an exact hit on a single vault team — either on the normalised name
+or on a written alias in `config/teamAliases.ts`. Ambiguous ones are listed for a
+human rather than guessed, because a wrong team mapping corrupts scores on every
+subsequent sync.
+
+The alias table is what maps SportMonks' "Young Africans" to the vault's
+"Yanga SC" — two names sharing no token, so no matcher could infer it.
+**`docs/ingestion/teamnames.py` is the source of truth** for this league's naming
+and holds the fuller list; check it before adding an entry.
+
+**The edition mapping key is `"<leagueId>:<seasonId>"` and the season half is the
+numeric season id, not its label.** SportMonks numbers each season of a league,
+and `normaliseFixture` must emit the same value or every fixture reads as an
+unmapped competition.
 
 ## Management API (admin dashboard)
 

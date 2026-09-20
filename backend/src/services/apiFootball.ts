@@ -1,4 +1,5 @@
 import { env } from '../env.js';
+import type { ProviderFixture } from './providerFixture.js';
 
 /**
  * Minimal typed client for API-Football v3.
@@ -135,4 +136,83 @@ export function mapStatus(short: string): string {
   if (CANCELLED.has(short)) return 'CANCELLED';
   if (ABANDONED.has(short)) return 'ABANDONED';
   return 'SCHEDULED'; // NS, TBD
+}
+
+/**
+ * Normalise an API-Football fixture into the provider-neutral shape.
+ *
+ * Kept here rather than in the sync so that each provider owns its own quirks —
+ * see `sportmonks.ts` for the other one.
+ */
+export function toProviderFixture(f: ApiFootballFixture): ProviderFixture {
+  return {
+    id: String(f.fixture.id),
+    kickoff: new Date(f.fixture.date),
+    status: mapStatus(f.fixture.status.short),
+    home: { id: String(f.teams.home.id), name: f.teams.home.name },
+    away: { id: String(f.teams.away.id), name: f.teams.away.name },
+    homeScore: f.goals.home,
+    awayScore: f.goals.away,
+    homeScoreEt: f.score.extratime.home,
+    awayScoreEt: f.score.extratime.away,
+    homeScorePens: f.score.penalty.home,
+    awayScorePens: f.score.penalty.away,
+    round: f.league.round,
+    competition: { id: String(f.league.id), name: f.league.name, season: String(f.league.season) },
+  };
+}
+
+/**
+ * Check that a fixture's event log reconstructs its published score under the
+ * vault's own own-goal rule.
+ *
+ * This does not feed the sync — the score always comes from `fixture.goals`.
+ * It exists because API-Football's own-goal team attribution is not something
+ * this codebase has been able to verify against live data (there is no key), and
+ * design principle 5 says that assumption is exactly the one that has bitten
+ * before. A mismatch here means the assumption below is wrong for that fixture,
+ * and event ingestion must not be built on it until it's resolved.
+ *
+ * The assumption under test: an `Own Goal` event's `team` is the team of the
+ * player who scored it, so the goal counts for their OPPONENT. Note that
+ * SportMonks turned out to do the OPPOSITE (see `sportmonks.normaliseEvents`),
+ * so this really does have to be checked per provider.
+ */
+export async function verifyEventsAgainstScore(fixture: ApiFootballFixture): Promise<{
+  fixtureId: number;
+  publishedScore: string;
+  reconstructedScore: string;
+  ownGoals: number;
+  agrees: boolean;
+}> {
+  const events = await apiFootball.events(fixture.fixture.id);
+  const homeApiId = fixture.teams.home.id;
+
+  let home = 0;
+  let away = 0;
+  let ownGoals = 0;
+
+  for (const e of events) {
+    if (e.type !== 'Goal') continue;
+    if (e.detail === 'Missed Penalty') continue;
+
+    const isOwnGoal = e.detail === 'Own Goal';
+    if (isOwnGoal) ownGoals += 1;
+
+    const scoredByHome = e.team.id === homeApiId;
+    // An own goal counts for the opposing side.
+    const countsForHome = isOwnGoal ? !scoredByHome : scoredByHome;
+    if (countsForHome) home += 1;
+    else away += 1;
+  }
+
+  const published = `${fixture.goals.home ?? '-'}-${fixture.goals.away ?? '-'}`;
+  const reconstructed = `${home}-${away}`;
+  return {
+    fixtureId: fixture.fixture.id,
+    publishedScore: published,
+    reconstructedScore: reconstructed,
+    ownGoals,
+    agrees: published === reconstructed,
+  };
 }
