@@ -217,6 +217,7 @@ model matches {
   away_score_pens                   Int?                   @db.SmallInt
   attendance                        Int?
   referee_id                        Int?
+  live_minute                       Int?                   @db.SmallInt
   match_events                      match_events[]
   match_lineups                     match_lineups[]
   match_player_ratings              match_player_ratings[]
@@ -429,8 +430,8 @@ model kijiwe_spaces {
   slug           String           @unique @db.VarChar(50)
   name_sw        String           @db.VarChar(100)
   name_en        String           @db.VarChar(100)
-  description_sw String           @db.Text
-  description_en String           @db.Text
+  description_sw String
+  description_en String
   icon           String           @db.VarChar(20)
   badge_color    String           @db.VarChar(30)
   display_order  Int              @default(0)
@@ -442,7 +443,7 @@ model kijiwe_threads {
   id               Int               @id @default(autoincrement())
   kijiwe_id        Int
   title            String            @db.VarChar(200)
-  content          String            @db.Text
+  content          String
   author_name      String            @db.VarChar(50)
   author_team_name String?           @db.VarChar(80)
   tag              String            @default("UBISHI") @db.VarChar(30)
@@ -451,9 +452,9 @@ model kijiwe_threads {
   is_pinned        Boolean           @default(false)
   created_at       DateTime          @default(now()) @db.Timestamptz(6)
   updated_at       DateTime          @default(now()) @updatedAt @db.Timestamptz(6)
-  kijiwe           kijiwe_spaces     @relation(fields: [kijiwe_id], references: [id], onDelete: Cascade)
   comments         kijiwe_comments[]
   likes            kijiwe_likes[]
+  kijiwe           kijiwe_spaces     @relation(fields: [kijiwe_id], references: [id], onDelete: Cascade)
 
   @@index([kijiwe_id, created_at(sort: Desc)])
 }
@@ -463,7 +464,7 @@ model kijiwe_comments {
   thread_id        Int
   author_name      String         @db.VarChar(50)
   author_team_name String?        @db.VarChar(80)
-  content          String         @db.Text
+  content          String
   likes_count      Int            @default(0)
   created_at       DateTime       @default(now()) @db.Timestamptz(6)
   thread           kijiwe_threads @relation(fields: [thread_id], references: [id], onDelete: Cascade)
@@ -479,10 +480,9 @@ model kijiwe_likes {
   fan_fingerprint String           @db.VarChar(100)
   reaction_type   String           @default("LIKE") @db.VarChar(20)
   created_at      DateTime         @default(now()) @db.Timestamptz(6)
-  thread          kijiwe_threads?  @relation(fields: [thread_id], references: [id], onDelete: Cascade)
   comment         kijiwe_comments? @relation(fields: [comment_id], references: [id], onDelete: Cascade)
+  thread          kijiwe_threads?  @relation(fields: [thread_id], references: [id], onDelete: Cascade)
 
   @@unique([thread_id, fan_fingerprint])
   @@unique([comment_id, fan_fingerprint])
 }
-

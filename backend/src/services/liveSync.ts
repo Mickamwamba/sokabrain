@@ -178,6 +178,7 @@ export async function syncFixtures(
             home_score_pens: f.homeScorePens,
             away_score_pens: f.awayScorePens,
             round: f.round,
+            live_minute: f.status === 'LIVE' ? f.liveMinute : null,
           },
         });
         await recordProvenance(tx, 'match', m.id, source, f.id);
@@ -228,9 +229,19 @@ export async function syncFixtures(
     }
 
     if (vaultHasScore && scoresAgree && existing.status === f.status) {
-      await prisma.$transaction((tx) =>
-        recordProvenance(tx, 'match', existing.id, source, f.id),
-      );
+      // The score can sit still for an hour while the clock does not, so a
+      // live match's minute is written even on the "nothing changed" path.
+      // Without this a 0-0 would freeze at whatever minute it was first seen.
+      const minute = f.status === 'LIVE' ? f.liveMinute : null;
+      await prisma.$transaction(async (tx) => {
+        if (minute !== existing.live_minute) {
+          await tx.matches.update({
+            where: { id: existing.id },
+            data: { live_minute: minute },
+          });
+        }
+        await recordProvenance(tx, 'match', existing.id, source, f.id);
+      });
       summary.agreed += 1;
       continue;
     }
@@ -260,6 +271,9 @@ export async function syncFixtures(
           away_score_et: f.awayScoreEt,
           home_score_pens: f.homeScorePens,
           away_score_pens: f.awayScorePens,
+          // Cleared the moment a match stops being live, so a finished match
+          // never carries a stale clock.
+          live_minute: f.status === 'LIVE' ? f.liveMinute : null,
           ...(kickoffMoved ? { kickoff_at: f.kickoff } : {}),
         },
       });

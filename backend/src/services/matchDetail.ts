@@ -33,6 +33,8 @@ export type MatchDetail = {
   round: string | null;
   venue: string | null;
   competition: { editionId: number; name: string; season: string };
+  /** Clock in minutes while LIVE; null otherwise. */
+  liveMinute: number | null;
   home: TeamSide;
   away: TeamSide;
   events: MatchEventRow[];
@@ -58,12 +60,12 @@ const GOAL_TYPES = ['GOAL', 'PENALTY_GOAL', 'OWN_GOAL'];
 export async function getMatchDetail(id: number): Promise<MatchDetail | null> {
   const rows = await prisma.$queryRaw<Array<{
     id: number; kickoff_at: Date | null; status: string; round: string | null;
-    venue: string | null; edition_id: number; competition: string;
+    venue: string | null; live_minute: number | null; edition_id: number; competition: string;
     competition_country: string | null; season: string;
     home_team_id: number; home_name: string; home_short: string | null; home_score: number | null;
     away_team_id: number; away_name: string; away_short: string | null; away_score: number | null;
   }>>(Prisma.sql`
-    SELECT m.id, m.kickoff_at, m.status, m.round, st.name AS venue,
+    SELECT m.id, m.kickoff_at, m.status, m.round, m.live_minute, st.name AS venue,
            ce.id AS edition_id, c.name AS competition, co.name AS competition_country,
            s.label AS season,
            th.id AS home_team_id, th.name AS home_name, th.short_name AS home_short, m.home_score,
@@ -148,6 +150,7 @@ export async function getMatchDetail(id: number): Promise<MatchDetail | null> {
     status: m.status,
     round: m.round,
     venue: m.venue,
+    liveMinute: m.live_minute,
     competition: {
       editionId: m.edition_id,
       name: competitionDisplayName(m.competition, m.competition_country),

@@ -157,6 +157,8 @@ export function toProviderFixture(f: ApiFootballFixture): ProviderFixture {
     awayScoreEt: f.score.extratime.away,
     homeScorePens: f.score.penalty.home,
     awayScorePens: f.score.penalty.away,
+    // API-Football reports elapsed minutes on the fixture status.
+    liveMinute: mapStatus(f.fixture.status.short) === 'LIVE' ? f.fixture.status.elapsed : null,
     round: f.league.round,
     competition: { id: String(f.league.id), name: f.league.name, season: String(f.league.season) },
   };

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { matchState, statusLabel } from "@/lib/match-state";
 import { type Match } from "@/lib/api";
-import { Card, Crest , LiveBadge } from "@/components/ui";
+import { Card, Crest, LiveDot } from "@/components/ui";
 
 export function dayLabel(iso: string) {
   const d = new Date(`${iso}T12:00:00Z`);
@@ -62,14 +62,13 @@ function Score({ match }: { match: Match }) {
   // gets. Without this a game in its first half is indistinguishable from one
   // that ended hours ago.
   if (state === "LIVE") {
+    // Red pill only. The row marks itself live with a dot on the left and the
+    // minute on the right, so nothing here adds a second line.
     return (
-      <span className="inline-flex flex-col items-center gap-1">
-        <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-red-600 px-3 py-1 text-sm font-black text-white shadow-xs">
-          {home}
-          <span className="mx-1.5 opacity-60">-</span>
-          {away}
-        </span>
-        <LiveBadge size="sm" />
+      <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-red-600 px-3 py-1 text-sm font-black text-white shadow-xs">
+        {home}
+        <span className="mx-1.5 opacity-60">-</span>
+        {away}
       </span>
     );
   }
@@ -102,12 +101,19 @@ export function MatchRows({
   return (
     <Card className="overflow-hidden">
       <ul className="divide-y divide-line/60">
-        {matches.map((m) => (
+        {matches.map((m) => {
+          const live = matchState(m.status, m.score.home, m.score.away) === "LIVE";
+          return (
           <li key={m.id}>
             <Link
               href={`/matches/${m.id}`}
-              className="group flex items-center gap-3 px-4 py-3.5 text-sm transition-all hover:bg-wash/70"
+              className={`group flex items-center gap-3 py-3.5 pr-4 text-sm transition-all hover:bg-wash/70 ${
+                live ? "border-l-2 border-red-600 bg-red-50/40 pl-3" : "pl-4"
+              }`}
             >
+              {/* Live marker, in the gutter so the row keeps its height */}
+              {live ? <LiveDot className="text-red-600" /> : null}
+
               {/* Home Team */}
               <span className="flex min-w-0 flex-1 items-center justify-end gap-2.5">
                 <span className="truncate font-bold text-ink group-hover:text-brand transition-colors text-right">
@@ -129,9 +135,19 @@ export function MatchRows({
                 </span>
               </span>
 
-              {/* Stadium or Competition Note */}
-              <span className="hidden w-44 shrink-0 truncate text-right text-xs text-muted lg:block">
-                {showCompetition ? m.competition.name : m.stadium?.name ?? ""}
+              {/* Minute while live; venue or competition otherwise */}
+              <span
+                className={`hidden w-44 shrink-0 truncate text-right text-xs lg:block ${
+                  live ? "font-black text-red-600" : "text-muted"
+                }`}
+              >
+                {live
+                  ? m.liveMinute != null
+                    ? `${m.liveMinute}'`
+                    : "Live"
+                  : showCompetition
+                    ? m.competition.name
+                    : m.stadium?.name ?? ""}
               </span>
 
               <span className="text-muted/40 group-hover:text-ink/70 transition-colors shrink-0 text-xs">
@@ -139,7 +155,8 @@ export function MatchRows({
               </span>
             </Link>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </Card>
   );

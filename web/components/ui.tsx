@@ -264,17 +264,38 @@ export function TeamLink({
  *
  * `size="sm"` is for a fixture list, where it sits where a score pill would.
  */
-export function LiveBadge({ size = "md" }: { size?: "sm" | "md" }) {
+export function LiveBadge({
+  size = "md",
+  minute,
+}: {
+  size?: "sm" | "md";
+  /** Clock in minutes, when known. Omitted rather than guessed at. */
+  minute?: number | null;
+}) {
   const pad = size === "sm" ? "px-2 py-0.5 text-[10px]" : "px-3 py-0.5 text-[10px]";
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full bg-red-600 font-black uppercase tracking-wider text-white shadow-2xs ${pad}`}
     >
-      <span className="relative flex h-1.5 w-1.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
-      </span>
+      <LiveDot />
       Live
+      {minute != null ? <span className="nums opacity-90">{minute}'</span> : null}
+    </span>
+  );
+}
+
+/**
+ * The live marker on its own.
+ *
+ * A dense fixture list has no vertical room for a badge under every score, so a
+ * row marks itself live with a dot in the left gutter and the minute where the
+ * venue would sit — both horizontal, costing the row no extra height.
+ */
+export function LiveDot({ className = "" }: { className?: string }) {
+  return (
+    <span className={`relative flex h-1.5 w-1.5 shrink-0 ${className}`}>
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-75" />
+      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-current" />
     </span>
   );
 }

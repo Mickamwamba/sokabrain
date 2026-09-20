@@ -320,6 +320,51 @@ describe('syncFixtures', () => {
     assert.equal(after.kickoff_at?.toISOString(), '2099-05-01T15:00:00.000Z');
   });
 
+  it('tracks the clock through a match: sets it, advances it, then clears it', async () => {
+    // The clock is the one genuinely transient field in this vault, and it has
+    // two ways to go wrong: freezing (the score sits still for an hour while
+    // the clock does not, and the sync's "nothing changed" path must still
+    // write it) and sticking (a finished match keeping a stale minute, so it
+    // renders as though it were still being played).
+    const m = await prisma.matches.create({
+      data: {
+        competition_edition_id: editionId,
+        home_team_id: homeTeamId2,
+        away_team_id: awayTeamId2,
+        kickoff_at: new Date('2099-05-01T15:00:00Z'),
+        status: 'SCHEDULED',
+      },
+    });
+    createdMatchIds.push(m.id);
+    await prisma.$transaction((tx) =>
+      recordProvenance(tx, 'match', m.id, 'api_football', '900006'),
+    );
+
+    // Kicks off.
+    const first = fixture({ fixtureId: 900006, home: 1, away: 0, status: '2H', secondPair: true });
+    first.liveMinute = 67;
+    await syncFixtures([first], 'api_football');
+    const during = await prisma.matches.findUniqueOrThrow({ where: { id: m.id } });
+    assert.equal(during.status, 'LIVE');
+    assert.equal(during.live_minute, 67);
+
+    // Same score, later clock — this takes the "agreed" path.
+    const later = fixture({ fixtureId: 900006, home: 1, away: 0, status: '2H', secondPair: true });
+    later.liveMinute = 81;
+    const s2 = await syncFixtures([later], 'api_football');
+    assert.equal(s2.agreed, 1, 'score and status unchanged, so this is the agreed path');
+    const advanced = await prisma.matches.findUniqueOrThrow({ where: { id: m.id } });
+    assert.equal(advanced.live_minute, 81, 'the clock must move even when the score does not');
+
+    // Full time. The provider may still report a minute; it must be ignored.
+    const done = fixture({ fixtureId: 900006, home: 2, away: 0, status: 'FT', secondPair: true });
+    done.liveMinute = 90;
+    await syncFixtures([done], 'api_football');
+    const after = await prisma.matches.findUniqueOrThrow({ where: { id: m.id } });
+    assert.equal(after.status, 'FULL_TIME');
+    assert.equal(after.live_minute, null, 'a finished match must not keep a clock');
+  });
+
   it('skips and reports unmapped teams instead of guessing', async () => {
     const f = fixture({ fixtureId: 900002, home: 1, away: 0 });
     f.away = { id: '424242', name: 'Totally Unknown FC' };

@@ -57,7 +57,7 @@ function RichMatchCard({ match }: { match: Match }) {
           ) : null}
         </div>
         {isLive ? (
-          <LiveBadge />
+          <LiveBadge minute={match.liveMinute} />
         ) : (
           <span
             className={`font-bold uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-full ${

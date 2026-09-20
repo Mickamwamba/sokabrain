@@ -93,6 +93,8 @@ export async function listMatches(filters: MatchListFilters) {
       // caller lay a cup out by stage.
       group: m.competition_groups ? { id: m.competition_groups.id, name: m.competition_groups.name } : null,
       attendance: m.attendance,
+      /** Clock in minutes while LIVE; null otherwise. */
+      liveMinute: m.live_minute,
       competition: {
         editionId: m.competition_editions?.id ?? null,
         // The competition id, so a caller can group a mixed list by competition

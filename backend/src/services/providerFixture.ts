@@ -35,6 +35,13 @@ export type ProviderFixture = {
   awayScorePens: number | null;
   /** Round label as the provider states it, or null. */
   round: string | null;
+  /**
+   * The clock, in minutes, while the match is in play; null otherwise.
+   *
+   * A live score without a minute is half the information — 0-0 says nothing
+   * about whether it is the 3rd minute or the 88th.
+   */
+  liveMinute: number | null;
   /** Identifies the competition edition, via `editionKey`. */
   competition: { id: string; name: string; season: string };
 };

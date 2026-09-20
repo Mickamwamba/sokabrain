@@ -68,6 +68,16 @@ export type SportmonksEvent = {
   type?: { id: number; name: string };
 };
 
+export type SportmonksPeriod = {
+  id: number;
+  type_id: number;
+  /** True for the period currently running; at most one per fixture. */
+  ticking: boolean;
+  minutes: number | null;
+  seconds: number | null;
+  description: string | null;
+};
+
 export type SportmonksFixture = {
   id: number;
   league_id: number;
@@ -80,6 +90,7 @@ export type SportmonksFixture = {
   participants?: SportmonksParticipant[];
   scores?: SportmonksScore[];
   events?: SportmonksEvent[];
+  periods?: SportmonksPeriod[];
   round?: { id: number; name: string };
 };
 
@@ -180,7 +191,9 @@ export const sportmonks = {
    */
   liveFixtures: () =>
     getAll<SportmonksFixture>('/livescores/inplay', {
-      include: 'participants;scores;events.type;round',
+      // `periods` carries the running clock, which is the only place the live
+      // minute appears — the fixture itself does not have one.
+      include: 'participants;scores;events.type;round;periods',
     }),
 
   /**
@@ -321,6 +334,9 @@ export function normaliseFixture(
     homeScorePens: pickScore(f.scores, 'PENALTY_SHOOTOUT', 'home'),
     awayScorePens: pickScore(f.scores, 'PENALTY_SHOOTOUT', 'away'),
     round: f.round?.name ?? null,
+    // Only the ticking period has a meaningful clock; a finished or not-yet
+    // started period reports whatever it last held.
+    liveMinute: f.periods?.find((p) => p.ticking)?.minutes ?? null,
     // The season is the numeric season id, NOT its label. It has to be the same
     // value `mapSportmonks` used to build the edition mapping key, or every
     // fixture reads as an unmapped competition. SportMonks gives a league many

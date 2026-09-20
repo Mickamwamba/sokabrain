@@ -132,6 +132,8 @@ export type Match = {
   /** Set for a group-stage fixture; null for a league match or a knockout tie. */
   group: { id: number; name: string } | null;
   attendance: number | null;
+  /** Clock in minutes while LIVE; null otherwise. */
+  liveMinute: number | null;
   competition: {
     editionId: number | null;
     /** The competition itself, so a mixed list can be grouped and linked. */
@@ -266,6 +268,8 @@ export type MatchDetail = {
   status: string;
   round: string | null;
   venue: string | null;
+  /** Clock in minutes while LIVE; null otherwise. */
+  liveMinute: number | null;
   competition: { editionId: number; name: string; season: string };
   home: { id: number; name: string; shortName: string | null; score: number | null };
   away: { id: number; name: string; shortName: string | null; score: number | null };

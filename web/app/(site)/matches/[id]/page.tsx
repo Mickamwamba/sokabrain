@@ -197,7 +197,7 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
                 </p>
                 <div className="mt-2.5">
                   {isLive ? (
-                    <LiveBadge />
+                    <LiveBadge minute={match.liveMinute} />
                   ) : (
                     <span className="inline-block rounded-full bg-ink px-3 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-2xs">
                       {match.status === "FULL_TIME" ? "Full Time" : statusLabel(match.status)}

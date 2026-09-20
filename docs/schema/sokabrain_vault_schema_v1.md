@@ -630,6 +630,28 @@ column and sort entirely for a scope with none.
 
 ---
 
+
+### `matches.live_minute` — the one transient field
+
+Added 2026-09-20 (`docs/reconciliation/fixes/2026-09-20_add_live_minute.sql`),
+alongside the first genuinely live match to reach the site.
+
+A live score without a minute is half the information: "0-0" says nothing about
+whether it is the 3rd minute or the 88th. SportMonks publishes the clock on the
+fixture's **ticking period** (`periods.minutes`) — not on the fixture itself —
+so the in-play sync includes `periods` and reads the one period where
+`ticking` is true.
+
+**It is meaningful only while `status = 'LIVE'`, and the sync clears it the
+moment a match reaches any other state.** A finished match carrying a stale
+clock would render as though it were still being played. No ingestion writes it
+and nothing historical depends on it; it is the single genuinely live column in
+an otherwise historical vault, and it should stay that way.
+
+Two failure modes it is tested against (`liveSync.test.ts`): **freezing**, where
+the score sits still for an hour and the sync's "nothing changed" path skips the
+write, and **sticking**, where a finished match keeps its last minute.
+
 ## Addendum: data audit (2026-09-12)
 
 Two tables, `audit_runs` and `audit_findings`, back the admin console's Data
