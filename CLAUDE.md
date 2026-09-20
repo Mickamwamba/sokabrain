@@ -1241,6 +1241,13 @@ soka-brain/
    the goal counts for. Always credit the opposing team. This bit the
    legacy migration once already — don't reintroduce it in new ingestion
    code (e.g. the API-Football sync job).
+   **The DISPLAY rule is the opposite, and deliberately so.** A match timeline
+   tracks the scoreline, so an own goal is shown beside the team it counts FOR,
+   marked "(o.g.)" with the scorer named. `matchDetail` sends
+   `countsForOtherSide` for exactly this; the timeline read `side` directly for
+   a while and put the goal on the scorer's own side, which made a 1-1 read as
+   though one team had scored twice. Storage answers "whose player was it",
+   display answers "whose goal was it" — do not collapse the two.
 6. **Optional richness stays optional.** `match_team_stats` and
    `match_player_ratings` should be NULL, not fabricated, when the
    underlying league doesn't have that data (true for most niche leagues).

@@ -48,7 +48,20 @@ function ChronoTimeline({ events }: { events: MatchEventRow[] }) {
 
       <div className="space-y-4 relative z-10">
         {sorted.map((e) => {
-          const isHome = e.side === "home";
+          // A timeline tracks the SCORELINE, so an own goal belongs on the side
+          // it counts FOR — beside the team whose lead it just changed — not on
+          // the side of the player who put it in. The vault stores the event
+          // under the scorer's own team (design principle 5), which is exactly
+          // why the API sends `countsForOtherSide`; this is what it is for.
+          // The "(o.g.)" marker then says whose mistake it was.
+          const creditedSide = e.countsForOtherSide
+            ? e.side === "home"
+              ? "away"
+              : e.side === "away"
+                ? "home"
+                : null
+            : e.side;
+          const isHome = creditedSide === "home";
           const min = minuteOf(e);
 
           return (
