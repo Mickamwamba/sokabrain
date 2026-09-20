@@ -63,26 +63,26 @@ function RichMatchCard({ match }: { match: Match }) {
         </span>
       </div>
 
-      {/* Teams and Scoreline */}
-      <div className="py-5">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6">
+      {/* Teams and Scoreline — Click anywhere to view match details & events */}
+      <Link
+        href={`/matches/${match.id}`}
+        className="group/match block py-5 transition-all hover:bg-wash/40 rounded-xl"
+      >
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 px-2">
           {/* Home Team */}
-          <Link
-            href={`/teams/${match.homeTeam.id}`}
-            className="flex flex-col sm:flex-row items-center sm:justify-end gap-2.5 text-center sm:text-right group"
-          >
-            <span className="order-2 sm:order-1 font-black text-base sm:text-lg text-ink group-hover:text-brand transition-colors line-clamp-2">
+          <div className="flex flex-col sm:flex-row items-center sm:justify-end gap-2.5 text-center sm:text-right">
+            <span className="order-2 sm:order-1 font-black text-base sm:text-lg text-ink group-hover/match:text-brand transition-colors line-clamp-2">
               {match.homeTeam.name}
             </span>
-            <div className="order-1 sm:order-2 shrink-0">
+            <div className="order-1 sm:order-2 shrink-0 group-hover/match:scale-105 transition-transform">
               <Crest name={match.homeTeam.name} size={40} />
             </div>
-          </Link>
+          </div>
 
           {/* Score / VS Badge */}
           <div className="flex flex-col items-center justify-center px-2">
             {isFinished ? (
-              <div className="flex items-center gap-2 rounded-xl bg-wash px-3.5 py-1.5 border border-line">
+              <div className="flex items-center gap-2 rounded-xl bg-wash px-3.5 py-1.5 border border-line group-hover/match:border-brand/40 group-hover/match:bg-paper transition-all">
                 <span
                   className={`text-2xl font-black nums ${
                     homeScore !== null && awayScore !== null && homeScore > awayScore
@@ -104,7 +104,7 @@ function RichMatchCard({ match }: { match: Match }) {
                 </span>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center rounded-xl bg-wash/80 px-3 py-1.5 border border-line/60">
+              <div className="flex flex-col items-center justify-center rounded-xl bg-wash/80 px-3 py-1.5 border border-line/60 group-hover/match:border-brand/40 group-hover/match:bg-paper transition-all">
                 <span className="text-base font-black text-ink nums">{time ?? "TBD"}</span>
                 <span className="text-[10px] font-bold text-muted uppercase">EAT</span>
               </div>
@@ -112,33 +112,24 @@ function RichMatchCard({ match }: { match: Match }) {
           </div>
 
           {/* Away Team */}
-          <Link
-            href={`/teams/${match.awayTeam.id}`}
-            className="flex flex-col sm:flex-row items-center sm:justify-start gap-2.5 text-center sm:text-left group"
-          >
-            <div className="shrink-0">
+          <div className="flex flex-col sm:flex-row items-center sm:justify-start gap-2.5 text-center sm:text-left">
+            <div className="shrink-0 group-hover/match:scale-105 transition-transform">
               <Crest name={match.awayTeam.name} size={40} />
             </div>
-            <span className="font-black text-base sm:text-lg text-ink group-hover:text-brand transition-colors line-clamp-2">
+            <span className="font-black text-base sm:text-lg text-ink group-hover/match:text-brand transition-colors line-clamp-2">
               {match.awayTeam.name}
             </span>
-          </Link>
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Action Footer */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line/50 pt-3 text-xs">
+      <div className="flex items-center justify-between border-t border-line/50 pt-3 text-xs">
         <Link
           href={`/stats/head-to-head?teamA=${match.homeTeam.id}&teamB=${match.awayTeam.id}`}
           className="font-bold text-muted hover:text-ink transition-colors flex items-center gap-1.5"
         >
           <span>⚔️ Head to Head</span>
-        </Link>
-        <Link
-          href={`/matches/${match.id}`}
-          className="font-bold text-brand hover:underline flex items-center gap-1"
-        >
-          <span>Match Details & Events →</span>
         </Link>
       </div>
     </div>
