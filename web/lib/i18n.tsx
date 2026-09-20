@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useSyncExternalStore, useCallback, ReactNode } from "react";
 
 export type Language = "sw" | "en";
 
@@ -183,7 +183,18 @@ const LanguageContext = createContext<{
   t: DICTIONARY.sw,
 });
 
-function getInitialLanguage(): Language {
+const langListeners = new Set<() => void>();
+
+function subscribeLanguage(callback: () => void) {
+  langListeners.add(callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    langListeners.delete(callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
+function getStoredLanguage(): Language {
   if (typeof window === "undefined") return "sw";
   try {
     const saved = localStorage.getItem("sokabrain_kijiweni_lang") as Language | null;
@@ -195,16 +206,20 @@ function getInitialLanguage(): Language {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>(getInitialLanguage);
+  const lang = useSyncExternalStore(
+    subscribeLanguage,
+    getStoredLanguage,
+    () => "sw" as Language,
+  );
 
-  const setLang = (newLang: Language) => {
-    setLangState(newLang);
+  const setLang = useCallback((newLang: Language) => {
     try {
       localStorage.setItem("sokabrain_kijiweni_lang", newLang);
     } catch {
       // ignore
     }
-  };
+    langListeners.forEach((l) => l());
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: DICTIONARY[lang] }}>
