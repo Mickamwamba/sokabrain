@@ -70,7 +70,7 @@ export const DICTIONARY: Record<Language, Translations> = {
       search: "Tafuta klabu, mchezaji...",
     },
     kijiweni: {
-      heroTitle: "Kijiweni cha Soka",
+      heroTitle: "Soga za Kijiweni",
       heroSub: "Kona ya mashabiki wa soka la Afrika Mashariki. Bisha, cheka, tambiana na chambua mbinu.",
       allSpaces: "Vijiwe Vyote",
       filterByTag: "Chagua Aina ya Mada",
