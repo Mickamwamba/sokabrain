@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { resolveScope, seasonOptionsFor } from "@/lib/scope";
+import { featuredEdition, groupByCompetition } from "@/lib/home-scope";
 import {
   api,
   ApiError,
@@ -8,9 +8,8 @@ import {
   type StandingsRow,
 } from "@/lib/api";
 import { Crest, Empty, PageTitle } from "@/components/ui";
-import { ScopeSelect } from "@/components/scope-select";
-import { MatchDays, MatchRows, kickoffTime } from "@/components/match-list";
-import { DateStrip, ModeTabs, RoundStrip } from "@/components/schedule-nav";
+import { MatchRows, kickoffTime } from "@/components/match-list";
+import { DateStrip } from "@/components/schedule-nav";
 import { MiniStandings, MiniTopScorers } from "@/components/home-league-pulse";
 
 export const dynamic = "force-dynamic";
@@ -199,178 +198,155 @@ function RestDayNotice({
 
 export default async function MatchesHub(props: PageProps<"/">) {
   const sp = await props.searchParams;
-  const mode = one(sp.mode) === "round" ? "round" : "date";
   const dateParam = one(sp.date);
-  const roundParam = one(sp.round);
-  const editionParam = one(sp.editionId);
 
   let editions: Edition[];
-  let context: Awaited<ReturnType<typeof api.context>>;
   try {
-    [editions, context] = await Promise.all([
-      api.editions().then((r) => r.editions),
-      api.context(),
-    ]);
+    editions = await api.editions().then((r) => r.editions);
   } catch (err) {
     if (err instanceof ApiError) return <Empty>{err.message}</Empty>;
     throw err;
   }
-
-  const scope = await resolveScope(one(sp.competitionId), editionParam, editions);
-  const editionId = scope.editionId ?? context.editionId;
-  const edition = editions.find((e) => e.editionId === editionId);
-  if (!editionId) return <Empty>No published season to show yet.</Empty>;
+  if (editions.length === 0) return <Empty>No published season to show yet.</Empty>;
 
   const today = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Dar_es_Salaam" });
 
-  // Stable date window: anchor around today so clicking adjacent dates does not shift the array
+  // Stable date window: anchor around today so clicking adjacent dates does not
+  // shift the strip under the cursor.
   const anchorDate = (() => {
     if (!dateParam) return today;
-    const diffDays = Math.abs(new Date(dateParam).getTime() - new Date(today).getTime()) / (1000 * 3600 * 24);
+    const diffDays =
+      Math.abs(new Date(dateParam).getTime() - new Date(today).getTime()) / (1000 * 3600 * 24);
     return diffDays > 10 ? dateParam : today;
   })();
 
-  // Parallelize data fetching for rounds, days, standings, scorers, and next marquee match
-  const [rounds, dayData, standingsData, scorersData, upcoming] = await Promise.all([
-    api.rounds(editionId),
-    mode === "date"
-      ? api.days({ editionId, around: anchorDate, before: 12, after: 12 })
-      : Promise.resolve({ days: [], nearest: null }),
-    api.standings(editionId).catch(() => null),
-    api.topScorers(editionId, 4).catch(() => null),
-    context.inSeason && context.nextMatchDate
-      ? api.matches({ editionId, from: `${today}T00:00:00Z`, order: "asc", limit: 1 }).catch(() => ({ matches: [] as Match[] }))
-      : Promise.resolve({ matches: [] as Match[] }),
+  // The companion column is one competition's; the fixture list is everyone's.
+  const featured = featuredEdition(editions);
+
+  const [dayData, standingsData, scorersData] = await Promise.all([
+    // No editionId: the day strip counts every published competition at once.
+    api.days({ around: anchorDate, before: 12, after: 12 }),
+    featured ? api.standings(featured.editionId).catch(() => null) : Promise.resolve(null),
+    featured ? api.topScorers(featured.editionId, 4).catch(() => null) : Promise.resolve(null),
   ]);
 
-  const round = mode === "round" ? roundParam ?? rounds.currentRound : null;
-  const date = mode === "date" ? dateParam ?? dayData.nearest : null;
+  const date = dateParam ?? dayData.nearest;
 
   const list = await api.matches(
-    mode === "round" && round
-      ? { editionId, round, order: "asc", limit: 100 }
-      : date
-        ? { editionId, from: `${date}T00:00:00Z`, to: `${date}T23:59:59Z`, order: "asc", limit: 100 }
-        : { editionId, order: "desc", limit: 20 },
+    date
+      // 100 is the endpoint's cap and comfortably above a full matchday across
+      // every competition, which runs to roughly forty fixtures.
+      ? { from: `${date}T00:00:00Z`, to: `${date}T23:59:59Z`, order: "asc", limit: 100 }
+      : { order: "desc", limit: 20 },
   );
 
-  const seasonChoices = seasonOptionsFor(scope);
+  const groups = groupByCompetition(list.matches);
+
+  // Only looked up on a rest day, and across every competition rather than one.
+  const upcoming =
+    list.matches.length === 0
+      ? await api
+          .matches({ from: `${today}T00:00:00Z`, order: "asc", limit: 1 })
+          .catch(() => ({ matches: [] as Match[] }))
+      : { matches: [] as Match[] };
 
   const href = (patch: Record<string, string | undefined>) => {
     const q = new URLSearchParams();
-    const merged = {
-      mode,
-      date,
-      round,
-      competitionId: String(scope.competitionId),
-      editionId: String(editionId),
-      ...patch,
-    };
-    for (const [k, v] of Object.entries(merged)) {
+    for (const [k, v] of Object.entries({ date, ...patch })) {
       if (v !== undefined && v !== null && v !== "") q.set(k, String(v));
     }
-    const s = q.toString();
-    return s ? `/?${s}` : "/";
+    const qs = q.toString();
+    return qs ? `/?${qs}` : "/";
   };
 
   const standingsList: StandingsRow[] = standingsData?.standings || [];
   const scorersList = scorersData?.scorers || [];
   const nextMatch = upcoming.matches[0] || null;
+  const rich = list.matches.length > 0 && list.matches.length <= 2;
 
   return (
     <div>
-      {/* Title & Scope selector */}
       <PageTitle
         title="Matches"
         sub={
-          edition
-            ? `${edition.competition}${context.inSeason && editionId === context.editionId ? " · in progress" : ""}`
-            : undefined
+          date
+            ? `${fmtDateHeading(date)} · ${list.matches.length} ${
+                list.matches.length === 1 ? "fixture" : "fixtures"
+              } across ${groups.length} ${groups.length === 1 ? "competition" : "competitions"}`
+            : "Every competition"
         }
         right={
-          <ScopeSelect
-            competitions={scope.competitions}
-            competitionId={scope.competitionId}
-            seasons={seasonChoices}
-            value={String(editionId)}
-            clears={["date", "round"]}
-          />
+          <Link
+            href={href({ date: today })}
+            className="rounded-lg border border-line bg-paper px-3 py-1.5 text-xs font-bold text-ink hover:border-brand/50 hover:text-brand transition-colors"
+          >
+            Today
+          </Link>
         }
       />
 
-      {/* Main 2-column layout on Desktop, stacked on Mobile */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left Column: Schedule & Matches (8 cols on desktop) */}
         <div className="lg:col-span-8 space-y-4">
-          {/* Mode Switcher (By Date / By Round) + Jump to Today */}
-          <ModeTabs
-            mode={mode}
-            byDateHref={`/?editionId=${editionId}&mode=date`}
-            byRoundHref={`/?editionId=${editionId}&mode=round`}
-            roundsAvailable={rounds.hasRounds}
-            todayHref={href({ date: today })}
+          <DateStrip
+            days={dayData.days.map((d) => ({ ...d, href: href({ date: d.date }) }))}
+            active={date}
           />
 
-          {/* Compact 7-day Strip or Round Strip */}
-          {mode === "date" ? (
-            <DateStrip
-              days={dayData.days.map((d) => ({ ...d, href: href({ date: d.date }) }))}
-              active={date}
-            />
-          ) : (
-            <RoundStrip
-              rounds={rounds.rounds.map((r) => ({ ...r, href: href({ round: r.round }) }))}
-              active={round}
-            />
-          )}
-
-          {/* Matches Container (Adaptive Layout based on match count) */}
-          <div className="pt-1">
+          <div className="pt-1 space-y-6">
             {list.matches.length === 0 ? (
               <RestDayNotice upcomingMatch={nextMatch} date={date} />
-            ) : mode === "round" ? (
-              <MatchDays matches={list.matches} />
-            ) : list.matches.length <= 2 ? (
-              /* Rich Matchday Card Layout when 1 or 2 games */
-              <div className="space-y-4">
-                <div className="flex items-center justify-between px-1">
-                  <h2 className="text-xs font-black uppercase tracking-wider text-muted">
-                    {date ? fmtDateHeading(date) : "Matchday"}
-                  </h2>
-                  <span className="text-xs font-semibold text-brand">
-                    {list.matches.length} {list.matches.length === 1 ? "Fixture" : "Fixtures"}
-                  </span>
-                </div>
-                {list.matches.map((match) => (
-                  <RichMatchCard key={match.id} match={match} />
-                ))}
-              </div>
             ) : (
-              /* High-density Match Rows when 3+ games */
-              <div>
-                <div className="flex items-center justify-between pb-2 px-1">
-                  <h2 className="text-xs font-black uppercase tracking-wider text-muted">
-                    {date ? fmtDateHeading(date) : "Matchday"}
-                  </h2>
-                  <span className="text-xs font-semibold text-muted">
-                    {list.matches.length} Matches
-                  </span>
-                </div>
-                <MatchRows matches={list.matches} />
-              </div>
+              groups.map((g) => (
+                <section key={g.id ?? g.name} className="space-y-2">
+                  <div className="flex items-center justify-between px-1">
+                    {g.editionId ? (
+                      <Link
+                        href={`/table?competitionId=${g.id}&editionId=${g.editionId}`}
+                        className="group inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-ink hover:text-brand transition-colors"
+                      >
+                        {g.name}
+                        <span className="text-muted/50 group-hover:text-brand transition-colors">
+                          →
+                        </span>
+                      </Link>
+                    ) : (
+                      <h2 className="text-xs font-black uppercase tracking-wider text-ink">
+                        {g.name}
+                      </h2>
+                    )}
+                    <span className="text-xs font-semibold text-muted">
+                      {g.matches.length} {g.matches.length === 1 ? "match" : "matches"}
+                    </span>
+                  </div>
+
+                  {rich ? (
+                    <div className="space-y-4">
+                      {g.matches.map((m) => (
+                        <RichMatchCard key={m.id} match={m} />
+                      ))}
+                    </div>
+                  ) : (
+                    <MatchRows matches={g.matches} />
+                  )}
+                </section>
+              ))
             )}
           </div>
         </div>
 
-        {/* Right Column (Desktop) / Bottom Section (Mobile): Companion League Pulse */}
-        <div className="lg:col-span-4 space-y-4">
-          <MiniStandings
-            standings={standingsList}
-            editionId={editionId}
-            competitionName={edition?.competition}
-          />
-          <MiniTopScorers scorers={scorersList} editionId={editionId} />
-        </div>
+        {/* The featured competition only: a table and a scorer chart are
+            meaningless without naming one, and Tanzania is both the home market
+            and much the deepest data here. */}
+        {featured ? (
+          <div className="lg:col-span-4 space-y-4">
+            <MiniStandings
+              standings={standingsList}
+              editionId={featured.editionId}
+              competitionName={featured.competition}
+            />
+            <MiniTopScorers scorers={scorersList} editionId={featured.editionId} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

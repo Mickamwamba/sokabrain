@@ -1,4 +1,5 @@
 import { prisma } from '../db.js';
+import { competitionDisplayName } from './competitionName.js';
 
 export type MatchListFilters = {
   // Explicit `| undefined` so callers can pass a parsed query object straight
@@ -63,7 +64,14 @@ export async function listMatches(filters: MatchListFilters) {
         competition_editions: {
           select: {
             id: true,
-            competitions: { select: { id: true, name: true, type: true } },
+            competitions: {
+              select: {
+                id: true,
+                name: true,
+                type: true,
+                countries: { select: { name: true } },
+              },
+            },
             seasons: { select: { id: true, label: true } },
           },
         },
@@ -87,7 +95,19 @@ export async function listMatches(filters: MatchListFilters) {
       attendance: m.attendance,
       competition: {
         editionId: m.competition_editions?.id ?? null,
-        name: m.competition_editions?.competitions?.name ?? null,
+        // The competition id, so a caller can group a mixed list by competition
+        // and link to it. A cross-competition fixture list needs both: the
+        // edition identifies the season, the competition identifies the league.
+        id: m.competition_editions?.competitions?.id ?? null,
+        // Country-prefixed, because three of the competitions in this vault are
+        // called plainly "Premier League". In a list scoped to one edition the
+        // bare name was merely redundant; in a mixed list it is wrong.
+        name: m.competition_editions?.competitions
+          ? competitionDisplayName(
+              m.competition_editions.competitions.name,
+              m.competition_editions.competitions.countries?.name,
+            )
+          : null,
         type: m.competition_editions?.competitions?.type ?? null,
         season: m.competition_editions?.seasons?.label ?? null,
       },

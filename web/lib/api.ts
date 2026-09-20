@@ -134,6 +134,9 @@ export type Match = {
   attendance: number | null;
   competition: {
     editionId: number | null;
+    /** The competition itself, so a mixed list can be grouped and linked. */
+    id: number | null;
+    /** Country-prefixed: three competitions here are called "Premier League". */
     name: string | null;
     type: string | null;
     season: string | null;
