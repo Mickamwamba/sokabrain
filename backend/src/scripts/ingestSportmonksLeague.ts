@@ -264,6 +264,10 @@ try {
     const firstToken = key.split(' ')[0] ?? '';
     const candidates = vaultTeams.filter((t) => {
       if (t.country_id !== r.countryId) return false;
+      // A national side is never the same record as a club, however the names
+      // read: "Police Rwanda" is not Rwanda. Comparing across types reported a
+      // duplicate that cannot exist.
+      if (t.type !== 'CLUB') return false;
       if (t.id === r.vaultId) return false; // the team we resolved to
       const k = normalizeName(t.name);
       if (k === key) return false; // an exact match is handled above
@@ -420,6 +424,7 @@ try {
         }
 
         // Fixtures
+        const providerMatchId = new Map<string, number>();
         let matchesCreated = 0;
         let matchesReused = 0;
         for (const { n } of fixtures) {
@@ -460,9 +465,44 @@ try {
             matchesCreated += 1;
           }
           await recordProvenance(tx, 'match', matchId, 'sportmonks', n.id);
+          providerMatchId.set(n.id, matchId);
         }
 
-        return { competitionId, editionId: edition.id, teamsCreated, matchesCreated, matchesReused };
+        // An AWARDED result was forfeited, not played: it has a real score and
+        // an event log that can never reproduce it. Flagging it is what stops
+        // every future audit and coverage report hunting for goals that were
+        // never scored -- the vault has met this twice before and both times it
+        // was found by hand.
+        let awardedFlagged = 0;
+        for (const f of awarded) {
+          const matchId = providerMatchId.get(String(f.raw.id));
+          if (matchId === undefined) continue;
+          const already = await tx.data_flags.findFirst({
+            where: { entity_type: 'match', entity_id: matchId, status: 'OPEN' },
+            select: { id: true },
+          });
+          if (already) continue;
+          await tx.data_flags.create({
+            data: {
+              entity_type: 'match',
+              entity_id: matchId,
+              severity: 'INFO',
+              reason:
+                `${f.raw.name} was AWARDED (forfeited), not played out. Its score stands but no ` +
+                'event log can reproduce it — do not report its goals as missing.',
+            },
+          });
+          awardedFlagged += 1;
+        }
+
+        return {
+          competitionId,
+          editionId: edition.id,
+          teamsCreated,
+          matchesCreated,
+          matchesReused,
+          awardedFlagged,
+        };
       },
       { timeout: 120_000 },
     );
@@ -471,6 +511,9 @@ try {
       `\nCOMMITTED — competition #${result.competitionId}, edition #${result.editionId}\n` +
         `  ${result.teamsCreated} club(s) created, ${resolved.length - result.teamsCreated} reused\n` +
         `  ${result.matchesCreated} fixture(s) created, ${result.matchesReused} reused\n` +
+        (result.awardedFlagged > 0
+          ? `  ${result.awardedFlagged} awarded result(s) flagged INFO\n`
+          : '') +
         '  edition is UNPUBLISHED — publish it in the dashboard when the data is worth serving.',
     );
   }
