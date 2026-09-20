@@ -157,6 +157,16 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
+- **The public site now covers SIX competitions across five countries** — 59
+  published editions (2026-09-19). Tanzania's Premier League (19 seasons) and
+  the Africa Cup of Nations (35) were joined by the Kenyan, Rwandan, Ugandan and
+  South African top tiers; `npm run editions:publish -- --ids <list> --apply`
+  publishes or unpublishes in bulk, through the same BLOCKER-flag gate the admin
+  console uses. **Kenya is published as two seasons**: 2026/27 (eight fixtures,
+  all postponed — thin on purpose, it is what the source has) and **2019/20,
+  which carries 151 fixtures, 151 rounds and 318 events, every one of its 107
+  scored matches reconciling.** That older season is what gives Kenya real depth
+  while its current one is empty.
 - **The public site covers two competitions and is competition-aware.** All 19
   Tanzania Premier League editions and all 13 Africa Cup of Nations editions
   are published (2026-09-12). Revert the AFCON half with

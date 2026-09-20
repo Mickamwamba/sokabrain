@@ -20,6 +20,7 @@
     "sm:compare": "tsx src/scripts/compareSportmonks.ts",
     "sm:sync": "tsx src/scripts/syncSportmonks.ts",
     "sm:ingest": "tsx src/scripts/ingestSportmonksLeague.ts",
+    "editions:publish": "tsx src/scripts/publishEditions.ts",
     "test": "node --import tsx --test 'src/**/*.test.ts'"
   },
   "dependencies": {
