@@ -676,6 +676,45 @@ explicitly out of scope — see "Non-goals" below).
   - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
     short. That is correct: the stray event had been padding the count over a
     gap that was always there.
+- **South Africa has a real scorer list: 123 of its 125 goals name a scorer**
+  (2026-09-19, `npm run sm:events -- --league 806 --apply`,
+  `backend/src/scripts/loadSportmonksEvents.ts`). All 45 matches with goals
+  reconcile with their stored score; edition 405 reads 117 attributed goals
+  against 2 unattributed. Ngwenya leads on 8.
+  - **This is the ONLY place this codebase writes SportMonks events**, and it is
+    narrow on purpose. The live sync still writes scores and never events,
+    because for the Tanzanian Premier League the vault's own goal log is better.
+    For a league the vault holds nothing for, something beats nothing — but only
+    if the names are real.
+  - **The event feed's `player_name` is a DISPLAY name and is often an
+    abbreviation.** 18 of Rwanda's 28 scorer names are initials plus a surname,
+    13 of Uganda's 50, 8 of South Africa's 84. Writing those straight in would
+    seed a new player table with "K. Nsanzimfura", and with no second source for
+    these leagues nothing would ever catch it.
+  - **So every scorer is resolved through `/players/{id}`**, which carries the
+    real name: "S. Kammies" is Sergio Kammies, "B. Grobler" is Bradley Grobler.
+    Same technique as taking a Flashscore name from its player link rather than
+    its timeline. **A scorer that cannot be resolved is written UNATTRIBUTED,
+    never abbreviated** — 2 goals ended that way, and 0 abbreviated names exist
+    in the player table as a result.
+  - **Neither source is reliably fuller than the other.** The players endpoint
+    gives "Sergio Kammies" where the event says "S. Kammies", but also
+    "P. Kumalo" where the event says "Philani Kumalo", and "S. Junior Dion" for
+    the event's "Junior Dion". Always trusting one throws the other away; taking
+    whichever is not abbreviated moved the result from 121 to 123 of 125.
+  - **Which is why this is worth running for South Africa and not for Rwanda.**
+    120 of South Africa's 125 goals carry a provider player id, against 8 of
+    Rwanda's 29 and 15 of Uganda's 64. Run `sm:events` as a dry run against a
+    league before assuming it is worth it.
+  - **A scorer is keyed by the provider's player id, or by the resolved name when
+    the feed gives no id.** Keying on the id alone silently dropped five goals
+    that carried a full name and no id: they were resolved, reported as named,
+    and then written unattributed. The load was reverted and redone rather than
+    patched, which is the same call the pre-2002 AFCON load made.
+  - Refusals, both inherited: **a match whose event log does not account for its
+    score is not loaded**, and **a match that already has goal events is never
+    added to**. Cards and substitutions are available from this source and are
+    deliberately not loaded.
 - **Four more leagues are in the vault: Kenya, Rwanda, Uganda and South Africa**
   (2026-09-19), their 2026/27 seasons pulled from SportMonks with
   `npm run sm:ingest -- --league <id> [--apply]`
@@ -689,10 +728,11 @@ explicitly out of scope — see "Non-goals" below).
   | Uganda | Premier League (#128) | 406 | 18 | 153 | 34 | all |
   | Kenya | Kenya premier league (#17) | 407 | 16 | **8** | 4 | none |
 
-  - **No events were loaded for any of them** — fixtures, scores, clubs and
-    participants only. So these editions have NO goalscorers, and a top-scorer
-    list for them is empty by construction, not by accident. The reason is the
-    same one that keeps the live sync off events (see the SportMonks entry).
+  - **No events were loaded for any of them by the ingest** — fixtures, scores,
+    clubs and participants only, so a top-scorer list is empty by construction
+    rather than by accident. South Africa's were loaded separately and carefully
+    afterwards (see the entry above); **Rwanda's and Uganda's remain empty on
+    purpose**, because too few of their goals carry a resolvable scorer name.
   - **Kenya reuses competition 17**, the record the legacy SokaFC dump already
     held, rather than a second one beside it — creating a duplicate is how a
     league's history gets split in two. Its 2019/20 edition (21) is untouched.

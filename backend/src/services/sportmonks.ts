@@ -183,6 +183,32 @@ export const sportmonks = {
       include: 'participants;scores;events.type;round',
     }),
 
+  /**
+   * One player, with their real name.
+   *
+   * The event feed carries a DISPLAY name that is often an abbreviation
+   * ("S. Kammies"); this endpoint carries "Sergio Kammies". Resolving through it
+   * is what keeps abbreviations out of the vault's player table. Returns null
+   * when the provider does not know the id.
+   */
+  player: async (playerId: number) => {
+    try {
+      const body = await get<{
+        id: number;
+        name: string | null;
+        display_name: string | null;
+        firstname: string | null;
+        lastname: string | null;
+        date_of_birth: string | null;
+        country?: SportmonksCountry;
+      }>(`/players/${playerId}`, { include: 'country' });
+      return body.data ?? null;
+    } catch (err) {
+      if (err instanceof SportmonksError && err.status === 404) return null;
+      throw err;
+    }
+  },
+
   /** Remaining quota for the last entity queried, for a job to log. */
   rateLimit: async () => (await get<unknown>('/leagues', { per_page: 1 })).rate_limit ?? null,
 };
@@ -340,6 +366,22 @@ export function normaliseEvents(f: SportmonksFixture): ProviderEvent[] {
     });
   }
   return out;
+}
+
+/**
+ * True when a name is an abbreviation rather than a person's name.
+ *
+ * The event feed carries a DISPLAY name, and this provider abbreviates in both
+ * orders: "S. Kammies" and "Chukwuma O.". A single-letter token, with or without
+ * its dot, is an initial. This is the guard that keeps initials out of the
+ * vault's player table -- planting them is the identity defect this project has
+ * spent the most time undoing.
+ */
+export function isAbbreviated(name: string): boolean {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .some((tok) => /^[A-Za-z]\.?$/.test(tok));
 }
 
 /**

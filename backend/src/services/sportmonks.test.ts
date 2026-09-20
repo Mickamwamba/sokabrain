@@ -16,6 +16,7 @@ import {
   normaliseFixture,
   normaliseEvents,
   reconstructScore,
+  isAbbreviated,
   type SportmonksFixture,
 } from './sportmonks.js';
 
@@ -218,5 +219,39 @@ describe('reconstructScore', () => {
     const r = reconstructScore(f);
     assert.equal(r.reconstructed, '2-0');
     assert.ok(!r.agrees);
+  });
+});
+
+describe('isAbbreviated', () => {
+  it('catches an initial before the surname', () => {
+    assert.ok(isAbbreviated('S. Kammies'));
+    assert.ok(isAbbreviated('B. Grobler'));
+  });
+
+  it('catches an initial AFTER the surname, which this provider also does', () => {
+    assert.ok(isAbbreviated('Chukwuma O.'));
+    assert.ok(isAbbreviated('Sentamu A.'));
+  });
+
+  it('catches an initial with no dot', () => {
+    assert.ok(isAbbreviated('S Kammies'));
+  });
+
+  it('catches an initial buried in the middle', () => {
+    // "S. Junior Dion" is what the players endpoint gives for a man the event
+    // feed calls "Junior Dion"; the fuller one has to win.
+    assert.ok(isAbbreviated('S. Junior Dion'));
+  });
+
+  it('passes a real name through', () => {
+    for (const n of [
+      'Sergio Kammies',
+      'Thandolwenkosi Methuseli Ngwenya',
+      'Quwan Plaatjies',
+      'Brayan Léon Muñiz',
+      "Murang'a Seal",
+    ]) {
+      assert.ok(!isAbbreviated(n), `${n} should not read as abbreviated`);
+    }
   });
 });

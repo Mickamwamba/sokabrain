@@ -19889,6 +19889,89 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 79124	match_event	27094	2	27094	\N	1.00	2026-09-17 22:09:49.018-05
 88877	match_event	33117	15	17339-home-90-GOAL	\N	1.00	2026-09-19 14:34:57.190003-05
 88878	match_event	33118	15	17339-away-50-GOAL	\N	1.00	2026-09-19 14:34:57.190003-05
+90306	player	13160	22	id:1504475	\N	1.00	2026-09-19 21:08:04.951-05
+90307	player	13161	22	id:37571731	\N	1.00	2026-09-19 21:08:04.964-05
+90308	player	13162	22	id:38206252	\N	1.00	2026-09-19 21:08:04.967-05
+90309	player	13163	22	id:37592411	\N	1.00	2026-09-19 21:08:04.971-05
+90310	player	13164	22	id:37779826	\N	1.00	2026-09-19 21:08:04.973-05
+90311	player	13165	22	id:38206599	\N	1.00	2026-09-19 21:08:04.977-05
+90312	player	13166	22	id:37762200	\N	1.00	2026-09-19 21:08:04.98-05
+90313	player	13167	22	id:37618577	\N	1.00	2026-09-19 21:08:04.984-05
+90314	player	13168	22	id:37648269	\N	1.00	2026-09-19 21:08:04.987-05
+90315	player	8093	22	id:37551389	\N	1.00	2026-09-19 21:08:04.989-05
+90316	player	13169	22	id:37549622	\N	1.00	2026-09-19 21:08:04.993-05
+90317	player	13170	22	id:37551385	\N	1.00	2026-09-19 21:08:04.998-05
+90318	player	13171	22	id:37679570	\N	1.00	2026-09-19 21:08:05.001-05
+90319	player	13172	22	id:37715195	\N	1.00	2026-09-19 21:08:05.003-05
+90320	player	13173	22	id:37723047	\N	1.00	2026-09-19 21:08:05.006-05
+90321	player	13174	22	id:38225491	\N	1.00	2026-09-19 21:08:05.009-05
+90322	player	13175	22	id:38225490	\N	1.00	2026-09-19 21:08:05.011-05
+90323	player	13176	22	id:37715193	\N	1.00	2026-09-19 21:08:05.014-05
+90324	player	13177	22	id:289539	\N	1.00	2026-09-19 21:08:05.017-05
+90325	player	13178	22	id:289327	\N	1.00	2026-09-19 21:08:05.018-05
+90326	player	13179	22	id:288671	\N	1.00	2026-09-19 21:08:05.021-05
+90327	player	8002	22	id:37635528	\N	1.00	2026-09-19 21:08:05.023-05
+90328	player	13180	22	id:202944	\N	1.00	2026-09-19 21:08:05.025-05
+90329	player	13181	22	id:37744877	\N	1.00	2026-09-19 21:08:05.027-05
+90330	player	13182	22	id:38210468	\N	1.00	2026-09-19 21:08:05.03-05
+90331	player	13183	22	id:21781500	\N	1.00	2026-09-19 21:08:05.033-05
+90332	player	13184	22	id:37551650	\N	1.00	2026-09-19 21:08:05.036-05
+90333	player	7899	22	id:289341	\N	1.00	2026-09-19 21:08:05.037-05
+90334	player	13185	22	id:37735374	\N	1.00	2026-09-19 21:08:05.04-05
+90335	player	13186	22	id:37673205	\N	1.00	2026-09-19 21:08:05.042-05
+90336	player	13187	22	id:37741044	\N	1.00	2026-09-19 21:08:05.044-05
+90337	player	13188	22	id:37568547	\N	1.00	2026-09-19 21:08:05.046-05
+90338	player	13189	22	id:38224438	\N	1.00	2026-09-19 21:08:05.05-05
+90339	player	13190	22	id:21395025	\N	1.00	2026-09-19 21:08:05.051-05
+90340	player	13191	22	id:37583425	\N	1.00	2026-09-19 21:08:05.054-05
+90341	player	13192	22	id:37639894	\N	1.00	2026-09-19 21:08:05.059-05
+90342	player	13193	22	id:37379118	\N	1.00	2026-09-19 21:08:05.063-05
+90343	player	13194	22	id:37625553	\N	1.00	2026-09-19 21:08:05.069-05
+90344	player	13195	22	id:37667491	\N	1.00	2026-09-19 21:08:05.071-05
+90345	player	13196	22	id:37618989	\N	1.00	2026-09-19 21:08:05.073-05
+90346	player	13197	22	id:37661388	\N	1.00	2026-09-19 21:08:05.075-05
+90347	player	13198	22	id:289481	\N	1.00	2026-09-19 21:08:05.077-05
+90348	player	13199	22	id:37555431	\N	1.00	2026-09-19 21:08:05.079-05
+90349	player	13200	22	id:37694721	\N	1.00	2026-09-19 21:08:05.081-05
+90350	player	13201	22	id:37583419	\N	1.00	2026-09-19 21:08:05.084-05
+90351	player	13202	22	id:37654184	\N	1.00	2026-09-19 21:08:05.085-05
+90352	player	13203	22	id:36084791	\N	1.00	2026-09-19 21:08:05.088-05
+90353	player	13204	22	id:289469	\N	1.00	2026-09-19 21:08:05.091-05
+90354	player	13205	22	id:1494614	\N	1.00	2026-09-19 21:08:05.093-05
+90355	player	13206	22	id:10626682	\N	1.00	2026-09-19 21:08:05.095-05
+90356	player	13207	22	id:38200924	\N	1.00	2026-09-19 21:08:05.098-05
+90357	player	13208	22	id:235112	\N	1.00	2026-09-19 21:08:05.1-05
+90358	player	13209	22	id:37712369	\N	1.00	2026-09-19 21:08:05.102-05
+90359	player	13210	22	name:Sicelo Masilela	\N	1.00	2026-09-19 21:08:05.104-05
+90360	player	13211	22	id:37681884	\N	1.00	2026-09-19 21:08:05.107-05
+90361	player	13212	22	id:288680	\N	1.00	2026-09-19 21:08:05.109-05
+90362	player	13213	22	id:37750086	\N	1.00	2026-09-19 21:08:05.11-05
+90363	player	13214	22	id:37653293	\N	1.00	2026-09-19 21:08:05.112-05
+90364	player	13215	22	id:37291269	\N	1.00	2026-09-19 21:08:05.115-05
+90365	player	13216	22	name:Quwan Plaatjies	\N	1.00	2026-09-19 21:08:05.117-05
+90366	player	13217	22	id:37740007	\N	1.00	2026-09-19 21:08:05.119-05
+90367	player	13218	22	id:1494612	\N	1.00	2026-09-19 21:08:05.12-05
+90368	player	13219	22	id:37694719	\N	1.00	2026-09-19 21:08:05.123-05
+90369	player	13220	22	id:37609474	\N	1.00	2026-09-19 21:08:05.125-05
+90370	player	13221	22	id:287894	\N	1.00	2026-09-19 21:08:05.126-05
+90371	player	13222	22	id:1504444	\N	1.00	2026-09-19 21:08:05.128-05
+90372	player	13223	22	id:37656406	\N	1.00	2026-09-19 21:08:05.131-05
+90373	player	13224	22	id:37552712	\N	1.00	2026-09-19 21:08:05.133-05
+90374	player	13225	22	id:37916515	\N	1.00	2026-09-19 21:08:05.135-05
+90375	player	13226	22	id:37266736	\N	1.00	2026-09-19 21:08:05.136-05
+90376	player	13227	22	id:3861273	\N	1.00	2026-09-19 21:08:05.139-05
+90377	player	13228	22	id:37737911	\N	1.00	2026-09-19 21:08:05.141-05
+90378	player	13229	22	id:37561023	\N	1.00	2026-09-19 21:08:05.142-05
+90379	player	13230	22	id:38213845	\N	1.00	2026-09-19 21:08:05.143-05
+90380	player	13231	22	id:288954	\N	1.00	2026-09-19 21:08:05.145-05
+90381	player	13232	22	id:7034906	\N	1.00	2026-09-19 21:08:05.148-05
+90382	player	13233	22	id:37414417	\N	1.00	2026-09-19 21:08:05.15-05
+90383	player	13234	22	name:Tidimalo Molokwane	\N	1.00	2026-09-19 21:08:05.152-05
+90384	player	13235	22	id:7034905	\N	1.00	2026-09-19 21:08:05.155-05
+90385	player	13236	22	id:163588	\N	1.00	2026-09-19 21:08:05.158-05
+90386	player	13237	22	id:37447070	\N	1.00	2026-09-19 21:08:05.159-05
+90387	player	13238	22	id:37779184	\N	1.00	2026-09-19 21:08:05.161-05
+90388	match_event	33262	22	22878-45-GOAL	\N	1.00	2026-09-19 21:08:05.168-05
 88897	player	4908	19	fotmob-player-168-Gabriel Rogers	\N	1.00	2026-09-19 14:37:23.410583-05
 88898	match_event	33128	19	fotmob-5998307-away-51-0-PENALTY_GOAL	\N	1.00	2026-09-19 14:37:23.410583-05
 88899	player	13081	19	fotmob-player-353-Abdulkarim Iddy	\N	1.00	2026-09-19 14:37:23.410583-05
@@ -19907,6 +19990,81 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 88912	match_event	33135	19	fotmob-5998314-away-59-0-GOAL	\N	1.00	2026-09-19 14:37:23.410583-05
 83036	player	4626	19	fotmob-player-11-Clatous Chama	\N	1.00	2026-09-19 14:37:23.410583-05
 88914	match_event	33136	19	fotmob-5998314-away-68-0-GOAL	\N	1.00	2026-09-19 14:37:23.410583-05
+90389	match_event	33263	22	22878-76-GOAL	\N	1.00	2026-09-19 21:08:05.17-05
+90390	match_event	33264	22	22903-27-GOAL	\N	1.00	2026-09-19 21:08:05.171-05
+90391	match_event	33265	22	22904-4-GOAL	\N	1.00	2026-09-19 21:08:05.173-05
+90392	match_event	33266	22	22907-10-GOAL	\N	1.00	2026-09-19 21:08:05.174-05
+90393	match_event	33267	22	22907-73-GOAL	\N	1.00	2026-09-19 21:08:05.175-05
+90394	match_event	33268	22	22907-77-GOAL	\N	1.00	2026-09-19 21:08:05.176-05
+90395	match_event	33269	22	22907-86-GOAL	\N	1.00	2026-09-19 21:08:05.177-05
+90396	match_event	33270	22	22907-89-GOAL	\N	1.00	2026-09-19 21:08:05.178-05
+90397	match_event	33271	22	22908-57-GOAL	\N	1.00	2026-09-19 21:08:05.18-05
+90398	match_event	33272	22	22908-69-GOAL	\N	1.00	2026-09-19 21:08:05.181-05
+90399	match_event	33273	22	22909-73-GOAL	\N	1.00	2026-09-19 21:08:05.183-05
+90400	match_event	33274	22	22910-49-GOAL	\N	1.00	2026-09-19 21:08:05.183-05
+90401	match_event	33275	22	22910-61-GOAL	\N	1.00	2026-09-19 21:08:05.184-05
+90402	match_event	33276	22	22911-28-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.185-05
+90403	match_event	33277	22	22911-45-GOAL	\N	1.00	2026-09-19 21:08:05.185-05
+90404	match_event	33278	22	22911-54-GOAL	\N	1.00	2026-09-19 21:08:05.186-05
+90405	match_event	33279	22	22911-77-GOAL	\N	1.00	2026-09-19 21:08:05.187-05
+90406	match_event	33280	22	22911-84-GOAL	\N	1.00	2026-09-19 21:08:05.188-05
+90407	match_event	33281	22	22911-90-GOAL	\N	1.00	2026-09-19 21:08:05.189-05
+90408	match_event	33282	22	22912-78-GOAL	\N	1.00	2026-09-19 21:08:05.19-05
+90409	match_event	33283	22	22912-90-GOAL	\N	1.00	2026-09-19 21:08:05.192-05
+90410	match_event	33284	22	22913-29-GOAL	\N	1.00	2026-09-19 21:08:05.193-05
+90411	match_event	33285	22	22913-73-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.193-05
+90412	match_event	33286	22	22914-37-GOAL	\N	1.00	2026-09-19 21:08:05.194-05
+90413	match_event	33287	22	22915-63-GOAL	\N	1.00	2026-09-19 21:08:05.195-05
+90414	match_event	33288	22	22915-87-GOAL	\N	1.00	2026-09-19 21:08:05.196-05
+90415	match_event	33289	22	22916-58-GOAL	\N	1.00	2026-09-19 21:08:05.197-05
+90416	match_event	33290	22	22916-79-GOAL	\N	1.00	2026-09-19 21:08:05.197-05
+90417	match_event	33291	22	22916-90-GOAL	\N	1.00	2026-09-19 21:08:05.206-05
+90418	match_event	33292	22	22917-14-GOAL	\N	1.00	2026-09-19 21:08:05.208-05
+90419	match_event	33293	22	22917-76-GOAL	\N	1.00	2026-09-19 21:08:05.209-05
+90420	match_event	33294	22	22917-88-GOAL	\N	1.00	2026-09-19 21:08:05.21-05
+90421	match_event	33295	22	22918-30-GOAL	\N	1.00	2026-09-19 21:08:05.21-05
+90422	match_event	33296	22	22918-65-GOAL	\N	1.00	2026-09-19 21:08:05.211-05
+90423	match_event	33297	22	22918-68-GOAL	\N	1.00	2026-09-19 21:08:05.212-05
+90424	match_event	33298	22	22918-76-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.213-05
+90425	match_event	33299	22	22918-90-GOAL	\N	1.00	2026-09-19 21:08:05.214-05
+90426	match_event	33300	22	22920-4-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.216-05
+90427	match_event	33301	22	22920-54-GOAL	\N	1.00	2026-09-19 21:08:05.216-05
+90428	match_event	33302	22	22920-79-GOAL	\N	1.00	2026-09-19 21:08:05.217-05
+90429	match_event	33303	22	22920-90-GOAL	\N	1.00	2026-09-19 21:08:05.218-05
+90430	match_event	33304	22	22922-52-GOAL	\N	1.00	2026-09-19 21:08:05.218-05
+90431	match_event	33305	22	22922-80-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.219-05
+90432	match_event	33306	22	22922-82-GOAL	\N	1.00	2026-09-19 21:08:05.22-05
+90433	match_event	33307	22	22923-3-GOAL	\N	1.00	2026-09-19 21:08:05.22-05
+90434	match_event	33308	22	22923-17-GOAL	\N	1.00	2026-09-19 21:08:05.221-05
+90435	match_event	33309	22	22923-25-GOAL	\N	1.00	2026-09-19 21:08:05.222-05
+90436	match_event	33310	22	22923-44-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.223-05
+90437	match_event	33311	22	22925-8-GOAL	\N	1.00	2026-09-19 21:08:05.224-05
+90438	match_event	33312	22	22925-19-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.225-05
+90439	match_event	33313	22	22925-39-GOAL	\N	1.00	2026-09-19 21:08:05.225-05
+90440	match_event	33314	22	22925-77-GOAL	\N	1.00	2026-09-19 21:08:05.226-05
+90441	match_event	33315	22	22927-70-GOAL	\N	1.00	2026-09-19 21:08:05.227-05
+90442	match_event	33316	22	22928-25-GOAL	\N	1.00	2026-09-19 21:08:05.228-05
+90443	match_event	33317	22	22928-32-GOAL	\N	1.00	2026-09-19 21:08:05.228-05
+90444	match_event	33318	22	22928-46-GOAL	\N	1.00	2026-09-19 21:08:05.229-05
+90445	match_event	33319	22	22928-51-GOAL	\N	1.00	2026-09-19 21:08:05.23-05
+90446	match_event	33320	22	22928-66-GOAL	\N	1.00	2026-09-19 21:08:05.231-05
+90447	match_event	33321	22	22928-70-GOAL	\N	1.00	2026-09-19 21:08:05.232-05
+90448	match_event	33322	22	22928-90-GOAL	\N	1.00	2026-09-19 21:08:05.232-05
+90449	match_event	33323	22	22929-52-GOAL	\N	1.00	2026-09-19 21:08:05.233-05
+90450	match_event	33324	22	22929-75-GOAL	\N	1.00	2026-09-19 21:08:05.234-05
+90451	match_event	33325	22	22930-36-GOAL	\N	1.00	2026-09-19 21:08:05.234-05
+90452	match_event	33326	22	22930-62-GOAL	\N	1.00	2026-09-19 21:08:05.235-05
+90453	match_event	33327	22	22931-4-GOAL	\N	1.00	2026-09-19 21:08:05.235-05
+90454	match_event	33328	22	22931-21-GOAL	\N	1.00	2026-09-19 21:08:05.236-05
+90455	match_event	33329	22	22931-49-GOAL	\N	1.00	2026-09-19 21:08:05.237-05
+90456	match_event	33330	22	22931-60-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.237-05
+90457	match_event	33331	22	22931-74-GOAL	\N	1.00	2026-09-19 21:08:05.238-05
+90458	match_event	33332	22	22932-7-GOAL	\N	1.00	2026-09-19 21:08:05.239-05
+90459	match_event	33333	22	22932-50-GOAL	\N	1.00	2026-09-19 21:08:05.24-05
+90460	match_event	33334	22	22934-60-GOAL	\N	1.00	2026-09-19 21:08:05.24-05
+90461	match_event	33335	22	22934-64-GOAL	\N	1.00	2026-09-19 21:08:05.241-05
+90462	match_event	33336	22	22934-87-GOAL	\N	1.00	2026-09-19 21:08:05.241-05
+90463	match_event	33337	22	22935-51-GOAL	\N	1.00	2026-09-19 21:08:05.242-05
 88915	competition_edition	129	22	884:28598	\N	1.00	2026-09-19 19:32:01.162-05
 88916	team	76	22	8283	\N	1.00	2026-09-19 19:32:01.185-05
 88917	team	11	22	18936	\N	1.00	2026-09-19 19:32:01.186-05
@@ -19924,6 +20082,55 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 88929	team	350	22	263664	\N	1.00	2026-09-19 19:32:01.195-05
 88930	team	336	22	249361	\N	1.00	2026-09-19 19:32:01.196-05
 88931	team	100	22	19223	\N	1.00	2026-09-19 19:32:01.196-05
+90464	match_event	33338	22	22935-68-GOAL	\N	1.00	2026-09-19 21:08:05.242-05
+90465	match_event	33339	22	22935-76-GOAL	\N	1.00	2026-09-19 21:08:05.243-05
+90466	match_event	33340	22	22936-9-GOAL	\N	1.00	2026-09-19 21:08:05.244-05
+90467	match_event	33341	22	22936-69-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.244-05
+90468	match_event	33342	22	22937-8-GOAL	\N	1.00	2026-09-19 21:08:05.245-05
+90469	match_event	33343	22	22937-20-GOAL	\N	1.00	2026-09-19 21:08:05.245-05
+90470	match_event	33344	22	22938-63-GOAL	\N	1.00	2026-09-19 21:08:05.246-05
+90471	match_event	33345	22	22938-75-GOAL	\N	1.00	2026-09-19 21:08:05.246-05
+90472	match_event	33346	22	22939-20-GOAL	\N	1.00	2026-09-19 21:08:05.247-05
+90473	match_event	33347	22	22939-31-GOAL	\N	1.00	2026-09-19 21:08:05.248-05
+90474	match_event	33348	22	22940-13-GOAL	\N	1.00	2026-09-19 21:08:05.248-05
+90475	match_event	33349	22	22940-28-GOAL	\N	1.00	2026-09-19 21:08:05.249-05
+90476	match_event	33350	22	22940-54-GOAL	\N	1.00	2026-09-19 21:08:05.249-05
+90477	match_event	33351	22	22940-81-GOAL	\N	1.00	2026-09-19 21:08:05.25-05
+90478	match_event	33352	22	22941-77-GOAL	\N	1.00	2026-09-19 21:08:05.25-05
+90479	match_event	33353	22	22942-63-GOAL	\N	1.00	2026-09-19 21:08:05.251-05
+90480	match_event	33354	22	22942-84-GOAL	\N	1.00	2026-09-19 21:08:05.251-05
+90481	match_event	33355	22	22944-7-GOAL	\N	1.00	2026-09-19 21:08:05.252-05
+90482	match_event	33356	22	22944-45-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.252-05
+90483	match_event	33357	22	22945-7-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.253-05
+90484	match_event	33358	22	22945-33-GOAL	\N	1.00	2026-09-19 21:08:05.253-05
+90485	match_event	33359	22	22945-77-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.254-05
+90486	match_event	33360	22	22945-88-GOAL	\N	1.00	2026-09-19 21:08:05.255-05
+90487	match_event	33361	22	22945-90-GOAL	\N	1.00	2026-09-19 21:08:05.255-05
+90488	match_event	33362	22	22946-16-GOAL	\N	1.00	2026-09-19 21:08:05.256-05
+90489	match_event	33363	22	22946-22-GOAL	\N	1.00	2026-09-19 21:08:05.256-05
+90490	match_event	33364	22	22946-60-GOAL	\N	1.00	2026-09-19 21:08:05.256-05
+90491	match_event	33365	22	22946-67-GOAL	\N	1.00	2026-09-19 21:08:05.257-05
+90492	match_event	33366	22	22946-75-GOAL	\N	1.00	2026-09-19 21:08:05.257-05
+90493	match_event	33367	22	22946-80-OWN_GOAL	\N	1.00	2026-09-19 21:08:05.258-05
+90494	match_event	33368	22	22948-23-GOAL	\N	1.00	2026-09-19 21:08:05.262-05
+90495	match_event	33369	22	22948-48-GOAL	\N	1.00	2026-09-19 21:08:05.263-05
+90496	match_event	33370	22	22949-29-GOAL	\N	1.00	2026-09-19 21:08:05.264-05
+90497	match_event	33371	22	22949-51-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.264-05
+90498	match_event	33372	22	22949-55-GOAL	\N	1.00	2026-09-19 21:08:05.265-05
+90499	match_event	33373	22	22949-71-GOAL	\N	1.00	2026-09-19 21:08:05.265-05
+90500	match_event	33374	22	22950-18-GOAL	\N	1.00	2026-09-19 21:08:05.266-05
+90501	match_event	33375	22	22950-55-GOAL	\N	1.00	2026-09-19 21:08:05.267-05
+90502	match_event	33376	22	22950-69-GOAL	\N	1.00	2026-09-19 21:08:05.267-05
+90503	match_event	33377	22	22951-7-GOAL	\N	1.00	2026-09-19 21:08:05.268-05
+90504	match_event	33378	22	22951-45-GOAL	\N	1.00	2026-09-19 21:08:05.268-05
+90505	match_event	33379	22	22951-56-GOAL	\N	1.00	2026-09-19 21:08:05.269-05
+90506	match_event	33380	22	22951-66-GOAL	\N	1.00	2026-09-19 21:08:05.269-05
+90507	match_event	33381	22	22952-27-GOAL	\N	1.00	2026-09-19 21:08:05.27-05
+90508	match_event	33382	22	22953-21-GOAL	\N	1.00	2026-09-19 21:08:05.27-05
+90509	match_event	33383	22	22953-67-GOAL	\N	1.00	2026-09-19 21:08:05.271-05
+90510	match_event	33384	22	22954-59-PENALTY_GOAL	\N	1.00	2026-09-19 21:08:05.271-05
+90511	match_event	33385	22	22956-24-GOAL	\N	1.00	2026-09-19 21:08:05.272-05
+90512	match_event	33386	22	22956-85-GOAL	\N	1.00	2026-09-19 21:08:05.272-05
 79231	player	4880	18	flashscore-player-mokono-elie	\N	1.00	2026-09-17 22:30:05.766711-05
 79232	match_event	27153	18	flashscore-17821-home-90-2	\N	1.00	2026-09-17 22:30:05.766711-05
 79233	player	11828	18	flashscore-player-mzize-cement	\N	1.00	2026-09-17 22:30:05.766711-05
@@ -34565,9 +34772,114 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 31745	17301	15	1216	\N	10	\N	GOAL	\N
 31746	17305	76	5018	\N	80	\N	GOAL	\N
 31748	17596	349	\N	\N	83	\N	GOAL	\N
+33262	22878	113	13160	\N	45	2	GOAL	\N
 26803	15344	4	11634	\N	\N	\N	PENALTY_GOAL	\N
 26902	16762	76	2571	\N	\N	\N	GOAL	\N
 26909	16771	11	4627	\N	\N	\N	GOAL	\N
+33263	22878	113	13161	\N	76	\N	GOAL	\N
+33264	22903	569	13162	\N	27	\N	GOAL	\N
+33265	22904	571	13163	\N	4	\N	GOAL	\N
+33266	22907	580	13164	\N	10	\N	GOAL	\N
+33267	22907	580	13165	\N	73	\N	GOAL	\N
+33268	22907	574	13166	\N	77	\N	GOAL	\N
+33269	22907	574	13166	\N	86	\N	GOAL	\N
+33270	22907	580	13167	\N	89	\N	GOAL	\N
+33271	22908	117	13168	\N	57	\N	GOAL	\N
+33272	22908	117	8093	\N	69	\N	GOAL	\N
+33273	22909	570	13169	\N	73	\N	GOAL	\N
+33274	22910	581	13170	\N	49	\N	GOAL	\N
+33275	22910	579	13171	\N	61	\N	GOAL	\N
+33276	22911	576	13172	\N	28	\N	PENALTY_GOAL	\N
+33277	22911	576	13173	\N	45	1	GOAL	\N
+33278	22911	576	13173	\N	54	\N	GOAL	\N
+33279	22911	574	13174	\N	77	\N	GOAL	\N
+33280	22911	576	13175	\N	84	\N	GOAL	\N
+33281	22911	576	13176	\N	90	2	GOAL	\N
+33282	22912	582	13177	\N	78	\N	GOAL	\N
+33283	22912	113	13161	\N	90	5	GOAL	\N
+33284	22913	575	13178	\N	29	\N	GOAL	\N
+33285	22913	575	13179	\N	73	\N	OWN_GOAL	\N
+33286	22914	571	13163	\N	37	\N	GOAL	\N
+33287	22915	580	8002	\N	63	\N	GOAL	\N
+33288	22915	569	13180	\N	87	\N	GOAL	\N
+33289	22916	113	13181	\N	58	\N	GOAL	\N
+33290	22916	113	13182	\N	79	\N	GOAL	\N
+33291	22916	113	13183	\N	90	2	GOAL	\N
+33292	22917	113	13182	\N	14	\N	GOAL	\N
+33293	22917	581	13184	\N	76	\N	GOAL	\N
+33294	22917	113	7899	\N	88	\N	GOAL	\N
+33295	22918	575	13185	\N	30	\N	GOAL	\N
+33296	22918	575	13186	\N	65	\N	GOAL	\N
+33297	22918	579	13187	\N	68	\N	GOAL	\N
+33298	22918	579	13188	\N	76	\N	OWN_GOAL	\N
+33299	22918	579	13189	\N	90	2	GOAL	\N
+33300	22920	117	13190	\N	4	\N	PENALTY_GOAL	\N
+33301	22920	117	13191	\N	54	\N	GOAL	\N
+33302	22920	117	13192	\N	79	\N	GOAL	\N
+33303	22920	117	13192	\N	90	2	GOAL	\N
+33304	22922	571	13163	\N	52	\N	GOAL	\N
+33305	22922	574	13193	\N	80	\N	PENALTY_GOAL	\N
+33306	22922	571	13194	\N	82	\N	GOAL	\N
+33307	22923	572	13195	\N	3	\N	GOAL	\N
+33308	22923	577	13196	\N	17	\N	GOAL	\N
+33309	22923	572	13197	\N	25	\N	GOAL	\N
+33310	22923	572	13195	\N	44	\N	OWN_GOAL	\N
+33311	22925	574	13166	\N	8	\N	GOAL	\N
+33312	22925	575	13178	\N	19	\N	PENALTY_GOAL	\N
+33313	22925	574	13166	\N	39	\N	GOAL	\N
+33314	22925	575	13198	\N	77	\N	GOAL	\N
+33315	22927	581	\N	\N	70	\N	GOAL	\N
+33316	22928	113	13199	\N	25	\N	GOAL	\N
+33317	22928	113	7899	\N	32	\N	GOAL	\N
+33318	22928	571	13163	\N	46	\N	GOAL	\N
+33319	22928	113	13183	\N	51	\N	GOAL	\N
+33320	22928	113	13199	\N	66	\N	GOAL	\N
+33321	22928	571	13163	\N	70	\N	GOAL	\N
+33322	22928	113	13200	\N	90	1	GOAL	\N
+33323	22929	582	13201	\N	52	\N	GOAL	\N
+33324	22929	579	13202	\N	75	\N	GOAL	\N
+33325	22930	117	13191	\N	36	\N	GOAL	\N
+33326	22930	117	13203	\N	62	\N	GOAL	\N
+33327	22931	577	13196	\N	4	\N	GOAL	\N
+33328	22931	578	13204	\N	21	\N	GOAL	\N
+33329	22931	578	13205	\N	49	\N	GOAL	\N
+33330	22931	578	13204	\N	60	\N	PENALTY_GOAL	\N
+33331	22931	577	13206	\N	74	\N	GOAL	\N
+33332	22932	573	13207	\N	7	\N	GOAL	\N
+33333	22932	573	13208	\N	50	\N	GOAL	\N
+33334	22934	117	13190	\N	60	\N	GOAL	\N
+33335	22934	117	13168	\N	64	\N	GOAL	\N
+33336	22934	117	13209	\N	87	\N	GOAL	\N
+33337	22935	570	13169	\N	51	\N	GOAL	\N
+33338	22935	576	13210	\N	68	\N	GOAL	\N
+33339	22935	576	13211	\N	76	\N	GOAL	\N
+33340	22936	574	13166	\N	9	\N	GOAL	\N
+33341	22936	574	13212	\N	69	\N	OWN_GOAL	\N
+33342	22937	580	13164	\N	8	\N	GOAL	\N
+33343	22937	580	13167	\N	20	\N	GOAL	\N
+33344	22938	575	13213	\N	63	\N	GOAL	\N
+33345	22938	113	13214	\N	75	\N	GOAL	\N
+33346	22939	571	13215	\N	20	\N	GOAL	\N
+33347	22939	571	13163	\N	31	\N	GOAL	\N
+33348	22940	569	13216	\N	13	\N	GOAL	\N
+33349	22940	569	13216	\N	28	\N	GOAL	\N
+33350	22940	569	13216	\N	54	\N	GOAL	\N
+33351	22940	577	13217	\N	81	\N	GOAL	\N
+33352	22941	576	13218	\N	77	\N	GOAL	\N
+33353	22942	575	13219	\N	63	\N	GOAL	\N
+33354	22942	575	13220	\N	84	\N	GOAL	\N
+33355	22944	117	8093	\N	7	\N	GOAL	\N
+33356	22944	571	13163	\N	45	3	PENALTY_GOAL	\N
+33357	22945	113	13199	\N	7	\N	PENALTY_GOAL	\N
+33358	22945	578	13204	\N	33	\N	GOAL	\N
+33359	22945	113	13221	\N	77	\N	OWN_GOAL	\N
+33360	22945	113	13222	\N	88	\N	GOAL	\N
+33361	22945	113	13222	\N	90	4	GOAL	\N
+33362	22946	572	\N	\N	16	\N	GOAL	\N
+33363	22946	569	13223	\N	22	\N	GOAL	\N
+33364	22946	569	13224	\N	60	\N	GOAL	\N
+33365	22946	572	13225	\N	67	\N	GOAL	\N
+33366	22946	572	13226	\N	75	\N	GOAL	\N
 3232	1037	5	1560	\N	68	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3233	1037	5	13030	\N	88	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3234	1037	5	13030	\N	90	4	GOAL	{"scorer": "unknown", "derived": "score"}
@@ -34643,6 +34955,7 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 3417	1594	2	13031	\N	52	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3274	1094	168	12520	\N	36	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3408	1591	2	13031	\N	65	\N	GOAL	{"scorer": "unknown", "derived": "score"}
+33367	22946	572	13227	\N	80	\N	OWN_GOAL	\N
 3403	1587	99	1755	\N	47	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3396	1585	101	12782	\N	90	\N	GOAL	{"scorer": "unknown", "derived": "score"}
 3397	1585	1	1063	\N	50	\N	GOAL	{"scorer": "unknown", "derived": "score"}
@@ -34704,6 +35017,25 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 2937	1536	347	13058	\N	71	\N	GOAL	\N
 2938	1536	347	1001	\N	81	\N	GOAL	\N
 2939	1536	5	13059	\N	15	\N	GOAL	\N
+33368	22948	582	13228	\N	23	\N	GOAL	\N
+33369	22948	574	13229	\N	48	\N	GOAL	\N
+33370	22949	579	13230	\N	29	\N	GOAL	\N
+33371	22949	578	13204	\N	51	\N	PENALTY_GOAL	\N
+33372	22949	579	13231	\N	55	\N	GOAL	\N
+33373	22949	578	13232	\N	71	\N	GOAL	\N
+33374	22950	572	13233	\N	18	\N	GOAL	\N
+33375	22950	572	13234	\N	55	\N	GOAL	\N
+33376	22950	574	13235	\N	69	\N	GOAL	\N
+33377	22951	575	13236	\N	7	\N	GOAL	\N
+33378	22951	570	13169	\N	45	1	GOAL	\N
+33379	22951	575	13186	\N	56	\N	GOAL	\N
+33380	22951	575	13186	\N	66	\N	GOAL	\N
+33381	22952	580	13237	\N	27	\N	GOAL	\N
+33382	22953	113	13238	\N	21	\N	GOAL	\N
+33383	22953	113	13214	\N	67	\N	GOAL	\N
+33384	22954	571	13163	\N	59	\N	PENALTY_GOAL	\N
+33385	22956	117	13203	\N	24	\N	GOAL	\N
+33386	22956	117	8093	\N	85	\N	GOAL	\N
 \.
 
 
@@ -49100,6 +49432,14 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 13059	Mohames Kapeta	\N	\N	\N	\N	\N	\N	\N	\N
 11795	Mudathir Nassor	\N	\N	\N	\N	\N	\N	\N	\N
 11796	Hussein Juma	\N	\N	\N	\N	\N	\N	\N	\N
+13160	Iqraam Rayners	Iqraam	Rayners	1995-12-19	46	\N	\N	\N	\N
+13161	Antonio Van Wyk	Antonio	Van Wyk	2002-03-30	46	\N	\N	\N	\N
+13162	Keanan Johannessen	Keanan	Johannessen	2005-05-13	46	\N	\N	\N	\N
+13163	Thandolwenkosi Methuseli Ngwenya	Thandolwenkosi Methuseli	Ngwenya	2002-12-19	47	\N	\N	\N	\N
+13164	Tshepo Mokoane	Tshepo	Mokoane	2002-03-17	46	\N	\N	\N	\N
+13165	Ndongani Samba Gilbani	Ndongani	Samba Gilbani	2000-02-02	\N	\N	\N	\N	\N
+13166	Nqaba Xulu	Nqaba	Xulu	\N	46	\N	\N	\N	\N
+13167	Ngoanamello Rammala	Ngoanamello	Rammala	1999-10-21	46	\N	\N	\N	\N
 7422	Peter Odemwingie	\N	\N	\N	36	\N	\N	\N	\N
 7594	Sofiane Féghouli	Sofiane	Feghouli	\N	1	\N	\N	\N	\N
 7653	Serey Dié	Geoffrey	Dié	\N	22	\N	\N	\N	\N
@@ -49123,7 +49463,35 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 11006	Théophile Abéga	\N	\N	\N	\N	\N	\N	\N	\N
 11009	Abdoulaye Traoré	\N	\N	\N	\N	\N	\N	\N	\N
 11012	Bocandé	\N	\N	\N	\N	\N	\N	\N	\N
+13168	Lebone Seema	Lebone	Seema	2003-04-05	46	\N	\N	\N	\N
 2393	Enosh Ochieng	Enosh	Ochieng	\N	23	\N	\N	\N	\N
+13169	Khetukuthula Ndlovu	Khetukuthula	Ndlovu	\N	46	\N	\N	\N	\N
+13170	Philani Kumalo	Philani	Kumalo	2001-01-03	46	\N	\N	\N	\N
+13171	Christian Basomboli	Christian	Basomboli	1999-11-30	\N	\N	\N	\N	\N
+13172	Siphosethu Ndlabi	Siphosethu	Ndlabi	1999-04-15	46	\N	\N	\N	\N
+13173	Mvelo Zikakayo	Mvelo	Zikakayo	\N	46	\N	\N	\N	\N
+13174	Mehluleli Ndelu	Mehluleli	Ndelu	\N	46	\N	\N	\N	\N
+13175	Phakamani Jwara	Phakamani	Jwara	\N	46	\N	\N	\N	\N
+13176	Jabulile Gxakoshe	Jabulile	Gxakoshe	2003-12-18	46	\N	\N	\N	\N
+13177	Sergio Kammies	Sergio	Kammies	1998-02-07	46	\N	\N	\N	\N
+13178	Lebohang Kgosana Maboe	Lebohang Kgosana	Maboe	1994-09-17	46	\N	\N	\N	\N
+13179	Brandon Petersen	Brandon	Petersen	1994-09-22	46	\N	\N	\N	\N
+13180	Bradley Grobler	Bradley	Grobler	1988-01-25	46	\N	\N	\N	\N
+13181	Kutlwano Letlhaku	Kutlwano	Letlhaku	2006-03-25	46	\N	\N	\N	\N
+13182	Siyanda Ndlovu	Siyanda	Ndlovu	2003-09-19	46	\N	\N	\N	\N
+13183	Tashreeq Matthews	Tashreeq	Matthews	2000-09-12	46	\N	\N	\N	\N
+13184	Junior Dion	Sede	Junior Dion	1998-10-15	3	\N	\N	\N	\N
+13185	Mfundo Vilakazi	Mfundo	Vilakazi	2005-11-19	46	\N	\N	\N	\N
+13186	Wandile Duba	Wandile	Duba	2004-06-27	46	\N	\N	\N	\N
+13187	Aphiwe Baliti	Aphiwe	Baliti	2002-01-12	46	\N	\N	\N	\N
+13188	Samukelo Xulu	Samukelo	Xulu	2001-02-02	46	\N	\N	\N	\N
+13189	Michel N'Guessan	Michel	N'Guessan	\N	\N	\N	\N	\N	\N
+13190	Lungu Ghampani	Lungu	Ghampani	1998-09-19	58	\N	\N	\N	\N
+13191	Boitumelo Radiopane	Boitumelo	Radiopane	2002-01-21	46	\N	\N	\N	\N
+13192	Yamela Mbuthuma	Yamela	Mbuthuma	2002-02-23	46	\N	\N	\N	\N
+13193	Moses Mthembu	Moses	Mthembu	2001-07-02	46	\N	\N	\N	\N
+13194	Nkosikhona Radebe	Nkosikhona	Radebe	2001-02-11	46	\N	\N	\N	\N
+13195	Lebohang Petrus Nkaki	Lebohang Petrus	Nkaki	1993-01-08	46	\N	\N	\N	\N
 10730	Raafat Ateya Helmy	\N	\N	\N	\N	\N	\N	\N	\N
 10731	Mohammed Diab El-Attar 'El-Diba	\N	\N	\N	\N	\N	\N	\N	\N
 10732	Boraî Ahmed Al-Bashir	\N	\N	\N	\N	\N	\N	\N	\N
@@ -49583,6 +49951,25 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 13071	B Majogoru	\N	\N	\N	\N	\N	\N	\N	\N
 13072	Al Daoud Bilal	\N	\N	\N	\N	\N	\N	\N	\N
 13073	Ally Oviedo	\N	\N	\N	\N	\N	\N	\N	\N
+13196	Msindisi Ndlovu	Msindisi	Ndlovu	2001-10-16	46	\N	\N	\N	\N
+13197	Bonginkosi Dlamini	Bonginkosi	Dlamini	1996-09-28	46	\N	\N	\N	\N
+13198	Siphesihle Ndlovu	Siphesihle	Ndlovu	1996-09-30	46	\N	\N	\N	\N
+13199	Brayan Léon Muñiz	Brayan Léon	Muñiz	2000-10-19	\N	\N	\N	\N	\N
+13200	Bennet Mokoena	Bennet	Mokoena	2007-06-18	46	\N	\N	\N	\N
+13201	Azola Matrose	Azola	Matrose	2003-03-27	46	\N	\N	\N	\N
+13202	Yandisa Mfolozi	Yandisa	Mfolozi	2003-03-19	46	\N	\N	\N	\N
+13203	Oswin Reagan Appollis	Oswin Reagan	Appollis	2001-08-25	46	\N	\N	\N	\N
+13204	Sepana Victor Letsoalo	Sepana Victor	Letsoalo	1993-04-01	46	\N	\N	\N	\N
+13205	Sedwyn Curtis George	Sedwyn Curtis	George	1991-08-28	46	\N	\N	\N	\N
+13206	Onke Moletshe	Onke	Moletshe	2000-02-07	46	\N	\N	\N	\N
+13207	Jean Lwamba	Jean	Lwamba	2002-03-17	\N	\N	\N	\N	\N
+13208	Leandro Gastón Sirino	Leandro Gastón	Sirino	1991-02-22	\N	\N	\N	\N	\N
+13209	Daniel Msendami	Daniel	Msendami	2000-10-24	47	\N	\N	\N	\N
+13210	Sicelo Masilela	\N	\N	\N	\N	\N	\N	\N	\N
+13211	Thabana Mabena	Thabana	Mabena	\N	46	\N	\N	\N	\N
+13212	Thembela Sikhakhane	Thembela	Sikhakhane	1993-01-24	46	\N	\N	\N	\N
+13213	Langelihle Phili	Langelihle	Phili	2005-01-21	46	\N	\N	\N	\N
+13214	Cassius Mailula	Cassius	Mailula	2001-06-12	46	\N	\N	\N	\N
 11231	Phil Masinga	\N	\N	\N	\N	\N	\N	\N	\N
 11232	John Moshoeu	\N	\N	\N	\N	\N	\N	\N	\N
 11233	Ahmed El-Kass	\N	\N	\N	\N	\N	\N	\N	\N
@@ -49668,6 +50055,30 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 11319	Ibrahima Diawara	\N	\N	\N	\N	\N	\N	\N	\N
 11320	Sidouba Bangoura	\N	\N	\N	\N	\N	\N	\N	\N
 11322	Djalma Campos	\N	\N	\N	\N	\N	\N	\N	\N
+13215	Mondli Mbanjwa	Mondli	Mbanjwa	1998-07-21	46	\N	\N	\N	\N
+13216	Quwan Plaatjies	\N	\N	\N	\N	\N	\N	\N	\N
+13217	Thapelo Dhludhlu	Thapelo	Dhludhlu	2005-01-01	46	\N	\N	\N	\N
+13218	Menzi Chili	Menzi	Chili	1992-06-20	46	\N	\N	\N	\N
+13219	Luke Junio Baartman	Luke Junio	Baartman	2006-06-12	46	\N	\N	\N	\N
+13220	Mduduzi Shabalala	Mduduzi	Shabalala	2004-01-20	46	\N	\N	\N	\N
+13221	Ronwen Williams	Ronwen	Williams	1992-01-21	46	\N	\N	\N	\N
+13222	Sphelele Mkhulise	Sphelele	Mkhulise	1996-02-19	46	\N	\N	\N	\N
+13223	Sinoxolo Kwayiba	Sinoxolo	Kwayiba	2000-02-15	46	\N	\N	\N	\N
+13224	Devon Titus	Devon	Titus	2000-05-18	46	\N	\N	\N	\N
+13225	Surprise Semangele Manthosi	Surprise Semangele	Manthosi	2005-05-22	46	\N	\N	\N	\N
+13226	Raymond Daniels	Raymond	Daniels	1993-06-07	46	\N	\N	\N	\N
+13227	Lindokuhle Mathebula	Lindokuhle	Mathebula	1993-12-22	46	\N	\N	\N	\N
+13228	Ntuthuko Mlotshwa	Ntuthuko	Mlotshwa	\N	46	\N	\N	\N	\N
+13229	Baggio Tuli-Ngenovali Nashixwa	Baggio Tuli-Ngenovali	Nashixwa	2002-05-23	34	\N	\N	\N	\N
+13230	Sphesihle Jeza	Sphesihle	Jeza	\N	46	\N	\N	\N	\N
+13231	Maliele Vincent Pule	Maliele Vincent	Pule	1992-03-10	46	\N	\N	\N	\N
+13232	Veluyeke Zulu	Veluyeke	Zulu	1995-03-02	46	\N	\N	\N	\N
+13233	Ndamulelo Rodney Maphangule	Ndamulelo Rodney	Maphangule	1997-03-20	46	\N	\N	\N	\N
+13234	Tidimalo Molokwane	\N	\N	\N	\N	\N	\N	\N	\N
+13235	Simphiwe Fortune Mcineka	Simphiwe Fortune	Mcineka	1996-10-08	46	\N	\N	\N	\N
+13236	Flávio António Silva	Flávio António	Silva	1996-04-03	37	\N	\N	\N	\N
+13237	Bright Ndlovu	Bright	Ndlovu	2000-05-29	46	\N	\N	\N	\N
+13238	Malibongwe Prince Khoza	Malibongwe Prince	Khoza	2004-03-16	46	\N	\N	\N	\N
 13076	Oumar Kamara	Oumar	Kamara	\N	56	\N	\N	\N	\N
 13077	Mohammedy Otalo	Mohammedy	Otalo	\N	56	\N	\N	\N	\N
 12518	Ally Mwale	\N	\N	\N	\N	\N	\N	\N	\N
@@ -51695,7 +52106,7 @@ SELECT pg_catalog.setval('public.competition_edition_teams_id_seq', 3329, true);
 -- Name: competition_editions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competition_editions_id_seq', 409, true);
+SELECT pg_catalog.setval('public.competition_editions_id_seq', 411, true);
 
 
 --
@@ -51709,7 +52120,7 @@ SELECT pg_catalog.setval('public.competition_groups_id_seq', 518, true);
 -- Name: competitions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competitions_id_seq', 130, true);
+SELECT pg_catalog.setval('public.competitions_id_seq', 132, true);
 
 
 --
@@ -51723,14 +52134,14 @@ SELECT pg_catalog.setval('public.confederations_id_seq', 6, true);
 -- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.countries_id_seq', 165, true);
+SELECT pg_catalog.setval('public.countries_id_seq', 167, true);
 
 
 --
 -- Name: data_flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_flags_id_seq', 173, true);
+SELECT pg_catalog.setval('public.data_flags_id_seq', 176, true);
 
 
 --
@@ -51744,14 +52155,14 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 22, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 90101, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 90528, true);
 
 
 --
 -- Name: match_events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.match_events_id_seq', 33136, true);
+SELECT pg_catalog.setval('public.match_events_id_seq', 33386, true);
 
 
 --
@@ -51765,7 +52176,7 @@ SELECT pg_catalog.setval('public.match_lineups_id_seq', 7623, true);
 -- Name: matches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.matches_id_seq', 23121, true);
+SELECT pg_catalog.setval('public.matches_id_seq', 23125, true);
 
 
 --
@@ -51779,28 +52190,28 @@ SELECT pg_catalog.setval('public.player_team_stints_id_seq', 4050, true);
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.players_id_seq', 13083, true);
+SELECT pg_catalog.setval('public.players_id_seq', 13238, true);
 
 
 --
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3219, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3221, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 189, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 190, true);
 
 
 --
 -- Name: seasons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.seasons_id_seq', 336, true);
+SELECT pg_catalog.setval('public.seasons_id_seq', 338, true);
 
 
 --
@@ -51814,7 +52225,7 @@ SELECT pg_catalog.setval('public.stadiums_id_seq', 127, true);
 -- Name: teams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.teams_id_seq', 615, true);
+SELECT pg_catalog.setval('public.teams_id_seq', 621, true);
 
 
 --
