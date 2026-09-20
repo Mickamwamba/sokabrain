@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { matchState, statusLabel } from "@/lib/match-state";
 import { type Match } from "@/lib/api";
-import { Card, Crest } from "@/components/ui";
+import { Card, Crest , LiveBadge } from "@/components/ui";
 
 export function dayLabel(iso: string) {
   const d = new Date(`${iso}T12:00:00Z`);
@@ -36,6 +37,7 @@ function dayKeyOf(m: Match) {
 
 function Score({ match }: { match: Match }) {
   const { home, away, homePenalties, awayPenalties } = match.score;
+  const state = matchState(match.status, home, away);
   if (home === null || away === null) {
     const time = kickoffTime(match.kickoffAt);
     if (match.status === "SCHEDULED" && time) {
@@ -48,13 +50,29 @@ function Score({ match }: { match: Match }) {
     }
     return (
       <span className="rounded-full bg-wash px-2.5 py-1 text-xs font-medium text-muted">
-        {match.status === "FULL_TIME" ? "No score" : match.status.replace("_", " ").toLowerCase()}
+        {match.status === "FULL_TIME" ? "No score" : statusLabel(match.status)}
       </span>
     );
   }
 
   const homeWon = home > away;
   const awayWon = away > home;
+
+  // A live score is red and pulsing, not the same black pill a finished match
+  // gets. Without this a game in its first half is indistinguishable from one
+  // that ended hours ago.
+  if (state === "LIVE") {
+    return (
+      <span className="inline-flex flex-col items-center gap-1">
+        <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-red-600 px-3 py-1 text-sm font-black text-white shadow-xs">
+          {home}
+          <span className="mx-1.5 opacity-60">-</span>
+          {away}
+        </span>
+        <LiveBadge size="sm" />
+      </span>
+    );
+  }
 
   return (
     <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">

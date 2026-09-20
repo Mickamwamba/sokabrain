@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { matchState, showsScore, statusLabel } from "@/lib/match-state";
 import { notFound } from "next/navigation";
 import { api, ApiError, type MatchDetail, type MatchEventRow } from "@/lib/api";
-import { Card, CardHead, Crest, Empty, TeamLink } from "@/components/ui";
+import { Card, CardHead, Crest, Empty, TeamLink , LiveBadge } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -146,7 +147,11 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
       })
     : null;
 
-  const played = match.home.score !== null && match.away.score !== null;
+  const state = matchState(match.status, match.home.score, match.away.score);
+  // A live match has a score and is NOT played out — the two are separate
+  // questions, and conflating them badged a 0-0 first half "Full Time".
+  const played = showsScore(state);
+  const isLive = state === "LIVE";
   const h = match.headToHead;
 
   const homeScore = match.home.score ?? 0;
@@ -191,15 +196,19 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
                   </span>
                 </p>
                 <div className="mt-2.5">
-                  <span className="inline-block rounded-full bg-ink px-3 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-2xs">
-                    Full Time
-                  </span>
+                  {isLive ? (
+                    <LiveBadge />
+                  ) : (
+                    <span className="inline-block rounded-full bg-ink px-3 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-2xs">
+                      {match.status === "FULL_TIME" ? "Full Time" : statusLabel(match.status)}
+                    </span>
+                  )}
                 </div>
               </div>
             ) : (
               <div>
                 <span className="inline-block rounded-full bg-brand/10 border border-brand/20 px-3 py-1 text-xs font-black uppercase tracking-wider text-brand">
-                  Upcoming
+                  {state === "OFF" ? statusLabel(match.status) : "Upcoming"}
                 </span>
                 <p className="stat-figure text-2xl mt-2 text-muted font-light">vs</p>
               </div>
@@ -222,9 +231,11 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
             <CardHead title="Match Events" />
             {match.events.length === 0 ? (
               <p className="px-5 py-12 text-center text-sm text-muted">
-                {played
-                  ? "No event log available for this historical match."
-                  : "Match has not been played yet."}
+                {isLive
+                  ? "No goals yet."
+                  : played
+                    ? "No event log available for this historical match."
+                    : "Match has not been played yet."}
               </p>
             ) : (
               <ChronoTimeline events={match.events} />

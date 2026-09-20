@@ -255,3 +255,26 @@ export function TeamLink({
     </Link>
   );
 }
+
+/**
+ * The in-play marker.
+ *
+ * No minute: the vault stores a live score but not the clock, and inventing one
+ * would be worse than omitting it. The pulse is what carries "this is moving".
+ *
+ * `size="sm"` is for a fixture list, where it sits where a score pill would.
+ */
+export function LiveBadge({ size = "md" }: { size?: "sm" | "md" }) {
+  const pad = size === "sm" ? "px-2 py-0.5 text-[10px]" : "px-3 py-0.5 text-[10px]";
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full bg-red-600 font-black uppercase tracking-wider text-white shadow-2xs ${pad}`}
+    >
+      <span className="relative flex h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
+      </span>
+      Live
+    </span>
+  );
+}

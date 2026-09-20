@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { matchState, showsScore, statusLabel } from "@/lib/match-state";
 import { featuredEdition, groupByCompetition } from "@/lib/home-scope";
 import {
   api,
@@ -7,7 +8,7 @@ import {
   type Match,
   type StandingsRow,
 } from "@/lib/api";
-import { Crest, Empty, PageTitle } from "@/components/ui";
+import { Crest, Empty, PageTitle , LiveBadge } from "@/components/ui";
 import { MatchRows, kickoffTime } from "@/components/match-list";
 import { DateStrip } from "@/components/schedule-nav";
 import { MiniStandings, MiniTopScorers } from "@/components/home-league-pulse";
@@ -30,7 +31,11 @@ function fmtDateHeading(iso: string) {
 
 function RichMatchCard({ match }: { match: Match }) {
   const time = kickoffTime(match.kickoffAt);
-  const isFinished = match.status === "FINISHED" || match.score.home !== null;
+  // "FINISHED" was never a status the API emits — it is FULL_TIME — so this
+  // fell through to "has a score", which reads a live match as full time.
+  const state = matchState(match.status, match.score.home, match.score.away);
+  const isLive = state === "LIVE";
+  const isFinished = showsScore(state);
   const homeScore = match.score.home;
   const awayScore = match.score.away;
 
@@ -51,15 +56,27 @@ function RichMatchCard({ match }: { match: Match }) {
             </span>
           ) : null}
         </div>
-        <span
-          className={`font-bold uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-full ${
-            isFinished
-              ? "bg-wash text-muted"
-              : "bg-emerald-500/10 text-emerald-700 border border-emerald-500/20"
-          }`}
-        >
-          {isFinished ? "Full Time" : time ? `Kickoff ${time}` : "Scheduled"}
-        </span>
+        {isLive ? (
+          <LiveBadge />
+        ) : (
+          <span
+            className={`font-bold uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-full ${
+              isFinished
+                ? "bg-wash text-muted"
+                : "bg-emerald-500/10 text-emerald-700 border border-emerald-500/20"
+            }`}
+          >
+            {isFinished
+              ? match.status === "FULL_TIME"
+                ? "Full Time"
+                : statusLabel(match.status)
+              : state === "OFF"
+                ? statusLabel(match.status)
+                : time
+                  ? `Kickoff ${time}`
+                  : "Scheduled"}
+          </span>
+        )}
       </div>
 
       {/* Teams and Scoreline — Click anywhere to view match details & events */}
