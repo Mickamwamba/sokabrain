@@ -4,6 +4,7 @@ import { env } from './env.js';
 import { prisma } from './db.js';
 import { vaultRouter } from './routes/vault.js';
 import { adminRouter } from './routes/admin.js';
+import { kijiweniRouter } from './routes/kijiweni.js';
 import { startLiveScoreSync } from './jobs/liveScoreSync.js';
 
 const app = express();
@@ -19,8 +20,9 @@ app.get('/health', async (_req, res) => {
   }
 });
 
-// Read side of the vault (public) and the authenticated write side.
+// Read side of the vault (public), the fan forum, and the authenticated write side.
 app.use('/api/vault', vaultRouter);
+app.use('/api/kijiweni', kijiweniRouter);
 app.use('/api/admin', adminRouter);
 
 app.use((_req, res) => res.status(404).json({ error: 'Not found' }));

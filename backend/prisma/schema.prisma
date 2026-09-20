@@ -423,3 +423,66 @@ model audit_runs {
   audit_findings_audit_findings_resolved_run_idToaudit_runs   audit_findings[] @relation("audit_findings_resolved_run_idToaudit_runs")
   admins                                                      admins?          @relation(fields: [started_by], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
+
+model kijiwe_spaces {
+  id             Int              @id @default(autoincrement())
+  slug           String           @unique @db.VarChar(50)
+  name_sw        String           @db.VarChar(100)
+  name_en        String           @db.VarChar(100)
+  description_sw String           @db.Text
+  description_en String           @db.Text
+  icon           String           @db.VarChar(20)
+  badge_color    String           @db.VarChar(30)
+  display_order  Int              @default(0)
+  created_at     DateTime         @default(now()) @db.Timestamptz(6)
+  threads        kijiwe_threads[]
+}
+
+model kijiwe_threads {
+  id               Int               @id @default(autoincrement())
+  kijiwe_id        Int
+  title            String            @db.VarChar(200)
+  content          String            @db.Text
+  author_name      String            @db.VarChar(50)
+  author_team_name String?           @db.VarChar(80)
+  tag              String            @default("UBISHI") @db.VarChar(30)
+  likes_count      Int               @default(0)
+  comments_count   Int               @default(0)
+  is_pinned        Boolean           @default(false)
+  created_at       DateTime          @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime          @default(now()) @updatedAt @db.Timestamptz(6)
+  kijiwe           kijiwe_spaces     @relation(fields: [kijiwe_id], references: [id], onDelete: Cascade)
+  comments         kijiwe_comments[]
+  likes            kijiwe_likes[]
+
+  @@index([kijiwe_id, created_at(sort: Desc)])
+}
+
+model kijiwe_comments {
+  id               Int            @id @default(autoincrement())
+  thread_id        Int
+  author_name      String         @db.VarChar(50)
+  author_team_name String?        @db.VarChar(80)
+  content          String         @db.Text
+  likes_count      Int            @default(0)
+  created_at       DateTime       @default(now()) @db.Timestamptz(6)
+  thread           kijiwe_threads @relation(fields: [thread_id], references: [id], onDelete: Cascade)
+  likes            kijiwe_likes[]
+
+  @@index([thread_id, created_at])
+}
+
+model kijiwe_likes {
+  id              Int              @id @default(autoincrement())
+  thread_id       Int?
+  comment_id      Int?
+  fan_fingerprint String           @db.VarChar(100)
+  reaction_type   String           @default("LIKE") @db.VarChar(20)
+  created_at      DateTime         @default(now()) @db.Timestamptz(6)
+  thread          kijiwe_threads?  @relation(fields: [thread_id], references: [id], onDelete: Cascade)
+  comment         kijiwe_comments? @relation(fields: [comment_id], references: [id], onDelete: Cascade)
+
+  @@unique([thread_id, fan_fingerprint])
+  @@unique([comment_id, fan_fingerprint])
+}
+
