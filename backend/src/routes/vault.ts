@@ -147,7 +147,7 @@ const matchesQuery = z.object({
   from: z.coerce.date().optional(),
   to: z.coerce.date().optional(),
   order: z.enum(['asc', 'desc']).optional(),
-  limit: z.coerce.number().int().min(1).max(100).default(25),
+  limit: z.coerce.number().int().min(1).max(250).default(25),
   offset: z.coerce.number().int().min(0).default(0),
 });
 
