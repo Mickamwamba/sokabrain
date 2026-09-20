@@ -20,7 +20,29 @@ function EventIcon({ type }: { type: string }) {
     return <span className="text-muted font-bold text-xs" title="Assist">👟</span>;
   }
   if (GOAL_TYPES.includes(type)) {
-    return <span className="text-sm select-none" title="Goal">⚽</span>;
+    // An SVG rather than the ⚽ emoji, because an emoji cannot be recoloured and
+    // an own goal has to read red. Same shape for every goal so the timeline
+    // stays legible; only the colour differs.
+    const own = type === "OWN_GOAL";
+    return (
+      <svg
+        viewBox="0 0 16 16"
+        className={`h-3.5 w-3.5 shrink-0 ${own ? "text-rose-600" : "text-ink"}`}
+        role="img"
+        aria-label={own ? "Own goal" : "Goal"}
+      >
+        <title>{own ? "Own Goal" : "Goal"}</title>
+        <circle cx="8" cy="8" r="7.25" fill="currentColor" />
+        <path d="M8 4.1l2.35 1.7-.9 2.76H6.55l-.9-2.76L8 4.1z" fill="#fff" />
+        <path
+          d="M8 1.2v2.1M2.1 6.6l1.9 1.4M13.9 6.6l-1.9 1.4M4.6 13.3l1.1-3.2M11.4 13.3l-1.1-3.2"
+          stroke="#fff"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          fill="none"
+        />
+      </svg>
+    );
   }
   return <span className="text-muted text-xs select-none">·</span>;
 }
@@ -72,7 +94,7 @@ function ChronoTimeline({ events }: { events: MatchEventRow[] }) {
                   <>
                     <span className="truncate text-sm font-semibold text-ink">
                       {e.playerName ?? <span className="text-muted italic font-normal">Scorer not recorded</span>}
-                      {e.type === "OWN_GOAL" ? <span className="ml-1 text-xs text-rose-600 font-bold">(o.g.)</span> : null}
+                      {e.type === "OWN_GOAL" ? <span className="ml-1 whitespace-nowrap text-xs font-bold text-rose-600">Own Goal</span> : null}
                       {e.type === "PENALTY_GOAL" ? <span className="ml-1 text-xs text-brand font-bold">(pen)</span> : null}
                       {e.type === "ASSIST" ? <span className="ml-1 text-xs text-muted font-normal">assist</span> : null}
                     </span>
@@ -95,7 +117,7 @@ function ChronoTimeline({ events }: { events: MatchEventRow[] }) {
                     <EventIcon type={e.type} />
                     <span className="truncate text-sm font-semibold text-ink">
                       {e.playerName ?? <span className="text-muted italic font-normal">Scorer not recorded</span>}
-                      {e.type === "OWN_GOAL" ? <span className="ml-1 text-xs text-rose-600 font-bold">(o.g.)</span> : null}
+                      {e.type === "OWN_GOAL" ? <span className="ml-1 whitespace-nowrap text-xs font-bold text-rose-600">Own Goal</span> : null}
                       {e.type === "PENALTY_GOAL" ? <span className="ml-1 text-xs text-brand font-bold">(pen)</span> : null}
                       {e.type === "ASSIST" ? <span className="ml-1 text-xs text-muted font-normal">assist</span> : null}
                     </span>
