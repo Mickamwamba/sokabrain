@@ -179,6 +179,7 @@ export async function syncFixtures(
             away_score_pens: f.awayScorePens,
             round: f.round,
             live_minute: f.status === 'LIVE' ? f.liveMinute : null,
+            live_minute_at: f.status === 'LIVE' && f.liveClockRunning ? new Date() : null,
           },
         });
         await recordProvenance(tx, 'match', m.id, source, f.id);
@@ -232,14 +233,17 @@ export async function syncFixtures(
       // The score can sit still for an hour while the clock does not, so a
       // live match's minute is written even on the "nothing changed" path.
       // Without this a 0-0 would freeze at whatever minute it was first seen.
-      const minute = f.status === 'LIVE' ? f.liveMinute : null;
+      // At a break the provider publishes no ticking period, so `liveMinute`
+      // arrives null — keep the last known value rather than blanking the clock
+      // exactly when a viewer most wants to see 45'.
+      const minute =
+        f.status === 'LIVE' ? (f.liveMinute ?? existing.live_minute) : null;
+      const at = f.status === 'LIVE' && f.liveClockRunning ? new Date() : null;
       await prisma.$transaction(async (tx) => {
-        if (minute !== existing.live_minute) {
-          await tx.matches.update({
-            where: { id: existing.id },
-            data: { live_minute: minute },
-          });
-        }
+        await tx.matches.update({
+          where: { id: existing.id },
+          data: { live_minute: minute, live_minute_at: at },
+        });
         await recordProvenance(tx, 'match', existing.id, source, f.id);
       });
       summary.agreed += 1;
@@ -272,8 +276,10 @@ export async function syncFixtures(
           home_score_pens: f.homeScorePens,
           away_score_pens: f.awayScorePens,
           // Cleared the moment a match stops being live, so a finished match
-          // never carries a stale clock.
-          live_minute: f.status === 'LIVE' ? f.liveMinute : null,
+          // never carries a stale clock. While live the last known minute is
+          // kept through a break, when the provider reports none.
+          live_minute: f.status === 'LIVE' ? (f.liveMinute ?? existing.live_minute) : null,
+          live_minute_at: f.status === 'LIVE' && f.liveClockRunning ? new Date() : null,
           ...(kickoffMoved ? { kickoff_at: f.kickoff } : {}),
         },
       });

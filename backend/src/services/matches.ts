@@ -95,6 +95,8 @@ export async function listMatches(filters: MatchListFilters) {
       attendance: m.attendance,
       /** Clock in minutes while LIVE; null otherwise. */
       liveMinute: m.live_minute,
+      /** When that clock was captured RUNNING — the anchor a client ticks from. */
+      liveMinuteAt: m.live_minute_at,
       competition: {
         editionId: m.competition_editions?.id ?? null,
         // The competition id, so a caller can group a mixed list by competition

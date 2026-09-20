@@ -218,6 +218,7 @@ model matches {
   attendance                        Int?
   referee_id                        Int?
   live_minute                       Int?                   @db.SmallInt
+  live_minute_at                    DateTime?              @db.Timestamptz(6)
   match_events                      match_events[]
   match_lineups                     match_lineups[]
   match_player_ratings              match_player_ratings[]

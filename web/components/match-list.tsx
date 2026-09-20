@@ -2,6 +2,7 @@ import Link from "next/link";
 import { matchState, statusLabel } from "@/lib/match-state";
 import { type Match } from "@/lib/api";
 import { Card, Crest, LiveDot } from "@/components/ui";
+import { LiveMinute } from "@/components/live-minute";
 
 export function dayLabel(iso: string) {
   const d = new Date(`${iso}T12:00:00Z`);
@@ -141,13 +142,13 @@ export function MatchRows({
                   live ? "font-black text-red-600" : "text-muted"
                 }`}
               >
-                {live
-                  ? m.liveMinute != null
-                    ? `${m.liveMinute}'`
-                    : "Live"
-                  : showCompetition
-                    ? m.competition.name
-                    : m.stadium?.name ?? ""}
+                {live ? (
+                  <LiveMinute minute={m.liveMinute} at={m.liveMinuteAt} />
+                ) : showCompetition ? (
+                  m.competition.name
+                ) : (
+                  m.stadium?.name ?? ""
+                )}
               </span>
 
               <span className="text-muted/40 group-hover:text-ink/70 transition-colors shrink-0 text-xs">

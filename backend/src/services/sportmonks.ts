@@ -294,6 +294,12 @@ function pickScore(
   return row ? row.score.goals : null;
 }
 
+/** The period the clock should be read from: the running one, else the latest. */
+function livePeriod(f: SportmonksFixture): SportmonksPeriod | undefined {
+  const periods = f.periods ?? [];
+  return periods.find((p) => p.ticking) ?? periods[periods.length - 1];
+}
+
 function team(p: SportmonksParticipant): ProviderTeam {
   return { id: String(p.id), name: p.name };
 }
@@ -334,9 +340,13 @@ export function normaliseFixture(
     homeScorePens: pickScore(f.scores, 'PENALTY_SHOOTOUT', 'home'),
     awayScorePens: pickScore(f.scores, 'PENALTY_SHOOTOUT', 'away'),
     round: f.round?.name ?? null,
-    // Only the ticking period has a meaningful clock; a finished or not-yet
-    // started period reports whatever it last held.
-    liveMinute: f.periods?.find((p) => p.ticking)?.minutes ?? null,
+    // The clock comes from the RUNNING period where there is one, and from the
+    // most recent period otherwise. At half time no period is ticking but the
+    // first half is still there reading 46' — taking only the ticking period
+    // blanked the clock exactly when a viewer most wants to see it.
+    // `ticking` then answers a separate question: may a browser advance it?
+    liveMinute: livePeriod(f)?.minutes ?? null,
+    liveClockRunning: (f.periods ?? []).some((p) => p.ticking),
     // The season is the numeric season id, NOT its label. It has to be the same
     // value `mapSportmonks` used to build the edition mapping key, or every
     // fixture reads as an unmapped competition. SportMonks gives a league many

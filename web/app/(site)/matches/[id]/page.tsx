@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LiveMinute, LiveRefresher } from "@/components/live-minute";
 import { matchState, showsScore, statusLabel } from "@/lib/match-state";
 import { notFound } from "next/navigation";
 import { api, ApiError, type MatchDetail, type MatchEventRow } from "@/lib/api";
@@ -167,6 +168,7 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
 
   return (
     <div>
+      {isLive ? <LiveRefresher /> : null}
       {/* Breadcrumb Context */}
       <div className="mb-4 flex items-center gap-2 text-xs font-medium text-muted">
         <Link
@@ -197,7 +199,9 @@ export default async function MatchPage(props: PageProps<"/matches/[id]">) {
                 </p>
                 <div className="mt-2.5">
                   {isLive ? (
-                    <LiveBadge minute={match.liveMinute} />
+                    <LiveBadge
+                      minute={<LiveMinute minute={match.liveMinute} at={match.liveMinuteAt} />}
+                    />
                   ) : (
                     <span className="inline-block rounded-full bg-ink px-3 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-2xs">
                       {match.status === "FULL_TIME" ? "Full Time" : statusLabel(match.status)}

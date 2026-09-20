@@ -269,8 +269,8 @@ export function LiveBadge({
   minute,
 }: {
   size?: "sm" | "md";
-  /** Clock in minutes, when known. Omitted rather than guessed at. */
-  minute?: number | null;
+  /** The clock, when known — usually a ticking <LiveMinute/>. */
+  minute?: React.ReactNode;
 }) {
   const pad = size === "sm" ? "px-2 py-0.5 text-[10px]" : "px-3 py-0.5 text-[10px]";
   return (
@@ -279,7 +279,7 @@ export function LiveBadge({
     >
       <LiveDot />
       Live
-      {minute != null ? <span className="nums opacity-90">{minute}'</span> : null}
+      {minute != null ? <span className="nums opacity-90">{minute}</span> : null}
     </span>
   );
 }

@@ -143,7 +143,8 @@ CREATE TABLE matches (
     away_score_pens         SMALLINT,
     attendance              INT,
     referee_id              INT REFERENCES coaches(id),  -- reuse coaches-style people table, or split to a `people` table if scope grows
-    live_minute             SMALLINT            -- clock while status='LIVE'; NULL otherwise, cleared by the sync
+    live_minute             SMALLINT,           -- clock while status='LIVE'; NULL otherwise, cleared by the sync
+    live_minute_at          TIMESTAMPTZ         -- when that minute was captured with the clock RUNNING; NULL at a break
 );
 
 CREATE TABLE match_lineups (

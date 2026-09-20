@@ -134,6 +134,8 @@ export type Match = {
   attendance: number | null;
   /** Clock in minutes while LIVE; null otherwise. */
   liveMinute: number | null;
+  /** When that clock was captured RUNNING; null at a break. */
+  liveMinuteAt: string | null;
   competition: {
     editionId: number | null;
     /** The competition itself, so a mixed list can be grouped and linked. */
@@ -270,6 +272,8 @@ export type MatchDetail = {
   venue: string | null;
   /** Clock in minutes while LIVE; null otherwise. */
   liveMinute: number | null;
+  /** When that clock was captured RUNNING; null at a break. */
+  liveMinuteAt: string | null;
   competition: { editionId: number; name: string; season: string };
   home: { id: number; name: string; shortName: string | null; score: number | null };
   away: { id: number; name: string; shortName: string | null; score: number | null };

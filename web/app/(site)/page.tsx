@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LiveMinute, LiveRefresher } from "@/components/live-minute";
 import { matchState, showsScore, statusLabel } from "@/lib/match-state";
 import { featuredEdition, groupByCompetition } from "@/lib/home-scope";
 import {
@@ -57,7 +58,9 @@ function RichMatchCard({ match }: { match: Match }) {
           ) : null}
         </div>
         {isLive ? (
-          <LiveBadge minute={match.liveMinute} />
+          <LiveBadge
+            minute={<LiveMinute minute={match.liveMinute} at={match.liveMinuteAt} />}
+          />
         ) : (
           <span
             className={`font-bold uppercase tracking-wider text-[10px] px-2 py-0.5 rounded-full ${
@@ -280,9 +283,14 @@ export default async function MatchesHub(props: PageProps<"/">) {
   const scorersList = scorersData?.scorers || [];
   const nextMatch = upcoming.matches[0] || null;
   const rich = list.matches.length > 0 && list.matches.length <= 2;
+  // Only poll when there is actually something moving on this page.
+  const anyLive = list.matches.some(
+    (m) => matchState(m.status, m.score.home, m.score.away) === "LIVE",
+  );
 
   return (
     <div>
+      {anyLive ? <LiveRefresher /> : null}
       <PageTitle
         title="Matches"
         sub={

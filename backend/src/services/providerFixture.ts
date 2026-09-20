@@ -42,6 +42,13 @@ export type ProviderFixture = {
    * about whether it is the 3rd minute or the 88th.
    */
   liveMinute: number | null;
+  /**
+   * Whether that clock is actually running.
+   *
+   * False at half time and any other break. A browser must not tick a clock
+   * that is not moving, and a live match whose clock is stopped is at a break.
+   */
+  liveClockRunning: boolean;
   /** Identifies the competition edition, via `editionKey`. */
   competition: { id: string; name: string; season: string };
 };
