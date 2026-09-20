@@ -157,6 +157,55 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
+- **Rwanda now has three seasons and a real scorer list** (2026-09-20). Its
+  2025/26 and 2024/25 seasons were pulled from SportMonks
+  (`npm run sm:ingest -- --league 872 --season <id> --apply`, then `sm:events`),
+  which carries them as well as the current one.
+
+  | Edition | Season | Clubs | Fixtures | Results | Goal events | Named |
+  |---|---|---|---|---|---|---|
+  | 416 | 2025/2026 | 18 | 306 | 306 | 649 | **491** |
+  | 417 | 2024/2025 | 16 | 240 | 240 | 459 | 168 |
+  | 404 | 2026/2027 | 18 | 305 | 22 | 0 | 0 |
+
+  - **All 450 matches with events reconcile with their score, zero
+    contradictions, and no abbreviated name was planted.** The older seasons
+    resolve far better than the current one: 2025/26 needed no abbreviation
+    guesswork at all, where 18 of the current season's 28 names are initials.
+  - **Six matches were refused** for an event log that does not account for the
+    score (1 in 2025/26, 5 in 2024/25) — the same refusal every loader here
+    makes. Those matches keep their score and no events.
+  - **`sm:ingest` now flags an AWARDED result INFO automatically.** Rayon Sports
+    v Gasogi United (2025/26) was forfeited; the vault has met this twice before
+    and both times it was found by hand.
+  - The near-miss check no longer compares a club to a national side. It
+    reported "Police Rwanda" against the vault's "Rwanda", which cannot be the
+    same record.
+- **The official Rwandan league site has the best data for that league, and its
+  robots.txt puts the part we need out of bounds** (surveyed 2026-09-20,
+  `https://rwandapremierleague.rw`). Worth knowing before anyone tries again.
+  - Its match modal calls `/admins/fixtures/get_match_events.php?match_id=`,
+    which returns per-match JSON with **full scorer names and stable player ids,
+    assists, minutes with added time, own goals as their own type, cards** — and
+    for the current season shots, saves and xG. It even names "Keddy
+    Nsanzimfura", the man SportMonks abbreviates to "K. Nsanzimfura".
+  - **It files an own goal under the SCORER'S OWN TEAM — the vault's own
+    convention, needing no flip.** Verified against Etoile de l'Est 1-2 Gicumbi,
+    whose 86th-minute own goal sits under the home side and counts for Gicumbi.
+    That makes it the first source in this project that does not need the flip.
+  - **But `robots.txt` says `Disallow: /admins/`**, commented "Keep crawl budget
+    on public content, not admin or internal endpoints". The allowed pages
+    (`/info/fixtures`, `/stats-goals.php`) carry fixtures, scores, venues and
+    **season-aggregate** top scorers — not per-match scorers. The per-match star
+    badges are season totals, not that match's scorer. So the data we want is
+    reachable only with the league's permission; ask before using it.
+  - Cross-checked anyway against the allowed aggregate chart, which validates
+    the SportMonks load: Razafimaro 12 and Adama Coulibaly 9 agree exactly, and
+    Ouattara (18/17), Togui (9/8) and Akang (8/7) are each one short — consistent
+    with 158 unattributed goals and one refused match. **Two vault entries could
+    not be corroborated**, Taïba Mbonyumwami (14) and Jean Claude Girumugisha
+    (7); only 110 of the chart's 168 rows were parsed, so that is inconclusive
+    rather than a contradiction — check it if access is ever granted.
 - **A competition is always named with its country in front.** Three leagues are
   called plainly "Premier League" — Tanzania's, South Africa's and Uganda's — so
   a bare name identifies none of them. `backend/src/services/competitionName.ts`
