@@ -138,6 +138,35 @@ effectively empty right now** — eight fixtures, all postponed. Only Tanzania h
 vault competition (`VAULT_COMPETITION_BY_PROVIDER_LEAGUE` in `config/leagues.ts`);
 the rest are fetched, reported and skipped rather than written somewhere wrong.
 
+### Standing up a new league
+
+```bash
+npm run sm:ingest -- --league 872            # dry run: reports everything it would do
+npm run sm:ingest -- --league 872 --apply
+```
+
+Creates the competition, edition, clubs, participants and fixtures, with
+provenance, then `sm:map`/`sm:sync` take over. Four leagues were stood up this
+way on 2026-09-19 — Kenya, Rwanda, Uganda and South Africa — and all four
+editions are **unpublished**.
+
+It reuses rather than duplicates (competition, season, edition, club, fixture),
+writes **no events**, and leaves `is_published` false. Three guards earn their
+place:
+
+* **Club matching is scoped to the club's own country**, because Kenya and Uganda
+  both field a club called simply "Police". A club's country comes from the
+  provider's `country` include, not the league's — which is what keeps Al Hilal
+  Omdurman and Al Merreikh, two Sudanese clubs playing in the Rwandan league,
+  filed under Sudan.
+* **Near-miss reporting** names a club it is about to create that resembles one
+  the same country already holds. It caught "Bandari" about to be created beside
+  "Bandari F.C.", and surfaced that the vault held Mathare United twice.
+* **Duplicate ordered club pairs are skipped and reported, never merged.**
+  SportMonks' Rwandan list gives Police Rwanda v Al Merreikh in two different
+  rounds and omits the reverse fixture; without this the second entry silently
+  collapsed onto the first and cost a fixture.
+
 ### What the provider is trusted for, and what it is not
 
 `sm:compare` diffs the whole season against the vault and writes nothing. Against

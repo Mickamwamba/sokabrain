@@ -36,11 +36,16 @@ export const TARGET_LEAGUES: TargetLeague[] = [
 /**
  * The vault competition each target league belongs to, by provider league id.
  *
- * Only Tanzania's Premier League exists in the vault today (competition 1); the
- * other four are covered by the subscription but have no vault competition yet,
- * so their fixtures are reported and skipped rather than written into the wrong
- * competition. Add a row here when a competition is created for one.
+ * A league absent from this map is fetched and reported but never written, so
+ * that a fixture cannot land in the wrong competition. All five of the plan's
+ * leagues are now mapped (`npm run sm:ingest` stood the last four up on
+ * 2026-09-19); Kenya reuses the competition the legacy SokaFC dump already held
+ * rather than a second one beside it.
  */
 export const VAULT_COMPETITION_BY_PROVIDER_LEAGUE: Record<string, number> = {
-  '884': 1, // SportMonks "Ligi kuu Bara" -> vault Premier League (Tanzania)
+  '884': 1, //   "Ligi kuu Bara"          -> Premier League, Tanzania
+  '848': 17, //  Kenya "Premier League"   -> "Kenya premier league" (legacy record)
+  '872': 126, // Rwanda "National Soccer League"
+  '806': 127, // South Africa "Premier League"
+  '1423': 128, // Uganda "Premier League"
 };

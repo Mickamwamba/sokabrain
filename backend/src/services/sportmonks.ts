@@ -148,6 +148,22 @@ export const sportmonks = {
       `/teams/seasons/${seasonId}`,
     ),
 
+  /**
+   * The same list with each club's own country.
+   *
+   * A club's country is NOT the league's: Al Hilal Omdurman and Al Merreikh are
+   * Sudanese clubs playing in the Rwandan league while the war continues, and
+   * filing them under Rwanda would be wrong.
+   */
+  teamsWithCountry: (seasonId: number) =>
+    getAll<{
+      id: number;
+      name: string;
+      short_code: string | null;
+      founded: number | null;
+      country?: SportmonksCountry;
+    }>(`/teams/seasons/${seasonId}`, { include: 'country' }),
+
   /** Every fixture of a season, with the detail the sync and comparison need. */
   seasonFixtures: (seasonId: number) =>
     getAll<SportmonksFixture>('/fixtures', {

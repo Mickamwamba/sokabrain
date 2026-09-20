@@ -666,6 +666,61 @@ explicitly out of scope — see "Non-goals" below).
   - Removing the junk made the audit newly report Tunisia 1-1 Angola as a goal
     short. That is correct: the stray event had been padding the count over a
     gap that was always there.
+- **Four more leagues are in the vault: Kenya, Rwanda, Uganda and South Africa**
+  (2026-09-19), their 2026/27 seasons pulled from SportMonks with
+  `npm run sm:ingest -- --league <id> [--apply]`
+  (`backend/src/scripts/ingestSportmonksLeague.ts`). **All four editions are
+  UNPUBLISHED** — nothing reaches the public site until someone publishes it.
+
+  | Country | Competition | Edition | Clubs | Fixtures | Results | Rounds |
+  |---|---|---|---|---|---|---|
+  | Rwanda | National Soccer League (#126) | 404 | 18 | 305 | 22 | all |
+  | South Africa | Premier League (#127) | 405 | 16 | 240 | 53 | **none** |
+  | Uganda | Premier League (#128) | 406 | 18 | 153 | 34 | all |
+  | Kenya | Kenya premier league (#17) | 407 | 16 | **8** | 4 | none |
+
+  - **No events were loaded for any of them** — fixtures, scores, clubs and
+    participants only. So these editions have NO goalscorers, and a top-scorer
+    list for them is empty by construction, not by accident. The reason is the
+    same one that keeps the live sync off events (see the SportMonks entry).
+  - **Kenya reuses competition 17**, the record the legacy SokaFC dump already
+    held, rather than a second one beside it — creating a duplicate is how a
+    league's history gets split in two. Its 2019/20 edition (21) is untouched.
+  - **Kenya's 2026/27 is barely a season**: eight fixtures, every one POSTPONED,
+    no rounds, no events. SportMonks' squad endpoint returns nothing for it, so
+    the 16 clubs were derived from the fixtures' own participants. **Do not
+    publish it** — there is nothing to serve yet.
+  - **South Africa has no round numbers at all** from this source, so round
+    browsing will not work for it. Date is the axis there.
+  - **A club's country comes from the provider's own `country` include, never
+    from the league.** That is what keeps **Al Hilal Omdurman and Al Merreikh**
+    — two Sudanese clubs playing in the Rwandan league while the war continues —
+    filed under Sudan rather than Rwanda.
+  - **Club matching is scoped to the club's country.** Kenya and Uganda both
+    field a club called simply "Police", and Tanzania has "Polisi Tanzania"; an
+    unscoped name match would have merged them into one record.
+  - **`normalizeName` dropped dots instead of spacing them, and it mattered.**
+    "Bandari F.C." reduced to `bandari f c` rather than `bandari`, so Kenya's
+    Bandari came one dry run away from being created a second time. Dots and
+    apostrophes are now removed before the affix rule runs; the change creates
+    zero new same-country collisions across the whole vault.
+  - **The ingest reports NEAR MISSES** — a club it is about to create, or one it
+    resolved to, that resembles another in the same country. That is what caught
+    Bandari, and it surfaced a pre-existing defect: the vault held **"Mathare
+    Utd." (17 matches) and "Mathare United" (0 matches) as two records for one
+    club**. Merged in `2026-09-19_merge_mathare_united.sql` — the empty record
+    was deleted and the survivor took the full name, so the club's 2019/20 and
+    2026/27 seasons stay on one record.
+  - **SportMonks' Rwandan list is one fixture short and duplicates another.** It
+    has 306 entries but only 305 distinct ordered club pairs: Police Rwanda v
+    Al Merreikh appears in round 2 *and* round 19, and the reverse fixture
+    appears nowhere. The first load silently collapsed the two;
+    `2026-09-19_rwanda_duplicate_fixture.sql` corrects the match to the round-2
+    entry, drops the spurious provenance row, and carries an INFO
+    `data_flags` row so 305-of-306 reads as absent source data rather than a
+    dropped row. **The loader now refuses to merge a duplicated pair silently.**
+  - Round-tripped with `npm run sm:compare` after loading: every fixture matched,
+    **every score agreed, zero conflicts** in all four leagues.
 - **The live-score provider is SportMonks, and it is wired up and validated**
   (2026-09-19). `SPORTMONKS_TOKEN` in `backend/.env`; league #884 "Ligi kuu Bara"
   is mapped to vault competition 1. Full detail in `backend/README.md`.
@@ -709,9 +764,9 @@ explicitly out of scope — see "Non-goals" below).
   - **The plan's five leagues are not equally deep.** Tanzania is the only one where
     every finished fixture carries events (49/49) and rounds (240/240). South Africa
     has events but no rounds; Rwanda and Uganda have gaps; **Kenya is effectively
-    empty** (8 fixtures, all postponed). Only Tanzania has a vault competition, so
-    the other four are fetched, reported and skipped rather than written somewhere
-    wrong — add to `VAULT_COMPETITION_BY_PROVIDER_LEAGUE` when one gains an edition.
+    empty** (8 fixtures, all postponed). **All five are now mapped** in
+    `VAULT_COMPETITION_BY_PROVIDER_LEAGUE`, so the live sync covers all of them —
+    see the entry above for how the other four were stood up.
   - **Neither provider covers lineups or player stats for these leagues**, so the
     suppressed `appearances`/`yellowCards`/`redCards` on the public site stay
     suppressed. Do not expect this to fill them.

@@ -26,14 +26,21 @@ import { getSourceId, type ProvenanceEntity, type SourceName } from './provenanc
  * fuzzy matcher, it just removes noise before an exact comparison.
  */
 export function normalizeName(name: string): string {
-  return name
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, ' ')
-    .replace(/\b(fc|sc|afc|cf|club|team|the)\b/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return (
+    name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      // Dots are DROPPED, not turned into spaces: "Bandari F.C." must reduce to
+      // "bandari", the same as "Bandari FC". Replacing the dots with spaces split
+      // it into "f" and "c", which the affix rule below then never matched, and
+      // the club came within one dry run of being created a second time.
+      .replace(/[.'’]/g, '')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .replace(/\b(fc|sc|afc|cf|club|team|the)\b/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  );
 }
 
 /**
