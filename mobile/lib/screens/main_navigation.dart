@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import 'matches_screen.dart';
+import 'competitions_screen.dart';
 import 'standings_screen.dart';
 import 'stats_screen.dart';
 import 'kijiweni_screen.dart';
@@ -17,6 +18,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = const [
     MatchesScreen(),
+    CompetitionsScreen(),
     StandingsScreen(),
     StatsScreen(),
     KijiweniScreen(),
@@ -41,14 +43,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           backgroundColor: AppColors.surface,
           selectedItemColor: AppColors.emerald,
           unselectedItemColor: AppColors.textMuted,
-          selectedFontSize: 11,
-          unselectedFontSize: 11,
+          selectedFontSize: 10.5,
+          unselectedFontSize: 10.5,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.sports_soccer_outlined),
               activeIcon: Icon(Icons.sports_soccer),
               label: 'Matches',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.emoji_events_outlined),
+              activeIcon: Icon(Icons.emoji_events),
+              label: 'Leagues',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.format_list_numbered_rounded),

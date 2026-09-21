@@ -6,6 +6,7 @@ import '../theme/app_colors.dart';
 import '../widgets/match_card.dart';
 import '../widgets/date_selector.dart';
 import 'match_detail_screen.dart';
+import 'competitions_screen.dart';
 
 class MatchesScreen extends StatefulWidget {
   const MatchesScreen({super.key});
@@ -92,6 +93,16 @@ class _MatchesScreenState extends State<MatchesScreen> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.emoji_events_outlined, size: 20, color: AppColors.textSecondary),
+            tooltip: 'Mashindano & Ligi',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CompetitionsScreen()),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.refresh, size: 20, color: AppColors.textSecondary),
             onPressed: _loadMatches,

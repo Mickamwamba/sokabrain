@@ -53,6 +53,8 @@ class LeagueEdition {
   final int? competitionId;
   final String competition;
   final String? competitionType;
+  final String? country;
+  final int? tier;
   final String season;
   final int? matchCount;
 
@@ -61,6 +63,8 @@ class LeagueEdition {
     this.competitionId,
     required this.competition,
     this.competitionType,
+    this.country,
+    this.tier,
     required this.season,
     this.matchCount,
   });
@@ -71,10 +75,42 @@ class LeagueEdition {
       competitionId: json['competitionId'] as int?,
       competition: json['competition'] as String? ?? '',
       competitionType: json['competitionType'] as String?,
+      country: json['country'] as String?,
+      tier: json['tier'] as int?,
       season: json['season'] as String? ?? '',
       matchCount: json['matchCount'] as int?,
     );
   }
+}
+
+class CompetitionGroup {
+  final int competitionId;
+  final String name;
+  final String? country;
+  final String? type;
+  final int? tier;
+  final List<LeagueEdition> editions;
+
+  CompetitionGroup({
+    required this.competitionId,
+    required this.name,
+    this.country,
+    this.type,
+    this.tier,
+    required this.editions,
+  });
+
+  String get flagEmoji {
+    final c = (country ?? '').toLowerCase();
+    if (c.contains('tanzania')) return '🇹🇿';
+    if (c.contains('kenya')) return '🇰🇪';
+    if (c.contains('uganda')) return '🇺🇬';
+    if (c.contains('rwanda')) return '🇷🇼';
+    if (c.contains('south africa')) return '🇿🇦';
+    return '🌍';
+  }
+
+  int get totalMatches => editions.fold(0, (sum, e) => sum + (e.matchCount ?? 0));
 }
 
 class StandingsResponseData {
