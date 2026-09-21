@@ -1,9 +1,12 @@
 class MatchEventItem {
   final int id;
-  final String type; // GOAL, OWN_GOAL, YELLOW_CARD, RED_CARD, PENALTY, etc.
+  final String type; // GOAL, PENALTY_GOAL, OWN_GOAL, YELLOW_CARD, RED_CARD, ASSIST, etc.
   final int? minute;
   final int? addedTime;
+  final String? side; // 'home' or 'away'
+  final bool countsForOtherSide;
   final int? teamId;
+  final int? playerId;
   final String? playerName;
 
   MatchEventItem({
@@ -11,17 +14,31 @@ class MatchEventItem {
     required this.type,
     this.minute,
     this.addedTime,
+    this.side,
+    this.countsForOtherSide = false,
     this.teamId,
+    this.playerId,
     this.playerName,
   });
 
-  bool get isGoal => type == 'GOAL' || type == 'PENALTY';
+  bool get isGoal => type == 'GOAL' || type == 'PENALTY_GOAL' || type == 'PENALTY';
+  bool get isPenalty => type == 'PENALTY_GOAL' || type == 'PENALTY';
   bool get isOwnGoal => type == 'OWN_GOAL';
   bool get isCard => type == 'YELLOW_CARD' || type == 'RED_CARD' || type == 'YELLOW_RED_CARD';
   bool get isRedCard => type == 'RED_CARD' || type == 'YELLOW_RED_CARD';
+  bool get isAssist => type == 'ASSIST';
+
+  /// Determines which team's column the event should be credited to on the timeline.
+  /// An own goal is credited to the opposing side (the team whose score it increased).
+  bool get isHomeSide {
+    final creditedSide = countsForOtherSide
+        ? (side == 'home' ? 'away' : (side == 'away' ? 'home' : null))
+        : side;
+    return creditedSide == 'home';
+  }
 
   String get displayMinute {
-    if (minute == null) return '';
+    if (minute == null) return '—';
     if (addedTime != null && addedTime! > 0) {
       return "$minute'+$addedTime";
     }
@@ -34,7 +51,10 @@ class MatchEventItem {
       type: (json['type'] as String?)?.toUpperCase() ?? 'UNKNOWN',
       minute: json['minute'] as int?,
       addedTime: json['addedTime'] as int?,
+      side: (json['side'] as String?)?.toLowerCase(),
+      countsForOtherSide: json['countsForOtherSide'] as bool? ?? false,
       teamId: json['teamId'] as int?,
+      playerId: json['playerId'] as int?,
       playerName: json['playerName'] as String?,
     );
   }

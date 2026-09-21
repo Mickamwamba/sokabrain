@@ -307,7 +307,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
               separatorBuilder: (_, __) => const Divider(height: 16, color: AppColors.borderSubtle),
               itemBuilder: (context, index) {
                 final ev = events[index];
-                final isHome = ev.teamId == m.homeTeamId;
+                final isHome = ev.side != null
+                    ? ev.isHomeSide
+                    : (ev.teamId != null && ev.teamId == m.homeTeamId);
 
                 return Row(
                   children: [
@@ -335,6 +337,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                                     '(O.G)',
                                     style: TextStyle(
                                       color: AppColors.liveRed,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ] else if (ev.isPenalty) ...[
+                                  const SizedBox(width: 4),
+                                  const Text(
+                                    '(pen)',
+                                    style: TextStyle(
+                                      color: AppColors.emerald,
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
                                     ),
@@ -392,6 +404,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                                     '(O.G)',
                                     style: TextStyle(
                                       color: AppColors.liveRed,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ] else if (ev.isPenalty) ...[
+                                  const SizedBox(width: 4),
+                                  const Text(
+                                    '(pen)',
+                                    style: TextStyle(
+                                      color: AppColors.emerald,
                                       fontSize: 10,
                                       fontWeight: FontWeight.w700,
                                     ),
