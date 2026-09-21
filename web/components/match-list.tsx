@@ -75,7 +75,17 @@ function Score({ match }: { match: Match }) {
   }
 
   return (
-    <span className="inline-flex flex-col items-center gap-0.5">
+    <span className="inline-flex items-center justify-center gap-1.5">
+      {/* Says the game has been played, to the left of the score. A score alone
+          does not: only the status separates a final 2-1 from one still moving,
+          and this list mixes kickoff times, live scores and finished ones in the
+          same column. Gated on FINISHED — a postponed fixture can carry a score
+          too, and badging that FT would say it was played out. */}
+      {state === "FINISHED" ? (
+        <span className="shrink-0 rounded-full bg-wash px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-muted">
+          {fullTimeLabel(match.score)}
+        </span>
+      ) : null}
       <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">
         <span className={homeWon ? "text-gold font-extrabold" : home < away ? "text-white/60" : "text-white"}>
           {home}
@@ -90,15 +100,6 @@ function Score({ match }: { match: Match }) {
           </span>
         ) : null}
       </span>
-      {/* Says the game has been played. A score alone does not: only the status
-          separates a final 2-1 from one still moving, and this list mixes
-          kickoff times, live scores and finished ones in the same column.
-          Gated on FINISHED — a postponed fixture can carry a score too. */}
-      {state === "FINISHED" ? (
-        <span className="text-[10px] font-bold uppercase leading-none tracking-wider text-muted">
-          {fullTimeLabel(match.score)}
-        </span>
-      ) : null}
     </span>
   );
 }
@@ -135,7 +136,7 @@ export function MatchRows({
               </span>
 
               {/* Score / Time Centerpiece */}
-              <span className="w-28 shrink-0 text-center">
+              <span className="w-36 shrink-0 text-center">
                 <Score match={m} />
               </span>
 
