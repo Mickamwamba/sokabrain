@@ -131,6 +131,74 @@ class ApiService {
     }
   }
 
+  static Future<StatsOverview?> fetchStatsOverview({int? competitionId, int? editionId}) async {
+    try {
+      final params = <String, String>{};
+      if (competitionId != null) params['competitionId'] = competitionId.toString();
+      if (editionId != null) params['editionId'] = editionId.toString();
+      final uri = Uri.parse('$baseUrl/api/vault/stats/overview').replace(queryParameters: params.isNotEmpty ? params : null);
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        return StatsOverview.fromJson(data);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<ClubStatItem>> fetchClubStats({int? competitionId, int? editionId, String type = 'CLUB'}) async {
+    try {
+      final params = <String, String>{'type': type};
+      if (competitionId != null) params['competitionId'] = competitionId.toString();
+      if (editionId != null) params['editionId'] = editionId.toString();
+      final uri = Uri.parse('$baseUrl/api/vault/stats/clubs').replace(queryParameters: params);
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        final list = data['clubs'] as List<dynamic>? ?? [];
+        return list.map((c) => ClubStatItem.fromJson(c as Map<String, dynamic>)).toList();
+      }
+      return [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<List<TopScorerItem>> fetchPlayerStats({int? competitionId, int? editionId, String sort = 'goals', int limit = 25}) async {
+    try {
+      final params = <String, String>{'sort': sort, 'limit': limit.toString()};
+      if (competitionId != null) params['competitionId'] = competitionId.toString();
+      if (editionId != null) params['editionId'] = editionId.toString();
+      final uri = Uri.parse('$baseUrl/api/vault/stats/players').replace(queryParameters: params);
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        final list = data['players'] as List<dynamic>? ?? [];
+        return list.asMap().entries.map((entry) {
+          final p = entry.value as Map<String, dynamic>;
+          return TopScorerItem(
+            rank: entry.key + 1,
+            playerId: p['playerId'] as int? ?? 0,
+            playerName: p['playerName'] as String? ?? 'Player',
+            teamId: p['teamId'] as int?,
+            teamName: p['teamName'] as String?,
+            goals: p['goals'] as int? ?? 0,
+            penalties: p['penalties'] as int? ?? 0,
+            matchesScoredIn: p['appearances'] as int? ?? 0,
+          );
+        }).toList();
+      }
+      return [];
+    } catch (e) {
+      return [];
+    }
+  }
+
   // --- KIJIWENI (FAN ZONE) ---
   static Future<List<KijiweSpaceItem>> fetchKijiweniSpaces() async {
     try {

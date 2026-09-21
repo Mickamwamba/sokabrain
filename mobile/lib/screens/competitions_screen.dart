@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/standings.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
-import 'standings_screen.dart';
-import 'stats_screen.dart';
+import 'league_hub_screen.dart';
 
 class CompetitionsScreen extends StatefulWidget {
   const CompetitionsScreen({super.key});
@@ -234,7 +233,10 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => StandingsScreen(initialCompetitionId: comp.competitionId),
+                          builder: (_) => LeagueHubScreen(
+                            initialCompetitionId: comp.competitionId,
+                            initialSubTab: 0,
+                          ),
                         ),
                       );
                     },
@@ -257,13 +259,17 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => StatsScreen(initialEditionId: latestEdition?.editionId),
+                          builder: (_) => LeagueHubScreen(
+                            initialCompetitionId: comp.competitionId,
+                            initialEditionId: latestEdition?.editionId,
+                            initialSubTab: 1,
+                          ),
                         ),
                       );
                     },
-                    icon: const Icon(Icons.sports_soccer, size: 14, color: AppColors.amber),
+                    icon: const Icon(Icons.bar_chart_rounded, size: 14, color: AppColors.amber),
                     label: const Text(
-                      'Wafungaji',
+                      'Takwimu',
                       style: TextStyle(color: AppColors.textPrimary, fontSize: 12, fontWeight: FontWeight.w600),
                     ),
                     style: OutlinedButton.styleFrom(

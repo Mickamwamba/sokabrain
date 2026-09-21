@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import 'matches_screen.dart';
+import 'league_hub_screen.dart';
 import 'competitions_screen.dart';
-import 'standings_screen.dart';
-import 'stats_screen.dart';
 import 'kijiweni_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -18,9 +17,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = const [
     MatchesScreen(),
+    LeagueHubScreen(),
     CompetitionsScreen(),
-    StandingsScreen(),
-    StatsScreen(),
     KijiweniScreen(),
   ];
 
@@ -43,8 +41,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           backgroundColor: AppColors.surface,
           selectedItemColor: AppColors.emerald,
           unselectedItemColor: AppColors.textMuted,
-          selectedFontSize: 10.5,
-          unselectedFontSize: 10.5,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
@@ -53,19 +51,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               label: 'Matches',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.leaderboard_outlined),
+              activeIcon: Icon(Icons.leaderboard_rounded),
+              label: 'Table & Stats',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.emoji_events_outlined),
               activeIcon: Icon(Icons.emoji_events),
               label: 'Leagues',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.format_list_numbered_rounded),
-              activeIcon: Icon(Icons.format_list_numbered_rounded),
-              label: 'Tables',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart_outlined),
-              activeIcon: Icon(Icons.bar_chart_rounded),
-              label: 'Stats',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.forum_outlined),
