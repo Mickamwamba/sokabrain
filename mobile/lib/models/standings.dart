@@ -110,6 +110,14 @@ class CompetitionGroup {
     return '🌍';
   }
 
+  String get displayCountry {
+    if (country == null) return 'Regional';
+    final c = country!.toLowerCase();
+    if (c.contains('tanzania')) return 'Tanzania';
+    if (c.contains('congo')) return 'DR Congo';
+    return country!;
+  }
+
   int get totalMatches => editions.fold(0, (sum, e) => sum + (e.matchCount ?? 0));
 }
 

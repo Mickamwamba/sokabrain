@@ -146,35 +146,45 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
   }
 
   Widget _buildCompetitionCard(CompetitionGroup comp) {
-    final latestEdition = comp.editions.isNotEmpty ? comp.editions.first : null;
-
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: AppColors.borderSubtle, width: 1),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(14),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => LeagueHubScreen(
+                  initialCompetitionId: comp.competitionId,
+                  initialSubTab: 0,
+                ),
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(
               children: [
                 // Flag / Region Avatar
                 Container(
-                  width: 36,
-                  height: 36,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: AppColors.surfaceElevated,
                     shape: BoxShape.circle,
                     border: Border.all(color: AppColors.border),
                   ),
                   alignment: Alignment.center,
-                  child: Text(comp.flagEmoji, style: const TextStyle(fontSize: 18)),
+                  child: Text(comp.flagEmoji, style: const TextStyle(fontSize: 20)),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,101 +197,23 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          if (comp.country != null) ...[
-                            Text(
-                              comp.country!,
-                              style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
-                            ),
-                            const Text(' • ', style: TextStyle(color: AppColors.textMuted, fontSize: 11)),
-                          ],
-                          Text(
-                            "${comp.editions.length} Seasons",
-                            style: const TextStyle(
-                              color: AppColors.emerald,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          if (comp.tier != null) ...[
-                            const Text(' • ', style: TextStyle(color: AppColors.textMuted, fontSize: 11)),
-                            Text(
-                              "Tier ${comp.tier}",
-                              style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
-                            ),
-                          ],
-                        ],
+                      Text(
+                        "${comp.displayCountry} • ${comp.editions.length} Seasons${comp.tier != null ? ' • Tier ${comp.tier}' : ''}",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: AppColors.textMuted, fontSize: 11.5),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-
-            const SizedBox(height: 12),
-            const Divider(height: 1, color: AppColors.borderSubtle),
-            const SizedBox(height: 10),
-
-            // Action Buttons (Table, Top Scorers)
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => LeagueHubScreen(
-                            initialCompetitionId: comp.competitionId,
-                            initialSubTab: 0,
-                          ),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.format_list_numbered, size: 14, color: AppColors.emerald),
-                    label: const Text(
-                      'Msimamo',
-                      style: TextStyle(color: AppColors.textPrimary, fontSize: 12, fontWeight: FontWeight.w600),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: AppColors.border),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => LeagueHubScreen(
-                            initialCompetitionId: comp.competitionId,
-                            initialEditionId: latestEdition?.editionId,
-                            initialSubTab: 1,
-                          ),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.bar_chart_rounded, size: 14, color: AppColors.amber),
-                    label: const Text(
-                      'Takwimu',
-                      style: TextStyle(color: AppColors.textPrimary, fontSize: 12, fontWeight: FontWeight.w600),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: AppColors.border),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
+                const Icon(
+                  Icons.chevron_right_rounded,
+                  color: AppColors.textMuted,
+                  size: 20,
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
