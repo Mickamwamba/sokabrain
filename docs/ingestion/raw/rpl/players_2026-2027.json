@@ -1,0 +1,5898 @@
+[
+ {
+  "id": 70,
+  "listed": "C. O. Djibril",
+  "club": "APR FC",
+  "position": "",
+  "dob": "9 Jul 2000",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 71,
+  "listed": "K. Hakim",
+  "club": "APR FC",
+  "position": "",
+  "dob": "9 Nov 2000",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 277,
+  "listed": "G. N. Bivula",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "5 Jul 1997",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 423,
+  "listed": "S. B. Sibomana",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "14 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 523,
+  "listed": "G. Mutijima",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "7 May 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 732,
+  "listed": "J. M. Tuyisenge",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "11 Jun 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 33,
+  "listed": "A. Taha",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "7 Jun 1994",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 631,
+  "listed": "K. M. Sadiki",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "2 Dec 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 589,
+  "listed": "A. Salem",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "4 Jun 2002",
+  "nationality": "Mauritania"
+ },
+ {
+  "id": 809,
+  "listed": "A. Samura",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "2 Apr 2008",
+  "nationality": "Gambia"
+ },
+ {
+  "id": 473,
+  "listed": "N. Sebwato",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "5 Jul 1992",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 231,
+  "listed": "A. Ntirushwa",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "11 Mar 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 132,
+  "listed": "A. Ndikumana",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "8 Oct 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 203,
+  "listed": "S. Niyitegeka",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "4 Sep 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 385,
+  "listed": "A. P. Rwabuhihi",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "8 Jun 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 486,
+  "listed": "C. Kwihangana",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "6 Aug 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 425,
+  "listed": "Abumuremyi",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "5 Jul 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 358,
+  "listed": "C. N. Mengue",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "3 Sep 2007",
+  "nationality": "Gabon"
+ },
+ {
+  "id": 296,
+  "listed": "A. Hakizimana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "4 Aug 2001",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 624,
+  "listed": "A. Seiri",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Apr 2002",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 318,
+  "listed": "C. B. Bitwayiki",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "5 Aug 2006",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 155,
+  "listed": "A. A. Ahmed",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "9 Aug 2001",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 96,
+  "listed": "C. Ingabire",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "2 May 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 118,
+  "listed": "D. Manishimwe",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "5 Oct 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 272,
+  "listed": "A. Kwizera",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "9 Jan 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 394,
+  "listed": "F. Uwiyaremye",
+  "club": "APR FC",
+  "position": "",
+  "dob": "10 Jun 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 141,
+  "listed": "G. T. Ngongo",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 May 2007",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 292,
+  "listed": "A. G. Cuzuzo",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "12 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 716,
+  "listed": "H. Abdoulatif",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "3 Oct 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 471,
+  "listed": "J. N. Dimbumba",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "16 May 2001",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 719,
+  "listed": "H. Steven",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "7 Mar 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 654,
+  "listed": "K. D. Ikpo",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "9 May 2003",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 641,
+  "listed": "A. Mustakim",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "1 May 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 477,
+  "listed": "I. S. Akang",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "8 Mar 1997",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 382,
+  "listed": "K. Nsanzimfura",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "8 Feb 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 422,
+  "listed": "A. Rutayisire",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 339,
+  "listed": "J. P. Nzeyimana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 737,
+  "listed": "K. M. B. Amani",
+  "club": "APR FC",
+  "position": "",
+  "dob": "4 Jun 1999",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 187,
+  "listed": "A. Rwema",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "2 Feb 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 770,
+  "listed": "J. K. Herman",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "5 Feb 2002",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 336,
+  "listed": "M. G. Nshimiyimana",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "11 Mar 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 265,
+  "listed": "A. Iraguha",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "18 Jun 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 727,
+  "listed": "K. Tangara",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Mali"
+ },
+ {
+  "id": 424,
+  "listed": "O. Usabimana",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Aug 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 343,
+  "listed": "C. S. Shami",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "8 Jun 2002",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 491,
+  "listed": "L. Munyurangabo",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "7 Aug 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 715,
+  "listed": "T. J. M. V. .",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "6 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 493,
+  "listed": "C. Mutsinzi",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "6 Nov 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 85,
+  "listed": "M. D. Raouf",
+  "club": "APR FC",
+  "position": "",
+  "dob": "9 May 2003",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 75,
+  "listed": "W. T. Mel",
+  "club": "APR FC",
+  "position": "",
+  "dob": "8 Jul 1996",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 490,
+  "listed": "C. Mukengere",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "12 Apr 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 562,
+  "listed": "Y. Bizimana",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "3 Jan 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 327,
+  "listed": "C. M. Luendo",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "2 Feb 2005",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 502,
+  "listed": "P. Tuyisenge",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "24 Jul 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 181,
+  "listed": "D. Sogoba",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "11 Jan 2005",
+  "nationality": "Mali"
+ },
+ {
+  "id": 467,
+  "listed": "P. Mutsinzi",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "3 Sep 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 162,
+  "listed": "D. Ba",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "12 Dec 2005",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 79,
+  "listed": "R. Niyibizi",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "31 Dec 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 706,
+  "listed": "D. N. Rachiimane",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "8 Apr 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 463,
+  "listed": "S. Joseph",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "9 Feb 2002",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 372,
+  "listed": "D. Byiringiro",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 93,
+  "listed": "D. Chimezie",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "2 Mar 2002",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 494,
+  "listed": "E. Niyitanga",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "8 Mar 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 474,
+  "listed": "E. Tuyishime",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "1 Jan 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 227,
+  "listed": "E. Niyomugisha",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 369,
+  "listed": "E. Nduwimana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 Oct 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 470,
+  "listed": "E. Niyonshuti",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 353,
+  "listed": "G. Muhawenayo",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 713,
+  "listed": "H. Ramazani",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "5 Oct 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 420,
+  "listed": "H. Rugirayabo",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "3 Mar 1993",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 637,
+  "listed": "M. T. Fabrice",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "10 Apr 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 710,
+  "listed": "N. Jonathan",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Aug 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 337,
+  "listed": "O. Nshimiyimana",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "5 Jul 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 355,
+  "listed": "O. Mussa",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "8 Jun 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 360,
+  "listed": "O. Nizeyimana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 Apr 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 114,
+  "listed": "O. Rukundo",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "4 Sep 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 225,
+  "listed": "P. Ndikuriyo",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "12 May 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 74,
+  "listed": "P. Ishimwe",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "16 Jun 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 390,
+  "listed": "R. Mbonyingabo",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "9 Jul 1990",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 503,
+  "listed": "R. Tuyishime",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "2 Mar 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 384,
+  "listed": "J. D. Nzeyurwanda",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "5 Oct 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 711,
+  "listed": "K. Joseph",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "2 Apr 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 165,
+  "listed": "L. B. Sanou",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "4 Sep 2004",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 400,
+  "listed": "L. Bishira",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "22 Feb 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 712,
+  "listed": "M. Emmanuel",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "3 Jun 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 666,
+  "listed": "M. Didier",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "2 Feb 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 28,
+  "listed": "M. Mustafa",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "2 Jul 1997",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 637,
+  "listed": "M. T. Fabrice",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "10 Apr 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 710,
+  "listed": "N. Jonathan",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Aug 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 337,
+  "listed": "O. Nshimiyimana",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "5 Jul 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 355,
+  "listed": "O. Mussa",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "8 Jun 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 360,
+  "listed": "O. Nizeyimana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 Apr 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 114,
+  "listed": "O. Rukundo",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "4 Sep 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 225,
+  "listed": "P. Ndikuriyo",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "12 May 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 74,
+  "listed": "P. Ishimwe",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "16 Jun 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 390,
+  "listed": "R. Mbonyingabo",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "9 Jul 1990",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 503,
+  "listed": "R. Tuyishime",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "2 Mar 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 108,
+  "listed": "S. Ndizeye",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "2 Apr 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 466,
+  "listed": "S. Mbonyamahoro",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "6 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 15,
+  "listed": "S. Ebuela",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "3 Jul 2001",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 194,
+  "listed": "Y. Bizimungu",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "4 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 480,
+  "listed": "Y. M. D. Kouathe",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "6 Dec 1999",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 569,
+  "listed": ". M. Y. M. Elnour",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Feb 2026",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 173,
+  "listed": "A. K. K. Kalnga",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 161,
+  "listed": "A. A. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Oct 2007",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 601,
+  "listed": "A. O. E. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Aug 2006",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 610,
+  "listed": "A. M. Nasraldin",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Dec 2000",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 186,
+  "listed": "A. W. Matumona",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "2 Dec 2000",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 1,
+  "listed": "A. Y. Kabore",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Jul 2005",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 156,
+  "listed": "A. A. M. Adam",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Feb 2002",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 283,
+  "listed": "A. Nshimiyimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Apr 1991",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 460,
+  "listed": "A. Ishimwe",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 380,
+  "listed": "A. K. Nizigiyimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Jun 1989",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 665,
+  "listed": "A. Niyigena",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "10 Oct 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 731,
+  "listed": "A. Sebatware",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "7 Dec 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 126,
+  "listed": "A. Harerimana",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "5 Nov 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 391,
+  "listed": "A. Rukundo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 May 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 442,
+  "listed": "A. Nizeyimana",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 462,
+  "listed": "A. Jalilu",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "10 Jun 2000",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 287,
+  "listed": "A. S. D. Singirankabo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Oct 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 122,
+  "listed": "A. Bigirimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 164,
+  "listed": "A. B. Bangoura",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "2 Sep 2006",
+  "nationality": "Guinea"
+ },
+ {
+  "id": 235,
+  "listed": "A. Uwiduhaye",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "5 May 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 100,
+  "listed": "A. Kamanzi",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "10 Nov 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 608,
+  "listed": "A. A. M. Adam",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Nov 2003",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 12,
+  "listed": "A. Coulibali",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "19 Jan 2006",
+  "nationality": "Mali"
+ },
+ {
+  "id": 72,
+  "listed": "A. Hakizimana",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 429,
+  "listed": "A. Hakizimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "1 Jan 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 674,
+  "listed": "A. Mubano",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "9 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 323,
+  "listed": "A. I. Ndiho",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "3 Sep 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 16,
+  "listed": "A. Esmat",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Mar 2006",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 464,
+  "listed": "A. Kwizera",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 26,
+  "listed": "A. M'bareck",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "6 Apr 2002",
+  "nationality": "Mauritania"
+ },
+ {
+  "id": 136,
+  "listed": "A. N. Ntarindwa",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "5 Aug 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 774,
+  "listed": "A. C. Muvunyi",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "5 Jan 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 759,
+  "listed": "A. T. Ishimwe",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "7 May 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 308,
+  "listed": "A. Muderi",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "4 Apr 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 34,
+  "listed": "A. Temple",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "4 Jun 2007",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 349,
+  "listed": "A. S. Ishimwe",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "4 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 765,
+  "listed": "A. Bikorimana",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 761,
+  "listed": "A. Munyemana",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "10 Dec 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 223,
+  "listed": "A. Mutabaruka",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 320,
+  "listed": "A. Hakizimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jul 1997",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 350,
+  "listed": "A. Karenzo",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "6 Jun 1998",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 77,
+  "listed": "A. Nduwayo",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 498,
+  "listed": "A. Nuwayo",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 399,
+  "listed": "A. Bigirimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "3 Feb 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 3,
+  "listed": "A. Abdalla",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Mar 2003",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 6,
+  "listed": "A. Aboeshren",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "6 Dec 1989",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 368,
+  "listed": "A. S. Yipoh",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "22 May 2005",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 139,
+  "listed": "A. Serumogo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 89,
+  "listed": "A. Souane",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Jan 2001",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 102,
+  "listed": "A. Kwitonda",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "10 May 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 101,
+  "listed": "A. Kateregga",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "3 Jun 1994",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 324,
+  "listed": "A. Kwitonda",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "11 Mar 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 196,
+  "listed": "A. Habineza",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "4 Apr 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 2,
+  "listed": "A. Abaker",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "1 Jan 1991",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 461,
+  "listed": "A. I. Rushami",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "9 Dec 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 815,
+  "listed": "A. S. Kone",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "12 Sep 2003",
+  "nationality": "Ivoirienne"
+ },
+ {
+  "id": 259,
+  "listed": "A. Twagirayezu",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "8 May 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 639,
+  "listed": "A. N. Mario",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "1 Apr 2008",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 574,
+  "listed": "A. Camara",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Feb 2026",
+  "nationality": "Mali"
+ },
+ {
+  "id": 172,
+  "listed": "A. K. S. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "24 Jul 1992",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 529,
+  "listed": "A. Nkubito",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 678,
+  "listed": "A. Mazimpaka",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "11 May 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 94,
+  "listed": "A. Elijah",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "31 May 1998",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 489,
+  "listed": "A. Muhire",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 29,
+  "listed": "A. Petrus",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Sep 1999",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 329,
+  "listed": "A. M. Onka",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "27 Sep 2001",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 532,
+  "listed": "A. O. Godspower",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "10 Jul 2006",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 302,
+  "listed": "A. Kanamugire",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 234,
+  "listed": "A. Tuyisenge",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "11 Jun 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 332,
+  "listed": "A. Ndikumana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 483,
+  "listed": "A. Kamanzi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 383,
+  "listed": "A. Ntwali",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "11 Nov 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 745,
+  "listed": "A. Ndungutse",
+  "club": "APR FC",
+  "position": "",
+  "dob": "12 Jun 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 246,
+  "listed": "A. Kaneza",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "6 Jun 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 381,
+  "listed": "A. Nkundimana",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 160,
+  "listed": "A. A. A. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "29 Mar 2007",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 184,
+  "listed": "A. Z. B. Gadin",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1993",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 299,
+  "listed": "A. Iradukunda",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "6 May 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 806,
+  "listed": "B. Diarra",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "1 Nov 2004",
+  "nationality": "Mali"
+ },
+ {
+  "id": 119,
+  "listed": "B. Adama",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "19 Nov 2004",
+  "nationality": "Mali"
+ },
+ {
+  "id": 446,
+  "listed": "B. R. Bambela",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "25 May 2002",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 304,
+  "listed": "B. G. Kazindu",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Mar 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 804,
+  "listed": "B. W. Patrick",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "15 Sep 2026",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 547,
+  "listed": "B. Shafik",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "22 Dec 1996",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 790,
+  "listed": "B. Francois",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "1 Oct 2001",
+  "nationality": "Cameroun"
+ },
+ {
+  "id": 120,
+  "listed": "B. K. Aziz",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "24 Aug 2001",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 373,
+  "listed": "B. Cherif",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "6 Feb 1996",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 714,
+  "listed": "B. Leonard",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Jul 2003",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 149,
+  "listed": "B. A. Dao",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Jul 1999",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 550,
+  "listed": "B. M. O. Boue",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Feb 2026",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 153,
+  "listed": "B. J. Vigninou",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "10 Jun 2003",
+  "nationality": "Benin"
+ },
+ {
+  "id": 452,
+  "listed": "B. Uzabumwana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "16 Jun 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 438,
+  "listed": "B. Nishimwe",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "8 Jan 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 430,
+  "listed": "B. Hategekimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "4 Jul 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 504,
+  "listed": "B. T. Biletika",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "5 May 2007",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 767,
+  "listed": "B. Gbenou",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jul 2006",
+  "nationality": "Central African Republic"
+ },
+ {
+  "id": 567,
+  "listed": "B. N. Alpha",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "15 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 375,
+  "listed": "B. Isaac",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "1 Oct 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 434,
+  "listed": "C. L. Massacodi",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "10 May 1999",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 387,
+  "listed": "C. Amissi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Sep 1990",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 735,
+  "listed": "C. Ngabo",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "7 May 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 433,
+  "listed": "C. Kubwimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "19 Apr 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 656,
+  "listed": "C. Ndoli",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Jan 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 499,
+  "listed": "C. N. Nzediegwe",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "2 Jan 2003",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 428,
+  "listed": "C. Gihozo",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "30 Jul 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 129,
+  "listed": "C. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 May 2001",
+  "nationality": "Tunisia"
+ },
+ {
+  "id": 558,
+  "listed": "C. Salima",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "12 Mar 2005",
+  "nationality": "Malawi"
+ },
+ {
+  "id": 734,
+  "listed": "C. I. Ekech",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Aug 2007",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 548,
+  "listed": "C. Kalala",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Feb 2026",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 138,
+  "listed": "C. Rushema",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 257,
+  "listed": "C. Shami",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Sep 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 99,
+  "listed": "C. Ishimwe",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Feb 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 743,
+  "listed": "C. Mudahigwa",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 779,
+  "listed": "C. Ndikumana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "3 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 468,
+  "listed": "C. Nisingizwe",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "4 Feb 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 478,
+  "listed": "C. Bioko",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "12 Jan 2005",
+  "nationality": "Drc"
+ },
+ {
+  "id": 388,
+  "listed": "C. Bukuru",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "8 Aug 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 81,
+  "listed": "C. Niyomugabo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Aug 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 80,
+  "listed": "C. Niyigena",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Feb 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 192,
+  "listed": "C. Twagirumukiza",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 309,
+  "listed": "C. Muhindo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Mar 2000",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 410,
+  "listed": "C. Mukire",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 205,
+  "listed": "C. Sebagenzi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "18 Mar 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 216,
+  "listed": "C. Fuadi",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "1 Jan 2007",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 237,
+  "listed": "D. Barnabas",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Feb 2000",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 197,
+  "listed": "D. Iradukunda",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 773,
+  "listed": "D. Muhoza",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 746,
+  "listed": "D. S. Kayumba",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "10 Jul 2007",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 208,
+  "listed": "D. Uwizeyimana",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 249,
+  "listed": "D. Muvunyi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "25 May 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 311,
+  "listed": "D. Ndikumana",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 Feb 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 334,
+  "listed": "D. Niyongira",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Oct 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 243,
+  "listed": "D. B. Ibrahima",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "12 Jul 1997",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 348,
+  "listed": "D. Irakoze",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 252,
+  "listed": "D. Nshimirimana",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 753,
+  "listed": "D. Maniriho",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "8 Jul 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 396,
+  "listed": "D. Gihozo",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 411,
+  "listed": "D. Ndaruhuye",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "11 May 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 379,
+  "listed": "D. Niyo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "23 Jul 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 679,
+  "listed": "D. Okoce",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "2 Oct 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 270,
+  "listed": "D. Kaweesa",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Feb 1997",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 84,
+  "listed": "D. Omedi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Jun 1994",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 331,
+  "listed": "D. Mutangana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Mar 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 552,
+  "listed": "D. Ngoobi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Feb 2026",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 198,
+  "listed": "D. Iradukunda",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 143,
+  "listed": "D. Youssou",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "11 Aug 1996",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 685,
+  "listed": "D. S. Togola",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "31 Dec 2001",
+  "nationality": "Mali"
+ },
+ {
+  "id": 224,
+  "listed": "D. Ndayishimiye",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "6 Apr 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 289,
+  "listed": "D. B. Mugiraneza",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "6 Dec 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 105,
+  "listed": "D. Mugisha",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Feb 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 362,
+  "listed": "D. Nshutinziza",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "5 Sep 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 326,
+  "listed": "D. M. L. Aksante",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Jun 2001",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 107,
+  "listed": "D. Ndayishimiye",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 751,
+  "listed": "D. Igirimpuhwe",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Apr 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 267,
+  "listed": "D. Ishimwe",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "3 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 518,
+  "listed": "D. Maniragaba",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "29 May 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 769,
+  "listed": "D. Issa",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Apr 2004",
+  "nationality": "Mali"
+ },
+ {
+  "id": 768,
+  "listed": "D. I. Mansouru",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "11 Oct 2006",
+  "nationality": "Niger"
+ },
+ {
+  "id": 338,
+  "listed": "D. Ntibazonkiza",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 539,
+  "listed": "D. Ochoko",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 Feb 2026",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 812,
+  "listed": "D. W. Nathan",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "6 Mar 2007",
+  "nationality": "Camerounaise"
+ },
+ {
+  "id": 573,
+  "listed": "D. Anselime",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "2 Sep 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 202,
+  "listed": "E. Nibibona",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "28 Dec 2001",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 269,
+  "listed": "E. W. Katumba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 May 2004",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 756,
+  "listed": "E. Muganza",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 188,
+  "listed": "E. Ndayishimiye",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "10 Jan 2002",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 507,
+  "listed": "E. U. Ekereuke",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "31 Dec 1998",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 555,
+  "listed": "E. Ekorie",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "5 Apr 2006",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 689,
+  "listed": "E. M. L. Duval",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "5 Jul 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 657,
+  "listed": "E. Ausengimana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "7 Feb 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 262,
+  "listed": "E. S. Joshua",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "5 Jan 2006",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 169,
+  "listed": "E. G. E. Mosa",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "18 Jan 2005",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 772,
+  "listed": "E. M. Elie",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "2 Dec 2001",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 22,
+  "listed": "E. Kane",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "19 Dec 1996",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 128,
+  "listed": "E. I. Ganijuru",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "7 Nov 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 458,
+  "listed": "E. T. Iradukunda",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "10 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 778,
+  "listed": "E. Mwizerwa",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "2 Feb 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 168,
+  "listed": "E. F. Yahya",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1995",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 747,
+  "listed": "E. Mahirwe",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "2 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 533,
+  "listed": "E. Cyuzuzo",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "6 Mar 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 312,
+  "listed": "E. Nibisigayizabikora",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Aug 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 121,
+  "listed": "E. Bayisenge",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Nov 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 516,
+  "listed": "E. K. Bahati",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "27 Jun 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 112,
+  "listed": "E. A. Okwi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "25 Dec 1992",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 200,
+  "listed": "E. Kambanda",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "12 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 274,
+  "listed": "E. Mucyo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Dec 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 413,
+  "listed": "E. Niyigena",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 189,
+  "listed": "E. Nsabimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 135,
+  "listed": "E. Nshimiyimana",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 758,
+  "listed": "E. Twagiramungu",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Jan 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 146,
+  "listed": "E. Flomo",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Jul 2009",
+  "nationality": "Liberia"
+ },
+ {
+  "id": 286,
+  "listed": "E. H. Iranzi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "6 Apr 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 817,
+  "listed": "E. Morrison",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Jun 2001",
+  "nationality": "Ghanaian"
+ },
+ {
+  "id": 314,
+  "listed": "E. Sabumukama",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "25 Dec 1995",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 219,
+  "listed": "E. Kategaya",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "19 Jun 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 244,
+  "listed": "E. Iracyadukunda",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 431,
+  "listed": "E. Karema",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "28 Feb 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 515,
+  "listed": "E. Kwizera",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "12 Dec 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 251,
+  "listed": "E. Ngendahimana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "12 Jan 1989",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 629,
+  "listed": "E. Niyibizi",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "8 Sep 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 335,
+  "listed": "E. Niyonsaba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "14 Nov 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 441,
+  "listed": "E. Niyonsenga",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "12 Oct 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 110,
+  "listed": "E. Nsabimana",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 116,
+  "listed": "E. Ssenjobe",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 Apr 1999",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 25,
+  "listed": "E. Luzolo",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "4 Jan 1997",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 741,
+  "listed": "E. Bana",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 508,
+  "listed": "E. Habyarimana",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "29 Oct 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 530,
+  "listed": "E. Ntwari",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "6 Jul 1993",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 455,
+  "listed": "E. M. Destin",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "16 Nov 2000",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 298,
+  "listed": "F. Igiraneza",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "7 May 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 301,
+  "listed": "F. Iyabivuze",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "12 May 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 306,
+  "listed": "F. Kwitonda",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "7 Mar 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 226,
+  "listed": "F. Ndutabandi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "25 May 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 134,
+  "listed": "F. Nshimimana",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "10 Apr 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 180,
+  "listed": "F. S. Coulibaly",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "27 Jan 2002",
+  "nationality": "Mali"
+ },
+ {
+  "id": 303,
+  "listed": "F. Kazibwe",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Apr 1998",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 32,
+  "listed": "F. Suliman",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Apr 2006",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 671,
+  "listed": "F. Idi",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "6 Mar 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 30,
+  "listed": "F. Sawedy",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "19 Feb 1991",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 258,
+  "listed": "F. S. Ssentongo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "18 Feb 1993",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 150,
+  "listed": "F. L. Kitoko",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 556,
+  "listed": "F. Usengemana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 321,
+  "listed": "F. Hakizimana",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 495,
+  "listed": "F. Nkurunziza",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "10 Jul 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 170,
+  "listed": "F. G. Razafimaro",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Mar 2001",
+  "nationality": "Malaysia"
+ },
+ {
+  "id": 760,
+  "listed": "F. Mahoro",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "2 Mar 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 784,
+  "listed": "F. Ndayishimiye",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "7 Sep 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 127,
+  "listed": "F. Ishimwe",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "23 May 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 83,
+  "listed": "F. Omborenga",
+  "club": "APR FC",
+  "position": "",
+  "dob": "5 Aug 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 359,
+  "listed": "F. Nduwimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Apr 2002",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 204,
+  "listed": "F. Ntakirutimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 672,
+  "listed": "F. I. Kevin",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "3 Nov 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 781,
+  "listed": "F. Shema",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "5 Mar 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 106,
+  "listed": "F. Muhozi",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "11 Apr 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 469,
+  "listed": "F. Niyonizeye",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "6 Feb 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 675,
+  "listed": "F. Ndagijimana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "8 Dec 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 104,
+  "listed": "F. Mugiraneza",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "4 Jul 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 397,
+  "listed": "G. F. M. M. Ndong",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "19 Aug 2001",
+  "nationality": "Gabon"
+ },
+ {
+  "id": 525,
+  "listed": "G. Ndizeye",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "19 Jun 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 505,
+  "listed": "G. Biramahire",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "6 Aug 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 482,
+  "listed": "G. Habarurema",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "2 Nov 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 575,
+  "listed": "G. Innocent",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "2 Sep 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 171,
+  "listed": "G. K. F. Eltaher",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 646,
+  "listed": "G. Gerard",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "6 Jul 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 559,
+  "listed": "G. M. A. Alnmre",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Feb 2026",
+  "nationality": "Angola"
+ },
+ {
+  "id": 540,
+  "listed": "G. Bendeka",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "5 Feb 2026",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 427,
+  "listed": "G. F. Samuel",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "30 Aug 1998",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 630,
+  "listed": "G. A. D. Oyambe",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "7 May 1996",
+  "nationality": "Cameroun"
+ },
+ {
+  "id": 500,
+  "listed": "G. Rugema",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "10 May 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 213,
+  "listed": "G. Dusingizimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Jul 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 76,
+  "listed": "G. Mugisha",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 449,
+  "listed": "G. Tuyihimbaze",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "1 Jul 1994",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 537,
+  "listed": "G. Tuyisenge",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 802,
+  "listed": "G. U. Nzeupe",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "8 Jul 2006",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 699,
+  "listed": "G. Maxime",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "9 Aug 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 435,
+  "listed": "G. M. Kondi",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "8 Aug 1999",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 750,
+  "listed": "G. Boubacar",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 19,
+  "listed": "G. Fofana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Dec 1992",
+  "nationality": "France"
+ },
+ {
+  "id": 73,
+  "listed": "H. Iraguha",
+  "club": "APR FC",
+  "position": "",
+  "dob": "7 Jun 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 687,
+  "listed": "H. Eric",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "15 Feb 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 68,
+  "listed": "H. Bugingo",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 297,
+  "listed": "H. Hamiss",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "7 Mar 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 585,
+  "listed": "H. Abdoulkarim",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "14 Mar 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 193,
+  "listed": "H. A. Fati",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Jul 2004",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 684,
+  "listed": "H. Djamidu",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "9 Apr 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 285,
+  "listed": "H. Tuyisenge",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "6 Dec 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 811,
+  "listed": "H. Mandjan",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "7 Sep 2001",
+  "nationality": "Mali"
+ },
+ {
+  "id": 414,
+  "listed": "H. Niyonkuru",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Mar 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 199,
+  "listed": "H. K. Kamalanduako",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Oct 1999",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 652,
+  "listed": "H. Kitegenyi",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "12 Jun 2006",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 103,
+  "listed": "H. Msanga",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "22 Aug 1999",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 316,
+  "listed": "H. Ahishakiye",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "28 Apr 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 785,
+  "listed": "H. F. Lulihoshi",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "5 Jun 2002",
+  "nationality": "Congolese"
+ },
+ {
+  "id": 294,
+  "listed": "H. E. N. F. Guy",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "6 Jun 1997",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 786,
+  "listed": "H. Nshutiyimana",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "3 May 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 447,
+  "listed": "H. Shingiro",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "21 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 820,
+  "listed": "H. B. Nkunzimana",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "2 Dec 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 263,
+  "listed": "H. Ciza",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "1 Jan 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 501,
+  "listed": "H. Shabani",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jul 1990",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 300,
+  "listed": "H. Itangishaka",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "3 Apr 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 305,
+  "listed": "I. K. Udo",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jul 1999",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 268,
+  "listed": "I. A. Kasapu",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "4 Sep 2006",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 538,
+  "listed": "I. Siure",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "3 Feb 2026",
+  "nationality": "Mali"
+ },
+ {
+  "id": 814,
+  "listed": "I. Traore",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "12 Jul 2007",
+  "nationality": "Malienne"
+ },
+ {
+  "id": 401,
+  "listed": "I. Bizimana",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "4 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 725,
+  "listed": "I. Shaibu",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "3 May 2001",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 163,
+  "listed": "I. B. Fatokun",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "2 Jan 1999",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 527,
+  "listed": "I. Niyitegeka",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "16 Sep 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 209,
+  "listed": "I. K. J. Osiris",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Jan 2004",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 697,
+  "listed": "I. N. Kevin",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "5 May 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 705,
+  "listed": "I. Alexis",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "6 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 686,
+  "listed": "I. Akram",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "21 Jul 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 800,
+  "listed": "I. Djarudi",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 718,
+  "listed": "I. Kevin",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "2 Sep 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 572,
+  "listed": "I. Denys",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "28 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 708,
+  "listed": "I. Mugisha",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "1 Jan 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 660,
+  "listed": "I. J. Boris",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "30 Sep 1995",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 214,
+  "listed": "I. Eze",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "7 Jul 2006",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 221,
+  "listed": "I. Mitima",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "16 Dec 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 456,
+  "listed": "I. Habimana",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "4 Mar 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 579,
+  "listed": "I. Cedric",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "10 Feb 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 622,
+  "listed": "I. Frank",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 664,
+  "listed": "I. H. Thierry",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "14 Apr 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 661,
+  "listed": "I. James",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "8 Sep 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 402,
+  "listed": "I. Gikamba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "24 Oct 1991",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 21,
+  "listed": "I. Hassan",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "5 Feb 2000",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 281,
+  "listed": "I. Nizigiyimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jun 1998",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 683,
+  "listed": "I. Djamidu",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "14 May 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 514,
+  "listed": "I. K. Limweyi",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "18 Apr 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 88,
+  "listed": "I. Ruhamyankiko",
+  "club": "APR FC",
+  "position": "",
+  "dob": "5 May 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 191,
+  "listed": "J. Muneza",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 322,
+  "listed": "J. Iradukunda",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 344,
+  "listed": "J. Abdukalim",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "1 Nov 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 389,
+  "listed": "J. B. D. Djaoyang",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 1992",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 211,
+  "listed": "J. Benedata",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "12 Dec 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 247,
+  "listed": "J. Kwizera",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 724,
+  "listed": "J. Mzungu",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "8 May 2005",
+  "nationality": "Kenya"
+ },
+ {
+  "id": 754,
+  "listed": "J. B. Nkurunziza",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "8 Oct 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 206,
+  "listed": "J. B. Shema",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 481,
+  "listed": "J. B. Gakwavu",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "10 Feb 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 271,
+  "listed": "J. B. Kayitaba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 87,
+  "listed": "J. B. Ruboneka",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 509,
+  "listed": "J. C. Hitimana",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "26 Jul 1993",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 436,
+  "listed": "J. C. Mugiraneza",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "28 Dec 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 528,
+  "listed": "J. C. Nizeyimana",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "1 Jan 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 341,
+  "listed": "J. C. Rukundo",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "3 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 421,
+  "listed": "J. C. R. Sugira",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 242,
+  "listed": "J. D. D. Hirwa",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "12 Nov 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 653,
+  "listed": "J. D. D. Mugenzi",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "7 Jun 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 364,
+  "listed": "J. D. D. N. Mucyo",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "3 Apr 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 69,
+  "listed": "J. G. Byiringiro",
+  "club": "APR FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 20,
+  "listed": "J. Girumugisha",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "18 Sep 2004",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 789,
+  "listed": "J. L. Niyifasha",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "2 Apr 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 577,
+  "listed": "J. M. A. Niyonkuru",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "20 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 366,
+  "listed": "J. P. R. Manzi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "5 Jun 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 239,
+  "listed": "J. P. Ciza",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1996",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 512,
+  "listed": "J. P. Itangishatse",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "1 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 526,
+  "listed": "J. P. Nduwayezu",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 791,
+  "listed": "J. P. Kubwimana",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "1 Sep 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 409,
+  "listed": "J. P. Muganuza",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "1 Jun 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 440,
+  "listed": "J. P. Niyonkuru",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "10 Dec 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 340,
+  "listed": "J. P. Rubuguza",
+  "club": "APR FC",
+  "position": "",
+  "dob": "5 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 347,
+  "listed": "J. R. Himbazwa",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "6 Oct 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 378,
+  "listed": "J. R. Ishimwe",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "6 Sep 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 426,
+  "listed": "J. B. Makola",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "4 Oct 1995",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 522,
+  "listed": "J. M. Mbusa",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 Oct 1993",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 222,
+  "listed": "J. M. Ducapel",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Jun 1997",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 140,
+  "listed": "J. P. Sindi",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "4 Sep 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 777,
+  "listed": "J. Gatete",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Apr 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 255,
+  "listed": "J. Rwibutso",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "6 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 250,
+  "listed": "J. B. Mwisha",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "12 Aug 2005",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 617,
+  "listed": "J. Emmanuel",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "2 Mar 2007",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 521,
+  "listed": "J. M. Malikidogo",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "2 Feb 1997",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 444,
+  "listed": "J. N. Tonye",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "6 Jan 1999",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 669,
+  "listed": "J. C. Kwizera",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "7 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 261,
+  "listed": "J. S. Watanga",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Feb 1996",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 766,
+  "listed": "J. Dande",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "2 Oct 1999",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 248,
+  "listed": "J. D. Mucyo",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "10 Dec 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 307,
+  "listed": "J. Lusaggi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "3 Mar 2001",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 459,
+  "listed": "J. Irumva",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "1 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 276,
+  "listed": "J. Ndikumana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Mar 1993",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 291,
+  "listed": "K. Cedrick",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 May 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 681,
+  "listed": "K. Bonheur",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "4 Aug 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 513,
+  "listed": "K. Jean",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "1 Jan 1998",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 670,
+  "listed": "K. Shaban",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 580,
+  "listed": "K. Rashid",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "9 Mar 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 752,
+  "listed": "K. W. J. Willy",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "2 Jan 2003",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 542,
+  "listed": "K. Roger",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "6 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 659,
+  "listed": "K. Nganizi",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 709,
+  "listed": "K. David",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "1 Apr 2002",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 361,
+  "listed": "K. C. Nshimiyimana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "2 Sep 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 682,
+  "listed": "K. Naman",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "31 Dec 2001",
+  "nationality": "Mali"
+ },
+ {
+  "id": 506,
+  "listed": "K. Bizimana",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 403,
+  "listed": "K. Hoziyana",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "12 Dec 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 406,
+  "listed": "K. Ishimwe",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "14 Sep 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 799,
+  "listed": "K. Nshuti",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "6 Jun 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 443,
+  "listed": "K. P. N. Rugwiro",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "3 Mar 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 367,
+  "listed": "K. Uwimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2005",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 592,
+  "listed": "K. A. G. Mohamed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Sep 2005",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 11,
+  "listed": "K. Cole",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "14 Dec 2006",
+  "nationality": "Liberia"
+ },
+ {
+  "id": 113,
+  "listed": "K. B. Richard",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "12 Mar 1998",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 142,
+  "listed": "K. Tony",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "7 Mar 2005",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 764,
+  "listed": "K. A. A. Kodjo",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "6 Jan 2000",
+  "nationality": "Togo"
+ },
+ {
+  "id": 549,
+  "listed": "K. B. J. Junior",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Feb 2026",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 123,
+  "listed": "K. Drissa",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Dec 1998",
+  "nationality": "Mali"
+ },
+ {
+  "id": 720,
+  "listed": "K. Pacifique",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "6 May 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 92,
+  "listed": "L. Byiringiro",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 787,
+  "listed": "L. Iraguha",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "12 Sep 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 676,
+  "listed": "L. Nshimiye",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "2 Jan 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 524,
+  "listed": "L. Ndabitezimana",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 310,
+  "listed": "L. Ndagijimana",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "8 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 531,
+  "listed": "L. Uwambazimana",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "10 Jan 1991",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 95,
+  "listed": "L. Gakwaya",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "6 Jan 2002",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 488,
+  "listed": "L. Mathaba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "18 Sep 1999",
+  "nationality": "South Africa"
+ },
+ {
+  "id": 220,
+  "listed": "L. Kayiranga",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "6 Aug 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 564,
+  "listed": "L. R. Mwinyi",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "12 Feb 2026",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 803,
+  "listed": "L. R. Nduwimana",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Feb 1997",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 484,
+  "listed": "L. D. Katembo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 May 2005",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 723,
+  "listed": "L. B. Ndohoungar",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jun 2001",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 67,
+  "listed": "M. L. Bah",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "23 Oct 2001",
+  "nationality": "Mali"
+ },
+ {
+  "id": 90,
+  "listed": "M. Sy",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "31 Dec 2000",
+  "nationality": "Mauritania"
+ },
+ {
+  "id": 557,
+  "listed": "M. Kamaradini",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "11 Apr 2002",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 288,
+  "listed": "M. M. Mbendi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "14 Dec 1999",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 707,
+  "listed": "M. P. Baombolia",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "1 Jun 2007",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 543,
+  "listed": "M. Destin",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "6 Feb 2026",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 801,
+  "listed": "M. Olivier",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "10 Nov 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 190,
+  "listed": "M. Y. Rachidi",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "11 Nov 2006",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 313,
+  "listed": "M. Nkubana",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "7 Mar 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 451,
+  "listed": "M. F. Twizeyimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "3 May 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 201,
+  "listed": "M. Muhayimana",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "16 Aug 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 356,
+  "listed": "M. Narcisse",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "7 Nov 2000",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 376,
+  "listed": "M. Gakuru",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Feb 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 17,
+  "listed": "M. Fadul",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Jul 2008",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 31,
+  "listed": "M. Simpo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Oct 2001",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 328,
+  "listed": "M. M. Asumani",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "11 Jan 1998",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 454,
+  "listed": "M. B. Agyenim",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "12 Aug 1997",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 346,
+  "listed": "M. D. Ikenna",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "8 Feb 1997",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 130,
+  "listed": "M. M. Prince",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Oct 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 692,
+  "listed": "M. Ramadhan",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Nov 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 733,
+  "listed": "M. Amori",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "6 Feb 2002",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 154,
+  "listed": "M. A. Ahmed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Jul 2003",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 611,
+  "listed": "M. A. Osman",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "8 Jan 2001",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 8,
+  "listed": "M. Ahmed",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Oct 1997",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 9,
+  "listed": "M. Almadani",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Apr 2006",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 158,
+  "listed": "M. A. A. Saeed",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 159,
+  "listed": "M. A. Mahamoud",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Jan 1994",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 581,
+  "listed": "M. Gbane",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 182,
+  "listed": "M. T. Abudegen",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "2 Sep 2002",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 35,
+  "listed": "M. Yousif",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Jul 1993",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 4,
+  "listed": "M. Abdelgader",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "13 Oct 2000",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 317,
+  "listed": "M. B. Kisola",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "27 May 2004",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 325,
+  "listed": "M. L. Kanda",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "12 Sep 1997",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 278,
+  "listed": "M. Nishimwe",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "10 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 419,
+  "listed": "M. Nyarugabo",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "31 Dec 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 392,
+  "listed": "M. S. Bulaya",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "17 Sep 1997",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 98,
+  "listed": "M. Irankunda",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "12 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 783,
+  "listed": "M. Nyamurangwa",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 628,
+  "listed": "M. Akimanizanye",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 728,
+  "listed": "M. Limane",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "8 Jan 2004",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 177,
+  "listed": "M. M. Camara",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "5 Jan 2002",
+  "nationality": "Guinea"
+ },
+ {
+  "id": 352,
+  "listed": "M. S. Mudeyi",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 Apr 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 210,
+  "listed": "M. A. Ahmat",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "22 Aug 2002",
+  "nationality": "Chad"
+ },
+ {
+  "id": 229,
+  "listed": "M. H. Niyonshuti",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Aug 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 415,
+  "listed": "M. Nizeyimana",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "11 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 694,
+  "listed": "M. Claude",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 535,
+  "listed": "M. R. Joseph",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "11 Jun 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 144,
+  "listed": "M. Yves",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 365,
+  "listed": "M. Ntwari",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "1 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 167,
+  "listed": "M. F. I. Obaidalla",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "8 Mar 1996",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 636,
+  "listed": "M. N. Bienfait",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "3 Jul 1998",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 701,
+  "listed": "M. Freedom",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "6 Apr 2007",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 810,
+  "listed": "M. H. Musa",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Mar 2008",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 545,
+  "listed": "M. Keita",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Feb 2026",
+  "nationality": "Mali"
+ },
+ {
+  "id": 176,
+  "listed": "M. M. Makeen",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "5 Apr 1998",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 570,
+  "listed": "M. Tansele",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Feb 1999",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 5,
+  "listed": "M. Abdualgadr",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "12 Jun 1992",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 178,
+  "listed": "M. N. H. Dahab",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "10 Jan 2003",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 655,
+  "listed": "M. Dan",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "6 Aug 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 582,
+  "listed": "M. H. Mohamed",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "10 May 1995",
+  "nationality": "South Sudan"
+ },
+ {
+  "id": 560,
+  "listed": "M. F. Ishag",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 Feb 2026",
+  "nationality": "Malaysia"
+ },
+ {
+  "id": 544,
+  "listed": "M. M. Joseph",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "6 Feb 2026",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 374,
+  "listed": "M. Darci",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 240,
+  "listed": "N. J. Clement",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 565,
+  "listed": "N. I. Assana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Feb 2026",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 236,
+  "listed": "N. Akpesiri",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "6 Feb 1999",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 816,
+  "listed": "N. M. Razafimahatana",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "7 Oct 2005",
+  "nationality": "Malagasy"
+ },
+ {
+  "id": 703,
+  "listed": "N. Ashiratu",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "8 Jun 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 662,
+  "listed": "N. Adenda",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 794,
+  "listed": "N. Eric",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "12 Sep 2026",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 722,
+  "listed": "N. Olivier",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "5 Nov 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 137,
+  "listed": "N. Pavelh",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Jan 1995",
+  "nationality": "Republic of the Congo"
+ },
+ {
+  "id": 721,
+  "listed": "N. Dieudonne",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "3 Apr 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 805,
+  "listed": "N. Dieume",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "5 May 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 485,
+  "listed": "N. K. Bertrand",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1996",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 124,
+  "listed": "N. Fall",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "7 Aug 1999",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 404,
+  "listed": "N. A. Ilunga",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "11 Nov 2002",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 798,
+  "listed": "N. Alexis",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 Nov 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 553,
+  "listed": "N. Ebenezeri",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "8 Apr 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 625,
+  "listed": "N. M. Theoneste",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "8 Jun 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 693,
+  "listed": "N. Benjamin",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "5 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 695,
+  "listed": "N. Pacifique",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2012",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 295,
+  "listed": "N. Gideon",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 293,
+  "listed": "N. Elissa",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 704,
+  "listed": "N. Pascal",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "4 Sep 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 717,
+  "listed": "N. Elyse",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "11 Aug 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 818,
+  "listed": "N. Alpha",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "3 Jan 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 740,
+  "listed": "N. Abidal",
+  "club": "APR FC",
+  "position": "",
+  "dob": "8 Jul 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 700,
+  "listed": "N. Gilbert",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "2 Aug 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 416,
+  "listed": "N. Fabio",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 688,
+  "listed": "N. M. Leo",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "1 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 668,
+  "listed": "N. Japheth",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "9 Nov 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 691,
+  "listed": "N. Elie",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "7 May 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 554,
+  "listed": "N. I. Pitchou",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 736,
+  "listed": "N. Obed",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "12 May 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 698,
+  "listed": "N. P. Chris",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "10 Nov 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 696,
+  "listed": "N. Emile",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "2 Mar 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 663,
+  "listed": "N. Anselme",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "1 Jan 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 584,
+  "listed": "N. Papa",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "14 Mar 2026",
+  "nationality": "Mali"
+ },
+ {
+  "id": 621,
+  "listed": "N. Theophile",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "2 Mar 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 510,
+  "listed": "N. E. Iniace",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "28 Dec 2004",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 476,
+  "listed": "O. Uwumukiza",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jan 1998",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 166,
+  "listed": "O. Chisala",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "9 Feb 2000",
+  "nationality": "Zambia"
+ },
+ {
+  "id": 793,
+  "listed": "O. V. Ofam",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "12 Sep 2026",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 453,
+  "listed": "O. A. Samson",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "6 May 2003",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 677,
+  "listed": "O. Salomon",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "4 Dec 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 762,
+  "listed": "O. Dusabimana",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "4 Jul 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 212,
+  "listed": "O. Dushimimana",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "4 Oct 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 511,
+  "listed": "O. Iradukunda",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "15 Mar 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 152,
+  "listed": "O. Kwizera",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "30 Jul 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 133,
+  "listed": "O. Niyonzima",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1993",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 479,
+  "listed": "O. Bizimungu",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "3 Aug 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 807,
+  "listed": "O. Tamba",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Apr 2007",
+  "nationality": "Gambia"
+ },
+ {
+  "id": 588,
+  "listed": "O. Francis",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "1 Apr 2026",
+  "nationality": "Angola"
+ },
+ {
+  "id": 450,
+  "listed": "O. Twizerimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "12 Sep 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 319,
+  "listed": "O. Byiringiro",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "10 Oct 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 215,
+  "listed": "O. F. Chukwuebuka",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "4 Dec 2000",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 218,
+  "listed": "O. Iyabivuze",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "4 Feb 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 563,
+  "listed": "O. O. Olivier",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "14 Feb 2026",
+  "nationality": "Angola"
+ },
+ {
+  "id": 771,
+  "listed": "O. Mohamed",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "6 Apr 2001",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 14,
+  "listed": "O. Diouf",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Apr 1997",
+  "nationality": "Senegal"
+ },
+ {
+  "id": 241,
+  "listed": "P. Dukundane",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 78,
+  "listed": "P. Ngabonziza",
+  "club": "APR FC",
+  "position": "",
+  "dob": "7 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 145,
+  "listed": "P. Iradukunda",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "24 Apr 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 228,
+  "listed": "P. N. Kanuma",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "10 Apr 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 284,
+  "listed": "P. Rwigema",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "4 Aug 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 109,
+  "listed": "P. Niyongira",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "5 Sep 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 377,
+  "listed": "P. Ishimwe",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "11 Mar 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 351,
+  "listed": "P. Mbaga",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "2 Sep 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 330,
+  "listed": "P. Murenzi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1993",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 755,
+  "listed": "P. Ngenzi",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "4 May 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 497,
+  "listed": "P. Ntijyinama",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "6 Nov 1999",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 680,
+  "listed": "P. Umwungeri",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "7 Dec 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 730,
+  "listed": "P. Mutembe",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Feb 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 517,
+  "listed": "P. M. Munyampala",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "14 Aug 1998",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 448,
+  "listed": "P. Shyaka",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "7 Jul 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 763,
+  "listed": "P. I. Jean",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "2 Oct 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 445,
+  "listed": "P. Paul",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "29 May 2005",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 819,
+  "listed": "P. M. Fiston",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "25 Jun 2006",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 233,
+  "listed": "P. Rudasingwa",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Oct 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 658,
+  "listed": "P. Nzabonimana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "4 Feb 1990",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 254,
+  "listed": "P. Rugangazi",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 472,
+  "listed": "P. Samuel",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "1 Apr 2000",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 620,
+  "listed": "Q. A. Abraham",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "2 Mar 2007",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 726,
+  "listed": "R. C. Shishoza",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "5 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 673,
+  "listed": "R. Mbajineza",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "2 Aug 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 157,
+  "listed": "R. A. Shareif",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "9 Jul 1990",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 151,
+  "listed": "R. T. Tshilembi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "22 Mar 2002",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 264,
+  "listed": "R. Habumuremyi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "16 Nov 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 179,
+  "listed": "R. R. Nicolas",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "10 Jun 2001",
+  "nationality": "Malaysia"
+ },
+ {
+  "id": 808,
+  "listed": "R. Mohammed",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "10 Mar 2009",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 393,
+  "listed": "R. Uwineza",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 260,
+  "listed": "R. Y. Bala",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Feb 2000",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 131,
+  "listed": "R. Ndayishimiye",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2004",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 780,
+  "listed": "R. Nsekanabo",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "12 Dec 1994",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 398,
+  "listed": "R. A. E. Obiang",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "3 Feb 2005",
+  "nationality": "Gabon"
+ },
+ {
+  "id": 275,
+  "listed": "R. Mukoghotya",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "16 Dec 1995",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 245,
+  "listed": "R. Isingizwe",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "12 Mar 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 647,
+  "listed": "R. Naziri",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "7 Dec 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 571,
+  "listed": "R. Hezbon",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Feb 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 748,
+  "listed": "R. Ugirumurengera",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "2 Apr 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 279,
+  "listed": "S. Niyonkuru",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "6 Jun 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 280,
+  "listed": "S. Niyonkuru",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "10 Jun 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 7,
+  "listed": "S. E. Adil",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "4 Mar 1995",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 797,
+  "listed": "S. Eyitayo",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "1 May 1998",
+  "nationality": "Nigeria"
+ },
+ {
+  "id": 487,
+  "listed": "S. Manishimwe",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "5 Apr 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 111,
+  "listed": "S. Nsengiyumva",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 667,
+  "listed": "S. Rukundo",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "7 Jul 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 91,
+  "listed": "S. D. Yussif",
+  "club": "APR FC",
+  "position": "",
+  "dob": "12 May 2001",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 357,
+  "listed": "S. L. Ndikumana",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 May 1992",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 520,
+  "listed": "S. Mugemana",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "20 Feb 1997",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 217,
+  "listed": "S. I. Kabanda",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 492,
+  "listed": "S. Murangamirwa",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "3 Aug 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 363,
+  "listed": "S. Ntagisanayo",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "12 Feb 2005",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 417,
+  "listed": "S. Nkurunziza",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "14 Jun 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 195,
+  "listed": "S. S. Gloire",
+  "club": "AMAGAJU FC",
+  "position": "",
+  "dob": "27 Aug 2002",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 649,
+  "listed": "S. M. Nausha",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "8 Dec 2001",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 432,
+  "listed": "S. Kimana",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "24 Nov 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 342,
+  "listed": "S. Rwagasore",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "4 Jul 2004",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 792,
+  "listed": "S. . A. D. Muhamed",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "4 Apr 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 738,
+  "listed": "S. E. Alberto",
+  "club": "APR FC",
+  "position": "",
+  "dob": "7 Sep 1998",
+  "nationality": "Mozambique"
+ },
+ {
+  "id": 97,
+  "listed": "S. Iradukunda",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "11 Nov 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 541,
+  "listed": "S. M. Diarra",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "5 Feb 2026",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 18,
+  "listed": "S. Farid",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "26 Dec 1996",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 690,
+  "listed": "S. Souleman",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "12 Oct 1999",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 86,
+  "listed": "S. Ronald",
+  "club": "APR FC",
+  "position": "",
+  "dob": "9 Jan 2004",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 702,
+  "listed": "S. Husseini",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "4 Oct 1998",
+  "nationality": "Uganda"
+ },
+ {
+  "id": 583,
+  "listed": "S. Franklin",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "10 Mar 2026",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 333,
+  "listed": "S. Niwenshuti",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "4 Feb 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 256,
+  "listed": "S. Sadick",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 Apr 2000",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 13,
+  "listed": "S. Damilare",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "12 Oct 1997",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 519,
+  "listed": "S. B. Mende",
+  "club": "RUTSIRO FC",
+  "position": "",
+  "dob": "28 May 1995",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 407,
+  "listed": "T. Mbonyumwami",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "6 May 2000",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 183,
+  "listed": "T. Y. E. Badawi",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "4 Sep 1993",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 729,
+  "listed": "T. Manzi",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Apr 2010",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 813,
+  "listed": "T. B. Y. Abdelgadir",
+  "club": "Al Merrikh SC",
+  "position": "",
+  "dob": "3 May 2003",
+  "nationality": "Sudanese"
+ },
+ {
+  "id": 776,
+  "listed": "T. T. Charles",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "1 Jun 2003",
+  "nationality": "Chad"
+ },
+ {
+  "id": 386,
+  "listed": "T. C. Tabou",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "2 Jul 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 439,
+  "listed": "T. Niyonizeye",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "5 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 230,
+  "listed": "T. Nshimiyimana",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "2 Mar 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 253,
+  "listed": "T. Ntakirutimana",
+  "club": "BUGESERA FC",
+  "position": "",
+  "dob": "9 Mar 2027",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 290,
+  "listed": "T. Byiringiro",
+  "club": "GASOGI UNITED",
+  "position": "",
+  "dob": "3 Mar 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 534,
+  "listed": "T. Hakizimana",
+  "club": "MUSANZE FC",
+  "position": "",
+  "dob": "1 Jan 2000",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 371,
+  "listed": "T. Kalifa",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "21 Dec 2003",
+  "nationality": "Mali"
+ },
+ {
+  "id": 742,
+  "listed": "T. Mamadou",
+  "club": "APR FC",
+  "position": "",
+  "dob": "2 Aug 1999",
+  "nationality": "Mali"
+ },
+ {
+  "id": 465,
+  "listed": "T. Kwizera",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Jan 1996",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 437,
+  "listed": "T. Muhoza",
+  "club": "AS MUHANGA",
+  "position": "",
+  "dob": "15 May 1992",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 744,
+  "listed": "T. Mwumvaneza",
+  "club": "APR FC",
+  "position": "",
+  "dob": "7 Dec 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 587,
+  "listed": "T. Kennedy",
+  "club": "MUKURA VS",
+  "position": "",
+  "dob": "6 Apr 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 651,
+  "listed": "T. Jonas",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "9 Sep 2001",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 578,
+  "listed": "Tuyizere",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "2 Mar 2026",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 370,
+  "listed": "Twizerimana",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "10 Oct 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 546,
+  "listed": "U. Abba",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "1 Feb 2026",
+  "nationality": "Ghana"
+ },
+ {
+  "id": 395,
+  "listed": "U. Yakubu",
+  "club": "KIYOVU SPORTS",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 405,
+  "listed": "V. Irambona",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "27 Jan 2000",
+  "nationality": "Burundi"
+ },
+ {
+  "id": 238,
+  "listed": "V. Byishimo",
+  "club": "POLICE FC",
+  "position": "",
+  "dob": "1 Jan 2007",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 354,
+  "listed": "V. Murdah",
+  "club": "GORILLA FC",
+  "position": "",
+  "dob": "10 Aug 2003",
+  "nationality": "Cameroon"
+ },
+ {
+  "id": 408,
+  "listed": "V. N. Menayame",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "20 Jul 2005",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 175,
+  "listed": "W. M. L. G. Dia",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "7 Feb 2000",
+  "nationality": "Ivory Coast"
+ },
+ {
+  "id": 586,
+  "listed": "W. Daiyeen",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "28 Mar 2026",
+  "nationality": "Angola"
+ },
+ {
+  "id": 23,
+  "listed": "W. Khidir",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "16 Sep 1995",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 418,
+  "listed": "X. Nshimyumuremyi",
+  "club": "MARINE FC",
+  "position": "",
+  "dob": "2 Oct 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 566,
+  "listed": "Y. Minaga",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Feb 2026",
+  "nationality": "Gambia"
+ },
+ {
+  "id": 749,
+  "listed": "Y. Hakizimana",
+  "club": "ETINCELLES FC",
+  "position": "",
+  "dob": "3 Jan 2009",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 147,
+  "listed": "Y. B. Litombo",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "12 Apr 1994",
+  "nationality": "DR Congo"
+ },
+ {
+  "id": 10,
+  "listed": "Y. Boshara",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "15 Mar 2006",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 27,
+  "listed": "Y. Mozamil",
+  "club": "Al Hilal SC",
+  "position": "",
+  "dob": "1 Jan 1992",
+  "nationality": "Sudan"
+ },
+ {
+  "id": 757,
+  "listed": "Y. Munezero",
+  "club": "GICUMBI FC",
+  "position": "",
+  "dob": "2 Mar 2008",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 82,
+  "listed": "Y. Nshimiyimana",
+  "club": "APR FC",
+  "position": "",
+  "dob": "12 Jul 2003",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 626,
+  "listed": "Y. Niyonshuti",
+  "club": "ETOILE DE L'EST",
+  "position": "",
+  "dob": "1 Jan 2006",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 125,
+  "listed": "Y. Habimana",
+  "club": "KIGALI FC",
+  "position": "",
+  "dob": "1 Jan 1995",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 273,
+  "listed": "Y. Manishimwe",
+  "club": "Free Agent",
+  "position": "",
+  "dob": "10 Nov 1991",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 782,
+  "listed": "Y. Sibomana",
+  "club": "SUNRISE",
+  "position": "",
+  "dob": "5 Apr 2002",
+  "nationality": "Rwanda"
+ },
+ {
+  "id": 739,
+  "listed": "Z. Madou",
+  "club": "APR FC",
+  "position": "",
+  "dob": "6 Sep 1999",
+  "nationality": "Burkina Faso"
+ },
+ {
+  "id": 457,
+  "listed": "Z. Hakizimana",
+  "club": "RAYON SPORTS",
+  "position": "",
+  "dob": "3 Nov 1999",
+  "nationality": "Rwanda"
+ }
+]

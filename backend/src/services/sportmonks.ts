@@ -411,6 +411,44 @@ export function isAbbreviated(name: string): boolean {
 }
 
 /**
+ * The best real name in a `/players/{id}` response.
+ *
+ * The response carries the same person under three spellings, and any of them
+ * can be the abbreviated one. Reading `name` and falling back only when it is
+ * NULL threw away a real name the response already held:
+ *
+ * | provider id | `name`           | `display_name` | first + last         |
+ * |---|---|---|---|
+ * | 37550321 | "G. Philander"   | "G. Philander" | "Giovanni Philander" |
+ * | 37551650 | "S. Junior Dion" | "Junior Dion"  | "Sede Junior Dion"   |
+ *
+ * So take the first field that is not an abbreviation. Order matters and is
+ * deliberate: the provider's own renderings come before a name stitched out of
+ * `firstname` and `lastname`, because the vault already holds 37551650 as
+ * "Junior Dion" from a goal where the event feed spelled him out. Preferring the
+ * stitched "Sede Junior Dion" would have created a SECOND record for a man the
+ * vault already had — the identity split this project has spent the most time
+ * undoing.
+ *
+ * When EVERY field is an abbreviation it returns the first of them rather than
+ * nothing, so the caller's own `isAbbreviated` gate stays the single place a
+ * scorer is refused and its refusal message can still quote what the provider
+ * said. This function picks the best field; it does not decide what is usable.
+ */
+export function bestPlayerName(p: {
+  name?: string | null;
+  display_name?: string | null;
+  firstname?: string | null;
+  lastname?: string | null;
+}): string {
+  const stitched = [p.firstname, p.lastname].filter(Boolean).join(' ').trim();
+  const candidates = [p.name, p.display_name, stitched].filter(
+    (c): c is string => Boolean(c && c.trim()),
+  );
+  return candidates.find((c) => !isAbbreviated(c)) ?? candidates[0] ?? '';
+}
+
+/**
  * Rebuild a fixture's score from its events under the vault's own-goal rule.
  *
  * The sync never needs this — the score comes from the provider's published

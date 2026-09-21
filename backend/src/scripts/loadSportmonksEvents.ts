@@ -47,6 +47,7 @@ import {
   normaliseEvents,
   reconstructScore,
   isAbbreviated,
+  bestPlayerName,
 } from '../services/sportmonks.js';
 import { resolveVaultIds, editionKey } from '../services/entityResolution.js';
 import { recordProvenance } from '../services/provenance.js';
@@ -113,12 +114,18 @@ try {
   const vaultCountries = await prisma.countries.findMany({ select: { id: true, name: true } });
   const countryByName = new Map(vaultCountries.map((c) => [c.name.toLowerCase(), c.id]));
 
+  /**
+   * One player, cached, named by `bestPlayerName` — which takes whichever of the
+   * response's three name fields is not an abbreviation. Reading `name` alone
+   * left South Africa's Giovanni Philander unattributed while the same response
+   * carried his first name.
+   */
   async function resolvePlayer(providerId: string) {
     if (playerCache.has(providerId)) return playerCache.get(providerId)!;
     const p = await sportmonks.player(Number(providerId));
     const rec = p
       ? {
-          name: p.name ?? [p.firstname, p.lastname].filter(Boolean).join(' '),
+          name: bestPlayerName(p),
           first: p.firstname ?? null,
           last: p.lastname ?? null,
           dob: p.date_of_birth ?? null,

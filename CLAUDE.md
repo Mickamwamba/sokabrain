@@ -157,6 +157,109 @@ explicitly out of scope — see "Non-goals" below).
   kickoff came back as a Date at 08:00Z. `backend/src/db.ts` now pins the
   session with `options: '-c timezone=UTC'`. **Any new DB connection must do the
   same** — a late kickoff otherwise lands on the wrong day.
+- **A league's own player directory names the scorers SportMonks abbreviates,
+  and all five leagues have now been worked to their source's ceiling**
+  (2026-09-20, `docs/ingestion/topup_scorers_from_directory.py`). South Africa
+  and Tanzania are at **100%**, Uganda at 96.9%, and every one of the 691
+  matches holding events still reproduces its own score, with **zero
+  abbreviations planted**.
+
+  | Country | Season | Goals | Named | Unnamed |
+  |---|---|---|---|---|
+  | Tanzania | 2026/27 | 121 | **121** | 0 |
+  | South Africa | 2026/27 | 125 | **125** | 0 |
+  | Uganda | 2026/27 | 64 | 62 | 2 |
+  | Rwanda | 2026/27 | 29 | 25 | 4 |
+  | Rwanda | 2025/26 | 649 | 491 | 158 |
+  | Rwanda | 2024/25 | 459 | 175 | 284 |
+  | Kenya | 2019/20 | 318 | 268 | 50 |
+
+  - **The technique only works on an ABBREVIATION.** It matches an initial plus
+    surname against a club-scoped directory, so it needs the provider to have
+    named somebody. It can do nothing for a goal the source attributes to
+    nobody at all, and that — not this step — is what the Rwandan and Kenyan
+    numbers above are made of.
+  - **`upl.co.ug` is the best-behaved source this project has met.** It runs
+    SportsPress like ligikuu, its `robots.txt` is a bare `Disallow:`, and its
+    directory carries 1,716 players with **full names already** — no per-player
+    page fetch, unlike Rwanda's. Registered as data source `upl`
+    (`2026-09-20_upl_data_source.sql`); harvested by `fetch_upl_players.py`.
+  - **Two request headers decide whether that endpoint works at all.** Asking
+    for the full player object makes SportsPress compute a statistics block per
+    row and the request times out at 90s; `_fields=id,title,number,current_teams,teams,seasons`
+    answers in **0.9s**. And `urllib` asks for `identity` by default, so a page
+    travels as 430KB rather than 26KB. With both, the whole 1,716-player harvest
+    takes 41 seconds. **Neither is an optimisation — without them it does not
+    finish.**
+  - **The initial narrows the candidates; it is not only a check afterwards.**
+    Requiring one directory row *before* reading any name threw away answers the
+    initial settles: Blacks Power field both Richard Oscar Otim and Daniel Otim,
+    so "R. Otim" read as ambiguous. Every candidate is now resolved and filtered
+    through `name_agrees`, and two men who BOTH agree are still refused — which
+    is what keeps a brother pair from being guessed at. Worth 2 more Ugandan
+    goals and 2 Rwandan ones.
+  - **A club name that differs by a space is a silent miss.** The provider writes
+    "Kigezi Home Boyz" where the directory writes "Kigezi Homeboyz", and
+    "Lugazi Municipal" for "Lugazi FC". Both were found by diffing the provider's
+    18 club names against the directory's keys — do that before reading a
+    refusal as absent data, and add the pair to `CLUB_ALIASES`.
+  - **`--source` is mandatory now**: provenance must name the site a name came
+    from (principle 1), and this script was hardcoded to `rwandapremierleague`
+    until Uganda arrived. Same defect `load_fotmob_tpl.py` had.
+  - **Kenya cannot be helped by this at all, and that is settled.** SportMonks'
+    Kenyan season carries **0 goal events**, and its 50 unnamed goals are all in
+    2019/20, which came from the legacy SokaFC dump — where those events were
+    entered with no scorer and never had one. A current squad directory cannot
+    name a goal from six seasons ago.
+  - **Tanzania had nothing to resolve either**, for the opposite and better
+    reason: its 2026/27 and 2025/26 event logs come from ligikuu and FotMob, not
+    SportMonks, and are already 100% named. Its older unnamed goals are the
+    documented out-of-reach ones and hold no abbreviation to match against.
+- **The SportMonks players endpoint spells one man three ways, and reading only
+  one field lost real names** (2026-09-20). `/players/{id}` returns `name`,
+  `display_name` and `firstname`/`lastname`, and **any of them can be the
+  abbreviated one**. `loadSportmonksEvents.ts` read `name` and fell back to
+  first+last only when it was NULL — never when it was an abbreviation — so it
+  wrote a goal unattributed while the same response held the answer:
+
+  | provider id | `name` | `display_name` | first + last |
+  |---|---|---|---|
+  | 37550321 | "G. Philander" | "G. Philander" | **"Giovanni Philander"** |
+  | 37551650 | "S. Junior Dion" | **"Junior Dion"** | "Sede Junior Dion" |
+
+  - `bestPlayerName` in `services/sportmonks.ts` now takes the first field that
+    is not an abbreviation, and is unit tested with a mutation check.
+  - **Field order is deliberate: the provider's own renderings come before a
+    stitched first+last.** The vault ALREADY holds 37551650 as "Junior Dion",
+    from a goal where the event feed spelled him out. Preferring "Sede Junior
+    Dion" would have created a second record for a man the vault had — the
+    identity split this project has spent the most time undoing.
+  - **It returns the abbreviation rather than nothing when every field is one**,
+    so the caller's `isAbbreviated` gate stays the single place a scorer is
+    refused and its message can still quote what the provider said.
+  - **Honest scale: this reached exactly 2 goals**, both South African, which is
+    what took that league to 125 of 125. It was measured across all five
+    leagues' 470 id-carrying goals before being claimed — every other one
+    already resolved. The value is in future loads, not a backlog.
+  - **It could not repair those 2 on its own**, because the loader never adds to
+    a match that already holds goal events and both matches did. They were named
+    in `2026-09-20_south_africa_two_unattributed_goals.sql` instead — the same
+    call the 1994 AFCON quarter-final made.
+- **Two provenance gaps are open and were NOT fixed** (found 2026-09-20; both
+  predate this work and neither is safe to close automatically).
+  - **5,911 `match_events` rows have no `entity_source_map` row**, against
+    principle 1's "every row that comes from an external source". They span
+    every loader, not just the legacy migration, so a blanket backfill would be
+    asserting a source for rows whose source is genuinely unknown.
+  - **6 player records are initials plus a surname**: "B. Sylla", "M. Sylla" and
+    "M. Mkopi" (rsssf), "Y. Traoré" (wikipedia), "W Patrick" and "B Majogoru"
+    (flashscore). The rule that forbids these is honoured by the SportMonks and
+    directory paths — those planted none — but the earlier loaders escaped it.
+    Merging one needs a source naming that specific goal, exactly like the 44
+    open AFCON surname candidates, so they are a data call for an editor.
+    Three more read as abbreviated and are not ("Adama Traoré I" is a
+    disambiguator; "Samson B Mbangula", "Said O Abdallah" and "Mohamed M Salum"
+    carry a middle initial inside an otherwise full name).
 - **Rwanda now has three seasons and a real scorer list** (2026-09-20). Its
   2025/26 and 2024/25 seasons were pulled from SportMonks
   (`npm run sm:ingest -- --league 872 --season <id> --apply`, then `sm:events`),

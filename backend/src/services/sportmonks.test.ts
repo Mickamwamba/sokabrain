@@ -17,6 +17,7 @@ import {
   normaliseEvents,
   reconstructScore,
   isAbbreviated,
+  bestPlayerName,
   type SportmonksFixture,
 } from './sportmonks.js';
 
@@ -253,5 +254,60 @@ describe('isAbbreviated', () => {
     ]) {
       assert.ok(!isAbbreviated(n), `${n} should not read as abbreviated`);
     }
+  });
+});
+
+describe('bestPlayerName', () => {
+  it('takes firstname+lastname when both display fields abbreviate', () => {
+    // The real case: this goal was written unattributed while the same response
+    // carried "Giovanni".
+    assert.equal(
+      bestPlayerName({
+        name: 'G. Philander',
+        display_name: 'G. Philander',
+        firstname: 'Giovanni',
+        lastname: 'Philander',
+      }),
+      'Giovanni Philander',
+    );
+  });
+
+  it('prefers a real display_name over a stitched one, so an existing record is reused', () => {
+    // The vault already holds provider id 37551650 as "Junior Dion". Returning
+    // the stitched "Sede Junior Dion" would create a second record for one man.
+    assert.equal(
+      bestPlayerName({
+        name: 'S. Junior Dion',
+        display_name: 'Junior Dion',
+        firstname: 'Sede',
+        lastname: 'Junior Dion',
+      }),
+      'Junior Dion',
+    );
+  });
+
+  it('keeps `name` when it is already a real name', () => {
+    assert.equal(
+      bestPlayerName({
+        name: 'Sergio Kammies',
+        display_name: 'S. Kammies',
+        firstname: 'Sergio',
+        lastname: 'Kammies',
+      }),
+      'Sergio Kammies',
+    );
+  });
+
+  it('hands back an abbreviation rather than nothing when every field is one', () => {
+    // The caller's isAbbreviated gate is what refuses a scorer; this function
+    // only picks the best field, and the refusal message quotes what it returns.
+    const got = bestPlayerName({ name: 'S. Dion', display_name: 'S. Dion' });
+    assert.equal(got, 'S. Dion');
+    assert.ok(isAbbreviated(got));
+  });
+
+  it('survives a response with no usable name at all', () => {
+    assert.equal(bestPlayerName({ name: null, display_name: null }), '');
+    assert.equal(bestPlayerName({ firstname: null, lastname: '  ' }), '');
   });
 });
