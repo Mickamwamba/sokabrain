@@ -61,37 +61,45 @@ adminCompetitionsRouter.get('/competitions', async (req, res) => {
   });
   const byEdition = new Map(matchCounts.map((m) => [m.competition_edition_id, m._count._all]));
 
-  res.json({
-    competitions: competitions.map((c) => ({
-      id: c.id,
-      // The RAW stored name: the edit form has to round-trip what is stored.
-      name: c.name,
-      // ...and the name as it should be shown, country in front. Three leagues
-      // are called plainly "Premier League", so the bare name identifies none
-      // of them.
-      displayName: competitionDisplayName(c.name, c.countries?.name),
-      type: c.type,
-      tier: c.tier,
-      country: c.countries?.name ?? null,
-      countryId: c.countries?.id ?? null,
-      seasonCount: c.competition_editions.length,
-      publishedCount: c.competition_editions.filter((e) => e.is_published).length,
-      matchCount: c.competition_editions.reduce(
-        (n, e) => n + (byEdition.get(e.id) ?? 0),
-        0,
-      ),
-      // Full edition rows, not just labels — the matches screen needs the ids to
-      // populate its season dropdown without a second request per competition.
-      editions: c.competition_editions
-        .map((e) => ({
-          editionId: e.id,
-          season: e.seasons.label,
-          isPublished: e.is_published,
-          matchCount: byEdition.get(e.id) ?? 0,
-        }))
-        .sort((a, b) => b.season.localeCompare(a.season)),
-    })),
+  const rows = competitions.map((c) => ({
+    id: c.id,
+    // The RAW stored name: the edit form has to round-trip what is stored.
+    name: c.name,
+    // ...and the name as it should be shown, country in front. Three leagues
+    // are called plainly "Premier League", so the bare name identifies none
+    // of them.
+    displayName: competitionDisplayName(c.name, c.countries?.name),
+    type: c.type,
+    tier: c.tier,
+    country: c.countries?.name ?? null,
+    countryId: c.countries?.id ?? null,
+    seasonCount: c.competition_editions.length,
+    publishedCount: c.competition_editions.filter((e) => e.is_published).length,
+    matchCount: c.competition_editions.reduce(
+      (n, e) => n + (byEdition.get(e.id) ?? 0),
+      0,
+    ),
+    // Full edition rows, not just labels — the matches screen needs the ids to
+    // populate its season dropdown without a second request per competition.
+    editions: c.competition_editions
+      .map((e) => ({
+        editionId: e.id,
+        season: e.seasons.label,
+        isPublished: e.is_published,
+        matchCount: byEdition.get(e.id) ?? 0,
+      }))
+      .sort((a, b) => b.season.localeCompare(a.season)),
+  }));
+
+  // Public/published competitions come first, then alphabetical by displayName
+  rows.sort((a, b) => {
+    const aPub = a.publishedCount > 0 ? 1 : 0;
+    const bPub = b.publishedCount > 0 ? 1 : 0;
+    if (aPub !== bPub) return bPub - aPub;
+    return a.displayName.localeCompare(b.displayName);
   });
+
+  res.json({ competitions: rows });
 });
 
 const createBody = z.object({

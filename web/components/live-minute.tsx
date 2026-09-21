@@ -38,18 +38,12 @@ export function LiveMinute({
   const [shown, setShown] = useState<number | null>(minute);
 
   useEffect(() => {
-    if (at == null || minute == null) {
-      setShown(minute);
-      return;
-    }
+    if (at == null || minute == null) return;
     const anchor = new Date(at).getTime();
     const tick = () => {
       const elapsed = Math.floor((Date.now() - anchor) / 60_000);
       setShown(minute + Math.min(Math.max(elapsed, 0), STALE_AFTER_MIN));
     };
-    tick();
-    // Ten seconds: fine-grained enough that the minute turns over within ten
-    // seconds of the truth, cheap enough to leave running on a matchday.
     const id = setInterval(tick, 10_000);
     return () => clearInterval(id);
   }, [minute, at]);

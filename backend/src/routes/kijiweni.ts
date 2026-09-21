@@ -42,7 +42,7 @@ kijiweniRouter.get('/threads', async (req: Request, res: Response) => {
     const tag = typeof req.query.tag === 'string' && req.query.tag !== 'ALL' ? req.query.tag.toUpperCase() : undefined;
     const sort = req.query.sort === 'popular' ? 'popular' : 'latest';
 
-    const where: Record<string, unknown> = {};
+    const where: Record<string, unknown> = { is_hidden: false };
     if (spaceSlug) {
       const space = await prisma.kijiwe_spaces.findUnique({ where: { slug: spaceSlug } });
       if (!space) {
@@ -114,8 +114,8 @@ kijiweniRouter.get('/threads/:id', async (req: Request, res: Response) => {
       return;
     }
 
-    const thread = await prisma.kijiwe_threads.findUnique({
-      where: { id: threadId },
+    const thread = await prisma.kijiwe_threads.findFirst({
+      where: { id: threadId, is_hidden: false },
       include: {
         kijiwe: {
           select: {
@@ -127,6 +127,7 @@ kijiweniRouter.get('/threads/:id', async (req: Request, res: Response) => {
           },
         },
         comments: {
+          where: { is_hidden: false },
           orderBy: { created_at: 'asc' },
         },
       },

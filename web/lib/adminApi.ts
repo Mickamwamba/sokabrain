@@ -428,3 +428,81 @@ export type AuditFindings = {
   };
   findings: AuditFinding[];
 };
+
+export type AdminKijiweniStats = {
+  totalSpaces: number;
+  totalThreads: number;
+  totalComments: number;
+  totalLikes: number;
+  pinnedThreads: number;
+  hiddenThreads: number;
+  spaces: {
+    id: number;
+    slug: string;
+    nameSw: string;
+    nameEn: string;
+    icon: string;
+    badgeColor: string;
+    threadsCount: number;
+  }[];
+  recentThreads: {
+    id: number;
+    title: string;
+    authorName: string;
+    authorTeamName: string | null;
+    tag: string;
+    isPinned: boolean;
+    likesCount: number;
+    commentsCount: number;
+    createdAt: string;
+    space: {
+      slug: string;
+      nameSw: string;
+      nameEn: string;
+      badgeColor: string;
+    };
+  }[];
+};
+
+export type AdminKijiweCommentRow = {
+  id: number;
+  authorName: string;
+  authorTeamName: string | null;
+  content: string;
+  likesCount: number;
+  isHidden: boolean;
+  createdAt: string;
+};
+
+export type AdminKijiweThreadRow = {
+  id: number;
+  title: string;
+  content: string;
+  authorName: string;
+  authorTeamName: string | null;
+  tag: string;
+  isPinned: boolean;
+  isHidden: boolean;
+  likesCount: number;
+  commentsCount: number;
+  createdAt: string;
+  space: {
+    slug: string;
+    nameSw: string;
+    nameEn: string;
+    badgeColor: string;
+  };
+};
+
+export type AdminKijiweThreadDetail = AdminKijiweThreadRow & {
+  comments: AdminKijiweCommentRow[];
+};
+
+export type AdminKijiweniThreadList = {
+  total: number;
+  page: number;
+  pageSize: number;
+  threads: AdminKijiweThreadRow[];
+};
+
+

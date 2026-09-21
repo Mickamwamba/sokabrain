@@ -100,7 +100,7 @@ export type Tone = 'green' | 'gray' | 'amber' | 'red' | 'blue';
 const TONE: Record<Tone, string> = {
   green: 'bg-brand/10 text-brand-dark ring-brand/20',
   gray: 'bg-wash text-muted ring-line',
-  amber: 'bg-gold/15 text-[#8a5a00] ring-gold/30',
+  amber: 'bg-amber-500/15 text-ink ring-amber-500/40',
   red: 'bg-loss/10 text-loss ring-loss/20',
   blue: 'bg-sky-50 text-sky-700 ring-sky-200',
 };

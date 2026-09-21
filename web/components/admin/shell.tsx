@@ -13,6 +13,7 @@ import {
   LayoutDashboard,
   ListChecks,
   Menu,
+  MessagesSquare,
   Shield,
   ScanSearch,
   Trophy,
@@ -56,6 +57,12 @@ const GROUPS: { label: string; items: Item[] }[] = [
     items: [
       { href: '/admin/audit', label: 'Data audit', icon: ScanSearch },
       { href: '/admin/flags', label: 'Flags', icon: Flag },
+    ],
+  },
+  {
+    label: 'Community',
+    items: [
+      { href: '/admin/kijiweni', label: 'Fan Zone (Kijiweni)', icon: MessagesSquare },
     ],
   },
   {

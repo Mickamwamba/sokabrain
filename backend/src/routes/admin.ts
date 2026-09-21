@@ -12,6 +12,7 @@ import { adminCompetitionsRouter } from './adminCompetitions.js';
 import { manageRouter } from './adminManage.js';
 import { careersRouter } from './adminCareers.js';
 import { auditRouter } from './adminAudit.js';
+import { adminKijiweniRouter } from './adminKijiweni.js';
 
 export const adminRouter = Router();
 
@@ -108,6 +109,7 @@ adminRouter.use('/', adminCompetitionsRouter);
 adminRouter.use('/', manageRouter);
 adminRouter.use('/', careersRouter);
 adminRouter.use('/', auditRouter);
+adminRouter.use('/kijiweni', adminKijiweniRouter);
 
 /**
  * Admin match list. Unlike the public one this ignores publication state —
