@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { matchState, statusLabel } from "@/lib/match-state";
+import { matchState, statusLabel, fullTimeLabel } from "@/lib/match-state";
 import { type Match } from "@/lib/api";
 import { Card, Crest, LiveDot } from "@/components/ui";
 import { LiveMinute } from "@/components/live-minute";
@@ -75,17 +75,28 @@ function Score({ match }: { match: Match }) {
   }
 
   return (
-    <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">
-      <span className={homeWon ? "text-gold font-extrabold" : home < away ? "text-white/60" : "text-white"}>
-        {home}
+    <span className="inline-flex flex-col items-center gap-0.5">
+      <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">
+        <span className={homeWon ? "text-gold font-extrabold" : home < away ? "text-white/60" : "text-white"}>
+          {home}
+        </span>
+        <span className="mx-1 text-white/40">‑</span>
+        <span className={awayWon ? "text-gold font-extrabold" : away < home ? "text-white/60" : "text-white"}>
+          {away}
+        </span>
+        {homePenalties !== null && awayPenalties !== null ? (
+          <span className="ml-1.5 text-[10px] font-medium text-white/70">
+            ({homePenalties}‑{awayPenalties}p)
+          </span>
+        ) : null}
       </span>
-      <span className="mx-1 text-white/40">‑</span>
-      <span className={awayWon ? "text-gold font-extrabold" : away < home ? "text-white/60" : "text-white"}>
-        {away}
-      </span>
-      {homePenalties !== null && awayPenalties !== null ? (
-        <span className="ml-1.5 text-[10px] font-medium text-white/70">
-          ({homePenalties}‑{awayPenalties}p)
+      {/* Says the game has been played. A score alone does not: only the status
+          separates a final 2-1 from one still moving, and this list mixes
+          kickoff times, live scores and finished ones in the same column.
+          Gated on FINISHED — a postponed fixture can carry a score too. */}
+      {state === "FINISHED" ? (
+        <span className="text-[10px] font-bold uppercase leading-none tracking-wider text-muted">
+          {fullTimeLabel(match.score)}
         </span>
       ) : null}
     </span>
