@@ -26,7 +26,9 @@ class ApiService {
         'limit': limit.toString(),
       };
       if (date != null && date.isNotEmpty) {
-        queryParams['date'] = date;
+        queryParams['from'] = "${date}T00:00:00Z";
+        queryParams['to'] = "${date}T23:59:59Z";
+        queryParams['order'] = 'asc';
       }
       if (status != null && status.isNotEmpty) {
         queryParams['status'] = status;
@@ -45,8 +47,23 @@ class ApiService {
       }
       return [];
     } catch (e) {
-      // Return empty list on error
+      // ignore: avoid_print
+      print('ApiService.fetchMatches error: $e');
       return [];
+    }
+  }
+
+  static Future<String?> fetchNearestMatchDay(String anchorDate) async {
+    try {
+      final uri = Uri.parse('$baseUrl/api/vault/schedule/days?around=$anchorDate&before=7&after=7');
+      final response = await http.get(uri);
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        return data['nearest'] as String?;
+      }
+      return null;
+    } catch (e) {
+      return null;
     }
   }
 

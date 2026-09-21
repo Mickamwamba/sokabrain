@@ -251,8 +251,27 @@ class _MatchesScreenState extends State<MatchesScreen> {
           ),
           const SizedBox(height: 4),
           const Text(
-            'Chagua tarehe nyingine au rudi baadaye.',
+            'Chagua tarehe kwenye kalenda hapo juu au angalia matokeo ya jana.',
             style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+            onPressed: () {
+              setState(() {
+                _selectedDate = DateTime(2026, 9, 20);
+              });
+              _loadMatches();
+            },
+            icon: const Icon(Icons.history, size: 16, color: Colors.black),
+            label: const Text(
+              'Angalia Mechi za Jana (20 Sep)',
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 12),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.emerald,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            ),
           ),
         ],
       ),
