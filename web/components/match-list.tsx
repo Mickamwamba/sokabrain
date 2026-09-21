@@ -75,31 +75,46 @@ function Score({ match }: { match: Match }) {
   }
 
   return (
-    <span className="inline-flex items-center justify-center gap-1.5">
-      {/* Says the game has been played, to the left of the score. A score alone
-          does not: only the status separates a final 2-1 from one still moving,
-          and this list mixes kickoff times, live scores and finished ones in the
-          same column. Gated on FINISHED — a postponed fixture can carry a score
-          too, and badging that FT would say it was played out. */}
-      {state === "FINISHED" ? (
-        <span className="shrink-0 rounded-full bg-wash px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-muted">
+    <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">
+      <span className={homeWon ? "text-gold font-extrabold" : home < away ? "text-white/60" : "text-white"}>
+        {home}
+      </span>
+      <span className="mx-1 text-white/40">‑</span>
+      <span className={awayWon ? "text-gold font-extrabold" : away < home ? "text-white/60" : "text-white"}>
+        {away}
+      </span>
+      {homePenalties !== null && awayPenalties !== null ? (
+        <span className="ml-1.5 text-[10px] font-medium text-white/70">
+          ({homePenalties}‑{awayPenalties}p)
+        </span>
+      ) : null}
+    </span>
+  );
+}
+
+/**
+ * The row's leading status cell: a live dot, or FT/AET/PENS once played.
+ *
+ * Fixed width, and rendered even when it holds nothing. A status marker whose
+ * width varies with its text would push every row's teams to a different x —
+ * a PENS row indenting further than an FT row beside it — so the cell reserves
+ * its space whether or not there is anything to put in it.
+ *
+ * Only a FINISHED match is badged. A postponed fixture can carry a score too
+ * (Kenya's 2026/27 holds four 0-0 postponements), and badging that FT would
+ * say it was played out.
+ */
+function RowStatus({ match, live }: { match: Match; live: boolean }) {
+  const state = matchState(match.status, match.score.home, match.score.away);
+  return (
+    <span className="flex w-11 shrink-0 items-center justify-start">
+      {live ? (
+        <LiveDot className="text-red-600" />
+      ) : state === "FINISHED" ? (
+        <span className="rounded-full bg-wash px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-muted">
           {fullTimeLabel(match.score)}
         </span>
       ) : null}
-      <span className="stat-figure inline-flex items-center whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-sm font-black text-white shadow-xs">
-        <span className={homeWon ? "text-gold font-extrabold" : home < away ? "text-white/60" : "text-white"}>
-          {home}
-        </span>
-        <span className="mx-1 text-white/40">‑</span>
-        <span className={awayWon ? "text-gold font-extrabold" : away < home ? "text-white/60" : "text-white"}>
-          {away}
-        </span>
-        {homePenalties !== null && awayPenalties !== null ? (
-          <span className="ml-1.5 text-[10px] font-medium text-white/70">
-            ({homePenalties}‑{awayPenalties}p)
-          </span>
-        ) : null}
-      </span>
     </span>
   );
 }
@@ -124,8 +139,8 @@ export function MatchRows({
                 live ? "border-l-2 border-red-600 bg-red-50/40 pl-3" : "pl-4"
               }`}
             >
-              {/* Live marker, in the gutter so the row keeps its height */}
-              {live ? <LiveDot className="text-red-600" /> : null}
+              {/* Status gutter, ahead of the home team */}
+              <RowStatus match={m} live={live} />
 
               {/* Home Team */}
               <span className="flex min-w-0 flex-1 items-center justify-end gap-2.5">
@@ -136,7 +151,7 @@ export function MatchRows({
               </span>
 
               {/* Score / Time Centerpiece */}
-              <span className="w-36 shrink-0 text-center">
+              <span className="w-28 shrink-0 text-center">
                 <Score match={m} />
               </span>
 
