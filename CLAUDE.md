@@ -160,20 +160,38 @@ explicitly out of scope — see "Non-goals" below).
 - **A league's own player directory names the scorers SportMonks abbreviates,
   and all five leagues have now been worked to their source's ceiling**
   (2026-09-20, `docs/ingestion/topup_scorers_from_directory.py`). South Africa
-  and Tanzania are at **100%**, Uganda at 96.9%, and every one of the 691
-  matches holding events still reproduces its own score, with **zero
+  and Tanzania name a scorer for **every goal in their scores**, and every one
+  of the 694 matches holding events reproduces its own score, with **zero
   abbreviations planted**.
 
-  | Country | Season | Goals | Named | Unnamed |
-  |---|---|---|---|---|
-  | Tanzania | 2026/27 | 121 | **121** | 0 |
-  | South Africa | 2026/27 | 125 | **125** | 0 |
-  | Uganda | 2026/27 | 64 | 62 | 2 |
-  | Rwanda | 2026/27 | 29 | 25 | 4 |
-  | Rwanda | 2025/26 | 649 | 491 | 158 |
-  | Rwanda | 2024/25 | 459 | 175 | 284 |
-  | Kenya | 2019/20 | 318 | 268 | 50 |
+  **Measure against the goals in the SCORES, not against the events that
+  exist.** A goal with no event row at all is invisible to the second measure,
+  so "125 of 125 events named" was reported for South Africa while the season's
+  scores held 130 goals and three played matches had no event log. The honest
+  column is `goals in scores`:
 
+  | Country | Season | Goals in scores | With an event | Named |
+  |---|---|---|---|---|
+  | Tanzania | 2026/27 | 121 | 121 | **121** |
+  | South Africa | 2026/27 | 130 | 130 | **130** |
+  | Uganda | 2026/27 | 65 | 64 | 62 |
+  | Rwanda | 2026/27 | 29 | 29 | 25 |
+  | Rwanda | 2025/26 | 651 | 649 | 491 |
+  | Rwanda | 2024/25 | 492 | 459 | 175 |
+  | Kenya | 2019/20 | 318 | 318 | 268 |
+
+  - **`sm:events` must be re-run as a season progresses, and nothing does it
+    automatically.** The live sync writes scores, status and kickoffs and
+    **never events** — deliberately — so every newly played match arrives with a
+    result and an empty timeline until the loader is run again. That is not a
+    defect in the data; it is a job nobody has scheduled. It is the same
+    standing task `update_season_results.py` is for Tanzania. Re-running it is
+    cheap and safe: it never adds to a match that already holds goal events.
+  - **17 scoring matches still have no event log, and all are source-side.**
+    Six are refused because SportMonks' own log does not account for the score
+    (1 in Rwanda 2025/26, 5 in 2024/25); the rest are matches the provider has a
+    result for and no events at all (10 in Rwanda 2024/25, 1 in Uganda —
+    Blacks Power 1-0 Ntugasaze).
   - **The technique only works on an ABBREVIATION.** It matches an initial plus
     surname against a club-scoped directory, so it needs the provider to have
     named somebody. It can do nothing for a goal the source attributes to

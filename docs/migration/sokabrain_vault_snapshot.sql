@@ -26428,6 +26428,15 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 93810	match_event	34579	23	22620-6-GOAL	\N	1.00	2026-09-20 18:46:53.580694-05
 93812	match_event	34188	23	23525-69-GOAL	\N	1.00	2026-09-20 18:47:29.139467-05
 93813	player	13676	22	id:37550321	\N	1.00	2026-09-20 19:00:46.233402-05
+93896	player	13677	22	id:37653303	\N	1.00	2026-09-20 20:18:43.754-05
+93897	player	13678	22	id:37610347	\N	1.00	2026-09-20 20:18:43.764-05
+93898	player	8053	22	id:289686	\N	1.00	2026-09-20 20:18:43.766-05
+93899	player	13679	22	id:37619173	\N	1.00	2026-09-20 20:18:43.77-05
+93900	match_event	34588	22	22901-62-GOAL	\N	1.00	2026-09-20 20:18:43.774-05
+93901	match_event	34589	22	22902-32-GOAL	\N	1.00	2026-09-20 20:18:43.776-05
+93902	match_event	34590	22	22902-74-GOAL	\N	1.00	2026-09-20 20:18:43.778-05
+93903	match_event	34591	22	22905-38-GOAL	\N	1.00	2026-09-20 20:18:43.779-05
+93904	match_event	34592	22	22905-50-GOAL	\N	1.00	2026-09-20 20:18:43.781-05
 \.
 
 
@@ -39033,6 +39042,11 @@ COPY public.match_events (id, match_id, team_id, player_id, related_player_id, m
 34552	23097	590	13667	\N	56	\N	GOAL	\N
 34496	22966	587	13664	\N	61	\N	GOAL	\N
 34579	22620	562	13456	\N	6	\N	GOAL	\N
+34588	22901	582	13677	\N	62	\N	GOAL	\N
+34589	22902	117	13678	\N	32	\N	GOAL	\N
+34590	22902	117	8053	\N	74	\N	GOAL	\N
+34591	22905	576	13173	\N	38	\N	GOAL	\N
+34592	22905	573	13679	\N	50	\N	GOAL	\N
 \.
 
 
@@ -55159,6 +55173,9 @@ COPY public.players (id, full_name, first_name, last_name, dob, nationality_id, 
 13674	Derrick Taremwa	\N	\N	\N	\N	\N	\N	\N	\N
 13675	Thomas Ochungo	\N	\N	\N	\N	\N	\N	\N	\N
 13676	Giovanni Philander	\N	\N	\N	\N	\N	\N	\N	\N
+13677	Harold Majadibodu	Harold	Majadibodu	1995-02-13	46	\N	\N	\N	\N
+13678	Kabelo Kgosietsile	Kabelo	Kgosietsile	\N	46	\N	\N	\N	\N
+13679	Luphumlo Sifumba	Luphumlo	Sifumba	2005-07-12	46	\N	\N	\N	\N
 \.
 
 
@@ -57082,7 +57099,7 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 24, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 93895, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 93904, true);
 
 
 --
@@ -57117,7 +57134,7 @@ SELECT pg_catalog.setval('public.kijiwe_threads_id_seq', 8, true);
 -- Name: match_events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.match_events_id_seq', 34587, true);
+SELECT pg_catalog.setval('public.match_events_id_seq', 34592, true);
 
 
 --
@@ -57145,7 +57162,7 @@ SELECT pg_catalog.setval('public.player_team_stints_id_seq', 4050, true);
 -- Name: players_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.players_id_seq', 13676, true);
+SELECT pg_catalog.setval('public.players_id_seq', 13679, true);
 
 
 --
