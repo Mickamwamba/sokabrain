@@ -4,6 +4,7 @@ import '../models/match_detail.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/live_badge.dart';
+import 'team_profile_screen.dart';
 
 class MatchDetailScreen extends StatefulWidget {
   final int matchId;
@@ -36,15 +37,23 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bg = isDark ? AppColors.background : AppColors.lightBackground;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+
     return Scaffold(
+      backgroundColor: bg,
       appBar: AppBar(
+        backgroundColor: bg,
+        foregroundColor: textPrimary,
+        elevation: 0,
         title: Text(
           _match?.competitionName ?? 'Match Center',
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: textPrimary),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh, size: 20),
+            icon: Icon(Icons.refresh, size: 20, color: textPrimary),
             onPressed: _loadMatch,
           ),
         ],
@@ -52,7 +61,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator(color: AppColors.emerald))
           : _match == null
-              ? const Center(child: Text('Match not found'))
+              ? Center(child: Text('Match not found', style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted)))
               : RefreshIndicator(
                   color: AppColors.emerald,
                   onRefresh: _loadMatch,
@@ -60,28 +69,37 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                     padding: const EdgeInsets.only(bottom: 32),
                     children: [
                       // Scoreboard Header
-                      _buildScoreboard(_match!),
+                      _buildScoreboard(_match!, isDark),
 
                       // Timeline Events
-                      _buildTimelineSection(_match!),
+                      _buildTimelineSection(_match!, isDark),
 
                       // Head to Head Summary
                       if (_match!.headToHead != null && _match!.headToHead!.played > 0)
-                        _buildHeadToHeadSection(_match!),
+                        _buildHeadToHeadSection(_match!, isDark),
                     ],
                   ),
                 ),
     );
   }
 
-  Widget _buildScoreboard(MatchDetailItem m) {
+  Widget _buildScoreboard(MatchDetailItem m, bool isDark) {
+    final cardBg = isDark ? AppColors.surface : Colors.white;
+    final borderCol = isDark ? AppColors.border : AppColors.lightBorder;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.textSecondary : AppColors.lightTextSecondary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final badgeBg = isDark ? AppColors.surfaceLight : AppColors.lightSurfaceLight;
+    final avatarBg = isDark ? AppColors.surfaceElevated : AppColors.lightSurfaceElevated;
+
     return Container(
       margin: const EdgeInsets.all(14),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border, width: 1),
+        border: Border.all(color: borderCol, width: 1),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 8, offset: Offset(0, 2))],
       ),
       child: Column(
         children: [
@@ -94,8 +112,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                   if (m.season != null) m.season,
                   if (m.round != null) "Round ${m.round}",
                 ].join(' • '),
-                style: const TextStyle(
-                  color: AppColors.textMuted,
+                style: TextStyle(
+                  color: textMuted,
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
                 ),
@@ -108,39 +126,53 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             children: [
               // Home Team
               Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: AppColors.surfaceElevated,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3), width: 1.5),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        m.homeTeamName.isNotEmpty ? m.homeTeamName[0] : 'H',
-                        style: const TextStyle(
-                          color: AppColors.emerald,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TeamProfileScreen(
+                          teamId: m.homeTeamId,
+                          initialTeamName: m.homeTeamName,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      m.homeTeamName,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: avatarBg,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3), width: 1.5),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          m.homeTeamName.isNotEmpty ? m.homeTeamName[0] : 'H',
+                          style: const TextStyle(
+                            color: AppColors.emerald,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 8),
+                      Text(
+                        m.homeTeamName,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: textPrimary,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
@@ -153,7 +185,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                       Text(
                         "${m.homeScore} - ${m.awayScore}",
                         style: TextStyle(
-                          color: m.isLive ? AppColors.liveRed : AppColors.textPrimary,
+                          color: m.isLive ? AppColors.liveRed : textPrimary,
                           fontSize: 28,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1,
@@ -162,16 +194,16 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                     else if (m.kickoffAt != null)
                       Text(
                         DateFormat('HH:mm').format(m.kickoffAt!.toLocal()),
-                        style: const TextStyle(
-                          color: AppColors.textSecondary,
+                        style: TextStyle(
+                          color: textSecondary,
                           fontSize: 22,
                           fontWeight: FontWeight.w800,
                         ),
                       )
                     else
-                      const Text(
+                      Text(
                         "- : -",
-                        style: TextStyle(color: AppColors.textMuted, fontSize: 22),
+                        style: TextStyle(color: textMuted, fontSize: 22),
                       ),
                     const SizedBox(height: 6),
                     if (m.isLive)
@@ -180,13 +212,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceLight,
+                          color: badgeBg,
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: const Text(
+                        child: Text(
                           'FULL TIME',
                           style: TextStyle(
-                            color: AppColors.textMuted,
+                            color: textMuted,
                             fontSize: 10,
                             fontWeight: FontWeight.w800,
                           ),
@@ -195,8 +227,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                     else if (m.kickoffAt != null)
                       Text(
                         DateFormat('d MMM yyyy').format(m.kickoffAt!.toLocal()),
-                        style: const TextStyle(
-                          color: AppColors.textMuted,
+                        style: TextStyle(
+                          color: textMuted,
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                         ),
@@ -207,39 +239,53 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
 
               // Away Team
               Expanded(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: AppColors.surfaceElevated,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3), width: 1.5),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        m.awayTeamName.isNotEmpty ? m.awayTeamName[0] : 'A',
-                        style: const TextStyle(
-                          color: AppColors.emerald,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TeamProfileScreen(
+                          teamId: m.awayTeamId,
+                          initialTeamName: m.awayTeamName,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      m.awayTeamName,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: avatarBg,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3), width: 1.5),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          m.awayTeamName.isNotEmpty ? m.awayTeamName[0] : 'A',
+                          style: const TextStyle(
+                            color: AppColors.emerald,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 8),
+                      Text(
+                        m.awayTeamName,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: textPrimary,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -251,11 +297,11 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.location_on_outlined, size: 14, color: AppColors.textMuted),
+                Icon(Icons.location_on_outlined, size: 14, color: textMuted),
                 const SizedBox(width: 4),
                 Text(
                   m.venue!,
-                  style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+                  style: TextStyle(color: textMuted, fontSize: 11),
                 ),
               ],
             ),
@@ -265,24 +311,31 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
     );
   }
 
-  Widget _buildTimelineSection(MatchDetailItem m) {
+  Widget _buildTimelineSection(MatchDetailItem m, bool isDark) {
     final events = m.events;
+    final cardBg = isDark ? AppColors.surface : Colors.white;
+    final borderCol = isDark ? AppColors.border : AppColors.lightBorder;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.textSecondary : AppColors.lightTextSecondary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final badgeBg = isDark ? AppColors.surfaceLight : AppColors.lightSurfaceLight;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border, width: 1),
+        border: Border.all(color: borderCol, width: 1),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 8, offset: Offset(0, 2))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'MATCH TIMELINE',
             style: TextStyle(
-              color: AppColors.textSecondary,
+              color: textSecondary,
               fontSize: 11,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.5,
@@ -290,12 +343,12 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
           ),
           const SizedBox(height: 14),
           if (events.isEmpty)
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Center(
                 child: Text(
                   'No match events recorded yet.',
-                  style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+                  style: TextStyle(color: textMuted, fontSize: 12),
                 ),
               ),
             )
@@ -304,7 +357,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: events.length,
-              separatorBuilder: (_, __) => const Divider(height: 16, color: AppColors.borderSubtle),
+              separatorBuilder: (_, __) => Divider(height: 16, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
               itemBuilder: (context, index) {
                 final ev = events[index];
                 final isHome = ev.side != null
@@ -324,8 +377,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                                     ev.playerName ?? 'Goal',
                                     textAlign: TextAlign.end,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      color: AppColors.textPrimary,
+                                    style: TextStyle(
+                                      color: textPrimary,
                                       fontSize: 12.5,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -366,7 +419,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceLight,
+                          color: badgeBg,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -391,8 +444,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                                   child: Text(
                                     ev.playerName ?? 'Goal',
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      color: AppColors.textPrimary,
+                                    style: TextStyle(
+                                      color: textPrimary,
                                       fontSize: 12.5,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -465,23 +518,30 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
     return const Icon(Icons.star, size: 14, color: AppColors.textMuted);
   }
 
-  Widget _buildHeadToHeadSection(MatchDetailItem m) {
+  Widget _buildHeadToHeadSection(MatchDetailItem m, bool isDark) {
     final h2h = m.headToHead!;
+    final cardBg = isDark ? AppColors.surface : Colors.white;
+    final borderCol = isDark ? AppColors.border : AppColors.lightBorder;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.textSecondary : AppColors.lightTextSecondary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border, width: 1),
+        border: Border.all(color: borderCol, width: 1),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 8, offset: Offset(0, 2))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'HEAD TO HEAD',
             style: TextStyle(
-              color: AppColors.textSecondary,
+              color: textSecondary,
               fontSize: 11,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.5,
@@ -491,9 +551,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildStatMetric(m.homeTeamShortName ?? m.homeTeamName, "${h2h.homeWins} Wins"),
-              _buildStatMetric("Draws", "${h2h.draws}"),
-              _buildStatMetric(m.awayTeamShortName ?? m.awayTeamName, "${h2h.awayWins} Wins"),
+              _buildStatMetric(m.homeTeamShortName ?? m.homeTeamName, "${h2h.homeWins} Wins", textPrimary, textMuted),
+              _buildStatMetric("Draws", "${h2h.draws}", textPrimary, textMuted),
+              _buildStatMetric(m.awayTeamShortName ?? m.awayTeamName, "${h2h.awayWins} Wins", textPrimary, textMuted),
             ],
           ),
         ],
@@ -501,13 +561,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
     );
   }
 
-  Widget _buildStatMetric(String label, String value) {
+  Widget _buildStatMetric(String label, String value, Color textPrimary, Color textMuted) {
     return Column(
       children: [
         Text(
           value,
-          style: const TextStyle(
-            color: AppColors.textPrimary,
+          style: TextStyle(
+            color: textPrimary,
             fontSize: 15,
             fontWeight: FontWeight.w800,
           ),
@@ -515,7 +575,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
         const SizedBox(height: 2),
         Text(
           label,
-          style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+          style: TextStyle(color: textMuted, fontSize: 11),
         ),
       ],
     );

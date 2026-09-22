@@ -95,10 +95,11 @@ class _LiveBadgeState extends State<LiveBadge> with SingleTickerProviderStateMix
     }
 
     if (status == 'FULL_TIME' || status == 'FT') {
+      final isDark = Theme.of(context).brightness == Brightness.dark;
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         decoration: BoxDecoration(
-          color: AppColors.surfaceLight,
+          color: isDark ? AppColors.surfaceLight : AppColors.lightSurfaceLight,
           borderRadius: BorderRadius.circular(4),
         ),
         child: const Text(

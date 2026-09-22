@@ -126,3 +126,33 @@ class MatchItem {
     );
   }
 }
+
+class MatchDayItem {
+  final String date;
+  final int matches;
+  final int played;
+
+  MatchDayItem({
+    required this.date,
+    required this.matches,
+    required this.played,
+  });
+
+  factory MatchDayItem.fromJson(Map<String, dynamic> json) {
+    return MatchDayItem(
+      date: json['date'] as String? ?? '',
+      matches: json['matches'] is int ? json['matches'] : int.tryParse(json['matches']?.toString() ?? '0') ?? 0,
+      played: json['played'] is int ? json['played'] : int.tryParse(json['played']?.toString() ?? '0') ?? 0,
+    );
+  }
+
+  DateTime? get dateTime => DateTime.tryParse(date);
+  bool get isPlayedOut => played >= matches && matches > 0;
+}
+
+class MatchDaysResult {
+  final List<MatchDayItem> days;
+  final String? nearest;
+
+  MatchDaysResult({required this.days, this.nearest});
+}

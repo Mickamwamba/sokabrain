@@ -5,6 +5,7 @@ import '../models/match_detail.dart';
 import '../models/standings.dart';
 import '../models/stats.dart';
 import '../models/kijiweni.dart';
+import '../models/team_profile.dart';
 
 class ApiService {
   // Can be configured to machine IP, localhost, or 10.0.2.2 for Android emulator
@@ -50,6 +51,45 @@ class ApiService {
       // ignore: avoid_print
       print('ApiService.fetchMatches error: $e');
       return [];
+    }
+  }
+
+  static Future<MatchDaysResult> fetchMatchDays({
+    String? around,
+    int before = 15,
+    int after = 20,
+    int? editionId,
+  }) async {
+    try {
+      final queryParams = <String, String>{
+        'before': before.toString(),
+        'after': after.toString(),
+      };
+      if (around != null && around.isNotEmpty) {
+        queryParams['around'] = around;
+      }
+      if (editionId != null) {
+        queryParams['editionId'] = editionId.toString();
+      }
+
+      final uri = Uri.parse('$baseUrl/api/vault/schedule/days').replace(queryParameters: queryParams);
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        final rawDays = data['days'] as List<dynamic>? ?? [];
+        final days = rawDays
+            .map((d) => MatchDayItem.fromJson(d as Map<String, dynamic>))
+            .where((d) => d.matches > 0)
+            .toList();
+        final nearest = data['nearest'] as String?;
+        return MatchDaysResult(days: days, nearest: nearest);
+      }
+      return MatchDaysResult(days: [], nearest: null);
+    } catch (e) {
+      // ignore: avoid_print
+      print('ApiService.fetchMatchDays error: $e');
+      return MatchDaysResult(days: [], nearest: null);
     }
   }
 
@@ -262,17 +302,82 @@ class ApiService {
     }
   }
 
-  static Future<bool> likeThread(int id) async {
+  static Future<Map<String, dynamic>?> likeThread(int id, {required String fanFingerprint}) async {
     try {
       final uri = Uri.parse('$baseUrl/api/kijiweni/threads/$id/like');
-      final response = await http.post(uri);
-      return response.statusCode == 200;
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'fanFingerprint': fanFingerprint,
+          'reactionType': 'LIKE',
+        }),
+      );
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body) as Map<String, dynamic>;
+      }
+      return null;
     } catch (e) {
-      return false;
+      return null;
     }
   }
 
-  static Future<bool> postComment({
+  static Future<Map<String, dynamic>?> likeComment(int commentId, {required String fanFingerprint}) async {
+    try {
+      final uri = Uri.parse('$baseUrl/api/kijiweni/comments/$commentId/like');
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'fanFingerprint': fanFingerprint,
+          'reactionType': 'LIKE',
+        }),
+      );
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body) as Map<String, dynamic>;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<int?> createThread({
+    required String spaceSlug,
+    required String title,
+    required String content,
+    required String authorName,
+    String? authorTeamName,
+    required String tag,
+  }) async {
+    try {
+      final uri = Uri.parse('$baseUrl/api/kijiweni/threads');
+      final payload = <String, dynamic>{
+        'spaceSlug': spaceSlug,
+        'title': title,
+        'content': content,
+        'authorName': authorName,
+        'tag': tag,
+      };
+      if (authorTeamName != null && authorTeamName.trim().isNotEmpty) {
+        payload['authorTeamName'] = authorTeamName.trim();
+      }
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(payload),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        return data['thread']?['id'] as int?;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<KijiweCommentItem?> postComment({
     required int threadId,
     required String content,
     required String authorName,
@@ -280,18 +385,72 @@ class ApiService {
   }) async {
     try {
       final uri = Uri.parse('$baseUrl/api/kijiweni/threads/$threadId/comments');
+      final payload = <String, dynamic>{
+        'content': content,
+        'authorName': authorName,
+      };
+      if (authorTeamName != null && authorTeamName.trim().isNotEmpty) {
+        payload['authorTeamName'] = authorTeamName.trim();
+      }
       final response = await http.post(
         uri,
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'content': content,
-          'authorName': authorName,
-          'authorTeamName': authorTeamName,
-        }),
+        body: jsonEncode(payload),
       );
-      return response.statusCode == 200 || response.statusCode == 201;
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        if (data['comment'] != null) {
+          return KijiweCommentItem.fromJson(data['comment'] as Map<String, dynamic>);
+        }
+        return KijiweCommentItem(
+          id: 0,
+          content: content,
+          authorName: authorName,
+          authorTeamName: authorTeamName,
+          likesCount: 0,
+          createdAt: DateTime.now(),
+        );
+      }
+      return null;
     } catch (e) {
-      return false;
+      return null;
+    }
+  }
+
+  // --- TEAM PROFILE ---
+  static Future<TeamProfileData?> fetchTeamProfile(int teamId) async {
+    try {
+      final uri = Uri.parse('$baseUrl/api/vault/teams/$teamId');
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        return TeamProfileData.fromJson(data);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<MatchItem>> fetchTeamUpcomingMatches(int teamId, {int limit = 5}) async {
+    try {
+      final uri = Uri.parse('$baseUrl/api/vault/matches').replace(queryParameters: {
+        'teamId': teamId.toString(),
+        'status': 'SCHEDULED',
+        'order': 'asc',
+        'limit': limit.toString(),
+      });
+      final response = await http.get(uri);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body) as Map<String, dynamic>;
+        final list = data['matches'] as List<dynamic>? ?? [];
+        return list.map((m) => MatchItem.fromJson(m as Map<String, dynamic>)).toList();
+      }
+      return [];
+    } catch (e) {
+      return [];
     }
   }
 }

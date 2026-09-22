@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_strings.dart';
 import '../theme/app_colors.dart';
 import 'matches_screen.dart';
 import 'league_hub_screen.dart';
 import 'competitions_screen.dart';
 import 'kijiweni_screen.dart';
+import 'more_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -20,50 +22,72 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     LeagueHubScreen(),
     CompetitionsScreen(),
     KijiweniScreen(),
+    MoreScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final navBg = isDark ? AppColors.surface : AppColors.lightSurface;
+    final borderCol = isDark ? AppColors.borderSubtle : AppColors.lightBorder;
+    final unselectedCol = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
         children: _screens,
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+          color: navBg,
           border: Border(
-            top: BorderSide(color: AppColors.borderSubtle, width: 1),
+            top: BorderSide(color: borderCol, width: 1),
           ),
+          boxShadow: isDark
+              ? null
+              : const [
+                  BoxShadow(
+                    color: Color(0x08000000),
+                    blurRadius: 10,
+                    offset: Offset(0, -2),
+                  ),
+                ],
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) => setState(() => _currentIndex = index),
-          backgroundColor: AppColors.surface,
+          backgroundColor: navBg,
           selectedItemColor: AppColors.emerald,
-          unselectedItemColor: AppColors.textMuted,
+          unselectedItemColor: unselectedCol,
           selectedFontSize: 11,
           unselectedFontSize: 11,
           type: BottomNavigationBarType.fixed,
-          items: const [
+          elevation: 0,
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.sports_soccer_outlined),
-              activeIcon: Icon(Icons.sports_soccer),
-              label: 'Matches',
+              icon: const Icon(Icons.sports_soccer_outlined),
+              activeIcon: const Icon(Icons.sports_soccer),
+              label: AppStrings.get('nav_matches'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.leaderboard_outlined),
-              activeIcon: Icon(Icons.leaderboard_rounded),
-              label: 'Table & Stats',
+              icon: const Icon(Icons.leaderboard_outlined),
+              activeIcon: const Icon(Icons.leaderboard_rounded),
+              label: AppStrings.get('nav_table_stats'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.emoji_events_outlined),
-              activeIcon: Icon(Icons.emoji_events),
-              label: 'Leagues',
+              icon: const Icon(Icons.emoji_events_outlined),
+              activeIcon: const Icon(Icons.emoji_events),
+              label: AppStrings.get('nav_leagues'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.forum_outlined),
-              activeIcon: Icon(Icons.forum_rounded),
-              label: 'Kijiweni',
+              icon: const Icon(Icons.forum_outlined),
+              activeIcon: const Icon(Icons.forum_rounded),
+              label: AppStrings.get('nav_kijiweni'),
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.more_horiz_rounded),
+              activeIcon: const Icon(Icons.more_horiz),
+              label: AppStrings.get('nav_more'),
             ),
           ],
         ),

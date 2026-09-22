@@ -16,6 +16,16 @@ class MatchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBg = isDark ? AppColors.surface : AppColors.lightSurface;
+    final borderCol = match.isLive
+        ? AppColors.liveRed.withValues(alpha: 0.3)
+        : (isDark ? AppColors.borderSubtle : AppColors.lightBorder);
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.textSecondary : AppColors.lightTextSecondary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final badgeBg = isDark ? AppColors.surfaceLight : AppColors.lightSurfaceLight;
+
     final homeScore = match.score.home;
     final awayScore = match.score.away;
     final hasScore = homeScore != null && awayScore != null;
@@ -29,12 +39,21 @@ class MatchCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: cardBg,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: match.isLive ? AppColors.liveRed.withValues(alpha: 0.3) : AppColors.borderSubtle,
+            color: borderCol,
             width: 1,
           ),
+          boxShadow: isDark
+              ? null
+              : const [
+                  BoxShadow(
+                    color: Color(0x06000000),
+                    blurRadius: 4,
+                    offset: Offset(0, 1),
+                  ),
+                ],
         ),
         child: Row(
           children: [
@@ -51,13 +70,13 @@ class MatchCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceLight,
+                        color: badgeBg,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Text(
+                      child: Text(
                         'FT',
                         style: TextStyle(
-                          color: AppColors.textMuted,
+                          color: textMuted,
                           fontSize: 10,
                           fontWeight: FontWeight.w700,
                         ),
@@ -66,23 +85,23 @@ class MatchCard extends StatelessWidget {
                   else if (match.kickoffAt != null)
                     Text(
                       DateFormat('HH:mm').format(match.kickoffAt!.toLocal()),
-                      style: const TextStyle(
-                        color: AppColors.textSecondary,
+                      style: TextStyle(
+                        color: textSecondary,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
                     )
                   else
-                    const Text(
+                    Text(
                       '-:-',
-                      style: TextStyle(color: AppColors.textMuted, fontSize: 12),
+                      style: TextStyle(color: textMuted, fontSize: 12),
                     ),
                   if (match.round != null && !match.isLive) ...[
                     const SizedBox(height: 3),
                     Text(
                       "R${match.round}",
-                      style: const TextStyle(
-                        color: AppColors.textMuted,
+                      style: TextStyle(
+                        color: textMuted,
                         fontSize: 9,
                         fontWeight: FontWeight.w500,
                       ),
@@ -95,7 +114,7 @@ class MatchCard extends StatelessWidget {
             Container(
               height: 36,
               width: 1,
-              color: AppColors.borderSubtle,
+              color: isDark ? AppColors.borderSubtle : AppColors.lightBorder,
               margin: const EdgeInsets.only(right: 12),
             ),
 
@@ -111,9 +130,12 @@ class MatchCard extends StatelessWidget {
                         width: 18,
                         height: 18,
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceElevated,
+                          color: isDark ? AppColors.surfaceElevated : const Color(0xFFECFDF5),
                           shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.border, width: 0.5),
+                          border: Border.all(
+                            color: isDark ? AppColors.border : AppColors.emerald.withValues(alpha: 0.3),
+                            width: 0.5,
+                          ),
                         ),
                         alignment: Alignment.center,
                         child: Text(
@@ -133,8 +155,8 @@ class MatchCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: isHomeWinning || match.isLive
-                                ? AppColors.textPrimary
-                                : AppColors.textSecondary,
+                                ? textPrimary
+                                : textSecondary,
                             fontSize: 13.5,
                             fontWeight: isHomeWinning ? FontWeight.w700 : FontWeight.w500,
                           ),
@@ -150,9 +172,12 @@ class MatchCard extends StatelessWidget {
                         width: 18,
                         height: 18,
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceElevated,
+                          color: isDark ? AppColors.surfaceElevated : const Color(0xFFECFDF5),
                           shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.border, width: 0.5),
+                          border: Border.all(
+                            color: isDark ? AppColors.border : AppColors.emerald.withValues(alpha: 0.3),
+                            width: 0.5,
+                          ),
                         ),
                         alignment: Alignment.center,
                         child: Text(
@@ -172,8 +197,8 @@ class MatchCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: isAwayWinning || match.isLive
-                                ? AppColors.textPrimary
-                                : AppColors.textSecondary,
+                                ? textPrimary
+                                : textSecondary,
                             fontSize: 13.5,
                             fontWeight: isAwayWinning ? FontWeight.w700 : FontWeight.w500,
                           ),
@@ -195,7 +220,7 @@ class MatchCard extends StatelessWidget {
                     style: TextStyle(
                       color: match.isLive
                           ? AppColors.liveRed
-                          : (isHomeWinning ? AppColors.textPrimary : AppColors.textSecondary),
+                          : (isHomeWinning ? textPrimary : textSecondary),
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
@@ -206,7 +231,7 @@ class MatchCard extends StatelessWidget {
                     style: TextStyle(
                       color: match.isLive
                           ? AppColors.liveRed
-                          : (isAwayWinning ? AppColors.textPrimary : AppColors.textSecondary),
+                          : (isAwayWinning ? textPrimary : textSecondary),
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
@@ -214,9 +239,9 @@ class MatchCard extends StatelessWidget {
                 ],
               )
             else
-              const Icon(
+              Icon(
                 Icons.chevron_right,
-                color: AppColors.textMuted,
+                color: textMuted,
                 size: 18,
               ),
           ],

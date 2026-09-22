@@ -3,6 +3,7 @@ import '../models/standings.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
 import 'competitions_screen.dart';
+import 'team_profile_screen.dart';
 
 class StandingsScreen extends StatefulWidget {
   final int? initialCompetitionId;
@@ -555,9 +556,21 @@ class _StandingsScreenState extends State<StandingsScreen> {
                             final isTopTier = row.position <= 2;
                             final isRelegation = index >= _standings.length - 2;
 
-                            return Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                              color: index % 2 == 0 ? AppColors.surface : AppColors.surface.withValues(alpha: 0.6),
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => TeamProfileScreen(
+                                      teamId: row.teamId,
+                                      initialTeamName: row.teamName,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                color: index % 2 == 0 ? AppColors.surface : AppColors.surface.withValues(alpha: 0.6),
                               child: Row(
                                 children: [
                                   // Position with color bar indicator
@@ -686,8 +699,9 @@ class _StandingsScreenState extends State<StandingsScreen> {
                                   ),
                                 ],
                               ),
-                            );
-                          },
+                            ),
+                          );
+                        },
                         ),
                       ),
           ),

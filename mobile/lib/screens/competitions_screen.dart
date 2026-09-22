@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_strings.dart';
 import '../models/standings.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
@@ -69,22 +70,29 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
 
   List<CompetitionGroup> get _filteredCompetitions {
     if (_searchQuery.trim().isEmpty) return _competitions;
-    final query = _searchQuery.toLowerCase().trim();
+    final q = _searchQuery.toLowerCase().trim();
     return _competitions.where((c) {
-      final matchName = c.name.toLowerCase().contains(query);
-      final matchCountry = (c.country ?? '').toLowerCase().contains(query);
-      return matchName || matchCountry;
+      final name = c.name.toLowerCase();
+      final country = (c.country ?? '').toLowerCase();
+      return name.contains(q) || country.contains(q);
     }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final searchBg = isDark ? AppColors.surface : Colors.white;
+    final searchBorder = isDark ? AppColors.border : AppColors.lightBorder;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mashindano & Ligi', style: TextStyle(fontWeight: FontWeight.w900)),
+        title: Text(AppStrings.get('competitions_title'), style: const TextStyle(fontWeight: FontWeight.w900)),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh, size: 20),
+            icon: Icon(Icons.refresh, size: 20, color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary),
+            tooltip: AppStrings.get('refresh'),
             onPressed: _loadCompetitions,
           ),
         ],
@@ -97,20 +105,29 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: searchBg,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.border),
+                border: Border.all(color: searchBorder),
+                boxShadow: isDark
+                    ? null
+                    : const [
+                        BoxShadow(
+                          color: Color(0x06000000),
+                          blurRadius: 4,
+                          offset: Offset(0, 1),
+                        ),
+                      ],
               ),
               child: TextField(
                 onChanged: (val) => setState(() => _searchQuery = val),
-                style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
-                decoration: const InputDecoration(
-                  hintText: 'Tafuta ligi au nchi (mf. Tanzania, Kenya)...',
-                  hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13),
-                  icon: Icon(Icons.search, size: 18, color: AppColors.textMuted),
+                style: TextStyle(color: textPrimary, fontSize: 13),
+                decoration: InputDecoration(
+                  hintText: AppStrings.get('search_league_hint'),
+                  hintStyle: TextStyle(color: textMuted, fontSize: 13),
+                  icon: Icon(Icons.search, size: 18, color: textMuted),
                   border: InputBorder.none,
                   isDense: true,
-                  contentPadding: EdgeInsets.symmetric(vertical: 12),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),
@@ -121,14 +138,15 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator(color: AppColors.emerald))
                 : _filteredCompetitions.isEmpty
-                    ? const Center(
+                    ? Center(
                         child: Text(
-                          'Hakuna ligi iliyopatikana.',
-                          style: TextStyle(color: AppColors.textMuted),
+                          AppStrings.get('no_league_found'),
+                          style: TextStyle(color: textMuted),
                         ),
                       )
                     : RefreshIndicator(
                         color: AppColors.emerald,
+                        backgroundColor: isDark ? AppColors.surface : AppColors.lightSurface,
                         onRefresh: _loadCompetitions,
                         child: ListView.builder(
                           padding: const EdgeInsets.only(bottom: 24),
@@ -146,12 +164,28 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
   }
 
   Widget _buildCompetitionCard(CompetitionGroup comp) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBg = isDark ? AppColors.surface : Colors.white;
+    final borderCol = isDark ? AppColors.borderSubtle : AppColors.lightBorder;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final avatarBg = isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9);
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: cardBg,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.borderSubtle, width: 1),
+        border: Border.all(color: borderCol, width: 1),
+        boxShadow: isDark
+            ? null
+            : const [
+                BoxShadow(
+                  color: Color(0x06000000),
+                  blurRadius: 4,
+                  offset: Offset(0, 1),
+                ),
+              ],
       ),
       child: Material(
         color: Colors.transparent,
@@ -177,9 +211,9 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: AppColors.surfaceElevated,
+                    color: avatarBg,
                     shape: BoxShape.circle,
-                    border: Border.all(color: AppColors.border),
+                    border: Border.all(color: isDark ? AppColors.border : AppColors.lightBorder),
                   ),
                   alignment: Alignment.center,
                   child: Text(comp.flagEmoji, style: const TextStyle(fontSize: 20)),
@@ -191,8 +225,8 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                     children: [
                       Text(
                         comp.name,
-                        style: const TextStyle(
-                          color: AppColors.textPrimary,
+                        style: TextStyle(
+                          color: textPrimary,
                           fontSize: 14.5,
                           fontWeight: FontWeight.w700,
                         ),
@@ -201,14 +235,14 @@ class _CompetitionsScreenState extends State<CompetitionsScreen> {
                         "${comp.displayCountry} • ${comp.editions.length} Seasons${comp.tier != null ? ' • Tier ${comp.tier}' : ''}",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: AppColors.textMuted, fontSize: 11.5),
+                        style: TextStyle(color: textMuted, fontSize: 11.5),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.chevron_right_rounded,
-                  color: AppColors.textMuted,
+                  color: textMuted,
                   size: 20,
                 ),
               ],

@@ -3,7 +3,9 @@ import '../models/standings.dart';
 import '../models/stats.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
+import '../l10n/app_strings.dart';
 import 'competitions_screen.dart';
+import 'team_profile_screen.dart';
 
 class LeagueHubScreen extends StatefulWidget {
   final int? initialCompetitionId;
@@ -215,7 +217,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: AppColors.surface,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? AppColors.surface : Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -280,25 +282,25 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         decoration: BoxDecoration(
-                          color: AppColors.surfaceElevated,
+                          color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9),
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppColors.border),
+                          border: Border.all(color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.border : AppColors.lightBorder),
                         ),
                         child: TextField(
                           onChanged: (val) => setSheetState(() => query = val),
-                          style: const TextStyle(color: AppColors.textPrimary, fontSize: 13),
-                          decoration: const InputDecoration(
-                            hintText: 'Tafuta ligi au nchi...',
-                            hintStyle: TextStyle(color: AppColors.textMuted, fontSize: 13),
-                            icon: Icon(Icons.search, size: 18, color: AppColors.textMuted),
+                          style: TextStyle(color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.textPrimary : AppColors.lightTextPrimary, fontSize: 13),
+                          decoration: InputDecoration(
+                            hintText: AppStrings.get('search_league_hint'),
+                            hintStyle: TextStyle(color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 13),
+                            icon: Icon(Icons.search, size: 18, color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.textMuted : AppColors.lightTextMuted),
                             border: InputBorder.none,
                             isDense: true,
-                            contentPadding: EdgeInsets.symmetric(vertical: 10),
+                            contentPadding: const EdgeInsets.symmetric(vertical: 10),
                           ),
                         ),
                       ),
                     ),
-                    const Divider(height: 16, color: AppColors.borderSubtle),
+                    Divider(height: 16, color: Theme.of(ctx).brightness == Brightness.dark ? AppColors.borderSubtle : AppColors.lightBorder),
                     Expanded(
                       child: ListView.separated(
                         controller: scrollController,
@@ -307,6 +309,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                         itemBuilder: (_, index) {
                           final c = filtered[index];
                           final isSelected = c.competitionId == _selectedCompetition?.competitionId;
+                          final isDark = Theme.of(ctx).brightness == Brightness.dark;
 
                           return ListTile(
                             onTap: () {
@@ -317,10 +320,10 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                               width: 34,
                               height: 34,
                               decoration: BoxDecoration(
-                                color: isSelected ? AppColors.emerald.withValues(alpha: 0.15) : AppColors.surfaceElevated,
+                                color: isSelected ? AppColors.emerald.withValues(alpha: 0.15) : (isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9)),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: isSelected ? AppColors.emerald : AppColors.borderSubtle,
+                                  color: isSelected ? AppColors.emerald : (isDark ? AppColors.borderSubtle : AppColors.lightBorder),
                                 ),
                               ),
                               alignment: Alignment.center,
@@ -329,14 +332,14 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                             title: Text(
                               c.name,
                               style: TextStyle(
-                                color: isSelected ? AppColors.emerald : AppColors.textPrimary,
+                                color: isSelected ? AppColors.emerald : (isDark ? AppColors.textPrimary : AppColors.lightTextPrimary),
                                 fontSize: 13.5,
                                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                               ),
                             ),
                             subtitle: Text(
                               "${c.country ?? 'Regional'} • ${c.editions.length} Seasons",
-                              style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+                              style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11),
                             ),
                             trailing: isSelected
                                 ? const Icon(Icons.check_circle, color: AppColors.emerald, size: 18)
@@ -358,14 +361,21 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
   @override
   Widget build(BuildContext context) {
     final availableSeasons = _selectedCompetition?.editions ?? [];
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.textPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.textSecondary : AppColors.lightTextSecondary;
+    final textMuted = isDark ? AppColors.textMuted : AppColors.lightTextMuted;
+    final topBarBg = isDark ? AppColors.surface : Colors.white;
+    final switcherBg = isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9);
+    final borderCol = isDark ? AppColors.borderSubtle : AppColors.lightBorder;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mashindano & Msimamo', style: TextStyle(fontWeight: FontWeight.w800)),
+        title: Text(AppStrings.get('nav_table_stats'), style: const TextStyle(fontWeight: FontWeight.w800)),
         actions: [
           IconButton(
-            icon: const Icon(Icons.emoji_events_outlined, color: AppColors.textSecondary),
-            tooltip: 'Ligi Zote',
+            icon: Icon(Icons.emoji_events_outlined, color: textSecondary),
+            tooltip: AppStrings.get('competitions_title'),
             onPressed: () {
               Navigator.push(
                 context,
@@ -374,7 +384,8 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.refresh, size: 20, color: AppColors.textSecondary),
+            icon: Icon(Icons.refresh, size: 20, color: textSecondary),
+            tooltip: AppStrings.get('refresh'),
             onPressed: _loadDataForCurrentSelection,
           ),
         ],
@@ -384,7 +395,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
           // Sticky Top Section: Competition + Season Selector
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-            color: AppColors.surface,
+            color: topBarBg,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -395,9 +406,9 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                     decoration: BoxDecoration(
-                      color: AppColors.surfaceElevated,
+                      color: switcherBg,
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: AppColors.borderSubtle),
+                      border: Border.all(color: borderCol),
                     ),
                     child: Row(
                       children: [
@@ -405,9 +416,9 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                           width: 28,
                           height: 28,
                           decoration: BoxDecoration(
-                            color: AppColors.surface,
+                            color: isDark ? AppColors.surface : Colors.white,
                             shape: BoxShape.circle,
-                            border: Border.all(color: AppColors.border, width: 0.5),
+                            border: Border.all(color: isDark ? AppColors.border : AppColors.lightBorder, width: 0.5),
                           ),
                           alignment: Alignment.center,
                           child: Text(
@@ -420,9 +431,9 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'LIGI ILIYOCHAGULIWA',
-                                style: TextStyle(
+                              Text(
+                                AppStrings.get('selected_league'),
+                                style: const TextStyle(
                                   color: AppColors.emerald,
                                   fontSize: 9.5,
                                   fontWeight: FontWeight.w800,
@@ -433,8 +444,8 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                                 _selectedCompetition?.name ?? 'Chagua Mashindano',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: AppColors.textPrimary,
+                                style: TextStyle(
+                                  color: textPrimary,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -445,19 +456,19 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: AppColors.surface,
+                            color: isDark ? AppColors.surface : Colors.white,
                             borderRadius: BorderRadius.circular(6),
-                            border: Border.all(color: AppColors.borderSubtle),
+                            border: Border.all(color: borderCol),
                           ),
-                          child: const Row(
+                          child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'Badili',
-                                style: TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.w600),
+                                AppStrings.get('change'),
+                                style: TextStyle(color: textSecondary, fontSize: 11, fontWeight: FontWeight.w600),
                               ),
-                              SizedBox(width: 4),
-                              Icon(Icons.swap_vert, size: 14, color: AppColors.emerald),
+                              const SizedBox(width: 4),
+                              const Icon(Icons.swap_vert, size: 14, color: AppColors.emerald),
                             ],
                           ),
                         ),
@@ -498,9 +509,9 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                                   fontWeight: _isAllTime ? FontWeight.w800 : FontWeight.w700,
                                 ),
                                 selectedColor: AppColors.amber,
-                                backgroundColor: AppColors.surfaceElevated,
+                                backgroundColor: isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9),
                                 side: BorderSide(
-                                  color: _isAllTime ? AppColors.amber : AppColors.borderSubtle,
+                                  color: _isAllTime ? AppColors.amber : (isDark ? AppColors.borderSubtle : AppColors.lightBorder),
                                 ),
                                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                 visualDensity: VisualDensity.compact,
@@ -522,14 +533,14 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                                   labelStyle: TextStyle(
                                     color: isSelected
                                         ? Colors.black
-                                        : (hasMatches ? AppColors.textPrimary : AppColors.textMuted),
+                                        : (hasMatches ? textPrimary : AppColors.textMuted),
                                     fontSize: 11.5,
                                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                                   ),
                                   selectedColor: AppColors.emerald,
-                                  backgroundColor: AppColors.surfaceElevated,
+                                  backgroundColor: isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9),
                                   side: BorderSide(
-                                    color: isSelected ? AppColors.emerald : AppColors.borderSubtle,
+                                    color: isSelected ? AppColors.emerald : (isDark ? AppColors.borderSubtle : AppColors.lightBorder),
                                   ),
                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                   visualDensity: VisualDensity.compact,
@@ -549,9 +560,9 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                 Container(
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
-                    color: AppColors.surfaceElevated,
+                    color: isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: AppColors.borderSubtle),
+                    border: Border.all(color: borderCol),
                   ),
                   child: Row(
                     children: [
@@ -562,10 +573,13 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             decoration: BoxDecoration(
-                              color: _activeSubTab == 0 ? AppColors.surface : Colors.transparent,
+                              color: _activeSubTab == 0 ? (isDark ? AppColors.surface : Colors.white) : Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                               border: _activeSubTab == 0
                                   ? Border.all(color: AppColors.emerald.withValues(alpha: 0.5), width: 1)
+                                  : null,
+                              boxShadow: _activeSubTab == 0 && !isDark
+                                  ? const [BoxShadow(color: Color(0x0A000000), blurRadius: 4, offset: Offset(0, 1))]
                                   : null,
                             ),
                             alignment: Alignment.center,
@@ -575,13 +589,13 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                                 Icon(
                                   Icons.format_list_numbered_rounded,
                                   size: 15,
-                                  color: _activeSubTab == 0 ? AppColors.emerald : AppColors.textMuted,
+                                  color: _activeSubTab == 0 ? AppColors.emerald : textMuted,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Msimamo (Table)',
+                                  AppStrings.get('tab_table'),
                                   style: TextStyle(
-                                    color: _activeSubTab == 0 ? AppColors.textPrimary : AppColors.textMuted,
+                                    color: _activeSubTab == 0 ? textPrimary : textMuted,
                                     fontSize: 12.5,
                                     fontWeight: _activeSubTab == 0 ? FontWeight.w800 : FontWeight.w600,
                                   ),
@@ -598,10 +612,13 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             decoration: BoxDecoration(
-                              color: _activeSubTab == 1 ? AppColors.surface : Colors.transparent,
+                              color: _activeSubTab == 1 ? (isDark ? AppColors.surface : Colors.white) : Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                               border: _activeSubTab == 1
                                   ? Border.all(color: AppColors.emerald.withValues(alpha: 0.5), width: 1)
+                                  : null,
+                              boxShadow: _activeSubTab == 1 && !isDark
+                                  ? const [BoxShadow(color: Color(0x0A000000), blurRadius: 4, offset: Offset(0, 1))]
                                   : null,
                             ),
                             alignment: Alignment.center,
@@ -611,13 +628,13 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                                 Icon(
                                   Icons.bar_chart_rounded,
                                   size: 15,
-                                  color: _activeSubTab == 1 ? AppColors.emerald : AppColors.textMuted,
+                                  color: _activeSubTab == 1 ? AppColors.emerald : textMuted,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Takwimu (Stats)',
+                                  AppStrings.get('tab_stats'),
                                   style: TextStyle(
-                                    color: _activeSubTab == 1 ? AppColors.textPrimary : AppColors.textMuted,
+                                    color: _activeSubTab == 1 ? textPrimary : textMuted,
                                     fontSize: 12.5,
                                     fontWeight: _activeSubTab == 1 ? FontWeight.w800 : FontWeight.w600,
                                   ),
@@ -673,26 +690,27 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
       );
     }
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         // Standings Table Header
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          color: AppColors.background,
-          child: const Row(
+          color: isDark ? AppColors.background : AppColors.lightBackground,
+          child: Row(
             children: [
-              SizedBox(width: 28, child: Text('#', style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              Expanded(child: Text('CLUB', style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 26, child: Text('P', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 26, child: Text('W', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 26, child: Text('D', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 26, child: Text('L', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 32, child: Text('GD', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 32, child: Text('PTS', textAlign: TextAlign.center, style: TextStyle(color: AppColors.emerald, fontSize: 11, fontWeight: FontWeight.w800))),
+              SizedBox(width: 28, child: Text('#', style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              Expanded(child: Text('CLUB', style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 26, child: Text('P', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 26, child: Text('W', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 26, child: Text('D', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 26, child: Text('L', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 32, child: Text('GD', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              const SizedBox(width: 32, child: Text('PTS', textAlign: TextAlign.center, style: TextStyle(color: AppColors.emerald, fontSize: 11, fontWeight: FontWeight.w800))),
             ],
           ),
         ),
-        const Divider(height: 1, color: AppColors.borderSubtle),
+        Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
         Expanded(
           child: RefreshIndicator(
             color: AppColors.emerald,
@@ -700,109 +718,169 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
             child: ListView.separated(
               padding: const EdgeInsets.only(bottom: 24),
               itemCount: _standings.length,
-              separatorBuilder: (_, __) => const Divider(height: 1, color: AppColors.borderSubtle),
+              separatorBuilder: (_, __) => Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
               itemBuilder: (context, index) {
                 final row = _standings[index];
                 final isTopTier = row.position <= 2;
                 final isRelegation = index >= _standings.length - 2;
+                final isDark = Theme.of(context).brightness == Brightness.dark;
 
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  color: index % 2 == 0 ? AppColors.surface : AppColors.surface.withValues(alpha: 0.6),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 28,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 3,
-                              height: 16,
-                              decoration: BoxDecoration(
-                                color: isTopTier
-                                    ? AppColors.emerald
-                                    : (isRelegation ? AppColors.liveRed : Colors.transparent),
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              "${row.position}",
-                              style: TextStyle(
-                                color: isTopTier ? AppColors.emerald : AppColors.textSecondary,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TeamProfileScreen(
+                          teamId: row.teamId,
+                          initialTeamName: row.teamName,
                         ),
                       ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 20,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                color: AppColors.surfaceElevated,
-                                shape: BoxShape.circle,
-                                border: Border.all(color: AppColors.border, width: 0.5),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    color: index % 2 == 0
+                        ? (isDark ? AppColors.surface : Colors.white)
+                        : (isDark ? AppColors.surface.withValues(alpha: 0.6) : const Color(0xFFF8FAFC)),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 28,
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 3,
+                                height: 16,
+                                decoration: BoxDecoration(
+                                  color: isTopTier
+                                      ? AppColors.emerald
+                                      : (isRelegation ? AppColors.liveRed : Colors.transparent),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
                               ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                row.teamName.isNotEmpty ? row.teamName[0] : 'C',
-                                style: const TextStyle(
-                                  color: AppColors.emerald,
-                                  fontSize: 9,
+                              const SizedBox(width: 4),
+                              Text(
+                                "${row.position}",
+                                style: TextStyle(
+                                  color: isTopTier
+                                      ? AppColors.emerald
+                                      : (isDark ? AppColors.textSecondary : AppColors.lightTextSecondary),
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                row.teamName,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: AppColors.textPrimary,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: isDark ? AppColors.surfaceElevated : AppColors.lightSurfaceElevated,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: isDark ? AppColors.border : AppColors.lightBorder, width: 0.5),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  row.teamName.isNotEmpty ? row.teamName[0] : 'C',
+                                  style: const TextStyle(
+                                    color: AppColors.emerald,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                               ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  row.teamName,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 26,
+                          child: Text(
+                            "${row.played}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary,
+                              fontSize: 12,
                             ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 26, child: Text("${row.played}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                      SizedBox(width: 26, child: Text("${row.won}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                      SizedBox(width: 26, child: Text("${row.drawn}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                      SizedBox(width: 26, child: Text("${row.lost}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                      SizedBox(
-                        width: 32,
-                        child: Text(
-                          row.goalDifference > 0 ? "+${row.goalDifference}" : "${row.goalDifference}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: row.goalDifference > 0 ? AppColors.textPrimary : AppColors.textMuted,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 32,
-                        child: Text(
-                          "${row.points}",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: AppColors.emerald,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w800,
+                        SizedBox(
+                          width: 26,
+                          child: Text(
+                            "${row.won}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 26,
+                          child: Text(
+                            "${row.drawn}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 26,
+                          child: Text(
+                            "${row.lost}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 32,
+                          child: Text(
+                            row.goalDifference > 0 ? "+${row.goalDifference}" : "${row.goalDifference}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: row.goalDifference > 0
+                                  ? (isDark ? AppColors.textPrimary : AppColors.lightTextPrimary)
+                                  : (isDark ? AppColors.textMuted : AppColors.lightTextMuted),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 32,
+                          child: Text(
+                            "${row.points}",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: AppColors.emerald,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -819,82 +897,109 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
       return const Center(child: Text('Hakuna data ya kihistoria kwa ligi hii.', style: TextStyle(color: AppColors.textMuted)));
     }
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          color: AppColors.background,
-          child: const Row(
+          color: isDark ? AppColors.background : AppColors.lightBackground,
+          child: Row(
             children: [
-              SizedBox(width: 28, child: Text('#', style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              Expanded(child: Text('CLUB (ALL-TIME)', style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 28, child: Text('P', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 28, child: Text('W', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 34, child: Text('GD', textAlign: TextAlign.center, style: TextStyle(color: AppColors.textMuted, fontSize: 11, fontWeight: FontWeight.w700))),
-              SizedBox(width: 36, child: Text('PTS', textAlign: TextAlign.center, style: TextStyle(color: AppColors.emerald, fontSize: 11, fontWeight: FontWeight.w800))),
+              SizedBox(width: 28, child: Text('#', style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              Expanded(child: Text('CLUB (ALL-TIME)', style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 28, child: Text('P', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 28, child: Text('W', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              SizedBox(width: 34, child: Text('GD', textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 11, fontWeight: FontWeight.w700))),
+              const SizedBox(width: 36, child: Text('PTS', textAlign: TextAlign.center, style: TextStyle(color: AppColors.emerald, fontSize: 11, fontWeight: FontWeight.w800))),
             ],
           ),
         ),
-        const Divider(height: 1, color: AppColors.borderSubtle),
+        Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
         Expanded(
           child: ListView.separated(
             padding: const EdgeInsets.only(bottom: 24),
             itemCount: _clubs.length,
-            separatorBuilder: (_, __) => const Divider(height: 1, color: AppColors.borderSubtle),
+            separatorBuilder: (_, __) => Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
             itemBuilder: (context, index) {
               final c = _clubs[index];
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                color: index % 2 == 0 ? AppColors.surface : AppColors.surface.withValues(alpha: 0.6),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 28,
-                      child: Text(
-                        "${index + 1}",
-                        style: TextStyle(
-                          color: index < 3 ? AppColors.amber : AppColors.textSecondary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => TeamProfileScreen(
+                        teamId: c.teamId,
+                        initialTeamName: c.teamName,
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  color: index % 2 == 0
+                      ? (isDark ? AppColors.surface : Colors.white)
+                      : (isDark ? AppColors.surface.withValues(alpha: 0.6) : const Color(0xFFF8FAFC)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 28,
+                        child: Text(
+                          "${index + 1}",
+                          style: TextStyle(
+                            color: index < 3 ? AppColors.amber : (isDark ? AppColors.textSecondary : AppColors.lightTextSecondary),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            c.teamName,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: AppColors.textPrimary, fontSize: 13, fontWeight: FontWeight.w700),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              c.teamName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              "${c.winRate.toStringAsFixed(1)}% win rate • ${c.cleanSheets} clean sheets",
+                              style: TextStyle(
+                                color: isDark ? AppColors.textMuted : AppColors.lightTextMuted,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 28, child: Text("${c.played}", textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary, fontSize: 12))),
+                      SizedBox(width: 28, child: Text("${c.won}", textAlign: TextAlign.center, style: TextStyle(color: isDark ? AppColors.textSecondary : AppColors.lightTextSecondary, fontSize: 12))),
+                      SizedBox(
+                        width: 34,
+                        child: Text(
+                          c.goalDifference > 0 ? "+${c.goalDifference}" : "${c.goalDifference}",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: isDark ? AppColors.textMuted : AppColors.lightTextMuted,
+                            fontSize: 11,
                           ),
-                          Text(
-                            "${c.winRate.toStringAsFixed(1)}% win rate • ${c.cleanSheets} clean sheets",
-                            style: const TextStyle(color: AppColors.textMuted, fontSize: 10),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 28, child: Text("${c.played}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                    SizedBox(width: 28, child: Text("${c.won}", textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12))),
-                    SizedBox(
-                      width: 34,
-                      child: Text(
-                        c.goalDifference > 0 ? "+${c.goalDifference}" : "${c.goalDifference}",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+                      SizedBox(
+                        width: 36,
+                        child: Text(
+                          "${c.points}",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: AppColors.emerald, fontSize: 13, fontWeight: FontWeight.w800),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 36,
-                      child: Text(
-                        "${c.points}",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(color: AppColors.emerald, fontSize: 13, fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
@@ -937,19 +1042,20 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
 
   Widget _buildOverviewCard() {
     final ov = _overview!;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            const Color(0xFF0F273F).withValues(alpha: 0.8),
-            AppColors.surface,
-          ],
+          colors: isDark
+              ? [const Color(0xFF0F273F).withValues(alpha: 0.8), AppColors.surface]
+              : [const Color(0xFFECFDF5), Colors.white],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: isDark ? AppColors.border : AppColors.lightBorder),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 6, offset: Offset(0, 2))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -997,14 +1103,15 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
   }
 
   Widget _buildStatMetric(String label, String value, IconData icon) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             value,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
+            style: TextStyle(
+              color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
               fontSize: 18,
               fontWeight: FontWeight.w900,
             ),
@@ -1012,7 +1119,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
           const SizedBox(height: 2),
           Text(
             label,
-            style: const TextStyle(color: AppColors.textMuted, fontSize: 10, fontWeight: FontWeight.w600),
+            style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 10, fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -1021,12 +1128,14 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
 
   Widget _buildTopScorersSection() {
     final maxGoals = _scorers.isNotEmpty ? _scorers.first.goals : 1;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? AppColors.surface : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.borderSubtle),
+        border: Border.all(color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 6, offset: Offset(0, 2))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1036,14 +1145,14 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.military_tech_outlined, size: 18, color: AppColors.amber),
-                    SizedBox(width: 8),
+                    const Icon(Icons.military_tech_outlined, size: 18, color: AppColors.amber),
+                    const SizedBox(width: 8),
                     Text(
                       'Wafungaji Bora (Top Scorers)',
                       style: TextStyle(
-                        color: AppColors.textPrimary,
+                        color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
                         fontSize: 14,
                         fontWeight: FontWeight.w800,
                       ),
@@ -1057,7 +1166,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
               ],
             ),
           ),
-          const Divider(height: 1, color: AppColors.borderSubtle),
+          Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
           if (_scorers.isEmpty)
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 24),
@@ -1070,7 +1179,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: _scorers.length > 8 ? 8 : _scorers.length,
-              separatorBuilder: (_, __) => const Divider(height: 1, color: AppColors.borderSubtle),
+              separatorBuilder: (_, __) => Divider(height: 1, color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
               itemBuilder: (context, index) {
                 final s = _scorers[index];
                 final isTop1 = s.rank == 1;
@@ -1177,11 +1286,13 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
       sortedClubs.sort((a, b) => b.winRate.compareTo(a.winRate));
     }
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? AppColors.surface : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.borderSubtle),
+        border: Border.all(color: isDark ? AppColors.borderSubtle : AppColors.lightBorder),
+        boxShadow: isDark ? null : const [BoxShadow(color: Color(0x06000000), blurRadius: 6, offset: Offset(0, 2))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1191,10 +1302,10 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Rekodi za Vilabu (Club Leaderboards)',
                   style: TextStyle(
-                    color: AppColors.textPrimary,
+                    color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                   ),
@@ -1236,60 +1347,77 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
                 if (_clubStatFilter == 'defense') statValue = "${c.cleanSheets}";
                 if (_clubStatFilter == 'winRate') statValue = "${c.winRate.toStringAsFixed(1)}%";
 
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
-                  child: Row(
-                    children: [
-                      Text(
-                        "${index + 1}.",
-                        style: TextStyle(
-                          color: index < 3 ? AppColors.amber : AppColors.textMuted,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TeamProfileScreen(
+                          teamId: c.teamId,
+                          initialTeamName: c.teamName,
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      Container(
-                        width: 22,
-                        height: 22,
-                        decoration: BoxDecoration(
-                          color: AppColors.surfaceElevated,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.border, width: 0.5),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
+                    child: Row(
+                      children: [
+                        Text(
+                          "${index + 1}.",
+                          style: TextStyle(
+                            color: index < 3 ? AppColors.amber : AppColors.textMuted,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          c.teamName.isNotEmpty ? c.teamName[0] : 'C',
-                          style: const TextStyle(color: AppColors.emerald, fontSize: 10, fontWeight: FontWeight.w700),
+                        const SizedBox(width: 12),
+                        Container(
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                            color: isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: isDark ? AppColors.border : AppColors.lightBorder, width: 0.5),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            c.teamName.isNotEmpty ? c.teamName[0] : 'C',
+                            style: const TextStyle(color: AppColors.emerald, fontSize: 10, fontWeight: FontWeight.w700),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              c.teamName,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(color: AppColors.textPrimary, fontSize: 13, fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              "${c.played} Mechi • ${c.won}W ${c.drawn}D ${c.lost}L",
-                              style: const TextStyle(color: AppColors.textMuted, fontSize: 10.5),
-                            ),
-                          ],
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                c.teamName,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: isDark ? AppColors.textPrimary : AppColors.lightTextPrimary,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "${c.played} Mechi • ${c.won}W ${c.drawn}D ${c.lost}L",
+                                style: TextStyle(color: isDark ? AppColors.textMuted : AppColors.lightTextMuted, fontSize: 10.5),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text(
-                        statValue,
-                        style: const TextStyle(
-                          color: AppColors.emerald,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900,
+                        Text(
+                          statValue,
+                          style: const TextStyle(
+                            color: AppColors.emerald,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },
@@ -1301,6 +1429,7 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
 
   Widget _buildClubFilterChip(String label, String value) {
     final isSelected = _clubStatFilter == value;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: GestureDetector(
@@ -1308,16 +1437,16 @@ class _LeagueHubScreenState extends State<LeagueHubScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
-            color: isSelected ? AppColors.emerald : AppColors.surfaceElevated,
+            color: isSelected ? AppColors.emerald : (isDark ? AppColors.surfaceElevated : const Color(0xFFF1F5F9)),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isSelected ? AppColors.emerald : AppColors.borderSubtle,
+              color: isSelected ? AppColors.emerald : (isDark ? AppColors.borderSubtle : AppColors.lightBorder),
             ),
           ),
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.black : AppColors.textSecondary,
+              color: isSelected ? Colors.black : (isDark ? AppColors.textSecondary : AppColors.lightTextSecondary),
               fontSize: 11,
               fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
             ),

@@ -60,4 +60,62 @@ class AppTheme {
       ),
     );
   }
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: AppColors.lightBackground,
+      primaryColor: AppColors.emerald,
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.emerald,
+        secondary: AppColors.emeraldDark,
+        surface: AppColors.lightSurface,
+        error: AppColors.liveRed,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white,
+        onSurface: AppColors.lightTextPrimary,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.lightBackground,
+        elevation: 0,
+        centerTitle: false,
+        titleTextStyle: TextStyle(
+          color: AppColors.lightTextPrimary,
+          fontSize: 20,
+          fontWeight: FontWeight.w800,
+          letterSpacing: -0.5,
+        ),
+        iconTheme: IconThemeData(color: AppColors.lightTextPrimary),
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.lightSurface,
+        selectedItemColor: AppColors.emerald,
+        unselectedItemColor: AppColors.lightTextMuted,
+        type: BottomNavigationBarType.fixed,
+        elevation: 8,
+        selectedLabelStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+        unselectedLabelStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+      ),
+      cardTheme: CardThemeData(
+        color: AppColors.lightSurface,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+          side: const BorderSide(color: AppColors.lightBorder, width: 1),
+        ),
+        margin: EdgeInsets.zero,
+      ),
+      textTheme: GoogleFonts.interTextTheme(
+        ThemeData.light().textTheme,
+      ).apply(
+        bodyColor: AppColors.lightTextPrimary,
+        displayColor: AppColors.lightTextPrimary,
+      ),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.lightBorder,
+        thickness: 1,
+        space: 1,
+      ),
+    );
+  }
 }

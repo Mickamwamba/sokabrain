@@ -60,6 +60,34 @@ class KijiweThreadItem {
     this.spaceSlug,
   });
 
+  KijiweThreadItem copyWith({
+    int? id,
+    String? title,
+    String? content,
+    String? authorName,
+    String? authorTeamName,
+    String? tag,
+    bool? isPinned,
+    int? likesCount,
+    int? commentsCount,
+    DateTime? createdAt,
+    String? spaceSlug,
+  }) {
+    return KijiweThreadItem(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      content: content ?? this.content,
+      authorName: authorName ?? this.authorName,
+      authorTeamName: authorTeamName ?? this.authorTeamName,
+      tag: tag ?? this.tag,
+      isPinned: isPinned ?? this.isPinned,
+      likesCount: likesCount ?? this.likesCount,
+      commentsCount: commentsCount ?? this.commentsCount,
+      createdAt: createdAt ?? this.createdAt,
+      spaceSlug: spaceSlug ?? this.spaceSlug,
+    );
+  }
+
   factory KijiweThreadItem.fromJson(Map<String, dynamic> json) {
     final kijiwe = json['kijiwe'] as Map<String, dynamic>? ?? json['space'] as Map<String, dynamic>? ?? {};
     return KijiweThreadItem(
@@ -94,6 +122,24 @@ class KijiweCommentItem {
     required this.likesCount,
     this.createdAt,
   });
+
+  KijiweCommentItem copyWith({
+    int? id,
+    String? content,
+    String? authorName,
+    String? authorTeamName,
+    int? likesCount,
+    DateTime? createdAt,
+  }) {
+    return KijiweCommentItem(
+      id: id ?? this.id,
+      content: content ?? this.content,
+      authorName: authorName ?? this.authorName,
+      authorTeamName: authorTeamName ?? this.authorTeamName,
+      likesCount: likesCount ?? this.likesCount,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
 
   factory KijiweCommentItem.fromJson(Map<String, dynamic> json) {
     return KijiweCommentItem(
