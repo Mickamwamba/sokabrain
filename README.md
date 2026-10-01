@@ -102,6 +102,8 @@ The full list is in `CLAUDE.md`. These five cover most of it:
 | File | Read it for |
 |---|---|
 | `CLAUDE.md` | Current state, design principles, and the rules learned the hard way. Start here. |
+| `docs/ARCHITECTURE.md` | How the parts fit together and how data moves between them |
+| `docs/DEPLOYMENT.md` | Putting it on a server, and scheduling the SportMonks sync jobs |
 | `docs/RUNBOOK.md` | Recurring jobs, publishing, adding a league, admin accounts |
 | `docs/OPEN_DECISIONS.md` | Data questions waiting on an editor |
 | `docs/HISTORY.md` | Why everything is the way it is. Long, so search it rather than reading it end to end. |

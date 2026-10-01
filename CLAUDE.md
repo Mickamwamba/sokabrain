@@ -17,7 +17,8 @@ with FotMob on mainstream-league richness (xG, tracking data, etc. are
 explicitly out of scope — see "Non-goals" below).
 
 
-**Where to look:** `README.md` to run it, `docs/RUNBOOK.md` for recurring
+**Where to look:** `README.md` to run it, `docs/ARCHITECTURE.md` for how the
+parts fit, `docs/DEPLOYMENT.md` to deploy it, `docs/RUNBOOK.md` for recurring
 jobs and how-tos, `docs/OPEN_DECISIONS.md` for data calls waiting on an
 editor, and `docs/HISTORY.md` for the full log of why everything is the way it
 is. History is long; search it, don't read it.
