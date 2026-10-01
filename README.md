@@ -82,6 +82,22 @@ cd mobile && flutter analyze && flutter test   # needs the backend running
 CI (`.github/workflows/ci.yml`) runs all of these, plus the Python doctests, on
 every pull request.
 
+## Deploying
+
+`docs/DEPLOYMENT.md` describes two ways to run it on a server: systemd units
+behind nginx, or Docker. The Docker files are in the repo:
+
+| File | What it is |
+|---|---|
+| `compose.yml` | Backend, web and Caddy (HTTPS) on one host. The database is managed and outside it. |
+| `Caddyfile` | Routes `SITE_DOMAIN` to the web app and `API_DOMAIN` to the backend |
+| `backend/Dockerfile`, `web/Dockerfile` | One image each, with a `.dockerignore` beside it |
+
+They are for a server, not for local development: compose expects
+`backend/.env` pointing at the production database, and a root `.env` setting
+`SITE_DOMAIN` and `API_DOMAIN`. Keep the backend at exactly one replica, because
+the live-score cron and the rate-limit counters live in its memory.
+
 ## How the data works, in five rules
 
 The full list is in `CLAUDE.md`. These five cover most of it:
@@ -103,7 +119,7 @@ The full list is in `CLAUDE.md`. These five cover most of it:
 |---|---|
 | `CLAUDE.md` | Current state, design principles, and the rules learned the hard way. Start here. |
 | `docs/ARCHITECTURE.md` | How the parts fit together and how data moves between them |
-| `docs/DEPLOYMENT.md` | Putting it on a server, and scheduling the SportMonks sync jobs |
+| `docs/DEPLOYMENT.md` | Putting it on a server (systemd or Docker), and scheduling the SportMonks sync jobs |
 | `docs/RUNBOOK.md` | Recurring jobs, publishing, adding a league, admin accounts |
 | `docs/OPEN_DECISIONS.md` | Data questions waiting on an editor |
 | `docs/HISTORY.md` | Why everything is the way it is. Long, so search it rather than reading it end to end. |
