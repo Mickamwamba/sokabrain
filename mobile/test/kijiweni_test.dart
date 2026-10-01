@@ -8,6 +8,12 @@ import 'package:sokabrain_mobile/widgets/create_thread_sheet.dart';
 
 class _TestHttpOverrides extends HttpOverrides {}
 
+// The write test posts a real thread, comment and likes through the backend,
+// and the public API has no way to delete them, so every run leaves rows in
+// the vault database that show on the public Kijiweni. Opt in explicitly:
+//   flutter test --dart-define=KIJIWENI_WRITE_TESTS=true
+const _runWriteTests = bool.fromEnvironment('KIJIWENI_WRITE_TESTS');
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = _TestHttpOverrides();
@@ -42,7 +48,11 @@ void main() {
   });
 
   group('Kijiweni Backend API Integration Tests', () {
-    test('createThread, likeThread, postComment, and likeComment via API', () async {
+    test('createThread, likeThread, postComment, and likeComment via API',
+        skip: _runWriteTests
+            ? false
+            : 'writes to the vault database; pass --dart-define=KIJIWENI_WRITE_TESTS=true',
+        () async {
       final profile = FanProfileService();
       await profile.init();
 
@@ -50,7 +60,8 @@ void main() {
       final threadId = await ApiService.createThread(
         spaceSlug: 'kariakoo-derby',
         title: 'Mada ya Jaribio la Kiotomatiki',
-        content: 'Mada hii inathibitisha kwamba watumiaji wanaweza kuanzisha mada kijiweni bila tatizo.',
+        content:
+            'Mada hii inathibitisha kwamba watumiaji wanaweza kuanzisha mada kijiweni bila tatizo.',
         authorName: 'Mchambuzi Mtihani',
         authorTeamName: 'Simba SC',
         tag: 'UBISHI',
@@ -60,13 +71,15 @@ void main() {
       expect(threadId! > 0, isTrue);
 
       // 2. Like thread
-      final likeResult = await ApiService.likeThread(threadId, fanFingerprint: profile.fingerprint);
+      final likeResult = await ApiService.likeThread(threadId,
+          fanFingerprint: profile.fingerprint);
       expect(likeResult, isNotNull);
       expect(likeResult!['liked'], isTrue);
       expect(likeResult['likesCount'] >= 1, isTrue);
 
       // Unlike thread
-      final unlikeResult = await ApiService.likeThread(threadId, fanFingerprint: profile.fingerprint);
+      final unlikeResult = await ApiService.likeThread(threadId,
+          fanFingerprint: profile.fingerprint);
       expect(unlikeResult, isNotNull);
       expect(unlikeResult!['liked'], isFalse);
 
@@ -83,7 +96,8 @@ void main() {
       expect(comment.id > 0, isTrue);
 
       // 4. Like comment
-      final commentLike = await ApiService.likeComment(comment.id, fanFingerprint: profile.fingerprint);
+      final commentLike = await ApiService.likeComment(comment.id,
+          fanFingerprint: profile.fingerprint);
       expect(commentLike, isNotNull);
       expect(commentLike!['liked'], isTrue);
       expect(commentLike['likesCount'] >= 1, isTrue);
@@ -91,7 +105,8 @@ void main() {
   });
 
   group('UI Widgets Tests', () {
-    testWidgets('CreateThreadSheet renders all fields properly', (tester) async {
+    testWidgets('CreateThreadSheet renders all fields properly',
+        (tester) async {
       final spaces = [
         KijiweSpaceItem(
           slug: 'kariakoo-derby',

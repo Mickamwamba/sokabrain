@@ -5,9 +5,9 @@
 A digital vault for historical football/soccer data, starting with a wedge in
 East African leagues (Tanzania, Kenya) that global apps (Sofascore, FotMob)
 don't cover well, layered with mainstream leagues via a licensed API. The
-long-term vision includes a paid tier, an AI Q&A layer, and a fan forum —
-**none of that is in scope yet**. Current scope is: get the Vault + Live
-Scores MVP working end to end, web first.
+long-term vision includes a paid tier and an AI Q&A layer — **neither is in
+scope yet**. Current scope is the Vault + Live Scores MVP on web and mobile,
+plus the Kijiweni fan zone, which was brought forward (see its status entry).
 
 **Problem statement**: African football fans have deep daily conversations
 about their local leagues but no platform gives those leagues the
@@ -17,6 +17,39 @@ with FotMob on mainstream-league richness (xG, tracking data, etc. are
 explicitly out of scope — see "Non-goals" below).
 
 ## Current status (read this first)
+
+- **A Flutter mobile app and the Kijiweni fan zone exist, ahead of the original
+  plan** (2026-09-19 onward). Both were listed as non-goals; both were built
+  deliberately, so do not treat them as out of scope or try to remove them.
+  - **Kijiweni** ("Soga za Kijiweni") is a bilingual SW/EN fan forum: spaces,
+    threads, comments, likes. Public API under `/api/kijiweni`
+    (`routes/kijiweni.ts`), moderation under `/api/admin/kijiweni`
+    (`routes/adminKijiweni.ts`) and in the admin console. Four tables,
+    `kijiwe_*`, in the DDL and the schema doc's Kijiweni addendum. **They are
+    walled off from the vault** — no foreign key either way, and no provenance
+    rows, because a post is not sourced football data.
+  - **Posting is anonymous**: a fan picks a handle, a like is keyed on a
+    client-generated fingerprint. **The public write endpoints have no auth and
+    no rate limit** — add rate limiting before promoting the site.
+  - Moderation hides (`is_hidden`, reversible); delete cascades to comments and
+    likes. Seed data comes from `backend/src/scripts/seedKijiweni.ts`.
+  - **`mobile/`** is a Flutter app reading the same read API as the web: a
+    matches schedule with date navigation, match detail with timeline, a league
+    hub (table + stats), competitions browser, team profiles, Kijiweni, and a
+    More screen with fan profile, favourite teams and SW/EN switching. **`flutter
+    test` needs the backend running on :4010** — the API-decoding tests in
+    `team_profile_test.dart`, `kijiweni_test.dart` and
+    `matches_schedule_test.dart` call it for real (via `HttpOverrides`) and
+    assert on vault data, e.g. Azam FC as team 1. **The Kijiweni write test is
+    opt-in** (`--dart-define=KIJIWENI_WRITE_TESTS=true`): it posts through the
+    public API, which cannot delete, and had left 26 "Mada ya Jaribio la
+    Kiotomatiki" threads on the public site before it was gated (deleted
+    2026-10-01). The API base URL defaults to `http://localhost:4010`
+    (`lib/services/api_service.dart`) — a physical device needs it pointed at a
+    reachable host. iOS ATS and the macOS network-client entitlement were
+    relaxed so local HTTP works in development; tighten both before release.
+  - The mobile timeline follows the same display rule as the web (principle 5):
+    an own goal sits beside the side it counts for, via `countsForOtherSide`.
 
 - The legacy dataset (a real production app called SokaFC, MySQL dump from
   2020) has already been **audited and migrated** into a new standardized
@@ -1297,8 +1330,8 @@ explicitly out of scope — see "Non-goals" below).
 | Auth | JWT-based, single `admins` table, hashed passwords. No third-party auth service yet. |
 | Realtime | Socket.io on the Node server, broadcasting match/event updates |
 | Web frontend | React (Next.js) |
-| Mobile frontend | Flutter — **Phase 2, not now**. Web ships first. |
-| Live-score provider | API-Football (start on free tier to validate league coverage before paying) |
+| Mobile frontend | Flutter (`mobile/`) — built, consuming the same read API as the web |
+| Live-score provider | SportMonks (API-Football kept as a fallback; see the status entries) |
 
 ## Repository structure
 
@@ -1337,7 +1370,7 @@ soka-brain/
 │   ├── components/ui.tsx               # public: coverage notes, crests, empty states
 │   ├── components/admin/               # console kit, confirm dialog, shell, toaster
 │   └── lib/api.ts, lib/adminApi.ts     # hand-written types for the read and admin APIs
-└── mobile/                             # Flutter app — placeholder until Phase 2
+└── mobile/                             # Flutter app (lib/screens, lib/services, test/)
 ```
 
 ## Critical design principles (non-negotiable)
@@ -1380,9 +1413,8 @@ soka-brain/
   tracking-data infrastructure, not worth building until there's a funded
   mainstream-league push.
 - AI Q&A layer — needs a stable schema and real data volume first.
-- Native forum / Fan Zone — start as external Discord/Telegram groups per
-  league before building anything custom.
-- Flutter mobile app — after the web MVP is validated, not concurrently.
+- Fan accounts, private messaging or anything beyond Kijiweni's anonymous
+  threads — Kijiweni was brought forward, but a full community platform was not.
 - Paid tier / billing — after there's something worth paying for.
 
 ## Immediate build priorities, in order
@@ -1398,9 +1430,9 @@ soka-brain/
 5. Build the live-score sync job (`backend/src/jobs/`) against
    API-Football for the initial league set, tagged
    `data_source = 'api_football'` per the provenance rule above.
-6. Wire Socket.io so live match updates push to the web client without
-   polling.
-7. Flutter app — not before the above is working and validated.
+6. Wire Socket.io so live match updates push to the web **and mobile**
+   clients without polling. **This is next.**
+7. ~~Flutter app~~ — built ahead of order; see the status entry.
 
 ## Environment variables backend/.env will need
 

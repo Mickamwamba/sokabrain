@@ -546,7 +546,8 @@ CREATE TABLE public.kijiwe_comments (
     author_team_name character varying(80),
     content text NOT NULL,
     likes_count integer DEFAULT 0 NOT NULL,
-    created_at timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    is_hidden boolean DEFAULT false NOT NULL
 );
 
 
@@ -658,7 +659,8 @@ CREATE TABLE public.kijiwe_threads (
     comments_count integer DEFAULT 0 NOT NULL,
     is_pinned boolean DEFAULT false NOT NULL,
     created_at timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    is_hidden boolean DEFAULT false NOT NULL
 );
 
 
@@ -26444,21 +26446,23 @@ COPY public.entity_source_map (id, entity_type, entity_id, data_source_id, exter
 -- Data for Name: kijiwe_comments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.kijiwe_comments (id, thread_id, author_name, author_team_name, content, likes_count, created_at) FROM stdin;
-1	1	Utopolo_Pro_Max	Young Africans	Nyie endeleeni kuishi kwa kumbukumbu za zamani, sisi tunajenga kabati jipya la mataji! Takwimu za sasa ziko wazi nani anatawala soka la Bongo.	18	2026-09-19 22:46:44.967-05
-2	1	Mchambuzi_Kijiweni	Azam FC	Ukweli ni kwamba mechi za mikoani (Kagera, Mbeya, Singida) ndizo zitaamua. Hakuna timu inayoweza kutamba kirahisi ugenini msimu huu.	9	2026-09-19 22:46:44.973-05
-3	1	Fundi_Wa_Msimbazi	Simba SC	Ngoja tuone dabi ya mzunguko wa pili ndo jibu litapatikana uwanjani!	7	2026-09-19 22:46:44.975-05
-4	2	Bocco_Fan	Simba SC	Kagere alikuwa mnyama ndani ya 18! Hata akipata nusu nafasi ilikuwa goli. Mayele alikuwa mzuri pia lakini Kagere alikuwa mtulivu zaidi kwenye mechi kubwa.	14	2026-09-19 22:46:44.978-05
-5	2	Tetema_Nation	Young Africans	Mayele hakuwa anafunga tu, alikuwa anatesa safu nzima ya ulinzi na kutoa pasi za mwisho. Yule jamaa alikuwa complete striker.	22	2026-09-19 22:46:44.979-05
-6	3	Azam_Complex_Loyal	Azam FC	Ligi ni marathon siyo mbio za mita 100. Kikosi chetu kina depth ya kutosha. Singida wataanza kuchoka mechi zikibana mwezi Novemba.	11	2026-09-19 22:46:44.982-05
-7	3	Soka_Data_Guru	Coastal Union	Takwimu zinaonyesha timu inayotoka nje ya Dar ikikusanya alama 25 katika mechi 10 za kwanza huingia Top 4 kwa uhakika wa 85%. Singida wana mwendo mzuri sana.	15	2026-09-19 22:46:44.983-05
-8	4	Pamba_Nguvu_Moja	Pamba Jiji	Nyamagana hatoki mtu! Pamba tutabaki Ligi Kuu, uwanja wa nyumbani ndio ngome yetu.	8	2026-09-19 22:46:44.985-05
-9	5	Drip_Ya_Chamazi	Azam FC	Azam 2 - 1 Simba. Feisal Salum anapiga bao la kideoni dakika ya 75. Weka hii akilini.	20	2026-09-19 22:46:44.988-05
-10	5	Mzee_Wa_Kona	Young Africans	Sisi tunatamani watoke sare ya 0-0 wote wagawane pointi moja moja ili kileleni kubaki kuko safi!	35	2026-09-19 22:46:44.989-05
-11	6	Kibandani_FC	Coastal Union	Uzi wa Coastal Union wa nyumbani (Wagosi wa Kaya) una ubunifu mkubwa sana msimu huu!	13	2026-09-19 22:46:44.991-05
-12	7	Afcon_Veteran	Tanzania	Kinachokosekana ni uimara wa safu ya ulinzi mechi za ugenini. Nyumbani tunacheza vizuri sana mbele ya mashabiki 60,000, lakini ugenini tunarudi nyuma sana.	16	2026-09-19 22:46:44.993-05
-13	7	Harambee_Brother	Kenya	Kama mshabiki wa Kenya, lazima niseme soka la Tanzania linazidi kupaa. Ushindani wa Simba na Yanga kimataifa unaleta heshima kubwa kwa ukanda wetu wa CECAFA.	27	2026-09-19 22:46:44.994-05
-14	7	Mchambuzi_Bongo	Young Africans	Hii mada ni moto sana! Hata hivyo takwimu zinaonyesha Yanga wako vizuri.	0	2026-09-19 23:20:35.427-05
+COPY public.kijiwe_comments (id, thread_id, author_name, author_team_name, content, likes_count, created_at, is_hidden) FROM stdin;
+2	1	Mchambuzi_Kijiweni	Azam FC	Ukweli ni kwamba mechi za mikoani (Kagera, Mbeya, Singida) ndizo zitaamua. Hakuna timu inayoweza kutamba kirahisi ugenini msimu huu.	9	2026-09-19 22:46:44.973-05	f
+3	1	Fundi_Wa_Msimbazi	Simba SC	Ngoja tuone dabi ya mzunguko wa pili ndo jibu litapatikana uwanjani!	7	2026-09-19 22:46:44.975-05	f
+4	2	Bocco_Fan	Simba SC	Kagere alikuwa mnyama ndani ya 18! Hata akipata nusu nafasi ilikuwa goli. Mayele alikuwa mzuri pia lakini Kagere alikuwa mtulivu zaidi kwenye mechi kubwa.	14	2026-09-19 22:46:44.978-05	f
+5	2	Tetema_Nation	Young Africans	Mayele hakuwa anafunga tu, alikuwa anatesa safu nzima ya ulinzi na kutoa pasi za mwisho. Yule jamaa alikuwa complete striker.	22	2026-09-19 22:46:44.979-05	f
+6	3	Azam_Complex_Loyal	Azam FC	Ligi ni marathon siyo mbio za mita 100. Kikosi chetu kina depth ya kutosha. Singida wataanza kuchoka mechi zikibana mwezi Novemba.	11	2026-09-19 22:46:44.982-05	f
+7	3	Soka_Data_Guru	Coastal Union	Takwimu zinaonyesha timu inayotoka nje ya Dar ikikusanya alama 25 katika mechi 10 za kwanza huingia Top 4 kwa uhakika wa 85%. Singida wana mwendo mzuri sana.	15	2026-09-19 22:46:44.983-05	f
+8	4	Pamba_Nguvu_Moja	Pamba Jiji	Nyamagana hatoki mtu! Pamba tutabaki Ligi Kuu, uwanja wa nyumbani ndio ngome yetu.	8	2026-09-19 22:46:44.985-05	f
+9	5	Drip_Ya_Chamazi	Azam FC	Azam 2 - 1 Simba. Feisal Salum anapiga bao la kideoni dakika ya 75. Weka hii akilini.	20	2026-09-19 22:46:44.988-05	f
+10	5	Mzee_Wa_Kona	Young Africans	Sisi tunatamani watoke sare ya 0-0 wote wagawane pointi moja moja ili kileleni kubaki kuko safi!	35	2026-09-19 22:46:44.989-05	f
+11	6	Kibandani_FC	Coastal Union	Uzi wa Coastal Union wa nyumbani (Wagosi wa Kaya) una ubunifu mkubwa sana msimu huu!	13	2026-09-19 22:46:44.991-05	f
+12	7	Afcon_Veteran	Tanzania	Kinachokosekana ni uimara wa safu ya ulinzi mechi za ugenini. Nyumbani tunacheza vizuri sana mbele ya mashabiki 60,000, lakini ugenini tunarudi nyuma sana.	16	2026-09-19 22:46:44.993-05	f
+13	7	Harambee_Brother	Kenya	Kama mshabiki wa Kenya, lazima niseme soka la Tanzania linazidi kupaa. Ushindani wa Simba na Yanga kimataifa unaleta heshima kubwa kwa ukanda wetu wa CECAFA.	27	2026-09-19 22:46:44.994-05	f
+14	7	Mchambuzi_Bongo	Young Africans	Hii mada ni moto sana! Hata hivyo takwimu zinaonyesha Yanga wako vizuri.	0	2026-09-19 23:20:35.427-05	f
+1	1	Utopolo_Pro_Max	Young Africans	Nyie endeleeni kuishi kwa kumbukumbu za zamani, sisi tunajenga kabati jipya la mataji! Takwimu za sasa ziko wazi nani anatawala soka la Bongo.	18	2026-09-19 22:46:44.967-05	f
+15	9	Shabiki Mkuu	\N	Huu ni ushahidi kwamba kutoa maoni kunafanya kazi!	1	2026-09-21 18:03:02.487-05	f
+19	7	Shabiki Soka	Simba SC	Nakubaliiii	1	2026-09-21 18:08:03.02-05	f
 \.
 
 
@@ -26468,6 +26472,10 @@ COPY public.kijiwe_comments (id, thread_id, author_name, author_team_name, conte
 
 COPY public.kijiwe_likes (id, thread_id, comment_id, fan_fingerprint, reaction_type, created_at) FROM stdin;
 1	1	\N	fan_n9te2i7nmu9ap8d5	LIKE	2026-09-19 23:08:35.615-05
+2	1	\N	test-user-123	LIKE	2026-09-21 18:02:27.626-05
+4	\N	15	device_fan_test_123	LIKE	2026-09-21 18:03:08.855-05
+11	\N	19	fan_1790031942847_522080	LIKE	2026-09-21 18:08:07.343-05
+12	7	\N	fan_1790031942847_522080	LIKE	2026-09-21 18:08:32.038-05
 \.
 
 
@@ -26487,15 +26495,18 @@ COPY public.kijiwe_spaces (id, slug, name_sw, name_en, description_sw, descripti
 -- Data for Name: kijiwe_threads; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.kijiwe_threads (id, kijiwe_id, title, content, author_name, author_team_name, tag, likes_count, comments_count, is_pinned, created_at, updated_at) FROM stdin;
-2	1	Bora kati ya Fiston Mayele na Meddie Kagere: Nani straika hatari zaidi aliyewahi kutua VPL?	Kagere alifunga mabao muhimu sana kwa misimu miwili mfululizo na kubeba viatu vya ufungaji bora. Mayele akaja na style yake ya kutetema na kufunga mabao ya maamuzi. Nani alikuwa tishio zaidi kwa mabeki wa ligi?	Kariakoo_Tactics	Young Africans	MBINU	31	2	f	2026-09-19 22:46:44.977-05	2026-09-19 22:46:44.977-05
-3	2	Singida Black Stars wanatishia Top 3 msimu huu au ni nguvu ya soda ya mwanzoni?	Uwekezaji uliofanyika Singida Black Stars siyo wa kitoto. Usajili wao na namna wanavyocheza soka la kasi ugenini na nyumbani inatia hofu kwa Azam na Simba. Je, wana uwezo wa kudumu kwenye mbio hizi hadi raundi ya 30?	Mkulima_Wa_Singida	Singida Black Stars	UBISHI	19	2	f	2026-09-19 22:46:44.982-05	2026-09-19 22:46:44.982-05
-4	2	Utabiri: Nani atashuka daraja msimu huu kati ya timu zilizo chini?	Tofauti ya alama kati ya nafasi ya 12 na 16 ni ndogo sana. Kagera Sugar, Pamba Jiji na Dodoma Jiji wote wanapambana. Weka utabiri wako hapa bila upendeleo.	Mchambuzi_Hururu	Kagera Sugar	UTABIRI	12	1	f	2026-09-19 22:46:44.984-05	2026-09-19 22:46:44.984-05
-5	3	Utabiri wa wikendi hii: Nani atalala na viatu kati ya Simba na Azam?	Kahawa imeshachemka hapa kijiweni. Kila mtu anatamba na kikosi chake. Mashabiki wa Azam wanadai chamazi hakuna njia, lakini Mnyama anasema hajawahi kufeli mechi za ufunguzi wa mwezi. Tupia tabiri yako ya magoli!	Kaka_Kahawa	Simba SC	CHOMBEZA	42	2	f	2026-09-19 22:46:44.987-05	2026-09-19 22:46:44.987-05
-6	3	Jezi kali zaidi ya msimu huu: Ni jezi gani imefunika viwanjani?	Kuanzia uzi wa kijani na njano wa Wananchi, uzi mwekundu wa Msimbazi, hadi uzi mpya wa Singida na Namungo. Ni jezi gani ukiona mtaani inavutia zaidi?	Mtindo_Wa_Soka	Young Africans	CHOMBEZA	17	1	f	2026-09-19 22:46:44.99-05	2026-09-19 22:46:44.99-05
-1	1	Hivi Yanga ya sasa inaweza kufikia rekodi ya unbeaten ya Simba au ni nguvu ya soda?	Kila mtu anasifia ubora wa kikosi cha Yanga cha misimu mitatu hii. Lakini tukumbuke Simba waliwahi kuweka rekodi ya kutofungwa msimu mzima bila kupoteza mchezo hata mmoja. Je, Yanga wana nidhamu ya mbinu kufikia kiwango kile, au mechi za ugenini zitawavunja?	Mnyama_Original	Simba SC	UBISHI	25	3	f	2026-09-19 22:46:44.963-05	2026-09-19 23:08:35.622-05
-7	4	Je, vilabu vyetu vina uwezo wa kucheza Fainali ya CAF Champions League msimu huu?	Kila mwaka tunafika robo fainali na kuishia hapo kwa tofauti ndogo za uzoefu dhidi ya Waarabu (Al Ahly, Mamelodi Sundowns, ES Tunis). Ni kipi kinachokosekana sasa hivi ili kuingia hatua ya fainali na kubeba taji?	Balozi_Wa_Soka	Tanzania	MBINU	29	3	f	2026-09-19 22:46:44.993-05	2026-09-19 23:20:35.431-05
-8	2	Mbio za Ubingwa NBC: Je Simba na Yanga Zinaweza Kushitukizwa?	Ushindani wa msimu huu kwenye NBC Premier League umekuwa mkali sana. Singida Black Stars na Azam FC zinapambana kwa usawa.Ushindani wa msimu huu kwenye NBC Premier League umekuwa mkali sana. Singida Black Stars na Azam FC zinapambana kwa usawa.	Mchambuzi_Bongo	Young Africans	MBINU	0	0	f	2026-09-20 08:54:45.836-05	2026-09-20 08:54:45.836-05
+COPY public.kijiwe_threads (id, kijiwe_id, title, content, author_name, author_team_name, tag, likes_count, comments_count, is_pinned, created_at, updated_at, is_hidden) FROM stdin;
+2	1	Bora kati ya Fiston Mayele na Meddie Kagere: Nani straika hatari zaidi aliyewahi kutua VPL?	Kagere alifunga mabao muhimu sana kwa misimu miwili mfululizo na kubeba viatu vya ufungaji bora. Mayele akaja na style yake ya kutetema na kufunga mabao ya maamuzi. Nani alikuwa tishio zaidi kwa mabeki wa ligi?	Kariakoo_Tactics	Young Africans	MBINU	31	2	f	2026-09-19 22:46:44.977-05	2026-09-19 22:46:44.977-05	f
+3	2	Singida Black Stars wanatishia Top 3 msimu huu au ni nguvu ya soda ya mwanzoni?	Uwekezaji uliofanyika Singida Black Stars siyo wa kitoto. Usajili wao na namna wanavyocheza soka la kasi ugenini na nyumbani inatia hofu kwa Azam na Simba. Je, wana uwezo wa kudumu kwenye mbio hizi hadi raundi ya 30?	Mkulima_Wa_Singida	Singida Black Stars	UBISHI	19	2	f	2026-09-19 22:46:44.982-05	2026-09-19 22:46:44.982-05	f
+4	2	Utabiri: Nani atashuka daraja msimu huu kati ya timu zilizo chini?	Tofauti ya alama kati ya nafasi ya 12 na 16 ni ndogo sana. Kagera Sugar, Pamba Jiji na Dodoma Jiji wote wanapambana. Weka utabiri wako hapa bila upendeleo.	Mchambuzi_Hururu	Kagera Sugar	UTABIRI	12	1	f	2026-09-19 22:46:44.984-05	2026-09-19 22:46:44.984-05	f
+5	3	Utabiri wa wikendi hii: Nani atalala na viatu kati ya Simba na Azam?	Kahawa imeshachemka hapa kijiweni. Kila mtu anatamba na kikosi chake. Mashabiki wa Azam wanadai chamazi hakuna njia, lakini Mnyama anasema hajawahi kufeli mechi za ufunguzi wa mwezi. Tupia tabiri yako ya magoli!	Kaka_Kahawa	Simba SC	CHOMBEZA	42	2	f	2026-09-19 22:46:44.987-05	2026-09-19 22:46:44.987-05	f
+6	3	Jezi kali zaidi ya msimu huu: Ni jezi gani imefunika viwanjani?	Kuanzia uzi wa kijani na njano wa Wananchi, uzi mwekundu wa Msimbazi, hadi uzi mpya wa Singida na Namungo. Ni jezi gani ukiona mtaani inavutia zaidi?	Mtindo_Wa_Soka	Young Africans	CHOMBEZA	17	1	f	2026-09-19 22:46:44.99-05	2026-09-19 22:46:44.99-05	f
+8	2	Mbio za Ubingwa NBC: Je Simba na Yanga Zinaweza Kushitukizwa?	Ushindani wa msimu huu kwenye NBC Premier League umekuwa mkali sana. Singida Black Stars na Azam FC zinapambana kwa usawa.Ushindani wa msimu huu kwenye NBC Premier League umekuwa mkali sana. Singida Black Stars na Azam FC zinapambana kwa usawa.	Mchambuzi_Bongo	Young Africans	MBINU	0	0	f	2026-09-20 08:54:45.836-05	2026-09-20 08:54:45.836-05	f
+1	1	Hivi Yanga ya sasa inaweza kufikia rekodi ya unbeaten ya Simba au ni nguvu ya soda?	Kila mtu anasifia ubora wa kikosi cha Yanga cha misimu mitatu hii. Lakini tukumbuke Simba waliwahi kuweka rekodi ya kutofungwa msimu mzima bila kupoteza mchezo hata mmoja. Je, Yanga wana nidhamu ya mbinu kufikia kiwango kile, au mechi za ugenini zitawavunja?	Mnyama_Original	Simba SC	UBISHI	26	3	f	2026-09-19 22:46:44.963-05	2026-09-21 18:02:27.633-05	f
+9	1	Jaribio la Mada Mpya	Mada hii ni kwa ajili ya kupima uwezo wa kuanzisha mada kwenye kijiweni.	Mchambuzi	\N	UBISHI	0	1	f	2026-09-21 18:03:00.752-05	2026-09-21 18:03:06.069-05	f
+7	4	Je, vilabu vyetu vina uwezo wa kucheza Fainali ya CAF Champions League msimu huu?	Kila mwaka tunafika robo fainali na kuishia hapo kwa tofauti ndogo za uzoefu dhidi ya Waarabu (Al Ahly, Mamelodi Sundowns, ES Tunis). Ni kipi kinachokosekana sasa hivi ili kuingia hatua ya fainali na kubeba taji?	Balozi_Wa_Soka	Tanzania	MBINU	30	4	f	2026-09-19 22:46:44.993-05	2026-09-21 18:08:32.039-05	f
+13	2	Yanga vilaza tu	Hakuna timu Kama yanga wewewee	Shabiki Soka	Singida BS	UBISHI	0	0	f	2026-09-21 18:10:43.316-05	2026-09-21 18:10:43.316-05	f
+31	1	Nani stashing a Kesha	Nani Antalya badfadsfa	Mickamwamba	Dodoma Jiji FC	UTABIRI	0	0	f	2026-09-21 21:40:32.933-05	2026-09-21 21:40:32.933-05	f
 \.
 
 
@@ -57008,7 +57019,7 @@ COPY public.teams (id, name, short_name, type, country_id, stadium_id, founded_y
 -- Name: admins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.admins_id_seq', 3, true);
+SELECT pg_catalog.setval('public.admins_id_seq', 4, true);
 
 
 --
@@ -57050,7 +57061,7 @@ SELECT pg_catalog.setval('public.competition_edition_teams_id_seq', 3363, true);
 -- Name: competition_editions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competition_editions_id_seq', 464, true);
+SELECT pg_catalog.setval('public.competition_editions_id_seq', 476, true);
 
 
 --
@@ -57064,7 +57075,7 @@ SELECT pg_catalog.setval('public.competition_groups_id_seq', 518, true);
 -- Name: competitions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.competitions_id_seq', 182, true);
+SELECT pg_catalog.setval('public.competitions_id_seq', 194, true);
 
 
 --
@@ -57078,14 +57089,14 @@ SELECT pg_catalog.setval('public.confederations_id_seq', 6, true);
 -- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.countries_id_seq', 217, true);
+SELECT pg_catalog.setval('public.countries_id_seq', 229, true);
 
 
 --
 -- Name: data_flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.data_flags_id_seq', 252, true);
+SELECT pg_catalog.setval('public.data_flags_id_seq', 270, true);
 
 
 --
@@ -57099,21 +57110,21 @@ SELECT pg_catalog.setval('public.data_sources_id_seq', 24, true);
 -- Name: entity_source_map_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.entity_source_map_id_seq', 93904, true);
+SELECT pg_catalog.setval('public.entity_source_map_id_seq', 94024, true);
 
 
 --
 -- Name: kijiwe_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.kijiwe_comments_id_seq', 14, true);
+SELECT pg_catalog.setval('public.kijiwe_comments_id_seq', 42, true);
 
 
 --
 -- Name: kijiwe_likes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.kijiwe_likes_id_seq', 1, true);
+SELECT pg_catalog.setval('public.kijiwe_likes_id_seq', 59, true);
 
 
 --
@@ -57127,7 +57138,7 @@ SELECT pg_catalog.setval('public.kijiwe_spaces_id_seq', 4, true);
 -- Name: kijiwe_threads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.kijiwe_threads_id_seq', 8, true);
+SELECT pg_catalog.setval('public.kijiwe_threads_id_seq', 37, true);
 
 
 --
@@ -57148,7 +57159,7 @@ SELECT pg_catalog.setval('public.match_lineups_id_seq', 7623, true);
 -- Name: matches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.matches_id_seq', 23785, true);
+SELECT pg_catalog.setval('public.matches_id_seq', 23815, true);
 
 
 --
@@ -57169,21 +57180,21 @@ SELECT pg_catalog.setval('public.players_id_seq', 13679, true);
 -- Name: reconciliation_diffs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3271, true);
+SELECT pg_catalog.setval('public.reconciliation_diffs_id_seq', 3283, true);
 
 
 --
 -- Name: reconciliation_runs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 215, true);
+SELECT pg_catalog.setval('public.reconciliation_runs_id_seq', 221, true);
 
 
 --
 -- Name: seasons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.seasons_id_seq', 388, true);
+SELECT pg_catalog.setval('public.seasons_id_seq', 400, true);
 
 
 --
@@ -57197,7 +57208,7 @@ SELECT pg_catalog.setval('public.stadiums_id_seq', 127, true);
 -- Name: teams_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.teams_id_seq', 775, true);
+SELECT pg_catalog.setval('public.teams_id_seq', 811, true);
 
 
 --
