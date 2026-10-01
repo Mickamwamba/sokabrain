@@ -147,7 +147,48 @@ names or stats. If the source doesn't have it, the vault doesn't either.
 
 The console's Kijiweni section lets you hide or restore threads and comments
 (reversible) or delete them (this cascades to comments and likes). Posting is
-anonymous and has **no rate limit yet**, so watch for spam until that lands.
+anonymous, so rate limits (next section) cap how fast spam can arrive. They
+don't stop it, so keep an eye on the console.
+
+## Kijiweni rate limits
+
+`backend/src/routes/kijiweniLimits.ts` sets the numbers:
+
+| Action | Per client | Site-wide |
+|---|---|---|
+| New thread | 5 per hour | 100 per hour |
+| Comment | 20 per 10 minutes | 600 per hour |
+| Like (threads and comments together) | 60 per minute | none |
+
+A blocked request gets a 429 with a JSON `error` and a `Retry-After` header.
+Counts are kept in memory, so they reset when the backend restarts, and each
+backend process counts separately.
+
+**Per client means per IP address, and that needs `TRUST_PROXY` set right.**
+The website's `/api/kijiweni` requests go through the web server's rewrite
+(`web/next.config.ts`), so the backend sees the web server's address on every
+web post. The rewrite also passes on any `X-Forwarded-For` the browser sent,
+real or fake. That leaves two ways to get it wrong:
+
+- `TRUST_PROXY=false` (the default) while web traffic goes through the rewrite:
+  every web fan shares one budget, so 5 threads an hour for the whole website.
+  The backend logs a warning the first time a local address is limited.
+- Trusting the web server while nothing in front of it overwrites
+  `X-Forwarded-For`: anyone can fake a new address on every request and dodge
+  the per-client limit. The site-wide limits still hold.
+
+The safe setup puts a proxy (nginx, or the hosting platform's load balancer) in
+front of the web server that **overwrites** `X-Forwarded-For` with the
+connecting address (nginx: `proxy_set_header X-Forwarded-For $remote_addr;`).
+Then set `TRUST_PROXY` on the backend to the addresses its traffic arrives from:
+`loopback` when the web server runs on the same machine, or the proxy's
+addresses or subnet otherwise. The mobile app calls the backend directly, so its
+fans' addresses are read from the connection and can't be faked unless their
+traffic also comes through a trusted address. `TRUST_PROXY=true` is refused at
+startup.
+
+Mobile carriers put many fans behind one address, so if real fans hit the
+per-client limits, raise those numbers before anything else.
 
 ## Changing the schema
 

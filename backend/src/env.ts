@@ -15,6 +15,20 @@ const schema = z.object({
   LIVE_SYNC_CRON: z.string().default('*/2 * * * *'),
   /** Set to 'false' to keep the scheduler off even with a key present. */
   LIVE_SYNC_ENABLED: z.enum(['true', 'false']).default('true'),
+  /**
+   * Which proxies may tell us a client's address through X-Forwarded-For, in
+   * Express's 'trust proxy' syntax: a hop count, or addresses and names such as
+   * 'loopback' (docs/RUNBOOK.md). Kijiweni's rate limits key on the result.
+   * Off by default. 'true' is refused, because it would let any client pick its
+   * own address and dodge the limits.
+   */
+  TRUST_PROXY: z
+    .string()
+    .default('false')
+    .refine((v) => v !== 'true', "TRUST_PROXY=true trusts any client's claimed address")
+    .transform((v): boolean | number | string =>
+      v === 'false' ? false : /^\d+$/.test(v) ? Number(v) : v,
+    ),
 });
 
 const parsed = schema.safeParse(process.env);

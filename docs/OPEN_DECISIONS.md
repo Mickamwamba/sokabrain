@@ -93,8 +93,10 @@ When you settle one, write the change as a fix file (see `docs/RUNBOOK.md`,
 
 ## Code gaps (for a developer, not an editor)
 
-- **Kijiweni's public write endpoints have no auth and no rate limit.** Add rate
-  limiting before promoting the site.
+- **Kijiweni's per-client rate limits need `TRUST_PROXY` set when the site is
+  deployed.** Until then every web fan shares one budget, because the backend
+  sees all web posts coming from the web server. See "Kijiweni rate limits" in
+  `docs/RUNBOOK.md`.
 - **The iOS app allows plain HTTP** (`NSAllowsArbitraryLoads`) for local
   development. Remove it for release.
 - **Socket.io push is not built** (priority 6). Clients poll today.

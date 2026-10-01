@@ -8,6 +8,8 @@ import { kijiweniRouter } from './routes/kijiweni.js';
 import { startLiveScoreSync } from './jobs/liveScoreSync.js';
 
 const app = express();
+// Decides what req.ip is behind a proxy; Kijiweni's rate limits key on it.
+app.set('trust proxy', env.TRUST_PROXY);
 app.use(cors());
 app.use(express.json());
 

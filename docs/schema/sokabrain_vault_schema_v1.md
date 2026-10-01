@@ -727,8 +727,9 @@ and a like is keyed on a client-generated `fan_fingerprint`. So:
   fingerprint can like again.
 - **Two fans can use the same handle.** Nothing ties a handle to a person.
 - **The public write endpoints (`POST /api/kijiweni/threads`, comments, likes)
-  have no authentication and no rate limit.** Input is length-validated with
-  zod, and that is all. Add rate limiting before the site is promoted.
+  have no authentication.** Input is length-validated with zod and rate limited
+  per client and site-wide (`backend/src/routes/kijiweniLimits.ts`). The
+  limits live in memory, not in these tables.
 
 ### Moderation hides; deletion cascades
 

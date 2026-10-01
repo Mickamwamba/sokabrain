@@ -1,8 +1,12 @@
 import { Router, type Request, type Response } from 'express';
 import { z } from 'zod';
 import { prisma } from '../db.js';
+import { createKijiweniLimits } from './kijiweniLimits.js';
 
 export const kijiweniRouter = Router();
+
+// Posting needs no account, so every write route is rate limited.
+const limits = createKijiweniLimits();
 
 // GET /api/kijiweni/spaces - List all active Vijiwe
 kijiweniRouter.get('/spaces', async (_req: Request, res: Response) => {
@@ -183,7 +187,7 @@ const CreateThreadSchema = z.object({
 });
 
 // POST /api/kijiweni/threads - Start a new thread
-kijiweniRouter.post('/threads', async (req: Request, res: Response) => {
+kijiweniRouter.post('/threads', ...limits.thread, async (req: Request, res: Response) => {
   try {
     const parsed = CreateThreadSchema.safeParse(req.body);
     if (!parsed.success) {
@@ -233,7 +237,7 @@ const CreateCommentSchema = z.object({
 });
 
 // POST /api/kijiweni/threads/:id/comments - Add comment to a thread
-kijiweniRouter.post('/threads/:id/comments', async (req: Request, res: Response) => {
+kijiweniRouter.post('/threads/:id/comments', ...limits.comment, async (req: Request, res: Response) => {
   try {
     const rawId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
     const threadId = parseInt(rawId ?? '', 10);
@@ -287,7 +291,7 @@ const LikeSchema = z.object({
 });
 
 // POST /api/kijiweni/threads/:id/like - Toggle like on thread
-kijiweniRouter.post('/threads/:id/like', async (req: Request, res: Response) => {
+kijiweniRouter.post('/threads/:id/like', ...limits.like, async (req: Request, res: Response) => {
   try {
     const rawId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
     const threadId = parseInt(rawId ?? '', 10);
@@ -359,7 +363,7 @@ kijiweniRouter.post('/threads/:id/like', async (req: Request, res: Response) => 
 });
 
 // POST /api/kijiweni/comments/:id/like - Toggle like on comment
-kijiweniRouter.post('/comments/:id/like', async (req: Request, res: Response) => {
+kijiweniRouter.post('/comments/:id/like', ...limits.like, async (req: Request, res: Response) => {
   try {
     const rawId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
     const commentId = parseInt(rawId ?? '', 10);
