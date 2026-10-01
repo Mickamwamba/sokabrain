@@ -26,7 +26,7 @@ import psycopg2
 
 from match_fotmob_players import display, resolve, resolve_wide
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 GOALS = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
 
 

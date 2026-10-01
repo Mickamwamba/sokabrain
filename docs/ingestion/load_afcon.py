@@ -43,7 +43,7 @@ import psycopg2.extras
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-DSN = "postgresql://michaelkimollo@127.0.0.1:5432/sokabrain"
+from vaultdb import DSN  # noqa: E402
 
 AFCON_COMPETITION = 16          # competitions.id -- 'Africa Cup of Nations'
 LEGACY_2019_EDITION = 14        # already migrated; compared, never rewritten

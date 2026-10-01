@@ -57,7 +57,7 @@ from fetch_rpl_players import get as rpl_get, title_of  # noqa: E402
 
 import psycopg2  # noqa: E402
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 GOAL_TYPES = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
 SM = "https://api.sportmonks.com/v3/football"
 

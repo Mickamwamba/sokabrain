@@ -35,7 +35,7 @@ import psycopg2.extras
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from teamnames import canonical, key as team_key  # noqa: E402
 
-DSN = "postgresql://michaelkimollo@127.0.0.1:5432/sokabrain"
+from vaultdb import DSN  # noqa: E402
 
 TANZANIA = 56          # countries.id
 TPL_COMPETITION = 1    # competitions.id -- 'Premier League', tier 1, Tanzania

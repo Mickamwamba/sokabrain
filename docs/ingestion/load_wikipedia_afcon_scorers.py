@@ -44,7 +44,7 @@ import psycopg2
 
 from playermatch import fold, resolve, words
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 COMPETITION_ID = 16
 SOURCE = "wikipedia"
 
