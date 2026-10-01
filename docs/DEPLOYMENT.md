@@ -669,169 +669,28 @@ What changes and what doesn't:
 | Database | Managed Postgres | The same managed Postgres. Step 1 applies unchanged. |
 | Node on the host | Required | Not needed. Only Docker. |
 
-The files below were built and run on 2026-10-01 against a copy of the vault:
-both images build, the stack starts, and the site, `/api/vault` rewrite, admin
-login page and `/health` all answer through Caddy. Three things weren't tested:
+The files in D.1 were built and run on 2026-10-01 against a copy of the vault,
+with the live sync switched off: both images build, the stack starts with the
+backend healthy, and the site, Kijiweni, the `/api/vault` and `/api/kijiweni`
+rewrites, the admin login page and `/health` all answer through Caddy. Three things weren't tested:
 real TLS certificates, the scheduled jobs inside the container, and Kijiweni's
 per-client rate limit behind Caddy. Cover those with the go-live checklist.
 
 ### D.1 The files
 
-Add these six files to the repo (they aren't committed yet).
+All six are committed in the repo:
 
-**`backend/Dockerfile`**. One image runs the API, the live-score cron and the
-npm scripts the scheduled jobs use:
-
-```dockerfile
-# Sokabrain backend: the API, the live-score cron, and the npm scripts the
-# scheduled jobs run. One image does all three.
-FROM node:22-bookworm-slim
-
-WORKDIR /app
-ENV NODE_ENV=production
-
-# Dev dependencies are installed on purpose: the sm:*, editions:* and admin:*
-# scripts run through tsx, and `prisma generate` needs the prisma CLI.
-COPY package.json package-lock.json ./
-RUN npm ci --include=dev
-
-COPY . .
-# prisma.config.ts reads DATABASE_URL; generate doesn't connect, so a
-# placeholder is enough at build time. The real one comes from the environment.
-RUN DATABASE_URL=postgresql://build@localhost/build npx prisma generate \
- && npm run build
-
-USER node
-EXPOSE 4010
-CMD ["node", "dist/index.js"]
-```
-
-**`backend/.dockerignore`**. Keeps secrets and local builds out of the image:
-
-```
-node_modules
-dist
-.env
-*.log
-```
-
-**`web/Dockerfile`**:
-
-```dockerfile
-# Sokabrain web: public site and admin console.
-FROM node:22-bookworm-slim AS build
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY . .
-# Next.js bakes the /api/vault and /api/kijiweni rewrite targets into the build,
-# so the backend's address has to be known here, not only at run time.
-ARG API_URL=http://backend:4010
-ENV API_URL=$API_URL NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
-
-FROM node:22-bookworm-slim
-WORKDIR /app
-ARG API_URL=http://backend:4010
-ENV NODE_ENV=production API_URL=$API_URL NEXT_TELEMETRY_DISABLED=1
-COPY --from=build /app/package.json /app/package-lock.json ./
-RUN npm ci --omit=dev
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY --from=build /app/next.config.ts ./
-USER node
-EXPOSE 3100
-CMD ["npx", "next", "start", "-H", "0.0.0.0", "-p", "3100"]
-```
-
-**`web/.dockerignore`**:
-
-```
-node_modules
-.next
-.env*
-*.log
-tsconfig.tsbuildinfo
-```
-
-**`compose.yml`** at the repo root:
-
-```yaml
-# Sokabrain on Docker: backend, web and Caddy (HTTPS) on one host.
-# The database is managed and outside this file.
-name: sokabrain
-
-services:
-  backend:
-    build: ./backend
-    image: sokabrain-backend
-    env_file: ./backend/.env
-    environment:
-      PORT: "4010"
-    restart: unless-stopped
-    # Exactly one replica: the live-score cron and the rate-limit counters live in memory.
-    deploy:
-      replicas: 1
-    healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4010/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 15s
-
-  web:
-    build:
-      context: ./web
-      args:
-        API_URL: http://backend:4010
-    image: sokabrain-web
-    environment:
-      API_URL: http://backend:4010
-    restart: unless-stopped
-    depends_on:
-      backend:
-        condition: service_healthy
-
-  caddy:
-    image: caddy:2
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    environment:
-      SITE_DOMAIN: ${SITE_DOMAIN:?set SITE_DOMAIN in .env}
-      API_DOMAIN: ${API_DOMAIN:?set API_DOMAIN in .env}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    restart: unless-stopped
-    depends_on:
-      - web
-      - backend
-
-volumes:
-  caddy_data:
-  caddy_config:
-```
+| File | What it does |
+|---|---|
+| `backend/Dockerfile` | One image runs the API, the live-score cron and the npm scripts the scheduled jobs use. Dev dependencies are installed on purpose: those scripts run through tsx. |
+| `backend/.dockerignore` | Keeps `.env`, `node_modules` and local builds out of the image. |
+| `web/Dockerfile` | Two-stage build of the public site and admin console. `API_URL` is a build argument because Next.js bakes the `/api/vault` and `/api/kijiweni` rewrite targets into the build. |
+| `web/.dockerignore` | The same for the web app. |
+| `compose.yml` | Backend, web and Caddy on one host, with exactly one backend replica. The database is managed and outside it. |
+| `Caddyfile` | Routes `SITE_DOMAIN` to the web app and `API_DOMAIN` to the backend, and gets the TLS certificates. |
 
 Only Caddy publishes ports. The backend and web are reachable only on the
 compose network, under the names `backend` and `web`.
-
-**`Caddyfile`** at the repo root:
-
-```
-# Caddy gets and renews the TLS certificates itself. By default it ignores any
-# X-Forwarded-For a client sends and sets it to the real connecting address,
-# which is what Kijiweni's per-client rate limits need.
-{$SITE_DOMAIN} {
-	reverse_proxy web:3100
-}
-
-{$API_DOMAIN} {
-	reverse_proxy backend:4010
-}
-```
 
 ### D.2 Set up the server
 

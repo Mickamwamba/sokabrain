@@ -1,0 +1,10 @@
+# Caddy gets and renews the TLS certificates itself. By default it ignores any
+# X-Forwarded-For a client sends and sets it to the real connecting address,
+# which is what Kijiweni's per-client rate limits need.
+{$SITE_DOMAIN} {
+	reverse_proxy web:3100
+}
+
+{$API_DOMAIN} {
+	reverse_proxy backend:4010
+}
