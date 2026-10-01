@@ -2,19 +2,11 @@
 
 Questions the data cannot answer by itself. Each needs someone with football
 knowledge, or a source not yet found, to make a call. **None of these should be
-"fixed" by a script guessing.** Counts are as of 2026-10-01; the data audit
-(`/admin/audit`) has the live numbers.
+"fixed" by a script guessing.** Counts are from audit run #31 on 2026-10-01;
+the data audit (`/admin/audit`) has the live numbers.
 
 When you settle one, write the change as a fix file (see `docs/RUNBOOK.md`,
 "Fix a data error"), then remove it from this list.
-
-## Quick wins
-
-- **Data flag 44 is stale.** It says Tanzania Prisons 3-2 JKT Tanzania (match
-  17991) holds 6 goal events, but the match was corrected on 2026-09-17 and now
-  holds 5 for a 3-2. Resolve the flag in `/admin/flags`.
-- **The last audit run was #30, on 2026-09-20.** Run it again before working the
-  list below, because some findings will already be resolved.
 
 ## Fixtures and seasons
 
@@ -62,7 +54,7 @@ When you settle one, write the change as a fix file (see `docs/RUNBOOK.md`,
 - **Tanzania 2019/20: 7 sides hold a plain GOAL where Flashscore says OWN_GOAL.**
   Fixing one means changing the type and moving the event to the scorer's own
   team. That needs a fix file, not a loader.
-- **626 unnamed-scorer findings.** Most have no source anywhere; `docs/HISTORY.md`
+- **628 unnamed-scorer findings.** Most have no source anywhere; `docs/HISTORY.md`
   records which seasons are at their ceiling. Do not invent names to close them.
 - **57 matches have no score** (`MISSING_SCORE`). Some are genuine gaps in the
   sources; some may be unplayed matches carrying the wrong status.
