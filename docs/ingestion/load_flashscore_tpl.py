@@ -28,7 +28,7 @@ import psycopg2
 
 from match_flashscore_players import fold, name_from, resolve
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 GOALS = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
 
 

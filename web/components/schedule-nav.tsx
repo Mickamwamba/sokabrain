@@ -7,9 +7,9 @@ import { type DayCount, type RoundSummary } from "@/lib/api";
 function formatDay(iso: string) {
   const d = new Date(`${iso}T12:00:00Z`);
   return {
-    dow: d.toLocaleDateString("en-GB", { weekday: "short" }),
-    dayNum: d.toLocaleDateString("en-GB", { day: "numeric" }),
-    month: d.toLocaleDateString("en-GB", { month: "short" }),
+    dow: d.toLocaleDateString("en-US", { weekday: "short" }),
+    dayNum: d.toLocaleDateString("en-US", { day: "numeric" }),
+    month: d.toLocaleDateString("en-US", { month: "short" }),
   };
 }
 
@@ -65,7 +65,7 @@ export function DateStrip({
       <button
         onClick={() => scrollSide("left")}
         aria-label="Scroll dates left"
-        className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
+        className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/95 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
       >
         ‹
       </button>
@@ -77,10 +77,9 @@ export function DateStrip({
       >
         <div className="flex min-w-max gap-1.5 py-0.5 items-center">
           {days.map((d) => {
-            const { dow, dayNum } = formatDay(d.date);
+            const { dow, dayNum, month } = formatDay(d.date);
             const isActive = d.date === active;
             const isToday = d.date === todayIso;
-            const hasMatches = d.matches > 0;
 
             return (
               <Link
@@ -90,17 +89,35 @@ export function DateStrip({
                 data-date={d.date}
                 onClick={handlePillClick}
                 aria-current={isActive ? "date" : undefined}
-                className={`relative flex min-w-[56px] sm:min-w-[62px] flex-col items-center justify-center rounded-xl px-2 py-1.5 transition-all duration-200 text-center select-none ${
+                className={`relative flex min-w-[50px] sm:min-w-[56px] flex-col items-stretch rounded-xl border overflow-hidden transition-all duration-200 text-center select-none shadow-2xs ${
                   isActive
-                    ? "bg-ink text-white shadow-sm ring-2 ring-ink/20 font-bold scale-[1.02]"
+                    ? "border-ink bg-ink text-white ring-2 ring-ink/20 shadow-sm scale-[1.03]"
                     : isToday
-                    ? "border border-brand/50 bg-brand/5 text-ink hover:bg-brand/10 hover:border-brand"
-                    : "border border-line/70 bg-paper text-ink hover:border-ink/40 hover:bg-wash"
+                    ? "border-brand/60 bg-paper text-ink hover:border-brand hover:shadow-xs"
+                    : "border-line bg-paper text-ink hover:border-ink/40 hover:bg-wash/50"
                 }`}
               >
-                {/* Day of week */}
-                <span
-                  className={`text-[10px] font-bold uppercase tracking-wider leading-none transition-colors ${
+                {/* Month Banner Header */}
+                <div
+                  className={`py-0.5 text-[9px] font-black uppercase tracking-wider text-center transition-colors ${
+                    isActive
+                      ? "bg-brand text-white"
+                      : isToday
+                      ? "bg-brand/10 text-brand border-b border-brand/20 font-black"
+                      : "bg-wash border-b border-line text-muted"
+                  }`}
+                >
+                  {month}
+                </div>
+
+                {/* Day Number */}
+                <div className="nums text-base font-black leading-tight pt-1 px-1">
+                  {dayNum}
+                </div>
+
+                {/* Weekday / Today Footer */}
+                <div
+                  className={`text-[9px] font-bold uppercase tracking-wider pb-1 px-1 leading-none ${
                     isActive
                       ? "text-white/80"
                       : isToday
@@ -109,29 +126,6 @@ export function DateStrip({
                   }`}
                 >
                   {isToday ? "Today" : dow}
-                </span>
-
-                {/* Day number */}
-                <span className="nums text-base font-black leading-tight mt-0.5">
-                  {dayNum}
-                </span>
-
-                {/* Match indicator dot */}
-                <div className="mt-0.5 flex items-center justify-center h-2">
-                  {hasMatches ? (
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                        isActive
-                          ? "bg-brand-light"
-                          : isToday
-                          ? "bg-brand animate-pulse"
-                          : "bg-ink/50"
-                      }`}
-                      title={`${d.matches} ${d.matches === 1 ? "match" : "matches"}`}
-                    />
-                  ) : (
-                    <span className="h-1.5 w-1.5 rounded-full bg-transparent" />
-                  )}
                 </div>
               </Link>
             );
@@ -143,7 +137,7 @@ export function DateStrip({
       <button
         onClick={() => scrollSide("right")}
         aria-label="Scroll dates right"
-        className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/90 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
+        className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 h-7 w-7 items-center justify-center rounded-full bg-paper/95 border border-line shadow-md text-ink hover:bg-wash transition-all opacity-0 group-hover/strip:opacity-100 cursor-pointer"
       >
         ›
       </button>

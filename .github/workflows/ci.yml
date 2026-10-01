@@ -1,0 +1,136 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+# Every job that touches the database restores the committed vault snapshot
+# into a throwaway Postgres 16. The backend's integration tests and the mobile
+# app's API tests run against the real schema and reference rows (data_sources
+# and friends), so an empty database is not enough.
+
+env:
+  DATABASE_URL: postgresql://postgres:postgres@localhost:5432/sokabrain
+  NODE_ENV: test
+  # Keep the live-score scheduler off: CI has no provider token and must never
+  # call a paid API.
+  LIVE_SYNC_ENABLED: 'false'
+  NODE_VERSION: '22'
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sokabrain
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - name: Restore vault snapshot
+        run: TARGET_URL="$DATABASE_URL" ./scripts/restore_db.sh
+      - run: npm ci
+        working-directory: backend
+      - run: npx prisma generate
+        working-directory: backend
+      - run: npm run typecheck
+        working-directory: backend
+      - run: npm test
+        working-directory: backend
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      # Pages are typed with PageProps<'/route'>, which only exists after route
+      # typegen, so a fresh checkout cannot typecheck without this.
+      - run: npx next typegen
+        working-directory: web
+      - run: npx tsc --noEmit
+        working-directory: web
+      - run: npm run lint
+        working-directory: web
+
+  mobile:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sokabrain
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      # The API-decoding tests call the backend for real on :4010.
+      - name: Restore vault snapshot
+        run: TARGET_URL="$DATABASE_URL" ./scripts/restore_db.sh
+      - name: Start backend
+        working-directory: backend
+        run: |
+          npm ci
+          npx prisma generate
+          PORT=4010 npx tsx src/index.ts > /tmp/backend.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4010/health && exit 0
+            sleep 1
+          done
+          cat /tmp/backend.log
+          exit 1
+      - run: flutter pub get
+        working-directory: mobile
+      - run: flutter analyze
+        working-directory: mobile
+      # The Kijiweni write test stays skipped (no KIJIWENI_WRITE_TESTS define):
+      # it posts through the public API, and this database is thrown away anyway,
+      # but keeping CI identical to a local run avoids surprises.
+      - run: flutter test
+        working-directory: mobile
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: pip install -r requirements.txt
+      # The pure helpers (name matching, normalisers) are doctested. The loaders
+      # write to the vault and are not run here.
+      - name: Doctests
+        working-directory: docs/ingestion
+        run: |
+          set -e
+          for f in $(grep -l '>>> ' *.py); do
+            echo "doctest $f"
+            python -m doctest "$f"
+          done

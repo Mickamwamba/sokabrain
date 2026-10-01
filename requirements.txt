@@ -1,0 +1,11 @@
+# Python dependencies for the ingestion and reconciliation scripts under docs/.
+# The backend and web apps are Node; this is only for the Python tooling.
+#
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#
+# Developed against Python 3.13. Everything else the scripts import is stdlib.
+psycopg2-binary==2.9.13
+
+# Only docs/migration/migrate.py, which re-migrates a legacy SokaFC MySQL dump.
+# Not needed for day-to-day ingestion.
+PyMySQL>=1.1

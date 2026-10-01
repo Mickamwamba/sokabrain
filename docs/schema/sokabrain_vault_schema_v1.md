@@ -700,3 +700,45 @@ For the 46 matches decided in extra time, `home_score`/`away_score` hold the
 running total — the AFCON ingest normalised WhoScored's form, which zeroed the
 loser. Checks comparing the event log with the score use the after-extra-time
 result; the first draft did not, and flagged 15 extra-time goals as extra events.
+
+## Addendum: Kijiweni fan zone (2026-09-19)
+
+Four tables, `kijiwe_spaces`, `kijiwe_threads`, `kijiwe_comments` and
+`kijiwe_likes`, back the fan discussion area ("Soga za Kijiweni") on the web
+site and in the mobile app. The original plan listed a native forum as a
+non-goal; it was built anyway, and this records how it sits beside the vault.
+
+### It is deliberately walled off from the vault
+
+No Kijiweni table references a match, team or player, and nothing in the vault
+references Kijiweni. A fan's club is `author_team_name`, free text rather than a
+`teams` foreign key: it is a badge on a post, and a fan may name a club the vault
+does not hold. Because nothing here is football data from a source, the
+provenance rule (principle 1) does not apply — there is no `entity_source_map`
+row for a post, and there should not be.
+
+### Posting is anonymous, and that has consequences
+
+There are no fan accounts. A fan chooses a display handle stored on each post,
+and a like is keyed on a client-generated `fan_fingerprint`. So:
+
+- **One like per fan per target is a courtesy, not a guarantee.** The unique
+  indexes stop a client double-liking by accident; a client that changes its
+  fingerprint can like again.
+- **Two fans can use the same handle.** Nothing ties a handle to a person.
+- **The public write endpoints (`POST /api/kijiweni/threads`, comments, likes)
+  have no authentication and no rate limit.** Input is length-validated with
+  zod, and that is all. Add rate limiting before the site is promoted.
+
+### Moderation hides; deletion cascades
+
+Admins moderate under `/api/admin/kijiweni` (behind `requireAdmin`). Hiding sets
+`is_hidden` and is reversible; the public API filters hidden rows out. Deleting a
+thread cascades to its comments and likes. `likes_count` and `comments_count` on
+threads and comments are denormalised and updated in the same transaction as the
+write that changes them.
+
+### Bilingual by column
+
+Spaces carry `name_sw`/`name_en` and `description_sw`/`description_en`; the
+client picks one. Posts are stored as written, with no translation.

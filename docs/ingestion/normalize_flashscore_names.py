@@ -28,7 +28,7 @@ import psycopg2
 from match_flashscore_players import name_from
 from teamnames import key
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 TYPES = {"G": "GOAL", "PEN": "PENALTY_GOAL", "OG": "OWN_GOAL"}
 
 

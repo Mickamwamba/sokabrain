@@ -375,3 +375,77 @@ CREATE TABLE audit_findings (
 CREATE INDEX audit_findings_open_idx ON audit_findings (status, severity) WHERE status IN ('OPEN','FIXED');
 CREATE INDEX audit_findings_edition_idx ON audit_findings (edition_id, status);
 CREATE INDEX audit_findings_entity_idx ON audit_findings (entity_type, entity_id);
+
+-- =============================================================================
+-- Kijiweni fan zone (added 2026-09-19)
+-- =============================================================================
+-- Fan discussion, entirely separate from the vault: nothing here references a
+-- match, team or player, and no vault table references these. Posting is
+-- anonymous by design -- a fan picks a display handle, there is no account --
+-- so author_name is free text, not a foreign key. Moderation hides rather than
+-- deletes (is_hidden); an admin delete cascades to comments and likes.
+
+CREATE TABLE kijiwe_spaces (
+    id                  SERIAL PRIMARY KEY,
+    slug                VARCHAR(50) NOT NULL,
+    -- Bilingual: the site and app switch Swahili/English client-side.
+    name_sw             VARCHAR(100) NOT NULL,
+    name_en             VARCHAR(100) NOT NULL,
+    description_sw      TEXT NOT NULL,
+    description_en      TEXT NOT NULL,
+    icon                VARCHAR(20) NOT NULL,
+    badge_color         VARCHAR(30) NOT NULL,
+    display_order       INT NOT NULL DEFAULT 0,
+    created_at          TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX kijiwe_spaces_slug_key ON kijiwe_spaces (slug);
+
+CREATE TABLE kijiwe_threads (
+    id                  SERIAL PRIMARY KEY,
+    kijiwe_id           INT NOT NULL REFERENCES kijiwe_spaces(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    title               VARCHAR(200) NOT NULL,
+    content             TEXT NOT NULL,
+    author_name         VARCHAR(50) NOT NULL,
+    -- The club the fan declares, as text. Not a teams FK: it is a badge on a
+    -- post, and a fan may name a club the vault does not hold.
+    author_team_name    VARCHAR(80),
+    tag                 VARCHAR(30) NOT NULL DEFAULT 'UBISHI',
+    -- Denormalised counters, kept in step by the routes in the same transaction
+    -- as the like/comment write.
+    likes_count         INT NOT NULL DEFAULT 0,
+    comments_count      INT NOT NULL DEFAULT 0,
+    is_pinned           BOOLEAN NOT NULL DEFAULT FALSE,
+    is_hidden           BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at          TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at          TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX kijiwe_threads_kijiwe_id_created_at_idx ON kijiwe_threads (kijiwe_id, created_at DESC);
+
+CREATE TABLE kijiwe_comments (
+    id                  SERIAL PRIMARY KEY,
+    thread_id           INT NOT NULL REFERENCES kijiwe_threads(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    author_name         VARCHAR(50) NOT NULL,
+    author_team_name    VARCHAR(80),
+    content             TEXT NOT NULL,
+    likes_count         INT NOT NULL DEFAULT 0,
+    is_hidden           BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at          TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX kijiwe_comments_thread_id_created_at_idx ON kijiwe_comments (thread_id, created_at);
+
+-- A like targets a thread OR a comment. fan_fingerprint is a client-generated
+-- id, so one like per fan per target is a courtesy, not a guarantee.
+CREATE TABLE kijiwe_likes (
+    id                  SERIAL PRIMARY KEY,
+    thread_id           INT REFERENCES kijiwe_threads(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    comment_id          INT REFERENCES kijiwe_comments(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    fan_fingerprint     VARCHAR(100) NOT NULL,
+    reaction_type       VARCHAR(20) NOT NULL DEFAULT 'LIKE',
+    created_at          TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX kijiwe_likes_thread_id_fan_fingerprint_key ON kijiwe_likes (thread_id, fan_fingerprint);
+CREATE UNIQUE INDEX kijiwe_likes_comment_id_fan_fingerprint_key ON kijiwe_likes (comment_id, fan_fingerprint);

@@ -41,7 +41,7 @@ sys.path.insert(0, __file__.rsplit("/", 1)[0])
 
 from load import TANZANIA, norm_person, team_key  # noqa: E402
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 GOALS = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
 
 

@@ -29,7 +29,7 @@ import psycopg2
 
 from normalize_ligikuu import normalize
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 COMPETITION_ID = 1                 # Premier League
 GOAL_TYPES = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
 

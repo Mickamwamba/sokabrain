@@ -1,6 +1,11 @@
 """Check that the loader can re-name a side whose scorers have been erased.
 
-    python3 test_name_whole_side.py
+    python3 test_name_whole_side.py staged_2022_23.json
+
+The argument is the staged 2022/23 FotMob harvest. It is not kept in the repo;
+regenerate it with
+
+    python3 normalize_fotmob_tpl.py raw/fotmob_tpl/2022-2023.tsv > staged_2022_23.json
 
 The "name a whole unnamed side" step in `load_fotmob_tpl.py` exists for 2019/20
 and 2018/19, whose event logs are complete and whose scorers are mostly absent.
@@ -25,14 +30,14 @@ import psycopg2
 
 from load_fotmob_tpl import GOALS, Loader, credited_in_vault
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
-STAGED = "/private/tmp/claude-501/-Users-michaelkimollo-Projects-soka-brain/" \
-         "a2fbfbaa-2a45-4d40-8e2f-0a786b03b80b/scratchpad/staged_2022_23.json"
+from vaultdb import DSN  # noqa: E402
 HOW_MANY = 12
 
 
 def main():
-    staged = {r["match"]: r for r in json.load(open(STAGED))}
+    if len(sys.argv) != 2:
+        sys.exit("usage: test_name_whole_side.py <staged_2022_23.json>")
+    staged = {r["match"]: r for r in json.load(open(sys.argv[1]))}
     conn = psycopg2.connect(DSN)
     conn.autocommit = False
     cur = conn.cursor()

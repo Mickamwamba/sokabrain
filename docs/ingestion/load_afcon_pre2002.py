@@ -35,7 +35,7 @@ from datetime import datetime, timezone
 import psycopg2
 import psycopg2.extras
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 COMPETITION_ID = 16          # Africa Cup of Nations
 SOURCE = "rsssf"
 

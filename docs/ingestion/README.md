@@ -105,12 +105,12 @@ under the ligikuu-vs-whoscored run.
 
 ## Running it
 
-`load.py` needs `psycopg2`, which macOS system Python will not install into;
+`load.py` needs `psycopg2` (see `requirements.txt`), which macOS system Python will not install into;
 use a virtualenv. It runs inside a transaction and **rolls back unless given
 `--commit`**, so a dry run costs nothing:
 
 ```sh
-python3 -m venv .venv && .venv/bin/pip install psycopg2-binary
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 python3 docs/ingestion/fetch_ligikuu.py raw/ligikuu
 python3 docs/ingestion/normalize_ligikuu.py  raw/ligikuu   canon_ligikuu.json
 python3 docs/ingestion/normalize_whoscored.py raw/whoscored canon_whoscored.json

@@ -26,7 +26,7 @@ import psycopg2
 from playermatch import fold, resolve, words
 from teamnames import key as team_key
 
-DSN = "host=127.0.0.1 port=5432 dbname=sokabrain"
+from vaultdb import DSN  # noqa: E402
 COMPETITION_ID = 1
 SOURCE = "rsssf"
 GOALS = ("GOAL", "PENALTY_GOAL", "OWN_GOAL")
