@@ -35,9 +35,12 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-const server = app.listen(env.PORT, () => {
-  console.log(`sokabrain api listening on http://localhost:${env.PORT}`);
-});
+const onListening = () => {
+  console.log(`sokabrain api listening on http://${env.HOST ?? 'localhost'}:${env.PORT}`);
+};
+const server = env.HOST
+  ? app.listen(env.PORT, env.HOST, onListening)
+  : app.listen(env.PORT, onListening);
 
 // Warns and no-ops when API_FOOTBALL_KEY is unset — the read and admin APIs
 // are fully usable without a live-score provider.
