@@ -1025,6 +1025,7 @@ main guide creates one.
 ```sh
 NODE_ENV=production
 PORT=4010
+HOST=127.0.0.1
 DATABASE_URL=postgresql://sokabrain:<password>@127.0.0.1:5432/sokabrain
 JWT_SECRET=<openssl rand -hex 32>
 
@@ -1040,18 +1041,18 @@ LIVE_SYNC_ENABLED=false
 TRUST_PROXY=loopback
 ```
 
-**The backend listens on all interfaces, not loopback, and this deployment
-accepts that rather than fixing it.** `backend/src/index.ts` calls
-`app.listen(env.PORT, callback)` with no host argument, and Node binds that
-to every interface by default; there is no `HOST` variable in
-`backend/src/env.ts` to restrict it. On a fresh server (the main guide) this
-is sealed off by `ufw`. On this shared server we were told never to touch
-the firewall — but the firewall already in place is what's relied on here to
-keep port 4010 off the public interface; nothing in this deployment changes
-that firewall, and nothing in this deployment opens it further. Fixing this
-properly needs a small code change (an optional `HOST` env var, honoured
-only if set) — out of scope for this docs-only task; flagged below as a
-recommendation.
+**`HOST=127.0.0.1` restricts the backend to loopback**, closing the gap
+Task 1.2/1.3 flagged (the backend used to listen on every interface, relying
+on the shared server's firewall alone to keep port 4010 off the public one);
+the optional `HOST` env var exists for exactly this. **Use `127.0.0.1`
+everywhere on this server that talks to the backend — never `localhost` —**
+in the web app's `API_URL`, the Apache `ProxyPass` targets, every `/health`
+check, and the cron scripts below: with `HOST=127.0.0.1` the backend only
+binds the IPv4 loopback, and `localhost` can resolve to the IPv6 loopback
+(`::1`) first, which would just be refused. This doesn't change the rule
+against touching the firewall (above) — `HOST` narrows what the backend
+itself accepts; it was never meant to be a substitute for leaving the
+firewall alone, and this deployment still doesn't touch it.
 
 Build, same as Step 3.2:
 
@@ -1074,7 +1075,8 @@ before the web app and Apache are in the picture:
 ```sh
 cd /opt/sokabrain
 pm2 start ecosystem.config.cjs --only sokabrain-api
-curl -s http://127.0.0.1:4010/health      # {"status":"ok","database":"connected"}
+pm2 logs sokabrain-api --lines 5 --nostream   # sokabrain api listening on http://127.0.0.1:4010
+curl -s http://127.0.0.1:4010/health          # {"status":"ok","database":"connected"}
 ```
 
 **Nothing in this subsection has been run on the real server.**
@@ -1460,8 +1462,9 @@ a fresh `pg-backup.sh` run — the main guide's "Changing the schema" steps in
       informed in advance) brings back all three PM2 apps via
       `pm2-root.service`.
 - [ ] Ports 3100 and 4010 are confirmed not reachable from outside the
-      server (the firewall already in place is what this relies on — see
-      "The backend" above).
+      server — `sokabrain-web` binds `127.0.0.1` via its `-H` flag and
+      `sokabrain-api` via `HOST=127.0.0.1`; this checks that actually holds,
+      not just that the firewall (still untouched) happens to agree.
 
 ### Not tested
 
@@ -1492,10 +1495,5 @@ against the real box:
 
 ### Recommended, not implemented here
 
-- **Add an optional `HOST` env var to the backend** (`backend/src/env.ts`,
-  `backend/src/index.ts`), honoured only if set, so it can bind to
-  `127.0.0.1` explicitly instead of relying on the shared server's firewall
-  to keep port 4010 off the public interface. Out of scope for this
-  docs-only task.
 - **Decide the off-server destination for the nightly `pg_dump`** before
   this server holds any data worth not losing twice.
