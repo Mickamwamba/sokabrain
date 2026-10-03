@@ -10,7 +10,7 @@ module.exports = {
   apps: [
     {
       name: 'sokabrain-api',
-      cwd: '/opt/sokabrain/backend',
+      cwd: '/opt/sokabrain/app/backend',
       script: 'dist/index.js',
       instances: 1,
       exec_mode: 'fork',
@@ -20,8 +20,8 @@ module.exports = {
     },
     {
       name: 'sokabrain-web',
-      cwd: '/opt/sokabrain/web',
-      script: 'node_modules/.bin/next',
+      cwd: '/opt/sokabrain/app/web',
+      script: 'node_modules/next/dist/bin/next',
       // -H binds the web app to loopback only, matching the main guide's
       // systemd unit (docs/DEPLOYMENT.md, step 4.3). The npm "start" script
       // doesn't carry -p/-H, so they're passed here instead of using it.
