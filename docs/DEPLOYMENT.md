@@ -857,3 +857,645 @@ Serverless hosting (Vercel and the like) suits the web app but **not the
 backend**, which has to stay running for its cron and in-memory counters. If
 you put the web app on Vercel, run the backend somewhere long-lived and point
 `API_URL` at it.
+
+## Deploying to a shared server (Apache and PM2)
+
+This is the path for the actual staging target: a server that already hosts
+other projects, running Apache (not nginx) and PM2 (not systemd), with
+PostgreSQL going on the same machine rather than a managed provider. Nothing
+below has been run on the real server yet — every command says so as it
+goes, and the section ends with a full list of what's untested.
+
+### What differs from the main guide, and why
+
+| Main guide assumes | This server actually has | Why it matters |
+|---|---|---|
+| A fresh server, ours alone | Five other projects already running | Every step has to avoid touching anything that isn't ours |
+| nginx | Apache 2.4 (`prefork` MPM, `mod_proxy`, `mod_proxy_http`, `mod_headers`, `mod_ssl`, `mod_rewrite`, `mod_alias` all already enabled) | Proxying and the `X-Forwarded-For` rule are written in Apache directives, not nginx's |
+| systemd units | PM2 7.0.1, running as `root`, started at boot by a `pm2-root.service` systemd unit that runs `pm2 resurrect` | We join the existing PM2 daemon rather than installing our own process manager |
+| A managed Postgres 16 | No PostgreSQL at all yet (confirmed: `apt-cache policy postgresql postgresql-16` showed "Installed: (none)") | We install and own Postgres 16 ourselves — see the note on shared-server rules below |
+| "2 GB RAM is plenty" | ~1.9 GB total, ~1.08 GB "available" at last check, **0 swap** | The web build alone can plausibly use more than that; it has to run under a hard memory cap (see below) or it can take the whole box down, including other projects |
+
+These facts are from the Task 1.2 server inspection (Apache modules,
+`apache2ctl -S`, `pm2 ls`/`describe`, `apt-cache policy`, `free -m`) and are a
+point-in-time snapshot — re-check anything load-bearing (free memory
+especially) immediately before acting on it, since five other projects share
+this box and their memory use moves independently of ours.
+
+### Rules for working on a shared server
+
+These apply to every step below, not just the ones that spell them out
+again:
+
+- Touch only `/opt/sokabrain`, our two Apache site files, and our own PM2
+  apps (`sokabrain-api`, `sokabrain-web`), addressed by name.
+- Always `apache2ctl configtest` before `systemctl reload apache2`. Never
+  `systemctl restart apache2` — a restart drops every other site's
+  connections, not just ours; a reload does not.
+- Never `pm2 kill`, `pm2 delete all`, or `pm2 restart all`. Always name our
+  two apps explicitly.
+- Never change the firewall.
+- **Installing PostgreSQL 16 is the one apparent exception**, and it isn't
+  really one: Task 1.2 found no Postgres on this server at all (the other
+  project there runs MySQL), so there is no existing Postgres role, database,
+  or config belonging to anyone else to disturb. We're the only tenant it
+  will ever have. The rule's intent — don't touch what isn't ours — is
+  honoured; its letter (which names `/opt/sokabrain` and Apache files
+  specifically, because those are the categories of thing the fresh-server
+  guide above already works with) doesn't anticipate installing a database
+  engine, because the fresh-server guide never has to.
+
+### Upgrading Node from 20 to 22, if it's still needed
+
+The main guide (Step 2) installs Node 22 from NodeSource. This server already
+runs Node 20.20.2, also from NodeSource (`dpkg -l` shows
+`nodejs 20.20.2-1nodesource1`; no nvm directory exists) — installed for the
+other app that runs under the same PM2 daemon. `backend/package.json` doesn't
+set an `engines` field, so Node 20 likely runs it fine; upgrade to 22 only if
+you hit a real incompatibility, because *this upgrade affects the other app
+too*, not just ours.
+
+If an upgrade turns out to be necessary, in this order (**all untested —
+this is a procedure, not something run yet**):
+
+1. `pm2 save` — snapshots the current process list (both apps) so
+   `pm2 resurrect` has a known-good fallback if anything below goes wrong.
+2. `curl -fsSL https://deb.nodesource.com/setup_22.x | bash -` then
+   `apt-get install -y nodejs` — the same two commands the main guide uses
+   for a fresh install; on an existing Node install this upgrades in place.
+3. `npm ls -g --depth=0` — confirm `pm2` is still listed. NodeSource's Node
+   package swap does not remove separately-installed global npm packages,
+   but confirm rather than assume.
+4. **Rebuild the other app's native modules, if it has any.** Check its
+   `package.json` for anything with a native build step (common ones:
+   `bcrypt`, `sharp`, anything with a `binding.gyp`). If it has none, this
+   step is a no-op. If it does, `cd` to its directory and run `npm rebuild`
+   there — a native module built against Node 20's ABI will not load under
+   Node 22 without this.
+5. `pm2 update` — PM2's own documented step after the underlying Node
+   version changes; it re-forks PM2's in-memory process manager against the
+   new binary without dropping the apps it's tracking.
+6. Verify **every** existing PM2 app, not just ours: `pm2 ls` (all should
+   read `online`), then a request against each app's own surface (for the
+   other app, whatever health or home endpoint it exposes; for ours, once
+   deployed, `curl http://127.0.0.1:4010/health` and
+   `curl -I http://127.0.0.1:3100/`).
+7. **Rollback, if step 6 fails for the other app:** NodeSource keeps old
+   package versions available —
+   `apt-get install -y nodejs=20.20.2-1nodesource1`, then repeat steps 3–6
+   against Node 20. Keep the exact version string step 2 reports before
+   upgrading, so the rollback target is precise rather than "the last 20.x."
+
+### PostgreSQL 16, local, listening on localhost only
+
+Ubuntu 24.04's own `postgresql-16` package (Task 1.2 found candidate
+`16.15-0ubuntu0.24.04.1`, matching the version the vault requires) rather
+than a managed provider:
+
+```sh
+apt-get install -y postgresql-16
+```
+
+Ubuntu's package ships `listen_addresses = 'localhost'` by default — **confirm
+this rather than assume it**, since it's the one setting that decides whether
+this database is reachable from outside the box at all:
+
+```sh
+grep -E '^\s*listen_addresses' /etc/postgresql/16/main/postgresql.conf
+```
+
+If it already reads `localhost` (expected), leave it. If it doesn't, set it
+and reload — but that's a hypothetical for now; **untested**, because
+Postgres isn't installed on the server yet.
+
+A dedicated role and database, not the migration-script default of "a
+database named after the OS user":
+
+```sh
+sudo -u postgres psql -c "CREATE ROLE sokabrain WITH LOGIN PASSWORD '<generate one — do not write it in this file or commit it anywhere>';"
+sudo -u postgres psql -c "CREATE DATABASE sokabrain OWNER sokabrain;"
+sudo -u postgres psql -c "ALTER DATABASE sokabrain SET timezone TO 'UTC';"
+```
+
+This mirrors Step 1.1/1.2 of the main guide (a dedicated role in place of a
+managed provider's credentials, the same UTC pin). Then Step 1.3's own
+script, unchanged, pointed at the new local role:
+
+```sh
+TARGET_URL="postgresql://sokabrain:<password>@127.0.0.1:5432/sokabrain" ./scripts/restore_db.sh
+```
+
+It prints row counts on completion — expect **6,984** in `matches` and
+**12,543** in `match_events`, the same numbers Task 1.1 got restoring this
+exact snapshot locally (the numbers grow as data is added; these are current
+as of this snapshot).
+
+Then Step 1.4's kickoff check, unchanged:
+
+```sh
+psql "$TARGET_URL" -c "SELECT kickoff_at, extract(epoch FROM kickoff_at) FROM matches ORDER BY id DESC LIMIT 3;"
+```
+
+Compare against the same query against the local vault, as the main guide
+describes.
+
+**Nothing in this subsection has been run on the real server.**
+
+### The checkout
+
+```sh
+mkdir -p /opt/sokabrain
+git clone git@github.com:Mickamwamba/sokabrain.git /opt/sokabrain
+```
+
+Needs a **read-only** deploy key — staging does not get write access to the
+repo. (This is also why the weekly snapshot-to-git job from the main guide's
+Step 6.6/Backups section is not part of this one: it needs a server with
+*write* access, and staging, being a copy rather than the vault of record,
+has no business pushing to the repo. See "Nightly backups" below for what
+this server does instead.) Everything from here runs as `root`, because
+that's the user the existing PM2 daemon (`pm2-root.service`) already runs
+as — there's no separate `sokabrain` system user on this box the way the
+main guide creates one.
+
+### The backend
+
+`.env` at `/opt/sokabrain/backend/.env`, `chmod 600`:
+
+```sh
+NODE_ENV=production
+PORT=4010
+DATABASE_URL=postgresql://sokabrain:<password>@127.0.0.1:5432/sokabrain
+JWT_SECRET=<openssl rand -hex 32>
+
+# No SportMonks account/token exists yet for this deployment. Leave both
+# unset and the sync off until one does — see "Scheduled jobs" below for
+# what changes once it exists.
+LIVE_SYNC_ENABLED=false
+
+# Apache runs on this machine and will overwrite X-Forwarded-For with the
+# real connecting address (see "Apache and TLS" below), so trust exactly
+# the loopback address — same reasoning as the main guide's Step 3.1, same
+# value, different proxy software.
+TRUST_PROXY=loopback
+```
+
+**The backend listens on all interfaces, not loopback, and this deployment
+accepts that rather than fixing it.** `backend/src/index.ts` calls
+`app.listen(env.PORT, callback)` with no host argument, and Node binds that
+to every interface by default; there is no `HOST` variable in
+`backend/src/env.ts` to restrict it. On a fresh server (the main guide) this
+is sealed off by `ufw`. On this shared server we were told never to touch
+the firewall — but the firewall already in place is what's relied on here to
+keep port 4010 off the public interface; nothing in this deployment changes
+that firewall, and nothing in this deployment opens it further. Fixing this
+properly needs a small code change (an optional `HOST` env var, honoured
+only if set) — out of scope for this docs-only task; flagged below as a
+recommendation.
+
+Build, same as Step 3.2:
+
+```sh
+cd /opt/sokabrain/backend
+npm ci
+npm run db:generate
+npm run build
+```
+
+Admin accounts, same as Step 3.3:
+
+```sh
+ADMIN_PASSWORD='at-least-12-characters' npm run admin:create -- --email them@example.com --name "Their Name"
+```
+
+Start it — just this one app for now, so we can check it in isolation
+before the web app and Apache are in the picture:
+
+```sh
+cd /opt/sokabrain
+pm2 start ecosystem.config.cjs --only sokabrain-api
+curl -s http://127.0.0.1:4010/health      # {"status":"ok","database":"connected"}
+```
+
+**Nothing in this subsection has been run on the real server.**
+
+### The web app, built under a memory limit
+
+`npm run build` on a 2 GB box with four other things already running (an
+`mysqld` alone was using ~435 MB at last check) is a real risk of taking
+*everything* down, not just failing our own build. Run it inside a cgroup
+with a hard cap instead of bare:
+
+```sh
+cd /opt/sokabrain/web
+systemd-run --scope -p MemoryMax=<limit> -p MemorySwapMax=0 npm run build
+```
+
+`MemorySwapMax=0` matters less than it would elsewhere, since Task 1.2 found
+**no swap configured on this box at all** (`free -m`: `Swap: 0 0 0`) — but it
+guards against someone adding swap later and the OOM killer trading a fast,
+visible failure for slow, box-wide thrashing instead.
+
+**Choosing `<limit>`:** read `free -m`'s `available` column *immediately
+before* running the build, not from this document — Task 1.2's numbers
+(≈1,085 MB available, 0 swap) are already stale by the time anyone acts on
+them, since four unrelated projects' memory use moves independently of ours.
+As a starting point and nothing more: subtract a few hundred MB of margin for
+everything that has to keep running through the build (Apache, the database
+server if colocated, the other PM2 app, our own backend once it's started),
+and don't use more than roughly two-thirds of total RAM regardless of what
+"available" claims, since page cache reported as available isn't all
+instantly reclaimable under pressure. Against Task 1.2's own numbers that
+worked out to roughly `MemoryMax=600M` as an illustrative figure — **not a
+value to copy mechanically**; re-derive it.
+
+**What a killed build looks like:** the cgroup's OOM killer sends `SIGKILL`
+to the build process once it crosses the cap. There's no Next.js error, no
+stack trace — the process simply stops, and the shell's exit code is `137`
+(128 + `SIGKILL`). `journalctl -k | grep -i "out of memory"` (or `dmesg`)
+around that timestamp will show the kernel's own OOM line naming the killed
+process, which is how you tell "killed by the memory cap" apart from "the
+build genuinely failed."
+
+**Fallback: build elsewhere, copy the output.** Build on any other machine
+with the same `API_URL` set (see the single-source note just below), then
+copy `/opt/sokabrain/web/.next/`, `public/`, `package.json`,
+`package-lock.json`, `next.config.ts`, and `.env.production` to the server,
+and run `npm ci` **on the server** (not copied) before starting — not a full
+build, just package installation, which is far lighter than compiling the
+app.
+
+**Is the build output portable from macOS arm64 to Linux x64 for this app?**
+Split answer, stated plainly rather than guessed at:
+
+- This app uses Next.js's **default** build output, not `output: 'standalone'`
+  (`next.config.ts` sets neither) — confirmed by reading the file.
+- The compiled `.next/` folder itself (JS bundles, `routes-manifest.json`,
+  and friends) is not CPU-architecture-specific, because Next's default
+  build transpiles to plain JavaScript run by Node rather than compiling to
+  native machine code. **This specific claim is an inference about how the
+  toolchain works, not a sentence quoted from Next.js's own documentation —
+  treat it as unverified by documentation, even though it follows from
+  documented behavior.**
+- What *is* directly confirmed (from the `package-lock.json` diff in Task
+  1.2a): `next` ships per-platform optional dependencies —
+  `@next/swc-darwin-arm64` is what gets installed on this Mac,
+  `@next/swc-linux-x64-gnu` is what the server needs. **`node_modules` is
+  not portable between the two and must never be copied** — this is why the
+  fallback above says `npm ci` on the server, never `cp -r node_modules`.
+
+### `API_URL`: one place, same value at build and run time
+
+The main guide's own Step 4.1 already puts it in `web/.env.production`; this
+deployment doesn't add a second place. Next.js's documented environment
+variable load order is `.env.$(NODE_ENV)` before `.env`, and "`NODE_ENV`...
+production for all other commands" besides `next dev` — meaning
+`web/.env.production` is loaded automatically by **both** `npm run build`
+and `npm run start`, with no extra wiring:
+
+```sh
+# web/.env.production — the only place this value is set, for both build and run
+NODE_ENV=production
+API_URL=http://127.0.0.1:4010
+```
+
+`ecosystem.config.cjs` deliberately does **not** set `API_URL` — doing so
+would create a second source of truth that could silently drift from the
+one `.env.production` carries, exactly the failure mode
+`docs/ARCHITECTURE.md`'s "Constraints that shape deployment" warns about
+("`API_URL` has to be right at build time... Next.js bakes the rewrite
+destinations into the build").
+
+Once the build (or the copy, if the fallback was used) is in place, start
+the second app:
+
+```sh
+cd /opt/sokabrain
+pm2 start ecosystem.config.cjs --only sokabrain-web
+curl -I http://127.0.0.1:3100/            # HTTP/1.1 200 OK
+```
+
+**Nothing in this subsection has been run on the real server.**
+
+### Apache and TLS
+
+Two site files, modelled directly on the other app's
+(`/etc/apache2/sites-available/brakad-api.conf`, read during Task 1.2 as
+"another app under the same PM2"): a port-80 block, and a port-443 block
+proxying to a loopback port. The only real differences from that file: two
+separate hostnames instead of one, the backend is at `:4010` instead of
+`:3000`, and the `X-Forwarded-For` and `noindex` directives below, which
+that file doesn't carry.
+
+**Certificates come from `certbot certonly`, not the Apache plugin** — the
+plugin rewrites vhost files to insert its own SSL block, and we want the SSL
+block written by us, with explicit paths, the same way the other app's file
+does it. That means getting the certificate *before* the files reference it,
+in an order where `apache2ctl configtest` passes at every step, including
+before any certificate exists:
+
+**1. A webroot for ACME challenges**, shared by both hostnames since it only
+ever holds challenge files:
+
+```sh
+mkdir -p /var/www/certbot
+```
+
+**2. Port-80-only site files first** — no SSL block yet, so nothing
+references a certificate that doesn't exist:
+
+`/etc/apache2/sites-available/sokabrain-web.conf`:
+```apache
+<VirtualHost *:80>
+    ServerName staging.soka.co
+
+    Alias /.well-known/acme-challenge/ /var/www/certbot/.well-known/acme-challenge/
+    <Directory /var/www/certbot/.well-known/acme-challenge/>
+        Require all granted
+    </Directory>
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+    RewriteRule ^(.*)$ https://staging.soka.co$1 [R=301,L]
+</VirtualHost>
+```
+
+`/etc/apache2/sites-available/sokabrain-api.conf`, same shape with
+`api.staging.soka.co`.
+
+```sh
+apache2ctl configtest                                 # passes: no cert referenced yet
+ln -s /etc/apache2/sites-available/sokabrain-web.conf /etc/apache2/sites-enabled/
+ln -s /etc/apache2/sites-available/sokabrain-api.conf /etc/apache2/sites-enabled/
+apache2ctl configtest
+systemctl reload apache2                              # reload, never restart
+```
+
+**3. Get the certificates**, one domain at a time, matching the other app's
+one-cert-per-hostname layout:
+
+```sh
+certbot certonly --webroot -w /var/www/certbot -d staging.soka.co \
+  --deploy-hook "apache2ctl configtest && systemctl reload apache2"
+certbot certonly --webroot -w /var/www/certbot -d api.staging.soka.co \
+  --deploy-hook "apache2ctl configtest && systemctl reload apache2"
+```
+
+The `--deploy-hook` matters because `certonly` (unlike the Apache plugin)
+doesn't manage its own reload on renewal — without it, a renewed certificate
+sits on disk unused until something else reloads Apache. The hook itself
+follows the same configtest-then-reload rule as every other change here.
+
+**4. Now append the port-443 block** to each file, referencing the
+certificates that exist as of step 3:
+
+`/etc/apache2/sites-available/sokabrain-web.conf`, appended:
+```apache
+<VirtualHost *:443>
+    ServerName staging.soka.co
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/staging.soka.co/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/staging.soka.co/privkey.pem
+
+    # Staging is not for search engines.
+    Header set X-Robots-Tag "noindex"
+
+    # Discard whatever X-Forwarded-For the client sent; let mod_proxy add a
+    # fresh one from the real connecting address. See the note below for
+    # why this is "unset", not "set ... %{REMOTE_ADDR}s".
+    RequestHeader unset X-Forwarded-For
+
+    ProxyPreserveHost On
+    ProxyPass / http://127.0.0.1:3100/
+    ProxyPassReverse / http://127.0.0.1:3100/
+
+    ErrorLog ${APACHE_LOG_DIR}/sokabrain-web-error.log
+    CustomLog ${APACHE_LOG_DIR}/sokabrain-web-access.log combined
+</VirtualHost>
+```
+
+`/etc/apache2/sites-available/sokabrain-api.conf`, appended, same shape:
+`ServerName api.staging.soka.co`, proxying to `http://127.0.0.1:4010/`.
+
+```sh
+apache2ctl configtest                                 # passes: certs now exist
+systemctl reload apache2
+```
+
+**Why `RequestHeader unset X-Forwarded-For` alone, with no accompanying
+`RequestHeader set`:** Apache's own `mod_proxy` documentation states that
+`ProxyAddHeaders` — on by default — governs whether proxy information,
+including `X-Forwarded-For`, is added to the request before it reaches the
+backend, and warns that the header "will contain more than one
+(comma-separated) value **if the original request already contained one of
+these headers**." Read the other way round: if the incoming request does
+*not* already carry the header — which `unset` guarantees, discarding
+anything the client sent — `mod_proxy` adds a single fresh value: the real
+connecting address. That's the documented mechanism; it is not, by itself,
+proof that it works as described on *this* server's configuration. **The
+test that actually settles it** is below.
+
+**The test:** run a packet capture on loopback (where Apache's proxied
+request to the backend actually travels, in plaintext, regardless of the
+public side being HTTPS) while sending a forged header from outside:
+
+```sh
+# On the server, in one terminal:
+tcpdump -i lo -A 'tcp port 4010'
+
+# From anywhere, in another terminal, with a forged X-Forwarded-For:
+curl -H "X-Forwarded-For: 1.2.3.4" https://api.staging.soka.co/health
+```
+
+**Pass** means the `tcpdump` output shows an `X-Forwarded-For` header
+carrying only the real connecting address — never `1.2.3.4`, and never
+`1.2.3.4` followed by the real address. Either of those would mean the
+forged header survived, and `TRUST_PROXY=loopback` would then be trusting an
+address the client controls.
+
+**Nothing in this subsection has been run on the real server.**
+
+### Making PM2 survive a reboot
+
+```sh
+pm2 save
+```
+
+This is the same command already relied on for the other app (Task 1.2's
+`pm2-root.service status` showed it restores from exactly this file on
+boot: "Restoring processes located in `/root/.pm2/dump.pm2`"). Running
+`pm2 save` after our two apps are started rewrites that one shared dump file
+to include both apps alongside whatever was already in it — it does not
+touch the other app's process definition, only adds ours to the same list.
+`pm2-root.service` itself needs no changes; it already runs `pm2 resurrect`
+on boot, which will now bring back three apps instead of one.
+
+**Untested** — confirming this actually survives a reboot means rebooting a
+server that hosts five other projects, which is explicitly out of scope for
+a verification step in this task.
+
+### Scheduled jobs
+
+The main guide's Step 6 crontab jobs, paths adjusted from `/srv/sokabrain` to
+`/opt/sokabrain`, otherwise unchanged — crontab doesn't care whether the
+backend it calls into is managed by systemd or PM2, so nothing about these
+three jobs is actually PM2-specific:
+
+```cron
+CRON_TZ=UTC
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# Nightly results catch-up
+0 3 * * *   flock -n /tmp/sm-catchup.lock /opt/sokabrain/bin/sm-catchup.sh >> /opt/sokabrain/logs/sm-catchup.log 2>&1
+
+# Weekly goal-events report (dry run only — see below)
+0 4 * * 1   flock -n /tmp/sm-events.lock /opt/sokabrain/bin/sm-events-report.sh >> /opt/sokabrain/logs/sm-events-report.log 2>&1
+```
+
+Both scripts are copied from the main guide's Step 6.3/6.4 verbatim, with
+`/srv/sokabrain/app` changed to `/opt/sokabrain`.
+
+**Leave both lines commented out in `crontab -e` until a SportMonks token
+exists.** There is no token for this deployment yet (`backend/.env` above
+leaves `SPORTMONKS_TOKEN` unset and `LIVE_SYNC_ENABLED=false`); a catch-up or
+events job run against an account with no token just fails loudly, and the
+live-score sync itself (the main guide's Job 1) only starts automatically
+the moment `SPORTMONKS_TOKEN` is set and `LIVE_SYNC_ENABLED=true` in
+`backend/.env`, followed by `pm2 restart sokabrain-api`. The weekly
+snapshot-to-git job (the main guide's third cron line) is intentionally
+**not** reproduced here at all — see "The checkout" above: this server's
+deploy key is read-only, and staging is a copy, not the vault of record.
+
+**Untested** — no token exists yet to test either job against.
+
+### Nightly backups
+
+A complete local `pg_dump`, kept on the server, in a directory only `root`
+can read — **not** `scripts/dump_db.sh`, which exists to produce a
+git-committable snapshot and scrubs admin credentials for that reason; a
+local operational backup should keep everything, including real admin
+password hashes, so a restore is actually complete.
+
+```sh
+mkdir -p /opt/sokabrain/backups
+chmod 700 /opt/sokabrain/backups
+```
+
+`/opt/sokabrain/bin/pg-backup.sh`:
+
+```sh
+#!/usr/bin/env bash
+# Nightly: a complete custom-format dump of the staging database, kept
+# locally. Retention: 14 days. Off-server destination not yet decided —
+# see the note below.
+set -euo pipefail
+BACKUP_DIR=/opt/sokabrain/backups
+STAMP="$(date -u +%FT%H%M%SZ)"
+
+pg_dump -Fc -d postgresql://sokabrain:<password>@127.0.0.1:5432/sokabrain \
+  -f "$BACKUP_DIR/sokabrain-$STAMP.dump"
+
+find "$BACKUP_DIR" -name 'sokabrain-*.dump' -mtime +14 -delete
+```
+
+```sh
+chmod +x /opt/sokabrain/bin/pg-backup.sh
+chmod 600 /opt/sokabrain/backups/*.dump 2>/dev/null || true
+```
+
+Crontab line, same file as above:
+
+```cron
+30 3 * * *  flock -n /tmp/pg-backup.lock /opt/sokabrain/bin/pg-backup.sh >> /opt/sokabrain/logs/pg-backup.log 2>&1
+```
+
+A `pg_dump -Fc` file restores with `pg_restore -d <target> <file>.dump` — no
+shared-server-specific step there, it's the standard tool for this format.
+
+**The off-server destination for this backup is not yet decided.** Right
+now, a backup living only on the same box it protects is a real gap — it
+survives a bad migration or an admin mistake, not a lost server. This is
+flagged as a recommendation below, not solved in this task.
+
+**Untested.**
+
+### Deploying a new version
+
+```sh
+cd /opt/sokabrain && git pull --ff-only
+
+cd backend && npm ci && npm run db:generate && npm run build
+cd ../web && npm ci && systemd-run --scope -p MemoryMax=<limit> -p MemorySwapMax=0 npm run build
+
+pm2 restart sokabrain-api sokabrain-web
+curl -s https://api.staging.soka.co/health
+```
+
+`pm2 restart`, named explicitly — never `pm2 restart all`, which would also
+bounce the other app for no reason connected to our deploy. If the release
+changes the schema, apply the DDL change first, inside a transaction, after
+a fresh `pg-backup.sh` run — the main guide's "Changing the schema" steps in
+`docs/RUNBOOK.md` apply unchanged.
+
+**Untested.**
+
+### Staging go-live checklist
+
+- [ ] `https://api.staging.soka.co/health` returns `ok`.
+- [ ] A recent match's kickoff time matches the local vault (the UTC pin
+      survived the local-Postgres setup, not just a managed one).
+- [ ] The site loads at `https://staging.soka.co`, and a published season's
+      table and matches look right.
+- [ ] `/admin` sign-in works with an account created via `admin:create`.
+- [ ] The `tcpdump` test above shows a forged `X-Forwarded-For` does **not**
+      reach the backend.
+- [ ] `curl -I https://staging.soka.co/` shows `X-Robots-Tag: noindex`.
+- [ ] `pm2 ls` shows `sokabrain-api` and `sokabrain-web` online, and the
+      pre-existing app on this server is still online too.
+- [ ] `pg-backup.sh` has run once by hand and produced a `.dump` file
+      `pg_restore --list` can read.
+- [ ] A reboot (scheduled deliberately, with the other project's owner
+      informed in advance) brings back all three PM2 apps via
+      `pm2-root.service`.
+- [ ] Ports 3100 and 4010 are confirmed not reachable from outside the
+      server (the firewall already in place is what this relies on — see
+      "The backend" above).
+
+### Not tested
+
+Everything in this section is new procedure, written without connecting to
+the server, per this task's constraints. Nothing on this list has been run
+against the real box:
+
+- The Node 20→22 upgrade sequence, and its rollback.
+- Installing `postgresql-16`, creating the role/database, confirming
+  `listen_addresses`, restoring the snapshot, and the kickoff check.
+- The `/opt/sokabrain` checkout with a read-only deploy key.
+- Building and starting the backend via `ecosystem.config.cjs`, and its
+  `/health` check.
+- The memory-limited web build, at any value of `MemoryMax`, including
+  whether the illustrative figure given is anywhere close to right on the
+  server as it actually is when this runs.
+- The build-elsewhere fallback, and the `npm ci`-not-`cp`-for-`node_modules`
+  claim about macOS→Linux portability.
+- Every Apache directive: the two site files, the webroot ACME challenge,
+  `certbot certonly` with `--deploy-hook`, and the `X-Forwarded-For`
+  `tcpdump` test.
+- `pm2 save` persisting both apps correctly alongside the existing one, and
+  a reboot actually bringing all three back.
+- The two cron jobs (not scheduled until a SportMonks token exists) and the
+  nightly `pg_dump` script.
+- The full "deploying a new version" sequence.
+- The entire staging go-live checklist above.
+
+### Recommended, not implemented here
+
+- **Add an optional `HOST` env var to the backend** (`backend/src/env.ts`,
+  `backend/src/index.ts`), honoured only if set, so it can bind to
+  `127.0.0.1` explicitly instead of relying on the shared server's firewall
+  to keep port 4010 off the public interface. Out of scope for this
+  docs-only task.
+- **Decide the off-server destination for the nightly `pg_dump`** before
+  this server holds any data worth not losing twice.
