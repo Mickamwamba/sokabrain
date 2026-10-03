@@ -5,6 +5,13 @@ import { z } from 'zod';
 const schema = z.object({
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
   PORT: z.coerce.number().int().positive().default(4000),
+  // Unset (the default) binds every interface, as it always has. Set it to
+  // restrict the server to one, e.g. 127.0.0.1 behind a reverse proxy. An
+  // empty value is treated the same as unset, not as an empty hostname.
+  HOST: z
+    .string()
+    .optional()
+    .transform((v) => (v ? v : undefined)),
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   // Not needed until build priorities 3 and 5; optional so the read API boots without them.
   JWT_SECRET: z.string().optional(),
