@@ -84,14 +84,16 @@ every pull request.
 
 ## Deploying
 
-`docs/DEPLOYMENT.md` describes two ways to run it on a server: systemd units
-behind nginx, or Docker. The Docker files are in the repo:
+`docs/DEPLOYMENT.md` describes three ways to run it on a server: systemd
+units behind nginx, Docker, or a shared server behind Apache with PM2. The
+Docker files are in the repo:
 
 | File | What it is |
 |---|---|
 | `compose.yml` | Backend, web and Caddy (HTTPS) on one host. The database is managed and outside it. |
 | `Caddyfile` | Routes `SITE_DOMAIN` to the web app and `API_DOMAIN` to the backend |
 | `backend/Dockerfile`, `web/Dockerfile` | One image each, with a `.dockerignore` beside it |
+| `ecosystem.config.cjs` | PM2 process definitions for `sokabrain-api` and `sokabrain-web`, used by the shared-server (Apache + PM2) path |
 
 They are for a server, not for local development: compose expects
 `backend/.env` pointing at the production database, and a root `.env` setting
